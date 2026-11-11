@@ -1,0 +1,877 @@
+1
+00:00:00,400 --> 00:00:04,886
+After one edit to the skill, the passing
+trials on one model went from five of nine
+
+2
+00:00:04,886 --> 00:00:07,750
+to nine of nine, and the two ranges still
+overlapped.
+
+3
+00:00:08,250 --> 00:00:11,850
+So those trials couldn't yet say the edit
+made things better.
+
+4
+00:00:12,350 --> 00:00:16,732
+Before every change we keep, there's a
+narrower question: is it any worse than
+
+5
+00:00:16,732 --> 00:00:17,125
+before?
+
+6
+00:00:17,625 --> 00:00:22,078
+Here, you'll judge two saved runs side by
+side, and run a check that's built to fail
+
+7
+00:00:22,078 --> 00:00:23,775
+when a change made things worse.
+
+8
+00:00:25,000 --> 00:00:27,875
+Let's start with what our graders can't
+see.
+
+9
+00:00:28,375 --> 00:00:32,775
+Each grader takes one trial at a time, and
+holds it against a fixed check.
+
+10
+00:00:33,275 --> 00:00:37,620
+That can't answer a question like: is the
+new skill's entry better than the old
+
+11
+00:00:37,620 --> 00:00:37,950
+one's?
+
+12
+00:00:38,450 --> 00:00:42,557
+Here are two entries for the same request,
+and the graders passed both, so the
+
+13
+00:00:42,557 --> 00:00:44,400
+difference between them disappears.
+
+14
+00:00:44,900 --> 00:00:49,650
+A one-to-five scale has the same limit,
+since it places each entry by itself.
+
+15
+00:00:50,867 --> 00:00:53,467
+A pairwise judge works differently.
+
+16
+00:00:53,967 --> 00:00:58,148
+It's an LLM judge that's shown two answers
+to the same request, one from each
+
+17
+00:00:58,148 --> 00:01:00,917
+version, and says which is better, and by
+how much.
+
+18
+00:01:01,417 --> 00:01:06,208
+Comparing two answers side by side is
+easier than scoring either one alone, for
+
+19
+00:01:06,208 --> 00:01:07,542
+people and for models.
+
+20
+00:01:08,042 --> 00:01:11,642
+That's why a pairwise judge notices
+smaller changes.
+
+21
+00:01:12,867 --> 00:01:15,292
+It has one well-known weakness.
+
+22
+00:01:15,792 --> 00:01:20,952
+Shown two answers, a judge tends to prefer
+one position, often the first, whatever is
+
+23
+00:01:20,952 --> 00:01:21,317
+in it.
+
+24
+00:01:21,817 --> 00:01:25,767
+So Vally asks twice, with the two answers
+in the opposite order.
+
+25
+00:01:26,267 --> 00:01:29,617
+When both orders agree, the pair gets that
+verdict.
+
+26
+00:01:30,117 --> 00:01:33,167
+When they disagree, the pair is scored as
+a tie.
+
+27
+00:01:34,367 --> 00:01:37,392
+A pairwise judge doesn't replace graders.
+
+28
+00:01:37,892 --> 00:01:41,967
+It can't say that both versions are wrong,
+only which one is less wrong.
+
+29
+00:01:42,467 --> 00:01:45,517
+So graders stay for the question: is it
+right?
+
+30
+00:01:46,017 --> 00:01:49,942
+The side-by-side judgement is for the
+other one: is it worse?
+
+31
+00:01:51,167 --> 00:01:54,067
+That's the idea; here's the command that
+does it.
+
+32
+00:01:54,567 --> 00:01:59,250
+Vally compare runs a pairwise judge over
+two sets of saved trials, and adds up the
+
+33
+00:01:59,250 --> 00:02:01,192
+result, without starting an agent.
+
+34
+00:02:01,692 --> 00:02:06,173
+Its baseline is the version we compare
+against, and Vally's word for the version
+
+35
+00:02:06,173 --> 00:02:07,742
+we changed is the treatment.
+
+36
+00:02:08,242 --> 00:02:12,110
+Here, both are variants of our
+before-and-after experiment: one model,
+
+37
+00:02:12,110 --> 00:02:14,542
+with the skill before the edit and after
+it.
+
+38
+00:02:15,042 --> 00:02:19,333
+Next, the judge has to be named with dash
+dash judge model, because this command
+
+39
+00:02:19,333 --> 00:02:23,517
+doesn't take it from the eval file, and
+its default may be a model under test.
+
+40
+00:02:24,017 --> 00:02:28,192
+Finally, dash dash output names a file for
+a record of every pair.
+
+41
+00:02:29,400 --> 00:02:33,275
+Vally compare can also be given a whole
+experiment folder.
+
+42
+00:02:33,775 --> 00:02:37,910
+Then the baseline is the one the
+experiment file names, here haiku before,
+
+43
+00:02:37,910 --> 00:02:40,425
+and every other variant is judged against
+it.
+
+44
+00:02:40,925 --> 00:02:45,399
+That would set the terra variants against
+haiku, and mix a change of model into a
+
+45
+00:02:45,399 --> 00:02:46,725
+question about the edit.
+
+46
+00:02:47,225 --> 00:02:51,175
+So we'll name two variant folders instead,
+one model at a time.
+
+47
+00:02:51,675 --> 00:02:56,175
+Each holds its own results dot jsonl,
+which is all compare needs.
+
+48
+00:02:57,400 --> 00:03:02,493
+Vally pairs the trials by stimulus name
+and trial number: trial zero with trial
+
+49
+00:03:02,493 --> 00:03:03,525
+zero, and so on.
+
+50
+00:03:04,025 --> 00:03:08,040
+For each pair, the judge works from the
+rubric saved with the trials, and gives a
+
+51
+00:03:08,040 --> 00:03:09,725
+verdict from the treatment's side.
+
+52
+00:03:10,225 --> 00:03:14,625
+Much better scores plus one, and slightly
+better, plus zero point four.
+
+53
+00:03:15,125 --> 00:03:16,850
+Ties score zero.
+
+54
+00:03:17,350 --> 00:03:20,400
+The worse verdicts mirror those, below
+zero.
+
+55
+00:03:20,900 --> 00:03:24,325
+Each pair costs two judge calls, one for
+each order.
+
+56
+00:03:25,533 --> 00:03:29,658
+Here's what compare printed in an earlier
+run, on other saved trials.
+
+57
+00:03:30,158 --> 00:03:34,758
+First, the win rate is the share of pairs
+that the treatment won: six of nine here.
+
+58
+00:03:35,258 --> 00:03:39,233
+Ties count against it, so a win rate isn't
+the same as not worse.
+
+59
+00:03:39,733 --> 00:03:43,483
+Next is the mean of the nine scores, with
+a range around it.
+
+60
+00:03:43,983 --> 00:03:48,324
+That range is a confidence interval: the
+kind we put around a count, here around a
+
+61
+00:03:48,324 --> 00:03:50,758
+mean, and the true mean is probably inside
+it.
+
+62
+00:03:51,258 --> 00:03:53,883
+This one lies wholly above zero.
+
+63
+00:03:55,100 --> 00:03:58,750
+Below that is a second test, and it
+ignores the judge.
+
+64
+00:03:59,250 --> 00:04:03,327
+This test looks only at the graders' pass
+or fail, and counts the pairs that
+
+65
+00:04:03,327 --> 00:04:06,600
+flipped: five went from fail to pass, and
+none the other way.
+
+66
+00:04:07,100 --> 00:04:11,418
+You can see the test's name on that line,
+and it asks whether a split like five to
+
+67
+00:04:11,418 --> 00:04:13,050
+nothing could easily be chance.
+
+68
+00:04:13,550 --> 00:04:18,500
+From chance alone, a split that lopsided
+turns up about six times in a hundred.
+
+69
+00:04:19,000 --> 00:04:23,675
+The usual bar for calling a result
+significant is under five in a hundred.
+
+70
+00:04:24,175 --> 00:04:26,725
+So this one is not significant.
+
+71
+00:04:27,225 --> 00:04:31,064
+Last come the metric changes: the
+treatment minus the baseline for each
+
+72
+00:04:31,064 --> 00:04:33,875
+measure, averaged over the pairs, each
+with a range.
+
+73
+00:04:34,375 --> 00:04:38,400
+The words high variance mean the pairs
+differed a lot from one another.
+
+74
+00:04:39,600 --> 00:04:44,525
+One option turns compare into a regression
+check: dash dash fail on regression.
+
+75
+00:04:45,025 --> 00:04:49,475
+With it, the command exits one when the
+treatment is significantly worse.
+
+76
+00:04:49,975 --> 00:04:54,800
+That means its mean score is below zero,
+and its whole range is below zero too.
+
+77
+00:04:55,300 --> 00:04:59,400
+So a negative mean isn't enough if the
+range reaches above zero.
+
+78
+00:04:59,900 --> 00:05:04,443
+Nothing else counts: a rise in tokens
+doesn't change the exit code, and neither
+
+79
+00:05:04,443 --> 00:05:05,650
+does the second test.
+
+80
+00:05:06,150 --> 00:05:10,398
+Apart from that, with or without the
+option, compare exits one when some pair
+
+81
+00:05:10,398 --> 00:05:12,550
+couldn't be judged, even after retries.
+
+82
+00:05:13,050 --> 00:05:17,477
+To print the exit code, there's echo
+dollar question mark, typed straight after
+
+83
+00:05:17,477 --> 00:05:18,150
+the command.
+
+84
+00:05:19,367 --> 00:05:23,226
+That's how compare works; now let's run it
+on the saved trials of our
+
+85
+00:05:23,226 --> 00:05:24,792
+before-and-after experiment.
+
+86
+00:05:25,292 --> 00:05:29,017
+First, the before skill against the after
+skill, on haiku.
+
+87
+00:05:29,517 --> 00:05:32,867
+Then the same on terra, with the
+regression check on.
+
+88
+00:05:33,367 --> 00:05:37,744
+Last, haiku again with the two roles
+swapped, so the before skill becomes the
+
+89
+00:05:37,744 --> 00:05:38,767
+change under test.
+
+90
+00:05:39,267 --> 00:05:42,417
+Which of the three would you expect the
+check to fail?
+
+91
+00:05:44,917 --> 00:05:47,792
+If you tried it yourself, here's what
+you'd see.
+
+92
+00:05:49,000 --> 00:05:53,250
+All three run from inside the experiment's
+folder, so we change into it.
+
+93
+00:05:55,700 --> 00:05:57,500
+Let's see what it holds.
+
+94
+00:05:58,327 --> 00:06:02,477
+There's one folder for each variant,
+beside the experiment's report.
+
+95
+00:06:06,700 --> 00:06:11,039
+First, haiku: the before skill as the
+baseline, and the after skill as the
+
+96
+00:06:11,039 --> 00:06:11,625
+treatment.
+
+97
+00:06:12,125 --> 00:06:15,950
+It spends eighteen judge calls, two for
+each of nine pairs.
+
+98
+00:06:16,450 --> 00:06:20,125
+We're after the mean score, and whether
+its range clears zero.
+
+99
+00:06:23,587 --> 00:06:28,134
+About two minutes later, the treatment has
+won four of nine pairs, and the mean is
+
+100
+00:06:28,134 --> 00:06:29,687
+plus zero point three three.
+
+101
+00:06:34,187 --> 00:06:39,330
+Its range runs from minus zero point zero
+eight to plus zero point seven five, so it
+
+102
+00:06:39,330 --> 00:06:40,187
+includes zero.
+
+103
+00:06:43,687 --> 00:06:48,306
+On tokens, the range is wholly below zero:
+the after skill used about fourteen
+
+104
+00:06:48,306 --> 00:06:49,787
+thousand fewer per trial.
+
+105
+00:06:54,000 --> 00:06:58,581
+The same command also wrote its record:
+one line of JSON, spread out here so we
+
+106
+00:06:58,581 --> 00:06:59,625
+can go through it.
+
+107
+00:07:00,125 --> 00:07:04,000
+This pair is the dates request, trial zero
+from each version.
+
+108
+00:07:04,500 --> 00:07:09,276
+The pairwise judge found the after skill's
+entry slightly worse, for a score of minus
+
+109
+00:07:09,276 --> 00:07:10,175
+zero point four.
+
+110
+00:07:10,675 --> 00:07:15,166
+Its reason is kept too: the before entry
+adds an example date, which makes the
+
+111
+00:07:15,166 --> 00:07:16,375
+change more concrete.
+
+112
+00:07:19,875 --> 00:07:23,300
+On this same pair, both entries had passed
+their graders.
+
+113
+00:07:23,800 --> 00:07:28,050
+In another pair, the two orders agreed on
+the winner but not on how much, so the
+
+114
+00:07:28,050 --> 00:07:29,750
+record keeps the weaker verdict.
+
+115
+00:07:32,967 --> 00:07:37,567
+Now the second model, with the regression
+check on, and a record file of its own.
+
+116
+00:07:38,067 --> 00:07:42,321
+On the result, there are two things to
+look at: the mean score's range, and the
+
+117
+00:07:42,321 --> 00:07:42,967
+tokens line.
+
+118
+00:07:51,287 --> 00:07:55,587
+This time only six pairs were judged:
+three of the before trials did not finish,
+
+119
+00:07:55,587 --> 00:07:58,437
+so their partners were left out, as the
+warning says.
+
+120
+00:08:02,937 --> 00:08:07,548
+The judged score barely moved: three of
+the six are ties, and the range includes
+
+121
+00:08:07,548 --> 00:08:07,837
+zero.
+
+122
+00:08:11,337 --> 00:08:16,187
+The tokens fell, by about eight thousand
+per trial, with a range wholly below zero.
+
+123
+00:08:19,687 --> 00:08:21,562
+So did the check fail?
+
+124
+00:08:22,640 --> 00:08:26,140
+Exit code zero: no regression in the
+judged score.
+
+125
+00:08:29,367 --> 00:08:33,470
+To see whether the check fails, we swap
+the two roles: the after skill is the
+
+126
+00:08:33,470 --> 00:08:36,667
+baseline now, and the before skill is the
+change under test.
+
+127
+00:08:37,167 --> 00:08:41,640
+A consistent judge would print the first
+comparison's mean with its sign flipped:
+
+128
+00:08:41,640 --> 00:08:43,242
+minus zero point three three.
+
+129
+00:08:48,140 --> 00:08:52,365
+This one printed exactly that, and its
+range reaches above zero.
+
+130
+00:08:56,865 --> 00:08:59,315
+So what does the check make of that?
+
+131
+00:09:00,440 --> 00:09:05,140
+Exit code zero: the check passed, because
+the range isn't wholly below zero.
+
+132
+00:09:08,367 --> 00:09:10,892
+Here are all three, side by side.
+
+133
+00:09:11,392 --> 00:09:14,117
+So which of the three did the check fail?
+
+134
+00:09:14,617 --> 00:09:16,592
+None of them, in our run.
+
+135
+00:09:17,092 --> 00:09:22,132
+The swapped comparison came closest: its
+mean is below zero, but its range crosses
+
+136
+00:09:22,132 --> 00:09:22,317
+it.
+
+137
+00:09:25,533 --> 00:09:27,508
+So what does this support?
+
+138
+00:09:28,008 --> 00:09:32,550
+Counting passes on haiku gave two ranges
+that overlapped, so the counts couldn't
+
+139
+00:09:32,550 --> 00:09:32,833
+tell.
+
+140
+00:09:33,333 --> 00:09:37,798
+The second test says the same: four pairs
+flipped from fail to pass, none flipped
+
+141
+00:09:37,798 --> 00:09:40,333
+back, and it still calls that not
+significant.
+
+142
+00:09:40,833 --> 00:09:45,744
+Its number is coin-toss odds: four tosses
+all landing the same way happen one time
+
+143
+00:09:45,744 --> 00:09:46,283
+in eight.
+
+144
+00:09:46,783 --> 00:09:51,230
+The pairwise judge leans the same way,
+with a mean above zero, but its range
+
+145
+00:09:51,230 --> 00:09:52,283
+includes zero too.
+
+146
+00:09:52,783 --> 00:09:57,493
+So in our run, all three agree: the edit
+looks better, and these trials can't yet
+
+147
+00:09:57,493 --> 00:09:57,958
+show it.
+
+148
+00:09:58,458 --> 00:10:02,735
+An earlier run, on other saved trials,
+went further: there the pairwise range was
+
+149
+00:10:02,735 --> 00:10:05,533
+wholly above zero, while the counts still
+overlapped.
+
+150
+00:10:06,033 --> 00:10:10,271
+A pairwise judge can do that, because it
+compares the two entries of each pair
+
+151
+00:10:10,271 --> 00:10:13,258
+directly, and sees differences that pass
+or fail can't.
+
+152
+00:10:14,467 --> 00:10:17,142
+Hold that loosely, for three reasons.
+
+153
+00:10:17,642 --> 00:10:21,450
+First, the nine pairs aren't nine
+independent requests: they're three
+
+154
+00:10:21,450 --> 00:10:23,217
+stimuli, tried three times each.
+
+155
+00:10:23,717 --> 00:10:27,367
+So the range looks narrower than the
+evidence really allows.
+
+156
+00:10:27,867 --> 00:10:32,128
+Next, the judge is a model, and this
+pairwise judge hasn't been checked against
+
+157
+00:10:32,128 --> 00:10:34,717
+our own labels, the way the yes-or-no
+judge was.
+
+158
+00:10:35,217 --> 00:10:38,142
+Third, it varies from one run to the next.
+
+159
+00:10:38,642 --> 00:10:42,604
+Two earlier runs of the swapped
+comparison, both on the same saved trials,
+
+160
+00:10:42,604 --> 00:10:46,567
+landed on both sides of the line: one
+failed the check, and one passed it.
+
+161
+00:10:47,067 --> 00:10:51,217
+Our own run passed it too, with a range
+that reaches above zero.
+
+162
+00:10:51,717 --> 00:10:56,267
+So trust the sign, and whether the range
+crosses zero, not the second decimal.
+
+163
+00:10:57,467 --> 00:11:00,717
+Now the other half of the question: worse
+in cost.
+
+164
+00:11:01,217 --> 00:11:05,667
+In our run, the edit made nothing cost
+more: tokens fell on both models.
+
+165
+00:11:06,167 --> 00:11:10,824
+In an earlier run, on other saved trials,
+the after skill took about eleven thousand
+
+166
+00:11:10,824 --> 00:11:15,094
+more tokens per trial on terra, with a
+range wholly above zero, and the check
+
+167
+00:11:15,094 --> 00:11:16,092
+still exited zero.
+
+168
+00:11:16,592 --> 00:11:20,192
+That's by design: the check looks at the
+judged score alone.
+
+169
+00:11:20,692 --> 00:11:25,120
+So cost needs a guard of its own: the
+budget graders, with their limits set from
+
+170
+00:11:25,120 --> 00:11:26,117
+the before trials.
+
+171
+00:11:26,617 --> 00:11:31,167
+Then an edit that costs more fails a
+trial, like any other grader's failure.
+
+172
+00:11:32,367 --> 00:11:36,524
+One last piece of how this works: an
+experiment can run the same judging as
+
+173
+00:11:36,524 --> 00:11:38,742
+soon as it ends, with dash dash compare.
+
+174
+00:11:39,242 --> 00:11:43,742
+That option only reports: a regression it
+finds doesn't fail the command.
+
+175
+00:11:44,242 --> 00:11:49,007
+Vally's own guide gives the order: run the
+experiment, then run compare on its folder
+
+176
+00:11:49,007 --> 00:11:51,867
+with fail on regression, as the step that
+can fail.
+
+177
+00:11:53,067 --> 00:11:57,417
+Before you go on: what has to be true for
+the regression check to exit one?
+
+178
+00:12:00,417 --> 00:12:03,617
+First, the treatment's mean score is below
+zero.
+
+179
+00:12:04,117 --> 00:12:07,217
+Second, its whole range is below zero too.
+
+180
+00:12:07,717 --> 00:12:10,342
+Nothing else that compare prints counts.
+
+181
+00:12:11,567 --> 00:12:16,212
+You can now judge two saved runs side by
+side, and run a check that fails on a
+
+182
+00:12:16,212 --> 00:12:16,867
+regression.
+
+183
+00:12:17,367 --> 00:12:21,623
+At this point there are many moving parts,
+and runs sometimes end in error, or fail
+
+184
+00:12:21,623 --> 00:12:23,367
+for reasons that aren't the skill.
+
+185
+00:12:23,867 --> 00:12:26,667
+When a run goes wrong, where do you look
+first?
+
+186
+00:12:27,167 --> 00:12:29,017
+That's the next lesson.
+
+187
+00:12:29,517 --> 00:12:33,092
+The exercises on the lesson page are worth
+doing first.

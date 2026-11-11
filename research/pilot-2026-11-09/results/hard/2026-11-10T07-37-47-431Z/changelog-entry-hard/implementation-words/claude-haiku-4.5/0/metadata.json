@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "implementation-words",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::claude-haiku-4.5::implementation-words::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "claude-haiku-4.5",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:37:47.444Z",
+  "status": "success",
+  "trajectoryId": "9777f877-9345-4b53-b43d-3289ff7bf7a6",
+  "executorSessionId": "0f5c4d18-f5d0-4594-8323-260c1b8f2643",
+  "completedAt": "2026-11-10T07:37:57.453Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/implementation-words/claude-haiku-4.5/0/events.jsonl"
+}

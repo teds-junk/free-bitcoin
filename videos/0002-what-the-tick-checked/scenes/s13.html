@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>It looked for two words.</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.stage{gap:26px}.pair{align-items:start}.card > .code.dark{font-size:30px;line-height:1.4;padding:16px 22px}.entries{display:flex;flex-direction:column;gap:18px;width:100%}.card .who{font-size:28px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Why both models passed</div>
+  <h2 class="scene-title">It looked for two words.</h2>
+  <div class="stage">
+<div class="cols pair">
+    <div class="card" data-concept="g" data-rep="card">
+        <div class="who">The grader, in the eval file</div>
+        <pre class="code dark" data-lang="yaml"><code><span style="color:#4EA5E6">graders</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">file-contains</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">mentions-the-command</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">path</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">CHANGELOG.md</span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">value</span><span style="color:#B3C0BF">: </span><span data-concept="value" data-rep="code"><span style="color:#3CC0B3">"notes add"</span></span></code></pre>
+      </div>
+    <div class="card" data-concept="e" data-rep="card">
+        <div class="who">Its evidence, in <span class="mono">results.jsonl</span></div>
+        <pre class="code dark" data-lang="text"><code><span data-concept="ev" data-rep="code"><span>'notes add' found in CHANGELOG.md</span></span></code></pre>
+      </div>
+  </div>
+  <div class="entries">
+    <div class="card" data-concept="ea" data-rep="card">
+        <div class="who"><span class="mono">claude-haiku-4.5</span> wrote</div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix typo in </span><span data-concept="na" data-rep="code"><span style="color:#3CC0B3">`notes add`</span></span><span> help text ("tittle" → "title")</span></code></pre>
+      </div>
+    <div class="card" data-concept="eb" data-rep="card">
+        <div class="who"><span class="mono">gpt-5.6-terra</span> wrote</div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix the help text typo in </span><span data-concept="na" data-rep="code"><span style="color:#3CC0B3">`notes add`</span></span><span> </span><span data-concept="pr42" data-rep="code"><span>(#42)</span></span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "value",
+  "at": "2~notes add",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ev",
+  "at": "3~evidence",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "na",
+  "at": "4~mentions",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "pr42",
+  "at": "5~pull request",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

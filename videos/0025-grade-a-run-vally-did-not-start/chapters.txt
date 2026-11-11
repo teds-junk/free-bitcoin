@@ -1,0 +1,6 @@
+0:00 A run nobody started in Vally
+1:12 Read a trajectory from outside
+3:36 From traces to steps
+7:39 The script the release tooling runs
+8:18 Run the app, convert, grade
+12:07 What carried over

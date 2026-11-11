@@ -1,0 +1,63 @@
+warning: Multiple graders with no scoring config
+
+━━━ after-release ━━━
+❌ after-release (0/1 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] Command 'node .vally-grading/check-entry.mjs Added=58' failed: Expected exit code 0, got 1
+
+Score: 0.0% | FAILED
+
+━━━ refactor ━━━
+✅ refactor (1/1 graders passed)
+  ✓ [adds-nothing] Workspace diff is empty
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (1/1 graders passed)
+  ✓ [under-security] Pattern /(?m)^\+### Security/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ two-changes ━━━
+❌ two-changes (0/1 graders passed, 1 failed)
+  ✗ [two-entries-in-place] Command 'node .vally-grading/check-entry.mjs Added=60 Fixed=60' failed: Expected exit code 0, got 1
+
+Score: 0.0% | FAILED
+
+━━━ typo-fix ━━━
+✅ typo-fix (2/2 graders passed)
+  ✓ [adds-an-entry] Pattern 'notes add' found in workspace diff
+  ✓ [no-made-up-number] Pattern /(?m)^\+.*\(#\d+\)/ not found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ refactor ━━━
+✅ refactor (1/1 graders passed)
+  ✓ [adds-nothing] Workspace diff is empty
+
+Score: 100.0% | PASSED
+
+━━━ after-release ━━━
+❌ after-release (0/1 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] Command 'node .vally-grading/check-entry.mjs Added=58' failed: Expected exit code 0, got 1
+
+Score: 0.0% | FAILED
+
+━━━ security ━━━
+✅ security (1/1 graders passed)
+  ✓ [under-security] Pattern /(?m)^\+### Security/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ two-changes ━━━
+❌ two-changes (0/1 graders passed, 1 failed)
+  ✗ [two-entries-in-place] Command 'node .vally-grading/check-entry.mjs Added=60 Fixed=60' failed: Expected exit code 0, got 1
+
+Score: 0.0% | FAILED
+
+━━━ typo-fix ━━━
+✅ typo-fix (2/2 graders passed)
+  ✓ [adds-an-entry] Pattern 'notes add' found in workspace diff
+  ✓ [no-made-up-number] Pattern /(?m)^\+.*\(#\d+\)/ not found in workspace diff
+
+Score: 100.0% | PASSED

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Two groups of requests</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px}.terms .label{font-size:34px}.lead{font-size:40px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">The description decides</div>
+  <h2 class="scene-title">Two groups of requests</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="should" data-rep="block" data-role="structure">
+      <div class="title words">Requests that should load the skill</div><div class="label">including ones that never use its obvious word</div>
+    </div>
+    <div class="semantic-block" data-concept="near" data-rep="block" data-role="attention">
+      <div class="title words">Near-miss requests</div><div class="label">which should not load it</div>
+    </div>
+  </div>
+  <p class="lead"><span data-concept="observed" data-rep="note">Loading is observed in real trials, not asked of the model.</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "should",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "near",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "observed",
+  "at": "3~observe",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

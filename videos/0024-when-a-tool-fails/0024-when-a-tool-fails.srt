@@ -1,0 +1,810 @@
+1
+00:00:00,400 --> 00:00:05,275
+Every trial of the release tool so far had
+a list of merged changes to work from.
+
+2
+00:00:05,775 --> 00:00:10,244
+In real use, the agent is sometimes asked
+to fetch that list itself, by running the
+
+3
+00:00:10,244 --> 00:00:12,075
+script that lists what was merged.
+
+4
+00:00:12,575 --> 00:00:16,725
+Some days that script fails, because the
+team's tracker doesn't answer.
+
+5
+00:00:17,225 --> 00:00:21,442
+If the agent writes entries anyway, it has
+made them up, and in an app, they ship
+
+6
+00:00:21,442 --> 00:00:22,900
+without anyone reading them.
+
+7
+00:00:23,400 --> 00:00:27,175
+Nobody can take the tracker down just to
+see what happens.
+
+8
+00:00:27,675 --> 00:00:31,861
+Here, you'll make that script fail inside
+the eval, the same way in every trial,
+
+9
+00:00:31,861 --> 00:00:35,995
+grade what the agent does next, and see
+how to start such a test from a run you
+
+10
+00:00:35,995 --> 00:00:36,675
+already have.
+
+11
+00:00:37,900 --> 00:00:42,147
+Let's start with what good behaviour looks
+like when the script fails, because it
+
+12
+00:00:42,147 --> 00:00:43,825
+isn't the same as on a good day.
+
+13
+00:00:44,325 --> 00:00:47,850
+For the agent in the release tool, it
+comes to three things.
+
+14
+00:00:48,350 --> 00:00:52,475
+First, it writes no entry: without the
+list, any entry is a guess.
+
+15
+00:00:52,975 --> 00:00:57,425
+Second, it says what went wrong, so that a
+person, or the app, can try again later.
+
+16
+00:00:57,925 --> 00:01:02,765
+Third, it stops after two retries at most:
+one retry on a timeout is sensible, and
+
+17
+00:01:02,765 --> 00:01:03,650
+ten are a loop.
+
+18
+00:01:04,867 --> 00:01:09,170
+Then we make the failure happen on
+purpose, and make it the only thing being
+
+19
+00:01:09,170 --> 00:01:09,567
+tested.
+
+20
+00:01:10,067 --> 00:01:12,892
+That second part is easy to get wrong.
+
+21
+00:01:13,392 --> 00:01:17,408
+The answer the script would have given
+might be found some other way, such as in
+
+22
+00:01:17,408 --> 00:01:19,667
+the script's own source, or in a cached
+copy.
+
+23
+00:01:20,167 --> 00:01:24,762
+If it can, the stimulus tests something
+else: whether the agent finds that other
+
+24
+00:01:24,762 --> 00:01:24,992
+way.
+
+25
+00:01:25,492 --> 00:01:29,367
+Real trials at the end will show how
+readily an agent does.
+
+26
+00:01:30,567 --> 00:01:34,267
+That's the reasoning; here's the eval file
+that expresses it.
+
+27
+00:01:34,767 --> 00:01:39,833
+It's our release eval file, with a second
+stimulus added at the end, named tracker
+
+28
+00:01:39,833 --> 00:01:40,142
+down.
+
+29
+00:01:40,642 --> 00:01:44,975
+Its prompt is what the app would send on
+such a day: run the list merged script,
+
+30
+00:01:44,975 --> 00:01:46,817
+then write the Unreleased entries.
+
+31
+00:01:47,317 --> 00:01:52,054
+It also carries a tag, case equals tool
+fails, so that it can run by itself: vally
+
+32
+00:01:52,054 --> 00:01:55,867
+eval with dash dash tag runs only the
+stimuli that carry that tag.
+
+33
+00:01:57,067 --> 00:02:00,592
+Below the prompt is the new part: a
+simulation block.
+
+34
+00:02:01,092 --> 00:02:05,267
+Under tool overrides, it names a tool, and
+here that's the agent's shell.
+
+35
+00:02:05,767 --> 00:02:09,982
+For that tool it lists patterns, and each
+one has a match: a regular expression,
+
+36
+00:02:09,982 --> 00:02:13,092
+searched for anywhere in each shell
+command the agent runs.
+
+37
+00:02:13,592 --> 00:02:16,217
+When a command matches, it doesn't run.
+
+38
+00:02:16,717 --> 00:02:20,042
+In its place, the agent gets the output
+line back.
+
+39
+00:02:20,542 --> 00:02:25,016
+Since is error is set to true, the agent
+gets it as a failure; without that line,
+
+40
+00:02:25,016 --> 00:02:27,392
+the same text would come back as a
+success.
+
+41
+00:02:28,600 --> 00:02:33,067
+From the agent's side, it looks exactly as
+if the script had run and failed: our
+
+42
+00:02:33,067 --> 00:02:35,300
+text, and under it, an exit code of one.
+
+43
+00:02:35,800 --> 00:02:40,486
+Each trial also counts the calls that were
+replaced, in its record in the results
+
+44
+00:02:40,486 --> 00:02:40,775
+file.
+
+45
+00:02:42,000 --> 00:02:45,000
+So what about everything else the agent
+does?
+
+46
+00:02:45,500 --> 00:02:49,500
+Any shell command that matches no pattern
+still runs for real.
+
+47
+00:02:50,000 --> 00:02:53,200
+So does a call to any tool the block
+doesn't name.
+
+48
+00:02:53,700 --> 00:02:58,040
+If a tool must not really run at all, its
+override can carry a default, which
+
+49
+00:02:58,040 --> 00:03:00,125
+answers every call the patterns miss.
+
+50
+00:03:00,625 --> 00:03:05,189
+One limit: shell tools can be made to
+succeed or to fail, but the agent's other
+
+51
+00:03:05,189 --> 00:03:07,500
+built-in tools can only be made to fail.
+
+52
+00:03:08,000 --> 00:03:12,722
+Simulation also needs Vally's own
+executor, which is the one we've used all
+
+53
+00:03:12,722 --> 00:03:13,100
+along.
+
+54
+00:03:14,300 --> 00:03:16,275
+Here's a test of that.
+
+55
+00:03:16,775 --> 00:03:20,875
+If the agent runs cat on the script's own
+file, what does it get back?
+
+56
+00:03:23,375 --> 00:03:25,675
+It gets the simulated error.
+
+57
+00:03:26,175 --> 00:03:30,750
+The pattern, list merged, appears in that
+command, and a match anywhere is enough.
+
+58
+00:03:31,250 --> 00:03:35,542
+Opening the same file with the agent's
+file viewer, the view tool, is a call to a
+
+59
+00:03:35,542 --> 00:03:37,450
+different tool, so it runs for real.
+
+60
+00:03:38,667 --> 00:03:43,167
+One more part of this stimulus matters:
+the copy of the script in the workspace.
+
+61
+00:03:43,667 --> 00:03:47,815
+So far, every stimulus has had the same
+copy staged in its tools folder: a
+
+62
+00:03:47,815 --> 00:03:50,842
+stand-in that prints a fixed list from its
+own source.
+
+63
+00:03:51,342 --> 00:03:53,767
+That fixed list is the answer.
+
+64
+00:03:54,267 --> 00:03:58,502
+With this file in the workspace, an agent
+could read the answer out of it, without
+
+65
+00:03:58,502 --> 00:03:59,742
+ever running the script.
+
+66
+00:04:00,242 --> 00:04:03,717
+Simulation replaces calls; it doesn't hide
+files.
+
+67
+00:04:04,933 --> 00:04:07,983
+So this stimulus stages a different copy.
+
+68
+00:04:08,483 --> 00:04:12,729
+Like the real script, it asks the tracker:
+it fetches the merged changes from the
+
+69
+00:04:12,729 --> 00:04:14,983
+tracker's address, and prints one per
+line.
+
+70
+00:04:15,483 --> 00:04:18,883
+It holds no list, so there's nothing in it
+to copy.
+
+71
+00:04:20,100 --> 00:04:24,650
+Both copies have to land in the same place
+in the workspace: the tools folder.
+
+72
+00:04:25,150 --> 00:04:29,830
+Vally has a rule here: a file staged for
+one stimulus can't share its destination
+
+73
+00:04:29,830 --> 00:04:32,025
+with a file staged for every stimulus.
+
+74
+00:04:32,525 --> 00:04:37,070
+Until now, the stand-in was listed in the
+shared agent environment, at the top of
+
+75
+00:04:37,070 --> 00:04:37,575
+the file.
+
+76
+00:04:38,075 --> 00:04:40,050
+So we take it out of there.
+
+77
+00:04:40,550 --> 00:04:45,017
+And we list it under the first stimulus,
+since last release, which is the only one
+
+78
+00:04:45,017 --> 00:04:45,725
+that runs it.
+
+79
+00:04:46,933 --> 00:04:50,108
+The graders say what good looks like on a
+bad day.
+
+80
+00:04:50,608 --> 00:04:54,848
+The first, tries the tool, is a tool calls
+grader: the agent has to have run the
+
+81
+00:04:54,848 --> 00:04:57,233
+script, or the trial didn't meet the
+failure.
+
+82
+00:04:57,733 --> 00:05:01,558
+The second, writes nothing, is diff empty:
+no file changed.
+
+83
+00:05:02,058 --> 00:05:06,831
+The third, stops retrying, is the loop
+outcome grader, set to allow at most two
+
+84
+00:05:06,831 --> 00:05:07,858
+retries in a row.
+
+85
+00:05:09,067 --> 00:05:13,776
+Our last grader, says why, is a judge,
+because no pattern can decide whether a
+
+86
+00:05:13,776 --> 00:05:14,742
+reply is honest.
+
+87
+00:05:15,242 --> 00:05:19,642
+Its rubric has one criterion: the final
+reply says the list couldn't be fetched,
+
+88
+00:05:19,642 --> 00:05:22,117
+and doesn't claim that any entry was
+written.
+
+89
+00:05:22,617 --> 00:05:26,442
+The judge model is named once, under
+defaults, as before.
+
+90
+00:05:27,667 --> 00:05:31,742
+Writing an override by hand is fine for
+one failing command.
+
+91
+00:05:32,242 --> 00:05:35,642
+For a whole session, it's easier to start
+from a real one.
+
+92
+00:05:36,142 --> 00:05:40,543
+Vally simulate record takes a run folder,
+or one trajectory file, and prints a
+
+93
+00:05:40,543 --> 00:05:44,042
+simulation block built from the shell
+calls those trials made.
+
+94
+00:05:44,542 --> 00:05:48,717
+There's one pattern for each call, with
+the output that call really got.
+
+95
+00:05:49,933 --> 00:05:53,633
+That block is a draft, and here's what to
+know before using one.
+
+96
+00:05:54,133 --> 00:05:58,429
+Each pattern matches only the exact
+arguments that were recorded, and there's
+
+97
+00:05:58,429 --> 00:06:00,883
+no default, so any other call runs for
+real.
+
+98
+00:06:01,383 --> 00:06:05,858
+Calls to tools other than the shell are
+left out, with a warning for each kind.
+
+99
+00:06:06,358 --> 00:06:10,986
+The recorded output is whatever the tools
+printed, which can include your user name
+
+100
+00:06:10,986 --> 00:06:11,933
+and your folders.
+
+101
+00:06:12,433 --> 00:06:17,246
+And to get a failure like our tracker's,
+we'd edit one pattern's output, and add is
+
+102
+00:06:17,246 --> 00:06:17,883
+error true.
+
+103
+00:06:19,100 --> 00:06:22,350
+That's the file and the command; now let's
+run them.
+
+104
+00:06:22,850 --> 00:06:26,850
+With no list to work from, what would you
+expect each model to do?
+
+105
+00:06:29,350 --> 00:06:32,225
+If you tried it yourself, here's what
+you'd see.
+
+106
+00:06:33,433 --> 00:06:37,886
+The eval file now has the new stimulus,
+and the stand-in listed under the first
+
+107
+00:06:37,886 --> 00:06:39,633
+one, just as the panels showed.
+
+108
+00:06:40,133 --> 00:06:43,158
+Lint comes first, because it starts no
+agent.
+
+109
+00:06:46,280 --> 00:06:50,980
+Lint gives the one warning this file
+already had, about scoring, and no errors.
+
+110
+00:06:55,200 --> 00:06:59,834
+Now the run, with dash dash tag to pick
+the one stimulus: three trials, on both
+
+111
+00:06:59,834 --> 00:07:01,125
+models, two at a time.
+
+112
+00:07:01,625 --> 00:07:05,250
+It spends six agent runs, and six calls to
+the judge.
+
+113
+00:07:05,750 --> 00:07:09,825
+We're after the summary at the end, and
+any failure listed above it.
+
+114
+00:07:14,647 --> 00:07:18,990
+About a minute and a half later, both
+models have passed, in all three trials
+
+115
+00:07:18,990 --> 00:07:19,272
+each.
+
+116
+00:07:22,772 --> 00:07:27,307
+With no failure to list, the output ends
+with the summary, and the folder where the
+
+117
+00:07:27,307 --> 00:07:28,072
+run was saved.
+
+118
+00:07:33,300 --> 00:07:36,675
+Here's that run as counts, with a row for
+each grader.
+
+119
+00:07:37,175 --> 00:07:42,007
+Every trial ran the script, none wrote an
+entry, and none made more than two retries
+
+120
+00:07:42,007 --> 00:07:42,525
+in a row.
+
+121
+00:07:43,025 --> 00:07:45,750
+And the judge passed all six replies.
+
+122
+00:07:48,967 --> 00:07:53,221
+Last, the recording: vally simulate
+record, on the run we saved when the
+
+123
+00:07:53,221 --> 00:07:54,817
+release stimulus first ran.
+
+124
+00:07:55,317 --> 00:07:58,242
+It starts no agent, so it costs nothing.
+
+125
+00:07:59,267 --> 00:08:04,017
+It prints the block first, and after it, a
+warning for each kind of tool it left out.
+
+126
+00:08:09,233 --> 00:08:11,608
+Here's what it printed, from the top.
+
+127
+00:08:12,108 --> 00:08:16,546
+The trials in that run made two shell
+calls between them, so the block has two
+
+128
+00:08:16,546 --> 00:08:17,058
+patterns.
+
+129
+00:08:17,558 --> 00:08:22,304
+Each pattern is a call's exact arguments,
+written out as text, and under it is what
+
+130
+00:08:22,304 --> 00:08:23,333
+that call printed.
+
+131
+00:08:23,833 --> 00:08:27,831
+The second pattern includes the trial's
+temporary folder, shortened here on
+
+132
+00:08:27,831 --> 00:08:31,508
+screen; that's the kind of detail to look
+for before sharing a block.
+
+133
+00:08:32,008 --> 00:08:36,464
+Everything else those trials did, such as
+view and edit, was left out with a
+
+134
+00:08:36,464 --> 00:08:36,933
+warning.
+
+135
+00:08:40,133 --> 00:08:43,008
+So what did the agents do on a bad day?
+
+136
+00:08:43,508 --> 00:08:48,583
+Neither model wrote an entry in any of the
+six trials, and neither invented a change.
+
+137
+00:08:49,083 --> 00:08:53,275
+Terra's replies were a sentence or two:
+each said the command had timed out, and
+
+138
+00:08:53,275 --> 00:08:55,633
+two of the three began with the word
+Blocked.
+
+139
+00:08:56,133 --> 00:09:00,641
+Haiku's replies were longer: each said the
+tracker wasn't answering, and each asked
+
+140
+00:09:00,641 --> 00:09:02,433
+the user for the list of changes.
+
+141
+00:09:02,933 --> 00:09:05,533
+In an app, there's nobody to answer.
+
+142
+00:09:06,733 --> 00:09:09,658
+The judge passed all six of those replies.
+
+143
+00:09:10,158 --> 00:09:14,483
+In an earlier run of this same stimulus,
+it failed one of haiku's three.
+
+144
+00:09:14,983 --> 00:09:18,803
+Its reason: the reply mentioned the
+timeout, but then asserted that the
+
+145
+00:09:18,803 --> 00:09:21,008
+Unreleased entries were already in place.
+
+146
+00:09:21,508 --> 00:09:25,608
+An app that reads already in place ships a
+release with no entries.
+
+147
+00:09:26,833 --> 00:09:30,646
+After the script failed, haiku went
+looking: in all three of its trials, it
+
+148
+00:09:30,646 --> 00:09:32,883
+opened the script's file with the view
+tool.
+
+149
+00:09:33,383 --> 00:09:37,758
+That isn't a shell command, so nothing
+simulated it, and it ran for real.
+
+150
+00:09:38,258 --> 00:09:42,558
+What came back was the copy that asks the
+tracker: an address, and no list.
+
+151
+00:09:43,058 --> 00:09:47,275
+Had the stand-in been staged there, that
+same call would have handed over the
+
+152
+00:09:47,275 --> 00:09:47,658
+answer.
+
+153
+00:09:48,867 --> 00:09:51,942
+Simulation replaces calls, not knowledge.
+
+154
+00:09:52,442 --> 00:09:57,067
+We could make the view tool fail for that
+file too, but an agent has other ways to
+
+155
+00:09:57,067 --> 00:09:59,042
+read a file, such as a search tool.
+
+156
+00:09:59,542 --> 00:10:03,891
+What held in our run was taking the answer
+out of the workspace: with the copy that
+
+157
+00:10:03,891 --> 00:10:06,092
+asks the tracker, no trial wrote an entry.
+
+158
+00:10:09,300 --> 00:10:14,154
+Now the retries: one haiku trial ran the
+failing command four times in all, with
+
+159
+00:10:14,154 --> 00:10:15,550
+other calls in between.
+
+160
+00:10:16,050 --> 00:10:20,950
+No trial made more than two retries in a
+row, so stops retrying passed all six.
+
+161
+00:10:22,167 --> 00:10:26,284
+Before you go on: under a simulation, what
+does a shell command get back when it
+
+162
+00:10:26,284 --> 00:10:28,292
+matches a pattern, and when it doesn't?
+
+163
+00:10:31,292 --> 00:10:35,904
+When it matches, it doesn't run, and the
+agent gets our output, as a success or as
+
+164
+00:10:35,904 --> 00:10:36,467
+a failure.
+
+165
+00:10:36,967 --> 00:10:41,517
+When it matches nothing, it runs for real,
+unless the override has a default.
+
+166
+00:10:42,017 --> 00:10:45,990
+But none of that hides a file, so the
+answer itself has to be out of the
+
+167
+00:10:45,990 --> 00:10:46,542
+workspace.
+
+168
+00:10:47,767 --> 00:10:52,422
+You can now make a tool fail on purpose,
+grade what the agent does next, and record
+
+169
+00:10:52,422 --> 00:10:54,442
+a simulation block from a saved run.
+
+170
+00:10:54,942 --> 00:10:59,667
+All of this ran inside Vally, but the app
+also runs by itself, and keeps its own
+
+171
+00:10:59,667 --> 00:11:00,967
+record of what it did.
+
+172
+00:11:01,467 --> 00:11:04,117
+Can Vally grade a run it didn't start?
+
+173
+00:11:04,617 --> 00:11:06,467
+That's the next lesson.
+
+174
+00:11:06,967 --> 00:11:11,117
+For practice, the exercises on the lesson
+page are worth doing first.

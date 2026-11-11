@@ -1,0 +1,675 @@
+{
+  "schema": 2,
+  "title": "Keep graders out of the agent's reach",
+  "slug": "0006-keep-graders-out-of-reach",
+  "kind": "lesson",
+  "lesson_number": 6,
+  "source": "/Users/ted/src/learn/vally/lessons/0006-keep-graders-out-of-reach.html",
+  "created": "2026-11-11",
+  "poster": "s01",
+  "people": [],
+  "pacing": {
+    "lead_in": 0.4,
+    "gap": 0.5,
+    "tail": 0.8
+  },
+  "narrative": {
+    "question": "Where can I put a grading script so the agent cannot read or change it?",
+    "viewer_starts": "A professional programmer who knows the shell, JSON and exit codes, and has followed the changelog-entry skill through five steps: one request on two models, the eval file and the results folder, five trials per model, reading runs to name failure modes, and turning three failure modes into pattern graders. Knows skill, agent, model, eval file, stimulus, grader, trial, workspace, patch, the agent environment (the skills and files copied into the workspace before the agent starts), vally eval with -e, --model, --runs, --workers and --output-dir, vally lint, the words PASS, FLAKY, FAIL and ERROR, failure mode, diff graders (which read the patch), and that a trial passes only if every grader on its stimulus passes. The changelog eval file has three stimuli (typo-fix, refactor, security) and the skill has three added rules. Has never kept a workspace, and does not know --workspace, the grading environment, or a grader that runs a script.",
+    "arc": [
+      {
+        "stage": "why-hide",
+        "viewer_can": "say why a grader the agent can read or edit tells you nothing"
+      },
+      {
+        "stage": "what-goes-in",
+        "viewer_can": "predict which files an agent will find in its workspace, and keep a workspace to check"
+      },
+      {
+        "stage": "grading-only",
+        "viewer_can": "read a stimulus that stages a script for graders only, and say how the script reports its verdict"
+      },
+      {
+        "stage": "look-then-hide",
+        "viewer_can": "list what an agent was given, and run stimuli graded by a script the agent never had"
+      },
+      {
+        "stage": "what-the-script-caught",
+        "viewer_can": "say what the hidden script caught in our runs, and how a script like it once passed a wrong answer"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "role": "hook",
+      "mode": "think",
+      "stage": "why-hide",
+      "chapter": "Why hide the grader",
+      "renderer": "html",
+      "visual": "scenes/s01.html",
+      "on_screen": "Headline 'Keep graders out of reach' in the display serif. One dark box labelled 'a correct answer': the top of the changelog with a new entry citing (#60) under '### Fixed', inside '## [Unreleased]', above '## [1.2.0]'. '(#60)' lights, then the Fixed heading, then the Unreleased heading, then the released version's heading.",
+      "introduces": [],
+      "narration": [
+        "With a pattern, a grader can say that a patch contains an entry citing a pull request.",
+        "It can't say that the entry sits under Fixed, inside Unreleased, and not inside a version that has already shipped.",
+        "Checking position takes a few lines of code to read the file, and that makes the grader a script.",
+        "But a script is a file, and the agent works in a folder full of files.",
+        "Here, you'll add a grading script that the agent never sees, and find out what it catches."
+      ]
+    },
+    {
+      "id": "s02",
+      "role": "body",
+      "mode": "think",
+      "stage": "why-hide",
+      "renderer": "html",
+      "visual": "scenes/s02.html",
+      "on_screen": "Headline 'A grader in plain sight'. Three blocks in a row, no arrows: 'Read it · and learn what is being looked for', 'Edit it · so that it always passes', 'Fix it · distracted by a file it did not expect'. Each fills as it is said.",
+      "introduces": [],
+      "narration": [
+        "Let's start with why the agent mustn't see the grader.",
+        "An agent can read and edit everything in its workspace.",
+        "If the grading script were there, the agent could read it, and learn exactly what's being looked for.",
+        "Worse, it could edit the script so that it always passes.",
+        "Or, most likely, it could be distracted by a file it didn't expect, and start fixing it."
+      ]
+    },
+    {
+      "id": "s03",
+      "role": "body",
+      "mode": "think",
+      "stage": "why-hide",
+      "renderer": "html",
+      "visual": "scenes/s03.html",
+      "on_screen": "Headline 'Agents do find the answers'. Two blocks side by side: '73% to 100% · scored on eight benchmarks by agents that solved no task' and '63% · of one model's passing runs copied the published fix'. Note: 'Sources: Berkeley RDI, April 2026 · Cursor, June 2026 (the vendor's own report, one model)'. Each block fills as its figure is said.",
+      "introduces": [],
+      "narration": [
+        "This has happened in practice.",
+        "Benchmarks are public sets of tasks with graders, made for comparing agents.",
+        "In April twenty twenty-six, researchers at Berkeley took eight well-known benchmarks, and scored between seventy-three and one hundred percent on them, with agents that solved none of the tasks.",
+        "One way was reading answers that the graders had left where an agent could reach them.",
+        "Two months later, the makers of the Cursor editor reported on one model's passing runs on a coding benchmark.",
+        "In sixty-three percent of them, the agent had found the published fix and copied it."
+      ]
+    },
+    {
+      "id": "s04",
+      "role": "body",
+      "mode": "think",
+      "stage": "why-hide",
+      "renderer": "html",
+      "visual": "scenes/s04.html",
+      "on_screen": "Headline 'Two plain rules'. Two numbered blocks: '1 · Out of sight · grading scripts and expected answers stay where the agent cannot see them' and '2 · Out of reach · no grader depends on a file the agent could have altered'. Each fills as it is said.",
+      "introduces": [],
+      "narration": [
+        "Our changelog skill doesn't need a security review.",
+        "It needs two plain rules.",
+        "First, grading scripts and expected answers stay where the agent can't see them.",
+        "Second, no grader depends on a file the agent could have altered to make it pass."
+      ]
+    },
+    {
+      "id": "s05",
+      "role": "body",
+      "mode": "works",
+      "stage": "what-goes-in",
+      "chapter": "What the agent is given",
+      "renderer": "html",
+      "visual": "scenes/s05.html",
+      "on_screen": "File panel labelled 'one-request.eval.yaml', lines 6 to 11 (the agent_environment block) with 'lines hidden' rows above and below and a minimap. Notes on the right, level with their lines: 'copied as a whole folder' beside the skills entry, 'arrives under this name' beside dest. The block lights, then the skill line, then the dest line.",
+      "introduces": [
+        "one-request.eval.yaml"
+      ],
+      "shows": [
+        "one-request.eval.yaml"
+      ],
+      "narration": [
+        "Those are the rules; here's what an agent is actually given.",
+        "In an eval file, the agent environment lists the skills and files copied into the workspace before the agent starts.",
+        "Two details matter now.",
+        "Each skill is copied as a whole folder: everything inside it goes into the workspace, and not only the SKILL dot M D file.",
+        "Each listed file arrives under the destination name on the line below it."
+      ]
+    },
+    {
+      "id": "s06",
+      "role": "body",
+      "mode": "works",
+      "stage": "what-goes-in",
+      "renderer": "html",
+      "visual": "scenes/s06.html",
+      "on_screen": "Headline 'A workspace we can keep'. Dark code box, left: 'vally eval … --workspace kept' and under it the kept path one part per line: 'kept/', '  main/', '    typo-fix/'. Notes on the right, level with each line: 'keep each trial's workspace here', 'the folder we named', 'a folder Vally adds', 'one per stimulus'. Under the box, a note in code type: 'several models → workspace-collision'. The flag lights, then each path part, then the note.",
+      "introduces": [
+        "vally eval",
+        "--workspace"
+      ],
+      "shows": [
+        "vally eval"
+      ],
+      "narration": [
+        "We can check this for ourselves.",
+        "Adding dash dash workspace and a folder name to vally eval tells Vally to keep each trial's workspace in that folder, instead of deleting it when the trial ends.",
+        "Inside the folder we name, there's a folder that Vally calls main, and inside that, one folder for each stimulus.",
+        "Dash dash workspace works with one model at a time.",
+        "The kept path has no model name in it, so with several models, Vally stops before running anything, and reports a workspace collision."
+      ]
+    },
+    {
+      "id": "s07",
+      "role": "body",
+      "mode": "works",
+      "stage": "what-goes-in",
+      "renderer": "html",
+      "visual": "scenes/s07.html",
+      "on_screen": "Headline 'Evals live beside the skill'. Dark code box, left: our folders as a short tree: 'skills/' with 'changelog-entry/' and 'SKILL.md' under it, and 'evals/' with 'changelog.eval.yaml' and 'fixtures/' under it. Notes on the right: 'copied whole into the workspace' level with changelog-entry/, 'never copied' level with evals/. The skill folder lights, then the evals folder.",
+      "introduces": [],
+      "narration": [
+        "So anything stored inside a skill's folder is handed to the agent: eval files, graders, expected answers.",
+        "So the evals folder sits beside the skills folder, and never inside a skill."
+      ]
+    },
+    {
+      "id": "s08",
+      "role": "body",
+      "mode": "works",
+      "stage": "grading-only",
+      "chapter": "Files only graders get",
+      "renderer": "html",
+      "visual": "scenes/s08.html",
+      "on_screen": "Headline 'Added after the agent stops'. Two cards side by side, each a dark box listing files. Left, 'Workspace · the agent works here': CHANGELOG.md, changelog-entry/. Right, 'Grading copy · made when the agent stops · only graders run here': the same two, plus .vally-grading/ and check-entry.mjs inside it. The left card lights, then the right card, then the two added lines.",
+      "introduces": [
+        "grading environment"
+      ],
+      "narration": [
+        "So where can a grading script go?",
+        "Vally has a second environment for exactly this, named the grading environment.",
+        "It lists files that Vally adds after the agent has stopped, to a copy of the finished workspace.",
+        "Only graders run in that copy, and it's thrown away when grading ends.",
+        "So the script joins the files once the agent has finished, in a folder the agent never works in."
+      ]
+    },
+    {
+      "id": "s09",
+      "role": "body",
+      "mode": "works",
+      "stage": "grading-only",
+      "renderer": "html",
+      "visual": "scenes/s09.html",
+      "on_screen": "File panel labelled 'changelog.eval.yaml' with a minimap: the line naming the stimulus two-changes, a '9 lines hidden' row, then its grading_environment and graders blocks. Notes on the right, level with their lines: 'files for graders only', 'where we keep the script', 'where it goes in the grading copy', 'run a program, take its verdict', 'the script, then what to look for'. Each line lights as it is described; the panel scrolls down to the grader.",
+      "introduces": [
+        "changelog.eval.yaml",
+        "grading_environment",
+        "program",
+        "check-entry.mjs"
+      ],
+      "shows": [
+        "changelog.eval.yaml"
+      ],
+      "narration": [
+        "Here's a stimulus that uses one, in our changelog eval file.",
+        "Its grading environment is written like the files part of the agent environment.",
+        "This source line names our script, in a grading folder under evals, which no agent environment copies.",
+        "Its destination is a folder in the grading copy whose name starts with a dot, which keeps it away from the agent's files.",
+        "Then comes the grader, and its type is program.",
+        "It runs one program inside the grading copy, and takes the verdict from what that program prints.",
+        "Here the program is node, and its arguments are the script to run, and then what to look for."
+      ]
+    },
+    {
+      "id": "s10",
+      "role": "body",
+      "mode": "works",
+      "stage": "grading-only",
+      "renderer": "html",
+      "visual": "scenes/s10.html",
+      "on_screen": "File panel labelled 'check-entry.mjs' with a minimap: the four-line opening comment, a '31 lines hidden' row, then the report function at the end of the file. The comment lights; the panel scrolls to the function; then console.log(JSON.stringify, kind, passed and score, evidence, and process.exit(0) light in turn.",
+      "introduces": [
+        "check-entry.mjs"
+      ],
+      "shows": [
+        "check-entry.mjs"
+      ],
+      "narration": [
+        "From here on, a program grader that runs a script is a script grader, and this is our script.",
+        "It's plain JavaScript, with nothing to install.",
+        "Its opening comment says what it checks: each argument is a category and a pull request number, and the Unreleased section must have an entry under that category, citing that number.",
+        "Its last lines say how it reports.",
+        "It prints the result as one line of JSON with five fields, and Vally needs all of them.",
+        "Its name and kind say which check this is, and that code made it.",
+        "Passed is the verdict, and score is one for a pass, and zero for a fail.",
+        "Evidence is a sentence saying what the script found, and Vally saves it in the results as the grader's evidence.",
+        "Finally, the script exits with code zero whether the entry is there or not, because the verdict is in what it printed.",
+        "Any other exit code would mean that the script itself had broken."
+      ]
+    },
+    {
+      "id": "s11",
+      "role": "body",
+      "mode": "works",
+      "stage": "grading-only",
+      "renderer": "html",
+      "visual": "scenes/s11.html",
+      "on_screen": "Headline 'Two stimuli for the script'. Two cards side by side. Left, 'two-changes': the request as a quote, and under it a dark box with the script's arguments 'Added=60' and 'Fixed=60'. Right, 'after-release · starts with no Unreleased section': its request, and 'Added=58'. The left card lights, then its two arguments, then the right card, then its argument.",
+      "introduces": [
+        "two-changes",
+        "after-release"
+      ],
+      "narration": [
+        "Two new stimuli use the script.",
+        "In the first, named two-changes, one pull request adds a flag and fixes a bug.",
+        "Its arguments, Added equals sixty and Fixed equals sixty, mean that Unreleased must have an entry under Added citing pull request sixty, and another under Fixed.",
+        "An entry in a released version doesn't count, and the heading must be written exactly as Unreleased in square brackets.",
+        "Our second stimulus, named after-release, starts from a changelog with no Unreleased section.",
+        "It asks the script for one entry, under Added, citing pull request fifty-eight."
+      ]
+    },
+    {
+      "id": "s12",
+      "role": "body",
+      "mode": "works",
+      "stage": "grading-only",
+      "renderer": "html",
+      "visual": "scenes/s12.html",
+      "on_screen": "Headline 'Two mistakes Vally catches'. Dark code box, left, two lines: 'grading-file-src-agent-visible' and 'Grader output did not match schema'. Notes on the right, level with each: 'lint: the agent could see the script's source', 'the script printed a result with a field missing'. Each line lights as it is described.",
+      "introduces": [
+        "vally lint"
+      ],
+      "narration": [
+        "Two safeguards are worth knowing in advance.",
+        "Vally lint refuses a grading file whose source the agent could see, such as a script stored inside the skill folder.",
+        "If a script prints a result with a field missing, Vally fails the trial, and says that the grader's output did not match the schema.",
+        "That's a mistake in the script, and not in the agent's work."
+      ]
+    },
+    {
+      "id": "s12b",
+      "role": "body",
+      "mode": "works",
+      "stage": "grading-only",
+      "renderer": "html",
+      "visual": "scenes/s12b.html",
+      "on_screen": "Headline 'Evidence that says why'. Two cards side by side, each a grader's type over the evidence a failure leaves, in a dark box. Left, 'run-command · passes when the script exits with 0': 'Expected exit code 0, got 1'. Right, 'program · the script prints its verdict': 'no entry citing #60 under Fixed'. The left card lights, then the right.",
+      "introduces": [
+        "run-command"
+      ],
+      "narration": [
+        "Vally has a second grader that runs a script, named run command, which passes when the script exits with zero.",
+        "That grader is simpler to write, and it tells you less: when it fails, the evidence is only the exit code.",
+        "We use program, so that the results say why."
+      ]
+    },
+    {
+      "id": "s13",
+      "role": "practice",
+      "mode": "use",
+      "stage": "look-then-hide",
+      "chapter": "A script the agent never sees",
+      "renderer": "html",
+      "visual": "scenes/s13.html",
+      "on_screen": "Headline 'Look inside, then hide a script'. Three numbered blocks in a row, no arrows: '1 · Keep one workspace · and list its files', '2 · Add the two stimuli · and run all five on both models', '3 · Add a rule to the skill · and run again'. Each fills as it is said.",
+      "introduces": [],
+      "narration": [
+        "That's how it works; now let's use it.",
+        "First, we'll keep one workspace and list it, to see what an agent is given.",
+        "Then we'll add the two stimuli that use the script, and run all five stimuli on both models.",
+        "Whatever the script fails, we'll answer with a rule in the skill, and run again.",
+        {
+          "text": "Which files would you expect to find in the kept workspace?",
+          "read": 2
+        },
+        "If you tried it yourself, here's what you'd see."
+      ]
+    },
+    {
+      "id": "s14",
+      "role": "practice",
+      "mode": "use",
+      "stage": "look-then-hide",
+      "renderer": "terminal",
+      "visual": "tapes/s14.tape",
+      "on_screen": "Terminal in the practice folder; the prompt shows only the current folder name. vally eval on the one-request eval file over four lines, with one model, --workspace kept and --output-dir results/lesson-6-look; a jump cut; the one-line summary, held. Below it, find kept -type f lists two files.",
+      "introduces": [
+        "find",
+        "find kept",
+        "-type",
+        "-e",
+        "--model",
+        "--output-dir",
+        "one-request.eval.yaml",
+        "kept",
+        "lesson-6-look"
+      ],
+      "shows": [
+        "vally eval",
+        "find"
+      ],
+      "narration": [
+        {
+          "text": "Here's the run that keeps a workspace: the one-request eval file, on one model, with dash dash workspace.",
+          "before": "typed:1"
+        },
+        {
+          "text": "It spends one agent run.",
+          "before": "enter:1"
+        },
+        {
+          "text": "Moments later, the stimulus is a pass, on a single summary line, because there's one model.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 2
+        },
+        {
+          "text": "Now we list every file under the kept folder.",
+          "before": "typed:2"
+        },
+        {
+          "text": "There's the skill folder with its one file, and the changelog, as the agent left it.",
+          "wait_for": "output:2",
+          "outcome": true,
+          "read": 2
+        },
+        {
+          "text": "That's everything the agent had, and nothing from the evals folder is in it.",
+          "wait_for": "output:2",
+          "outcome": true,
+          "read": 2
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "role": "practice",
+      "mode": "use",
+      "stage": "look-then-hide",
+      "renderer": "html",
+      "visual": "scenes/s15.html",
+      "on_screen": "File panel labelled 'changelog.eval.yaml' with a minimap, showing only the five lines that name a stimulus (typo-fix, refactor, security, two-changes, after-release) with a 'lines hidden' row between each. The first three names light together, then the two new ones.",
+      "introduces": [],
+      "shows": [
+        "changelog.eval.yaml"
+      ],
+      "narration": [
+        "Next, we paste the two stimuli onto the end of the changelog eval file; the starter folder has them ready, in a snippets file.",
+        "That makes five stimuli: three with pattern graders, and two graded by the script."
+      ]
+    },
+    {
+      "id": "s16",
+      "role": "practice",
+      "mode": "use",
+      "stage": "look-then-hide",
+      "renderer": "terminal",
+      "visual": "tapes/s16.tape",
+      "on_screen": "Terminal, in the practice folder. vally lint -e evals/changelog.eval.yaml prints one warning and no errors, held. The screen is cleared out of sight. vally eval on the changelog eval file over four lines, with both models, --workers 2 and --output-dir results/lesson-6; a jump cut; then the end of the run's output: the failures list, the model summary and the table of stimuli passed, held until it has been read.",
+      "introduces": [
+        "--workers",
+        "lesson-6"
+      ],
+      "shows": [
+        "vally lint",
+        "vally eval"
+      ],
+      "narration": [
+        {
+          "text": "Lint comes first, because it's free, and catches mistakes before we spend anything.",
+          "before": "typed:1"
+        },
+        {
+          "text": "It gives the one warning this eval file already had, about scoring, and no errors.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 2
+        },
+        {
+          "text": "Now the run: all five stimuli, once on each model, with two workers.",
+          "before": "typed:2"
+        },
+        {
+          "text": "That spends ten agent runs.",
+          "before": "enter:2"
+        },
+        {
+          "text": "With one trial per stimulus, each failure is listed with the grader that failed, and a script grader's line carries the script's own sentence.",
+          "before": "enter:2"
+        },
+        {
+          "text": "About a minute later, the after-release stimulus has failed on terra, and the evidence is the script's own: no Unreleased heading in square brackets.",
+          "wait_for": "output:2",
+          "outcome": true,
+          "read": 4
+        },
+        {
+          "text": "Meanwhile, haiku passed all five, so its new heading had the brackets.",
+          "wait_for": "output:2",
+          "outcome": true,
+          "read": 2
+        },
+        {
+          "text": "At the bottom, the table counts the stimuli each model passed, out of five.",
+          "wait_for": "output:2",
+          "outcome": true,
+          "read": 3
+        }
+      ],
+      "spend": "10 agent runs"
+    },
+    {
+      "id": "s17",
+      "role": "practice",
+      "mode": "use",
+      "stage": "look-then-hide",
+      "renderer": "terminal",
+      "visual": "tapes/s17.tape",
+      "on_screen": "Terminal, continuing in the practice folder. cd into the run's folder under results/lesson-6; cd changelog; the screen is cleared out of sight; cat after-release/gpt-5.6-terra/0/workspace.patch shows the patch, held until it has been read.",
+      "introduces": [
+        "cd",
+        "cat",
+        "workspace.patch",
+        "2026"
+      ],
+      "shows": [
+        "cd",
+        "cat"
+      ],
+      "narration": [
+        {
+          "text": "That evidence says what the script didn't find; the trial's patch shows what the agent wrote in its place.",
+          "before": "typed:1"
+        },
+        {
+          "text": "We change into the run's folder, and then into the eval's.",
+          "wait_for": "output:1",
+          "before": "typed:2"
+        },
+        {
+          "text": "Here's terra's patch for the after-release stimulus.",
+          "wait_for": "done:2",
+          "before": "typed:3"
+        },
+        {
+          "text": "Its new heading says Unreleased without the brackets, so the script found no Unreleased section.",
+          "wait_for": "output:3",
+          "outcome": true,
+          "read": 6
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "role": "practice",
+      "mode": "use",
+      "stage": "look-then-hide",
+      "renderer": "html",
+      "visual": "scenes/s18.html",
+      "on_screen": "File panel labelled 'changelog-entry/SKILL.md' with a minimap: a 'lines hidden' row, then the last rules of the skill, ending with the three new lines. The three new lines light together as the rule is said.",
+      "introduces": [
+        "SKILL.md",
+        "changelog-entry/SKILL.md"
+      ],
+      "shows": [
+        "SKILL.md"
+      ],
+      "narration": [
+        "That's a question the skill left open, so we answer it in the skill.",
+        "One more rule goes at the end: if the changelog has no Unreleased section, add one above the newest version, with its heading written exactly, square brackets included."
+      ]
+    },
+    {
+      "id": "s19",
+      "role": "practice",
+      "mode": "use",
+      "stage": "look-then-hide",
+      "renderer": "terminal",
+      "visual": "tapes/s19.tape",
+      "on_screen": "Terminal, in the practice folder. The same vally eval command with --output-dir results/lesson-6-after; a jump cut; then the end of the run's output: any failures, the model summary and the table of stimuli passed, held until it has been read.",
+      "introduces": [
+        "lesson-6-after"
+      ],
+      "shows": [
+        "vally eval"
+      ],
+      "narration": [
+        {
+          "text": "Then the same five stimuli run again, saved to a new folder.",
+          "before": "typed:1"
+        },
+        {
+          "text": "That's another ten agent runs.",
+          "before": "enter:1"
+        },
+        {
+          "text": "This time, both models passed all five, so terra's new heading has its brackets.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 3
+        },
+        {
+          "text": "With nothing failing, there are no failures to list above the summary.",
+          "outcome": true,
+          "read": 3
+        }
+      ],
+      "spend": "10 agent runs"
+    },
+    {
+      "id": "s20",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-script-caught",
+      "chapter": "What the script caught",
+      "renderer": "html",
+      "visual": "scenes/s20.html",
+      "on_screen": "Headline 'Terra dropped the brackets'. Two cards, one above the other, labelled claude-haiku-4.5 and gpt-5.6-terra: the lines each model's after-release trial added in the first run, from its patch. '## Unreleased' lights red in terra's, then '## [Unreleased]' green in haiku's. Under them a note: 'first run · one trial for each model' and the run's name.",
+      "introduces": [],
+      "narration": [
+        "So what did the script catch?",
+        {
+          "text": "In the first run, terra wrote the new heading without brackets, and haiku wrote it with them.",
+          "outcome": true
+        },
+        "With one trial for each model, that shows the failure can happen, and not which model is prone to it.",
+        {
+          "text": "Once the rule was in the skill, both models wrote the heading correctly.",
+          "outcome": true
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-script-caught",
+      "renderer": "html",
+      "visual": "scenes/s21.html",
+      "on_screen": "Headline 'A wrong answer, passed'. Dark code box labelled 'an earlier run · two-changes · part of the patch the script passed', showing the excerpt with its omitted text marked by an ellipsis, and a note that its first five lines are left out. Notes on the right, level with their lines: 'a released version's heading, deleted' beside the removed '## [1.2.0]' line, 'the Fixed entry, in its place' beside the added '### Fixed'. The added lines light, then the removed line, then the released entries below.",
+      "introduces": [],
+      "narration": [
+        {
+          "text": "In our two runs, the script passed all four two-changes trials, and all four were right.",
+          "outcome": true
+        },
+        "An earlier run of these same stimuli went differently: the script passed both of its two-changes trials, and haiku's was wrong.",
+        "Here's part of that patch.",
+        "That agent wrote its Fixed entry where the heading of version one point two had been, and deleted that heading.",
+        {
+          "text": "That version has been released, and its entries now sit under Unreleased, as if they had never shipped.",
+          "read": 3
+        }
+      ]
+    },
+    {
+      "id": "s22",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-script-caught",
+      "renderer": "html",
+      "visual": "scenes/s22.html",
+      "on_screen": "File panel labelled 'check-entry.mjs' with a minimap, now on the lines hidden earlier: where the script finds the '## [Unreleased]' heading and searches for the next line starting with '## '. Notes on the right: 'find the Unreleased heading', 'read down to the next version heading'. Each lights as it is said; then nothing is lit.",
+      "introduces": [],
+      "shows": [
+        "check-entry.mjs"
+      ],
+      "narration": [
+        "Why did the script pass it?",
+        "It finds the Unreleased heading, and takes everything down to the next version heading.",
+        "With that heading gone, the next version heading was further down, so the script found every entry it wanted, and passed.",
+        "When a grader passes a wrong answer, it's worse than having none, because its tick tells you to stop looking.",
+        "Our skill already says to leave released versions alone, so the gap is in the grader, and not in the skill."
+      ]
+    },
+    {
+      "id": "s23",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-script-caught",
+      "renderer": "html",
+      "visual": "scenes/s23.html",
+      "on_screen": "Headline 'A glimpse, not a measurement'. Two blocks side by side, both about claude-haiku-4.5 and the security stimulus with the security rule in the skill: '1 of 3 · filed under Fixed · an earlier run' and '0 of 5 · filed under Fixed · our runs'. Each fills as it is said.",
+      "introduces": [],
+      "narration": [
+        "One more thing happened, and it's quieter.",
+        "In an earlier run, with the security rule already in the skill, haiku filed the security fix under Fixed in one of three trials.",
+        {
+          "text": "Across our runs with that rule, it has filed it under Security every time: five trials out of five.",
+          "outcome": true
+        },
+        "Nothing was changed to cause that.",
+        "It's the variation from run to run, and a reminder that a few trials are a glimpse, and not a measurement."
+      ]
+    },
+    {
+      "id": "s24",
+      "role": "recap",
+      "stage": "what-the-script-caught",
+      "renderer": "html",
+      "visual": "scenes/s24.html",
+      "on_screen": "The two cards from earlier, Workspace and Grading copy, with their file lists. After the question and a pause, the left card lights as the agent environment is described, then the right card.",
+      "introduces": [],
+      "narration": [
+        "Before you go on: what do the agent environment and the grading environment each add, and when?",
+        {
+          "text": "The agent environment copies skills and files into the workspace before the agent starts, and the agent can read and edit all of it.",
+          "pause": 2.5
+        },
+        "The grading environment adds files to a copy of the finished workspace, after the agent has stopped, and only graders run there."
+      ]
+    },
+    {
+      "id": "s25",
+      "role": "next",
+      "stage": "what-the-script-caught",
+      "renderer": "slide",
+      "visual": "scenes/s25.html",
+      "on_screen": "'Test a grader' in the display serif under the eyebrow 'Next', with the rest of the next lesson's title, 'without running an agent', beneath it. Below, the hand-off question: 'How do you test a grader?' A note: 'Exercises are on the lesson page · Source: Vally docs, Writing Eval Specs, Grader-only files'.",
+      "introduces": [],
+      "narration": [
+        "You can now see exactly what an agent is given, and add a grading script that reaches the graders without ever reaching the agent.",
+        "But a hidden script now decides pass and fail, and only you can see whether it's right.",
+        "How do you test a grader?",
+        "That's the next lesson.",
+        "The exercises on the lesson page are worth doing first; the third one closes the gap we just found."
+      ]
+    }
+  ]
+}

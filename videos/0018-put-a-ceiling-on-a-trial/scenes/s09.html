@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Free to test</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:260px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Budget graders</div>
+  <h2 class="scene-title">Free to test</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="scriptg" data-rep="block" data-role="failure">
+      <div class="title words">script grader</div><div class="label">needs the workspace, which is gone · fails every trial in a re-grade</div>
+    </div>
+    <div class="semantic-block" data-concept="budg" data-rep="block" data-role="success">
+      <div class="title words">budget grader</div><div class="label">reads the saved trial record · judged exactly as in a real run</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "budg",
+  "at": "0",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "scriptg",
+  "at": "1~script grader",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "budg",
+  "at": "2",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

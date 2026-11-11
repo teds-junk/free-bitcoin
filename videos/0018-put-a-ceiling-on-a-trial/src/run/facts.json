@@ -1,0 +1,53 @@
+{
+ "_about": "Facts the scenes quote that the logs do not hold, from the series' own lesson 16 run 2026-11-11T08-39-02-179Z and lesson 18 run 2026-11-11T14-39-05-705Z (capture-run.py).",
+ "l16_run": "2026-11-11T08-39-02-179Z",
+ "typical": {
+  "tokens": {
+   "value": 106316,
+   "variant": "haiku-high",
+   "stimulus": "two-changes"
+  },
+  "turns": {
+   "value": 5,
+   "variant": "haiku-high",
+   "stimulus": "after-release"
+  },
+  "seconds": {
+   "value": 12.9,
+   "variant": "terra-low",
+   "stimulus": "security"
+  }
+ },
+ "l16_failed_or_error_trials": {
+  "haiku-high": 0,
+  "haiku-low": 0,
+  "terra-high": 0,
+  "terra-low": 0
+ },
+ "median_tokens_by_model": {
+  "claude-haiku-4.5": 75379,
+  "claude-haiku-5.5": 105202,
+  "gpt-5.6-terra": 61040
+ },
+ "terra_fewest_tokens_highest_cost": true,
+ "live": {
+  "run": "2026-11-11T14-39-05-705Z",
+  "passed": {
+   "claude-haiku-4.5": "5/5",
+   "gpt-5.6-terra": "5/5"
+  },
+  "errors": 0,
+  "largest_tokens": 75717,
+  "largest_turns": 5,
+  "slowest_seconds": 12.5
+ },
+ "budget_failed_trials_passed_in_the_experiment": true,
+ "terra_high_turns_one_stimulus": {
+  "stimulus": "two-changes",
+  "turns": [
+   4,
+   5,
+   6
+  ]
+ }
+}

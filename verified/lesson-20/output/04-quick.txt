@@ -1,0 +1,28 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from quick · 2 models · 2 workers
+
+quick
+
+claude-haiku-4.5
+  ERROR  typo-fix
+   Stimulus 'typo-fix' timed out after 5000 ms during turn 1 of 1
+
+gpt-5.6-terra
+  ERROR  typo-fix
+   Stimulus 'typo-fix' timed out after 5000 ms during turn 1 of 1
+
+────────────────────────────────────────────────────────
+
+Failures  2 failed
+  ERROR quick · typo-fix [claude-haiku-4.5]  Stimulus 'typo-fix' timed out after 5000 ms during turn 1 of 1
+  ERROR quick · typo-fix [gpt-5.6-terra]  Stimulus 'typo-fix' timed out after 5000 ms during turn 1 of 1
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra     0/1 evals passed
+
+  eval   claude-haiku-4.5  gpt-5.6-terra
+  quick  ✘ 0/1             ✘ 0/1        
+
+Saved  …/practice/results/lesson-20/2026-11-10T17-47-33-542Z/
+Run ID  adf36ec8-3c3c-43a5-a05b-44fe70a9a42e

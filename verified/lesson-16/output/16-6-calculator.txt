@@ -1,0 +1,45 @@
+Calculator (assets/cost-calculator.js, run in Node with a DOM stub) on the four results.jsonl files:
+ haiku-low · claude-haiku-5.5 
+ Trials 15 
+ Passing 15 of 15 
+ ERROR 0 
+ Total cost 3.14 AIU 
+ In dollars $0.031 
+ Per passing trial 0.21 AIU $0.002 
+ Median tokens 105.1k 
+ 
+ haiku-high · claude-haiku-5.5 
+ Trials 15 
+ Passing 15 of 15 
+ ERROR 0 
+ Total cost 3.56 AIU 
+ In dollars $0.036 
+ Per passing trial 0.24 AIU $0.002 
+ Median tokens 105.8k 
+ 
+ terra-low · gpt-5.6-terra 
+ Trials 15 
+ Passing 15 of 15 
+ ERROR 0 
+ Total cost 41.17 AIU 
+ In dollars $0.412 
+ Per passing trial 2.74 AIU $0.027 
+ Median tokens 61.0k 
+ 
+ terra-high · gpt-5.6-terra 
+ Trials 15 
+ Passing 15 of 15 
+ ERROR 0 
+ Total cost 41.34 AIU 
+ In dollars $0.413 
+ Per passing trial 2.76 AIU $0.028 
+ Median tokens 48.9k 
+ 
+ Across 60 trials in 4 files: 89.21 AIU, or $0.892 at $0.01 per AIU. Judge calls are not included. 
+
+
+Independent check:
+haiku-low n 15 pass 15 sum 3.1352 min 0.14 max 0.24 medOut 661 medTot 105084
+haiku-high n 15 pass 15 sum 3.5601 min 0.14 max 0.39 medOut 876 medTot 105842
+terra-low n 15 pass 15 sum 41.1717 min 1.59 max 4.48 medOut 343 medTot 60954
+terra-high n 15 pass 15 sum 41.3419 min 1.67 max 5.20 medOut 351 medTot 48912

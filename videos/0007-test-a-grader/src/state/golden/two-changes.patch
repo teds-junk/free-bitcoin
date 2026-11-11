@@ -1,0 +1,15 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 616c9f6..e65e361 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -6,6 +6,10 @@ All notable changes to notes-cli.
+ 
+ ### Added
+ - Add `notes list --tag` to filter by tag (#41)
++- Add `notes list --json` for JSON output (#60)
++
++### Fixed
++- Fix pagination where page 2 repeated the last note from page 1 (#60)
+ 
+ ## [1.2.0] - 2026-09-14
+ 

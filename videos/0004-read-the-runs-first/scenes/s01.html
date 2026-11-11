@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Read the runs first</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.pair{align-items:center}.messy{display:flex;flex-direction:column;gap:18px}.messy .quote{padding-top:14px;padding-bottom:14px}.messy .quote p{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">Read the runs first</h1>
+  <div class="stage">
+<div class="cols pair">
+    <div class="quote" data-concept="tidy" data-rep="quote"><span class="who">The request so far</span><p>“I fixed the typo in the help text for `notes add` (it said "tittle"). Put that in the changelog.”</p></div>
+    <div class="messy">
+      <div class="quote" data-concept="m1" data-rep="quote"><span class="who">Messier</span><p>“… Nothing changes for users, it's purely a cleanup.”</p></div>
+      <div class="quote" data-concept="m2" data-rep="quote"><span class="who">Messier</span><p>“… while I was in there I fixed the bug …”</p></div>
+      <div class="quote" data-concept="m3" data-rep="quote"><span class="who">Messier</span><p>“… I swapped JSON.parse for a streaming parser …”</p></div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "tidy",
+  "at": "1~tidier",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "m1",
+  "at": "2~can't see",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "m2",
+  "at": "2~bundle",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "m3",
+  "at": "2~coded",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

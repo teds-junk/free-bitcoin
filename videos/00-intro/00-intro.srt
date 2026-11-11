@@ -1,0 +1,73 @@
+1
+00:00:00,400 --> 00:00:04,125
+You wrote a skill for a coding agent, and
+it works when you try it.
+
+2
+00:00:04,625 --> 00:00:08,894
+But you can't tell whether it works on
+another model, on the fifth run, or after
+
+3
+00:00:08,894 --> 00:00:10,975
+your next edit, or what each run costs.
+
+4
+00:00:11,475 --> 00:00:15,622
+This course is for anyone who writes
+skills, or builds an agent into an app,
+
+5
+00:00:15,622 --> 00:00:17,750
+and wants evidence in place of a hunch.
+
+6
+00:00:18,967 --> 00:00:23,207
+We take one short skill, which writes
+changelog entries, and measure it with
+
+7
+00:00:23,207 --> 00:00:23,542
+Vally.
+
+8
+00:00:24,042 --> 00:00:27,792
+First we measure the skill, and read what
+the agent really did.
+
+9
+00:00:28,292 --> 00:00:32,642
+Then we build graders we can trust, and
+ask whether the skill earns its place.
+
+10
+00:00:33,142 --> 00:00:37,743
+We add a judge for what code can't check,
+and learn what a result does and doesn't
+
+11
+00:00:37,743 --> 00:00:38,192
+support.
+
+12
+00:00:38,692 --> 00:00:42,992
+We work out what a passing trial costs,
+and turn the checks into a routine.
+
+13
+00:00:43,492 --> 00:00:46,892
+Finally, we evaluate the same skill inside
+an app.
+
+14
+00:00:48,100 --> 00:00:52,283
+By the end, you can change the skill, or
+the model under it, and say with evidence
+
+15
+00:00:52,283 --> 00:00:54,375
+whether it got better, and what it costs.
+
+16
+00:00:54,875 --> 00:00:56,250
+Let's begin.

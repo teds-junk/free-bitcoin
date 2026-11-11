@@ -1,0 +1,16 @@
+plugins:
+  executor:
+    - ./app/vally-executor.mjs
+suites:
+  quick:
+    description: Code graders and budgets, one trial.
+    evals:
+      - evals/changelog.eval.yaml
+    filter: { tier: quick }
+  full:
+    description: Everything, with loading and the judge.
+    evals:
+      - evals/changelog.eval.yaml
+      - evals/conversation.eval.yaml
+      - evals/loading.eval.yaml
+      - evals/wording.eval.yaml

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What the app changed</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Run the app, convert, grade</div>
+  <h2 class="scene-title">What the app changed</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:diff · regenerate with: node file-panel.js --file src/run/change.diff --label app-run/change.diff --id diff --width 48 --rows 9 --mark 1=file --mark 8=e74 --mark 11=e75 --mark 14=e76 --expect 1=CHANGELOG.md --expect '8=(#74)' --expect '11=(#75)' --expect '14=(#76)' --into scenes/s18.html -->
+<div class="file-panel" id="diff" data-file="app-run/change.diff" data-lines="17" data-rows="9" style="--rows:9;--cols:48;--ln:2">
+<div class="code-file">app-run/change.diff<span class="file-meta">17 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="diff"><code>
+<span class="file-row" data-line="1"><span class="ln">1</span><span data-concept="file" data-rep="code"><span style="color:#4EA5E6;font-style:italic">diff -ruN before/CHANGELOG.md repo/CHANGELOG.md</span></span></span>
+<span class="file-row" data-line="2"><span class="ln">2</span><span style="color:#4EA5E6;font-style:italic">--- before/CHANGELOG.md<span class="tab">	</span>2026-11-11 10:21:49</span></span>
+<span class="file-row" data-line="3"><span class="ln">3</span><span style="color:#4EA5E6;font-style:italic">+++ repo/CHANGELOG.md<span class="tab">	</span>2026-11-11 10:22:00</span></span>
+<span class="file-row" data-line="4"><span class="ln">4</span><span style="color:#4EA5E6;font-style:italic">@@ -6,6 +6,13 @@</span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span><span style="color:#B3C0BF"> </span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span style="color:#B3C0BF"> ### Added</span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span><span style="color:#B3C0BF"> - Add `notes list --tag` to filter by tag (#41)</span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span><span data-concept="e74" data-rep="code"><span style="color:#A4BA1E">+- Add `notes list --since &lt;date&gt;` to filter by</span></span><span style="color:#A4BA1E"> </span></span>
+<span class="file-row" data-line="8" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span data-concept="e74" data-rep="code"><span style="color:#A4BA1E">date (#74)</span></span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span><span style="color:#A4BA1E">+</span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span><span style="color:#A4BA1E">+### Fixed</span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span><span data-concept="e75" data-rep="code"><span style="color:#A4BA1E">+- Fix notes search missing titles with accents</span></span><span style="color:#A4BA1E"> </span></span>
+<span class="file-row" data-line="11" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span data-concept="e75" data-rep="code"><span style="color:#A4BA1E">(#75)</span></span></span>
+<span class="file-row" data-line="12"><span class="ln">12</span><span style="color:#A4BA1E">+</span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span style="color:#A4BA1E">+### Changed</span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span><span data-concept="e76" data-rep="code"><span style="color:#A4BA1E">+- Move config loading out of cli.js (#76)</span></span></span>
+<span class="file-row" data-line="15"><span class="ln">15</span><span style="color:#B3C0BF"> </span></span>
+<span class="file-row" data-line="16"><span class="ln">16</span><span style="color:#B3C0BF"> ## [1.2.0] - 2026-09-14</span></span>
+<span class="file-row" data-line="17"><span class="ln">17</span><span style="color:#B3C0BF"> </span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="17" style="height:119px" aria-hidden="true"><b class="file-map-view" style="top:0px;height:56px"></b><svg width="120" height="119" viewBox="0 0 120 119" shape-rendering="crispEdges"><rect x="0" y="0" width="7.68" height="4" fill="#4EA5E6"/><rect x="10.34" y="0" width="7.68" height="4" fill="#4EA5E6"/><rect x="20.69" y="0" width="38.71" height="4" fill="#4EA5E6"/><rect x="62.07" y="0" width="34.57" height="4" fill="#4EA5E6"/><rect x="0" y="7" width="5.61" height="4" fill="#4EA5E6"/><rect x="8.28" y="7" width="38.71" height="4" fill="#4EA5E6"/><rect x="51.72" y="7" width="20.09" height="4" fill="#4EA5E6"/><rect x="74.48" y="7" width="15.95" height="4" fill="#4EA5E6"/><rect x="0" y="14" width="5.61" height="4" fill="#4EA5E6"/><rect x="8.28" y="14" width="34.57" height="4" fill="#4EA5E6"/><rect x="47.59" y="14" width="20.09" height="4" fill="#4EA5E6"/><rect x="70.34" y="14" width="15.95" height="4" fill="#4EA5E6"/><rect x="0" y="21" width="3.54" height="4" fill="#4EA5E6"/><rect x="6.21" y="21" width="7.68" height="4" fill="#4EA5E6"/><rect x="16.55" y="21" width="9.74" height="4" fill="#4EA5E6"/><rect x="28.97" y="21" width="3.54" height="4" fill="#4EA5E6"/><rect x="2.07" y="35" width="5.61" height="4" fill="#B3C0BF"/><rect x="10.34" y="35" width="9.74" height="4" fill="#B3C0BF"/><rect x="2.07" y="42" width="1.5" height="4" fill="#B3C0BF"/><rect x="6.21" y="42" width="5.61" height="4" fill="#B3C0BF"/><rect x="14.48" y="42" width="11.81" height="4" fill="#B3C0BF"/><rect x="28.97" y="42" width="7.68" height="4" fill="#B3C0BF"/><rect x="39.31" y="42" width="11.81" height="4" fill="#B3C0BF"/><rect x="53.79" y="42" width="3.54" height="4" fill="#B3C0BF"/><rect x="60" y="42" width="11.81" height="4" fill="#B3C0BF"/><rect x="74.48" y="42" width="3.54" height="4" fill="#B3C0BF"/><rect x="80.69" y="42" width="5.61" height="4" fill="#B3C0BF"/><rect x="88.97" y="42" width="9.74" height="4" fill="#B3C0BF"/><rect x="0" y="49" width="3.54" height="4" fill="#A4BA1E"/><rect x="6.21" y="49" width="5.61" height="4" fill="#A4BA1E"/><rect x="14.48" y="49" width="11.81" height="4" fill="#A4BA1E"/><rect x="28.97" y="49" width="7.68" height="4" fill="#A4BA1E"/><rect x="39.31" y="49" width="13.88" height="4" fill="#A4BA1E"/><rect x="55.86" y="49" width="13.88" height="4" fill="#A4BA1E"/><rect x="72.41" y="49" width="3.54" height="4" fill="#A4BA1E"/><rect x="78.62" y="49" width="11.81" height="4" fill="#A4BA1E"/><rect x="93.1" y="49" width="3.54" height="4" fill="#A4BA1E"/><rect x="99.31" y="49" width="7.68" height="4" fill="#A4BA1E"/><rect x="109.66" y="49" width="9.74" height="4" fill="#A4BA1E"/><rect x="0" y="56" width="1.5" height="4" fill="#A4BA1E"/><rect x="0" y="63" width="7.68" height="4" fill="#A4BA1E"/><rect x="10.34" y="63" width="9.74" height="4" fill="#A4BA1E"/><rect x="0" y="70" width="3.54" height="4" fill="#A4BA1E"/><rect x="6.21" y="70" width="5.61" height="4" fill="#A4BA1E"/><rect x="14.48" y="70" width="9.74" height="4" fill="#A4BA1E"/><rect x="26.9" y="70" width="11.81" height="4" fill="#A4BA1E"/><rect x="41.38" y="70" width="13.88" height="4" fill="#A4BA1E"/><rect x="57.93" y="70" width="11.81" height="4" fill="#A4BA1E"/><rect x="72.41" y="70" width="7.68" height="4" fill="#A4BA1E"/><rect x="82.76" y="70" width="13.88" height="4" fill="#A4BA1E"/><rect x="99.31" y="70" width="9.74" height="4" fill="#A4BA1E"/><rect x="0" y="77" width="1.5" height="4" fill="#A4BA1E"/><rect x="0" y="84" width="7.68" height="4" fill="#A4BA1E"/><rect x="10.34" y="84" width="13.88" height="4" fill="#A4BA1E"/><rect x="0" y="91" width="3.54" height="4" fill="#A4BA1E"/><rect x="6.21" y="91" width="7.68" height="4" fill="#A4BA1E"/><rect x="16.55" y="91" width="11.81" height="4" fill="#A4BA1E"/><rect x="31.03" y="91" width="13.88" height="4" fill="#A4BA1E"/><rect x="47.59" y="91" width="5.61" height="4" fill="#A4BA1E"/><rect x="55.86" y="91" width="3.54" height="4" fill="#A4BA1E"/><rect x="62.07" y="91" width="11.81" height="4" fill="#A4BA1E"/><rect x="76.55" y="91" width="9.74" height="4" fill="#A4BA1E"/><rect x="2.07" y="105" width="3.54" height="4" fill="#B3C0BF"/><rect x="8.28" y="105" width="13.88" height="4" fill="#B3C0BF"/><rect x="24.83" y="105" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.97" y="105" width="20.09" height="4" fill="#B3C0BF"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:diff -->
+    <aside class="callouts"><p class="callout" data-anchor="file">only the changelog changed</p><p class="callout" data-anchor="e74">the new option</p><p class="callout" data-anchor="e75">the search fix</p><p class="callout" data-anchor="e76">the refactor: the skill says leave it out</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "file",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "scroll",
+  "target": "#diff",
+  "to": "6-11",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "e74",
+  "at": "2~new option",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "e75",
+  "at": "2~search fix",
+  "color": "yellow"
+ },
+ {
+  "type": "scroll",
+  "target": "#diff",
+  "to": "11-14",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "e76",
+  "at": "3~refactor",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

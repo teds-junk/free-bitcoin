@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Every tool use is recorded</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">The tool-calls grader</div>
+  <h2 class="scene-title">Every tool use is recorded</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:event · regenerate with: node file-panel.js --id event --file src/run/tool-call-event.json --label 'results.jsonl · one event of one trial' --width 50 --rows 9 --expect '2="type": "tool_call"' --expect 9=release/merged.txt --mark '2=kind:"tool_call"' --mark 5=tool --mark 9=path --into scenes/s05.html -->
+<div class="file-panel" id="event" data-file="results.jsonl · one event of one trial" data-lines="14" data-rows="9" style="--rows:9;--cols:50;--ln:2">
+<div class="code-file">results.jsonl · one event of one trial<span class="file-meta">14 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="json"><code>
+<span class="file-row" data-line="1"><span class="ln">1</span><span style="color:#B3C0BF">{</span></span>
+<span class="file-row" data-line="2"><span class="ln">2</span><span style="color:#B3C0BF">  </span><span style="color:#A4BA1E">"type"</span><span style="color:#B3C0BF">: </span><span data-concept="kind" data-rep="code"><span style="color:#3CC0B3">"tool_call"</span></span><span style="color:#B3C0BF">,</span></span>
+<span class="file-row" data-line="3"><span class="ln">3</span><span style="color:#B3C0BF">  </span><span style="color:#A4BA1E">"timestamp"</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">"2026-11-11T16:51:51.284Z"</span><span style="color:#B3C0BF">,</span></span>
+<span class="file-row" data-line="4"><span class="ln">4</span><span style="color:#B3C0BF">  </span><span style="color:#A4BA1E">"data"</span><span style="color:#B3C0BF">: {</span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span><span style="color:#B3C0BF">    </span><span data-concept="tool" data-rep="code"><span style="color:#A4BA1E">"toolName"</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">"view"</span><span style="color:#B3C0BF">,</span></span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span style="color:#B3C0BF">    </span><span style="color:#A4BA1E">"toolCallId"</span><span style="color:#B3C0BF">: </span></span>
+<span class="file-row" data-line="6" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:8ch"></i><span style="color:#3CC0B3">"toolu_01MDPkWZ2DvjtkqWBLy1fAUq"</span><span style="color:#B3C0BF">,</span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span><span style="color:#B3C0BF">    </span><span style="color:#A4BA1E">"turnId"</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">"1"</span><span style="color:#B3C0BF">,</span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span><span style="color:#B3C0BF">    </span><span style="color:#A4BA1E">"arguments"</span><span style="color:#B3C0BF">: {</span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span><span style="color:#B3C0BF">      </span><span data-concept="path" data-rep="code"><span style="color:#A4BA1E">"path"</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">"&lt;workspace&gt;/release/merged.txt"</span></span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span><span style="color:#B3C0BF">    }</span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span><span style="color:#B3C0BF">  },</span></span>
+<span class="file-row" data-line="12"><span class="ln">12</span><span style="color:#B3C0BF">  </span><span style="color:#A4BA1E">"turn"</span><span style="color:#B3C0BF">: </span><span style="color:#EA6AA6">0</span><span style="color:#B3C0BF">,</span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span style="color:#B3C0BF">  </span><span style="color:#A4BA1E">"endTimestamp"</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">"2026-11-11T16:51:51.289Z"</span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span><span style="color:#B3C0BF">}</span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="14" style="height:98px" aria-hidden="true"><b class="file-map-view" style="top:0px;height:56px"></b><svg width="120" height="98" viewBox="0 0 120 98" shape-rendering="crispEdges"><rect x="0" y="0" width="1.75" height="4" fill="#B3C0BF"/><rect x="4.71" y="7" width="13.52" height="4" fill="#A4BA1E"/><rect x="18.82" y="7" width="1.75" height="4" fill="#B3C0BF"/><rect x="23.53" y="7" width="25.28" height="4" fill="#3CC0B3"/><rect x="49.41" y="7" width="1.75" height="4" fill="#B3C0BF"/><rect x="4.71" y="14" width="25.28" height="4" fill="#A4BA1E"/><rect x="30.59" y="14" width="1.75" height="4" fill="#B3C0BF"/><rect x="35.29" y="14" width="60.58" height="4" fill="#3CC0B3"/><rect x="96.47" y="14" width="1.75" height="4" fill="#B3C0BF"/><rect x="4.71" y="21" width="13.52" height="4" fill="#A4BA1E"/><rect x="18.82" y="21" width="1.75" height="4" fill="#B3C0BF"/><rect x="23.53" y="21" width="1.75" height="4" fill="#B3C0BF"/><rect x="9.41" y="28" width="22.93" height="4" fill="#A4BA1E"/><rect x="32.94" y="28" width="1.75" height="4" fill="#B3C0BF"/><rect x="37.65" y="28" width="13.52" height="4" fill="#3CC0B3"/><rect x="51.76" y="28" width="1.75" height="4" fill="#B3C0BF"/><rect x="9.41" y="35" width="27.64" height="4" fill="#A4BA1E"/><rect x="37.65" y="35" width="1.75" height="4" fill="#B3C0BF"/><rect x="42.35" y="35" width="74.69" height="4" fill="#3CC0B3"/><rect x="117.65" y="35" width="1.75" height="4" fill="#B3C0BF"/><rect x="9.41" y="42" width="18.22" height="4" fill="#A4BA1E"/><rect x="28.24" y="42" width="1.75" height="4" fill="#B3C0BF"/><rect x="32.94" y="42" width="6.46" height="4" fill="#3CC0B3"/><rect x="40" y="42" width="1.75" height="4" fill="#B3C0BF"/><rect x="9.41" y="49" width="25.28" height="4" fill="#A4BA1E"/><rect x="35.29" y="49" width="1.75" height="4" fill="#B3C0BF"/><rect x="40" y="49" width="1.75" height="4" fill="#B3C0BF"/><rect x="14.12" y="56" width="13.52" height="4" fill="#A4BA1E"/><rect x="28.24" y="56" width="1.75" height="4" fill="#B3C0BF"/><rect x="32.94" y="56" width="74.69" height="4" fill="#3CC0B3"/><rect x="9.41" y="63" width="1.75" height="4" fill="#B3C0BF"/><rect x="4.71" y="70" width="4.11" height="4" fill="#B3C0BF"/><rect x="4.71" y="77" width="13.52" height="4" fill="#A4BA1E"/><rect x="18.82" y="77" width="1.75" height="4" fill="#B3C0BF"/><rect x="23.53" y="77" width="1.75" height="4" fill="#EA6AA6"/><rect x="25.88" y="77" width="1.75" height="4" fill="#B3C0BF"/><rect x="4.71" y="84" width="32.34" height="4" fill="#A4BA1E"/><rect x="37.65" y="84" width="1.75" height="4" fill="#B3C0BF"/><rect x="42.35" y="84" width="60.58" height="4" fill="#3CC0B3"/><rect x="0" y="91" width="1.75" height="4" fill="#B3C0BF"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:event -->
+    <aside class="callouts"><p class="callout" data-anchor="tool">the tool’s name</p><p class="callout" data-anchor="path">what the tool was given</p></aside>
+  </div>
+  <p class="note">the workspace’s real location, a long temporary folder, is shown as &lt;workspace&gt;</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "scroll",
+  "target": "#event",
+  "to": "2-9",
+  "at": "t=0",
+  "duration": 0
+ },
+ {
+  "type": "focus",
+  "target": "kind",
+  "at": "1~tool call event",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "tool",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "path",
+  "at": "4",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

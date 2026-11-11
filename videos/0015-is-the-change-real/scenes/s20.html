@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A result we can defend</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.ranges{display:grid;grid-template-columns:max-content 1fr max-content;gap:14px 28px;align-items:center;width:100%}.ranges .rl{font:500 34px/1.2 var(--font-code);color:var(--ink);white-space:nowrap}.ranges .rt{font:400 32px/1.2 var(--font-body);color:var(--ink-soft);white-space:nowrap}.ranges .track{position:relative;height:46px;background:var(--paper-muted);border-radius:var(--radius)}.ranges .fill{position:absolute;top:0;bottom:0;border-radius:var(--radius)}.ranges .fill.before{background:var(--focus-blue)}.ranges .fill.after{background:var(--focus-yellow)}.ranges .at{position:absolute;top:7px;bottom:7px;width:6px;margin-left:-3px;border-radius:3px;background:var(--ink)}.ranges .axis{grid-column:2;display:flex;justify-content:space-between;font:400 26px/1 var(--font-body);color:var(--ink-muted)}.ranges .group{grid-column:1 / -1;font:600 28px/1.2 var(--font-body);color:var(--ink-soft);margin-top:10px}.mb{display:flex;flex-direction:column;gap:18px;width:100%}.mb .who{font:500 32px/1.2 var(--font-body);color:var(--ink-soft)}.mb .who .mono{font-family:var(--font-code);color:var(--ink)}.ranges .rl{font-size:36px}.ranges .rt{font-size:32px}.ranges .track{height:50px}.why .semantic-block{min-height:190px}.why .title{font-size:52px;line-height:1.15}.why .label{font-size:30px}.stage{gap:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">The earlier fixes, re-examined</div>
+  <h2 class="scene-title">A result we can defend</h2>
+  <div class="stage">
+<div class="mb">
+    <div class="who"><span class="mono">no-made-up-number</span> on <span class="mono">gpt-5.6-terra</span> · before and after its fix</div>
+    <div class="ranges">
+      <div class="rl"><span data-concept="mub" data-rep="cell">1 of 3</span></div>
+      <div class="track"><div class="fill before" style="left:6.1%;width:73.1%"></div><div class="at" style="left:33.3%"></div></div>
+      <div class="rt">before · 6% to 79%</div>
+      <div class="rl"><span data-concept="mua" data-rep="cell">3 of 3</span></div>
+      <div class="track"><div class="fill after" style="left:43.8%;width:56.2%"></div><div class="at" style="left:100.0%"></div></div>
+      <div class="rt">after · 44% to 100%</div>
+      <div class="axis"><span>0%</span><span>50%</span><span>100%</span></div>
+    </div>
+  </div>
+  <div class="cols why">
+    <div class="semantic-block" data-concept="e1" data-rep="block" data-role="structure">
+      <div class="title">5 of 5</div><div class="label">the same failure, before the fix</div>
+    </div>
+    <div class="semantic-block" data-concept="e2" data-rep="block" data-role="structure">
+      <div class="title">Every run since</div><div class="label">the same stimulus passes</div>
+    </div>
+    <div class="semantic-block" data-concept="e3" data-rep="block" data-role="structure">
+      <div class="title">No skill</div><div class="label">no made-up number: the first draft caused it</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "mub",
+  "at": "0~one of three",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "mua",
+  "at": "0~to three of three",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "e1",
+  "at": "1~five of five",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "e2",
+  "at": "1~the same stimulus",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "e3",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

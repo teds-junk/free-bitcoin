@@ -1,0 +1,6 @@
+[1m[36mEval: evals/wording.eval.yaml[0m
+[33m⚠ [33mwarning[0m [90m[scoring-defaults-applied][0m Multiple graders with no scoring config
+  [2mat scoring[0m
+  [2mUsing defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.[0m
+
+  [33m1 warning(s)[0m

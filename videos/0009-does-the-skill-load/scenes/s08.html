@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>How big a test?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.size{font-size:48px}.size th{font-size:32px}.size td{padding-top:40px;padding-bottom:40px}.size td:first-child{font-size:40px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">The description decides</div>
+  <h2 class="scene-title">How big a test?</h2>
+  <div class="stage">
+<table class="data-table full size">
+    <thead><tr><th></th><th class="num">Requests</th><th class="num">Trials of each</th><th class="num">Requests held back</th></tr></thead>
+    <tbody>
+      <tr><td>For a skill you depend on</td><td class="num"><span data-concept="g-req" data-rep="cell">about 20</span></td><td class="num"><span data-concept="g-trials" data-rep="cell">3</span></td><td class="num"><span data-concept="g-held" data-rep="cell">some</span></td></tr>
+      <tr><td>Our test</td><td class="num"><span data-concept="o-req" data-rep="cell">6</span></td><td class="num"><span data-concept="o-trials" data-rep="cell">2</span></td><td class="num"><span data-concept="o-held" data-rep="cell">none</span></td></tr>
+    </tbody>
+    <caption>Source: agentskills.io, “Optimizing skill descriptions” · conventions, with no published calculation behind them</caption>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "g-req",
+  "at": "1~twenty",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "g-trials",
+  "at": "1~three",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "g-held",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "o-req",
+  "at": "4~six",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "o-trials",
+  "at": "4~two trials",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

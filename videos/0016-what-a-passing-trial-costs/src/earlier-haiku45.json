@@ -1,0 +1,8 @@
+{
+ "_about": "The claude-haiku-4.5 trial of the lesson 1 video's run (results/lesson-1/2026-11-11T00-11-52-424Z), the first trial the videos showed. Real, not a stand-in.",
+ "run": "2026-11-11T00-11-52-424Z",
+ "model": "claude-haiku-4.5",
+ "stimulus": "typo-fix",
+ "totalTokens": 74210,
+ "nano": 1808660000
+}

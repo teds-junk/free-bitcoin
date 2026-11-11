@@ -1,0 +1,24 @@
+$ ls results/lesson-17
+2026-11-10T17-47-01-911Z
+
+Calculator on qwen-local/results.jsonl:
+ qwen-local · qwen3.5:9b 
+ Trials 5 
+ Passing 2 of 5 
+ ERROR 0 
+ Total cost — 
+ In dollars — 
+ Per passing trial — 
+ Median tokens 47.2k 
+ No cost recorded for any trial. Runs through your own provider (bring your own key) record tokens but no cost: multiply the tokens by your own price. 
+ 
+ Across 5 trials in 1 file: 0.00 AIU, or $0.000 at $0.01 per AIU. Judge calls are not included. 
+
+
+Steps 8-9: byModel tokens per trial, priced at $0.10/M input, $0.40/M output:
+after-release passed=false in=46792 out=432 durationMs=117167 skillActivations=0
+refactor passed=false in=101515 out=956 durationMs=196812 skillActivations=0
+security passed=false in=46686 out=384 durationMs=116883 skillActivations=0
+two-changes passed=true in=58906 out=625 durationMs=170323 skillActivations=0
+typo-fix passed=true in=46630 out=379 durationMs=123986 skillActivations=0
+total in=300529 out=2776 usd=0.0312 per pass=0.0156

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What the figure leaves out</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px}.terms .title{font-size:46px}.terms .label{font-size:36px;line-height:1.35}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Where cost is recorded</div>
+  <h2 class="scene-title">What the figure leaves out</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="judge" data-rep="block" data-role="attention">
+      <div class="title words">Judge calls</div><div class="label">not counted: an eval with a judge costs more than this</div>
+    </div>
+    <div class="semantic-block" data-concept="error" data-rep="block" data-role="structure">
+      <div class="title words">A trial that ended in ERROR</div><div class="label">may have no usage recorded at all</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "judge",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "error",
+  "at": "2",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

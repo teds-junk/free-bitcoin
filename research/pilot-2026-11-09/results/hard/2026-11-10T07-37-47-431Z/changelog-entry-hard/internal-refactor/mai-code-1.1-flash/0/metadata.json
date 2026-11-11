@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "internal-refactor",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::mai-code-1.1-flash::internal-refactor::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "mai-code-1.1-flash",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:38:46.460Z",
+  "status": "success",
+  "trajectoryId": "64b5abf5-66ca-4fa9-9747-fbaabb018ad5",
+  "executorSessionId": "dd171818-3017-4a28-97ad-3c349c27dcbe",
+  "completedAt": "2026-11-10T07:39:09.184Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/internal-refactor/mai-code-1.1-flash/0/events.jsonl"
+}

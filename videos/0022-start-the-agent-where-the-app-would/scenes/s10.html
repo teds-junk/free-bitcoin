@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Exit code zero is a pass</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:290px}.terms .title{font-size:52px}.terms .label{font-size:34px;line-height:1.35}.lead{font-size:40px}.stage{gap:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A hidden test</div>
+  <h2 class="scene-title">Exit code zero is a pass</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="program" data-rep="block" data-role="structure">
+      <div class="title">program</div><div class="label">the script prints its verdict as a line of JSON</div>
+    </div>
+    <div class="semantic-block" data-concept="rc" data-rep="block" data-role="attention">
+      <div class="title">run-command</div><div class="label">passes when the command exits with code 0</div>
+    </div>
+  </div>
+  <p class="lead">Any test you already have: a test suite, a linter, a script.</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "program",
+  "at": "0~program",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "rc",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Two halves, both from the app</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:290px}.terms .title{font-size:52px}.terms .label{font-size:34px;line-height:1.35}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">An app starts the agent</div>
+  <h2 class="scene-title">Two halves, both from the app</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="prompt" data-rep="block" data-role="structure">
+      <div class="title words">The prompt</div><div class="label">what the app sends: short, always the same, written by a developer</div>
+    </div>
+    <div class="semantic-block" data-concept="workspace" data-rep="block" data-role="attention">
+      <div class="title words">The workspace</div><div class="label">what the app has prepared when it calls the agent</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "prompt",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "workspace",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

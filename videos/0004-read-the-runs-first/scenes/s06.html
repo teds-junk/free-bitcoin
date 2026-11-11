@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>How many runs are enough?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px;justify-content:center}.terms .title{font-size:104px;line-height:1.1}.terms .label{font-size:36px}.lead{font-size:40px;margin:0}.stage{gap:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Why reading comes first</div>
+  <h2 class="scene-title">How many runs are enough?</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="hundred" data-rep="block" data-role="structure">
+      <div class="title">100 or more</div><div class="label">suggested for a real product</div>
+    </div>
+    <div class="semantic-block" data-concept="twelve" data-rep="block" data-role="attention">
+      <div class="title">12</div><div class="label">what we read here</div>
+    </div>
+  </div>
+  <p class="lead"><span data-concept="stop" data-rep="note">Stop when new runs stop showing anything new.</span></p>
+  <p class="note">Source: Husain and Shankar, AI Evals FAQ (2026)</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "hundred",
+  "at": "1~hundred",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "stop",
+  "at": "1~stopping",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "twelve",
+  "at": "2",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

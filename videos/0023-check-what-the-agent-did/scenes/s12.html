@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What counts as the same?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.types{min-width:760px;font-size:42px;line-height:1.5}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Catching loops</div>
+  <h2 class="scene-title">What counts as the same?</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark types" data-lang="yaml"><code><span data-concept="obs" data-rep="code"><span style="color:#4EA5E6">match</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">observation</span></span>
+
+<span data-concept="nm" data-rep="code"><span style="color:#4EA5E6">match</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">name</span></span>
+
+<span data-concept="na" data-rep="code"><span style="color:#4EA5E6">match</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">name-args</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="obs">calls that got the same result · the default</p><p class="callout" data-anchor="nm">calls to the same tool</p><p class="callout" data-anchor="na">the same tool, the same arguments</p></aside>
+  </div>
+  <p class="note">also: <span class="mono">tools</span>, <span class="mono">max_cycle_period</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "obs",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "nm",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "na",
+  "at": "2~third",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

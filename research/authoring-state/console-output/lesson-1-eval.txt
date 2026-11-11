@@ -1,0 +1,12 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from changelog · 2 models · 2 workers
+
+Model summary
+  ✓ claude-haiku-4.5  1/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✓ 1/1             ✓ 1/1        
+
+Saved  /private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/course-run/practice/results/lesson-1/2026-11-10T07-59-26-695Z/
+Run ID  77996016-4f9d-4046-b22e-3da7256e9722

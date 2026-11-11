@@ -1,0 +1,4 @@
+From the recordings of 2026-11-11 against /Users/Shared/demo/practice.
+typo-fix.patch: results/lesson-6-after/2026-11-11T05-33-17-542Z/changelog/typo-fix/claude-haiku-4.5/0/workspace.patch (what tape s11 copied).
+s13.log, s15.log, s17.log: what vally oracle printed in tapes s13, s15, s17 (saved by the tapes wrapper).
+src/state/golden/*.patch: the same run, claude-haiku-4.5 trial 0 of security, two-changes, after-release.

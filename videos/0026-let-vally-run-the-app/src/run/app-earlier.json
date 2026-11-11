@@ -1,0 +1,11 @@
+{
+ "_about": "The app's single run outside Vally: the lesson 25 video's own recording of `sh app/run.sh claude-haiku-4.5`, graded afterwards (../0025-grade-a-run-vally-did-not-start/src/run/HANDOVER.md): 3 of 5 graders, no skill load, a refactor entry.",
+ "model": "claude-haiku-4.5",
+ "passed": false,
+ "skill_loaded": false,
+ "failed_graders": [
+  "every-change-handled",
+  "loads-the-skill"
+ ],
+ "entry76": true
+}

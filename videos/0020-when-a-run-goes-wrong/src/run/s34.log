@@ -1,0 +1,15 @@
+warning: Multiple graders with no scoring config
+
+━━━ cache ━━━
+✅ cache (2/2 graders passed)
+  ✓ [users-words] The new entry is "Speed up repeated `notes list --tag` commands in large note folders (#66)". It is under Unreleased > Changed. It describes what users will notice and avoids implementation terms such as LRU, cache and index.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+  ✗ [users-words] The new entry is "Improve performance of `notes list --tag` with caching (#66)". It mentions the implementation ("caching") and gives no concrete user-facing benefit such as faster results on large note folders. It only partly meets the criterion, so I score it a fail.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 50.0% | FAILED

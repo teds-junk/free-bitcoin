@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three graders read the patch</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.types{min-width:760px;font-size:42px;line-height:1.5}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Graders that read the diff</div>
+  <h2 class="scene-title">Three graders read the patch</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark types" data-lang="yaml"><code><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span data-concept="dc" data-rep="code"><span style="color:#3CC0B3">diff-contains</span></span>
+
+<span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span data-concept="dnc" data-rep="code"><span style="color:#3CC0B3">diff-not-contains</span></span>
+
+<span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span data-concept="de" data-rep="code"><span style="color:#3CC0B3">diff-empty</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="dc">passes when the patch contains it</p><p class="callout" data-anchor="dnc">passes when the patch doesn’t</p><p class="callout" data-anchor="de">passes when the agent changed nothing</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "dc",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "dnc",
+  "at": "5",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "de",
+  "at": "6",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

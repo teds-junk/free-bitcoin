@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Four files, four cards</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.stage{gap:14px;justify-content:flex-start}.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px;width:100%}.cc{background:var(--paper-muted);border-radius:var(--radius);padding:18px 28px 22px}.cc .name{font-family:var(--font-code);font-size:34px;font-weight:600;color:var(--ink);margin-bottom:12px}.cc .name span{font-weight:400;color:var(--ink-soft)}.cc dl{display:grid;grid-template-columns:1fr 1fr 1.1fr 1fr;gap:14px 20px;margin:0}.cc .f:nth-child(7){grid-column:span 2}.cc dt{font-size:25px;color:var(--ink-soft)}.cc dd{margin:2px 0 0;font-family:var(--font-code);font-size:31px;color:var(--ink);white-space:nowrap}.lead.total{font-size:32px;margin:6px 0 0;max-width:none}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Price the variants</div>
+  <h2 class="scene-title">Four files, four cards</h2>
+  <div class="stage">
+<div class="calc">
+    <div class="cc">
+      <div class="name">haiku-low <span>· claude-haiku-5.5</span></div>
+      <dl>
+        <div class="f"><dt>Trials</dt><dd>15</dd></div><div class="f"><dt><span data-concept="k_pass" data-rep="cell">Passing</span></dt><dd>15 of 15</dd></div><div class="f"><dt><span data-concept="k_err" data-rep="cell">ERROR</span></dt><dd>0</dd></div><div class="f"><dt>Median tokens</dt><dd>105.2k</dd></div>
+        <div class="f"><dt><span data-concept="k_total" data-rep="cell">Total cost</span></dt><dd>3.13 AIU</dd></div><div class="f"><dt>In dollars</dt><dd>$0.031</dd></div><div class="f"><dt><span data-concept="k_per" data-rep="cell">Per passing trial</span></dt><dd>0.21 AIU</dd></div>
+      </dl>
+    </div><div class="cc">
+      <div class="name">haiku-high <span>· claude-haiku-5.5</span></div>
+      <dl>
+        <div class="f"><dt>Trials</dt><dd>15</dd></div><div class="f"><dt><span data-concept="k_pass" data-rep="cell">Passing</span></dt><dd>15 of 15</dd></div><div class="f"><dt><span data-concept="k_err" data-rep="cell">ERROR</span></dt><dd>0</dd></div><div class="f"><dt>Median tokens</dt><dd>105.8k</dd></div>
+        <div class="f"><dt><span data-concept="k_total" data-rep="cell">Total cost</span></dt><dd>3.55 AIU</dd></div><div class="f"><dt>In dollars</dt><dd>$0.035</dd></div><div class="f"><dt><span data-concept="k_per" data-rep="cell">Per passing trial</span></dt><dd>0.24 AIU</dd></div>
+      </dl>
+    </div><div class="cc">
+      <div class="name">terra-low <span>· gpt-5.6-terra</span></div>
+      <dl>
+        <div class="f"><dt>Trials</dt><dd>15</dd></div><div class="f"><dt><span data-concept="k_pass" data-rep="cell">Passing</span></dt><dd>15 of 15</dd></div><div class="f"><dt><span data-concept="k_err" data-rep="cell">ERROR</span></dt><dd>0</dd></div><div class="f"><dt>Median tokens</dt><dd>61.0k</dd></div>
+        <div class="f"><dt><span data-concept="k_total" data-rep="cell">Total cost</span></dt><dd>41.45 AIU</dd></div><div class="f"><dt>In dollars</dt><dd>$0.415</dd></div><div class="f"><dt><span data-concept="k_per" data-rep="cell">Per passing trial</span></dt><dd>2.76 AIU</dd></div>
+      </dl>
+    </div><div class="cc">
+      <div class="name">terra-high <span>· gpt-5.6-terra</span></div>
+      <dl>
+        <div class="f"><dt>Trials</dt><dd>15</dd></div><div class="f"><dt><span data-concept="k_pass" data-rep="cell">Passing</span></dt><dd>15 of 15</dd></div><div class="f"><dt><span data-concept="k_err" data-rep="cell">ERROR</span></dt><dd>0</dd></div><div class="f"><dt>Median tokens</dt><dd>61.0k</dd></div>
+        <div class="f"><dt><span data-concept="k_total" data-rep="cell">Total cost</span></dt><dd>42.38 AIU</dd></div><div class="f"><dt>In dollars</dt><dd>$0.424</dd></div><div class="f"><dt><span data-concept="k_per" data-rep="cell">Per passing trial</span></dt><dd>2.83 AIU</dd></div>
+      </dl>
+    </div>
+  </div>
+  <p class="lead total"><span data-concept="total" data-rep="note">Across 60 trials in 4 files: 90.51 AIU, or $0.905 at $0.01 per AIU. Judge calls are not included.</span></p>
+  <p class="note">the cost calculator’s result · our run · 2026-11-11T08-39-02-179Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "k_pass",
+  "at": "1~how many passed",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "k_err",
+  "at": "1~ERROR",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "k_total",
+  "at": "1~total cost",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "k_per",
+  "at": "1~cost per passing",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "total",
+  "at": "2",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

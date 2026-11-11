@@ -1,0 +1,545 @@
+# vally 0.21.0 --help output, captured 2026-11-09 from @microsoft/vally-cli@0.21.0
+
+=================== vally  --help
+USAGE
+  vally [options] [command]
+
+Extensible evaluation platform for AI agents
+
+OPTIONS
+  -V, --version                          output the version number
+  -h, --help                             display help for command
+
+COMMANDS
+  init [options] [dir]                   Scaffold a starter eval.yaml
+  lint [options] [path]                  Static checks for skills and eval specs (fast, no execution)
+  eval [options]                         Run stimuli against an agent and grade the results
+  grade [options]                        Grade trajectories from stdin using graders defined in an eval spec
+  oracle [options]                       Materialize golden inputs and optionally grade them, without running an agent
+  compare [options] [experiment-dir]     Compare a treatment run against a baseline (experiment dir or two run dirs)
+  export [options] [exporterOptions...]  Export eval.yaml to an external tool format
+  serve [options] [directory]            Start an analytics server for eval results
+  ingest [options] <directory>           Import eval results from an output directory into a SQLite database
+  experiment                             Run experiments — controlled comparisons across eval variants
+  simulate                               Create and use deterministic tool simulations
+  help [command]                         display help for command
+
+LEARN MORE
+  Documentation at https://aka.ms/vally
+
+=================== vally init --help
+USAGE
+  vally init [options] [dir]
+
+Scaffold a starter eval.yaml
+
+ARGUMENTS
+  dir         Directory to create the sample eval in (default: "evals/hello")
+
+OPTIONS
+  --force     Overwrite an existing eval.yaml in the target directory (default:
+              false)
+  -h, --help  display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/init
+
+=================== vally lint --help
+USAGE
+  vally lint [options] [path]
+
+Static checks for skills and eval specs (fast, no execution)
+
+ARGUMENTS
+  path                            Root directory to scan for SKILL.md files
+
+OPTIONS
+  -e, --eval-spec <path>          Path to eval.yaml file or directory to scan
+  --known-domains <path>          Path to known-domains.txt for URL reference
+                                  scanning
+  --allowed-external-deps <path>  Path to allowed-external-deps.txt for
+                                  structural dependency scanning
+  --strict                        Treat warnings as errors (default: false)
+  --verbose                       Show detailed grader evidence (default: false)
+  --grader-plugin <specifier>     Grader plugin package to load (npm package or
+                                  local path, repeatable) (default: [])
+  --param <key=value>             Set a param value (repeatable, e.g. --param
+                                  MODEL=gpt-4o). Suppresses undefined-param
+                                  errors for CLI-driven params. (default: [])
+  -h, --help                      display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/lint
+
+=================== vally eval --help
+USAGE
+  vally eval [options]
+
+Run stimuli against an agent and grade the results
+
+OPTIONS
+  -e, --eval-spec <path>            Path to eval YAML file (repeatable)
+                                    (default: [])
+  --skill-dir <path>                Discover skills from this directory
+                                    (default: no skills; declare per-eval via
+                                    environment.skills)
+  --work-dir <path>                 Working directory for agent runs (default:
+                                    cwd)
+  --agent, --executor <name>        Executor to run stimuli with (overrides
+                                    eval.yaml defaults.executor for every eval)
+  --model <model>                   Model to use (comma-separated for
+                                    multi-model runs)
+  --reasoning-effort <level>        Reasoning effort for the agent under test
+                                    (overrides eval.yaml
+                                    defaults.reasoning_effort)
+  --timeout <duration>              Timeout per run (e.g. 5m, 300s, 500ms)
+  --judge-timeout <duration>        Timeout per prompt or panel judge turn (e.g.
+                                    5m, 300s, 500ms)
+  --threshold <number>              Override eval scoring threshold (0-1)
+  --require-pass                    Exit non-zero when a valid eval verdict
+                                    fails (errors always exit non-zero)
+                                    (default: false)
+  --output-dir <path>               Directory for output files (default:
+                                    ./vally-results). Creates a timestamped
+                                    subfolder for output files such as
+                                    trajectories and eval results.
+  --output <format>                 Output format (choices: "jsonl")
+  --run-id <id>                     Stable identifier for this run (a UUID is
+                                    recommended)
+  --junit                           Write JUnit XML report to the output
+                                    directory (default: false)
+  --workspace <path>                Root for preserved trial workspaces, or the
+                                    exact existing directory with --in-place
+  --in-place                        Run directly in --workspace without setup or
+                                    isolation (1 worker, no retries; diff
+                                    graders require clean Git) (default: false)
+  --skip-grade                      Run agents without grading (grade later with
+                                    the grade command) (default: false)
+  --skip-validate                   Skip eval spec validation (default: false)
+  --verbose                         Increase logging verbosity and show full
+                                    agent output (default: false)
+  --workers <n>                     Number of concurrent stimulus sessions
+                                    (default: 5)
+  --runs <n>                        Number of trials per stimulus (overrides
+                                    eval.yaml defaults.runs)
+  --max-retries <n>                 Max retries per stimulus (default: 2)
+  --judge-model <model>             Model for LLM judge graders (overrides
+                                    eval.yaml defaults.judge_model)
+  --judge-reasoning-effort <level>  Reasoning effort for the judge model
+                                    (overrides eval.yaml
+                                    defaults.judge_reasoning_effort)
+  --suite <name>                    Run a named suite of evals from .vally.yaml
+                                    (supports suite-level evals field)
+  --tag <key=values>                Filter stimuli by tag (repeatable). Use
+                                    key=values to include or key!=values to
+                                    exclude, e.g., --tag cost=free,low --tag
+                                    flaky!=yes (default: [])
+  --grader-plugin <specifier>       Grader plugin package to load (npm package
+                                    or local path, repeatable) (default: [])
+  --executor-plugin <specifier>     Executor plugin package to load (repeatable)
+                                    (default: [])
+  --eval-plugin <specifier>         Eval provider plugin package to load
+  --param <key=value>               Set a param value (repeatable, e.g. --param
+                                    MODEL=gpt-4o). Overrides eval param files
+                                    and .vally.yaml. (default: [])
+  --backend <name-or-package>       Backend that controls where trials run: a
+                                    built-in name (local, docker) or a backend
+                                    plugin package/path (which must register
+                                    exactly one backend)
+  --backend-args <key=value>        Backend configuration (repeatable; repeated
+                                    keys collect into arrays) (default: [])
+  --reporter-plugin <specifier>     Reporter plugin package to load (npm package
+                                    or local path; relative paths resolve from
+                                    the --eval-spec directory when present,
+                                    otherwise from --skill-dir / --work-dir;
+                                    repeatable) (default: [])
+  --otlp-endpoint <url>             Export OpenTelemetry traces to this
+                                    OTLP/HTTP endpoint. When omitted, traces are
+                                    written to the output directory.
+  --shutdown-timeout <duration>     Max time to wait for executor and backend
+                                    shutdown during cleanup, including on Ctrl+C
+                                    (e.g. 5s, 500ms; default: 20000ms)
+  -h, --help                        display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/eval
+
+=================== vally grade --help
+USAGE
+  vally grade [options]
+
+Grade trajectories from stdin using graders defined in an eval spec
+
+OPTIONS
+  -e, --eval-spec <path>            Path to eval.yaml (grader source of truth)
+  --output <format>                 Output format (choices: "jsonl")
+  --run-id <id>                     Override the run ID on emitted JSONL records
+  --verbose                         Show detailed grader evidence (default:
+                                    false)
+  --backend <name-or-package>       Backend to use for grading (overrides
+                                    eval/project defaults; fallback: local)
+  --backend-args <key=value>        Backend configuration (repeatable) (default:
+                                    [])
+  --require-pass                    Exit non-zero when a valid grading verdict
+                                    fails (errors always exit non-zero)
+                                    (default: false)
+  --judge-model <model>             Model for LLM judge graders
+  --judge-reasoning-effort <level>  Reasoning effort for the judge model
+  --grader-plugin <specifier>       Grader plugin package to load (npm package
+                                    or local path, repeatable) (default: [])
+  --stimulus <name>                 Stimulus name to grade against (ATIF, or
+                                    session run input, only)
+  --workspace <path>                Path to agent workspace directory for
+                                    file-based graders (overrides every input
+                                    trajectory)
+  --run-dir <path>                  Directory of a vally eval --output-dir run.
+                                    Used to resolve trajectory.diffPath
+                                    references in JSONL input so diff graders
+                                    can re-grade from sidecar files.
+  --artifact-dir <path>             Artifact/output directory written by the
+                                    run, outside the graded workspace. Stamped
+                                    onto trajectory.artifactDir so graders that
+                                    read artifacts (e.g. custom-metrics) load
+                                    their files (e.g. custom_metrics.json) from
+                                    here. Marks it strict
+                                    (trajectory.artifactDirStrict): for those
+                                    graders a missing artifact fails here rather
+                                    than silently falling back to a stale
+                                    workspace copy; graders that don't read
+                                    artifacts are unaffected. (Distinct from
+                                    --run-dir, which resolves diffPath sidecars
+                                    from an eval --output-dir run.)
+  --diff-file <path>                Path to a unified diff file (e.g.
+                                    changes.patch) to inject as the agent's
+                                    workspace diff. Stamped onto trajectory.diff
+                                    so diff-based graders and LLM judges using
+                                    evidence:[diff] can grade offline without a
+                                    git workspace.
+  --assets-dir <path>               Setup/input assets directory staged outside
+                                    the graded workspace (the managed
+                                    EVALUATE_ASSETS dir). Stamped onto
+                                    trajectory.assetsDir so graders that read
+                                    setup inputs (program graders via
+                                    EVALUATE_ASSETS, custom graders via
+                                    GraderInput.trajectory.assetsDir) load their
+                                    files from here rather than the graded
+                                    workspace. Used by exporters (e.g. Harbor)
+                                    that bake assets at a fixed non-workspace
+                                    path.
+  --param <key=value>               Set a param value (repeatable, e.g. --param
+                                    MODEL=gpt-4o). Overrides eval param files
+                                    and .vally.yaml. (default: [])
+  -h, --help                        display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/grade
+
+=================== vally oracle --help
+USAGE
+  vally oracle [options]
+
+Materialize golden inputs and optionally grade them, without running an agent
+
+OPTIONS
+  -e, --eval-spec <path>            Path to eval.yaml (golden-input source)
+  --output <format>                 Output format (choices: "jsonl", "atif")
+  --run-id <id>                     Stable identifier for emitted JSONL records
+  --skip-grade                      Materialize golden inputs and exit without
+                                    grading (default: false)
+  --verbose                         Show detailed grader evidence (default:
+                                    false)
+  --stimulus <name>                 Select a single stimulus (default: all
+                                    stimuli with a golden_patch,
+                                    golden_trajectory, golden_custom_metrics, or
+                                    golden_command)
+  --no-golden-input                 Materialize or grade the baseline with all
+                                    golden inputs withheld (grading is a sanity
+                                    check that should fail)
+  --judge-model <model>             Model for LLM judge graders
+  --judge-reasoning-effort <level>  Reasoning effort for the judge model
+  --grader-plugin <specifier>       Grader plugin package to load (npm package
+                                    or local path, repeatable) (default: [])
+  --keep-workspace                  Keep the materialized workspace and print
+                                    its path (default: false)
+  --workspace <path>                Materialize into this directory instead of a
+                                    temp dir. Contents are preserved after the
+                                    run (requires a single stimulus).
+  --diff-output <path>              Write the cumulative materialized workspace
+                                    diff (requires a single stimulus)
+  -h, --help                        display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/oracle
+
+=================== vally compare --help
+USAGE
+  vally compare [options] [experiment-dir]
+
+Compare a treatment run against a baseline (experiment dir or two run dirs)
+
+ARGUMENTS
+  experiment-dir                    Experiment output directory containing
+                                    per-variant results.jsonl
+
+OPTIONS
+  --baseline <path>                 Two-run mode: baseline run directory or
+                                    JSONL file
+  --treatment <path>                Two-run mode: treatment run directory or
+                                    JSONL file
+  --baseline-variant <name>         Experiment mode: baseline variant name
+                                    (overrides the one recorded in the output)
+  -e, --eval-spec <path>            Optional eval.yaml to override the embedded
+                                    rubric
+  --judge-model <model>             Model for the comparison judge
+  --judge-timeout <duration>        Timeout per comparison judge turn (e.g. 5m,
+                                    300s, 500ms)
+  --judge-reasoning-effort <level>  Reasoning effort for the comparison judge
+                                    model
+  --output <path>                   Write JSONL comparison records to this file
+  --verbose                         Show per-stimulus and per-trial detail
+                                    (default: false)
+  --fail-on-regression              Also exit non-zero when a treatment shows a
+                                    significant regression — a valid verdict
+                                    with a negative mean score whose 95% CI is
+                                    entirely below zero. A treatment that
+                                    couldn't be judged already fails without
+                                    this flag. (default: false)
+  --param <key=value>               Set a param value (repeatable, e.g. --param
+                                    MODEL=gpt-4o). Overrides eval param files
+                                    and .vally.yaml. (default: [])
+  -h, --help                        display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/compare
+
+=================== vally export --help
+USAGE
+  vally export [options] [exporterOptions...]
+
+Export eval.yaml to an external tool format
+
+ARGUMENTS
+  exporterOptions              Exporter-specific key=value options (after --)
+
+OPTIONS
+  -e, --eval-spec <path>       Path to eval.yaml (repeatable; multiple specs
+                               export into per-eval subdirectories)
+  --exporter <specifier>       Exporter package to load (npm package or local
+                               path)
+  --output-dir <dir>           Directory for output files
+  --tag <key=values>           Filter stimuli by tag (repeatable). Use
+                               key=values to include or key!=values to exclude,
+                               e.g., --tag cost=free,low --tag flaky!=yes
+                               (default: [])
+  --verbose                    Show resolved eval schema and plugin details
+                               (default: false)
+  --grader-plugin <specifier>  Grader plugin package to load (npm package or
+                               local path, repeatable) (default: [])
+  --param <key=value>          Set a param value (repeatable, e.g. --param
+                               MODEL=gpt-4o). Overrides eval param files and
+                               .vally.yaml. (default: [])
+  -h, --help                   display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/export
+
+=================== vally serve --help
+USAGE
+  vally serve [options] [directory]
+
+Start an analytics server for eval results
+
+ARGUMENTS
+  directory              Path to eval output directory (optional when using
+                         --store)
+
+OPTIONS
+  --port <port>          Port to listen on (default: "3200")
+  --host <host>          Host to bind to (default: 127.0.0.1) (default:
+                         "127.0.0.1")
+  --cors                 Enable CORS for cross-origin browser requests (default:
+                         false)
+  --allowed-host <host>  Additional Host header value to accept (repeatable).
+                         Loopback names, the bound --host, and any IP-literal
+                         Host is always allowed; use this for custom domain
+                         names. (default: [])
+  --store <path>         Persist data to a SQLite file (enables historical mode;
+                         default: in-memory)
+  -h, --help             display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/serve
+
+=================== vally ingest --help
+USAGE
+  vally ingest [options] <directory>
+
+Import eval results from an output directory into a SQLite database
+
+ARGUMENTS
+  directory       Path to eval output directory
+
+OPTIONS
+  --store <path>  SQLite database path (default: "eval-history.db")
+  -h, --help      display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/ingest
+
+=================== vally experiment --help
+USAGE
+  vally experiment [options] [command]
+
+Run experiments — controlled comparisons across eval variants
+
+OPTIONS
+  -h, --help                       display help for command
+
+COMMANDS
+  run [options] <experiment-file>  Resolve and execute an experiment file
+  merge [options] <shard-dir...>   Reconcile per-shard experiment outputs into
+                                   one merged report
+  help [command]                   display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/experiment
+
+=================== vally experiment run --help
+USAGE
+  vally experiment run [options] <experiment-file>
+
+Resolve and execute an experiment file
+
+ARGUMENTS
+  experiment-file                   Path to experiment YAML file
+
+OPTIONS
+  --variant <name>                  Run only the named variant (for CI splits /
+                                    partial reruns)
+  --eval-filter <pattern>           Run only declared evals matching this
+                                    path/glob (repeatable; intersects the
+                                    experiment's evals; errors if a pattern
+                                    matches none) (default: [])
+  --output-dir <path>               Directory for output files (default:
+                                    ./vally-experiment-results). Creates a
+                                    timestamped subfolder.
+  --workers <n>                     Max concurrent trials (default 5)
+  --shard <i/n>                     Run only shard i of n (e.g. 1/4). Requires
+                                    --run-id.
+  --run-id <id>                     Stable run identifier for the experiment (a
+                                    UUID is recommended). Required with --shard.
+  --shard-strategy <specifier>      Shard selection strategy: a built-in
+                                    (round-robin, by-stimulus) or a module
+                                    specifier (default: round-robin)
+  --backend <name-or-package>       Backend that controls where trials run: a
+                                    built-in name (local, docker) or a backend
+                                    plugin package/path (which must register
+                                    exactly one backend). Replaces project
+                                    backend loading and defaults.backend;
+                                    relative paths resolve from the experiment
+                                    file directory.
+  --backend-args <key=value>        Backend configuration (repeatable; repeated
+                                    keys collect into arrays) (default: [])
+  --workspace <path>                Root directory for agent workspaces.
+                                    Contents are preserved after runs. Paths are
+                                    keyed by (variant, stimulus) so variants
+                                    never collide.
+  --dry-run                         Resolve the experiment and print the plan
+                                    without executing (default: false)
+  --require-pass                    Exit non-zero when a valid experiment
+                                    verdict fails (errors always exit non-zero)
+                                    (default: false)
+  --compare                         After the run completes, invoke the
+                                    comparison judge to compare each variant
+                                    against the baseline (experiment mode `vally
+                                    compare`). Skipped for sharded or
+                                    single-variant runs. Requires a judge model
+                                    — spends tokens. (default: false)
+  --judge-model <model>             Override the post-run comparison judge model
+                                    (requires --compare; does not change trial
+                                    grading)
+  --judge-reasoning-effort <level>  Override the post-run comparison judge
+                                    reasoning effort (requires --compare; does
+                                    not change trial grading)
+  --judge-timeout <duration>        Override the post-run comparison judge turn
+                                    timeout (requires --compare; does not change
+                                    trial grading)
+  --verbose                         Increase logging verbosity and show full
+                                    agent output (default: false)
+  --param <key=value>               Set a param value (repeatable, e.g. --param
+                                    MODEL=gpt-4o). Overrides eval param files
+                                    and .vally.yaml. (default: [])
+  --grader-plugin <specifier>       Grader plugin package to load (npm package
+                                    or local path; additive with plugins.grader
+                                    from .vally.yaml; relative paths resolve
+                                    from the experiment file directory;
+                                    repeatable) (default: [])
+  --otlp-endpoint <url>             Export OpenTelemetry traces to this
+                                    OTLP/HTTP endpoint. When omitted, traces are
+                                    written to the output directory.
+  --executor-plugin <specifier>     Executor plugin package to load (npm package
+                                    or local path; additive with
+                                    plugins.executor from .vally.yaml; relative
+                                    paths resolve from the experiment file
+                                    directory; repeatable) (default: [])
+  --reporter-plugin <specifier>     Reporter plugin package to load (npm package
+                                    or local path; additive with
+                                    plugins.reporter from .vally.yaml; relative
+                                    paths resolve from the experiment file
+                                    directory; repeatable) (default: [])
+  --eval-plugin <specifier>         Eval provider plugin package to load and
+                                    select (npm package or local path; replaces
+                                    project eval-provider loading and
+                                    defaults.eval_provider; relative paths
+                                    resolve from the experiment file directory)
+  -h, --help                        display help for command
+
+=================== vally experiment merge --help
+USAGE
+  vally experiment merge [options] <shard-dir...>
+
+Reconcile per-shard experiment outputs into one merged report
+
+ARGUMENTS
+  shard-dir                Shard output directories (one per shard of the run)
+
+OPTIONS
+  -o, --output-dir <path>  Directory for the merged output
+  --otlp-endpoint <url>    Export OpenTelemetry traces to this OTLP/HTTP
+                           endpoint. When omitted, traces are written to the
+                           output directory.
+  --require-pass           Exit non-zero when a valid merged verdict fails
+                           (errors always exit non-zero) (default: false)
+  -h, --help               display help for command
+
+=================== vally simulate --help
+USAGE
+  vally simulate [options] [command]
+
+Create and use deterministic tool simulations
+
+OPTIONS
+  -h, --help                display help for command
+
+COMMANDS
+  record [options] <input>  Generate simulation tool overrides from recorded
+                            trajectories
+  help [command]            display help for command
+
+LEARN MORE
+  Documentation at https://microsoft.github.io/vally/reference/cli/simulate
+
+=================== vally simulate record --help
+USAGE
+  vally simulate record [options] <input>
+
+Generate simulation tool overrides from recorded trajectories
+
+ARGUMENTS
+  input                Trajectory file, results directory, or - for stdin
+
+OPTIONS
+  -o, --output <path>  Write YAML to a file instead of stdout
+  --mcp-server <name>  MCP server name for inputs that omit server configuration
+                       (repeatable) (default: [])
+  -h, --help           display help for command

@@ -1,0 +1,491 @@
+{
+  "schema": 2,
+  "title": "The same request, five times",
+  "slug": "0003-the-same-request-five-times",
+  "kind": "lesson",
+  "lesson_number": 3,
+  "source": "/Users/ted/src/learn/vally/lessons/0003-the-same-request-five-times.html",
+  "created": "2026-11-10",
+  "poster": "s01",
+  "people": [],
+  "pacing": {
+    "lead_in": 0.4,
+    "gap": 0.5,
+    "tail": 0.8
+  },
+  "narrative": {
+    "question": "If the same model gets the same request again, does it do the same thing?",
+    "viewer_starts": "A professional programmer who knows the shell and has watched one Vally run: one changelog request on two models with the first-draft changelog-entry skill, one trial each, a tick for each, and two saved patches that differ (gpt-5.6-terra's entry ends with a made-up pull request number, claude-haiku-4.5's has none). Knows skill, agent, model, eval, eval file, workspace, patch, and the vally eval command with -e, --model and --output-dir. Knows Vally's words stimulus, grader, trial and run; that the eval file's one grader only looks for the words 'notes add'; the results folder (the report, results.jsonl, and a folder per trial numbered from 0, holding workspace.patch); and that a trial costs about two or three cents. Has never run a stimulus more than once, and does not know --runs, --workers, or the words FLAKY and ERROR.",
+    "arc": [
+      {
+        "stage": "one-sample",
+        "viewer_can": "say why one trial shows that something can happen, and not how often it does"
+      },
+      {
+        "stage": "trials-and-outcomes",
+        "viewer_can": "predict which of Vally's four words a stimulus gets from what its trials did"
+      },
+      {
+        "stage": "workers",
+        "viewer_can": "say what --workers sets, and why we run two at a time"
+      },
+      {
+        "stage": "count-it",
+        "viewer_can": "run five trials on each model and tally what each trial did from its patch"
+      },
+      {
+        "stage": "what-the-tally-says",
+        "viewer_can": "state, as counts, how often each model invents a pull request number, and say what the grader made of it"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "role": "hook",
+      "mode": "think",
+      "stage": "one-sample",
+      "chapter": "Does it happen every time?",
+      "renderer": "html",
+      "visual": "scenes/s01.html",
+      "on_screen": "Headline 'The same request, five times' in the display serif. Two cards side by side, labelled claude-haiku-4.5 and gpt-5.6-terra, each showing the changelog entry that model wrote in the one trial we have seen, with a small label 'one trial'. '(#42)' lights at the end of the second entry, then both 'one trial' labels.",
+      "introduces": [],
+      "narration": [
+        "One model made up a pull request number, and the other didn't.",
+        "It's tempting to decide which model is the careless one, and move on.",
+        "But we've watched each model once.",
+        "Here, you'll run the same request five times on each model, and count how often each one makes up a number."
+      ]
+    },
+    {
+      "id": "s02",
+      "role": "body",
+      "mode": "think",
+      "stage": "one-sample",
+      "renderer": "html",
+      "visual": "scenes/s02.html",
+      "on_screen": "Headline 'One trial is one sample'. Two rows, one per model, each a row of five boxes numbered 0 to 4. Box 0 of each row holds what that trial did ('no number', '(#42)'); boxes 1 to 4 are empty outlines. The two filled boxes light, then the empty boxes of each row in turn.",
+      "introduces": [],
+      "narration": [
+        "Let's start with why once isn't enough.",
+        "A language model doesn't compute one fixed answer.",
+        "It produces one of many plausible answers, and which one you get varies from run to run, even when nothing else changes.",
+        "An agent adds to that, because each step it takes depends on the step before.",
+        "So a single trial tells you that something can happen, and nothing more."
+      ]
+    },
+    {
+      "id": "s03",
+      "role": "body",
+      "mode": "think",
+      "stage": "one-sample",
+      "renderer": "html",
+      "visual": "scenes/s03.html",
+      "on_screen": "Two blocks side by side, no arrow: 'Can this happen? · one trial answers it' and 'How often? · needs several trials of the same stimulus'. The first fills as the colleague is mentioned, then the second as the counts are.",
+      "introduces": [],
+      "narration": [
+        "If a colleague made a slip the one time you watched, you wouldn't know whether they slip every time, or one time in ten.",
+        "Those call for different responses.",
+        "For any skill, the questions that matter are how often it goes wrong, and whether that's the same on each model.",
+        "Those are counts, and a count needs several trials of the same stimulus: the same request, checked by the same graders."
+      ]
+    },
+    {
+      "id": "s03b",
+      "role": "body",
+      "mode": "think",
+      "stage": "one-sample",
+      "renderer": "html",
+      "visual": "scenes/s03b.html",
+      "on_screen": "Headline 'Identical runs, different scores'. One row of bars: the same agent's score on the same coding tasks across repeated runs, drawn as a band 2 to 6 percentage points wide, labelled 'an illustration of the reported range'. Large figure beside it: '2 to 6 percentage points'. Source in small type: 'a 2026 preprint from KTH · one benchmark · not yet peer reviewed'. The figure lights when it is said.",
+      "introduces": [],
+      "narration": [
+        "That variation shows up in measurements, too.",
+        "In a paper from twenty twenty-six, not yet reviewed by other researchers, the same agent ran the same set of coding tasks several times.",
+        "From one identical run to the next, its score, the share of tasks it completed, moved by two to six percentage points."
+      ]
+    },
+    {
+      "id": "s04",
+      "role": "body",
+      "mode": "works",
+      "stage": "trials-and-outcomes",
+      "chapter": "Five trials, four outcomes",
+      "renderer": "html",
+      "visual": "scenes/s04.html",
+      "on_screen": "Dark code box, left: 'vally eval … --runs 5' on one line, and under it a short tree: one-request/ → typo-fix/ → gpt-5.6-terra/ → 0/ 1/ 2/ 3/ 4/ (the eval, the stimulus, the model, the trial), with workspace.patch under 0/. Right, level with each: 'every stimulus, five times, on every model', 'one folder per trial', 'each with its own patch'. '--runs 5' lights, then the five folders, then workspace.patch.",
+      "introduces": [
+        "vally eval",
+        "--runs",
+        "one-request",
+        "typo-fix",
+        "workspace.patch"
+      ],
+      "shows": [
+        "vally eval"
+      ],
+      "narration": [
+        "That's the reason; here's how Vally does it.",
+        "Adding dash dash runs five to vally eval repeats every stimulus five times, on every model you name.",
+        "Each one is a trial of its own, in a fresh workspace.",
+        "And each trial gets its own numbered folder, zero to four, with its own patch inside.",
+        "With one stimulus and two models, that makes ten trials."
+      ]
+    },
+    {
+      "id": "s05",
+      "role": "body",
+      "mode": "works",
+      "stage": "trials-and-outcomes",
+      "renderer": "html",
+      "visual": "scenes/s05.html",
+      "on_screen": "Headline 'Four words for a stimulus'. Four rows of five boxes, labelled 'an illustration', each row ending in its word. PASS: five ticks. FLAKY: one cross, four ticks. FAIL: five crosses. ERROR: three ticks and two boxes holding a dash. Each row appears and lights as its word is said, one at a time.",
+      "introduces": [
+        "PASS",
+        "FLAKY",
+        "FAIL",
+        "ERROR"
+      ],
+      "narration": [
+        "With several trials, a stimulus no longer just passes or fails.",
+        "For each model, Vally sums up the stimulus's trials with one of four words.",
+        "Pass means every trial passed.",
+        "Flaky means some trials passed and some failed.",
+        "Fail means no trial passed.",
+        "Finally, error means at least one trial didn't finish, so the stimulus has no verdict, whatever the other trials did."
+      ]
+    },
+    {
+      "id": "s06",
+      "role": "body",
+      "mode": "works",
+      "stage": "trials-and-outcomes",
+      "renderer": "html",
+      "visual": "scenes/s06.html",
+      "on_screen": "The ERROR row from the last scene, alone and larger. The two boxes holding a dash light, with the note 'no answer to judge'. Then a line under the row: 'Run it again, or leave the trial out and say so.'",
+      "introduces": [],
+      "narration": [
+        "Error is not a kind of failure.",
+        "It means the agent gave no answer to judge, for example because its connection dropped.",
+        "When that happens, we run the command again, or leave that trial out of the count and say that we did."
+      ]
+    },
+    {
+      "id": "s07",
+      "role": "body",
+      "mode": "works",
+      "stage": "trials-and-outcomes",
+      "renderer": "html",
+      "visual": "scenes/s07.html",
+      "on_screen": "File panel labelled 'results.jsonl · one record, spread out': the gpt-5.6-terra record from the run we have already seen, with a minimap, scrolled to the end of its trajectory, with 'lines hidden' rows around it. '\"output\": \"Added an Unreleased **Fixed** changelog entry …\"' lights, with the note on the right 'the agent's final reply'.",
+      "introduces": [
+        "output",
+        "results.jsonl",
+        "results.jsonl · one record, spread out"
+      ],
+      "shows": [
+        "results.jsonl"
+      ],
+      "narration": [
+        "One more thing is saved for every trial, and it matters when a patch comes back empty.",
+        "An empty patch means the agent changed no file.",
+        "Each trial's record in results dot jsonl keeps the agent's final reply, in a field named output.",
+        "That reply usually says why."
+      ]
+    },
+    {
+      "id": "s08",
+      "role": "body",
+      "mode": "works",
+      "stage": "workers",
+      "chapter": "Why two workers",
+      "renderer": "html",
+      "visual": "scenes/s08.html",
+      "on_screen": "Dark code box, left: '--workers 2'. Right, level with it: 'how many agent sessions run at once · default 5'. Below, two rows of ten boxes side by side with their labels: '5 workers · 3 of 10 ended in ERROR' (three boxes hold a dash) and '2 workers · all 10 finished'. Under the first row, in a code box, the message: 'Session disconnected while waiting for a response'. The flag lights, then the first row and its message, then the second row.",
+      "introduces": [
+        "--workers"
+      ],
+      "narration": [
+        "Before we run ten trials, one more flag.",
+        "Vally doesn't run trials one after another.",
+        "It runs several agent sessions at once, and dash dash workers sets how many; the default is five.",
+        "More at once is faster, but each session holds an open connection to the model service, and those connections can drop under load.",
+        "When we ran ten trials with five workers, three of them ended in error, with the message session disconnected.",
+        "With two workers, all ten finished.",
+        "So we use two whenever a command starts more than a couple of trials, and accept that it takes longer.",
+        "Even at two, a session drops now and then, so an error is still possible."
+      ]
+    },
+    {
+      "id": "s09",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-it",
+      "chapter": "Count it",
+      "renderer": "html",
+      "visual": "scenes/s09.html",
+      "on_screen": "Headline 'Ten trials, one tally'. An empty tally table: rows claude-haiku-4.5 and gpt-5.6-terra; columns 'Entry, no number', 'Entry, made-up number', 'No entry'. Each column header lights as it is named. The cells stay empty.",
+      "introduces": [],
+      "narration": [
+        "That's how it works; now let's count.",
+        "First, we'll run the same stimulus five times on each model, then open the ten patches.",
+        "Each trial goes in one of three columns: an entry with no number, an entry with a made-up number, or no entry at all.",
+        {
+          "text": "What would you expect from each model?",
+          "read": 2
+        },
+        "If you tried it yourself, here's what you'd see."
+      ]
+    },
+    {
+      "id": "s10",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-it",
+      "renderer": "terminal",
+      "visual": "tapes/s10.tape",
+      "spend": "10 agent runs",
+      "on_screen": "Terminal in the practice folder; the prompt shows only the current folder name. The vally eval command over four lines, with --runs 5 --workers 2 and --output-dir results/lesson-3; a jump cut; then the model summary, held until it has been read. The screen is cleared out of sight; ls results/lesson-3 shows one folder named with a time.",
+      "introduces": [
+        "ls",
+        "-e",
+        "--model",
+        "--output-dir",
+        "one-request.eval.yaml",
+        "lesson-3",
+        "2026"
+      ],
+      "shows": [
+        "vally eval",
+        "ls"
+      ],
+      "narration": [
+        {
+          "text": "Here's the run: the command from before, with the two new flags.",
+          "before": "typed:1"
+        },
+        {
+          "text": "It spends ten short agent runs.",
+          "before": "enter:1"
+        },
+        {
+          "text": "We're watching the summary at the end, where a model gets a tick only when none of its trials failed.",
+          "before": "enter:1"
+        },
+        {
+          "text": "About a minute later, there's a tick for each model: on both, the stimulus is a pass.",
+          "wait_for": "output:1",
+          "outcome": true
+        },
+        {
+          "text": "Flaky, fail or error would show up as a line of its own above the summary, and here there's none.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 3
+        },
+        {
+          "text": "So let's look in the results folder.",
+          "before": "typed:2"
+        },
+        {
+          "text": "There's one folder, named with the time of the run.",
+          "wait_for": "output:2",
+          "read": 1
+        }
+      ]
+    },
+    {
+      "id": "s11",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-it",
+      "renderer": "terminal",
+      "visual": "tapes/s11.tape",
+      "on_screen": "Terminal, continuing in the practice folder. cd into the run's folder; cd one-request/typo-fix; ls gpt-5.6-terra shows 0 1 2 3 4; the screen is cleared out of sight; cat gpt-5.6-terra/0/workspace.patch shows the patch, held until it has been read.",
+      "introduces": [
+        "cd",
+        "cat"
+      ],
+      "shows": [
+        "cd",
+        "ls",
+        "cat"
+      ],
+      "narration": [
+        {
+          "text": "We change into it, then into the folders for the eval and the stimulus.",
+          "wait_for": "output:1",
+          "before": "typed:2"
+        },
+        {
+          "text": "Then we list one model's trials.",
+          "wait_for": "done:2",
+          "before": "typed:3"
+        },
+        {
+          "text": "Five folders, numbered from zero.",
+          "wait_for": "output:3",
+          "read": 1
+        },
+        {
+          "text": "Here's the patch from that model's trial zero.",
+          "before": "typed:4"
+        },
+        {
+          "text": "Its entry ends with a pull request number that nobody gave it.",
+          "wait_for": "output:4",
+          "outcome": true,
+          "read": 7
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-it",
+      "renderer": "html",
+      "visual": "scenes/s12.html",
+      "on_screen": "Two dark code boxes side by side, labelled claude-haiku-4.5 and gpt-5.6-terra. Each lists the entry line that model added in each of its five trials, taken from the ten saved patches, with the trial number 0 to 4 on the left. '(#42)' lights at the end of all five entries on the right; then the left box, where no entry has a number.",
+      "introduces": [],
+      "narration": [
+        "Reading the other nine the same way gives us ten entries, five from each model.",
+        {
+          "text": "Here's the line each trial added.",
+          "read": 3
+        },
+        {
+          "text": "Terra ended every one of its five entries with a made-up number.",
+          "outcome": true
+        },
+        {
+          "text": "Haiku didn't add a number in any of its five.",
+          "outcome": true,
+          "read": 2
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-it",
+      "renderer": "html",
+      "visual": "scenes/s13.html",
+      "on_screen": "The tally table from before, now filled from our run: claude-haiku-4.5 → 5, 0, 0; gpt-5.6-terra → 0, 5, 0. Each row's count lights as that model is named; then the 'No entry' column.",
+      "introduces": [],
+      "narration": [
+        {
+          "text": "That fills in the tally: five with no number for haiku, five made up for terra, and nothing in the last column.",
+          "outcome": true,
+          "read": 3
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-it",
+      "renderer": "html",
+      "visual": "scenes/s14.html",
+      "on_screen": "Dark code box labelled 'results.jsonl · the output of each gpt-5.6-terra trial': the five final replies from our run, one per line, trial number on the left. Right, level with the first: 'the agent's final reply'. '#42' lights in each reply.",
+      "introduces": [],
+      "shows": [
+        "results.jsonl"
+      ],
+      "narration": [
+        "The final replies in results dot jsonl tell the same story.",
+        {
+          "text": "In our run no patch was empty, so every reply reports an edit.",
+          "outcome": true
+        },
+        {
+          "text": "And terra's replies name the made-up number outright.",
+          "outcome": true,
+          "read": 3
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-tally-says",
+      "chapter": "What the tally says",
+      "renderer": "html",
+      "visual": "scenes/s15.html",
+      "on_screen": "Headline 'Counts replace an impression'. Two blocks side by side, one per model, each with a large count and a row of five boxes showing which trials made up a number: 'claude-haiku-4.5 · 0 of 5', 'gpt-5.6-terra · 5 of 5'. Under them: 'a made-up pull request number, with the first-draft skill'. Each block fills as its count is said.",
+      "introduces": [],
+      "narration": [
+        "So what does the tally say?",
+        "We now have counts in place of an impression.",
+        {
+          "text": "On haiku, the skill led to a made-up pull request number in none of its five trials.",
+          "outcome": true
+        },
+        {
+          "text": "On terra, it did in five of five.",
+          "outcome": true
+        },
+        "That's how the skill behaves on each model, as far as five trials can show, and it's worth fixing in the skill.",
+        "Counts like these are also what we'll compare against, once the skill has been edited."
+      ]
+    },
+    {
+      "id": "s16",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-tally-says",
+      "renderer": "html",
+      "visual": "scenes/s16.html",
+      "on_screen": "Left: the grader from the eval file in a dark box, with '\"notes add\"' lit. Right: three blocks, one per tally column, each with what this grader says about it: 'Entry, no number · passes', 'Entry, made-up number · passes', 'No entry · fails'. Each fills green or red as it is spoken; nothing is marked before then.",
+      "introduces": [],
+      "narration": [
+        {
+          "text": "Every trial that made up a number passed.",
+          "outcome": true
+        },
+        "This grader looks only for the words notes add, so it passes an entry whether or not it has a number.",
+        "The careful answer would be to change nothing, and ask which pull request to cite.",
+        "That's the one kind of answer this grader would mark as a failure.",
+        "Later in the course, one of our trials does exactly that."
+      ]
+    },
+    {
+      "id": "s17",
+      "role": "recap",
+      "stage": "what-the-tally-says",
+      "renderer": "html",
+      "visual": "scenes/s17.html",
+      "on_screen": "The four rows of five boxes from earlier, with their words hidden. After the question and a pause, each word appears beside its row and the row lights as it is said: PASS, FLAKY, FAIL, ERROR.",
+      "introduces": [],
+      "narration": [
+        "Before you go on: what are the four words Vally uses to sum up a stimulus's trials, and what does each one mean?",
+        {
+          "text": "Pass: every trial passed.",
+          "pause": 2.5
+        },
+        "Flaky: some passed, and some failed.",
+        "Fail: none passed.",
+        "Last, error: at least one trial didn't finish, so there's no verdict."
+      ]
+    },
+    {
+      "id": "s18",
+      "role": "next",
+      "stage": "what-the-tally-says",
+      "renderer": "slide",
+      "visual": "scenes/s18.html",
+      "on_screen": "'Next: Read the runs before writing graders' in the display serif. Below, the hand-off question: 'What else goes wrong when the requests get messier?' A note: 'Exercises are on the lesson page · Source: Anthropic, Demystifying evals for AI agents (2026)'.",
+      "introduces": [],
+      "narration": [
+        "You can now put a count on a problem, for each model.",
+        "But that was one problem, on one request, found by reading ten patches.",
+        "What else goes wrong when the requests get messier?",
+        "That's the next lesson.",
+        "The exercises on the lesson page are worth doing first."
+      ]
+    }
+  ]
+}

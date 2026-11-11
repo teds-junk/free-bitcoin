@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A skill costs something</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:260px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Does the skill beat no skill?</div>
+  <h2 class="scene-title">A skill costs something</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="read" data-rep="block" data-role="structure">
+      <div class="title words">More text to read</div><div class="label">on every request</div>
+    </div>
+    <div class="semantic-block" data-concept="upkeep" data-rep="block" data-role="structure">
+      <div class="title words">Upkeep</div><div class="label">it has to be maintained</div>
+    </div>
+    <div class="semantic-block" data-concept="wrong" data-rep="block" data-role="attention">
+      <div class="title words">Mistakes</div><div class="label">a skill can be wrong</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "read",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "upkeep",
+  "at": "2~maintained",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "wrong",
+  "at": "2~wrong",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

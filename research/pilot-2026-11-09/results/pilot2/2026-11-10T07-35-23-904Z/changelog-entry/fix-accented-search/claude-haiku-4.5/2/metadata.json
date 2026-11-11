@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml",
+  "variant": "main",
+  "stimulusName": "fix-accented-search",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml::main::claude-haiku-4.5::fix-accented-search::trial-2",
+  "executorName": "copilot-sdk",
+  "model": "claude-haiku-4.5",
+  "trialIndex": 2,
+  "startedAt": "2026-11-10T07:35:43.542Z",
+  "status": "success",
+  "trajectoryId": "30f5723d-1f22-47b3-b50d-789439bb67c3",
+  "executorSessionId": "ac2b79fd-c7ff-455a-adef-3863bf51849d",
+  "completedAt": "2026-11-10T07:35:53.111Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/pilot2/2026-11-10T07-35-23-904Z/changelog-entry/fix-accented-search/claude-haiku-4.5/2/events.jsonl"
+}

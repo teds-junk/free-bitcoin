@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Retries, counted</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:300px;justify-content:center}.terms .title{font-size:84px;line-height:1.1}.terms .label{font-size:32px}.lead{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the agents did</div>
+  <h2 class="scene-title">Retries, counted</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="most" data-rep="block" data-role="structure">
+      <div class="title">4 runs</div><div class="label">of the failing command, the most in one trial · <span class="mono">claude-haiku-4.5</span> · with other calls in between</div>
+    </div>
+    <div class="semantic-block" data-concept="ours" data-rep="block" data-role="success">
+      <div class="title">6 of 6</div><div class="label">trials that <span class="mono">stops-retrying</span> passed</div>
+    </div>
+  </div>
+  <p class="lead"><span class="mono">stops-retrying</span> allows two retries in a row, at most · our run · 2026-11-11T17-49-59-016Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "most",
+  "at": "0~four times",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ours",
+  "at": "1",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

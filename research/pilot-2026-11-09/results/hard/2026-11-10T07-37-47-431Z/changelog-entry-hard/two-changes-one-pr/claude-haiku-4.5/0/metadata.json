@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "two-changes-one-pr",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::claude-haiku-4.5::two-changes-one-pr::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "claude-haiku-4.5",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:38:06.441Z",
+  "status": "success",
+  "trajectoryId": "f41cd2aa-a754-4987-80bb-389e4c25a331",
+  "executorSessionId": "f8a45f28-f1c1-418d-8773-f9a97e3d6a66",
+  "completedAt": "2026-11-10T07:38:15.048Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/two-changes-one-pr/claude-haiku-4.5/0/events.jsonl"
+}

@@ -1,0 +1,28 @@
+Lint and unset-key checks of the provider block shown on the page:
+$ vally lint -e byok.eval.yaml
+✔ byok.eval.yaml is valid
+$ vally lint -e key.eval.yaml   (apiKey: abc123 in place of apiKeyEnv)
+Eval: key.eval.yaml
+✘ error [executor-config-invalid] defaults.executor.config.provider has unknown field 'apiKey' (allowed: type, baseUrl, wireApi, transport, apiKeyEnv, bearerTokenEnv, azure, headers, modelId, wireModel, maxPromptTokens, maxOutputTokens)
+  at defaults.executor.config
+
+  1 error(s)
+$ vally eval -e byok.eval.yaml --output-dir results   (MY_PROVIDER_KEY unset)
+Loaded 1 stimulus from byok
+
+byok
+
+  ERROR  hello
+   defaults.executor.config.provider.apiKeyEnv references environment variable "MY_PROVIDER_KEY",
+   but it is not set. Export MY_PROVIDER_KEY with your provider credential before running.
+
+────────────────────────────────────────────────────────
+
+Summary
+  ERROR  byok
+    ERROR hello   execution error
+    defaults.executor.config.provider.apiKeyEnv references environment variable "MY_PROVIDER_KEY",
+    but it is not set. Export MY_PROVIDER_KEY with your provider credential before running.
+
+Saved  <probe>/results/2026-11-10T18-00-16-679Z/
+Run ID  932b8664-d058-4a5f-b128-7ec6c6788cfe

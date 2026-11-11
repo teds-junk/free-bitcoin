@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Do the ranges overlap?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.ranges{display:grid;grid-template-columns:max-content 1fr max-content;gap:14px 28px;align-items:center;width:100%}.ranges .rl{font:500 34px/1.2 var(--font-code);color:var(--ink);white-space:nowrap}.ranges .rt{font:400 32px/1.2 var(--font-body);color:var(--ink-soft);white-space:nowrap}.ranges .track{position:relative;height:46px;background:var(--paper-muted);border-radius:var(--radius)}.ranges .fill{position:absolute;top:0;bottom:0;border-radius:var(--radius)}.ranges .fill.before{background:var(--focus-blue)}.ranges .fill.after{background:var(--focus-yellow)}.ranges .at{position:absolute;top:7px;bottom:7px;width:6px;margin-left:-3px;border-radius:3px;background:var(--ink)}.ranges .axis{grid-column:2;display:flex;justify-content:space-between;font:400 26px/1 var(--font-body);color:var(--ink-muted)}.ranges .group{grid-column:1 / -1;font:600 28px/1.2 var(--font-body);color:var(--ink-soft);margin-top:10px}.ranges{gap:16px 32px}.ranges .track{height:54px}.ranges .rl{font-size:38px}.ranges .rt{font-size:36px}.ranges .group{font-size:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What a small sample can show</div>
+  <h2 class="scene-title">Do the ranges overlap?</h2>
+  <div class="stage">
+<div class="ranges">
+      <div class="group">10 trials each</div>
+      <div class="rl"><span data-concept="a1" data-rep="cell">7 of 10</span></div>
+      <div class="track"><div class="fill before" style="left:39.7%;width:49.5%"></div><div class="at" style="left:70.0%"></div></div>
+      <div class="rt">40% to 89%</div>
+      <div class="rl"><span data-concept="a2" data-rep="cell">9 of 10</span></div>
+      <div class="track"><div class="fill after" style="left:59.6%;width:38.6%"></div><div class="at" style="left:90.0%"></div></div>
+      <div class="rt">60% to 98%</div>
+      <div class="group">100 trials each</div>
+      <div class="rl"><span data-concept="b1" data-rep="cell">70 of 100</span></div>
+      <div class="track"><div class="fill before" style="left:60.4%;width:17.7%"></div><div class="at" style="left:70.0%"></div></div>
+      <div class="rt">60% to 78%</div>
+      <div class="rl"><span data-concept="b2" data-rep="cell">90 of 100</span></div>
+      <div class="track"><div class="fill after" style="left:82.6%;width:11.9%"></div><div class="at" style="left:90.0%"></div></div>
+      <div class="rt">83% to 94%</div>
+      <div class="axis"><span>0%</span><span>50%</span><span>100%</span></div>
+    </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "a1",
+  "at": "1~forty",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "a2",
+  "at": "1~sixty",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "b1",
+  "at": "4~a hundred trials",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "b2",
+  "at": "4~don't touch",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

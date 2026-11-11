@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results folder map — Vally &amp; Agent Evals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Reference · Vally &amp; Agent Evals</div>
+    <h1>Results folder map</h1>
+    <div class="lesson-meta">Verified 2026-11-10 · Vally 0.21.0</div>
+  </div>
+
+  <p>Where each fact about a run is saved, and the quickest way to read it.</p>
+
+  <h2 id="one-run">One run of vally eval</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results/lesson-11/2026-11-10T08-53-38-600Z/</div>
+<pre><code>eval-results.md<span class="mark">1</span>
+results.jsonl<span class="mark">2</span>
+otel-spans.jsonl<span class="mark">3</span>
+diffs/<span class="mark">4</span>
+conversation/<span class="mark">5</span>
+  three-requests/
+    claude-haiku-4.5/
+      0/<span class="mark">6</span>
+        workspace.patch<span class="mark">7</span>
+        events.jsonl<span class="mark">8</span>
+        metadata.json</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The report: one table per model, one row per stimulus, with Skills, Tool Calls and Tokens columns.</li>
+      <li>One record per trial, then a summary record. Written for programs; the record is mapped below.</li>
+      <li>Vally's own traces: a <code>vally.trial</code> span for each trial and a <code>vally.attempt</code> span inside it. <a href="../lessons/0026-let-vally-run-the-app.html#trace-context">Lesson 26</a></li>
+      <li>Present when the eval file has a diff grader. One diff per trial, and one per turn of a conversation, named <code>…trial-1__turn-2.diff</code>. This is what lets <code>vally grade</code> re-run diff graders.</li>
+      <li>Eval name, then stimulus, then model, then trial number.</li>
+      <li>Folders number trials from 0. The terminal numbers them from 1.</li>
+      <li>What the agent changed in this trial, as a patch.</li>
+      <li>The agent's raw session log, one event per line. A trial run by a plugin executor can also have an <code>executor-artifacts/</code> folder here, holding what the executor kept, such as the app's own traces. <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a>, <a href="../lessons/0026-let-vally-run-the-app.html#trace-context">Lesson 26</a></li>
+    </ol>
+  </div>
+
+  <h2 id="trial-folder">What a trial folder says</h2>
+  <p>Which files exist tells you how far a trial got. <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>The trial folder holds</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td><code>metadata.json</code> only</td><td>No agent session started. The failure came during setup</td></tr>
+      <tr><td><code>events.jsonl</code>, no <code>workspace.patch</code></td><td>The agent started and was stopped before it finished</td></tr>
+      <tr><td><code>events.jsonl</code> and <code>workspace.patch</code></td><td>The agent finished. Anything wrong is in the grading or the work</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="experiment-folder">One run of vally experiment</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results/lesson-15/2026-11-10T14-55-58-278Z/</div>
+<pre><code>haiku-after<span class="mark">1</span>
+haiku-before
+otel-context.json
+otel-spans.jsonl
+plan-snapshot.json
+report.md<span class="mark">2</span>
+shard-manifest.json
+terra-after
+terra-before</code></pre>
+    </div>
+    <ol class="notes">
+      <li>One folder per variant, each the tree above with its own <code>results.jsonl</code>. <code>vally compare --baseline haiku-before --treatment haiku-after</code> takes two of these. <a href="../lessons/0019-is-it-worse-than-before.html#compare-before-and-after">Lesson 19</a></li>
+      <li>A table per variant: pass columns, and Tokens, Turns and Duration as medians. No cost total. <a href="../lessons/0010-is-the-agent-better-with-the-skill.html#experiment-file">Lesson 10</a>, <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#set-budgets">Lesson 18</a></li>
+    </ol>
+  </div>
+
+  <h2 id="trial-record">One trial record in results.jsonl</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results/lesson-16/…/haiku-low/results.jsonl (one record)</div>
+<pre><code class="language-json">{
+  "type": "trial-result",
+<span class="gap">4 fields hidden: identifiers and long file paths</span>
+  "variant": "haiku-low",<span class="mark">1</span>
+  "stimulus": "typo-fix",
+<span class="gap">a field too wide for the page hidden</span>
+  "model": "claude-haiku-5.5",
+  "trialIndex": 0,
+  "totalTrials": 3,
+  "status": "success",<span class="mark">2</span>
+  "durationMs": 7571,
+  "gradeResult": {
+    "name": "trajectory-grade",
+    "kind": "code",
+    "passed": true,<span class="mark">3</span>
+<span class="gap">the score, evidence and each grader's result hidden</span>
+  },</code></pre>
+    </div>
+    <ol class="notes">
+      <li>In an experiment, the variant this trial belongs to. <a href="../lessons/0016-what-a-passing-trial-costs.html#where-cost-is-recorded">Lesson 16</a></li>
+      <li>Whether the trial finished. Anything else is an <code>ERROR</code>, and the reason is in <code>error</code>. <code>durationMs</code> is the trial's length. <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></li>
+      <li>The verdict. Each grader's own result is in <code>gradeResult.details[]</code>. <a href="../lessons/0012-a-judge-for-what-code-cannot-check.html#write-the-judge">Lesson 12</a></li>
+    </ol>
+  </div>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results.jsonl (a gpt-5.6-terra record, inside "trajectory")</div>
+<pre><code class="language-json">  "trajectory": {
+<span class="gap">7 fields hidden: the 46 events, final reply, paths and timings</span>
+    "metrics": {
+      "tokenUsage": {
+        "inputTokens": 85162,
+        "outputTokens": 615,
+        "totalTokens": 85777,<span class="mark">1</span>
+        "cacheReadTokens": 72410,<span class="mark">2</span>
+        "cacheWriteTokens": 12731,
+        "callCount": 7,
+        "byModel": {<span class="mark">3</span>
+          "gpt-5.6-terra": {
+            "inputTokens": 85162,
+            "outputTokens": 615,
+            "callCount": 7
+          }
+        },
+        "cost": {<span class="mark">4</span>
+          "provider": "github-copilot",
+          "unit": "nano-aiu",
+          "amount": 5373150000
+        }
+      },
+<span class="gap">9 fields hidden: counts of tool calls, turns, errors and time</span>
+    }
+  }</code></pre>
+    </div>
+    <ol class="notes">
+      <li>Input and output together: the report's Tokens column, and what <code>token-budget</code> reads. <a href="../lessons/0002-what-the-tick-checked.html#what-a-trial-used">Lesson 2</a></li>
+      <li>Input read from cache. Our local Ollama model reported 0, so every turn paid for the whole conversation again. <a href="../lessons/0017-a-model-from-your-own-provider.html#byok">Lesson 17</a></li>
+      <li>Tokens per model: what you multiply by your own provider's prices. Judge calls are not here.</li>
+      <li>Present only when every call in the trial reported Copilot as the provider. Never includes judge calls. <a href="../lessons/0016-what-a-passing-trial-costs.html#where-cost-is-recorded">Lesson 16</a></li>
+    </ol>
+  </div>
+  <p>The hidden metrics include <code>turnCount</code>, <code>toolCallCount</code>, <code>wallTimeMs</code> and <code>simulatedToolCallCount</code>, the calls a simulation replaced. Beside <code>metrics</code>, <code>endReason</code> reads <code>completed</code>, or <code>agent_timeout</code> when <code>max_agent_duration</code> stopped the agent. <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#budget-graders">Lesson 18</a>, <a href="../lessons/0024-when-a-tool-fails.html#simulation">Lesson 24</a></p>
+
+  <h2 id="cost">Turning cost into money</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Unit</th><th>Worth</th><th>Our terra trial above</th></tr></thead>
+    <tbody>
+      <tr><td>nano-AIU</td><td>A billionth of an AIU</td><td>5,373,150,000</td></tr>
+      <tr><td>AIU</td><td>One GitHub AI Credit</td><td>5.37</td></tr>
+      <tr><td>Dollars</td><td>$0.01 per AIU, checked 2026-11-10</td><td>About 5 cents</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Copilot counts usage against your plan's monthly allowance first. <a href="../lessons/0002-what-the-tick-checked.html#what-a-trial-used">Lesson 2</a>. The course's cost calculator adds up cost per variant and divides by passing trials. <a href="../lessons/0016-what-a-passing-trial-costs.html#price-the-variants">Lesson 16</a></p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>No <code>cost</code> in the record when</th><th>Where to look instead</th><th>Taught in</th></tr></thead>
+    <tbody>
+      <tr><td>The model came through your own provider</td><td><code>byModel</code> tokens, times your price per token</td><td><a href="../lessons/0017-a-model-from-your-own-provider.html#byok">Lesson 17</a></td></tr>
+      <tr><td>The trial timed out, or ended in <code>ERROR</code> after the session started</td><td><code>totalNanoAiu</code> in the last <code>session.usage_checkpoint</code> line of <code>events.jsonl</code></td><td><a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></td></tr>
+      <tr><td>The trajectory was an ATIF file graded with <code>vally grade</code></td><td>Each step's <code>cost_usd</code> in the ATIF file</td><td><a href="../lessons/0025-grade-a-run-vally-did-not-start.html#atif">Lesson 25</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="where-to-look">To find this, look here</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>You want</th><th>Look in</th><th>Taught in</th></tr></thead>
+    <tbody>
+      <tr><td>Which stimuli passed, per model</td><td>The summary printed at the end, or <code>eval-results.md</code></td><td><a href="../lessons/0002-what-the-tick-checked.html#results-folder">Lesson 2</a></td></tr>
+      <tr><td>Why a grader failed</td><td>The block printed above the summary: grader name, then evidence</td><td><a href="../lessons/0005-turn-a-failure-into-a-grader.html#measure-edit-measure">Lesson 5</a></td></tr>
+      <tr><td>What the agent changed</td><td><code>workspace.patch</code> in the trial's folder</td><td><a href="../lessons/0001-it-works-for-me.html#reading-a-patch">Lesson 1</a></td></tr>
+      <tr><td>What one turn of a conversation changed</td><td><code>diffs/…trial-N__turn-N.diff</code></td><td><a href="../lessons/0011-follow-up-requests.html#turns-and-scoped-graders">Lesson 11</a></td></tr>
+      <tr><td>What the agent said at the end</td><td><code>results.jsonl</code>: search for <code>"output"</code>. For failing trials, <code>vally eval --verbose</code> prints it</td><td><a href="../lessons/0003-the-same-request-five-times.html#count-it">Lesson 3</a>, <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></td></tr>
+      <tr><td>Which skills loaded</td><td>The Skills column of <code>eval-results.md</code></td><td><a href="../lessons/0009-does-the-skill-load.html#how-loading-is-recorded">Lesson 9</a></td></tr>
+      <tr><td>Which tools the agent called</td><td>The Tool Calls column of <code>eval-results.md</code>; each call is a <code>tool_call</code> event in <code>results.jsonl</code>, with <code>data.toolName</code> and <code>data.arguments</code></td><td><a href="../lessons/0023-check-what-the-agent-did.html#tool-calls-grader">Lesson 23</a></td></tr>
+      <tr><td>A judge's reason</td><td>The terminal output of <code>vally grade --verbose</code>, or of a run</td><td><a href="../lessons/0012-a-judge-for-what-code-cannot-check.html#write-the-judge">Lesson 12</a></td></tr>
+      <tr><td>Pass rate over several trials</td><td>Pass Rate, pass@k and pass^k in <code>eval-results.md</code></td><td><a href="../lessons/0015-is-the-change-real.html#pass-columns">Lesson 15</a></td></tr>
+      <tr><td>What a trial cost</td><td><code>tokenUsage.cost.amount</code>, in nano-AIU</td><td><a href="../lessons/0016-what-a-passing-trial-costs.html#where-cost-is-recorded">Lesson 16</a></td></tr>
+      <tr><td>What a typical trial uses</td><td><code>report.md</code>: Tokens, Turns and Duration (median)</td><td><a href="../lessons/0018-put-a-ceiling-on-a-trial.html#set-budgets">Lesson 18</a></td></tr>
+      <tr><td>Why a trial did not finish</td><td>The <code>ERROR</code> line, the record's <code>error</code>, then which files the trial folder holds</td><td><a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></td></tr>
+      <tr><td>Whether a grader said no, or never reached a verdict</td><td>Its entry in <code>gradeResult.details</code>: <code>"status": "error"</code> means no verdict; a grader that said no has no <code>status</code>. Both score 0</td><td><a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></td></tr>
+      <tr><td>Each pair's verdict from a side-by-side judge</td><td>The file named by <code>vally compare --output</code>: <code>winner</code>, <code>magnitude</code>, <code>score</code>, <code>baselinePassed</code>, <code>treatmentPassed</code></td><td><a href="../lessons/0019-is-it-worse-than-before.html#what-compare-reports">Lesson 19</a></td></tr>
+      <tr><td>The app's spans under Vally's trial</td><td><code>executor-artifacts/</code> in the trial folder, and the same trace ID in <code>otel-spans.jsonl</code></td><td><a href="../lessons/0026-let-vally-run-the-app.html#trace-context">Lesson 26</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="worth-knowing">Worth knowing</h2>
+  <ul>
+    <li>A trial that ended in <code>ERROR</code> has no verdict, and its stimulus shows dashes in the report's pass columns.</li>
+    <li>A failed judge call shows the stimulus as <code>ERROR</code> ("Grading error; verdict is invalid") while the trial's own <code>status</code> stays <code>success</code>. The saved trials can be judged again with <code>vally grade</code>.</li>
+    <li>A run whose <code>commands:</code> entry is not a string writes no <code>eval-results.md</code>: the same bad value breaks the report writer.</li>
+    <li>Saved results contain full paths from the machine that produced them. Share the eval files, not the results.</li>
+    <li>With <code>--skip-grade</code>, the ticks in the summary mean only that each trial finished.</li>
+  </ul>
+
+  <h2 id="optional-queries">Optional: two queries for results.jsonl</h2>
+  <p>These need the <code>jq</code> tool and are typed in a run folder. Nothing in the course depends on them.</p>
+<pre><code class="language-bash">jq .gradeResult results.jsonl</code></pre>
+  <p>Prints the grading part of each record: every grader's name, verdict and evidence. The last line is <code>null</code>, from the summary record.</p>
+<pre><code class="language-bash">jq '{model, trialIndex, reply: .trajectory.output}' \
+  results.jsonl</code></pre>
+  <p>Prints the model, trial number and final reply of each trial.</p>
+
+  <nav class="course-map" data-current="0" data-root="../"></nav>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

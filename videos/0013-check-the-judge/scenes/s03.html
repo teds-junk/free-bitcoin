@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Agreement hides the direction</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.rows{display:flex;flex-direction:column;gap:10px;width:100%}.trow{display:flex;align-items:center;gap:30px;padding:10px 18px;border-radius:10px;width:fit-content}.boxes{display:flex;gap:8px}.box{display:flex;align-items:center;justify-content:center;width:54px;height:54px;border-radius:7px;border:3px solid var(--ink-muted);font:700 32px/1 var(--font-body);color:var(--ink)}.box.tick{color:var(--green-ink)}.box.cross{color:var(--red-ink)}.trow .who{font:500 32px/1.2 var(--font-body);color:var(--ink);width:330px}.figs .semantic-block{min-height:150px;justify-content:center}.figs .title{font-size:64px}.figs .label{font-size:34px}.stage{gap:26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A judge is measured</div>
+  <h2 class="scene-title">Agreement hides the direction</h2>
+  <div class="stage">
+<div class="rows">
+    <div class="trow" data-concept="labels-row" data-rep="row"><span class="who">our labels</span><span class="boxes"><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box cross">✘</span><span class="box cross">✘</span></span></div>
+    <div class="trow" data-concept="judge-row" data-rep="row"><span class="who">a judge that always says yes</span><span class="boxes"><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span></span></div>
+  </div>
+  <div class="cols wide figs">
+    <div class="semantic-block" data-concept="agree" data-rep="block" data-role="structure">
+      <div class="title">18 of 20</div><div class="label">agree · 90%</div>
+    </div>
+    <div class="semantic-block" data-concept="caught" data-rep="block" data-role="failure">
+      <div class="title">0 of 2</div><div class="label">bad entries caught</div>
+    </div>
+  </div>
+  <p class="note">An invented example · ✔ is a yes, ✘ is a no</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "labels-row",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "judge-row",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "agree",
+  "at": "3~eighteen times",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "caught",
+  "at": "4",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "agree",
+  "at": "5~agreement",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

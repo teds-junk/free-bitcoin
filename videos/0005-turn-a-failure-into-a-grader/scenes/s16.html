@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three rules, one per failure</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Measure, edit, measure again</div>
+  <h2 class="scene-title">Three rules, one per failure</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:skill · regenerate with: node file-panel.js --file src/state/SKILL.md --label changelog-entry/SKILL.md --id skill --width 60 --rows 9 --show 13-20 --expect '14=If no pull request number' --expect 20=Security. --mark 14-15=r1 --mark 16-17=r2 --mark 18-20=r3 --into scenes/s16.html -->
+<div class="file-panel" id="skill" data-file="changelog-entry/SKILL.md" data-lines="20" data-rows="9" style="--rows:9;--cols:60;--ln:2">
+<div class="code-file">changelog-entry/SKILL.md<span class="file-meta">20 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="markdown"><code>
+<span class="file-row file-skip" data-hidden="1-12"><span class="ln">⋮</span><span class="elide">12 lines hidden · 1–12</span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span>- Leave released versions alone.</span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span><span data-concept="r1" data-rep="code"><span>- If no pull request number is given, leave the reference</span></span></span>
+<span class="file-row" data-line="15"><span class="ln">15</span><span>  </span><span data-concept="r1" data-rep="code"><span>off. Never make one up, and do not stop to ask.</span></span></span>
+<span class="file-row" data-line="16"><span class="ln">16</span><span data-concept="r2" data-rep="code"><span>- If a change makes no difference to people who use the</span></span></span>
+<span class="file-row" data-line="17"><span class="ln">17</span><span>  </span><span data-concept="r2" data-rep="code"><span>tool, such as a refactor, add nothing and say so.</span></span></span>
+<span class="file-row" data-line="18"><span class="ln">18</span><span data-concept="r3" data-rep="code"><span>- The categories, in this order: Added, Changed, Deprecated,</span></span></span>
+<span class="file-row" data-line="19"><span class="ln">19</span><span>  </span><span data-concept="r3" data-rep="code"><span>Removed, Fixed, Security. A security fix goes under</span></span></span>
+<span class="file-row" data-line="20"><span class="ln">20</span><span>  </span><span data-concept="r3" data-rep="code"><span>Security.</span></span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="20" style="height:140px" aria-hidden="true"><b class="file-map-view" style="top:84px;height:56px"></b><svg width="120" height="140" viewBox="0 0 120 140" shape-rendering="crispEdges"><rect x="0" y="0" width="5.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="0" y="7" width="7.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="8" y="7" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12" y="7" width="29.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="14" width="21.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="22" y="14" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="26" y="14" width="7.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="36" y="14" width="3.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="42" y="14" width="9.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="54" y="14" width="3.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="60" y="14" width="5.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="68" y="14" width="13.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="84" y="14" width="19.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="21" width="5.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="0" y="35" width="1.5" height="4" fill="#4EA5E6" opacity=".38"/><rect x="4" y="35" width="17.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="24" y="35" width="9.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="0" y="49" width="5.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="8" y="49" width="7.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="18" y="49" width="7.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="28" y="49" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="32" y="49" width="11.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="46" y="49" width="9.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="58" y="49" width="3.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="64" y="49" width="3.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="70" y="49" width="15.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="88" y="49" width="3.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="94" y="49" width="25.4" height="4" fill="#B3C0BF" opacity=".38"/><rect x="0" y="63" width="1.5" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="4" y="63" width="5.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="12" y="63" width="5.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="20" y="63" width="9.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="32" y="63" width="9.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="44" y="63" width="21.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="68" y="63" width="3.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="74" y="63" width="5.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="82" y="63" width="9.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="94" y="63" width="17.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="0" y="70" width="1.5" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="4" y="70" width="5.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="12" y="70" width="7.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="22" y="70" width="5.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="30" y="70" width="13.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="46" y="70" width="13.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="62" y="70" width="5.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="70" y="70" width="11.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="84" y="70" width="5.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="92" y="70" width="5.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="100" y="70" width="5.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="108" y="70" width="9.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="0" y="77" width="1.5" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="4" y="77" width="17.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="24" y="77" width="5.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="32" y="77" width="7.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="42" y="77" width="15.4" height="4" fill="var(--code-fg)" opacity=".38"/><rect x="0" y="84" width="1.5" height="4" fill="var(--code-fg)"/><rect x="4" y="84" width="9.4" height="4" fill="var(--code-fg)"/><rect x="16" y="84" width="15.4" height="4" fill="var(--code-fg)"/><rect x="34" y="84" width="15.4" height="4" fill="var(--code-fg)"/><rect x="52" y="84" width="11.4" height="4" fill="var(--code-fg)"/><rect x="0" y="91" width="1.5" height="4" fill="var(--code-fg)"/><rect x="4" y="91" width="3.4" height="4" fill="var(--code-fg)"/><rect x="10" y="91" width="3.4" height="4" fill="var(--code-fg)"/><rect x="16" y="91" width="7.4" height="4" fill="var(--code-fg)"/><rect x="26" y="91" width="13.4" height="4" fill="var(--code-fg)"/><rect x="42" y="91" width="11.4" height="4" fill="var(--code-fg)"/><rect x="56" y="91" width="3.4" height="4" fill="var(--code-fg)"/><rect x="62" y="91" width="11.4" height="4" fill="var(--code-fg)"/><rect x="76" y="91" width="9.4" height="4" fill="var(--code-fg)"/><rect x="88" y="91" width="5.4" height="4" fill="var(--code-fg)"/><rect x="96" y="91" width="17.4" height="4" fill="var(--code-fg)"/><rect x="4" y="98" width="7.4" height="4" fill="var(--code-fg)"/><rect x="14" y="98" width="9.4" height="4" fill="var(--code-fg)"/><rect x="26" y="98" width="7.4" height="4" fill="var(--code-fg)"/><rect x="36" y="98" width="5.4" height="4" fill="var(--code-fg)"/><rect x="44" y="98" width="5.4" height="4" fill="var(--code-fg)"/><rect x="52" y="98" width="5.4" height="4" fill="var(--code-fg)"/><rect x="60" y="98" width="3.4" height="4" fill="var(--code-fg)"/><rect x="66" y="98" width="5.4" height="4" fill="var(--code-fg)"/><rect x="74" y="98" width="7.4" height="4" fill="var(--code-fg)"/><rect x="84" y="98" width="3.4" height="4" fill="var(--code-fg)"/><rect x="90" y="98" width="7.4" height="4" fill="var(--code-fg)"/><rect x="0" y="105" width="1.5" height="4" fill="var(--code-fg)"/><rect x="4" y="105" width="3.4" height="4" fill="var(--code-fg)"/><rect x="10" y="105" width="1.5" height="4" fill="var(--code-fg)"/><rect x="14" y="105" width="11.4" height="4" fill="var(--code-fg)"/><rect x="28" y="105" width="9.4" height="4" fill="var(--code-fg)"/><rect x="40" y="105" width="3.4" height="4" fill="var(--code-fg)"/><rect x="46" y="105" width="19.4" height="4" fill="var(--code-fg)"/><rect x="68" y="105" width="3.4" height="4" fill="var(--code-fg)"/><rect x="74" y="105" width="11.4" height="4" fill="var(--code-fg)"/><rect x="88" y="105" width="5.4" height="4" fill="var(--code-fg)"/><rect x="96" y="105" width="5.4" height="4" fill="var(--code-fg)"/><rect x="104" y="105" width="5.4" height="4" fill="var(--code-fg)"/><rect x="4" y="112" width="9.4" height="4" fill="var(--code-fg)"/><rect x="16" y="112" width="7.4" height="4" fill="var(--code-fg)"/><rect x="26" y="112" width="3.4" height="4" fill="var(--code-fg)"/><rect x="32" y="112" width="1.5" height="4" fill="var(--code-fg)"/><rect x="36" y="112" width="17.4" height="4" fill="var(--code-fg)"/><rect x="56" y="112" width="5.4" height="4" fill="var(--code-fg)"/><rect x="64" y="112" width="13.4" height="4" fill="var(--code-fg)"/><rect x="80" y="112" width="5.4" height="4" fill="var(--code-fg)"/><rect x="88" y="112" width="5.4" height="4" fill="var(--code-fg)"/><rect x="96" y="112" width="5.4" height="4" fill="var(--code-fg)"/><rect x="0" y="119" width="1.5" height="4" fill="var(--code-fg)"/><rect x="4" y="119" width="5.4" height="4" fill="var(--code-fg)"/><rect x="12" y="119" width="21.4" height="4" fill="var(--code-fg)"/><rect x="36" y="119" width="3.4" height="4" fill="var(--code-fg)"/><rect x="42" y="119" width="7.4" height="4" fill="var(--code-fg)"/><rect x="52" y="119" width="11.4" height="4" fill="var(--code-fg)"/><rect x="66" y="119" width="11.4" height="4" fill="var(--code-fg)"/><rect x="80" y="119" width="15.4" height="4" fill="var(--code-fg)"/><rect x="98" y="119" width="21.4" height="4" fill="var(--code-fg)"/><rect x="4" y="126" width="15.4" height="4" fill="var(--code-fg)"/><rect x="22" y="126" width="11.4" height="4" fill="var(--code-fg)"/><rect x="36" y="126" width="17.4" height="4" fill="var(--code-fg)"/><rect x="56" y="126" width="1.5" height="4" fill="var(--code-fg)"/><rect x="60" y="126" width="15.4" height="4" fill="var(--code-fg)"/><rect x="78" y="126" width="5.4" height="4" fill="var(--code-fg)"/><rect x="86" y="126" width="7.4" height="4" fill="var(--code-fg)"/><rect x="96" y="126" width="9.4" height="4" fill="var(--code-fg)"/><rect x="4" y="133" width="17.4" height="4" fill="var(--code-fg)"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:skill -->
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "r1",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r2",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r3",
+  "at": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

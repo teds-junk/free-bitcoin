@@ -1,0 +1,5 @@
+0:00 Decide what good looks like
+1:30 Read a simulation block
+5:27 Record one from a real run
+6:18 Make the tool fail
+8:39 What the agents did

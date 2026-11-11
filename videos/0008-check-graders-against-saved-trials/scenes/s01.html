@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Check graders against saved trials</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:100px}.results{display:flex;flex-direction:column;gap:36px;width:100%}.results .card > .code.dark{font-size:34px;padding:26px 34px}.results .card .who{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">Check graders against saved trials</h1>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="card-a" data-rep="card">
+        <div class="who">the oracle, on an untouched file</div>
+        <pre class="code dark" data-lang="text"><code><span>⊘ [no-made-up-number] </span><span data-concept="na" data-rep="code"><span>N/A</span></span><span> — pass allowed on the empty baseline</span>
+<span>    — Pattern /(?m)^\+.*\(#\d+\)/ not found in workspace diff</span></code></pre>
+      </div>
+      <div class="card" data-concept="card-b" data-rep="card">
+        <div class="who">a saved trial · the entry it added</div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix typo in </span><span style="color:#3CC0B3">`notes add`</span><span> help text </span><span data-concept="pr" data-rep="code"><span>(#42)</span></span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "na",
+  "at": "0~vouch",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "pr",
+  "at": "2~make up",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

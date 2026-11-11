@@ -1,0 +1,20 @@
+# Generated starting point — review before use.
+simulation:
+  tool_overrides:
+    shell:
+      patterns:
+        - pattern: ^\{"command":"find \. -name \\"release\\" -o -name \\"merged\.txt\\" 2>/dev/null \| head -20","description":"Find release/merged\.txt file"\}$
+          output: |-
+            ./release
+            ./release/merged.txt
+            <shellId: 0 completed with exit code 0>
+        - pattern: ^\{"command":"cd /tmp/trial && cat changelog-entry/CHANGELOG\.md","description":"Check changelog entry tool's expected output format"\}$
+          output: |-
+            cat: changelog-entry/CHANGELOG.md: No such file or directory
+            <shellId: 1 completed with exit code 1>
+Warning: Ignored successful non-shell tool "view" because it does not match a configured MCP server. (31 occurrences)
+Warning: Ignored successful non-shell tool "edit" because it does not match a configured MCP server. (5 occurrences)
+Warning: Omitted structured content recorded for non-MCP tool "bash". (2 occurrences)
+Warning: Ignored successful non-shell tool "skill" because it does not match a configured MCP server. (8 occurrences)
+Warning: Normalized scalar arguments to an empty object for tool "apply_patch" to match simulation runtime behavior. (5 occurrences)
+Warning: Ignored successful non-shell tool "apply_patch" because it does not match a configured MCP server. (5 occurrences)

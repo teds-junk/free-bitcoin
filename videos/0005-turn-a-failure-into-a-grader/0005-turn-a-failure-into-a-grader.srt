@@ -1,0 +1,656 @@
+1
+00:00:00,400 --> 00:00:04,780
+By now, we have a list of ways this skill
+goes wrong, and we found every one by
+
+2
+00:00:04,780 --> 00:00:06,000
+going through patches.
+
+3
+00:00:06,500 --> 00:00:10,600
+We could fix the skill now: add a rule,
+try it, and look at the result.
+
+4
+00:00:11,100 --> 00:00:15,388
+But looking at the result means going
+through patches again, on both models,
+
+5
+00:00:15,388 --> 00:00:17,475
+several times each, after every edit.
+
+6
+00:00:17,975 --> 00:00:20,375
+Hardly anybody keeps that up.
+
+7
+00:00:20,875 --> 00:00:25,263
+Here, you'll hand that work to code: one
+small grader for each failure, so that one
+
+8
+00:00:25,263 --> 00:00:28,700
+command counts how often it happens,
+before an edit and after it.
+
+9
+00:00:29,900 --> 00:00:33,675
+Let's start with what makes a grader worth
+having: three habits.
+
+10
+00:00:34,175 --> 00:00:36,975
+First, we grade the result, not the route.
+
+11
+00:00:37,475 --> 00:00:42,200
+An agent can reach a correct changelog by
+many routes: opening the file or searching
+
+12
+00:00:42,200 --> 00:00:43,325
+it, one edit or two.
+
+13
+00:00:43,825 --> 00:00:48,575
+Any grader that insists on one route fails
+every good route we didn't think of.
+
+14
+00:00:49,075 --> 00:00:51,800
+So we look at what the agent left behind.
+
+15
+00:00:53,000 --> 00:00:57,185
+Second, we write one grader for each
+failure mode, and name it after the
+
+16
+00:00:57,185 --> 00:00:57,650
+failure.
+
+17
+00:00:58,150 --> 00:01:02,430
+If a grader called no made-up number
+fails, you know what went wrong without
+
+18
+00:01:02,430 --> 00:01:03,275
+opening a file.
+
+19
+00:01:03,775 --> 00:01:08,550
+One grader that checks five things at once
+only tells you that something went wrong.
+
+20
+00:01:09,767 --> 00:01:12,642
+Third, a grader has to be able to fail.
+
+21
+00:01:13,142 --> 00:01:17,750
+So far we've had one grader, and it passed
+every trial, including the trials that
+
+22
+00:01:17,750 --> 00:01:18,717
+made up a number.
+
+23
+00:01:19,217 --> 00:01:22,667
+A grader that has never failed might be
+checking nothing.
+
+24
+00:01:23,167 --> 00:01:27,608
+So the first time we run a new grader, we
+run it where we already know the failure
+
+25
+00:01:27,608 --> 00:01:28,042
+happens.
+
+26
+00:01:28,542 --> 00:01:31,292
+If it passes there, the grader is wrong.
+
+27
+00:01:32,500 --> 00:01:37,050
+One more habit goes with those three: code
+does everything that code can decide.
+
+28
+00:01:37,550 --> 00:01:42,075
+A pattern costs nothing to run, and it
+gives the same answer every time.
+
+29
+00:01:42,575 --> 00:01:46,921
+Some qualities are beyond a pattern, such
+as whether an entry is written for the
+
+30
+00:01:46,921 --> 00:01:48,225
+people who use the tool.
+
+31
+00:01:48,725 --> 00:01:50,875
+Those wait until later.
+
+32
+00:01:52,100 --> 00:01:55,675
+Those are the habits; here's what Vally
+gives us to follow them.
+
+33
+00:01:56,175 --> 00:02:00,144
+Three of the failure modes on our list are
+about what the agent added to the
+
+34
+00:02:00,144 --> 00:02:02,650
+changelog, or whether adding anything was
+right.
+
+35
+00:02:03,150 --> 00:02:07,850
+The patch already holds exactly that, and
+Vally has three graders that look at it.
+
+36
+00:02:08,350 --> 00:02:12,475
+Vally calls the patch the diff, which is
+another word for the same thing.
+
+37
+00:02:12,975 --> 00:02:17,425
+Diff contains passes when the patch
+contains the text or pattern we give it.
+
+38
+00:02:17,925 --> 00:02:21,525
+Diff not contains passes when the patch
+doesn't contain it.
+
+39
+00:02:22,025 --> 00:02:25,850
+Finally, diff empty passes when the agent
+changed nothing at all.
+
+40
+00:02:27,067 --> 00:02:31,567
+One thing to know before using them: these
+graders see the whole patch, including the
+
+41
+00:02:31,567 --> 00:02:33,367
+unchanged lines around the change.
+
+42
+00:02:33,867 --> 00:02:36,867
+Here's the patch from a trial that made up
+a number.
+
+43
+00:02:37,367 --> 00:02:41,667
+This unchanged line happens to hold a pull
+request number, forty-one.
+
+44
+00:02:42,167 --> 00:02:46,685
+It's in the patch, so a grader that looked
+for any number in brackets would find one
+
+45
+00:02:46,685 --> 00:02:47,492
+in every trial.
+
+46
+00:02:47,992 --> 00:02:51,417
+What matters is this line, the one the
+agent added.
+
+47
+00:02:51,917 --> 00:02:56,892
+So a grader for made-up numbers has to
+look only at lines that begin with a plus.
+
+48
+00:02:58,100 --> 00:03:02,829
+Each of these graders takes a value, which
+is exact text, or a pattern, which is a
+
+49
+00:03:02,829 --> 00:03:03,925
+regular expression.
+
+50
+00:03:04,425 --> 00:03:08,575
+Here's the eval file we're going to run:
+three of the six stimuli we went through
+
+51
+00:03:08,575 --> 00:03:10,675
+earlier, with graders at the end of each.
+
+52
+00:03:11,175 --> 00:03:15,125
+Its first stimulus is the typo fix, and it
+gets two graders.
+
+53
+00:03:15,625 --> 00:03:19,175
+The first asks whether the agent added an
+entry at all.
+
+54
+00:03:19,675 --> 00:03:24,188
+Nothing in the starting changelog mentions
+notes add, so that text can only be in the
+
+55
+00:03:24,188 --> 00:03:25,675
+patch if the agent wrote it.
+
+56
+00:03:26,175 --> 00:03:30,506
+The second is the grader for made-up
+numbers, and it passes only if its pattern
+
+57
+00:03:30,506 --> 00:03:32,150
+is found nowhere in the patch.
+
+58
+00:03:33,367 --> 00:03:35,967
+Here's that pattern, a piece at a time.
+
+59
+00:03:36,467 --> 00:03:41,285
+A caret and an escaped plus mean a line
+that starts with a plus: a line the agent
+
+60
+00:03:41,285 --> 00:03:41,642
+added.
+
+61
+00:03:42,142 --> 00:03:46,093
+The switch at the front makes the caret
+match at the start of every line, where it
+
+62
+00:03:46,093 --> 00:03:48,792
+would otherwise match only the start of
+the whole patch.
+
+63
+00:03:49,292 --> 00:03:53,367
+Then comes anything at all, and then a
+hash and digits in brackets.
+
+64
+00:03:53,867 --> 00:03:57,767
+In words: an added line that contains a
+pull request number.
+
+65
+00:03:58,967 --> 00:04:02,092
+The other two stimuli get one grader each.
+
+66
+00:04:02,592 --> 00:04:07,318
+The refactor changes nothing for users, so
+the right result is no change to the
+
+67
+00:04:07,318 --> 00:04:07,917
+changelog.
+
+68
+00:04:08,417 --> 00:04:12,192
+Diff empty checks exactly that, and it
+takes no settings.
+
+69
+00:04:12,692 --> 00:04:17,325
+For the security fix, the grader looks for
+an added line that starts with a Security
+
+70
+00:04:17,325 --> 00:04:17,767
+heading.
+
+71
+00:04:18,267 --> 00:04:22,142
+It passes when the agent has created a
+Security category.
+
+72
+00:04:23,367 --> 00:04:28,411
+Once a stimulus has more than one grader,
+a trial passes only if every one of them
+
+73
+00:04:28,411 --> 00:04:28,842
+passes.
+
+74
+00:04:29,342 --> 00:04:34,360
+Vally lint prints a warning, named scoring
+defaults applied, to say that this rule is
+
+75
+00:04:34,360 --> 00:04:34,892
+in force.
+
+76
+00:04:35,392 --> 00:04:38,442
+It's the rule we want, so we expect the
+warning.
+
+77
+00:04:39,667 --> 00:04:42,917
+That's how the graders work; now let's
+count with them.
+
+78
+00:04:43,417 --> 00:04:48,142
+First, we run these three stimuli three
+times on each model, with the skill as it
+
+79
+00:04:48,142 --> 00:04:48,317
+is.
+
+80
+00:04:48,817 --> 00:04:52,692
+Then we add three rules to the skill, and
+run the same command again.
+
+81
+00:04:53,192 --> 00:04:57,581
+Each time, we count how many of a
+stimulus's three trials passed, on each
+
+82
+00:04:57,581 --> 00:04:57,942
+model.
+
+83
+00:04:58,442 --> 00:05:01,842
+What would you expect the edit to change,
+on each model?
+
+84
+00:05:04,342 --> 00:05:07,217
+If you tried it yourself, here's what
+you'd see.
+
+85
+00:05:08,433 --> 00:05:13,058
+The graders are now in the eval file, so
+we lint it first, which costs nothing.
+
+86
+00:05:16,140 --> 00:05:19,465
+One warning, the one we expected, and no
+errors.
+
+87
+00:05:23,667 --> 00:05:27,949
+Now we measure the skill as it is: the
+command from before, with three runs of
+
+88
+00:05:27,949 --> 00:05:29,542
+each stimulus, two at a time.
+
+89
+00:05:30,042 --> 00:05:32,842
+It spends eighteen short agent runs.
+
+90
+00:05:33,342 --> 00:05:37,532
+We're after the table at the end, which
+says, for each model, how many of the
+
+91
+00:05:37,532 --> 00:05:39,492
+three stimuli passed in every trial.
+
+92
+00:05:41,813 --> 00:05:46,413
+About three minutes later, it says one of
+the three on haiku, and none on terra.
+
+93
+00:05:49,913 --> 00:05:54,209
+Above that table, Vally lists each
+stimulus that didn't pass, with the grader
+
+94
+00:05:54,209 --> 00:05:55,938
+that objected and its evidence.
+
+95
+00:06:02,167 --> 00:06:06,504
+The same output says how many trials of
+each stimulus passed, and that fills in
+
+96
+00:06:06,504 --> 00:06:08,042
+the first half of the table.
+
+97
+00:06:08,542 --> 00:06:12,267
+On the typo fix, haiku passed three of
+three, and terra none.
+
+98
+00:06:12,767 --> 00:06:17,017
+Neither model passed the refactor or the
+security fix, in any trial.
+
+99
+00:06:20,233 --> 00:06:22,608
+Next comes the edit to the skill.
+
+100
+00:06:23,108 --> 00:06:27,444
+Each failure is a case the skill left
+open, so we add three rules at the end,
+
+101
+00:06:27,444 --> 00:06:28,908
+one for each failure mode.
+
+102
+00:06:29,408 --> 00:06:33,692
+The first covers a missing pull request
+number: the agent leaves the reference
+
+103
+00:06:33,692 --> 00:06:36,383
+off, never makes one up, and doesn't stop
+to ask.
+
+104
+00:06:36,883 --> 00:06:41,683
+In a Vally run nobody is there to answer a
+question, so we chose to leave it off.
+
+105
+00:06:42,183 --> 00:06:46,933
+The second says that a change which makes
+no difference to users gets no entry.
+
+106
+00:06:47,433 --> 00:06:52,333
+The third lists the categories in order,
+and puts a security fix under Security.
+
+107
+00:06:53,533 --> 00:06:58,163
+With the rules in the skill, we measure
+again, the same way, into a second results
+
+108
+00:06:58,163 --> 00:06:58,558
+folder.
+
+109
+00:06:59,058 --> 00:07:01,808
+That's another eighteen agent runs.
+
+110
+00:07:10,640 --> 00:07:15,015
+About three minutes later, the table says
+three of three, on both models.
+
+111
+00:07:18,515 --> 00:07:23,465
+This time, no failures are listed above
+it: every trial of every stimulus passed.
+
+112
+00:07:28,667 --> 00:07:31,267
+Here are both counts, side by side.
+
+113
+00:07:31,767 --> 00:07:35,817
+The made-up number is gone on terra, the
+model that produced it.
+
+114
+00:07:36,317 --> 00:07:39,942
+Neither model adds an entry for the
+refactor any more.
+
+115
+00:07:40,442 --> 00:07:44,042
+The security rule worked every time, on
+both models.
+
+116
+00:07:48,267 --> 00:07:50,242
+So what do the counts show?
+
+117
+00:07:50,742 --> 00:07:55,342
+One edit added three rules, and in our
+run, all three worked on both models.
+
+118
+00:07:55,842 --> 00:07:59,964
+An earlier run of the same edit came out
+differently: haiku still filed one
+
+119
+00:07:59,964 --> 00:08:02,767
+security fix under Fixed, and passed eight
+of nine.
+
+120
+00:08:03,267 --> 00:08:07,758
+So the same words can have a different
+effect, on another model or on another
+
+121
+00:08:07,758 --> 00:08:07,992
+run.
+
+122
+00:08:08,492 --> 00:08:12,905
+Going through a couple of patches by hand
+might well have shown us only the trials
+
+123
+00:08:12,905 --> 00:08:13,767
+where it worked.
+
+124
+00:08:14,267 --> 00:08:18,792
+A count shows all of them, and one command
+will count again after the next edit.
+
+125
+00:08:20,000 --> 00:08:23,825
+It's also worth a look at what the graders
+did in the first run.
+
+126
+00:08:24,325 --> 00:08:29,050
+Every one of them failed somewhere, on the
+kinds of trial we already knew to be bad.
+
+127
+00:08:29,550 --> 00:08:33,050
+That's a first piece of evidence that they
+check what we meant.
+
+128
+00:08:33,550 --> 00:08:36,325
+Later, we'll run that test on purpose.
+
+129
+00:08:37,533 --> 00:08:41,758
+Before you go on: what are the three
+habits that make a grader worth having?
+
+130
+00:08:44,758 --> 00:08:48,233
+We grade the result the agent left, not
+the route it took.
+
+131
+00:08:48,733 --> 00:08:52,883
+We write one grader per failure mode, and
+name it after the failure.
+
+132
+00:08:53,383 --> 00:08:57,788
+Last, we make sure each grader can fail,
+by running it first where the failure is
+
+133
+00:08:57,788 --> 00:08:58,658
+known to happen.
+
+134
+00:08:59,867 --> 00:09:04,394
+You can now show, with a count before and
+after, what an edit to the skill changed
+
+135
+00:09:04,394 --> 00:09:05,167
+on each model.
+
+136
+00:09:05,667 --> 00:09:07,917
+Patterns caught three failures.
+
+137
+00:09:08,417 --> 00:09:12,867
+Checking that nothing else in the file
+changed is beyond a pattern: it takes a
+
+138
+00:09:12,867 --> 00:09:13,267
+script.
+
+139
+00:09:13,767 --> 00:09:17,692
+Where can we keep a script, so that the
+agent can't open it or edit it?
+
+140
+00:09:18,192 --> 00:09:20,042
+That's the next lesson.
+
+141
+00:09:20,542 --> 00:09:24,117
+The exercises on the lesson page are worth
+doing first.

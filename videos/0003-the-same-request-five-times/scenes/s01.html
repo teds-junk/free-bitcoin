@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The same request, five times</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.results{display:flex;flex-direction:column;gap:44px;width:100%}.results .card > .code.dark{font-size:40px;padding:30px 36px}.results .card .who{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">The same request, five times</h1>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="card-a" data-rep="card">
+        <div class="who"><span class="mono">claude-haiku-4.5</span> · <span class="once" data-concept="once" data-rep="note">one trial</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix typo in </span><span style="color:#3CC0B3">`notes add`</span><span> help text ("tittle" → "title")</span></code></pre>
+      </div>
+      <div class="card" data-concept="card-b" data-rep="card">
+        <div class="who"><span class="mono">gpt-5.6-terra</span> · <span class="once" data-concept="once" data-rep="note">one trial</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix the help text typo in </span><span style="color:#3CC0B3">`notes add`</span><span> </span><span data-concept="pr" data-rep="code"><span>(#42)</span></span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "pr",
+  "at": "0~pull request",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "once",
+  "at": "2~once",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

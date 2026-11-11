@@ -1,0 +1,1103 @@
+1
+00:00:00,400 --> 00:00:05,088
+The release app ran once on haiku, and
+failed: no skill loaded, and an entry for
+
+2
+00:00:05,088 --> 00:00:05,850
+the refactor.
+
+3
+00:00:06,350 --> 00:00:10,175
+Vally's own trials of that skill passed
+three of eight on haiku.
+
+4
+00:00:10,675 --> 00:00:15,532
+So is the app worse than those trials, or
+was one run unlucky, and does it cost the
+
+5
+00:00:15,532 --> 00:00:15,825
+same?
+
+6
+00:00:16,325 --> 00:00:20,671
+One run can't say, and a run of the app
+that has already happened can't be
+
+7
+00:00:20,671 --> 00:00:21,200
+repeated.
+
+8
+00:00:21,700 --> 00:00:26,252
+Here, you'll plug the app's own code into
+Vally, so it runs as many trials as we
+
+9
+00:00:26,252 --> 00:00:29,325
+like, on any model, under the graders we
+already have.
+
+10
+00:00:30,533 --> 00:00:33,808
+Let's start with where an app could fit
+inside Vally.
+
+11
+00:00:34,308 --> 00:00:38,430
+Around every trial, Vally does the same
+work: it prepares the workspace, and
+
+12
+00:00:38,430 --> 00:00:41,033
+afterwards saves the patch and runs the
+graders.
+
+13
+00:00:41,533 --> 00:00:45,808
+One step in the middle runs the agent, and
+that step is the executor.
+
+14
+00:00:46,308 --> 00:00:50,608
+The executor gets a stimulus and a
+workspace, and hands back a trajectory:
+
+15
+00:00:50,608 --> 00:00:52,583
+the account of what the agent did.
+
+16
+00:00:53,083 --> 00:00:55,733
+That's the one part we're about to swap.
+
+17
+00:00:56,933 --> 00:01:02,408
+Vally's own executor opens a Copilot SDK
+session, with settings that Vally chose.
+
+18
+00:01:02,908 --> 00:01:06,958
+The release app opens a session too, with
+settings the team chose.
+
+19
+00:01:07,458 --> 00:01:10,608
+Those choices are part of the feature
+being tested.
+
+20
+00:01:11,108 --> 00:01:15,958
+If the app's agent behaves differently, an
+eval through Vally's executor won't show
+
+21
+00:01:15,958 --> 00:01:16,133
+it.
+
+22
+00:01:16,633 --> 00:01:21,420
+Once the executor is one that calls the
+app, every trial runs the code the team
+
+23
+00:01:21,420 --> 00:01:21,783
+ships.
+
+24
+00:01:23,000 --> 00:01:26,723
+That gives us three ways to look at the
+release feature, and each answers
+
+25
+00:01:26,723 --> 00:01:28,100
+something the others can't.
+
+26
+00:01:28,600 --> 00:01:33,293
+Vally's own executor shows whether the
+skill does its job, on any model, apart
+
+27
+00:01:33,293 --> 00:01:34,075
+from the app.
+
+28
+00:01:34,575 --> 00:01:38,874
+Running the app through an executor shows
+whether the feature, as shipped, does its
+
+29
+00:01:38,874 --> 00:01:41,050
+job, and it's repeatable, so we can count.
+
+30
+00:01:41,550 --> 00:01:46,202
+Grading the app's real runs afterwards
+shows whether it's still doing its job in
+
+31
+00:01:46,202 --> 00:01:46,725
+real use.
+
+32
+00:01:47,933 --> 00:01:51,158
+That's the idea; here's the file that
+expresses it.
+
+33
+00:01:51,658 --> 00:01:56,108
+An executor plugin is a JavaScript module,
+and the starter ships this one with
+
+34
+00:01:56,108 --> 00:01:58,333
+everything written except one function.
+
+35
+00:01:58,833 --> 00:02:02,558
+Our executor is an object, and its name is
+release app.
+
+36
+00:02:03,058 --> 00:02:07,333
+Its execute function runs one trial, and
+it's the part still to write.
+
+37
+00:02:07,833 --> 00:02:12,199
+Shutdown is called at the end, and has
+nothing to clean up, because the app opens
+
+38
+00:02:12,199 --> 00:02:14,408
+and closes its own session in each trial.
+
+39
+00:02:14,908 --> 00:02:19,652
+Vally looks for one exported function,
+register executors, and calls it with its
+
+40
+00:02:19,652 --> 00:02:22,083
+registry: the list of executors it knows.
+
+41
+00:02:22,583 --> 00:02:27,385
+Ours adds this object to that list, so its
+name is what a command or an eval file can
+
+42
+00:02:27,385 --> 00:02:29,983
+ask for, the way they ask for a model by
+name.
+
+43
+00:02:31,200 --> 00:02:33,400
+Here's that function, written.
+
+44
+00:02:33,900 --> 00:02:38,400
+Vally hands it two things: the stimulus,
+and the options for this one trial.
+
+45
+00:02:38,900 --> 00:02:43,074
+The function passes them on to write
+entries, which is the app's own function:
+
+46
+00:02:43,074 --> 00:02:45,000
+the one the app's run script called.
+
+47
+00:02:45,500 --> 00:02:49,987
+Where to work is the first option: the
+prepared workspace, after the setup
+
+48
+00:02:49,987 --> 00:02:50,775
+commands ran.
+
+49
+00:02:51,275 --> 00:02:55,525
+Which model to run comes next, so one
+command can try any model.
+
+50
+00:02:56,025 --> 00:03:00,854
+Skills arrive as the path of each skill
+file, and the SDK wants folders, so each
+
+51
+00:03:00,854 --> 00:03:02,725
+path is cut back to its folder.
+
+52
+00:03:03,225 --> 00:03:07,400
+The request is the stimulus's prompt, and
+the time limit is Vally's.
+
+53
+00:03:07,900 --> 00:03:12,550
+For traces, the app gets a file in the
+trial's results folder to write them to.
+
+54
+00:03:13,050 --> 00:03:16,625
+Last is the trial's trace context, which
+we'll come to.
+
+55
+00:03:17,833 --> 00:03:22,612
+What comes back from the app is the
+agent's reply, and every session event the
+
+56
+00:03:22,612 --> 00:03:23,408
+SDK reported.
+
+57
+00:03:23,908 --> 00:03:27,908
+One helper in the same file renames those
+events to Vally's.
+
+58
+00:03:28,408 --> 00:03:32,730
+Then the function returns a trajectory:
+the events, the reply as the trial's
+
+59
+00:03:32,730 --> 00:03:34,208
+output, and the workspace.
+
+60
+00:03:34,708 --> 00:03:39,504
+Its metrics come from compute metrics, a
+function Vally exports that adds up a
+
+61
+00:03:39,504 --> 00:03:40,733
+trajectory's events.
+
+62
+00:03:41,233 --> 00:03:46,001
+That way, a plugin's tokens, cost and tool
+calls are counted the way the built-in
+
+63
+00:03:46,001 --> 00:03:46,883
+executor's are.
+
+64
+00:03:47,383 --> 00:03:51,867
+Compute metrics can't know how long the
+app took, so the wall time is ours to
+
+65
+00:03:51,867 --> 00:03:52,333
+measure.
+
+66
+00:03:52,833 --> 00:03:57,536
+Last comes some metadata: the model, the
+skills that loaded, and the executor's
+
+67
+00:03:57,536 --> 00:03:57,833
+name.
+
+68
+00:03:59,033 --> 00:04:03,733
+That renaming helper is short, and three
+of its branches matter to our graders.
+
+69
+00:04:04,233 --> 00:04:08,983
+When the SDK reports a tool starting, the
+helper adds a tool call event: the kind
+
+70
+00:04:08,983 --> 00:04:10,683
+our tool-calls graders check.
+
+71
+00:04:11,183 --> 00:04:15,730
+When a skill is opened, it adds a skill
+activation, the event that says a skill
+
+72
+00:04:15,730 --> 00:04:16,133
+loaded.
+
+73
+00:04:16,633 --> 00:04:21,433
+Both the skill-invocation grader and the
+report's Skills column rely on that one.
+
+74
+00:04:21,933 --> 00:04:26,367
+After each model call, it adds a token
+usage event: how many tokens the call
+
+75
+00:04:26,367 --> 00:04:28,058
+used, with its cost attached.
+
+76
+00:04:28,558 --> 00:04:33,076
+So cost is filled in for these trials,
+which it wasn't when we graded the app's
+
+77
+00:04:33,076 --> 00:04:33,933
+run afterwards.
+
+78
+00:04:35,133 --> 00:04:39,984
+Vally loads the plugin from dot vally dot
+yaml, the settings file that holds our
+
+79
+00:04:39,984 --> 00:04:40,408
+suites.
+
+80
+00:04:40,908 --> 00:04:45,808
+Three new lines at its top list the plugin
+file, under plugins, as an executor.
+
+81
+00:04:47,033 --> 00:04:50,058
+Loading the file doesn't select the
+executor.
+
+82
+00:04:50,558 --> 00:04:55,296
+We choose it for one run with dash dash
+executor, for an eval file under defaults,
+
+83
+00:04:55,296 --> 00:04:57,433
+or for an experiment under overrides.
+
+84
+00:04:58,633 --> 00:05:02,608
+One more thing an executor does is declare
+what it supports.
+
+85
+00:05:03,108 --> 00:05:07,858
+Ours declares nothing, so it can't run a
+stimulus that has a simulation block.
+
+86
+00:05:08,358 --> 00:05:12,854
+And our release eval has one: tracker
+down, where a tool is made to fail on
+
+87
+00:05:12,854 --> 00:05:13,333
+purpose.
+
+88
+00:05:13,833 --> 00:05:18,432
+Vally checks before starting the agent, so
+through this executor, that stimulus ends
+
+89
+00:05:18,432 --> 00:05:21,333
+in error, with this message, and spends no
+agent run.
+
+90
+00:05:21,833 --> 00:05:26,195
+That error will show in every run that
+follows, and it's expected: it isn't a
+
+91
+00:05:26,195 --> 00:05:27,158
+fault in the app.
+
+92
+00:05:28,367 --> 00:05:32,367
+Both programs keep traces, and so far
+nothing has linked them.
+
+93
+00:05:32,867 --> 00:05:37,182
+Vally writes spans of its own for every
+trial, to a file in the run folder: one
+
+94
+00:05:37,182 --> 00:05:40,242
+span for the trial, and inside it, one for
+each attempt.
+
+95
+00:05:40,742 --> 00:05:45,218
+Our app writes its spans to its own file,
+and the outermost, named invoke agent,
+
+96
+00:05:45,218 --> 00:05:46,617
+covers one whole session.
+
+97
+00:05:47,117 --> 00:05:50,817
+When the app runs alone, that session span
+has no parent.
+
+98
+00:05:51,317 --> 00:05:56,009
+If both send their spans to one tracing
+tool, we'd want the app's spans inside the
+
+99
+00:05:56,009 --> 00:05:56,467
+trial's.
+
+100
+00:05:56,967 --> 00:06:01,285
+Then a slow or expensive trial can be
+opened, and followed from Vally's step
+
+101
+00:06:01,285 --> 00:06:02,592
+down to the model call.
+
+102
+00:06:03,800 --> 00:06:07,375
+What links two programs' spans is a trace
+context.
+
+103
+00:06:07,875 --> 00:06:12,455
+It's the ID of a trace, and of the span
+that's open in it, passed from one program
+
+104
+00:06:12,455 --> 00:06:13,125
+to the next.
+
+105
+00:06:13,625 --> 00:06:18,150
+With it, the second program's spans join
+the first one's trace, as children.
+
+106
+00:06:18,650 --> 00:06:23,337
+One web standard writes it as a short
+string named trace parent: a version, the
+
+107
+00:06:23,337 --> 00:06:26,125
+trace ID, the parent span's ID, and some
+flags.
+
+108
+00:06:27,333 --> 00:06:31,900
+Vally passes each trial's trace context to
+the executor, in its options, and our
+
+109
+00:06:31,900 --> 00:06:34,183
+execute function hands it on to the app.
+
+110
+00:06:34,683 --> 00:06:39,095
+The Copilot SDK has a hook for exactly
+this: a function it calls to ask which
+
+111
+00:06:39,095 --> 00:06:42,533
+trace to join, before it opens a session
+or sends a message.
+
+112
+00:06:43,033 --> 00:06:48,342
+So the app needed two lines: give the SDK
+whatever trace context the caller gave, or
+
+113
+00:06:48,342 --> 00:06:48,658
+none.
+
+114
+00:06:49,158 --> 00:06:53,172
+When the app runs from its own script,
+there's none, and the session starts a
+
+115
+00:06:53,172 --> 00:06:54,058
+trace of its own.
+
+116
+00:06:54,558 --> 00:06:58,668
+When it runs from our executor, the
+session span should carry the trial's
+
+117
+00:06:58,668 --> 00:07:01,483
+trace ID, with Vally's attempt span as its
+parent.
+
+118
+00:07:02,700 --> 00:07:05,700
+That's how the plugin works; now let's run
+it.
+
+119
+00:07:06,200 --> 00:07:10,225
+First, the release eval goes through the
+app once on each model.
+
+120
+00:07:10,725 --> 00:07:15,400
+Then an experiment runs it three more
+times on each: four trials a model in all.
+
+121
+00:07:15,900 --> 00:07:20,250
+In its one earlier run of the app, haiku
+failed, without loading the skill.
+
+122
+00:07:20,750 --> 00:07:25,300
+How many of four would you expect it to
+pass now, and would terra do any better?
+
+123
+00:07:27,800 --> 00:07:30,675
+If you tried it yourself, here's what
+you'd see.
+
+124
+00:07:31,900 --> 00:07:36,574
+The execute function is now in the plugin
+file, and the three plugins lines are in
+
+125
+00:07:36,574 --> 00:07:37,600
+the settings file.
+
+126
+00:07:38,100 --> 00:07:42,374
+First, node dash dash check tells us
+whether the file is valid JavaScript,
+
+127
+00:07:42,374 --> 00:07:43,875
+without starting anything.
+
+128
+00:07:47,500 --> 00:07:50,350
+It prints nothing, which means no errors.
+
+129
+00:07:50,850 --> 00:07:55,503
+Now the release eval, with dash dash
+executor release app, on both models, two
+
+130
+00:07:55,503 --> 00:07:56,100
+at a time.
+
+131
+00:07:56,600 --> 00:08:01,725
+It spends two agent runs, because tracker
+down is refused before any agent starts.
+
+132
+00:08:02,225 --> 00:08:07,032
+The table at the end counts stimuli, two
+for each model, and the refused one can't
+
+133
+00:08:07,032 --> 00:08:07,325
+pass.
+
+134
+00:08:09,633 --> 00:08:14,158
+Moments later, haiku has failed since last
+release, and terra has passed it.
+
+135
+00:08:17,658 --> 00:08:21,833
+So the counts are none of two stimuli for
+haiku, and one of two for terra.
+
+136
+00:08:27,033 --> 00:08:31,627
+The report in the new results folder
+confirms what ran: under each table, the
+
+137
+00:08:31,627 --> 00:08:33,058
+executor is release app.
+
+138
+00:08:33,558 --> 00:08:38,132
+Haiku's table has no Skills column at all,
+because no skill loaded, and its tool
+
+139
+00:08:38,132 --> 00:08:40,133
+calls were four views and one edit.
+
+140
+00:08:40,633 --> 00:08:45,058
+Terra's lists the changelog entry skill,
+and a skill call among its tools.
+
+141
+00:08:48,267 --> 00:08:52,818
+The app's traces for a trial are kept in
+that trial's results folder, and Vally's
+
+142
+00:08:52,818 --> 00:08:54,392
+spans are in the run folder.
+
+143
+00:08:54,892 --> 00:08:59,042
+Here's one line from each, for haiku's
+trial, cut to three fields.
+
+144
+00:08:59,542 --> 00:09:03,892
+Both carry one trace ID, so the app's
+session joined Vally's trace.
+
+145
+00:09:04,392 --> 00:09:09,233
+Its parent is Vally's attempt span, so
+every model call and tool call beneath it
+
+146
+00:09:09,233 --> 00:09:09,717
+follows.
+
+147
+00:09:12,933 --> 00:09:17,324
+For more trials, we use an experiment
+file, the kind we've used to compare
+
+148
+00:09:17,324 --> 00:09:17,858
+variants.
+
+149
+00:09:18,358 --> 00:09:22,561
+It names the release eval, and two
+variants, haiku and terra, which differ
+
+150
+00:09:22,561 --> 00:09:23,583
+only in the model.
+
+151
+00:09:24,083 --> 00:09:29,117
+What's new is one line under the top-level
+overrides: executor, release app, set once
+
+152
+00:09:29,117 --> 00:09:30,183
+for both variants.
+
+153
+00:09:30,683 --> 00:09:32,908
+Beside it, runs is three.
+
+154
+00:09:34,133 --> 00:09:38,583
+With dash dash dry run, Vally plans the
+experiment and starts nothing.
+
+155
+00:09:43,753 --> 00:09:48,103
+It finds two plans, one for each variant,
+with haiku as the baseline.
+
+156
+00:09:53,333 --> 00:09:57,433
+Now the real thing: three trials a model,
+through the app, two at a time.
+
+157
+00:09:57,933 --> 00:10:02,706
+That's six agent runs, since tracker down
+is refused again, three times for each
+
+158
+00:10:02,706 --> 00:10:03,183
+variant.
+
+159
+00:10:07,387 --> 00:10:12,112
+About a minute later, the table gives
+terra one stimulus of two, and haiku none.
+
+160
+00:10:16,612 --> 00:10:20,537
+Under that, terra used about a quarter
+fewer tokens than haiku.
+
+161
+00:10:24,767 --> 00:10:29,162
+That table counts stimuli, so we count
+three more things from each variant's
+
+162
+00:10:29,162 --> 00:10:29,567
+trials.
+
+163
+00:10:30,067 --> 00:10:34,314
+Haiku passed none of three, loaded the
+skill in one, and wrote an entry for the
+
+164
+00:10:34,314 --> 00:10:36,842
+refactor, pull request seventy-six, every
+time.
+
+165
+00:10:37,342 --> 00:10:42,017
+Terra passed all three, loaded the skill
+in all three, and left the refactor out.
+
+166
+00:10:42,517 --> 00:10:47,277
+Adding up each trial's cost, haiku's three
+came to about six point seven AIU, and
+
+167
+00:10:47,277 --> 00:10:49,217
+terra's to about ten point seven.
+
+168
+00:10:52,433 --> 00:10:54,408
+So what can we measure now?
+
+169
+00:10:54,908 --> 00:10:59,405
+The same eval file ran unchanged: its
+setup command, its hidden test and its
+
+170
+00:10:59,405 --> 00:11:02,658
+tool-calls graders didn't depend on which
+executor ran.
+
+171
+00:11:03,158 --> 00:11:07,958
+Cost was filled in again, because the
+executor reports the runtime's own usage.
+
+172
+00:11:08,458 --> 00:11:13,295
+Budgets, ranges and comparisons all work
+on these trials, because they're ordinary
+
+173
+00:11:13,295 --> 00:11:13,708
+trials.
+
+174
+00:11:14,933 --> 00:11:17,508
+Now the earlier question has counts.
+
+175
+00:11:18,008 --> 00:11:22,363
+Earlier, our runs of this stimulus went
+through Vally's own executor, eight trials
+
+176
+00:11:22,363 --> 00:11:25,283
+a model, and the app has now run it four
+times on each.
+
+177
+00:11:25,783 --> 00:11:28,458
+Passed is each run's own verdict.
+
+178
+00:11:28,958 --> 00:11:33,958
+Tokens a model call is a row's trial
+tokens, divided by its model calls.
+
+179
+00:11:34,458 --> 00:11:38,408
+AIU a trial is a row's cost, divided by
+its trials.
+
+180
+00:11:38,908 --> 00:11:43,233
+Two things stand out: one is a weak sign,
+and one held in every trial.
+
+181
+00:11:46,433 --> 00:11:51,108
+First, the weak sign: how the app behaves,
+beside Vally's own runs of the skill.
+
+182
+00:11:51,608 --> 00:11:55,158
+Terra loaded the skill and passed every
+time, either way.
+
+183
+00:11:55,658 --> 00:11:57,858
+Haiku is where they differ.
+
+184
+00:11:58,358 --> 00:12:02,569
+Through the app, it loaded the skill in
+one of five trials, counting its one
+
+185
+00:12:02,569 --> 00:12:03,233
+earlier run.
+
+186
+00:12:03,733 --> 00:12:07,108
+Through Vally's executor, it loaded in
+four of eight.
+
+187
+00:12:07,608 --> 00:12:11,377
+As ranges, that's four to sixty-two
+percent, against twenty-two to
+
+188
+00:12:11,377 --> 00:12:13,433
+seventy-eight, which overlap widely.
+
+189
+00:12:13,933 --> 00:12:18,243
+In an earlier run of ours, the two were
+closer: none of five, against one of
+
+190
+00:12:18,243 --> 00:12:18,583
+eight.
+
+191
+00:12:19,083 --> 00:12:23,605
+So with this few trials, we can't yet say
+that the app makes haiku worse, but now we
+
+192
+00:12:23,605 --> 00:12:25,058
+can run more, and find out.
+
+193
+00:12:26,267 --> 00:12:30,842
+Second, the one that held in every trial:
+the app costs more per model call.
+
+194
+00:12:31,342 --> 00:12:35,918
+The test is a strict one: even the app's
+lowest trial, against the highest through
+
+195
+00:12:35,918 --> 00:12:36,867
+Vally's executor.
+
+196
+00:12:37,367 --> 00:12:41,521
+On haiku, the app's lowest used about
+seventeen thousand four hundred tokens a
+
+197
+00:12:41,521 --> 00:12:45,516
+call, and the highest through Vally's
+executor about fifteen thousand three
+
+198
+00:12:45,516 --> 00:12:45,942
+hundred.
+
+199
+00:12:46,442 --> 00:12:50,842
+On terra, it was about fourteen thousand,
+against twelve thousand five hundred.
+
+200
+00:12:51,342 --> 00:12:56,168
+On average, that's about sixteen percent
+more a call on haiku, and thirteen percent
+
+201
+00:12:56,168 --> 00:12:56,692
+on terra.
+
+202
+00:12:59,900 --> 00:13:03,675
+Why would one model need more tokens for
+each call through the app?
+
+203
+00:13:04,175 --> 00:13:07,825
+The app's traces show the reason: an MCP
+server.
+
+204
+00:13:08,325 --> 00:13:12,975
+That's a program that offers an agent
+extra tools, through a shared protocol.
+
+205
+00:13:13,475 --> 00:13:18,394
+Our app's sessions include GitHub's hosted
+one, which adds five GitHub tools to every
+
+206
+00:13:18,394 --> 00:13:19,725
+request the model sees.
+
+207
+00:13:20,225 --> 00:13:23,450
+Vally's own executor turns that server
+off.
+
+208
+00:13:24,667 --> 00:13:29,102
+More tokens a call doesn't have to mean a
+more expensive trial, because a trial's
+
+209
+00:13:29,102 --> 00:13:31,567
+cost also depends on how many calls it
+makes.
+
+210
+00:13:32,067 --> 00:13:36,439
+On haiku, the app's trials made fewer
+calls: five and a quarter a trial, against
+
+211
+00:13:36,439 --> 00:13:39,117
+five and three quarters through Vally's
+executor.
+
+212
+00:13:39,617 --> 00:13:44,291
+So they cost about the same: two point
+five four AIU a trial, against two point
+
+213
+00:13:44,291 --> 00:13:44,942
+five eight.
+
+214
+00:13:45,442 --> 00:13:50,152
+On terra, the app's trials made slightly
+more calls, and cost more: about four AIU
+
+215
+00:13:50,152 --> 00:13:52,392
+a trial, against three point two seven.
+
+216
+00:13:52,892 --> 00:13:56,342
+Each call through the app carries the same
+extra cost.
+
+217
+00:13:56,842 --> 00:14:01,217
+Whether a whole trial costs more depends
+on how many calls that trial makes.
+
+218
+00:14:01,717 --> 00:14:05,567
+An eval of the skill alone wouldn't have
+shown that overhead at all.
+
+219
+00:14:06,767 --> 00:14:11,208
+Earlier, this table could only say what
+running the app through an executor might
+
+220
+00:14:11,208 --> 00:14:11,592
+answer.
+
+221
+00:14:12,092 --> 00:14:16,829
+Now it has answered: on terra, the app did
+as well as the skill alone; on haiku, it's
+
+222
+00:14:16,829 --> 00:14:20,117
+too early to say; and every call paid for
+five extra tools.
+
+223
+00:14:20,617 --> 00:14:25,131
+Neither could be counted from the app's
+real runs, and the second was invisible
+
+224
+00:14:25,131 --> 00:14:27,017
+from inside Vally's own executor.
+
+225
+00:14:27,517 --> 00:14:32,117
+That's the reason to plug the app in: the
+eval now measures what the team ships.
+
+226
+00:14:33,333 --> 00:14:37,879
+Before you go on: what does an executor
+plugin export, and what does its execute
+
+227
+00:14:37,879 --> 00:14:38,958
+function give back?
+
+228
+00:14:41,958 --> 00:14:46,608
+It exports register executors, which
+registers an executor by name.
+
+229
+00:14:47,108 --> 00:14:52,158
+Its execute function receives the stimulus
+and the trial's options, and runs the app.
+
+230
+00:14:52,658 --> 00:14:57,008
+It returns a trajectory: the events, the
+agent's reply, and the metrics.
+
+231
+00:14:58,233 --> 00:15:02,824
+You can now run the app's own agent code
+under Vally's trials, experiments and
+
+232
+00:15:02,824 --> 00:15:03,883
+model comparisons.
+
+233
+00:15:04,383 --> 00:15:06,683
+With that, the course is complete.
+
+234
+00:15:07,183 --> 00:15:11,331
+The workflow guide walks the whole
+procedure, for a skill or for a feature in
+
+235
+00:15:11,331 --> 00:15:11,708
+an app.
+
+236
+00:15:12,208 --> 00:15:15,783
+The exercises on the lesson page are worth
+doing, too.

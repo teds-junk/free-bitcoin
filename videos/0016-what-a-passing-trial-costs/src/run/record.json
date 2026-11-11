@@ -1,0 +1,492 @@
+{
+  "type": "trial-result",
+  "runId": "d31b9219-8a48-4ff6-868a-4029b1dc32be",
+  "itemId": "~/src/demo/practice/evals/changelog.eval.yaml::haiku-low::claude-haiku-5.5::typo-fix::trial-0",
+  "evalName": "changelog",
+  "evalFilePath": "~/src/demo/practice/evals/changelog.eval.yaml",
+  "variant": "haiku-low",
+  "stimulus": "typo-fix",
+  "shardKey": "changelog.eval.yaml::haiku-low::claude-haiku-5.5::typo-fix::trial-0",
+  "model": "claude-haiku-5.5",
+  "trialIndex": 0,
+  "totalTrials": 3,
+  "status": "success",
+  "durationMs": 6912,
+  "gradeResult": {
+    "name": "trajectory-grade",
+    "kind": "code",
+    "passed": true,
+    "score": 1,
+    "evidence": "2/2 graders passed",
+    "details": [
+      {
+        "name": "adds-an-entry",
+        "kind": "code",
+        "passed": true,
+        "score": 1,
+        "evidence": "Pattern 'notes add' found in workspace diff",
+        "label": "correct",
+        "graderType": "diff-contains",
+        "configuredName": "adds-an-entry"
+      },
+      {
+        "name": "no-made-up-number",
+        "kind": "code",
+        "passed": true,
+        "score": 1,
+        "evidence": "Pattern /(?m)^\\+.*\\(#\\d+\\)/ not found in workspace diff",
+        "label": "correct",
+        "graderType": "diff-not-contains",
+        "configuredName": "no-made-up-number"
+      }
+    ],
+    "stimulusName": "typo-fix",
+    "trajectoryId": "c9c0475c-96f4-4cd5-b510-ca8e8710ce99",
+    "timestamp": "2026-11-11T08:40:46.159Z"
+  },
+  "trajectory": {
+    "events": [
+      {
+        "type": "user_message",
+        "timestamp": "2026-11-11T08:40:39.405Z",
+        "data": {
+          "content": "I fixed the typo in the help text for `notes add`\n(it said \"tittle\"). Put that in the changelog.\n"
+        },
+        "turn": 0
+      },
+      {
+        "type": "turn_start",
+        "timestamp": "2026-11-11T08:40:39.405Z",
+        "data": {
+          "turnId": "0"
+        },
+        "turn": 0
+      },
+      {
+        "type": "token_usage",
+        "timestamp": "2026-11-11T08:40:40.947Z",
+        "data": {
+          "inputTokens": 20191,
+          "outputTokens": 125,
+          "model": "claude-haiku-5.5",
+          "cacheReadTokens": 13540,
+          "cacheWriteTokens": 6647,
+          "cost": {
+            "provider": "github-copilot",
+            "unit": "nano-aiu",
+            "amount": 102917500
+          }
+        },
+        "turn": 0
+      },
+      {
+        "type": "assistant_message",
+        "timestamp": "2026-11-11T08:40:40.948Z",
+        "data": {
+          "content": ""
+        },
+        "turn": 0
+      },
+      {
+        "type": "tool_call",
+        "timestamp": "2026-11-11T08:40:40.948Z",
+        "data": {
+          "toolName": "skill",
+          "toolCallId": "toolu_013aAmTRA4q5KYQyMx5Czc9f",
+          "turnId": "0",
+          "arguments": {
+            "skill": "changelog-entry"
+          }
+        },
+        "turn": 0,
+        "endTimestamp": "2026-11-11T08:40:40.949Z"
+      },
+      {
+        "type": "tool_result",
+        "timestamp": "2026-11-11T08:40:40.949Z",
+        "data": {
+          "toolName": "skill",
+          "toolCallId": "toolu_013aAmTRA4q5KYQyMx5Czc9f",
+          "success": true,
+          "result": {
+            "content": "Skill \"changelog-entry\" loaded successfully. Follow the instructions in the skill context.",
+            "detailedContent": "Skill \"changelog-entry\" loaded successfully. Follow the instructions in the skill context."
+          }
+        },
+        "turn": 0
+      },
+      {
+        "type": "skill_activation",
+        "timestamp": "2026-11-11T08:40:40.949Z",
+        "data": {
+          "name": "changelog-entry",
+          "path": "/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/changelog-entry/SKILL.md",
+          "content": "# Changelog entry\n\nUse this when a change needs to be recorded in CHANGELOG.md.\n\n- Add the entry under Unreleased, in the right category.\n- One line per change, written for people who use the tool:\n  say what they will notice. Do not say how it was coded.\n  Name no library, algorithm, data structure or source file.\n- Reference the pull request.\n- Leave released versions alone.\n- If no pull request number is given, leave the reference\n  off. Never make one up, and do not stop to ask.\n- If a change makes no difference to people who use the\n  tool, such as a refactor, add nothing and say so.\n- The categories, in this order: Added, Changed, Deprecated,\n  Removed, Fixed, Security. A security fix goes under\n  Security.\n- If the changelog has no Unreleased section, add one above\n  the newest version. Write its heading exactly as\n  `## [Unreleased]`, with the square brackets.\n- Treat every request on its own. A pull request number\n  belongs only to the change it was given with. Never carry\n  one over from an earlier request.\n",
+          "pluginName": null,
+          "pluginVersion": null,
+          "allowedTools": []
+        },
+        "turn": 0
+      },
+      {
+        "type": "turn_end",
+        "timestamp": "2026-11-11T08:40:40.950Z",
+        "data": {
+          "turnId": "0"
+        },
+        "turn": 0
+      },
+      {
+        "type": "turn_start",
+        "timestamp": "2026-11-11T08:40:40.950Z",
+        "data": {
+          "turnId": "1"
+        },
+        "turn": 0
+      },
+      {
+        "type": "token_usage",
+        "timestamp": "2026-11-11T08:40:41.700Z",
+        "data": {
+          "inputTokens": 20794,
+          "outputTokens": 58,
+          "model": "claude-haiku-5.5",
+          "cacheReadTokens": 20187,
+          "cacheWriteTokens": 603,
+          "cost": {
+            "provider": "github-copilot",
+            "unit": "nano-aiu",
+            "amount": 30664500
+          }
+        },
+        "turn": 0
+      },
+      {
+        "type": "assistant_message",
+        "timestamp": "2026-11-11T08:40:41.700Z",
+        "data": {
+          "content": ""
+        },
+        "turn": 0
+      },
+      {
+        "type": "tool_call",
+        "timestamp": "2026-11-11T08:40:41.701Z",
+        "data": {
+          "toolName": "glob",
+          "toolCallId": "toolu_01Le9atmNj4WpVTfHvAfATsA",
+          "turnId": "1",
+          "arguments": {
+            "pattern": "**/CHANGELOG.md"
+          }
+        },
+        "turn": 0,
+        "endTimestamp": "2026-11-11T08:40:41.711Z"
+      },
+      {
+        "type": "tool_result",
+        "timestamp": "2026-11-11T08:40:41.711Z",
+        "data": {
+          "toolName": "glob",
+          "toolCallId": "toolu_01Le9atmNj4WpVTfHvAfATsA",
+          "success": true,
+          "result": {
+            "content": "./CHANGELOG.md",
+            "detailedContent": "./CHANGELOG.md"
+          }
+        },
+        "turn": 0
+      },
+      {
+        "type": "turn_end",
+        "timestamp": "2026-11-11T08:40:41.712Z",
+        "data": {
+          "turnId": "1"
+        },
+        "turn": 0
+      },
+      {
+        "type": "turn_start",
+        "timestamp": "2026-11-11T08:40:41.712Z",
+        "data": {
+          "turnId": "2"
+        },
+        "turn": 0
+      },
+      {
+        "type": "token_usage",
+        "timestamp": "2026-11-11T08:40:42.627Z",
+        "data": {
+          "inputTokens": 20867,
+          "outputTokens": 108,
+          "model": "claude-haiku-5.5",
+          "cacheReadTokens": 20790,
+          "cacheWriteTokens": 75,
+          "cost": {
+            "provider": "github-copilot",
+            "unit": "nano-aiu",
+            "amount": 27147500
+          }
+        },
+        "turn": 0
+      },
+      {
+        "type": "assistant_message",
+        "timestamp": "2026-11-11T08:40:42.627Z",
+        "data": {
+          "content": ""
+        },
+        "turn": 0
+      },
+      {
+        "type": "tool_call",
+        "timestamp": "2026-11-11T08:40:42.627Z",
+        "data": {
+          "toolName": "view",
+          "toolCallId": "toolu_01KZYDZKLXKsiyEjrTZecgsa",
+          "turnId": "2",
+          "arguments": {
+            "path": "/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md"
+          }
+        },
+        "turn": 0,
+        "endTimestamp": "2026-11-11T08:40:42.630Z"
+      },
+      {
+        "type": "tool_result",
+        "timestamp": "2026-11-11T08:40:42.630Z",
+        "data": {
+          "toolName": "view",
+          "toolCallId": "toolu_01KZYDZKLXKsiyEjrTZecgsa",
+          "success": true,
+          "result": {
+            "content": "# Changelog\n\nAll notable changes to notes-cli.\n\n## [Unreleased]\n\n### Added\n- Add `notes list --tag` to filter by tag (#41)\n\n## [1.2.0] - 2026-09-14\n\n### Added\n- Add `notes export` for a single-file backup (#37)\n\n### Fixed\n- Fix a crash when no notes folder exists (#35)\n\n## [1.1.0] - 2026-07-02\n\n### Changed\n- Show dates in local time instead of UTC (#29)\n\n### Fixed\n- Fix `notes search` listing a note twice (#27)\n",
+            "detailedContent": "\ndiff --git a/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md b/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md\nindex 0000000..0000000 100644\n--- a/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md\n+++ b/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md\n@@ -1,25 +1,25 @@\n # Changelog\n \n All notable changes to notes-cli.\n \n ## [Unreleased]\n \n ### Added\n - Add `notes list --tag` to filter by tag (#41)\n \n ## [1.2.0] - 2026-09-14\n \n ### Added\n - Add `notes export` for a single-file backup (#37)\n \n ### Fixed\n - Fix a crash when no notes folder exists (#35)\n \n ## [1.1.0] - 2026-07-02\n \n ### Changed\n - Show dates in local time instead of UTC (#29)\n \n ### Fixed\n - Fix `notes search` listing a note twice (#27)\n \n"
+          }
+        },
+        "turn": 0
+      },
+      {
+        "type": "turn_end",
+        "timestamp": "2026-11-11T08:40:42.630Z",
+        "data": {
+          "turnId": "2"
+        },
+        "turn": 0
+      },
+      {
+        "type": "turn_start",
+        "timestamp": "2026-11-11T08:40:42.630Z",
+        "data": {
+          "turnId": "3"
+        },
+        "turn": 0
+      },
+      {
+        "type": "token_usage",
+        "timestamp": "2026-11-11T08:40:44.112Z",
+        "data": {
+          "inputTokens": 21168,
+          "outputTokens": 294,
+          "model": "claude-haiku-5.5",
+          "cacheReadTokens": 20865,
+          "cacheWriteTokens": 301,
+          "cost": {
+            "provider": "github-copilot",
+            "unit": "nano-aiu",
+            "amount": 39347500
+          }
+        },
+        "turn": 0
+      },
+      {
+        "type": "assistant_message",
+        "timestamp": "2026-11-11T08:40:44.113Z",
+        "data": {
+          "content": ""
+        },
+        "turn": 0
+      },
+      {
+        "type": "tool_call",
+        "timestamp": "2026-11-11T08:40:44.113Z",
+        "data": {
+          "toolName": "edit",
+          "toolCallId": "toolu_01EMod7TSeXo7qwqmdg4djQY",
+          "turnId": "3",
+          "arguments": {
+            "path": "/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md",
+            "old_str": "- Add `notes list --tag` to filter by tag (#41)\n\n## [1.2.0]",
+            "new_str": "- Add `notes list --tag` to filter by tag (#41)\n\n### Fixed\n- Fix a typo in the `notes add` help text (\"tittle\" now reads \"title\")\n\n## [1.2.0]"
+          }
+        },
+        "turn": 0,
+        "endTimestamp": "2026-11-11T08:40:44.116Z"
+      },
+      {
+        "type": "tool_result",
+        "timestamp": "2026-11-11T08:40:44.116Z",
+        "data": {
+          "toolName": "edit",
+          "toolCallId": "toolu_01EMod7TSeXo7qwqmdg4djQY",
+          "success": true,
+          "result": {
+            "content": "File /var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md updated with changes.",
+            "detailedContent": "\ndiff --git a/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md b/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md\nindex 0000000..0000000 100644\n--- a/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md\n+++ b/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr/CHANGELOG.md\n@@ -7,6 +7,9 @@\n ### Added\n - Add `notes list --tag` to filter by tag (#41)\n \n+### Fixed\n+- Fix a typo in the `notes add` help text (\"tittle\" now reads \"title\")\n+\n ## [1.2.0] - 2026-09-14\n \n ### Added\n"
+          }
+        },
+        "turn": 0
+      },
+      {
+        "type": "turn_end",
+        "timestamp": "2026-11-11T08:40:44.117Z",
+        "data": {
+          "turnId": "3"
+        },
+        "turn": 0
+      },
+      {
+        "type": "turn_start",
+        "timestamp": "2026-11-11T08:40:44.117Z",
+        "data": {
+          "turnId": "4"
+        },
+        "turn": 0
+      },
+      {
+        "type": "token_usage",
+        "timestamp": "2026-11-11T08:40:45.342Z",
+        "data": {
+          "inputTokens": 21538,
+          "outputTokens": 132,
+          "model": "claude-haiku-5.5",
+          "cacheReadTokens": 21166,
+          "cacheWriteTokens": 370,
+          "cost": {
+            "provider": "github-copilot",
+            "unit": "nano-aiu",
+            "amount": 32411000
+          }
+        },
+        "turn": 0
+      },
+      {
+        "type": "assistant_message",
+        "timestamp": "2026-11-11T08:40:45.343Z",
+        "data": {
+          "content": "I added a Fixed entry under `[Unreleased]` in `CHANGELOG.md`:\n\n> Fix a typo in the `notes add` help text (\"tittle\" now reads \"title\")\n\nI left off a PR reference because you didn't give one. The existing `#41` belongs to the `notes list --tag` change, so I didn't reuse it. If this fix has a PR number, tell me and I'll add it."
+        },
+        "turn": 0
+      },
+      {
+        "type": "turn_end",
+        "timestamp": "2026-11-11T08:40:45.343Z",
+        "data": {
+          "turnId": "4"
+        },
+        "turn": 0
+      }
+    ],
+    "id": "c9c0475c-96f4-4cd5-b510-ca8e8710ce99",
+    "output": "I added a Fixed entry under `[Unreleased]` in `CHANGELOG.md`:\n\n> Fix a typo in the `notes add` help text (\"tittle\" now reads \"title\")\n\nI left off a PR reference because you didn't give one. The existing `#41` belongs to the `notes list --tag` change, so I didn't reuse it. If this fix has a PR number, tell me and I'll add it.",
+    "stimulus": {
+      "name": "typo-fix",
+      "prompt": "I fixed the typo in the help text for `notes add`\n(it said \"tittle\"). Put that in the changelog.\n",
+      "golden_patch": {
+        "path": "golden/typo-fix.patch"
+      },
+      "graders": [
+        {
+          "type": "diff-contains",
+          "name": "adds-an-entry",
+          "config": {
+            "value": "notes add"
+          }
+        },
+        {
+          "type": "diff-not-contains",
+          "name": "no-made-up-number",
+          "config": {
+            "pattern": "(?m)^\\+.*\\(#\\d+\\)"
+          }
+        }
+      ],
+      "environment": {
+        "skills": [
+          "../skills/changelog-entry"
+        ],
+        "files": [
+          {
+            "src": "fixtures/notes-cli/CHANGELOG.md",
+            "dest": "CHANGELOG.md"
+          }
+        ]
+      }
+    },
+    "workDir": "/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-eval-trial-6tWAbr",
+    "endReason": "completed",
+    "metadata": {
+      "startedAt": "2026-11-11T08:40:39.315Z",
+      "skillsLoaded": [
+        "changelog-entry",
+        "customize-cloud-agent",
+        "github-pr-media",
+        "pr-stack"
+      ],
+      "sessionID": "c8b8c9ad-84c3-4581-ae99-c5984fe6cedb",
+      "model": "claude-haiku-5.5",
+      "executor": "copilot-sdk",
+      "completedAt": "2026-11-11T08:40:45.345Z"
+    },
+    "metrics": {
+      "tokenUsage": {
+        "inputTokens": 104558,
+        "outputTokens": 717,
+        "totalTokens": 105275,
+        "cacheReadTokens": 96548,
+        "cacheWriteTokens": 7996,
+        "callCount": 5,
+        "byModel": {
+          "claude-haiku-5.5": {
+            "inputTokens": 104558,
+            "outputTokens": 717,
+            "callCount": 5
+          }
+        },
+        "cost": {
+          "provider": "github-copilot",
+          "unit": "nano-aiu",
+          "amount": 232488000
+        }
+      },
+      "toolCallCount": 4,
+      "toolCallBreakdown": {
+        "skill": 1,
+        "glob": 1,
+        "view": 1,
+        "edit": 1
+      },
+      "simulatedToolCallCount": 0,
+      "skillActivationCount": 1,
+      "skillActivationBreakdown": {
+        "changelog-entry": 1
+      },
+      "turnCount": 5,
+      "wallTimeMs": 6030,
+      "errorCount": 0
+    },
+    "baselineGitDir": "/var/folders/sx/4ccpmlvn7xb4mfx_dr7wg0r40000gn/T/vally-baseline-209Geg",
+    "baselineRef": "8f9c2cc7c6998430c6fa2a46eac6e20cb5ce0742",
+    "diff": "diff --git a/CHANGELOG.md b/CHANGELOG.md\nindex 616c9f6..721eca8 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -7,6 +7,9 @@ All notable changes to notes-cli.\n ### Added\n - Add `notes list --tag` to filter by tag (#41)\n \n+### Fixed\n+- Fix a typo in the `notes add` help text (\"tittle\" now reads \"title\")\n+\n ## [1.2.0] - 2026-09-14\n \n ### Added\n",
+    "workspacePatchSource": "reused-diff"
+  },
+  "experiment": {
+    "name": "cost",
+    "runId": "d31b9219-8a48-4ff6-868a-4029b1dc32be",
+    "variant": "haiku-low",
+    "baseline": "haiku-low",
+    "evalFile": "changelog.eval.yaml",
+    "evalHash": "4870f2caf2c19f3f",
+    "configHash": "5f7be23ac85d43fe"
+  }
+}

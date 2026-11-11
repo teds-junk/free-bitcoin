@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Same request, two models.</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.cols .quote{display:flex;flex-direction:column;justify-content:center;min-height:300px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Run it on two models</div>
+  <h2 class="scene-title">Same request, two models.</h2>
+  <div class="stage">
+<div class="cols">
+    <div class="quote" data-concept="request" data-rep="quote"><span class="who">The request</span><p>“I fixed the typo in the help text for <span class="inline-code">notes add</span> (it said "tittle"). Put that in the changelog.”</p></div>
+    <div class="quote" data-concept="ref" data-rep="quote"><span class="who">The skill says</span><p>“Reference the pull request.”</p></div>
+  </div>
+  <p class="lead">Neither names a pull request number. What will each model write?</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "request",
+  "at": "2~same request",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ref",
+  "at": "3~reference",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

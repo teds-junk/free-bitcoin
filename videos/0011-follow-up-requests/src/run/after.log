@@ -1,0 +1,9 @@
+Model summary
+  ✓ claude-haiku-4.5  1/1 evals passed
+  ✓ gpt-5.6-terra  1/1 evals passed
+
+  eval          claude-haiku-4.5  gpt-5.6-terra
+  conversation  ✓ 1/1             ✓ 1/1        
+
+Saved  ~/src/demo/practice/results/lesson-11-after/2026-11-11T06-39-12-770Z/
+Run ID  bc2b310b-8bc0-4c3e-97a3-0627243de5d7

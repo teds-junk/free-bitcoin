@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Five steps, four with tool calls</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:40px}.data-table th{font-size:30px}.data-table td{padding-top:20px;padding-bottom:20px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:34px}.steps{min-width:1100px}.steps td{padding-top:24px;padding-bottom:24px}.steps{font-size:42px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Run the app, convert, grade</div>
+  <h2 class="scene-title">Five steps, four with tool calls</h2>
+  <div class="stage">
+<table class="data-table steps">
+    <thead><tr><th class="num">Step</th><th>Tool calls</th><th></th></tr></thead>
+    <tbody>
+<tr><td class="num">1</td><td class="mono"><span data-concept="calls" data-rep="cell">view, view</span></td><td></td></tr>
+<tr><td class="num">2</td><td class="mono"><span data-concept="calls" data-rep="cell">view</span></td><td></td></tr>
+<tr><td class="num">3</td><td class="mono"><span data-concept="calls" data-rep="cell">edit</span></td><td></td></tr>
+<tr><td class="num">4</td><td class="mono"><span data-concept="calls" data-rep="cell">view</span></td><td></td></tr>
+<tr><td class="num">5</td><td class="mono"><span data-concept="reply" data-rep="cell">none</span></td><td>the reply only</td></tr>
+    </tbody>
+  </table>
+  <p class="note"><span class="mono">app-run/trajectory.json</span> · our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "calls",
+  "at": "1~four steps",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "reply",
+  "at": "1~last step",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

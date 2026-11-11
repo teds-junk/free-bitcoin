@@ -1,0 +1,14 @@
+# stimulus	model	trial	ours	note
+# Our own answers for run 2026-11-11T06-48-30-514Z, written after reading the twelve patches and BEFORE the judge ran. Not changed afterwards.
+parser	claude-haiku-4.5	0	no	names the streaming parser
+parser	claude-haiku-4.5	1	yes	only what users notice
+parser	gpt-5.6-terra	0	yes	only what users notice
+parser	gpt-5.6-terra	1	yes	only what users notice
+cache	claude-haiku-4.5	0	no	names the kind of cache
+cache	claude-haiku-4.5	1	no	names the kind of cache
+cache	gpt-5.6-terra	0	no	hesitated: the benefit, then a hint of the method
+cache	gpt-5.6-terra	1	no	hesitated: the benefit, then a hint of the method
+dates	claude-haiku-4.5	0	yes	what works now, not how it was fixed
+dates	claude-haiku-4.5	1	yes	what works now, not how it was fixed
+dates	gpt-5.6-terra	0	yes	only what users notice
+dates	gpt-5.6-terra	1	yes	only what users notice

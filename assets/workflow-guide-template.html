@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workflow guide — {{COURSE_TITLE}}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Reference · {{COURSE_TITLE}}</div>
+    <h1>Workflow guide: {{THE TASK, e.g. writing an eval for a skill}}</h1>
+    <div class="lesson-meta">Verified {{DATE}} · {{TOOL AND VERSION}}</div>
+  </div>
+
+  <p>{{One or two sentences: what this guide gets done, for a reader who took the course a while ago and remembers little of it. Every step says what to do, how to tell it is done, and which lesson explains it.}}</p>
+
+  <!-- The entry router. A returning reader is rarely at the beginning. -->
+  <h2>Where are you?</h2>
+  <ul>
+    <li>{{SITUATION, e.g. Starting from nothing}}: start at <a href="#A">A</a>.</li>
+    <li>{{SITUATION, e.g. Something exists but fails}}: <a href="#B1">GOTO B1</a>.</li>
+  </ul>
+
+  <h2>The workflow</h2>
+  <!-- Labels are written by hand because GOTOs point at them: stage letters
+       (A, B, C), steps A1, A2, sub-steps A2a. Each id equals its label. -->
+  <ol class="workflow">
+    <li id="A"><span class="wf-label">A</span><strong>{{STAGE NAME}}</strong>
+      <ol>
+        <li id="A1"><span class="wf-label">A1</span>{{One action, as an instruction.}}
+<pre><code>{{COMMAND, VERIFIED, LITERAL PATHS}}</code></pre>
+          <span class="wf-done">Done when: {{WHAT YOU CAN OBSERVE}}.</span>
+          <a class="wf-src" href="../lessons/{{LESSON_FILE}}">Lesson {{N}}</a></li>
+        <li id="A2"><span class="wf-label">A2</span>{{A decision.}}
+          <span class="wf-goto">If {{CONDITION}}, <a href="#B1">GOTO B1</a>.</span>
+          <span class="wf-goto">Otherwise continue to A3.</span>
+          <a class="wf-src" href="../lessons/{{LESSON_FILE}}">Lesson {{N}}</a></li>
+      </ol>
+    </li>
+    <li id="B"><span class="wf-label">B</span><strong>{{STAGE NAME}}</strong>
+      <ol>
+        <li id="B1"><span class="wf-label">B1</span>{{…}}
+          <span class="wf-done">Done when: {{…}}.</span>
+          <span class="wf-goto">If it fails, <a href="#A2">GOTO A2</a>.</span>
+          <a class="wf-src" href="../lessons/{{LESSON_FILE}}">Lesson {{N}}</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <nav class="course-map" data-current="0" data-root="../"></nav>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

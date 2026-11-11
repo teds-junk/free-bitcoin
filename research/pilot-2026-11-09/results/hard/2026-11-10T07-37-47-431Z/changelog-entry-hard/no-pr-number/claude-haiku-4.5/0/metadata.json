@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "no-pr-number",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::claude-haiku-4.5::no-pr-number::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "claude-haiku-4.5",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:37:57.461Z",
+  "status": "success",
+  "trajectoryId": "c54bd4c2-028c-4b03-adce-5c745487d86c",
+  "executorSessionId": "ec83cf85-c59f-4e5e-9c87-7152e5450acf",
+  "completedAt": "2026-11-10T07:38:05.501Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/no-pr-number/claude-haiku-4.5/0/events.jsonl"
+}

@@ -1,0 +1,38 @@
+{
+  "metrics": {
+    "tokenUsage": {
+      "inputTokens": 73946,
+      "outputTokens": 717,
+      "totalTokens": 74663,
+      "cacheReadTokens": 57581,
+      "cacheWriteTokens": 16327,
+      "callCount": 5,
+      "byModel": {
+        "claude-haiku-4.5": {
+          "inputTokens": 73946,
+          "outputTokens": 717,
+          "callCount": 5
+        }
+      },
+      "cost": {
+        "provider": "github-copilot",
+        "unit": "nano-aiu",
+        "amount": 2978985000
+      }
+    },
+    "toolCallCount": 5,
+    "toolCallBreakdown": {
+      "skill": 1,
+      "view": 3,
+      "edit": 1
+    },
+    "simulatedToolCallCount": 0,
+    "skillActivationCount": 1,
+    "skillActivationBreakdown": {
+      "changelog-entry": 1
+    },
+    "turnCount": 5,
+    "wallTimeMs": 11608,
+    "errorCount": 0
+  }
+}

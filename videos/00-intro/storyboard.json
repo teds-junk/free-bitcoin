@@ -1,0 +1,78 @@
+{
+  "schema": 2,
+  "title": "Vally & Agent Evals",
+  "slug": "00-intro",
+  "kind": "intro",
+  "source": "",
+  "created": "2026-11-11",
+  "pacing": {
+    "lead_in": 0.4,
+    "gap": 0.5,
+    "tail": 0.8
+  },
+  "narrative": {
+    "question": "You wrote a skill and it works when you try it. Does it work?",
+    "viewer_starts": "Has written or used a skill for a coding agent, and has not evaluated one.",
+    "arc": [
+      {
+        "stage": "promise",
+        "viewer_can": "say what problem the course starts from and who it is for"
+      },
+      {
+        "stage": "journey",
+        "viewer_can": "name the seven parts and where they lead"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "role": "hook",
+      "mode": "think",
+      "stage": "promise",
+      "chapter": "Introduction",
+      "renderer": "slide",
+      "visual": "scenes/s01.html",
+      "on_screen": "The course name in the display serif, under the eyebrow 'A course in seven parts'. Below: 'It works when you try it. Does it work?'",
+      "introduces": [],
+      "narration": [
+        "You wrote a skill for a coding agent, and it works when you try it.",
+        "But you can't tell whether it works on another model, on the fifth run, or after your next edit, or what each run costs.",
+        "This course is for anyone who writes skills, or builds an agent into an app, and wants evidence in place of a hunch."
+      ]
+    },
+    {
+      "id": "s02",
+      "role": "body",
+      "mode": "think",
+      "stage": "journey",
+      "renderer": "slide",
+      "visual": "scenes/s02.html",
+      "on_screen": "Headline 'One skill, measured'. Seven blocks in two rows, one named for each part of the course.",
+      "introduces": [],
+      "narration": [
+        "We take one short skill, which writes changelog entries, and measure it with Vally.",
+        "First we measure the skill, and read what the agent really did.",
+        "Then we build graders we can trust, and ask whether the skill earns its place.",
+        "We add a judge for what code can't check, and learn what a result does and doesn't support.",
+        "We work out what a passing trial costs, and turn the checks into a routine.",
+        "Finally, we evaluate the same skill inside an app."
+      ]
+    },
+    {
+      "id": "s03",
+      "role": "body",
+      "mode": "think",
+      "stage": "journey",
+      "renderer": "slide",
+      "visual": "scenes/s03.html",
+      "on_screen": "'Say it with evidence' in the display serif. Below: 'Did the change make it better, and what does it cost?'",
+      "introduces": [],
+      "narration": [
+        "By the end, you can change the skill, or the model under it, and say with evidence whether it got better, and what it costs.",
+        "Let's begin."
+      ]
+    }
+  ],
+  "poster": "s01"
+}

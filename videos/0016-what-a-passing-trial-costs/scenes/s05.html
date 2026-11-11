@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Report cost beside accuracy</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:210px}.terms .title{font-size:42px}.terms .label{font-size:34px}.stage{gap:28px}.quote{width:100%}.quote p{font-size:40px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Cost per passing trial</div>
+  <h2 class="scene-title">Report cost beside accuracy</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="rank" data-rep="block" data-role="structure">
+      <div class="title words">Agent rankings</div><div class="label">built on accuracy alone</div>
+    </div>
+    <div class="semantic-block" data-concept="retry" data-rep="block" data-role="attention">
+      <div class="title words">Simple agents that tried again</div><div class="label">the same accuracy, at a fraction of the cost</div>
+    </div>
+  </div>
+  <div class="quote" data-concept="argue" data-rep="quote"><span class="who">The researchers’ argument</span><p>Every evaluation should report cost beside accuracy.</p></div>
+  <p class="note">Source: Kapoor et al., “AI Agents That Matter” (2024), a preprint</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "argue",
+  "at": "0~argued",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "retry",
+  "at": "1~simple agents",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "rank",
+  "at": "1~rankings",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

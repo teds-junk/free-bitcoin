@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What code cannot check</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.results{display:flex;flex-direction:column;gap:40px;width:100%}.results .card > .code.dark{font-size:38px;padding:28px 36px}.results .card .who{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">What code cannot check</h1>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="card-a" data-rep="card">
+        <div class="who">the skill · <span class="mono">changelog-entry</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- One line per change, </span><span data-concept="rule" data-rep="code"><span>written for people who use the tool</span></span><span>.</span></code></pre>
+      </div>
+      <div class="card" data-concept="card-b" data-rep="card">
+        <div class="who">one entry from our run · <span class="mono">claude-haiku-4.5</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span style="color:#B3C0BF">Fix out-of-memory errors on large imports by using </span><span data-concept="how" data-rep="code"><span style="color:#B3C0BF">streaming</span></span>
+<span data-concept="how" data-rep="code"><span style="color:#B3C0BF">parser</span></span><span style="color:#B3C0BF"> in importer.js (#49)</span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "rule",
+  "at": "0~written",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "how",
+  "at": "1~entry",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

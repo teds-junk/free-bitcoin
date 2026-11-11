@@ -1,0 +1,16 @@
+{
+  "trace_lines": 143,
+  "tool_spans": [
+    "execute_tool view",
+    "execute_tool view",
+    "execute_tool view",
+    "execute_tool edit",
+    "execute_tool view"
+  ],
+  "timing_lines": 109,
+  "skill_calls": 0,
+  "merged_list_call": 2,
+  "root_span": "invoke_agent",
+  "chat_parent_is_root": true,
+  "model": "claude-haiku-4.5"
+}

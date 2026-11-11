@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Two more ways to prepare</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.envrow{width:100%}.envrow .semantic-block{min-height:0;padding:22px 32px}.envrow .title{font-size:44px}.envrow .label{font-size:32px}.code.dark.git{font-size:36px;line-height:1.45;min-width:760px;padding:24px 34px}.callout{font-size:32px}.stage{gap:26px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Set up before the agent starts</div>
+  <h2 class="scene-title">Two more ways to prepare</h2>
+  <div class="stage">
+<div class="envrow">
+    <div class="semantic-block" data-concept="env" data-rep="block" data-role="structure">
+      <div class="title">env:</div><div class="label">environment variables for the agent’s process · values can show up in saved trials</div>
+    </div>
+  </div>
+  <div class="annotated">
+    <pre class="code dark git" data-lang="yaml"><code><span style="color:#4EA5E6">agent_environment</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">git</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span data-concept="wt" data-rep="code"><span style="color:#3CC0B3">worktree</span></span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">ref</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">v2.1.0</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">source</span><span style="color:#B3C0BF">: </span><span data-concept="src" data-rep="code"><span style="color:#3CC0B3">../my-repo</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="wt">check out a commit, tag or branch</p><p class="callout" data-anchor="src">from a repository on your machine</p></aside>
+  </div>
+  <p class="note">The shape is from Vally’s Eval Spec reference · not run here</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "env",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "wt",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "src",
+  "at": "2~history",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+$ vally eval -e evals/one-request.eval.yaml --model claude-haiku-4.5,claude-haiku-5.5,gpt-5.6-terra --reasoning-effort list --output-dir results/lesson-16-efforts
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 3 stimuli from one-request · 3 models · 3 workers
+
+one-request
+
+claude-haiku-5.5
+  ERROR  typo-fix
+   Model "claude-haiku-5.5" does not support reasoning_effort "list". Supported reasoning efforts:
+   low, medium, high, xhigh, max. Choose a supported effort or unset reasoning_effort.
+
+gpt-5.6-terra
+  ERROR  typo-fix
+   Model "gpt-5.6-terra" does not support reasoning_effort "list". Supported reasoning efforts:
+   none, low, medium, high, xhigh, max. Choose a supported effort or unset reasoning_effort.
+
+claude-haiku-4.5
+  ERROR  typo-fix
+   Model "claude-haiku-4.5" does not support reasoning effort configuration, but reasoning_effort
+   "list" was requested. Choose a model that supports reasoning effort or unset reasoning_effort.
+
+────────────────────────────────────────────────────────
+
+Failures  3 failed
+  ERROR one-request · typo-fix [claude-haiku-4.5]  Model "claude-haiku-4.5" does not support reasoning effort configuration, but reasoning_effort "list" was requested. Choose a model that supports reasoning effort or unset reasoning_effort.
+  ERROR one-request · typo-fix [claude-haiku-5.5]  Model "claude-haiku-5.5" does not support reasoning_effort "list". Supported reasoning efforts: low, medium, high, xhigh, max. Choose a supported effort or unset reasoning_effort.
+  ERROR one-request · typo-fix [gpt-5.6-terra]  Model "gpt-5.6-terra" does not support reasoning_effort "list". Supported reasoning efforts: none, low, medium, high, xhigh, max. Choose a supported effort or unset reasoning_effort.
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ claude-haiku-5.5  0/1 evals passed
+  ✘ gpt-5.6-terra     0/1 evals passed
+
+  eval         claude-haiku-4.5  claude-haiku-5.5  gpt-5.6-terra
+  one-request  ✘ 0/1             ✘ 0/1             ✘ 0/1        
+
+Saved  <practice>/results/lesson-16-efforts/2026-11-10T17-46-26-737Z/
+Run ID  b53bad47-1b64-4edb-9591-d0202eb8e44a

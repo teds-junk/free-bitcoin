@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Four trials skipped the skill</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.verdicts{font-size:32px}.verdicts th{font-size:28px}.verdicts td,.verdicts th{padding-top:11px;padding-bottom:11px;padding-right:36px;white-space:nowrap}.verdicts td.mono{font-family:var(--font-code)}.verdicts td.small{font-size:28px;white-space:normal}.stage{gap:18px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What changed</div>
+  <h2 class="scene-title">Four trials skipped the skill</h2>
+  <div class="stage">
+<table class="data-table full verdicts">
+    <thead><tr><th>Stimulus</th><th>Verdict</th><th>Skill loaded</th><th>What the grader found</th></tr></thead>
+    <tbody>
+<tr><td class="mono">after-release</td><td>failed</td><td><span data-concept="noact" data-rep="cell">no</span></td><td class="mono small"><span data-concept="f-after-release" data-rep="cell">no '## [Unreleased]' heading</span></td></tr>
+<tr><td class="mono">refactor</td><td>failed</td><td><span data-concept="noact" data-rep="cell">no</span></td><td class="mono small"><span data-concept="f-refactor" data-rep="cell">Workspace diff is not empty — the stimulus changed the workspace</span></td></tr>
+<tr><td class="mono">security</td><td>failed</td><td><span data-concept="noact" data-rep="cell">no</span></td><td class="mono small"><span data-concept="f-security" data-rep="cell">Pattern /(?m)^\+### Security/ not found in workspace diff</span></td></tr>
+<tr><td class="mono">two-changes</td><td>passed</td><td><span data-concept="noact" data-rep="cell">no</span></td><td class="mono small"></td></tr>
+<tr><td class="mono">typo-fix</td><td>passed</td><td><span data-concept="act" data-rep="cell">yes</span></td><td class="mono small"></td></tr>
+    </tbody>
+  </table>
+  <p class="note"><span class="mono">skill_activation</span> events in each saved trial · our run · 2026-11-11T13-59-30-867Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "f-security",
+  "at": "2~security fix",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "f-refactor",
+  "at": "2~refactor",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "f-after-release",
+  "at": "2~made up",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "act",
+  "at": "3~only one",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "noact",
+  "at": "3~none",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

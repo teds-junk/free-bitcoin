@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What nine trials can show</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.ranges{display:grid;grid-template-columns:max-content 1fr max-content;gap:14px 28px;align-items:center;width:100%}.ranges .rl{font:500 34px/1.2 var(--font-code);color:var(--ink);white-space:nowrap}.ranges .rt{font:400 32px/1.2 var(--font-body);color:var(--ink-soft);white-space:nowrap}.ranges .track{position:relative;height:46px;background:var(--paper-muted);border-radius:var(--radius)}.ranges .fill{position:absolute;top:0;bottom:0;border-radius:var(--radius)}.ranges .fill.before{background:var(--focus-blue)}.ranges .fill.after{background:var(--focus-yellow)}.ranges .at{position:absolute;top:7px;bottom:7px;width:6px;margin-left:-3px;border-radius:3px;background:var(--ink)}.ranges .axis{grid-column:2;display:flex;justify-content:space-between;font:400 26px/1 var(--font-body);color:var(--ink-muted)}.ranges .group{grid-column:1 / -1;font:600 28px/1.2 var(--font-body);color:var(--ink-soft);margin-top:10px}.two{gap:56px}.mb{display:flex;flex-direction:column;gap:22px;min-width:0}.mb .who{font:500 32px/1.2 var(--font-body);color:var(--ink-soft)}.mb .who .mono{font-family:var(--font-code);color:var(--ink)}.ranges{gap:14px 16px}.ranges .rl{font-size:36px}.ranges .rt{font-size:29px}.ranges .track{height:54px}.ranges .axis{font-size:24px}.note{margin:0}.stage{gap:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">The earlier fixes, re-examined</div>
+  <h2 class="scene-title">What nine trials can show</h2>
+  <div class="stage">
+<div class="cols wide two">
+    <div class="mb">
+      <div class="who"><span class="mono">claude-haiku-4.5</span></div>
+      <div class="ranges">
+      <div class="rl"><span data-concept="hb" data-rep="cell">5 of 9</span></div>
+      <div class="track"><div class="fill before" style="left:26.7%;width:54.5%"></div><div class="at" style="left:55.6%"></div></div>
+      <div class="rt">27% to 81%</div>
+      <div class="rl"><span data-concept="ha" data-rep="cell">9 of 9</span></div>
+      <div class="track"><div class="fill after" style="left:70.1%;width:29.9%"></div><div class="at" style="left:100.0%"></div></div>
+      <div class="rt">70% to 100%</div>
+      <div class="axis"><span>0%</span><span>50%</span><span>100%</span></div>
+    </div>
+    </div>
+    <div class="mb">
+      <div class="who"><span class="mono">gpt-5.6-terra</span></div>
+      <div class="ranges">
+      <div class="rl"><span data-concept="tb" data-rep="cell">5 of 6</span></div>
+      <div class="track"><div class="fill before" style="left:43.6%;width:53.3%"></div><div class="at" style="left:83.3%"></div></div>
+      <div class="rt">44% to 97%</div>
+      <div class="rl"><span data-concept="ta" data-rep="cell">9 of 9</span></div>
+      <div class="track"><div class="fill after" style="left:70.1%;width:29.9%"></div><div class="at" style="left:100.0%"></div></div>
+      <div class="rt">70% to 100%</div>
+      <div class="axis"><span>0%</span><span>50%</span><span>100%</span></div>
+    </div>
+    </div>
+  </div>
+  <p class="note">trials passed before the edit (blue) and after it (yellow), with the range around each · our run · 2026-11-11T07-53-29-176Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "hb",
+  "at": "1~before the edit",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ha",
+  "at": "2~after the edit",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "tb",
+  "at": "5",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "6"
+ }
+]
+</script>
+</body>
+</html>

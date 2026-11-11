@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Where the app starts</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.pair{align-items:center}.tool{display:flex;flex-direction:column;gap:16px;border-radius:12px}.quote p{font-size:34px;line-height:1.34}.card{width:100%}.card .who{font-size:28px}.card > .code.dark.merged{font-size:28px;line-height:1.45;padding:18px 26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">Where the app starts</h1>
+  <div class="stage">
+<div class="cols pair">
+    <div class="quote" data-concept="person" data-rep="quote"><span class="who">A person asks</span><p>“I fixed the typo in the help text for `notes add` (it said "tittle"). Put that in the changelog.”</p></div>
+    <div class="tool" data-concept="tool" data-rep="card">
+      <div class="quote" data-concept="toolq" data-rep="quote"><span class="who">The release tool asks</span><p>“Write the Unreleased changelog entries for every change listed in release/merged.txt.”</p></div>
+      <div class="card" data-concept="listc" data-rep="card">
+        <div class="who"><span class="mono">release/merged.txt</span></div>
+        <pre class="code dark merged" data-lang="text"><code><span>#74 feat: add --since &lt;date&gt; to notes list</span>
+<span>#75 fix: notes search missed titles with accents</span>
+<span>#76 refactor: move config loading out of cli.js</span></code></pre>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "person",
+  "at": "0~person",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "tool",
+  "at": "2~small tool",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

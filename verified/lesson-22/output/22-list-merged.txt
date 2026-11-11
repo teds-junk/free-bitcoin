@@ -1,0 +1,3 @@
+#74 feat: add --since <date> to notes list
+#75 fix: notes search missed titles with accents
+#76 refactor: move config loading out of cli.js

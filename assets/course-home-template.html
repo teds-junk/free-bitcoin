@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{COURSE_TITLE}} — Course Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Course Home · {{TOTAL}} Lessons · About {{TOTAL_TIME}}</div>
+    <h1>{{COURSE_TITLE}}</h1>
+    <div class="lesson-meta">{{VERSIONS OR DATE THE COURSE WAS VERIFIED AGAINST}}</div>
+  </div>
+
+  <!-- The course story from the plan, in two or three sentences: where the
+       reader starts, where they end up, and what they will have made. -->
+  <p class="drop-cap">{{STARTING PROBLEM, THEN DESTINATION}}</p>
+
+  <!-- Course video slot. Leave it as it is. It stays hidden until
+       COURSE.video in assets/course.js names a file that exists. -->
+  <div class="lesson-video" data-video="course" data-root="" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · every lesson's video, back to back. Each lesson's own video is at the top of its page.</p>
+  </div>
+
+  <h2>Before you start</h2>
+  <ul>
+    <li>{{WHAT THE READER NEEDS INSTALLED, WITH VERSIONS, AND HOW TO CHECK EACH}}</li>
+    <li>{{WHERE HANDS-ON WORK HAPPENS: the practice folder the course creates}}</li>
+    <li>{{WHAT, IF ANYTHING, COSTS MONEY OR NEEDS AN ACCOUNT}}</li>
+  </ul>
+
+  <h2>How to use this course</h2>
+  <ul>
+    <li>Take the lessons in order. Each one ends with something you can do that you could not do before.</li>
+    <li>Lessons after the first open with questions from earlier lessons. Answer from memory before you look.</li>
+    <li>The reference sheets are the part to keep. When you come back to this later, start with the workflow guide.</li>
+    <li>Ask your agent about anything at any point. To continue: <code>/teach-me Continue my lessons on {{TOPIC}}</code></li>
+  </ul>
+
+  <nav class="course-map" data-current="0" data-root=""></nav>
+
+  <script src="assets/course.js"></script>
+  <script src="assets/lesson.js"></script>
+</body>
+</html>

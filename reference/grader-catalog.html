@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grader catalog — Vally &amp; Agent Evals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Reference · Vally &amp; Agent Evals</div>
+    <h1>Grader catalog</h1>
+    <div class="lesson-meta">Verified 2026-11-10 · Vally 0.21.0</div>
+  </div>
+
+  <p>The graders this course used, what each reads, how each is configured, and how each can be tested. Then the names of the rest.</p>
+
+  <h2 id="used">Graders used in the course</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Grader</th><th>Passes when</th><th>Taught in</th></tr></thead>
+    <tbody>
+      <tr><td><code>file-contains</code></td><td>A file in the finished workspace contains the text</td><td><a href="../lessons/0002-what-the-tick-checked.html#eval-file">Lesson 2</a></td></tr>
+      <tr><td><code>diff-contains</code></td><td>The patch contains the text or pattern</td><td><a href="../lessons/0005-turn-a-failure-into-a-grader.html#diff-graders">Lesson 5</a></td></tr>
+      <tr><td><code>diff-not-contains</code></td><td>The patch does not contain it</td><td><a href="../lessons/0005-turn-a-failure-into-a-grader.html#diff-graders">Lesson 5</a></td></tr>
+      <tr><td><code>diff-empty</code></td><td>The agent changed nothing</td><td><a href="../lessons/0005-turn-a-failure-into-a-grader.html#diff-graders">Lesson 5</a></td></tr>
+      <tr><td><code>program</code></td><td>A script run in the grading copy prints a result that says it passed</td><td><a href="../lessons/0006-keep-graders-out-of-reach.html#grading-only">Lesson 6</a></td></tr>
+      <tr><td><code>skill-invocation</code></td><td>Every <code>required</code> skill loaded and no <code>disallowed</code> one did</td><td><a href="../lessons/0009-does-the-skill-load.html#how-loading-is-recorded">Lesson 9</a></td></tr>
+      <tr><td><code>prompt</code>, yes or no</td><td>A judge model says the rubric is met (<code>scoring: binary</code>)</td><td><a href="../lessons/0012-a-judge-for-what-code-cannot-check.html#how-the-judge-decides">Lesson 12</a></td></tr>
+      <tr><td><code>prompt</code>, 1 to 5</td><td>The judge's answer, rescaled to 0 to 1, reaches the grader's <code>threshold</code> (default 0.5, so a 3)</td><td><a href="../lessons/0014-partial-credit.html#judge-on-a-scale">Lesson 14</a></td></tr>
+      <tr><td><code>token-budget</code></td><td>Input and output tokens together (<code>totalTokens</code>) are at or under <code>max</code></td><td><a href="../lessons/0018-put-a-ceiling-on-a-trial.html#budget-graders">Lesson 18</a></td></tr>
+      <tr><td><code>turn-count</code></td><td>The agent's turns (<code>turnCount</code>) are at or under <code>max</code></td><td><a href="../lessons/0018-put-a-ceiling-on-a-trial.html#budget-graders">Lesson 18</a></td></tr>
+      <tr><td><code>wall-time</code></td><td>The agent's working time (<code>wallTimeMs</code>) is at or under <code>max</code>, written with its unit</td><td><a href="../lessons/0018-put-a-ceiling-on-a-trial.html#budget-graders">Lesson 18</a></td></tr>
+      <tr><td><code>run-command</code></td><td>A shell command run in the graded copy exits with 0</td><td><a href="../lessons/0022-start-the-agent-where-the-app-would.html#hidden-test">Lesson 22</a></td></tr>
+      <tr><td><code>tool-calls</code></td><td>Every <code>required</code> entry matches a tool call and no call matches a <code>disallowed</code> one</td><td><a href="../lessons/0023-check-what-the-agent-did.html#tool-calls-grader">Lesson 23</a></td></tr>
+      <tr><td><code>max-repeat</code></td><td>No action is repeated back to back more than <code>max</code> times</td><td><a href="../lessons/0023-check-what-the-agent-did.html#catching-loops">Lesson 23</a></td></tr>
+      <tr><td><code>loop-outcome</code></td><td>The agent looped, or did not, as <code>should_loop</code> says</td><td><a href="../lessons/0023-check-what-the-agent-did.html#catching-loops">Lesson 23</a>, <a href="../lessons/0024-when-a-tool-fails.html#simulation">Lesson 24</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="how-to-test">How each can be tested</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Grader</th><th>Oracle, without the golden patch</th><th>Re-grade of a saved run</th></tr></thead>
+    <tbody>
+      <tr><td><code>diff-contains</code></td><td>Fails as expected</td><td>Works, if the run saved diffs</td></tr>
+      <tr><td><code>diff-not-contains</code>, <code>diff-empty</code></td><td>N/A: an untouched file passes honestly</td><td>Works. Re-grade a trial known to be bad; it must fail</td></tr>
+      <tr><td><code>program</code>, <code>run-command</code></td><td>Fails as expected, with the script's evidence</td><td>Not reliable: the workspace is gone, so it fails every trial. Ours reported <code>no CHANGELOG.md to check</code> and <code>Expected exit code 0, got 1</code></td></tr>
+      <tr><td><code>file-contains</code></td><td>Not used in the course</td><td>Ends in <code>ERROR</code>: <code>Grader error: Directory '…' does not exist</code></td></tr>
+      <tr><td><code>skill-invocation</code>, <code>tool-calls</code> with <code>required</code></td><td>Fails as expected</td><td>Works: it reads the saved trajectory</td></tr>
+      <tr><td><code>tool-calls</code> with only <code>disallowed</code>, <code>max-repeat</code></td><td>N/A: an empty trajectory does nothing forbidden</td><td>Works. To see it fail, point it for a moment at a command a saved trial did run</td></tr>
+      <tr><td><code>token-budget</code>, <code>turn-count</code>, <code>wall-time</code></td><td>Not used in the course</td><td>Works exactly as in a live run. Test every new budget this way</td></tr>
+      <tr><td><code>prompt</code></td><td>Not used in the course</td><td>Works. One judge call per trial</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>A run saves diffs only when its eval file has a diff grader. See <a href="../lessons/0007-test-a-grader.html#what-oracle-does">Lesson 7</a>, <a href="../lessons/0008-check-graders-against-saved-trials.html#re-grading">Lesson 8</a>, <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#set-budgets">Lesson 18</a>, <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a> and <a href="../lessons/0023-check-what-the-agent-did.html#require-forbid-regrade">Lesson 23</a>.</p>
+
+  <h2 id="patterns">Patterns for diff graders</h2>
+  <p>Diff graders see the whole patch, including unchanged lines around each change.</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Pattern</th><th>Matches</th></tr></thead>
+    <tbody>
+      <tr><td><code>(?m)^\+.*\(#\d+\)</code></td><td>An added line containing a number such as (#42)</td></tr>
+      <tr><td><code>(?m)^\+### Security</code></td><td>An added line that starts with that heading</td></tr>
+      <tr><td><code>(?m)^\+.*\(#64\)</code></td><td>An added line citing one particular number</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Without <code>(?m)</code>, <code>^</code> means the start of the whole patch, and a pattern beginning <code>^\+</code> can never match. In <code>diff-not-contains</code> that grader can never fail; in <code>diff-contains</code> it can never pass. <a href="../lessons/0008-check-graders-against-saved-trials.html#catch-it">Lesson 8</a>, <a href="../lessons/0020-when-a-run-goes-wrong.html#fix-four">Lesson 20</a></p>
+
+  <h2 id="budgets">Budget graders</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/changelog.eval.yaml (under each stimulus's graders)</div>
+<pre><code class="language-yaml">      - type: token-budget<span class="mark">1</span>
+        config:
+          max: 215000
+      - type: turn-count
+        config:
+          max: 10
+      - type: wall-time
+        config:
+          max: 30s<span class="mark">2</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>No name, because grader names must be unique across the file. Vally names it from its type and limit: <code>token-budget max 215000</code>.</li>
+      <li>A time is written with its unit.</li>
+    </ol>
+  </div>
+  <p>Each fails only above <code>max</code>. Over budget, the score falls in proportion to the overrun (28 tokens over printed <code>Score: 100.0% | FAILED</code>), but the grader fails all the same. Our first budgets, just above the median, failed 5 of 29 good trials; about twice the largest typical value failed none. <code>tool-call-count</code> works the same way, counting tool calls. On a run converted from traces the wall time is 0, so <code>wall-time</code> passes anything. <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#what-the-limits-caught">Lesson 18</a>, <a href="../lessons/0025-grade-a-run-vally-did-not-start.html#what-carried-over">Lesson 25</a></p>
+
+  <h2 id="route">Graders of the route</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/release.eval.yaml (since-last-release)</div>
+<pre><code class="language-yaml">      - type: tool-calls
+        name: reads-the-list
+        config:
+          required:<span class="mark">1</span>
+            - name: ^(view|bash)$
+              pattern: release/merged\.txt
+      - type: tool-calls
+        name: never-commits
+        config:
+          disallowed:<span class="mark">2</span>
+            - name: ^bash$
+              command: git (commit|push)
+      - type: max-repeat
+        name: no-loop
+        config:
+          max: 3<span class="mark">3</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>Each entry is a set of regular expressions that must all match one call: <code>name</code> on the tool's name, <code>command</code> on a shell command, <code>path</code> on a file tool's path, <code>pattern</code> on all the arguments as text. They are unanchored: <code>view</code> alone also matches <code>preview</code>. Tool names we saw: <code>view</code>, <code>edit</code>, <code>apply_patch</code>, <code>bash</code>, <code>skill</code>. Keep a required step as loose as the requirement: a view-only version failed a trial that read the list with <code>cat</code>.</li>
+      <li>No call may match. Only a saved trial that did the forbidden thing shows this failing.</li>
+      <li>Four identical results in a row fail. <code>match</code> sets what counts as the same: <code>observation</code> (the default, same result), <code>name</code> (same tool) or <code>name-args</code>. <code>tools</code> limits it to some tools; <code>max_cycle_period</code> also catches A, B, A, B. <a href="../lessons/0023-check-what-the-agent-did.html#catching-loops">Lesson 23</a></li>
+    </ol>
+  </div>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/release.eval.yaml (tracker-down)</div>
+<pre><code class="language-yaml">      - type: loop-outcome
+        name: stops-retrying
+        config:
+          should_loop: false<span class="mark">1</span>
+          max_acceptable_retries: 2<span class="mark">2</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>Which answer passes. <code>false</code>, the usual case, passes when the agent did not loop.</li>
+      <li>Four identical calls in a row are three retries. In one of our trials an agent ran a failing command seven times in a row, and this failed it. <a href="../lessons/0024-when-a-tool-fails.html#bad-day-results">Lesson 24</a></li>
+    </ol>
+  </div>
+
+  <h2 id="run-command">A hidden test with run-command</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/release.eval.yaml (the end)</div>
+<pre><code class="language-yaml">    grading_environment:
+      files:
+        - src: grading/check-release.mjs
+          dest: .vally-grading/check-release.mjs<span class="mark">1</span>
+    graders:
+      - type: run-command
+        name: every-change-handled
+        config:
+          command: node .vally-grading/check-release.mjs<span class="mark">2</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>Staged for graders only, so the agent never sees the test.</li>
+      <li>Passes on exit code 0. <code>expected_exit_code</code> sets another; <code>stdout_contains</code> and <code>stdout_matches</code> check what it prints; <code>timeout</code> defaults to 30 seconds. On a failure the evidence is only <code>Expected exit code 0, got 1</code>; the script's own message is not recorded. <a href="../lessons/0022-start-the-agent-where-the-app-would.html#hidden-test">Lesson 22</a></li>
+    </ol>
+  </div>
+  <p>With <code>vally grade --workspace</code> on a run Vally did not start, the grading environment is staged as usual, so a hidden test works there too. <a href="../lessons/0025-grade-a-run-vally-did-not-start.html#atif">Lesson 25</a></p>
+
+  <h2 id="program">How a script grader reports</h2>
+  <p>A <code>program</code> grader's script prints one result as a line of JSON and exits with 0 whether the check passes or fails. The verdict and the evidence come from what it printed. An exit code other than 0 means the script itself broke, and the trial fails.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/grading/check-entry.mjs (the end of the script)</div>
+<pre><code class="language-javascript">function report(passed, evidence) {
+  console.log(JSON.stringify({
+    name: "check-entry",<span class="mark">1</span>
+    kind: "code",
+    passed,<span class="mark">2</span>
+    score: passed ? 1 : 0,
+    evidence,<span class="mark">3</span>
+  }));
+  process.exit(0);
+}</code></pre>
+    </div>
+    <ol class="notes">
+      <li>All five fields are needed. With fewer, Vally reports <code>Grader output did not match schema</code>.</li>
+      <li><code>true</code> or <code>false</code>: the verdict.</li>
+      <li>A sentence saying what was found. It appears in the results as the grader's evidence.</li>
+    </ol>
+  </div>
+
+  <div class="file-excerpt">
+    <div class="file-name">The grader in the eval file</div>
+<pre><code class="language-yaml">      - type: program
+        name: two-entries-in-place
+        config:
+          program: node
+          args:
+            - .vally-grading/check-entry.mjs
+            - Added=60
+            - Fixed=60</code></pre>
+  </div>
+  <p>Under <code>vally oracle</code>, with the golden patch the evidence read <code>every entry found in Unreleased</code>; without it, <code>no entry citing #60 under Added</code>. A script that only needs pass or fail is simpler as <code>run-command</code>, above.</p>
+
+  <h2 id="the-rest">The other built-in graders</h2>
+  <p>Vally 0.21 has 36 built-in graders. These are the ones this course did not run, by what they read. Their options are in the <a href="https://microsoft.github.io/vally/reference/graders/">Vally grader reference</a>.</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Reads</th><th>Graders</th></tr></thead>
+    <tbody>
+      <tr><td>Files in the finished workspace</td><td><code>file-exists</code>, <code>file-not-exists</code>, <code>file-not-contains</code>, <code>file-matches</code>, <code>file-not-matches</code></td></tr>
+      <tr><td>The agent's final reply</td><td><code>output-contains</code>, <code>output-not-contains</code>, <code>output-matches</code>, <code>output-not-matches</code></td></tr>
+      <tr><td>Everything the agent said</td><td><code>transcript-contains</code>, <code>transcript-not-contains</code>, <code>transcript-matches</code>, <code>transcript-not-matches</code>, <code>assistant-contains-tool-output</code></td></tr>
+      <tr><td>What the agent did</td><td><code>system-event</code>, <code>completed</code>, <code>exit-success</code></td></tr>
+      <tr><td>Counts</td><td><code>tool-call-count</code>, <code>step-count</code>, <code>error-count</code></td></tr>
+      <tr><td>A file of numbers the run produced</td><td><code>custom-metrics</code></td></tr>
+      <tr><td>Several judge models at once</td><td><code>panel</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <nav class="course-map" data-current="0" data-root="../"></nav>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson {{N}}: {{LESSON_TITLE}} — {{COURSE_TITLE}}</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+  <!-- Only if this lesson has a mermaid diagram:
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.documentElement.dataset.theme === 'dark' ||
+             (!document.documentElement.dataset.theme &&
+              matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'neutral'
+    });
+  </script> -->
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <!-- Chapter opening. The title is plain text: no <em>, unless one word is
+       being defined or contrasted with another. -->
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson {{N}} of {{TOTAL}} · {{COURSE_TITLE}}</div>
+    <h1>{{LESSON_TITLE}}</h1>
+    <div class="lesson-meta">{{MINUTES}} min · {{LESSON_WIN}}</div>
+  </div>
+
+  <!-- Video slot. Leave it exactly as it is. It stays hidden until a file
+       exists at ../videos/<this-file-stem>/<this-file-stem>.mp4, then shows itself. -->
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <!-- Lessons 2 and later: two retrieval prompts from earlier lessons, as the
+       plan's "Recalls" line lists them. Delete this block in lesson 1. -->
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>{{RECALL_PROMPT}}
+        <details class="answer"><summary>Show answer</summary><p>{{RECALL_ANSWER}}</p></details></li>
+    </ol>
+  </div>
+
+  <!-- Where the reader is in the course's story: what they can already do,
+       and the one question this lesson answers. Both come from the plan. -->
+  <div class="lesson-question">
+    <p><strong>So far:</strong> {{WHAT_THE_READER_CAN_ALREADY_DO}}</p>
+    <p><strong>This lesson answers:</strong> {{LESSON_QUESTION}}</p>
+  </div>
+
+  <p class="drop-cap">{{OPENING: the problem that makes the question worth answering, tied to the mission}}</p>
+
+  <!-- Each section has exactly one mode, taken from the plan:
+         data-mode="think"  how to think about it  (when and why, the mental model)
+         data-mode="works"  how it works           (the mechanism, what happens inside)
+         data-mode="use"    how to use it          (the steps the reader takes)
+       If a section needs two modes, split it into two sections.
+       Give each section a short id so reference sheets can link to it. -->
+  <h2 id="{{SECTION_ID}}" data-mode="think">{{SECTION_HEADING}}</h2>
+  <p>{{CONTENT}}</p>
+
+  <div class="callout definition">
+    <div class="callout-title">{{TERM}}</div>
+    <p>{{DEFINITION, in words the reader already has}}</p>
+  </div>
+
+  <h2 id="{{SECTION_ID}}" data-mode="works">{{SECTION_HEADING}}</h2>
+  <p>{{CONTENT}}<span class="sidenote-ref"></span></p>
+  <!-- Optional sidenote. The mark above and the note number themselves. -->
+  <span class="sidenote">{{AN ASIDE THAT WOULD INTERRUPT THE MAIN THREAD}}</span>
+
+  <!-- Show a file before asking the reader to query it. Lines left out are
+       marked with a gap. A gap hides three lines or more: one or two skipped
+       lines are shown as they are. Notes go after the code, numbered to match.
+       Name the language for syntax colour: language-yaml, -json, -javascript,
+       -diff, -bash. Leave file trees, prose and printed output unclassed. -->
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">{{PATH/TO/FILE}}</div>
+<pre><code class="language-{{LANG}}">{{LINE}}<span class="mark">1</span>
+<span class="gap">{{COUNT}} lines hidden</span>
+{{LINE}}<span class="mark">2</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>{{WHAT THIS LINE IS AND WHY IT MATTERS}}</li>
+      <li>{{…}}</li>
+    </ol>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor">
+      <!-- Draw with currentColor, var(--accent) or var(--ink-soft). Never a hex colour. -->
+    </svg>
+    <figcaption>{{WHAT THE FIGURE SHOWS AND WHY IT MATTERS}}</figcaption>
+  </figure>
+
+  <div class="predict">
+    <p>{{WHAT DO YOU EXPECT …?}}</p>
+    <details class="answer"><summary>Check your prediction</summary><p>{{ANSWER}}</p></details>
+  </div>
+
+  <h2 id="{{SECTION_ID}}" data-mode="use">{{SECTION_HEADING}}</h2>
+  <p>{{What the reader is about to do, and what each tool in the checkpoint is for.}}</p>
+
+  <!-- Every command below has been run. Each step states its goal first,
+       uses one plain command with literal paths, and shows what a real run printed.
+       If the lesson uses a program with its own prompt, add data-where to every
+       command block: data-where="terminal", or the program's name. -->
+  <section class="checkpoint">
+    <h3>{{TASK_TITLE}}</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: {{WHAT THIS STEP FINDS OUT OR DOES}}.</span>
+<pre><code class="language-bash">{{COMMAND}}</code></pre>
+        <p class="expect">You should see: {{OUTPUT COPIED FROM THE REAL RUN}}</p></li>
+    </ol>
+  </section>
+
+  <div class="quiz">
+    <div class="quiz-question">{{QUESTION}}</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">{{OPTION}}</button></li>
+      <li><button onclick="checkAnswer(this, true)">{{OPTION, CORRECT}}</button></li>
+      <li><button onclick="checkAnswer(this, false)">{{OPTION}}</button></li>
+    </ul>
+    <div class="quiz-feedback correct">{{WHY IT IS RIGHT}}</div>
+    <!-- One click locks the quiz, so this explains the right answer. It is not a hint to try again. -->
+    <div class="quiz-feedback incorrect">{{WHY THAT IS WRONG, AND WHICH ANSWER IS RIGHT}}</div>
+  </div>
+
+  <div class="primary-source">
+    <p><a href="{{URL}}">{{TITLE, AUTHOR}}</a></p>
+    <p>{{Why this is the one thing to read for this lesson, and which part.}}</p>
+  </div>
+
+  <div class="source-citation">Source: <a href="{{URL}}">{{AUTHOR, TITLE, YEAR}}</a></div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>{{RETRIEVAL PROMPT: explain it from memory}}
+        <details class="answer"><summary>Show model answer</summary><p>{{ANSWER}}</p></details></li>
+      <li>{{APPLICATION TASK tied to the mission}}</li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="{{N}}" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> {{LESSON_WIN}}</p>
+    <!-- The hand-off from the plan. On the last lesson, say the course is
+         complete and link the workflow guide instead. -->
+    <p><strong>Up next:</strong> <a href="./{{NEXT_FILE}}">{{NEXT_TITLE}}</a>. {{HAND_OFF: why that win makes the next question the natural one}}</p>
+    <p>To continue, give this to your agent:</p>
+    <!-- On the last lesson: /teach-me Review my lessons on {{TOPIC}} -->
+    <div class="continue-prompt">/teach-me Continue my lessons on {{TOPIC}}</div>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--ink-soft);">
+      Stuck or curious? Ask your agent about anything in this lesson, or ask for a review session on earlier material.
+    </p>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

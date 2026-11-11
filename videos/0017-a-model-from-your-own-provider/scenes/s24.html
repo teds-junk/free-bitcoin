@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Five trials can settle worse</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.ranges{font-size:46px}.ranges th{font-size:30px}.ranges td{padding-top:30px;padding-bottom:30px}.ranges td.mono{font-family:var(--font-code)}.stage{gap:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What changed</div>
+  <h2 class="scene-title">Five trials can settle worse</h2>
+  <div class="stage">
+<table class="data-table full ranges">
+    <thead><tr><th>Variant</th><th class="num">trials passed</th><th class="num">95% range</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">qwen-local</td><td class="num">2 of 5</td><td class="num"><span data-concept="rq" data-rep="cell">12% to 77%</span></td></tr>
+      <tr><td class="mono">haiku-low</td><td class="num">15 of 15</td><td class="num"><span data-concept="rh" data-rep="cell">80% to 100%</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">Ranges from the course’s range calculator · our run · 2026-11-11T13-59-30-867Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "rq",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "rh",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

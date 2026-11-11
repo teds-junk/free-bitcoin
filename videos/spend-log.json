@@ -1,0 +1,362 @@
+[
+  {
+    "date": "2026-11-10T21:09:03.013Z",
+    "video": "0001-it-works-for-me",
+    "scene": "s15",
+    "tape": "tapes/s15.tape",
+    "amount": 2,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T00:08:23.576Z",
+    "video": "0001-it-works-for-me",
+    "scene": "s15",
+    "tape": "tapes/s15.tape",
+    "amount": 2,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T00:12:28.546Z",
+    "video": "0001-it-works-for-me",
+    "scene": "s15",
+    "tape": "tapes/s15.tape",
+    "amount": 2,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T04:11:14.105Z",
+    "video": "0003-the-same-request-five-times",
+    "scene": "s10",
+    "tape": "tapes/s10.tape",
+    "amount": 10,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T05:18:28.601Z",
+    "video": "0004-read-the-runs-first",
+    "scene": "s12",
+    "tape": "tapes/s12.tape",
+    "amount": 12,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T05:23:25.342Z",
+    "video": "0005-turn-a-failure-into-a-grader",
+    "scene": "s14",
+    "tape": "tapes/s14.tape",
+    "amount": 18,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T05:26:32.555Z",
+    "video": "0005-turn-a-failure-into-a-grader",
+    "scene": "s17",
+    "tape": "tapes/s17.tape",
+    "amount": 18,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T05:28:24.582Z",
+    "video": "0006-keep-graders-out-of-reach",
+    "scene": "s14",
+    "tape": "tapes/s14.tape",
+    "amount": 1,
+    "unit": "agent run",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T05:30:09.277Z",
+    "video": "0006-keep-graders-out-of-reach",
+    "scene": "s16",
+    "tape": "tapes/s16.tape",
+    "amount": 10,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T05:34:12.661Z",
+    "video": "0006-keep-graders-out-of-reach",
+    "scene": "s19",
+    "tape": "tapes/s19.tape",
+    "amount": 10,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T05:59:57.106Z",
+    "video": "0009-does-the-skill-load",
+    "scene": "s16",
+    "tape": "tapes/s16.tape",
+    "amount": 24,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T06:03:12.232Z",
+    "video": "0009-does-the-skill-load",
+    "scene": "s16",
+    "tape": "tapes/s16.tape",
+    "amount": 24,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T06:10:43.612Z",
+    "video": "0009-does-the-skill-load",
+    "scene": "s16",
+    "tape": "tapes/s16.tape",
+    "amount": 24,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T06:13:25.941Z",
+    "video": "0009-does-the-skill-load",
+    "scene": "s19",
+    "tape": "tapes/s19.tape",
+    "amount": 24,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T06:16:43.671Z",
+    "video": "0009-does-the-skill-load",
+    "scene": "s19",
+    "tape": "tapes/s19.tape",
+    "amount": 24,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T06:25:28.467Z",
+    "video": "0010-is-the-agent-better-with-the-skill",
+    "scene": "s14",
+    "tape": "tapes/s14.tape",
+    "amount": 20,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T06:33:54.263Z",
+    "video": "0011-follow-up-requests",
+    "scene": "s14",
+    "tape": "tapes/s14.tape",
+    "amount": 6,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T06:36:46.305Z",
+    "video": "0011-follow-up-requests",
+    "scene": "s14",
+    "tape": "tapes/s14.tape",
+    "amount": 6,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T06:40:15.611Z",
+    "video": "0011-follow-up-requests",
+    "scene": "s17",
+    "tape": "tapes/s17.tape",
+    "amount": 6,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T06:49:44.322Z",
+    "video": "0012-a-judge-for-what-code-cannot-check",
+    "scene": "s12",
+    "tape": "tapes/s12.tape",
+    "amount": 12,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T06:55:33.160Z",
+    "video": "0012-a-judge-for-what-code-cannot-check",
+    "scene": "s19",
+    "tape": "tapes/s19.tape",
+    "amount": 12,
+    "unit": "judge calls",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T07:43:47.660Z",
+    "video": "0015-is-the-change-real",
+    "scene": "s14",
+    "tape": "tapes/s14.tape",
+    "amount": 36,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T07:52:30.475Z",
+    "video": "0015-is-the-change-real",
+    "scene": "s14",
+    "tape": "tapes/s14.tape",
+    "amount": 36,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T08:00:26.413Z",
+    "video": "0015-is-the-change-real",
+    "scene": "s14",
+    "tape": "tapes/s14.tape",
+    "amount": 36,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T08:43:34.413Z",
+    "video": "0016-what-a-passing-trial-costs",
+    "scene": "s18",
+    "tape": "tapes/s18.tape",
+    "amount": 60,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T14:40:04.452Z",
+    "video": "0018-put-a-ceiling-on-a-trial",
+    "scene": "s23",
+    "tape": "tapes/s23.tape",
+    "amount": 10,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T15:40:24.666Z",
+    "video": "0020-when-a-run-goes-wrong",
+    "scene": "s18",
+    "tape": "tapes/s18.tape",
+    "amount": 1,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T15:41:35.328Z",
+    "video": "0020-when-a-run-goes-wrong",
+    "scene": "s19",
+    "tape": "tapes/s19.tape",
+    "amount": 2,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T15:43:05.868Z",
+    "video": "0020-when-a-run-goes-wrong",
+    "scene": "s24",
+    "tape": "tapes/s24.tape",
+    "amount": 2,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T15:47:04.689Z",
+    "video": "0020-when-a-run-goes-wrong",
+    "scene": "s25",
+    "tape": "tapes/s25.tape",
+    "amount": 2,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T15:49:49.777Z",
+    "video": "0020-when-a-run-goes-wrong",
+    "scene": "s31",
+    "tape": "tapes/s31.tape",
+    "amount": 2,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T16:14:10.853Z",
+    "video": "0021-keep-it-working",
+    "scene": "s13",
+    "tape": "tapes/s13.tape",
+    "amount": 10,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T16:21:20.255Z",
+    "video": "0021-keep-it-working",
+    "scene": "s18",
+    "tape": "tapes/s18.tape",
+    "amount": 30,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T16:25:46.287Z",
+    "video": "0021-keep-it-working",
+    "scene": "s18",
+    "tape": "tapes/s18.tape",
+    "amount": 30,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T16:52:56.951Z",
+    "video": "0022-start-the-agent-where-the-app-would",
+    "scene": "s16",
+    "tape": "tapes/s16.tape",
+    "amount": 10,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T17:27:56.968Z",
+    "video": "0023-check-what-the-agent-did",
+    "scene": "s21",
+    "tape": "tapes/s21.tape",
+    "amount": 6,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T17:51:28.122Z",
+    "video": "0024-when-a-tool-fails",
+    "scene": "s18",
+    "tape": "tapes/s18.tape",
+    "amount": 6,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T18:22:09.922Z",
+    "video": "0025-grade-a-run-vally-did-not-start",
+    "scene": "s17",
+    "tape": "tapes/s17.tape",
+    "amount": 1,
+    "unit": "agent run",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T18:49:26.814Z",
+    "video": "0026-let-vally-run-the-app",
+    "scene": "s16",
+    "tape": "tapes/s16.tape",
+    "amount": 2,
+    "unit": "agent runs",
+    "result": "recorded"
+  },
+  {
+    "date": "2026-11-11T18:53:20.554Z",
+    "video": "0026-let-vally-run-the-app",
+    "scene": "s21",
+    "tape": "tapes/s21.tape",
+    "amount": 6,
+    "unit": "agent runs",
+    "result": "recorded"
+  }
+]

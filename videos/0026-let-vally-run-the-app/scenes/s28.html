@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cost depends on the trial</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:38px}.data-table th{font-size:30px}.data-table td{padding-top:24px;padding-bottom:24px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:34px}.data-table th:last-child,.data-table td:last-child{padding-right:16px}.trial{font-size:44px}.trial td{padding-top:30px;padding-bottom:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What you can now measure</div>
+  <h2 class="scene-title">Cost depends on the trial</h2>
+  <div class="stage">
+<table class="data-table full trial">
+    <thead>
+      <tr><th></th><th class="num" colspan="2">Model calls a trial</th><th class="num" colspan="2">AIU a trial</th></tr>
+      <tr><th></th><th class="num">the app</th><th class="num">Vally’s executor</th><th class="num">the app</th><th class="num">Vally’s executor</th></tr>
+    </thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="haiku" data-rep="cell">claude-haiku-4.5</span></td><td class="num"><span data-concept="calls" data-rep="cell">5.25</span></td><td class="num"><span data-concept="calls" data-rep="cell">5.75</span></td><td class="num"><span data-concept="cost" data-rep="cell">2.54</span></td><td class="num"><span data-concept="cost" data-rep="cell">2.58</span></td></tr>
+<tr><td class="mono"><span data-concept="terra" data-rep="cell">gpt-5.6-terra</span></td><td class="num"><span data-concept="calls" data-rep="cell">5</span></td><td class="num"><span data-concept="calls" data-rep="cell">4.75</span></td><td class="num"><span data-concept="cost" data-rep="cell">4.03</span></td><td class="num"><span data-concept="cost" data-rep="cell">3.27</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note"><span class="mono">since-last-release</span> · four trials a model through the app, eight through Vally’s executor</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "calls",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "cost",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "terra",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

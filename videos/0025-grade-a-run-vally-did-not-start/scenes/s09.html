@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tracing is one setting</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">From OpenTelemetry traces</div>
+  <h2 class="scene-title">Tracing is one setting</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:runmjs · regenerate with: node file-panel.js --file src/app/run.mjs --label app/run.mjs --id runmjs --width 46 --rows 9 --mark 4=imp --mark 12-14=tel --mark 15=cap --expect 4=release-assistant.mjs --expect 12=telemetry --expect 15=captureContent --into scenes/s09.html -->
+<div class="file-panel" id="runmjs" data-file="app/run.mjs" data-lines="18" data-rows="9" style="--rows:9;--cols:46;--ln:2">
+<div class="code-file">app/run.mjs<span class="file-meta">18 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="js"><code>
+<span class="file-row" data-line="1"><span class="ln">1</span><span style="color:#8296A0;font-style:italic">// Run the release assistant once, with </span></span>
+<span class="file-row" data-line="1" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#8296A0;font-style:italic">tracing to a file:</span></span>
+<span class="file-row" data-line="2"><span class="ln">2</span><span style="color:#8296A0;font-style:italic">//   node app/run.mjs &lt;repo&gt; &lt;skills&gt; &lt;model&gt; </span></span>
+<span class="file-row" data-line="2" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#8296A0;font-style:italic">&lt;traces file&gt;</span></span>
+<span class="file-row" data-line="3"><span class="ln">3</span><span style="color:#A4BA1E">import</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">path</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">from</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">"node:path"</span><span style="color:#B3C0BF">;</span></span>
+<span class="file-row" data-line="4"><span class="ln">4</span><span data-concept="imp" data-rep="code"><span style="color:#A4BA1E">import</span><span style="color:#B3C0BF"> { </span><span style="color:#4EA5E6">writeEntries</span><span style="color:#B3C0BF"> } </span><span style="color:#A4BA1E">from</span></span><span style="color:#B3C0BF"> </span></span>
+<span class="file-row" data-line="4" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span data-concept="imp" data-rep="code"><span style="color:#3CC0B3">"./release-assistant.mjs"</span><span style="color:#B3C0BF">;</span></span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span style="color:#B3C0BF">const</span><span style="color:#B3C0BF"> [</span><span style="color:#4EA5E6">repo</span><span style="color:#B3C0BF">, </span><span style="color:#4EA5E6">skills</span><span style="color:#B3C0BF">, </span><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">, </span><span style="color:#4EA5E6">traces</span><span style="color:#B3C0BF">] </span><span style="color:#A4BA1E">=</span><span style="color:#B3C0BF"> </span></span>
+<span class="file-row" data-line="6" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#4EA5E6">process</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">argv</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">slice</span><span style="color:#B3C0BF">(</span><span style="color:#EA6AA6">2</span><span style="color:#B3C0BF">);</span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span><span style="color:#B3C0BF">const</span><span style="color:#B3C0BF"> { </span><span style="color:#4EA5E6">reply</span><span style="color:#B3C0BF"> } </span><span style="color:#A4BA1E">=</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">await</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">writeEntries</span><span style="color:#B3C0BF">({</span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span><span style="color:#B3C0BF">  repoDir: </span><span style="color:#4EA5E6">path</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">resolve</span><span style="color:#B3C0BF">(</span><span style="color:#4EA5E6">repo</span><span style="color:#B3C0BF">),</span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span><span style="color:#B3C0BF">  skillDirs: [</span><span style="color:#4EA5E6">path</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">resolve</span><span style="color:#B3C0BF">(</span><span style="color:#4EA5E6">skills</span><span style="color:#B3C0BF">)],</span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span><span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">,</span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span><span style="color:#B3C0BF">  timeoutMs: </span><span style="color:#EA6AA6">180000</span><span style="color:#B3C0BF">,</span></span>
+<span class="file-row" data-line="12"><span class="ln">12</span><span style="color:#B3C0BF">  </span><span data-concept="tel" data-rep="code"><span style="color:#B3C0BF">telemetry: {</span></span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span style="color:#B3C0BF">    </span><span data-concept="tel" data-rep="code"><span style="color:#B3C0BF">exporterType: </span><span style="color:#3CC0B3">"file"</span><span style="color:#B3C0BF">,</span></span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span><span style="color:#B3C0BF">    </span><span data-concept="tel" data-rep="code"><span style="color:#B3C0BF">filePath: </span><span style="color:#4EA5E6">path</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">resolve</span><span style="color:#B3C0BF">(</span><span style="color:#4EA5E6">traces</span><span style="color:#B3C0BF">),</span></span></span>
+<span class="file-row" data-line="15"><span class="ln">15</span><span style="color:#B3C0BF">    </span><span data-concept="cap" data-rep="code"><span style="color:#B3C0BF">captureContent: </span><span style="color:#D3A41C">true</span><span style="color:#B3C0BF">,</span></span></span>
+<span class="file-row" data-line="16"><span class="ln">16</span><span style="color:#B3C0BF">  },</span></span>
+<span class="file-row" data-line="17"><span class="ln">17</span><span style="color:#B3C0BF">});</span></span>
+<span class="file-row" data-line="18"><span class="ln">18</span><span style="color:#4EA5E6">console</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">log</span><span style="color:#B3C0BF">(</span><span style="color:#4EA5E6">reply</span><span style="color:#B3C0BF">);</span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="18" style="height:126px" aria-hidden="true"><b class="file-map-view" style="top:0px;height:39px"></b><svg width="120" height="126" viewBox="0 0 120 126" shape-rendering="crispEdges"><rect x="0" y="0" width="3.4" height="4" fill="#8296A0"/><rect x="6" y="0" width="5.4" height="4" fill="#8296A0"/><rect x="14" y="0" width="5.4" height="4" fill="#8296A0"/><rect x="22" y="0" width="13.4" height="4" fill="#8296A0"/><rect x="38" y="0" width="17.4" height="4" fill="#8296A0"/><rect x="58" y="0" width="9.4" height="4" fill="#8296A0"/><rect x="70" y="0" width="7.4" height="4" fill="#8296A0"/><rect x="80" y="0" width="13.4" height="4" fill="#8296A0"/><rect x="96" y="0" width="3.4" height="4" fill="#8296A0"/><rect x="102" y="0" width="1.5" height="4" fill="#8296A0"/><rect x="106" y="0" width="9.4" height="4" fill="#8296A0"/><rect x="0" y="7" width="3.4" height="4" fill="#8296A0"/><rect x="10" y="7" width="7.4" height="4" fill="#8296A0"/><rect x="20" y="7" width="21.4" height="4" fill="#8296A0"/><rect x="44" y="7" width="11.4" height="4" fill="#8296A0"/><rect x="58" y="7" width="15.4" height="4" fill="#8296A0"/><rect x="76" y="7" width="13.4" height="4" fill="#8296A0"/><rect x="92" y="7" width="13.4" height="4" fill="#8296A0"/><rect x="108" y="7" width="9.4" height="4" fill="#8296A0"/><rect x="0" y="14" width="11.4" height="4" fill="#A4BA1E"/><rect x="14" y="14" width="7.4" height="4" fill="#4EA5E6"/><rect x="24" y="14" width="7.4" height="4" fill="#A4BA1E"/><rect x="34" y="14" width="21.4" height="4" fill="#3CC0B3"/><rect x="56" y="14" width="1.5" height="4" fill="#B3C0BF"/><rect x="0" y="21" width="11.4" height="4" fill="#A4BA1E"/><rect x="14" y="21" width="1.5" height="4" fill="#B3C0BF"/><rect x="18" y="21" width="23.4" height="4" fill="#4EA5E6"/><rect x="44" y="21" width="1.5" height="4" fill="#B3C0BF"/><rect x="48" y="21" width="7.4" height="4" fill="#A4BA1E"/><rect x="58" y="21" width="49.4" height="4" fill="#3CC0B3"/><rect x="108" y="21" width="1.5" height="4" fill="#B3C0BF"/><rect x="0" y="35" width="9.4" height="4" fill="#B3C0BF"/><rect x="12" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="14" y="35" width="7.4" height="4" fill="#4EA5E6"/><rect x="22" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="26" y="35" width="11.4" height="4" fill="#4EA5E6"/><rect x="38" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="42" y="35" width="9.4" height="4" fill="#4EA5E6"/><rect x="52" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="56" y="35" width="11.4" height="4" fill="#4EA5E6"/><rect x="68" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="72" y="35" width="1.5" height="4" fill="#A4BA1E"/><rect x="76" y="35" width="13.4" height="4" fill="#4EA5E6"/><rect x="90" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="92" y="35" width="7.4" height="4" fill="#4EA5E6"/><rect x="100" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="102" y="35" width="9.4" height="4" fill="#4EA5E6"/><rect x="112" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="114" y="35" width="1.5" height="4" fill="#EA6AA6"/><rect x="116" y="35" width="3.4" height="4" fill="#B3C0BF"/><rect x="0" y="42" width="9.4" height="4" fill="#B3C0BF"/><rect x="12" y="42" width="1.5" height="4" fill="#B3C0BF"/><rect x="16" y="42" width="9.4" height="4" fill="#4EA5E6"/><rect x="28" y="42" width="1.5" height="4" fill="#B3C0BF"/><rect x="32" y="42" width="1.5" height="4" fill="#A4BA1E"/><rect x="36" y="42" width="9.4" height="4" fill="#A4BA1E"/><rect x="48" y="42" width="23.4" height="4" fill="#4EA5E6"/><rect x="72" y="42" width="3.4" height="4" fill="#B3C0BF"/><rect x="4" y="49" width="15.4" height="4" fill="#B3C0BF"/><rect x="22" y="49" width="7.4" height="4" fill="#4EA5E6"/><rect x="30" y="49" width="1.5" height="4" fill="#B3C0BF"/><rect x="32" y="49" width="13.4" height="4" fill="#4EA5E6"/><rect x="46" y="49" width="1.5" height="4" fill="#B3C0BF"/><rect x="48" y="49" width="7.4" height="4" fill="#4EA5E6"/><rect x="56" y="49" width="3.4" height="4" fill="#B3C0BF"/><rect x="4" y="56" width="19.4" height="4" fill="#B3C0BF"/><rect x="26" y="56" width="1.5" height="4" fill="#B3C0BF"/><rect x="28" y="56" width="7.4" height="4" fill="#4EA5E6"/><rect x="36" y="56" width="1.5" height="4" fill="#B3C0BF"/><rect x="38" y="56" width="13.4" height="4" fill="#4EA5E6"/><rect x="52" y="56" width="1.5" height="4" fill="#B3C0BF"/><rect x="54" y="56" width="11.4" height="4" fill="#4EA5E6"/><rect x="66" y="56" width="5.4" height="4" fill="#B3C0BF"/><rect x="4" y="63" width="9.4" height="4" fill="#4EA5E6"/><rect x="14" y="63" width="1.5" height="4" fill="#B3C0BF"/><rect x="4" y="70" width="19.4" height="4" fill="#B3C0BF"/><rect x="26" y="70" width="11.4" height="4" fill="#EA6AA6"/><rect x="38" y="70" width="1.5" height="4" fill="#B3C0BF"/><rect x="4" y="77" width="19.4" height="4" fill="#B3C0BF"/><rect x="26" y="77" width="1.5" height="4" fill="#B3C0BF"/><rect x="8" y="84" width="25.4" height="4" fill="#B3C0BF"/><rect x="36" y="84" width="11.4" height="4" fill="#3CC0B3"/><rect x="48" y="84" width="1.5" height="4" fill="#B3C0BF"/><rect x="8" y="91" width="17.4" height="4" fill="#B3C0BF"/><rect x="28" y="91" width="7.4" height="4" fill="#4EA5E6"/><rect x="36" y="91" width="1.5" height="4" fill="#B3C0BF"/><rect x="38" y="91" width="13.4" height="4" fill="#4EA5E6"/><rect x="52" y="91" width="1.5" height="4" fill="#B3C0BF"/><rect x="54" y="91" width="11.4" height="4" fill="#4EA5E6"/><rect x="66" y="91" width="3.4" height="4" fill="#B3C0BF"/><rect x="8" y="98" width="29.4" height="4" fill="#B3C0BF"/><rect x="40" y="98" width="7.4" height="4" fill="#D3A41C"/><rect x="48" y="98" width="1.5" height="4" fill="#B3C0BF"/><rect x="4" y="105" width="3.4" height="4" fill="#B3C0BF"/><rect x="0" y="112" width="5.4" height="4" fill="#B3C0BF"/><rect x="0" y="119" width="13.4" height="4" fill="#4EA5E6"/><rect x="14" y="119" width="1.5" height="4" fill="#B3C0BF"/><rect x="16" y="119" width="5.4" height="4" fill="#4EA5E6"/><rect x="22" y="119" width="1.5" height="4" fill="#B3C0BF"/><rect x="24" y="119" width="9.4" height="4" fill="#4EA5E6"/><rect x="34" y="119" width="3.4" height="4" fill="#B3C0BF"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:runmjs -->
+    <aside class="callouts"><p class="callout" data-anchor="imp">the app: one request, in the stimulus’s words</p><p class="callout" data-anchor="tel">write spans to a file, one line of JSON each</p><p class="callout" data-anchor="cap">include messages, tool arguments and results</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "imp",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "scroll",
+  "target": "#runmjs",
+  "to": "9-17",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "tel",
+  "at": "3~telemetry",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "cap",
+  "at": "4",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

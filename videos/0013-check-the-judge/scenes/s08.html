@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Each rate reads one column</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.four{font-size:56px}.four th{font-size:32px;padding-bottom:16px}.four td{padding-top:22px;padding-bottom:22px}.four td:first-child{font-size:38px;padding-right:90px}.four td:first-child{white-space:nowrap;width:300px}.four td.num,.four th.num{width:40%}.four tr.total td{font-size:34px;color:var(--ink-soft)}.four tr.total td.num{font-size:38px}.four tr.rate td{font-size:34px}.four tr.rate td.num{font-size:40px}.four .means{font:400 34px/1.3 var(--font-body);color:var(--ink)}.stage{justify-content:flex-start;gap:30px}.lead{font-size:40px;margin:0;font-family:var(--font-code);color:var(--ink)}.stage{gap:22px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">TPR and TNR</div>
+  <h2 class="scene-title">Each rate reads one column</h2>
+  <div class="stage">
+<table class="data-table full four ">
+    <thead><tr><th></th><th class="num">Ours: yes</th><th class="num">Ours: no</th></tr></thead>
+    <tbody>
+      <tr><td>Judge: yes</td><td class="num"><span data-concept="yy" data-rep="cell">11</span></td><td class="num"><span data-concept="yn" data-rep="cell">3</span></td></tr>
+      <tr><td>Judge: no</td><td class="num"><span data-concept="ny" data-rep="cell">1</span></td><td class="num"><span data-concept="nn" data-rep="cell">5</span></td></tr>
+      <tr class="total"><td>labels</td><td class="num"><span data-concept="tot-yes" data-rep="cell">12</span></td><td class="num"><span data-concept="tot-no" data-rep="cell">8</span></td></tr>
+      <tr class="rate"><td>rate</td><td class="num"><span data-concept="tpr" data-rep="cell">TPR · 11 of 12 · 92%</span></td><td class="num"><span data-concept="tnr" data-rep="cell">TNR · 5 of 8 · 63%</span></td></tr>
+    </tbody>
+  </table>
+  <p class="lead"><span data-concept="agree" data-rep="note">agreement · 16 of 20 · 80%</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "tpr",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "tnr",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "agree",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "tnr",
+  "at": "4",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

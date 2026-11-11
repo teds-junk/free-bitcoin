@@ -1,0 +1,13 @@
+{
+  "run": "2026-11-11T17-27-07-928Z",
+  "model": "claude-haiku-4.5",
+  "stimulus": "since-last-release",
+  "trials": 3,
+  "graders": {
+    "every-change-handled": 1,
+    "reads-the-list": 3,
+    "never-commits": 3,
+    "no-loop": 3,
+    "loads-the-skill": 1
+  }
+}

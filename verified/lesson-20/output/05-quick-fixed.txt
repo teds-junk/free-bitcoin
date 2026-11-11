@@ -1,0 +1,12 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from quick · 2 models · 2 workers
+
+Model summary
+  ✓ claude-haiku-4.5  1/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval   claude-haiku-4.5  gpt-5.6-terra
+  quick  ✓ 1/1             ✓ 1/1        
+
+Saved  …/practice/results/lesson-20/2026-11-10T17-48-02-379Z/
+Run ID  498aa60e-bcd2-4484-b82e-b286ab5c9a3a

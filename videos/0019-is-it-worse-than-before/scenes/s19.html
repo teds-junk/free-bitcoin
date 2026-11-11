@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The check never failed</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:40px}.data-table th{font-size:30px}.data-table td{padding-top:20px;padding-bottom:20px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:32px}.data-table th:last-child,.data-table td:last-child{padding-right:16px}.three{font-size:32px}.three th{font-size:26px}.three td{padding-top:26px;padding-bottom:26px}.three td.mono{font-size:28px}.three td,.three th{white-space:nowrap}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Compare before and after</div>
+  <h2 class="scene-title">The check never failed</h2>
+  <div class="stage">
+<table class="data-table full three">
+    <thead><tr><th>baseline</th><th>treatment</th><th class="num">mean score [range]</th><th class="num">tokens per trial [range]</th><th class="num"><span data-concept="exitcol" data-rep="cell">exit code</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="r1" data-rep="cell">haiku-before</span></td><td class="mono"><span data-concept="r1" data-rep="cell">haiku-after</span></td><td class="num"><span data-concept="r1-m" data-rep="cell">+0.33 [−0.08, +0.75]</span></td><td class="num"><span data-concept="r1-t" data-rep="cell">−13,685 [−17,686, −9,685]</span></td><td class="num"><span data-concept="r1-x" data-rep="cell">check off</span></td></tr>
+<tr><td class="mono"><span data-concept="r2" data-rep="cell">terra-before</span></td><td class="mono"><span data-concept="r2" data-rep="cell">terra-after</span></td><td class="num"><span data-concept="r2-m" data-rep="cell">+0.07 [−0.25, +0.38]</span></td><td class="num"><span data-concept="r2-t" data-rep="cell">−8,298 [−15,217, −1,378]</span></td><td class="num"><span data-concept="r2-x" data-rep="cell">0</span></td></tr>
+<tr><td class="mono"><span data-concept="r3" data-rep="cell">haiku-after</span></td><td class="mono"><span data-concept="r3" data-rep="cell">haiku-before</span></td><td class="num"><span data-concept="r3-m" data-rep="cell">−0.33 [−0.75, +0.08]</span></td><td class="num"><span data-concept="r3-t" data-rep="cell">+13,685 [+9,685, +17,686]</span></td><td class="num"><span data-concept="r3-x" data-rep="cell">0</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">our three comparisons · scores from the pairwise judge, tokens from the saved trials · the terra row has 6 pairs: three before trials did not finish</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "exitcol",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r3-x",
+  "at": "2",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "r3-m",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

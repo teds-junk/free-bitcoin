@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A second format: ATIF</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#atif{width:100%;padding:36px 40px 44px;gap:18px}#atif>.title{font-size:56px}#atif>.label{font-size:34px}#atif>.label.one{margin-top:14px;color:var(--ink-soft)}#atif .parts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%}#atif .part{min-height:190px}#atif .part .title{font-size:40px;line-height:1.2}#atif .part .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A trajectory from outside</div>
+  <h2 class="scene-title">A second format: ATIF</h2>
+  <div class="stage">
+<div class="semantic-block" id="atif" data-concept="atif" data-rep="block" data-role="structure">
+    <div class="title">ATIF</div>
+    <div class="label">Agent Trajectory Interchange Format · a JSON file: one agent session as a list of steps</div>
+    <div class="label one">one step</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title">message</div><div class="label">what the model said</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title">tool_calls</div><div class="label">the calls it made</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title">observation</div><div class="label">what each returned</div></div><div class="part" data-concept="p4" data-rep="part">
+      <div class="title">metrics</div><div class="label">tokens</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "atif",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "4~said",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "4~tool calls",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "4~returned",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p4",
+  "at": "4~metrics",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

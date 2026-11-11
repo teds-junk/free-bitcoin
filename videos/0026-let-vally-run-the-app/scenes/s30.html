@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What does a plugin provide?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#plugin{width:100%;padding:36px 40px 44px;gap:24px}#plugin .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}#plugin .part{min-height:300px}#plugin .part .title{font-size:46px;line-height:1.2}#plugin .part .title.mono{font-family:var(--font-code);font-size:40px}#plugin .part .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">What does a plugin provide?</h2>
+  <div class="stage">
+<div class="semantic-block" id="plugin" data-role="structure">
+    <div class="title words">an executor plugin</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title mono">registerExecutors</div><div class="label">registers an executor by name</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title mono">execute</div><div class="label">gets the stimulus and the trial’s options, and runs the app</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title words">a trajectory</div><div class="label">the events, the agent’s reply, the metrics</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#plugin",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

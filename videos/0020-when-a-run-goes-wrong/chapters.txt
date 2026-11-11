@@ -1,0 +1,8 @@
+0:00 Read before you rerun
+0:28 Four questions, cheapest first
+1:28 Where each answer lives
+5:34 An eval that never starts an agent
+8:13 A trial that runs out of time
+10:28 A grader that fails good work
+12:29 A judge call that fails
+14:45 A symptom table to keep

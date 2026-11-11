@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Four variants, sixty trials</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Reasoning effort as a variant</div>
+  <h2 class="scene-title">Four variants, sixty trials</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:experiment · regenerate with: node file-panel.js --file src/state/cost.experiment.yaml --label evals/cost.experiment.yaml --id experiment --width 46 --rows 9 --expect 4=changelog.eval.yaml --expect '11=runs: 3' --expect 16=claude-haiku-5.5 --expect 26=terra-high --mark 4=evalf:changelog.eval.yaml --mark 6=vary --mark '11=runs:runs: 3' --mark 14=vhaiku:haiku-low --mark 18=vhaiku:haiku-high --mark 22=vterra:terra-low --mark 26=vterra:terra-high --mark 16=newer:claude-haiku-5.5 --into scenes/s13.html -->
+<div class="file-panel" id="experiment" data-file="evals/cost.experiment.yaml" data-lines="29" data-rows="9" style="--rows:9;--cols:46;--ln:2">
+<div class="code-file">evals/cost.experiment.yaml<span class="file-meta">29 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="yaml"><code>
+<span class="file-row" data-line="1"><span class="ln">1</span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">cost</span></span>
+<span class="file-row" data-line="2"><span class="ln">2</span></span>
+<span class="file-row" data-line="3"><span class="ln">3</span><span style="color:#4EA5E6">evals</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="4"><span class="ln">4</span><span style="color:#B3C0BF">  - </span><span data-concept="evalf" data-rep="code"><span style="color:#3CC0B3">changelog.eval.yaml</span></span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span data-concept="vary" data-rep="code"><span style="color:#4EA5E6">vary</span><span style="color:#B3C0BF">: [</span><span style="color:#3CC0B3">/defaults/model</span><span style="color:#B3C0BF">,</span></span><span style="color:#B3C0BF"> </span></span>
+<span class="file-row" data-line="6" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span data-concept="vary" data-rep="code"><span style="color:#3CC0B3">/defaults/reasoning_effort</span><span style="color:#B3C0BF">]</span></span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span><span style="color:#4EA5E6">baseline</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">haiku-low</span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span><span style="color:#4EA5E6">overrides</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span><span style="color:#B3C0BF">  </span><span data-concept="runs" data-rep="code"><span style="color:#4EA5E6">runs</span><span style="color:#B3C0BF">: </span><span style="color:#EA6AA6">3</span></span></span>
+<span class="file-row" data-line="12"><span class="ln">12</span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span style="color:#4EA5E6">variants</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span><span style="color:#B3C0BF">  </span><span data-concept="vhaiku" data-rep="code"><span style="color:#4EA5E6">haiku-low</span></span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="15"><span class="ln">15</span><span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">overrides</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="16"><span class="ln">16</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">: </span><span data-concept="newer" data-rep="code"><span style="color:#3CC0B3">claude-haiku-5.5</span></span></span>
+<span class="file-row" data-line="17"><span class="ln">17</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">reasoning_effort</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">low</span></span>
+<span class="file-row" data-line="18"><span class="ln">18</span><span style="color:#B3C0BF">  </span><span data-concept="vhaiku" data-rep="code"><span style="color:#4EA5E6">haiku-high</span></span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="19"><span class="ln">19</span><span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">overrides</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="20"><span class="ln">20</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">claude-haiku-5.5</span></span>
+<span class="file-row" data-line="21"><span class="ln">21</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">reasoning_effort</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">high</span></span>
+<span class="file-row" data-line="22"><span class="ln">22</span><span style="color:#B3C0BF">  </span><span data-concept="vterra" data-rep="code"><span style="color:#4EA5E6">terra-low</span></span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="23"><span class="ln">23</span><span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">overrides</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="24"><span class="ln">24</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">gpt-5.6-terra</span></span>
+<span class="file-row" data-line="25"><span class="ln">25</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">reasoning_effort</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">low</span></span>
+<span class="file-row" data-line="26"><span class="ln">26</span><span style="color:#B3C0BF">  </span><span data-concept="vterra" data-rep="code"><span style="color:#4EA5E6">terra-high</span></span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="27"><span class="ln">27</span><span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">overrides</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="28"><span class="ln">28</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">gpt-5.6-terra</span></span>
+<span class="file-row" data-line="29"><span class="ln">29</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">reasoning_effort</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">high</span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="29" style="height:203px" aria-hidden="true"><b class="file-map-view" style="top:0px;height:56px"></b><svg width="120" height="203" viewBox="0 0 120 203" shape-rendering="crispEdges"><rect x="0" y="0" width="8.81" height="4" fill="#4EA5E6"/><rect x="9.41" y="0" width="1.75" height="4" fill="#B3C0BF"/><rect x="14.12" y="0" width="8.81" height="4" fill="#3CC0B3"/><rect x="0" y="14" width="11.16" height="4" fill="#4EA5E6"/><rect x="11.76" y="14" width="1.75" height="4" fill="#B3C0BF"/><rect x="4.71" y="21" width="1.75" height="4" fill="#B3C0BF"/><rect x="9.41" y="21" width="44.11" height="4" fill="#3CC0B3"/><rect x="0" y="35" width="8.81" height="4" fill="#4EA5E6"/><rect x="9.41" y="35" width="1.75" height="4" fill="#B3C0BF"/><rect x="14.12" y="35" width="1.75" height="4" fill="#B3C0BF"/><rect x="16.47" y="35" width="34.69" height="4" fill="#3CC0B3"/><rect x="51.76" y="35" width="1.75" height="4" fill="#B3C0BF"/><rect x="56.47" y="35" width="60.58" height="4" fill="#3CC0B3"/><rect x="117.65" y="35" width="1.75" height="4" fill="#B3C0BF"/><rect x="0" y="49" width="18.22" height="4" fill="#4EA5E6"/><rect x="18.82" y="49" width="1.75" height="4" fill="#B3C0BF"/><rect x="23.53" y="49" width="20.58" height="4" fill="#3CC0B3"/><rect x="0" y="63" width="20.58" height="4" fill="#4EA5E6"/><rect x="21.18" y="63" width="1.75" height="4" fill="#B3C0BF"/><rect x="4.71" y="70" width="8.81" height="4" fill="#4EA5E6"/><rect x="14.12" y="70" width="1.75" height="4" fill="#B3C0BF"/><rect x="18.82" y="70" width="1.75" height="4" fill="#EA6AA6"/><rect x="0" y="84" width="18.22" height="4" fill="#4EA5E6"/><rect x="18.82" y="84" width="1.75" height="4" fill="#B3C0BF"/><rect x="4.71" y="91" width="20.58" height="4" fill="#4EA5E6"/><rect x="25.88" y="91" width="1.75" height="4" fill="#B3C0BF"/><rect x="9.41" y="98" width="20.58" height="4" fill="#4EA5E6"/><rect x="30.59" y="98" width="1.75" height="4" fill="#B3C0BF"/><rect x="14.12" y="105" width="11.16" height="4" fill="#4EA5E6"/><rect x="25.88" y="105" width="1.75" height="4" fill="#B3C0BF"/><rect x="30.59" y="105" width="37.05" height="4" fill="#3CC0B3"/><rect x="14.12" y="112" width="37.05" height="4" fill="#4EA5E6"/><rect x="51.76" y="112" width="1.75" height="4" fill="#B3C0BF"/><rect x="56.47" y="112" width="6.46" height="4" fill="#3CC0B3"/><rect x="4.71" y="119" width="22.93" height="4" fill="#4EA5E6"/><rect x="28.24" y="119" width="1.75" height="4" fill="#B3C0BF"/><rect x="9.41" y="126" width="20.58" height="4" fill="#4EA5E6"/><rect x="30.59" y="126" width="1.75" height="4" fill="#B3C0BF"/><rect x="14.12" y="133" width="11.16" height="4" fill="#4EA5E6"/><rect x="25.88" y="133" width="1.75" height="4" fill="#B3C0BF"/><rect x="30.59" y="133" width="37.05" height="4" fill="#3CC0B3"/><rect x="14.12" y="140" width="37.05" height="4" fill="#4EA5E6"/><rect x="51.76" y="140" width="1.75" height="4" fill="#B3C0BF"/><rect x="56.47" y="140" width="8.81" height="4" fill="#3CC0B3"/><rect x="4.71" y="147" width="20.58" height="4" fill="#4EA5E6"/><rect x="25.88" y="147" width="1.75" height="4" fill="#B3C0BF"/><rect x="9.41" y="154" width="20.58" height="4" fill="#4EA5E6"/><rect x="30.59" y="154" width="1.75" height="4" fill="#B3C0BF"/><rect x="14.12" y="161" width="11.16" height="4" fill="#4EA5E6"/><rect x="25.88" y="161" width="1.75" height="4" fill="#B3C0BF"/><rect x="30.59" y="161" width="29.99" height="4" fill="#3CC0B3"/><rect x="14.12" y="168" width="37.05" height="4" fill="#4EA5E6"/><rect x="51.76" y="168" width="1.75" height="4" fill="#B3C0BF"/><rect x="56.47" y="168" width="6.46" height="4" fill="#3CC0B3"/><rect x="4.71" y="175" width="22.93" height="4" fill="#4EA5E6"/><rect x="28.24" y="175" width="1.75" height="4" fill="#B3C0BF"/><rect x="9.41" y="182" width="20.58" height="4" fill="#4EA5E6"/><rect x="30.59" y="182" width="1.75" height="4" fill="#B3C0BF"/><rect x="14.12" y="189" width="11.16" height="4" fill="#4EA5E6"/><rect x="25.88" y="189" width="1.75" height="4" fill="#B3C0BF"/><rect x="30.59" y="189" width="29.99" height="4" fill="#3CC0B3"/><rect x="14.12" y="196" width="37.05" height="4" fill="#4EA5E6"/><rect x="51.76" y="196" width="1.75" height="4" fill="#B3C0BF"/><rect x="56.47" y="196" width="8.81" height="4" fill="#3CC0B3"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:experiment -->
+    <aside class="callouts"><p class="callout" data-anchor="evalf">five stimuli, graded by code</p><p class="callout" data-anchor="vary">model and effort, nothing else</p><p class="callout" data-anchor="runs">15 trials a variant, 60 in all</p><p class="callout" data-anchor="newer">a newer haiku: 4.5 takes no effort</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "scroll",
+  "target": "#experiment",
+  "to": "top",
+  "at": "0"
+ },
+ {
+  "type": "focus",
+  "target": "evalf",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "vary",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "scroll",
+  "target": "#experiment",
+  "to": "6-12",
+  "at": "2~nothing else"
+ },
+ {
+  "type": "focus",
+  "target": "runs",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "scroll",
+  "target": "#experiment",
+  "to": "11-19",
+  "at": "3~sixty"
+ },
+ {
+  "type": "focus",
+  "target": "vhaiku",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "scroll",
+  "target": "#experiment",
+  "to": "end",
+  "at": "4~two models"
+ },
+ {
+  "type": "focus",
+  "target": "vterra",
+  "at": "4~high effort",
+  "color": "blue"
+ },
+ {
+  "type": "scroll",
+  "target": "#experiment",
+  "to": "13-21",
+  "at": "5"
+ },
+ {
+  "type": "focus",
+  "target": "newer",
+  "at": "5~five point five",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

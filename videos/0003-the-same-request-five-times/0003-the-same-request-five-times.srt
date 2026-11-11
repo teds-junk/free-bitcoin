@@ -1,0 +1,534 @@
+1
+00:00:00,400 --> 00:00:04,275
+One model made up a pull request number,
+and the other didn't.
+
+2
+00:00:04,775 --> 00:00:08,900
+It's tempting to decide which model is the
+careless one, and move on.
+
+3
+00:00:09,400 --> 00:00:11,850
+But we've watched each model once.
+
+4
+00:00:12,350 --> 00:00:16,673
+Here, you'll run the same request five
+times on each model, and count how often
+
+5
+00:00:16,673 --> 00:00:18,150
+each one makes up a number.
+
+6
+00:00:19,367 --> 00:00:22,017
+Let's start with why once isn't enough.
+
+7
+00:00:22,517 --> 00:00:25,942
+A language model doesn't compute one fixed
+answer.
+
+8
+00:00:26,442 --> 00:00:30,958
+It produces one of many plausible answers,
+and which one you get varies from run to
+
+9
+00:00:30,958 --> 00:00:32,917
+run, even when nothing else changes.
+
+10
+00:00:33,417 --> 00:00:37,817
+An agent adds to that, because each step
+it takes depends on the step before.
+
+11
+00:00:38,317 --> 00:00:42,392
+So a single trial tells you that something
+can happen, and nothing more.
+
+12
+00:00:43,600 --> 00:00:47,549
+If a colleague made a slip the one time
+you watched, you wouldn't know whether
+
+13
+00:00:47,549 --> 00:00:49,625
+they slip every time, or one time in ten.
+
+14
+00:00:50,125 --> 00:00:52,500
+Those call for different responses.
+
+15
+00:00:53,000 --> 00:00:57,305
+For any skill, the questions that matter
+are how often it goes wrong, and whether
+
+16
+00:00:57,305 --> 00:00:58,900
+that's the same on each model.
+
+17
+00:00:59,400 --> 00:01:03,458
+Those are counts, and a count needs
+several trials of the same stimulus: the
+
+18
+00:01:03,458 --> 00:01:05,700
+same request, checked by the same graders.
+
+19
+00:01:06,900 --> 00:01:09,950
+That variation shows up in measurements,
+too.
+
+20
+00:01:10,450 --> 00:01:15,066
+In a paper from twenty twenty-six, not yet
+reviewed by other researchers, the same
+
+21
+00:01:15,066 --> 00:01:18,050
+agent ran the same set of coding tasks
+several times.
+
+22
+00:01:18,550 --> 00:01:23,040
+From one identical run to the next, its
+score, the share of tasks it completed,
+
+23
+00:01:23,040 --> 00:01:25,200
+moved by two to six percentage points.
+
+24
+00:01:26,400 --> 00:01:29,225
+That's the reason; here's how Vally does
+it.
+
+25
+00:01:29,725 --> 00:01:34,846
+Adding dash dash runs five to vally eval
+repeats every stimulus five times, on
+
+26
+00:01:34,846 --> 00:01:36,225
+every model you name.
+
+27
+00:01:36,725 --> 00:01:40,125
+Each one is a trial of its own, in a fresh
+workspace.
+
+28
+00:01:40,625 --> 00:01:45,323
+And each trial gets its own numbered
+folder, zero to four, with its own patch
+
+29
+00:01:45,323 --> 00:01:45,750
+inside.
+
+30
+00:01:46,250 --> 00:01:50,075
+With one stimulus and two models, that
+makes ten trials.
+
+31
+00:01:51,300 --> 00:01:55,525
+With several trials, a stimulus no longer
+just passes or fails.
+
+32
+00:01:56,025 --> 00:02:00,625
+For each model, Vally sums up the
+stimulus's trials with one of four words.
+
+33
+00:02:01,125 --> 00:02:03,625
+Pass means every trial passed.
+
+34
+00:02:04,125 --> 00:02:07,325
+Flaky means some trials passed and some
+failed.
+
+35
+00:02:07,825 --> 00:02:10,225
+Fail means no trial passed.
+
+36
+00:02:10,725 --> 00:02:15,089
+Finally, error means at least one trial
+didn't finish, so the stimulus has no
+
+37
+00:02:15,089 --> 00:02:17,300
+verdict, whatever the other trials did.
+
+38
+00:02:18,500 --> 00:02:20,850
+Error is not a kind of failure.
+
+39
+00:02:21,350 --> 00:02:25,953
+It means the agent gave no answer to
+judge, for example because its connection
+
+40
+00:02:25,953 --> 00:02:26,425
+dropped.
+
+41
+00:02:26,925 --> 00:02:30,879
+When that happens, we run the command
+again, or leave that trial out of the
+
+42
+00:02:30,879 --> 00:02:32,250
+count and say that we did.
+
+43
+00:02:33,467 --> 00:02:38,114
+One more thing is saved for every trial,
+and it matters when a patch comes back
+
+44
+00:02:38,114 --> 00:02:38,467
+empty.
+
+45
+00:02:38,967 --> 00:02:42,217
+An empty patch means the agent changed no
+file.
+
+46
+00:02:42,717 --> 00:02:48,111
+Each trial's record in results dot jsonl
+keeps the agent's final reply, in a field
+
+47
+00:02:48,111 --> 00:02:48,967
+named output.
+
+48
+00:02:49,467 --> 00:02:51,942
+That reply usually says why.
+
+49
+00:02:53,167 --> 00:02:56,292
+Before we run ten trials, one more flag.
+
+50
+00:02:56,792 --> 00:02:59,967
+Vally doesn't run trials one after
+another.
+
+51
+00:03:00,467 --> 00:03:05,258
+It runs several agent sessions at once,
+and dash dash workers sets how many; the
+
+52
+00:03:05,258 --> 00:03:06,217
+default is five.
+
+53
+00:03:06,717 --> 00:03:11,025
+More at once is faster, but each session
+holds an open connection to the model
+
+54
+00:03:11,025 --> 00:03:13,842
+service, and those connections can drop
+under load.
+
+55
+00:03:14,342 --> 00:03:18,800
+When we ran ten trials with five workers,
+three of them ended in error, with the
+
+56
+00:03:18,800 --> 00:03:20,417
+message session disconnected.
+
+57
+00:03:20,917 --> 00:03:23,542
+With two workers, all ten finished.
+
+58
+00:03:24,042 --> 00:03:28,378
+So we use two whenever a command starts
+more than a couple of trials, and accept
+
+59
+00:03:28,378 --> 00:03:29,517
+that it takes longer.
+
+60
+00:03:30,017 --> 00:03:34,267
+Even at two, a session drops now and then,
+so an error is still possible.
+
+61
+00:03:35,467 --> 00:03:37,942
+That's how it works; now let's count.
+
+62
+00:03:38,442 --> 00:03:43,135
+First, we'll run the same stimulus five
+times on each model, then open the ten
+
+63
+00:03:43,135 --> 00:03:43,617
+patches.
+
+64
+00:03:44,117 --> 00:03:48,638
+Each trial goes in one of three columns:
+an entry with no number, an entry with a
+
+65
+00:03:48,638 --> 00:03:50,592
+made-up number, or no entry at all.
+
+66
+00:03:51,092 --> 00:03:53,542
+What would you expect from each model?
+
+67
+00:03:56,042 --> 00:03:58,917
+If you tried it yourself, here's what
+you'd see.
+
+68
+00:04:00,133 --> 00:04:03,958
+Here's the run: the command from before,
+with the two new flags.
+
+69
+00:04:04,458 --> 00:04:07,108
+It spends ten short agent runs.
+
+70
+00:04:07,608 --> 00:04:11,855
+We're watching the summary at the end,
+where a model gets a tick only when none
+
+71
+00:04:11,855 --> 00:04:12,983
+of its trials failed.
+
+72
+00:04:15,800 --> 00:04:20,338
+About a minute later, there's a tick for
+each model: on both, the stimulus is a
+
+73
+00:04:20,338 --> 00:04:20,625
+pass.
+
+74
+00:04:21,125 --> 00:04:25,492
+Flaky, fail or error would show up as a
+line of its own above the summary, and
+
+75
+00:04:25,492 --> 00:04:26,500
+here there's none.
+
+76
+00:04:30,000 --> 00:04:32,475
+So let's look in the results folder.
+
+77
+00:04:34,260 --> 00:04:37,385
+There's one folder, named with the time of
+the run.
+
+78
+00:04:42,500 --> 00:04:46,675
+We change into it, then into the folders
+for the eval and the stimulus.
+
+79
+00:04:48,680 --> 00:04:51,255
+Then we list one model's trials.
+
+80
+00:04:52,900 --> 00:04:55,500
+Five folders, numbered from zero.
+
+81
+00:04:57,000 --> 00:05:00,000
+Here's the patch from that model's trial
+zero.
+
+82
+00:05:02,640 --> 00:05:06,715
+Its entry ends with a pull request number
+that nobody gave it.
+
+83
+00:05:14,933 --> 00:05:19,708
+Reading the other nine the same way gives
+us ten entries, five from each model.
+
+84
+00:05:20,208 --> 00:05:22,633
+Here's the line each trial added.
+
+85
+00:05:26,133 --> 00:05:30,108
+Terra ended every one of its five entries
+with a made-up number.
+
+86
+00:05:30,608 --> 00:05:33,583
+Haiku didn't add a number in any of its
+five.
+
+87
+00:05:36,800 --> 00:05:41,145
+That fills in the tally: five with no
+number for haiku, five made up for terra,
+
+88
+00:05:41,145 --> 00:05:42,850
+and nothing in the last column.
+
+89
+00:05:47,067 --> 00:05:51,367
+The final replies in results dot jsonl
+tell the same story.
+
+90
+00:05:51,867 --> 00:05:56,117
+In our run no patch was empty, so every
+reply reports an edit.
+
+91
+00:05:56,617 --> 00:06:00,217
+And terra's replies name the made-up
+number outright.
+
+92
+00:06:04,433 --> 00:06:06,533
+So what does the tally say?
+
+93
+00:06:07,033 --> 00:06:09,933
+We now have counts in place of an
+impression.
+
+94
+00:06:10,433 --> 00:06:15,433
+On haiku, the skill led to a made-up pull
+request number in none of its five trials.
+
+95
+00:06:15,933 --> 00:06:18,558
+On terra, it did in five of five.
+
+96
+00:06:19,058 --> 00:06:23,367
+That's how the skill behaves on each
+model, as far as five trials can show, and
+
+97
+00:06:23,367 --> 00:06:25,058
+it's worth fixing in the skill.
+
+98
+00:06:25,558 --> 00:06:29,963
+Counts like these are also what we'll
+compare against, once the skill has been
+
+99
+00:06:29,963 --> 00:06:30,358
+edited.
+
+100
+00:06:31,567 --> 00:06:34,342
+Every trial that made up a number passed.
+
+101
+00:06:34,842 --> 00:06:39,525
+This grader looks only for the words notes
+add, so it passes an entry whether or not
+
+102
+00:06:39,525 --> 00:06:40,417
+it has a number.
+
+103
+00:06:40,917 --> 00:06:45,186
+The careful answer would be to change
+nothing, and ask which pull request to
+
+104
+00:06:45,186 --> 00:06:45,467
+cite.
+
+105
+00:06:45,967 --> 00:06:49,867
+That's the one kind of answer this grader
+would mark as a failure.
+
+106
+00:06:50,367 --> 00:06:53,867
+Later in the course, one of our trials
+does exactly that.
+
+107
+00:06:55,067 --> 00:06:59,684
+Before you go on: what are the four words
+Vally uses to sum up a stimulus's trials,
+
+108
+00:06:59,684 --> 00:07:01,242
+and what does each one mean?
+
+109
+00:07:04,242 --> 00:07:06,442
+Pass: every trial passed.
+
+110
+00:07:06,942 --> 00:07:09,442
+Flaky: some passed, and some failed.
+
+111
+00:07:09,942 --> 00:07:11,717
+Fail: none passed.
+
+112
+00:07:12,217 --> 00:07:16,442
+Last, error: at least one trial didn't
+finish, so there's no verdict.
+
+113
+00:07:17,667 --> 00:07:20,892
+You can now put a count on a problem, for
+each model.
+
+114
+00:07:21,392 --> 00:07:25,742
+But that was one problem, on one request,
+found by reading ten patches.
+
+115
+00:07:26,242 --> 00:07:29,417
+What else goes wrong when the requests get
+messier?
+
+116
+00:07:29,917 --> 00:07:31,767
+That's the next lesson.
+
+117
+00:07:32,267 --> 00:07:35,842
+The exercises on the lesson page are worth
+doing first.

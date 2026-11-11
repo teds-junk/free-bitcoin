@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The tool that writes the list</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Set up before the agent starts</div>
+  <h2 class="scene-title">The tool that writes the list</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:tool · regenerate with: node file-panel.js --file src/state/list-merged.mjs --label tools/list-merged.mjs --id tool --width 52 --rows 9 --show 5-11 --expect '6=#74 feat' --expect '8=#76 refactor' --mark 6-7=ff --mark 8=rf --into scenes/s05.html -->
+<div class="file-panel" id="tool" data-file="tools/list-merged.mjs" data-lines="11" data-rows="9" style="--rows:9;--cols:52;--ln:2">
+<div class="code-file">tools/list-merged.mjs<span class="file-meta">11 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="js"><code>
+<span class="file-row file-skip" data-hidden="1-4"><span class="ln">⋮</span><span class="elide">4 lines hidden · 1–4</span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span><span style="color:#B3C0BF">const</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">merged</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">=</span><span style="color:#B3C0BF"> [</span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span style="color:#B3C0BF">  </span><span data-concept="ff" data-rep="code"><span style="color:#3CC0B3">"#74 feat: add --since &lt;date&gt; to notes list"</span><span style="color:#B3C0BF">,</span></span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span><span style="color:#B3C0BF">  </span><span data-concept="ff" data-rep="code"><span style="color:#3CC0B3">"#75 fix: notes search missed titles with</span></span><span style="color:#3CC0B3"> </span></span>
+<span class="file-row" data-line="7" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:6ch"></i><span data-concept="ff" data-rep="code"><span style="color:#3CC0B3">accents"</span><span style="color:#B3C0BF">,</span></span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span><span style="color:#B3C0BF">  </span><span data-concept="rf" data-rep="code"><span style="color:#3CC0B3">"#76 refactor: move config loading out of cli.js"</span><span style="color:#B3C0BF">,</span></span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span><span style="color:#B3C0BF">];</span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span><span style="color:#A4BA1E">for</span><span style="color:#B3C0BF"> (</span><span style="color:#B3C0BF">const</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">line</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">of</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">merged</span><span style="color:#B3C0BF">) </span><span style="color:#4EA5E6">console</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">log</span><span style="color:#B3C0BF">(</span><span style="color:#4EA5E6">line</span><span style="color:#B3C0BF">);</span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="11" style="height:77px" aria-hidden="true"><b class="file-map-view" style="top:28px;height:49px"></b><svg width="120" height="77" viewBox="0 0 120 77" shape-rendering="crispEdges"><rect x="0" y="0" width="3.47" height="4" fill="#8296A0" opacity=".38"/><rect x="6.1" y="0" width="9.57" height="4" fill="#8296A0" opacity=".38"/><rect x="18.31" y="0" width="5.5" height="4" fill="#8296A0" opacity=".38"/><rect x="26.44" y="0" width="13.64" height="4" fill="#8296A0" opacity=".38"/><rect x="42.71" y="0" width="11.6" height="4" fill="#8296A0" opacity=".38"/><rect x="56.95" y="0" width="9.57" height="4" fill="#8296A0" opacity=".38"/><rect x="69.15" y="0" width="5.5" height="4" fill="#8296A0" opacity=".38"/><rect x="77.29" y="0" width="7.54" height="4" fill="#8296A0" opacity=".38"/><rect x="87.46" y="0" width="15.67" height="4" fill="#8296A0" opacity=".38"/><rect x="105.76" y="0" width="5.5" height="4" fill="#8296A0" opacity=".38"/><rect x="113.9" y="0" width="5.5" height="4" fill="#8296A0" opacity=".38"/><rect x="0" y="7" width="3.47" height="4" fill="#8296A0" opacity=".38"/><rect x="6.1" y="7" width="9.57" height="4" fill="#8296A0" opacity=".38"/><rect x="18.31" y="7" width="3.47" height="4" fill="#8296A0" opacity=".38"/><rect x="24.41" y="7" width="13.64" height="4" fill="#8296A0" opacity=".38"/><rect x="40.68" y="7" width="15.67" height="4" fill="#8296A0" opacity=".38"/><rect x="58.98" y="7" width="13.64" height="4" fill="#8296A0" opacity=".38"/><rect x="75.25" y="7" width="21.77" height="4" fill="#8296A0" opacity=".38"/><rect x="0" y="14" width="3.47" height="4" fill="#8296A0" opacity=".38"/><rect x="6.1" y="14" width="5.5" height="4" fill="#8296A0" opacity=".38"/><rect x="14.24" y="14" width="7.54" height="4" fill="#8296A0" opacity=".38"/><rect x="24.41" y="14" width="13.64" height="4" fill="#8296A0" opacity=".38"/><rect x="40.68" y="14" width="7.54" height="4" fill="#8296A0" opacity=".38"/><rect x="50.85" y="14" width="7.54" height="4" fill="#8296A0" opacity=".38"/><rect x="61.02" y="14" width="5.5" height="4" fill="#8296A0" opacity=".38"/><rect x="69.15" y="14" width="11.6" height="4" fill="#8296A0" opacity=".38"/><rect x="83.39" y="14" width="15.67" height="4" fill="#8296A0" opacity=".38"/><rect x="101.69" y="14" width="7.54" height="4" fill="#8296A0" opacity=".38"/><rect x="111.86" y="14" width="7.54" height="4" fill="#8296A0" opacity=".38"/><rect x="0" y="21" width="3.47" height="4" fill="#8296A0" opacity=".38"/><rect x="6.1" y="21" width="11.6" height="4" fill="#8296A0" opacity=".38"/><rect x="20.34" y="21" width="1.5" height="4" fill="#8296A0" opacity=".38"/><rect x="24.41" y="21" width="9.57" height="4" fill="#8296A0" opacity=".38"/><rect x="36.61" y="21" width="9.57" height="4" fill="#8296A0" opacity=".38"/><rect x="48.81" y="21" width="3.47" height="4" fill="#8296A0" opacity=".38"/><rect x="54.92" y="21" width="9.57" height="4" fill="#8296A0" opacity=".38"/><rect x="67.12" y="21" width="9.57" height="4" fill="#8296A0" opacity=".38"/><rect x="79.32" y="21" width="11.6" height="4" fill="#8296A0" opacity=".38"/><rect x="93.56" y="21" width="5.5" height="4" fill="#8296A0" opacity=".38"/><rect x="101.69" y="21" width="7.54" height="4" fill="#8296A0" opacity=".38"/><rect x="111.86" y="21" width="7.54" height="4" fill="#8296A0" opacity=".38"/><rect x="0" y="28" width="9.57" height="4" fill="#B3C0BF"/><rect x="12.2" y="28" width="11.6" height="4" fill="#4EA5E6"/><rect x="26.44" y="28" width="1.5" height="4" fill="#A4BA1E"/><rect x="30.51" y="28" width="1.5" height="4" fill="#B3C0BF"/><rect x="4.07" y="35" width="7.54" height="4" fill="#3CC0B3"/><rect x="14.24" y="35" width="9.57" height="4" fill="#3CC0B3"/><rect x="26.44" y="35" width="5.5" height="4" fill="#3CC0B3"/><rect x="34.58" y="35" width="13.64" height="4" fill="#3CC0B3"/><rect x="50.85" y="35" width="11.6" height="4" fill="#3CC0B3"/><rect x="65.08" y="35" width="3.47" height="4" fill="#3CC0B3"/><rect x="71.19" y="35" width="9.57" height="4" fill="#3CC0B3"/><rect x="83.39" y="35" width="9.57" height="4" fill="#3CC0B3"/><rect x="93.56" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="4.07" y="42" width="7.54" height="4" fill="#3CC0B3"/><rect x="14.24" y="42" width="7.54" height="4" fill="#3CC0B3"/><rect x="24.41" y="42" width="9.57" height="4" fill="#3CC0B3"/><rect x="36.61" y="42" width="11.6" height="4" fill="#3CC0B3"/><rect x="50.85" y="42" width="11.6" height="4" fill="#3CC0B3"/><rect x="65.08" y="42" width="11.6" height="4" fill="#3CC0B3"/><rect x="79.32" y="42" width="7.54" height="4" fill="#3CC0B3"/><rect x="89.49" y="42" width="15.67" height="4" fill="#3CC0B3"/><rect x="105.76" y="42" width="1.5" height="4" fill="#B3C0BF"/><rect x="4.07" y="49" width="7.54" height="4" fill="#3CC0B3"/><rect x="14.24" y="49" width="17.71" height="4" fill="#3CC0B3"/><rect x="34.58" y="49" width="7.54" height="4" fill="#3CC0B3"/><rect x="44.75" y="49" width="11.6" height="4" fill="#3CC0B3"/><rect x="58.98" y="49" width="13.64" height="4" fill="#3CC0B3"/><rect x="75.25" y="49" width="5.5" height="4" fill="#3CC0B3"/><rect x="83.39" y="49" width="3.47" height="4" fill="#3CC0B3"/><rect x="89.49" y="49" width="13.64" height="4" fill="#3CC0B3"/><rect x="103.73" y="49" width="1.5" height="4" fill="#B3C0BF"/><rect x="0" y="56" width="3.47" height="4" fill="#B3C0BF"/><rect x="0" y="70" width="5.5" height="4" fill="#A4BA1E"/><rect x="8.14" y="70" width="1.5" height="4" fill="#B3C0BF"/><rect x="10.17" y="70" width="9.57" height="4" fill="#B3C0BF"/><rect x="22.37" y="70" width="7.54" height="4" fill="#4EA5E6"/><rect x="32.54" y="70" width="3.47" height="4" fill="#A4BA1E"/><rect x="38.64" y="70" width="11.6" height="4" fill="#4EA5E6"/><rect x="50.85" y="70" width="1.5" height="4" fill="#B3C0BF"/><rect x="54.92" y="70" width="13.64" height="4" fill="#4EA5E6"/><rect x="69.15" y="70" width="1.5" height="4" fill="#B3C0BF"/><rect x="71.19" y="70" width="5.5" height="4" fill="#4EA5E6"/><rect x="77.29" y="70" width="1.5" height="4" fill="#B3C0BF"/><rect x="79.32" y="70" width="7.54" height="4" fill="#4EA5E6"/><rect x="87.46" y="70" width="3.47" height="4" fill="#B3C0BF"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:tool -->
+    <aside class="callouts"><p class="callout" data-anchor="ff">users notice: an entry each</p><p class="callout" data-anchor="rf">code only: no entry</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "ff",
+  "at": "4",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "rf",
+  "at": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

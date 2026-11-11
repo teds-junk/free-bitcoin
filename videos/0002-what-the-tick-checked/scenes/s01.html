@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What the tick checked</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.results{display:flex;flex-direction:column;gap:36px;width:100%}.results{gap:48px}.results .card > .code.dark{font-size:40px;padding:30px 36px}.results .card .who{font-size:34px}.s-tick{color:var(--green-ink);font-weight:700}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">What the tick checked</h1>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="card-a" data-rep="card">
+        <div class="who"><span class="s-tick" data-concept="tick" data-rep="mark">✔</span> <span class="mono">claude-haiku-4.5</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix typo in </span><span style="color:#3CC0B3">`notes add`</span><span> help text ("tittle" → "title")</span></code></pre>
+      </div>
+      <div class="card" data-concept="card-b" data-rep="card">
+        <div class="who"><span class="s-tick" data-concept="tick" data-rep="mark">✔</span> <span class="mono">gpt-5.6-terra</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix the help text typo in </span><span style="color:#3CC0B3">`notes add`</span><span> </span><span data-concept="pr42" data-rep="code"><span>(#42)</span></span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "card-a",
+  "at": "0~Two models",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "card-b",
+  "at": "0~two different",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "pr42",
+  "at": "1~pull request",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "tick",
+  "at": "1~green tick",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

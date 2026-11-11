@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Reading the judge’s reasons</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.results{display:flex;flex-direction:column;gap:30px;width:100%}.results .card > .code.dark.why{font-size:32px;line-height:1.5;padding:22px 28px}.results .card .who{font-size:30px}.stage{justify-content:flex-start}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Add the judge and run it</div>
+  <h2 class="scene-title">Reading the judge’s reasons</h2>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="r-yes" data-rep="card">
+        <div class="who"><span class="mono">parser</span> · <span class="mono">gpt-5.6-terra</span> · trial 1</div>
+        <pre class="code dark why" data-lang="text"><code><span>✓ [prompt "Begin your reason b…"] The new entry reads: "</span><span data-concept="q1" data-rep="code"><span>Prevent out-of-memory</span></span>
+<span>  </span><span data-concept="q1" data-rep="code"><span>errors when importing large JSON files (#49)</span></span><span>". It is user-focused and does not</span>
+<span>  describe the implementation.</span></code></pre>
+      </div>
+      <div class="card" data-concept="r-no" data-rep="card">
+        <div class="who"><span class="mono">parser</span> · <span class="mono">claude-haiku-4.5</span> · trial 0</div>
+        <pre class="code dark why" data-lang="text"><code><span data-concept="x2" data-rep="code"><span>✗ [prompt "Begin your reason b…"]</span></span><span> The entry does state the user benefit, but it</span>
+<span>  includes implementation details (</span><span data-concept="q2" data-rep="code"><span>streaming parser, importer.js</span></span><span>). That violates</span>
+<span>  the criterion.</span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "q1",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "x2",
+  "at": "2",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "q2",
+  "at": "4~streaming",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

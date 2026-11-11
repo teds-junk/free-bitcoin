@@ -1,0 +1,706 @@
+1
+00:00:00,400 --> 00:00:04,809
+Our judge gave a yes or a no to twelve
+changelog entries, with a well-written
+
+2
+00:00:04,809 --> 00:00:05,725
+reason for each.
+
+3
+00:00:06,225 --> 00:00:10,407
+But the judge is a model, and a
+well-written reason isn't evidence of a
+
+4
+00:00:10,407 --> 00:00:11,350
+correct verdict.
+
+5
+00:00:11,850 --> 00:00:16,211
+Code graders could be tested against a
+golden patch, and there's no golden patch
+
+6
+00:00:16,211 --> 00:00:18,500
+for whether an entry reads well to a user.
+
+7
+00:00:19,000 --> 00:00:23,255
+What we do have is our own yes or no for
+the same twelve entries, written down
+
+8
+00:00:23,255 --> 00:00:24,400
+before the judge ran.
+
+9
+00:00:24,900 --> 00:00:29,210
+Here, you'll measure the judge against
+those labels as two numbers, and decide
+
+10
+00:00:29,210 --> 00:00:30,425
+whether to rely on it.
+
+11
+00:00:31,633 --> 00:00:34,408
+Let's start with how a judge can be wrong.
+
+12
+00:00:34,908 --> 00:00:38,083
+Like any grader, it can be wrong in two
+directions.
+
+13
+00:00:38,583 --> 00:00:43,016
+It can say yes to an entry we'd reject: a
+failure slips through, and we believe the
+
+14
+00:00:43,016 --> 00:00:44,458
+skill is better than it is.
+
+15
+00:00:44,958 --> 00:00:49,473
+Or it can say no to an entry we'd accept:
+a false alarm, and we go hunting for a
+
+16
+00:00:49,473 --> 00:00:50,883
+problem that isn't there.
+
+17
+00:00:52,100 --> 00:00:56,555
+The obvious measure is agreement: on what
+share of the entries did the judge and we
+
+18
+00:00:56,555 --> 00:00:57,575
+say the same thing?
+
+19
+00:00:58,075 --> 00:01:02,500
+That makes it a poor measure, because it
+hides which direction the errors run in.
+
+20
+00:01:03,000 --> 00:01:06,625
+Let's say we label twenty entries, and
+eighteen are fine.
+
+21
+00:01:07,125 --> 00:01:11,469
+Even a judge that says yes to everything
+agrees with us eighteen times out of
+
+22
+00:01:11,469 --> 00:01:13,275
+twenty, which is ninety percent.
+
+23
+00:01:13,775 --> 00:01:16,800
+Yet it has caught neither of the two bad
+entries.
+
+24
+00:01:17,300 --> 00:01:20,325
+It's useless, and its agreement looks
+excellent.
+
+25
+00:01:21,533 --> 00:01:24,308
+So we count the two directions separately.
+
+26
+00:01:24,808 --> 00:01:29,358
+Of the entries we said yes to, how many
+did the judge pass, by saying yes too?
+
+27
+00:01:29,858 --> 00:01:33,408
+Of the entries we said no to, how many did
+it fail?
+
+28
+00:01:33,908 --> 00:01:37,608
+That makes two numbers, and a judge has to
+do well on both.
+
+29
+00:01:38,108 --> 00:01:40,133
+How well is well enough?
+
+30
+00:01:40,633 --> 00:01:44,981
+Practitioners this course leans on suggest
+aiming above ninety percent on each
+
+31
+00:01:44,981 --> 00:01:49,441
+number, and labelling a hundred or more
+examples for a judge we intend to depend
+
+32
+00:01:49,441 --> 00:01:49,608
+on.
+
+33
+00:01:50,108 --> 00:01:54,483
+Twelve labels, which is what we have, can
+show that a judge is badly wrong.
+
+34
+00:01:54,983 --> 00:01:57,708
+They can't show that it's reliably right.
+
+35
+00:01:58,933 --> 00:02:02,980
+One caution before the arithmetic: a
+measurement like this holds for one
+
+36
+00:02:02,980 --> 00:02:05,733
+rubric, one judge model, and one kind of
+request.
+
+37
+00:02:06,233 --> 00:02:10,419
+Changing the rubric's wording, changing
+the judge model, or pointing the judge at
+
+38
+00:02:10,419 --> 00:02:12,383
+a different kind of request undoes it.
+
+39
+00:02:12,883 --> 00:02:15,483
+Each of them means labelling again.
+
+40
+00:02:15,983 --> 00:02:19,999
+When we reword a rubric to fix a
+disagreement, we set some labelled entries
+
+41
+00:02:19,999 --> 00:02:22,783
+aside first, and don't look at them while
+rewording.
+
+42
+00:02:23,283 --> 00:02:27,408
+Otherwise, we'd be fitting the rubric to
+the examples we're testing it on.
+
+43
+00:02:28,633 --> 00:02:32,541
+That's the idea; here's how the two
+numbers are worked out, starting with
+
+44
+00:02:32,541 --> 00:02:33,183
+their names.
+
+45
+00:02:33,683 --> 00:02:38,717
+First, the true positive rate, or TPR: of
+the trials we labelled yes, the share the
+
+46
+00:02:38,717 --> 00:02:39,808
+judge also passed.
+
+47
+00:02:40,308 --> 00:02:43,308
+Positive is the statistician's word for
+yes.
+
+48
+00:02:43,808 --> 00:02:48,760
+Second, the true negative rate, or TNR: of
+the trials we labelled no, the share the
+
+49
+00:02:48,760 --> 00:02:49,833
+judge also failed.
+
+50
+00:02:50,333 --> 00:02:52,658
+Negative is the word for no.
+
+51
+00:02:53,867 --> 00:02:58,413
+To work them out, every trial goes into
+one of four boxes, by what the judge said
+
+52
+00:02:58,413 --> 00:02:59,367
+and what we said.
+
+53
+00:02:59,867 --> 00:03:03,042
+Here's an invented judge, to show the
+arithmetic.
+
+54
+00:03:03,542 --> 00:03:07,017
+We labelled twenty entries: twelve yes,
+and eight no.
+
+55
+00:03:07,517 --> 00:03:11,867
+This judge passed eleven of our twelve,
+and it also passed three of our eight.
+
+56
+00:03:12,367 --> 00:03:16,217
+So it failed one of our yes entries, and
+five of our no entries.
+
+57
+00:03:17,433 --> 00:03:20,533
+Each rate uses one column, read downwards.
+
+58
+00:03:21,033 --> 00:03:25,733
+On the left is TPR: eleven out of twelve,
+which is ninety-two percent.
+
+59
+00:03:26,233 --> 00:03:30,358
+On the right is TNR: five out of eight,
+which is sixty-three percent.
+
+60
+00:03:30,858 --> 00:03:35,333
+Agreement is sixteen out of twenty, eighty
+percent, which sounds respectable.
+
+61
+00:03:35,833 --> 00:03:40,651
+TNR tells the real story: of the entries
+we'd reject, this judge lets more than a
+
+62
+00:03:40,651 --> 00:03:41,483
+third through.
+
+63
+00:03:42,700 --> 00:03:45,850
+Each number, when it's low, says something
+different.
+
+64
+00:03:46,350 --> 00:03:50,625
+Low TPR means false alarms: the judge is
+stricter than we are.
+
+65
+00:03:51,125 --> 00:03:55,575
+Low TNR means missed failures: the judge
+is more lenient than we are.
+
+66
+00:03:56,075 --> 00:04:00,119
+Which matters more depends on what the
+judge is for, but a judge with either
+
+67
+00:04:00,119 --> 00:04:02,300
+number low isn't measuring our criterion.
+
+68
+00:04:03,500 --> 00:04:06,725
+That's how the numbers work; now let's
+count ours.
+
+69
+00:04:07,225 --> 00:04:11,775
+First we'll sort our twelve trials into
+the four boxes, and work out both rates.
+
+70
+00:04:12,275 --> 00:04:16,201
+Then we'll look closely at the one entry
+where the judge and we differ, and write
+
+71
+00:04:16,201 --> 00:04:18,625
+down what we will and won't rely on the
+judge for.
+
+72
+00:04:19,125 --> 00:04:21,850
+None of it runs an agent or a judge.
+
+73
+00:04:22,350 --> 00:04:26,997
+On that entry we said no and the judge
+said yes: which of the two rates will it
+
+74
+00:04:26,997 --> 00:04:27,350
+lower?
+
+75
+00:04:29,850 --> 00:04:33,200
+If you did the same count yourself, here's
+what you'd see.
+
+76
+00:04:34,400 --> 00:04:38,600
+Both lists are in the notes file from the
+judging, named wording labels.
+
+77
+00:04:39,100 --> 00:04:43,400
+Each of the twelve entries has our yes or
+no, with the judge's beside it.
+
+78
+00:04:43,900 --> 00:04:47,250
+Our answers haven't been changed since the
+judge ran.
+
+79
+00:04:51,467 --> 00:04:54,767
+Sorting takes one look at each row's two
+answers.
+
+80
+00:04:55,267 --> 00:04:59,667
+Seven entries got a yes from both of us,
+and four got a no from both.
+
+81
+00:05:02,167 --> 00:05:07,067
+One entry got a yes from the judge and a
+no from us, and the last box is empty.
+
+82
+00:05:10,267 --> 00:05:12,917
+Now the two rates, one column each.
+
+83
+00:05:13,417 --> 00:05:17,517
+On the left, TPR is seven out of seven: a
+hundred percent.
+
+84
+00:05:18,017 --> 00:05:21,567
+On the right, TNR is four out of five:
+eighty percent.
+
+85
+00:05:22,067 --> 00:05:26,166
+Agreement is eleven out of twelve,
+ninety-two percent, and it wouldn't say
+
+86
+00:05:26,166 --> 00:05:27,717
+which column the miss is in.
+
+87
+00:05:28,217 --> 00:05:31,267
+With only twelve labels, both rates are
+rough.
+
+88
+00:05:34,467 --> 00:05:37,492
+Next, every disagreement gets a second
+look.
+
+89
+00:05:37,992 --> 00:05:42,530
+For each one, we'd read the entry and the
+judge's reason again, and decide who is
+
+90
+00:05:42,530 --> 00:05:42,867
+right.
+
+91
+00:05:43,367 --> 00:05:46,842
+If we still disagree, that's one error of
+the judge's.
+
+92
+00:05:47,342 --> 00:05:51,442
+If the judge has persuaded us, our
+criterion wasn't what we thought.
+
+93
+00:05:51,942 --> 00:05:56,479
+Even then, the label stays as we first
+wrote it, and the entry still counts as a
+
+94
+00:05:56,479 --> 00:05:57,217
+disagreement.
+
+95
+00:05:57,717 --> 00:06:01,542
+Changing labels to match a judge would
+make any judge look good.
+
+96
+00:06:02,042 --> 00:06:06,760
+For a criterion that turned out unclear,
+the remedy is to reword it, then measure
+
+97
+00:06:06,760 --> 00:06:08,042
+again on fresh labels.
+
+98
+00:06:09,267 --> 00:06:11,892
+In our run, there's one to examine.
+
+99
+00:06:12,392 --> 00:06:16,742
+It's one of two entries from the same
+model, which differ by a single word.
+
+100
+00:06:17,242 --> 00:06:22,142
+Both say a command got faster by caching
+the tag index: the benefit, with a hint of
+
+101
+00:06:22,142 --> 00:06:22,792
+the method.
+
+102
+00:06:23,292 --> 00:06:27,167
+We hesitated over both when labelling, and
+said no to both.
+
+103
+00:06:27,667 --> 00:06:32,017
+To the first, the judge said no as well,
+because it states the implementation.
+
+104
+00:06:32,517 --> 00:06:36,842
+To the second, it said yes, calling the
+same mention a minor blemish.
+
+105
+00:06:42,067 --> 00:06:43,717
+So who is right?
+
+106
+00:06:44,217 --> 00:06:48,655
+Our criterion says an entry doesn't say
+how the change was coded, and the phrase
+
+107
+00:06:48,655 --> 00:06:50,542
+by caching the tag index says how.
+
+108
+00:06:51,042 --> 00:06:54,767
+In its reason for the first entry, the
+judge says the same.
+
+109
+00:06:55,267 --> 00:07:00,155
+So we still disagree, and count it as one
+error of the judge's: it was inconsistent
+
+110
+00:07:00,155 --> 00:07:02,217
+on two entries a single word apart.
+
+111
+00:07:02,717 --> 00:07:07,179
+It's also the wording we hesitated over
+ourselves, which suggests our criterion
+
+112
+00:07:07,179 --> 00:07:08,592
+isn't clear at this edge.
+
+113
+00:07:09,092 --> 00:07:11,492
+Our label stays as we wrote it.
+
+114
+00:07:12,700 --> 00:07:16,650
+Last, we write the decision down, at the
+end of the same notes file.
+
+115
+00:07:17,150 --> 00:07:21,575
+On twelve labels, seven yes and five no,
+the judge matched eleven.
+
+116
+00:07:22,075 --> 00:07:26,833
+Its one miss is an entry we hesitated over
+ourselves, which it failed in one trial
+
+117
+00:07:26,833 --> 00:07:28,225
+and passed in the other.
+
+118
+00:07:28,725 --> 00:07:32,723
+That's enough to use the judge for
+comparing versions of the skill, knowing
+
+119
+00:07:32,723 --> 00:07:34,375
+it may pass a borderline entry.
+
+120
+00:07:34,875 --> 00:07:39,025
+It's not enough to trust a single verdict
+without reading its reason.
+
+121
+00:07:39,525 --> 00:07:43,575
+Whenever the rubric or the judge model
+changes, we'll label more.
+
+122
+00:07:47,800 --> 00:07:50,100
+So what does that result show?
+
+123
+00:07:50,600 --> 00:07:55,293
+On these twelve entries, this judge model
+applied this criterion the way we do
+
+124
+00:07:55,293 --> 00:07:56,075
+eleven times.
+
+125
+00:07:56,575 --> 00:08:00,750
+Its TNR came out at eighty percent, under
+the ninety we aim for.
+
+126
+00:08:01,250 --> 00:08:05,779
+But with five no labels, one entry is the
+whole distance between eighty and a
+
+127
+00:08:05,779 --> 00:08:06,250
+hundred.
+
+128
+00:08:06,750 --> 00:08:11,003
+Twelve labels are too few to tell a judge
+that's right ninety-nine percent of the
+
+129
+00:08:11,003 --> 00:08:14,100
+time from one that's right eighty-five
+percent of the time.
+
+130
+00:08:15,300 --> 00:08:17,325
+It's still a real result.
+
+131
+00:08:17,825 --> 00:08:22,487
+Had the judge passed everything, the same
+twelve labels would have put its TNR at
+
+132
+00:08:22,487 --> 00:08:22,775
+zero.
+
+133
+00:08:23,275 --> 00:08:27,907
+Likewise, a judge that failed entries for
+reasons unrelated to the criterion would
+
+134
+00:08:27,907 --> 00:08:29,150
+have shown up at once.
+
+135
+00:08:29,650 --> 00:08:33,000
+Those are the most common ways for a judge
+to go wrong.
+
+136
+00:08:33,500 --> 00:08:37,896
+Ours did neither: it caught four of our
+five no entries, and wavered on one
+
+137
+00:08:37,896 --> 00:08:38,775
+borderline one.
+
+138
+00:08:40,000 --> 00:08:44,823
+Before you go on: a judge says yes to
+every trial, and we labelled nine trials
+
+139
+00:08:44,823 --> 00:08:45,750
+yes and one no.
+
+140
+00:08:46,250 --> 00:08:48,825
+What are its TPR and its TNR?
+
+141
+00:08:51,825 --> 00:08:56,675
+TPR is a hundred percent: it passed all
+nine of the entries we labelled yes.
+
+142
+00:08:57,175 --> 00:09:01,450
+TNR is zero: we labelled one entry no, and
+the judge passed it.
+
+143
+00:09:01,950 --> 00:09:05,450
+Its agreement, ninety percent, hides that
+completely.
+
+144
+00:09:06,667 --> 00:09:11,074
+You can now measure a judge against your
+own labels as two numbers, and decide
+
+145
+00:09:11,074 --> 00:09:12,317
+whether to rely on it.
+
+146
+00:09:12,817 --> 00:09:17,455
+On these twelve entries, our judge's
+verdicts match our labels eleven times out
+
+147
+00:09:17,455 --> 00:09:18,042
+of twelve.
+
+148
+00:09:18,542 --> 00:09:22,846
+But some of the no entries were nearly
+right and some were far off, and a yes or
+
+149
+00:09:22,846 --> 00:09:24,192
+no can't tell them apart.
+
+150
+00:09:24,692 --> 00:09:28,342
+Can a grader give partial credit without
+hiding a failure?
+
+151
+00:09:28,842 --> 00:09:30,692
+That's the next lesson.
+
+152
+00:09:31,192 --> 00:09:34,767
+The exercises on the lesson page are worth
+doing first.

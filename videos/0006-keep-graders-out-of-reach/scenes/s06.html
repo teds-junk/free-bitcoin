@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A workspace we can keep</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.tree{min-width:900px;font-size:40px;line-height:1.6}.callout{font-size:34px}.stage{gap:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the agent is given</div>
+  <h2 class="scene-title">A workspace we can keep</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark tree" data-lang="text"><code><span>vally eval … </span><span data-concept="flag" data-rep="code"><span>--workspace kept</span></span>
+
+<span data-concept="kept" data-rep="code"><span>kept/</span></span>
+<span>  </span><span data-concept="main" data-rep="code"><span>main/</span></span>
+<span>    </span><span data-concept="stim" data-rep="code"><span>typo-fix/</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="flag">keep each trial’s workspace</p><p class="callout" data-anchor="kept">the folder we named</p><p class="callout" data-anchor="main">a folder Vally adds</p><p class="callout" data-anchor="stim">one per stimulus: no model name</p></aside>
+  </div>
+  <p class="note">with several models, Vally stops first: <span class="mono" data-concept="collide" data-rep="note">workspace-collision</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "flag",
+  "at": "1~workspace",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "kept",
+  "at": "2~folder we name",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "main",
+  "at": "2~main",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "stim",
+  "at": "2~each stimulus",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "flag",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "stim",
+  "at": "4~no model name",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "collide",
+  "at": "4~collision",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

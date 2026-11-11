@@ -1,0 +1,8273 @@
+{
+  "scenes": {
+    "s01": [
+      {
+        "i": 0,
+        "text": "Among our graders, no made-up number is the one we've leaned on most, and the oracle couldn't vouch for it.",
+        "tts_text": "Among our graders, no made-up number is the one we've leaned on most, and the oracle couldn't vouch for it.",
+        "file": "audio/s01_00.wav",
+        "duration": 5.725,
+        "words": [
+          {
+            "w": "Among",
+            "start": 0.175,
+            "end": 0.412
+          },
+          {
+            "w": "our",
+            "start": 0.412,
+            "end": 0.55
+          },
+          {
+            "w": "graders",
+            "start": 0.55,
+            "end": 1.0
+          },
+          {
+            "w": "no",
+            "start": 1.075,
+            "end": 1.312
+          },
+          {
+            "w": "made-up",
+            "start": 1.312,
+            "end": 1.725
+          },
+          {
+            "w": "number",
+            "start": 1.725,
+            "end": 2.1
+          },
+          {
+            "w": "is",
+            "start": 2.1,
+            "end": 2.237
+          },
+          {
+            "w": "the",
+            "start": 2.237,
+            "end": 2.325
+          },
+          {
+            "w": "one",
+            "start": 2.325,
+            "end": 2.525
+          },
+          {
+            "w": "we've",
+            "start": 2.525,
+            "end": 2.725
+          },
+          {
+            "w": "leaned",
+            "start": 2.725,
+            "end": 2.962
+          },
+          {
+            "w": "on",
+            "start": 2.962,
+            "end": 3.125
+          },
+          {
+            "w": "most",
+            "start": 3.125,
+            "end": 3.6
+          },
+          {
+            "w": "and",
+            "start": 3.675,
+            "end": 3.788
+          },
+          {
+            "w": "the",
+            "start": 3.788,
+            "end": 3.9
+          },
+          {
+            "w": "oracle",
+            "start": 3.9,
+            "end": 4.3
+          },
+          {
+            "w": "couldn't",
+            "start": 4.3,
+            "end": 4.525
+          },
+          {
+            "w": "vouch",
+            "start": 4.525,
+            "end": 4.8
+          },
+          {
+            "w": "for",
+            "start": 4.8,
+            "end": 4.975
+          },
+          {
+            "w": "it",
+            "start": 4.975,
+            "end": 5.475
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "An untouched changelog has no made-up number in it, so the grader passes it, and that proves nothing.",
+        "tts_text": "An untouched changelog has no made-up number in it, so the grader passes it, and that proves nothing.",
+        "file": "audio/s01_01.wav",
+        "duration": 5.625,
+        "words": [
+          {
+            "w": "An",
+            "start": 0.175,
+            "end": 0.3
+          },
+          {
+            "w": "untouched",
+            "start": 0.3,
+            "end": 0.8
+          },
+          {
+            "w": "changelog",
+            "start": 0.8,
+            "end": 1.325
+          },
+          {
+            "w": "has",
+            "start": 1.325,
+            "end": 1.525
+          },
+          {
+            "w": "no",
+            "start": 1.525,
+            "end": 1.7
+          },
+          {
+            "w": "made-up",
+            "start": 1.7,
+            "end": 2.075
+          },
+          {
+            "w": "number",
+            "start": 2.075,
+            "end": 2.337
+          },
+          {
+            "w": "in",
+            "start": 2.337,
+            "end": 2.425
+          },
+          {
+            "w": "it",
+            "start": 2.425,
+            "end": 2.65
+          },
+          {
+            "w": "so",
+            "start": 2.725,
+            "end": 2.837
+          },
+          {
+            "w": "the",
+            "start": 2.837,
+            "end": 2.925
+          },
+          {
+            "w": "grader",
+            "start": 2.925,
+            "end": 3.3
+          },
+          {
+            "w": "passes",
+            "start": 3.3,
+            "end": 3.7
+          },
+          {
+            "w": "it",
+            "start": 3.7,
+            "end": 3.95
+          },
+          {
+            "w": "and",
+            "start": 4.025,
+            "end": 4.138
+          },
+          {
+            "w": "that",
+            "start": 4.138,
+            "end": 4.325
+          },
+          {
+            "w": "proves",
+            "start": 4.325,
+            "end": 4.65
+          },
+          {
+            "w": "nothing",
+            "start": 4.65,
+            "end": 5.375
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "What would prove something is a changelog where a model did make up a number.",
+        "tts_text": "What would prove something is a changelog where a model did make up a number.",
+        "file": "audio/s01_02.wav",
+        "duration": 4.3,
+        "words": [
+          {
+            "w": "What",
+            "start": 0.175,
+            "end": 0.312
+          },
+          {
+            "w": "would",
+            "start": 0.312,
+            "end": 0.45
+          },
+          {
+            "w": "prove",
+            "start": 0.45,
+            "end": 0.725
+          },
+          {
+            "w": "something",
+            "start": 0.725,
+            "end": 1.175
+          },
+          {
+            "w": "is",
+            "start": 1.175,
+            "end": 1.288
+          },
+          {
+            "w": "a",
+            "start": 1.288,
+            "end": 1.387
+          },
+          {
+            "w": "changelog",
+            "start": 1.387,
+            "end": 2.087
+          },
+          {
+            "w": "where",
+            "start": 2.087,
+            "end": 2.237
+          },
+          {
+            "w": "a",
+            "start": 2.237,
+            "end": 2.337
+          },
+          {
+            "w": "model",
+            "start": 2.337,
+            "end": 2.737
+          },
+          {
+            "w": "did",
+            "start": 2.737,
+            "end": 2.975
+          },
+          {
+            "w": "make",
+            "start": 2.975,
+            "end": 3.163
+          },
+          {
+            "w": "up",
+            "start": 3.163,
+            "end": 3.288
+          },
+          {
+            "w": "a",
+            "start": 3.288,
+            "end": 3.35
+          },
+          {
+            "w": "number",
+            "start": 3.35,
+            "end": 4.05
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "Trials like that are already saved, from a run we paid for earlier.",
+        "tts_text": "Trials like that are already saved, from a run we paid for earlier.",
+        "file": "audio/s01_03.wav",
+        "duration": 4.025,
+        "words": [
+          {
+            "w": "Trials",
+            "start": 0.175,
+            "end": 0.562
+          },
+          {
+            "w": "like",
+            "start": 0.562,
+            "end": 0.775
+          },
+          {
+            "w": "that",
+            "start": 0.775,
+            "end": 0.912
+          },
+          {
+            "w": "are",
+            "start": 0.912,
+            "end": 1.05
+          },
+          {
+            "w": "already",
+            "start": 1.05,
+            "end": 1.438
+          },
+          {
+            "w": "saved",
+            "start": 1.438,
+            "end": 1.9
+          },
+          {
+            "w": "from",
+            "start": 1.975,
+            "end": 2.112
+          },
+          {
+            "w": "a",
+            "start": 2.112,
+            "end": 2.2
+          },
+          {
+            "w": "run",
+            "start": 2.2,
+            "end": 2.45
+          },
+          {
+            "w": "we",
+            "start": 2.45,
+            "end": 2.6
+          },
+          {
+            "w": "paid",
+            "start": 2.6,
+            "end": 2.9
+          },
+          {
+            "w": "for",
+            "start": 2.9,
+            "end": 3.05
+          },
+          {
+            "w": "earlier",
+            "start": 3.05,
+            "end": 3.8
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "Here, you'll run your graders over trials you've already saved, and catch a grader that can never fail.",
+        "tts_text": "Here, you'll run your graders over trials you've already saved, and catch a grader that can never fail.",
+        "file": "audio/s01_04.wav",
+        "duration": 5.55,
+        "words": [
+          {
+            "w": "Here",
+            "start": 0.175,
+            "end": 0.45
+          },
+          {
+            "w": "you'll",
+            "start": 0.5,
+            "end": 0.675
+          },
+          {
+            "w": "run",
+            "start": 0.675,
+            "end": 0.863
+          },
+          {
+            "w": "your",
+            "start": 0.863,
+            "end": 0.975
+          },
+          {
+            "w": "graders",
+            "start": 0.975,
+            "end": 1.363
+          },
+          {
+            "w": "over",
+            "start": 1.363,
+            "end": 1.6
+          },
+          {
+            "w": "trials",
+            "start": 1.6,
+            "end": 2.0
+          },
+          {
+            "w": "you've",
+            "start": 2.0,
+            "end": 2.175
+          },
+          {
+            "w": "already",
+            "start": 2.175,
+            "end": 2.562
+          },
+          {
+            "w": "saved",
+            "start": 2.562,
+            "end": 3.075
+          },
+          {
+            "w": "and",
+            "start": 3.15,
+            "end": 3.275
+          },
+          {
+            "w": "catch",
+            "start": 3.275,
+            "end": 3.513
+          },
+          {
+            "w": "a",
+            "start": 3.513,
+            "end": 3.575
+          },
+          {
+            "w": "grader",
+            "start": 3.575,
+            "end": 4.0
+          },
+          {
+            "w": "that",
+            "start": 4.0,
+            "end": 4.15
+          },
+          {
+            "w": "can",
+            "start": 4.15,
+            "end": 4.3
+          },
+          {
+            "w": "never",
+            "start": 4.3,
+            "end": 4.612
+          },
+          {
+            "w": "fail",
+            "start": 4.612,
+            "end": 5.325
+          }
+        ]
+      }
+    ],
+    "s02": [
+      {
+        "i": 0,
+        "text": "Let's start with why saved trials are worth keeping.",
+        "tts_text": "Let's start with why saved trials are worth keeping.",
+        "file": "audio/s02_00.wav",
+        "duration": 3.225,
+        "words": [
+          {
+            "w": "Let's",
+            "start": 0.2,
+            "end": 0.388
+          },
+          {
+            "w": "start",
+            "start": 0.388,
+            "end": 0.662
+          },
+          {
+            "w": "with",
+            "start": 0.662,
+            "end": 0.825
+          },
+          {
+            "w": "why",
+            "start": 0.825,
+            "end": 1.05
+          },
+          {
+            "w": "saved",
+            "start": 1.05,
+            "end": 1.438
+          },
+          {
+            "w": "trials",
+            "start": 1.438,
+            "end": 1.925
+          },
+          {
+            "w": "are",
+            "start": 1.925,
+            "end": 2.025
+          },
+          {
+            "w": "worth",
+            "start": 2.025,
+            "end": 2.275
+          },
+          {
+            "w": "keeping",
+            "start": 2.275,
+            "end": 3.0
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "Every trial you've read is an example with a known answer: you know whether it's right or wrong, and why.",
+        "tts_text": "Every trial you've read is an example with a known answer: you know whether it's right or wrong, and why.",
+        "file": "audio/s02_01.wav",
+        "duration": 5.575,
+        "words": [
+          {
+            "w": "Every",
+            "start": 0.175,
+            "end": 0.45
+          },
+          {
+            "w": "trial",
+            "start": 0.45,
+            "end": 0.75
+          },
+          {
+            "w": "you've",
+            "start": 0.75,
+            "end": 0.95
+          },
+          {
+            "w": "read",
+            "start": 0.95,
+            "end": 1.225
+          },
+          {
+            "w": "is",
+            "start": 1.225,
+            "end": 1.337
+          },
+          {
+            "w": "an",
+            "start": 1.337,
+            "end": 1.413
+          },
+          {
+            "w": "example",
+            "start": 1.413,
+            "end": 1.887
+          },
+          {
+            "w": "with",
+            "start": 1.887,
+            "end": 2.013
+          },
+          {
+            "w": "a",
+            "start": 2.013,
+            "end": 2.1
+          },
+          {
+            "w": "known",
+            "start": 2.1,
+            "end": 2.375
+          },
+          {
+            "w": "answer",
+            "start": 2.375,
+            "end": 2.875
+          },
+          {
+            "w": "you",
+            "start": 2.975,
+            "end": 3.062
+          },
+          {
+            "w": "know",
+            "start": 3.062,
+            "end": 3.225
+          },
+          {
+            "w": "whether",
+            "start": 3.225,
+            "end": 3.462
+          },
+          {
+            "w": "it's",
+            "start": 3.462,
+            "end": 3.663
+          },
+          {
+            "w": "right",
+            "start": 3.663,
+            "end": 4.0
+          },
+          {
+            "w": "or",
+            "start": 4.0,
+            "end": 4.15
+          },
+          {
+            "w": "wrong",
+            "start": 4.15,
+            "end": 4.475
+          },
+          {
+            "w": "and",
+            "start": 4.55,
+            "end": 4.675
+          },
+          {
+            "w": "why",
+            "start": 4.675,
+            "end": 5.325
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "That makes saved trials the best material we have for testing graders, in two ways the oracle can't manage.",
+        "tts_text": "That makes saved trials the best material we have for testing graders, in two ways the oracle can't manage.",
+        "file": "audio/s02_02.wav",
+        "duration": 6.2,
+        "words": [
+          {
+            "w": "That",
+            "start": 0.175,
+            "end": 0.338
+          },
+          {
+            "w": "makes",
+            "start": 0.338,
+            "end": 0.575
+          },
+          {
+            "w": "saved",
+            "start": 0.575,
+            "end": 0.875
+          },
+          {
+            "w": "trials",
+            "start": 0.875,
+            "end": 1.3
+          },
+          {
+            "w": "the",
+            "start": 1.3,
+            "end": 1.4
+          },
+          {
+            "w": "best",
+            "start": 1.4,
+            "end": 1.663
+          },
+          {
+            "w": "material",
+            "start": 1.663,
+            "end": 2.138
+          },
+          {
+            "w": "we",
+            "start": 2.138,
+            "end": 2.25
+          },
+          {
+            "w": "have",
+            "start": 2.25,
+            "end": 2.475
+          },
+          {
+            "w": "for",
+            "start": 2.475,
+            "end": 2.6
+          },
+          {
+            "w": "testing",
+            "start": 2.6,
+            "end": 2.975
+          },
+          {
+            "w": "graders",
+            "start": 2.975,
+            "end": 3.55
+          },
+          {
+            "w": "in",
+            "start": 3.625,
+            "end": 3.788
+          },
+          {
+            "w": "two",
+            "start": 3.788,
+            "end": 4.0
+          },
+          {
+            "w": "ways",
+            "start": 4.0,
+            "end": 4.362
+          },
+          {
+            "w": "the",
+            "start": 4.362,
+            "end": 4.475
+          },
+          {
+            "w": "oracle",
+            "start": 4.475,
+            "end": 4.875
+          },
+          {
+            "w": "can't",
+            "start": 4.875,
+            "end": 5.2
+          },
+          {
+            "w": "manage",
+            "start": 5.2,
+            "end": 5.925
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "Any trial you know is bad tests a grader that checks for absence, because the grader has to fail it.",
+        "tts_text": "Any trial you know is bad tests a grader that checks for absence, because the grader has to fail it.",
+        "file": "audio/s02_03.wav",
+        "duration": 5.8,
+        "words": [
+          {
+            "w": "Any",
+            "start": 0.175,
+            "end": 0.35
+          },
+          {
+            "w": "trial",
+            "start": 0.35,
+            "end": 0.65
+          },
+          {
+            "w": "you",
+            "start": 0.65,
+            "end": 0.75
+          },
+          {
+            "w": "know",
+            "start": 0.75,
+            "end": 1.025
+          },
+          {
+            "w": "is",
+            "start": 1.025,
+            "end": 1.175
+          },
+          {
+            "w": "bad",
+            "start": 1.175,
+            "end": 1.488
+          },
+          {
+            "w": "tests",
+            "start": 1.488,
+            "end": 1.875
+          },
+          {
+            "w": "a",
+            "start": 1.875,
+            "end": 1.975
+          },
+          {
+            "w": "grader",
+            "start": 1.975,
+            "end": 2.4
+          },
+          {
+            "w": "that",
+            "start": 2.4,
+            "end": 2.562
+          },
+          {
+            "w": "checks",
+            "start": 2.562,
+            "end": 2.875
+          },
+          {
+            "w": "for",
+            "start": 2.875,
+            "end": 3.0
+          },
+          {
+            "w": "absence",
+            "start": 3.0,
+            "end": 3.6
+          },
+          {
+            "w": "because",
+            "start": 3.675,
+            "end": 3.962
+          },
+          {
+            "w": "the",
+            "start": 3.962,
+            "end": 4.05
+          },
+          {
+            "w": "grader",
+            "start": 4.05,
+            "end": 4.45
+          },
+          {
+            "w": "has",
+            "start": 4.45,
+            "end": 4.65
+          },
+          {
+            "w": "to",
+            "start": 4.65,
+            "end": 4.775
+          },
+          {
+            "w": "fail",
+            "start": 4.775,
+            "end": 5.05
+          },
+          {
+            "w": "it",
+            "start": 5.05,
+            "end": 5.55
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "Any trial you know is good, but worded differently from the golden patch, tests whether a grader is too strict.",
+        "tts_text": "Any trial you know is good, but worded differently from the golden patch, tests whether a grader is too strict.",
+        "file": "audio/s02_04.wav",
+        "duration": 5.9,
+        "words": [
+          {
+            "w": "Any",
+            "start": 0.175,
+            "end": 0.35
+          },
+          {
+            "w": "trial",
+            "start": 0.35,
+            "end": 0.65
+          },
+          {
+            "w": "you",
+            "start": 0.65,
+            "end": 0.75
+          },
+          {
+            "w": "know",
+            "start": 0.75,
+            "end": 0.925
+          },
+          {
+            "w": "is",
+            "start": 0.925,
+            "end": 1.075
+          },
+          {
+            "w": "good",
+            "start": 1.075,
+            "end": 1.4
+          },
+          {
+            "w": "but",
+            "start": 1.475,
+            "end": 1.625
+          },
+          {
+            "w": "worded",
+            "start": 1.625,
+            "end": 2.013
+          },
+          {
+            "w": "differently",
+            "start": 2.013,
+            "end": 2.45
+          },
+          {
+            "w": "from",
+            "start": 2.45,
+            "end": 2.587
+          },
+          {
+            "w": "the",
+            "start": 2.587,
+            "end": 2.675
+          },
+          {
+            "w": "golden",
+            "start": 2.675,
+            "end": 3.05
+          },
+          {
+            "w": "patch",
+            "start": 3.05,
+            "end": 3.475
+          },
+          {
+            "w": "tests",
+            "start": 3.575,
+            "end": 3.925
+          },
+          {
+            "w": "whether",
+            "start": 3.925,
+            "end": 4.112
+          },
+          {
+            "w": "a",
+            "start": 4.112,
+            "end": 4.175
+          },
+          {
+            "w": "grader",
+            "start": 4.175,
+            "end": 4.575
+          },
+          {
+            "w": "is",
+            "start": 4.575,
+            "end": 4.725
+          },
+          {
+            "w": "too",
+            "start": 4.725,
+            "end": 4.925
+          },
+          {
+            "w": "strict",
+            "start": 4.925,
+            "end": 5.65
+          }
+        ]
+      },
+      {
+        "i": 5,
+        "text": "The oracle tried one correct answer for each stimulus, while our saved runs hold several, each worded a little differently.",
+        "tts_text": "The oracle tried one correct answer for each stimulus, while our saved runs hold several, each worded a little differently.",
+        "file": "audio/s02_05.wav",
+        "duration": 6.775,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.15,
+            "end": 0.275
+          },
+          {
+            "w": "oracle",
+            "start": 0.275,
+            "end": 0.675
+          },
+          {
+            "w": "tried",
+            "start": 0.675,
+            "end": 0.975
+          },
+          {
+            "w": "one",
+            "start": 0.975,
+            "end": 1.2
+          },
+          {
+            "w": "correct",
+            "start": 1.2,
+            "end": 1.575
+          },
+          {
+            "w": "answer",
+            "start": 1.575,
+            "end": 1.95
+          },
+          {
+            "w": "for",
+            "start": 1.95,
+            "end": 2.1
+          },
+          {
+            "w": "each",
+            "start": 2.1,
+            "end": 2.325
+          },
+          {
+            "w": "stimulus",
+            "start": 2.325,
+            "end": 2.975
+          },
+          {
+            "w": "while",
+            "start": 3.05,
+            "end": 3.237
+          },
+          {
+            "w": "our",
+            "start": 3.237,
+            "end": 3.388
+          },
+          {
+            "w": "saved",
+            "start": 3.388,
+            "end": 3.725
+          },
+          {
+            "w": "runs",
+            "start": 3.725,
+            "end": 4.0
+          },
+          {
+            "w": "hold",
+            "start": 4.0,
+            "end": 4.287
+          },
+          {
+            "w": "several",
+            "start": 4.287,
+            "end": 4.8
+          },
+          {
+            "w": "each",
+            "start": 4.9,
+            "end": 5.125
+          },
+          {
+            "w": "worded",
+            "start": 5.125,
+            "end": 5.388
+          },
+          {
+            "w": "a",
+            "start": 5.388,
+            "end": 5.45
+          },
+          {
+            "w": "little",
+            "start": 5.45,
+            "end": 5.7
+          },
+          {
+            "w": "differently",
+            "start": 5.7,
+            "end": 6.525
+          }
+        ]
+      },
+      {
+        "i": 6,
+        "text": "When a grader fails one of them, it's objecting to wording, not to a fault.",
+        "tts_text": "When a grader fails one of them, it's objecting to wording, not to a fault.",
+        "file": "audio/s02_06.wav",
+        "duration": 4.35,
+        "words": [
+          {
+            "w": "When",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "a",
+            "start": 0.263,
+            "end": 0.325
+          },
+          {
+            "w": "grader",
+            "start": 0.325,
+            "end": 0.738
+          },
+          {
+            "w": "fails",
+            "start": 0.738,
+            "end": 1.1
+          },
+          {
+            "w": "one",
+            "start": 1.1,
+            "end": 1.238
+          },
+          {
+            "w": "of",
+            "start": 1.238,
+            "end": 1.312
+          },
+          {
+            "w": "them",
+            "start": 1.312,
+            "end": 1.6
+          },
+          {
+            "w": "it's",
+            "start": 1.675,
+            "end": 1.837
+          },
+          {
+            "w": "objecting",
+            "start": 1.837,
+            "end": 2.35
+          },
+          {
+            "w": "to",
+            "start": 2.35,
+            "end": 2.475
+          },
+          {
+            "w": "wording",
+            "start": 2.475,
+            "end": 2.925
+          },
+          {
+            "w": "not",
+            "start": 3.0,
+            "end": 3.225
+          },
+          {
+            "w": "to",
+            "start": 3.225,
+            "end": 3.312
+          },
+          {
+            "w": "a",
+            "start": 3.312,
+            "end": 3.413
+          },
+          {
+            "w": "fault",
+            "start": 3.413,
+            "end": 4.1
+          }
+        ]
+      }
+    ],
+    "s03": [
+      {
+        "i": 0,
+        "text": "The example here is no made-up number, which passes when its pattern is absent from the patch: a must-not grader.",
+        "tts_text": "The example here is no made-up number, which passes when its pattern is absent from the patch: a must-not grader.",
+        "file": "audio/s03_00.wav",
+        "duration": 6.475,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.15,
+            "end": 0.25
+          },
+          {
+            "w": "example",
+            "start": 0.25,
+            "end": 0.725
+          },
+          {
+            "w": "here",
+            "start": 0.725,
+            "end": 0.95
+          },
+          {
+            "w": "is",
+            "start": 0.95,
+            "end": 1.1
+          },
+          {
+            "w": "no",
+            "start": 1.1,
+            "end": 1.325
+          },
+          {
+            "w": "made-up",
+            "start": 1.325,
+            "end": 1.725
+          },
+          {
+            "w": "number",
+            "start": 1.725,
+            "end": 2.175
+          },
+          {
+            "w": "which",
+            "start": 2.25,
+            "end": 2.462
+          },
+          {
+            "w": "passes",
+            "start": 2.462,
+            "end": 2.888
+          },
+          {
+            "w": "when",
+            "start": 2.888,
+            "end": 3.013
+          },
+          {
+            "w": "its",
+            "start": 3.013,
+            "end": 3.15
+          },
+          {
+            "w": "pattern",
+            "start": 3.15,
+            "end": 3.538
+          },
+          {
+            "w": "is",
+            "start": 3.538,
+            "end": 3.688
+          },
+          {
+            "w": "absent",
+            "start": 3.688,
+            "end": 4.075
+          },
+          {
+            "w": "from",
+            "start": 4.075,
+            "end": 4.213
+          },
+          {
+            "w": "the",
+            "start": 4.213,
+            "end": 4.3
+          },
+          {
+            "w": "patch",
+            "start": 4.3,
+            "end": 4.775
+          },
+          {
+            "w": "a",
+            "start": 4.875,
+            "end": 4.987
+          },
+          {
+            "w": "must-not",
+            "start": 4.987,
+            "end": 5.45
+          },
+          {
+            "w": "grader",
+            "start": 5.45,
+            "end": 6.2
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "If it doesn't fail a trial where the model wrote a number nobody gave it, the grader is broken, whatever the oracle said.",
+        "tts_text": "If it doesn't fail a trial where the model wrote a number nobody gave it, the grader is broken, whatever the oracle said.",
+        "file": "audio/s03_01.wav",
+        "duration": 6.4,
+        "words": [
+          {
+            "w": "If",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "it",
+            "start": 0.263,
+            "end": 0.35
+          },
+          {
+            "w": "doesn't",
+            "start": 0.35,
+            "end": 0.65
+          },
+          {
+            "w": "fail",
+            "start": 0.65,
+            "end": 0.863
+          },
+          {
+            "w": "a",
+            "start": 0.863,
+            "end": 0.925
+          },
+          {
+            "w": "trial",
+            "start": 0.925,
+            "end": 1.288
+          },
+          {
+            "w": "where",
+            "start": 1.288,
+            "end": 1.413
+          },
+          {
+            "w": "the",
+            "start": 1.413,
+            "end": 1.5
+          },
+          {
+            "w": "model",
+            "start": 1.5,
+            "end": 1.875
+          },
+          {
+            "w": "wrote",
+            "start": 1.875,
+            "end": 2.062
+          },
+          {
+            "w": "a",
+            "start": 2.062,
+            "end": 2.125
+          },
+          {
+            "w": "number",
+            "start": 2.125,
+            "end": 2.425
+          },
+          {
+            "w": "nobody",
+            "start": 2.425,
+            "end": 2.825
+          },
+          {
+            "w": "gave",
+            "start": 2.825,
+            "end": 3.1
+          },
+          {
+            "w": "it",
+            "start": 3.1,
+            "end": 3.3
+          },
+          {
+            "w": "the",
+            "start": 3.375,
+            "end": 3.475
+          },
+          {
+            "w": "grader",
+            "start": 3.475,
+            "end": 3.85
+          },
+          {
+            "w": "is",
+            "start": 3.85,
+            "end": 4.0
+          },
+          {
+            "w": "broken",
+            "start": 4.0,
+            "end": 4.525
+          },
+          {
+            "w": "whatever",
+            "start": 4.6,
+            "end": 4.963
+          },
+          {
+            "w": "the",
+            "start": 4.963,
+            "end": 5.075
+          },
+          {
+            "w": "oracle",
+            "start": 5.075,
+            "end": 5.475
+          },
+          {
+            "w": "said",
+            "start": 5.475,
+            "end": 6.125
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "That gives us a simple rule: every must-not grader needs at least one saved trial that it fails.",
+        "tts_text": "That gives us a simple rule: every must-not grader needs at least one saved trial that it fails.",
+        "file": "audio/s03_02.wav",
+        "duration": 5.675,
+        "words": [
+          {
+            "w": "That",
+            "start": 0.175,
+            "end": 0.35
+          },
+          {
+            "w": "gives",
+            "start": 0.35,
+            "end": 0.537
+          },
+          {
+            "w": "us",
+            "start": 0.537,
+            "end": 0.662
+          },
+          {
+            "w": "a",
+            "start": 0.662,
+            "end": 0.762
+          },
+          {
+            "w": "simple",
+            "start": 0.762,
+            "end": 1.1
+          },
+          {
+            "w": "rule",
+            "start": 1.1,
+            "end": 1.525
+          },
+          {
+            "w": "every",
+            "start": 1.625,
+            "end": 1.962
+          },
+          {
+            "w": "must-not",
+            "start": 1.962,
+            "end": 2.425
+          },
+          {
+            "w": "grader",
+            "start": 2.425,
+            "end": 2.8
+          },
+          {
+            "w": "needs",
+            "start": 2.8,
+            "end": 3.125
+          },
+          {
+            "w": "at",
+            "start": 3.125,
+            "end": 3.225
+          },
+          {
+            "w": "least",
+            "start": 3.225,
+            "end": 3.5
+          },
+          {
+            "w": "one",
+            "start": 3.5,
+            "end": 3.737
+          },
+          {
+            "w": "saved",
+            "start": 3.737,
+            "end": 4.088
+          },
+          {
+            "w": "trial",
+            "start": 4.088,
+            "end": 4.463
+          },
+          {
+            "w": "that",
+            "start": 4.463,
+            "end": 4.562
+          },
+          {
+            "w": "it",
+            "start": 4.562,
+            "end": 4.65
+          },
+          {
+            "w": "fails",
+            "start": 4.65,
+            "end": 5.425
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "And when a grader and our own reading disagree, we don't assume either is right: we open the evidence and the patch, and decide.",
+        "tts_text": "And when a grader and our own reading disagree, we don't assume either is right: we open the evidence and the patch, and decide.",
+        "file": "audio/s03_03.wav",
+        "duration": 6.7,
+        "words": [
+          {
+            "w": "And",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "when",
+            "start": 0.263,
+            "end": 0.388
+          },
+          {
+            "w": "a",
+            "start": 0.388,
+            "end": 0.45
+          },
+          {
+            "w": "grader",
+            "start": 0.45,
+            "end": 0.875
+          },
+          {
+            "w": "and",
+            "start": 0.875,
+            "end": 0.988
+          },
+          {
+            "w": "our",
+            "start": 0.988,
+            "end": 1.125
+          },
+          {
+            "w": "own",
+            "start": 1.125,
+            "end": 1.35
+          },
+          {
+            "w": "reading",
+            "start": 1.35,
+            "end": 1.65
+          },
+          {
+            "w": "disagree",
+            "start": 1.65,
+            "end": 2.2
+          },
+          {
+            "w": "we",
+            "start": 2.3,
+            "end": 2.4
+          },
+          {
+            "w": "don't",
+            "start": 2.4,
+            "end": 2.587
+          },
+          {
+            "w": "assume",
+            "start": 2.587,
+            "end": 2.95
+          },
+          {
+            "w": "either",
+            "start": 2.95,
+            "end": 3.225
+          },
+          {
+            "w": "is",
+            "start": 3.225,
+            "end": 3.375
+          },
+          {
+            "w": "right",
+            "start": 3.375,
+            "end": 3.8
+          },
+          {
+            "w": "we",
+            "start": 3.875,
+            "end": 4.025
+          },
+          {
+            "w": "open",
+            "start": 4.025,
+            "end": 4.287
+          },
+          {
+            "w": "the",
+            "start": 4.287,
+            "end": 4.4
+          },
+          {
+            "w": "evidence",
+            "start": 4.4,
+            "end": 4.875
+          },
+          {
+            "w": "and",
+            "start": 4.875,
+            "end": 4.987
+          },
+          {
+            "w": "the",
+            "start": 4.987,
+            "end": 5.075
+          },
+          {
+            "w": "patch",
+            "start": 5.075,
+            "end": 5.45
+          },
+          {
+            "w": "and",
+            "start": 5.525,
+            "end": 5.638
+          },
+          {
+            "w": "decide",
+            "start": 5.638,
+            "end": 6.425
+          }
+        ]
+      }
+    ],
+    "s04": [
+      {
+        "i": 0,
+        "text": "That's the idea; here's the command that does it.",
+        "tts_text": "That's the idea; here's the command that does it.",
+        "file": "audio/s04_00.wav",
+        "duration": 2.9,
+        "words": [
+          {
+            "w": "That's",
+            "start": 0.175,
+            "end": 0.412
+          },
+          {
+            "w": "the",
+            "start": 0.412,
+            "end": 0.562
+          },
+          {
+            "w": "idea",
+            "start": 0.562,
+            "end": 1.0
+          },
+          {
+            "w": "here's",
+            "start": 1.075,
+            "end": 1.363
+          },
+          {
+            "w": "the",
+            "start": 1.363,
+            "end": 1.45
+          },
+          {
+            "w": "command",
+            "start": 1.45,
+            "end": 1.863
+          },
+          {
+            "w": "that",
+            "start": 1.863,
+            "end": 1.975
+          },
+          {
+            "w": "does",
+            "start": 1.975,
+            "end": 2.2
+          },
+          {
+            "w": "it",
+            "start": 2.2,
+            "end": 2.65
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "Vally grade runs graders over trials that are already saved.",
+        "tts_text": "Valley grade runs graders over trials that are already saved.",
+        "file": "audio/s04_01.wav",
+        "duration": 4.025,
+        "words": [
+          {
+            "w": "Vally",
+            "start": 0.175,
+            "end": 0.45
+          },
+          {
+            "w": "grade",
+            "start": 0.45,
+            "end": 0.8
+          },
+          {
+            "w": "runs",
+            "start": 0.8,
+            "end": 1.087
+          },
+          {
+            "w": "graders",
+            "start": 1.087,
+            "end": 1.575
+          },
+          {
+            "w": "over",
+            "start": 1.575,
+            "end": 1.825
+          },
+          {
+            "w": "trials",
+            "start": 1.825,
+            "end": 2.425
+          },
+          {
+            "w": "that",
+            "start": 2.425,
+            "end": 2.562
+          },
+          {
+            "w": "are",
+            "start": 2.562,
+            "end": 2.7
+          },
+          {
+            "w": "already",
+            "start": 2.7,
+            "end": 3.087
+          },
+          {
+            "w": "saved",
+            "start": 3.087,
+            "end": 3.775
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "No agent starts, so it costs nothing.",
+        "tts_text": "No agent starts, so it costs nothing.",
+        "file": "audio/s04_02.wav",
+        "duration": 2.775,
+        "words": [
+          {
+            "w": "No",
+            "start": 0.2,
+            "end": 0.4
+          },
+          {
+            "w": "agent",
+            "start": 0.4,
+            "end": 0.725
+          },
+          {
+            "w": "starts",
+            "start": 0.725,
+            "end": 1.15
+          },
+          {
+            "w": "so",
+            "start": 1.225,
+            "end": 1.363
+          },
+          {
+            "w": "it",
+            "start": 1.363,
+            "end": 1.45
+          },
+          {
+            "w": "costs",
+            "start": 1.45,
+            "end": 1.825
+          },
+          {
+            "w": "nothing",
+            "start": 1.825,
+            "end": 2.55
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "Dash e names the eval file.",
+        "tts_text": "Dash e names the [eval](/ˌivˈæl/) file.",
+        "file": "audio/s04_03.wav",
+        "duration": 2.475,
+        "words": [
+          {
+            "w": "Dash",
+            "start": 0.2,
+            "end": 0.525
+          },
+          {
+            "w": "e",
+            "start": 0.525,
+            "end": 0.725
+          },
+          {
+            "w": "names",
+            "start": 0.725,
+            "end": 1.038
+          },
+          {
+            "w": "the",
+            "start": 1.038,
+            "end": 1.188
+          },
+          {
+            "w": "eval",
+            "start": 1.188,
+            "end": 1.613
+          },
+          {
+            "w": "file",
+            "start": 1.613,
+            "end": 2.225
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "Its graders are applied as they are in the file now, matched to each saved trial by stimulus name.",
+        "tts_text": "Its graders are applied as they are in the file now, matched to each saved trial by stimulus name.",
+        "file": "audio/s04_04.wav",
+        "duration": 5.45,
+        "words": [
+          {
+            "w": "Its",
+            "start": 0.15,
+            "end": 0.3
+          },
+          {
+            "w": "graders",
+            "start": 0.3,
+            "end": 0.688
+          },
+          {
+            "w": "are",
+            "start": 0.688,
+            "end": 0.775
+          },
+          {
+            "w": "applied",
+            "start": 0.775,
+            "end": 1.25
+          },
+          {
+            "w": "as",
+            "start": 1.25,
+            "end": 1.363
+          },
+          {
+            "w": "they",
+            "start": 1.363,
+            "end": 1.5
+          },
+          {
+            "w": "are",
+            "start": 1.5,
+            "end": 1.613
+          },
+          {
+            "w": "in",
+            "start": 1.613,
+            "end": 1.688
+          },
+          {
+            "w": "the",
+            "start": 1.688,
+            "end": 1.788
+          },
+          {
+            "w": "file",
+            "start": 1.788,
+            "end": 2.1
+          },
+          {
+            "w": "now",
+            "start": 2.1,
+            "end": 2.475
+          },
+          {
+            "w": "matched",
+            "start": 2.575,
+            "end": 2.9
+          },
+          {
+            "w": "to",
+            "start": 2.9,
+            "end": 3.025
+          },
+          {
+            "w": "each",
+            "start": 3.025,
+            "end": 3.25
+          },
+          {
+            "w": "saved",
+            "start": 3.25,
+            "end": 3.538
+          },
+          {
+            "w": "trial",
+            "start": 3.538,
+            "end": 3.925
+          },
+          {
+            "w": "by",
+            "start": 3.925,
+            "end": 4.075
+          },
+          {
+            "w": "stimulus",
+            "start": 4.075,
+            "end": 4.55
+          },
+          {
+            "w": "name",
+            "start": 4.55,
+            "end": 5.225
+          }
+        ]
+      },
+      {
+        "i": 5,
+        "text": "So when we change a grader, the next re-grade uses the changed one.",
+        "tts_text": "So when we change a grader, the next re-grade uses the changed one.",
+        "file": "audio/s04_05.wav",
+        "duration": 4.025,
+        "words": [
+          {
+            "w": "So",
+            "start": 0.175,
+            "end": 0.263
+          },
+          {
+            "w": "when",
+            "start": 0.263,
+            "end": 0.388
+          },
+          {
+            "w": "we",
+            "start": 0.388,
+            "end": 0.537
+          },
+          {
+            "w": "change",
+            "start": 0.537,
+            "end": 0.838
+          },
+          {
+            "w": "a",
+            "start": 0.838,
+            "end": 0.9
+          },
+          {
+            "w": "grader",
+            "start": 0.9,
+            "end": 1.4
+          },
+          {
+            "w": "the",
+            "start": 1.475,
+            "end": 1.575
+          },
+          {
+            "w": "next",
+            "start": 1.575,
+            "end": 1.875
+          },
+          {
+            "w": "re-grade",
+            "start": 1.875,
+            "end": 2.4
+          },
+          {
+            "w": "uses",
+            "start": 2.4,
+            "end": 2.712
+          },
+          {
+            "w": "the",
+            "start": 2.712,
+            "end": 2.837
+          },
+          {
+            "w": "changed",
+            "start": 2.837,
+            "end": 3.25
+          },
+          {
+            "w": "one",
+            "start": 3.25,
+            "end": 3.8
+          }
+        ]
+      },
+      {
+        "i": 6,
+        "text": "The saved trials are the run's results dot jsonl, given to the command as its input.",
+        "tts_text": "The saved trials are the run's results dot jay-son-ell, given to the command as its input.",
+        "file": "audio/s04_06.wav",
+        "duration": 5.45,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "saved",
+            "start": 0.263,
+            "end": 0.575
+          },
+          {
+            "w": "trials",
+            "start": 0.575,
+            "end": 1.025
+          },
+          {
+            "w": "are",
+            "start": 1.025,
+            "end": 1.113
+          },
+          {
+            "w": "the",
+            "start": 1.113,
+            "end": 1.225
+          },
+          {
+            "w": "run's",
+            "start": 1.225,
+            "end": 1.6
+          },
+          {
+            "w": "results",
+            "start": 1.6,
+            "end": 2.062
+          },
+          {
+            "w": "dot",
+            "start": 2.062,
+            "end": 2.362
+          },
+          {
+            "w": "jsonl",
+            "start": 2.362,
+            "end": 3.1
+          },
+          {
+            "w": "given",
+            "start": 3.2,
+            "end": 3.5
+          },
+          {
+            "w": "to",
+            "start": 3.5,
+            "end": 3.587
+          },
+          {
+            "w": "the",
+            "start": 3.587,
+            "end": 3.675
+          },
+          {
+            "w": "command",
+            "start": 3.675,
+            "end": 4.125
+          },
+          {
+            "w": "as",
+            "start": 4.125,
+            "end": 4.237
+          },
+          {
+            "w": "its",
+            "start": 4.237,
+            "end": 4.425
+          },
+          {
+            "w": "input",
+            "start": 4.425,
+            "end": 5.2
+          }
+        ]
+      },
+      {
+        "i": 7,
+        "text": "And dash dash run dir names the run's folder, because one more piece is kept there.",
+        "tts_text": "And dash dash run dur names the run's folder, because one more piece is kept there.",
+        "file": "audio/s04_07.wav",
+        "duration": 4.9,
+        "words": [
+          {
+            "w": "And",
+            "start": 0.15,
+            "end": 0.275
+          },
+          {
+            "w": "dash",
+            "start": 0.275,
+            "end": 0.575
+          },
+          {
+            "w": "dash",
+            "start": 0.575,
+            "end": 0.9
+          },
+          {
+            "w": "run",
+            "start": 0.9,
+            "end": 1.15
+          },
+          {
+            "w": "dir",
+            "start": 1.15,
+            "end": 1.375
+          },
+          {
+            "w": "names",
+            "start": 1.375,
+            "end": 1.637
+          },
+          {
+            "w": "the",
+            "start": 1.637,
+            "end": 1.725
+          },
+          {
+            "w": "run's",
+            "start": 1.725,
+            "end": 2.038
+          },
+          {
+            "w": "folder",
+            "start": 2.038,
+            "end": 2.525
+          },
+          {
+            "w": "because",
+            "start": 2.625,
+            "end": 2.913
+          },
+          {
+            "w": "one",
+            "start": 2.913,
+            "end": 3.15
+          },
+          {
+            "w": "more",
+            "start": 3.15,
+            "end": 3.375
+          },
+          {
+            "w": "piece",
+            "start": 3.375,
+            "end": 3.638
+          },
+          {
+            "w": "is",
+            "start": 3.638,
+            "end": 3.775
+          },
+          {
+            "w": "kept",
+            "start": 3.775,
+            "end": 4.05
+          },
+          {
+            "w": "there",
+            "start": 4.05,
+            "end": 4.65
+          }
+        ]
+      }
+    ],
+    "s05": [
+      {
+        "i": 0,
+        "text": "Each trial's folder has a workspace patch for us to read.",
+        "tts_text": "Each trial's folder has a workspace patch for us to read.",
+        "file": "audio/s05_00.wav",
+        "duration": 3.475,
+        "words": [
+          {
+            "w": "Each",
+            "start": 0.175,
+            "end": 0.375
+          },
+          {
+            "w": "trial's",
+            "start": 0.375,
+            "end": 0.775
+          },
+          {
+            "w": "folder",
+            "start": 0.775,
+            "end": 1.175
+          },
+          {
+            "w": "has",
+            "start": 1.175,
+            "end": 1.337
+          },
+          {
+            "w": "a",
+            "start": 1.337,
+            "end": 1.4
+          },
+          {
+            "w": "workspace",
+            "start": 1.4,
+            "end": 1.875
+          },
+          {
+            "w": "patch",
+            "start": 1.875,
+            "end": 2.225
+          },
+          {
+            "w": "for",
+            "start": 2.225,
+            "end": 2.337
+          },
+          {
+            "w": "us",
+            "start": 2.337,
+            "end": 2.475
+          },
+          {
+            "w": "to",
+            "start": 2.475,
+            "end": 2.6
+          },
+          {
+            "w": "read",
+            "start": 2.6,
+            "end": 3.225
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "If the eval file has a diff grader, meaning one of the three graders that work from the patch, the run also keeps a copy of every trial's diff, in a folder named diffs.",
+        "tts_text": "If the [eval](/ˌivˈæl/) file has a diff grader, meaning one of the three graders that work from the patch, the run also keeps a copy of every trial's diff, in a folder named diffs.",
+        "file": "audio/s05_01.wav",
+        "duration": 8.9,
+        "words": [
+          {
+            "w": "If",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "the",
+            "start": 0.263,
+            "end": 0.375
+          },
+          {
+            "w": "eval",
+            "start": 0.375,
+            "end": 0.725
+          },
+          {
+            "w": "file",
+            "start": 0.725,
+            "end": 1.05
+          },
+          {
+            "w": "has",
+            "start": 1.05,
+            "end": 1.212
+          },
+          {
+            "w": "a",
+            "start": 1.212,
+            "end": 1.312
+          },
+          {
+            "w": "diff",
+            "start": 1.312,
+            "end": 1.55
+          },
+          {
+            "w": "grader",
+            "start": 1.55,
+            "end": 2.05
+          },
+          {
+            "w": "meaning",
+            "start": 2.15,
+            "end": 2.438
+          },
+          {
+            "w": "one",
+            "start": 2.438,
+            "end": 2.562
+          },
+          {
+            "w": "of",
+            "start": 2.562,
+            "end": 2.638
+          },
+          {
+            "w": "the",
+            "start": 2.638,
+            "end": 2.763
+          },
+          {
+            "w": "three",
+            "start": 2.763,
+            "end": 3.0
+          },
+          {
+            "w": "graders",
+            "start": 3.0,
+            "end": 3.413
+          },
+          {
+            "w": "that",
+            "start": 3.413,
+            "end": 3.525
+          },
+          {
+            "w": "work",
+            "start": 3.525,
+            "end": 3.725
+          },
+          {
+            "w": "from",
+            "start": 3.725,
+            "end": 3.862
+          },
+          {
+            "w": "the",
+            "start": 3.862,
+            "end": 3.95
+          },
+          {
+            "w": "patch",
+            "start": 3.95,
+            "end": 4.425
+          },
+          {
+            "w": "the",
+            "start": 4.525,
+            "end": 4.65
+          },
+          {
+            "w": "run",
+            "start": 4.65,
+            "end": 4.9
+          },
+          {
+            "w": "also",
+            "start": 4.9,
+            "end": 5.25
+          },
+          {
+            "w": "keeps",
+            "start": 5.25,
+            "end": 5.487
+          },
+          {
+            "w": "a",
+            "start": 5.487,
+            "end": 5.55
+          },
+          {
+            "w": "copy",
+            "start": 5.55,
+            "end": 5.838
+          },
+          {
+            "w": "of",
+            "start": 5.838,
+            "end": 5.95
+          },
+          {
+            "w": "every",
+            "start": 5.95,
+            "end": 6.225
+          },
+          {
+            "w": "trial's",
+            "start": 6.225,
+            "end": 6.625
+          },
+          {
+            "w": "diff",
+            "start": 6.625,
+            "end": 6.975
+          },
+          {
+            "w": "in",
+            "start": 7.05,
+            "end": 7.138
+          },
+          {
+            "w": "a",
+            "start": 7.138,
+            "end": 7.237
+          },
+          {
+            "w": "folder",
+            "start": 7.237,
+            "end": 7.625
+          },
+          {
+            "w": "named",
+            "start": 7.625,
+            "end": 7.9
+          },
+          {
+            "w": "diffs",
+            "start": 7.9,
+            "end": 8.65
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "Those copies are what a re-grade reads, and run dir tells it which run to look in.",
+        "tts_text": "Those copies are what a re-grade reads, and run dur tells it which run to look in.",
+        "file": "audio/s05_02.wav",
+        "duration": 4.775,
+        "words": [
+          {
+            "w": "Those",
+            "start": 0.175,
+            "end": 0.4
+          },
+          {
+            "w": "copies",
+            "start": 0.4,
+            "end": 0.825
+          },
+          {
+            "w": "are",
+            "start": 0.825,
+            "end": 0.912
+          },
+          {
+            "w": "what",
+            "start": 0.912,
+            "end": 1.038
+          },
+          {
+            "w": "a",
+            "start": 1.038,
+            "end": 1.137
+          },
+          {
+            "w": "re-grade",
+            "start": 1.137,
+            "end": 1.625
+          },
+          {
+            "w": "reads",
+            "start": 1.625,
+            "end": 2.1
+          },
+          {
+            "w": "and",
+            "start": 2.175,
+            "end": 2.3
+          },
+          {
+            "w": "run",
+            "start": 2.3,
+            "end": 2.55
+          },
+          {
+            "w": "dir",
+            "start": 2.55,
+            "end": 2.775
+          },
+          {
+            "w": "tells",
+            "start": 2.775,
+            "end": 3.075
+          },
+          {
+            "w": "it",
+            "start": 3.075,
+            "end": 3.212
+          },
+          {
+            "w": "which",
+            "start": 3.212,
+            "end": 3.413
+          },
+          {
+            "w": "run",
+            "start": 3.413,
+            "end": 3.675
+          },
+          {
+            "w": "to",
+            "start": 3.675,
+            "end": 3.775
+          },
+          {
+            "w": "look",
+            "start": 3.775,
+            "end": 3.938
+          },
+          {
+            "w": "in",
+            "start": 3.938,
+            "end": 4.525
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "There are two limits, and here's the first.",
+        "tts_text": "There are two limits, and here's the first.",
+        "file": "audio/s05_03.wav",
+        "duration": 2.6,
+        "words": [
+          {
+            "w": "There",
+            "start": 0.175,
+            "end": 0.287
+          },
+          {
+            "w": "are",
+            "start": 0.287,
+            "end": 0.438
+          },
+          {
+            "w": "two",
+            "start": 0.438,
+            "end": 0.65
+          },
+          {
+            "w": "limits",
+            "start": 0.65,
+            "end": 1.05
+          },
+          {
+            "w": "and",
+            "start": 1.1,
+            "end": 1.225
+          },
+          {
+            "w": "here's",
+            "start": 1.225,
+            "end": 1.512
+          },
+          {
+            "w": "the",
+            "start": 1.512,
+            "end": 1.637
+          },
+          {
+            "w": "first",
+            "start": 1.637,
+            "end": 2.35
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "Runs made before the eval file had a diff grader kept no copies, so they give a diff grader nothing to re-grade.",
+        "tts_text": "Runs made before the [eval](/ˌivˈæl/) file had a diff grader kept no copies, so they give a diff grader nothing to re-grade.",
+        "file": "audio/s05_04.wav",
+        "duration": 6.6,
+        "words": [
+          {
+            "w": "Runs",
+            "start": 0.2,
+            "end": 0.5
+          },
+          {
+            "w": "made",
+            "start": 0.5,
+            "end": 0.8
+          },
+          {
+            "w": "before",
+            "start": 0.8,
+            "end": 1.087
+          },
+          {
+            "w": "the",
+            "start": 1.087,
+            "end": 1.2
+          },
+          {
+            "w": "eval",
+            "start": 1.2,
+            "end": 1.55
+          },
+          {
+            "w": "file",
+            "start": 1.55,
+            "end": 1.925
+          },
+          {
+            "w": "had",
+            "start": 1.925,
+            "end": 2.062
+          },
+          {
+            "w": "a",
+            "start": 2.062,
+            "end": 2.138
+          },
+          {
+            "w": "diff",
+            "start": 2.138,
+            "end": 2.375
+          },
+          {
+            "w": "grader",
+            "start": 2.375,
+            "end": 2.75
+          },
+          {
+            "w": "kept",
+            "start": 2.75,
+            "end": 3.05
+          },
+          {
+            "w": "no",
+            "start": 3.05,
+            "end": 3.225
+          },
+          {
+            "w": "copies",
+            "start": 3.225,
+            "end": 3.825
+          },
+          {
+            "w": "so",
+            "start": 3.925,
+            "end": 4.037
+          },
+          {
+            "w": "they",
+            "start": 4.037,
+            "end": 4.175
+          },
+          {
+            "w": "give",
+            "start": 4.175,
+            "end": 4.338
+          },
+          {
+            "w": "a",
+            "start": 4.338,
+            "end": 4.4
+          },
+          {
+            "w": "diff",
+            "start": 4.4,
+            "end": 4.625
+          },
+          {
+            "w": "grader",
+            "start": 4.625,
+            "end": 5.013
+          },
+          {
+            "w": "nothing",
+            "start": 5.013,
+            "end": 5.35
+          },
+          {
+            "w": "to",
+            "start": 5.35,
+            "end": 5.475
+          },
+          {
+            "w": "re-grade",
+            "start": 5.475,
+            "end": 6.35
+          }
+        ]
+      }
+    ],
+    "s06": [
+      {
+        "i": 0,
+        "text": "The second limit is about script graders.",
+        "tts_text": "The second limit is about script graders.",
+        "file": "audio/s06_00.wav",
+        "duration": 2.825,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.175,
+            "end": 0.287
+          },
+          {
+            "w": "second",
+            "start": 0.287,
+            "end": 0.625
+          },
+          {
+            "w": "limit",
+            "start": 0.625,
+            "end": 0.925
+          },
+          {
+            "w": "is",
+            "start": 0.925,
+            "end": 1.038
+          },
+          {
+            "w": "about",
+            "start": 1.038,
+            "end": 1.337
+          },
+          {
+            "w": "script",
+            "start": 1.337,
+            "end": 1.762
+          },
+          {
+            "w": "graders",
+            "start": 1.762,
+            "end": 2.575
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "Diff graders work from the saved diff, so their results in a re-grade hold.",
+        "tts_text": "Diff graders work from the saved diff, so their results in a re-grade hold.",
+        "file": "audio/s06_01.wav",
+        "duration": 4.475,
+        "words": [
+          {
+            "w": "Diff",
+            "start": 0.175,
+            "end": 0.375
+          },
+          {
+            "w": "graders",
+            "start": 0.375,
+            "end": 0.8
+          },
+          {
+            "w": "work",
+            "start": 0.8,
+            "end": 1.05
+          },
+          {
+            "w": "from",
+            "start": 1.05,
+            "end": 1.188
+          },
+          {
+            "w": "the",
+            "start": 1.188,
+            "end": 1.288
+          },
+          {
+            "w": "saved",
+            "start": 1.288,
+            "end": 1.675
+          },
+          {
+            "w": "diff",
+            "start": 1.675,
+            "end": 2.025
+          },
+          {
+            "w": "so",
+            "start": 2.1,
+            "end": 2.237
+          },
+          {
+            "w": "their",
+            "start": 2.237,
+            "end": 2.4
+          },
+          {
+            "w": "results",
+            "start": 2.4,
+            "end": 2.875
+          },
+          {
+            "w": "in",
+            "start": 2.875,
+            "end": 2.962
+          },
+          {
+            "w": "a",
+            "start": 2.962,
+            "end": 3.062
+          },
+          {
+            "w": "re-grade",
+            "start": 3.062,
+            "end": 3.55
+          },
+          {
+            "w": "hold",
+            "start": 3.55,
+            "end": 4.225
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "Script graders need the workspace, and a saved run keeps the diff, not the workspace.",
+        "tts_text": "Script graders need the workspace, and a saved run keeps the diff, not the workspace.",
+        "file": "audio/s06_02.wav",
+        "duration": 4.975,
+        "words": [
+          {
+            "w": "Script",
+            "start": 0.2,
+            "end": 0.5
+          },
+          {
+            "w": "graders",
+            "start": 0.5,
+            "end": 0.925
+          },
+          {
+            "w": "need",
+            "start": 0.925,
+            "end": 1.113
+          },
+          {
+            "w": "the",
+            "start": 1.113,
+            "end": 1.2
+          },
+          {
+            "w": "workspace",
+            "start": 1.2,
+            "end": 1.825
+          },
+          {
+            "w": "and",
+            "start": 1.9,
+            "end": 2.013
+          },
+          {
+            "w": "a",
+            "start": 2.013,
+            "end": 2.125
+          },
+          {
+            "w": "saved",
+            "start": 2.125,
+            "end": 2.525
+          },
+          {
+            "w": "run",
+            "start": 2.525,
+            "end": 2.8
+          },
+          {
+            "w": "keeps",
+            "start": 2.8,
+            "end": 3.087
+          },
+          {
+            "w": "the",
+            "start": 3.087,
+            "end": 3.175
+          },
+          {
+            "w": "diff",
+            "start": 3.175,
+            "end": 3.5
+          },
+          {
+            "w": "not",
+            "start": 3.575,
+            "end": 3.763
+          },
+          {
+            "w": "the",
+            "start": 3.763,
+            "end": 3.85
+          },
+          {
+            "w": "workspace",
+            "start": 3.85,
+            "end": 4.725
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "So in a re-grade, a script grader fails on every trial, including trials that really passed.",
+        "tts_text": "So in a re-grade, a script grader fails on every trial, including trials that really passed.",
+        "file": "audio/s06_03.wav",
+        "duration": 5.55,
+        "words": [
+          {
+            "w": "So",
+            "start": 0.2,
+            "end": 0.362
+          },
+          {
+            "w": "in",
+            "start": 0.362,
+            "end": 0.438
+          },
+          {
+            "w": "a",
+            "start": 0.438,
+            "end": 0.5
+          },
+          {
+            "w": "re-grade",
+            "start": 0.5,
+            "end": 1.025
+          },
+          {
+            "w": "a",
+            "start": 1.075,
+            "end": 1.188
+          },
+          {
+            "w": "script",
+            "start": 1.188,
+            "end": 1.55
+          },
+          {
+            "w": "grader",
+            "start": 1.55,
+            "end": 1.962
+          },
+          {
+            "w": "fails",
+            "start": 1.962,
+            "end": 2.288
+          },
+          {
+            "w": "on",
+            "start": 2.288,
+            "end": 2.425
+          },
+          {
+            "w": "every",
+            "start": 2.425,
+            "end": 2.725
+          },
+          {
+            "w": "trial",
+            "start": 2.725,
+            "end": 3.2
+          },
+          {
+            "w": "including",
+            "start": 3.275,
+            "end": 3.7
+          },
+          {
+            "w": "trials",
+            "start": 3.7,
+            "end": 4.125
+          },
+          {
+            "w": "that",
+            "start": 4.125,
+            "end": 4.275
+          },
+          {
+            "w": "really",
+            "start": 4.275,
+            "end": 4.55
+          },
+          {
+            "w": "passed",
+            "start": 4.55,
+            "end": 5.3
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "Ours even says why: there's no changelog to check.",
+        "tts_text": "Ours even says why: there's no changelog to check.",
+        "file": "audio/s06_04.wav",
+        "duration": 3.35,
+        "words": [
+          {
+            "w": "Ours",
+            "start": 0.2,
+            "end": 0.5
+          },
+          {
+            "w": "even",
+            "start": 0.5,
+            "end": 0.8
+          },
+          {
+            "w": "says",
+            "start": 0.8,
+            "end": 1.05
+          },
+          {
+            "w": "why",
+            "start": 1.05,
+            "end": 1.35
+          },
+          {
+            "w": "there's",
+            "start": 1.425,
+            "end": 1.625
+          },
+          {
+            "w": "no",
+            "start": 1.625,
+            "end": 1.825
+          },
+          {
+            "w": "changelog",
+            "start": 1.825,
+            "end": 2.375
+          },
+          {
+            "w": "to",
+            "start": 2.375,
+            "end": 2.513
+          },
+          {
+            "w": "check",
+            "start": 2.513,
+            "end": 3.1
+          }
+        ]
+      },
+      {
+        "i": 5,
+        "text": "In a re-grade we ignore script graders, and test those with the oracle.",
+        "tts_text": "In a re-grade we ignore script graders, and test those with the oracle.",
+        "file": "audio/s06_05.wav",
+        "duration": 4.325,
+        "words": [
+          {
+            "w": "In",
+            "start": 0.175,
+            "end": 0.263
+          },
+          {
+            "w": "a",
+            "start": 0.263,
+            "end": 0.35
+          },
+          {
+            "w": "re-grade",
+            "start": 0.35,
+            "end": 0.85
+          },
+          {
+            "w": "we",
+            "start": 0.85,
+            "end": 1.0
+          },
+          {
+            "w": "ignore",
+            "start": 1.0,
+            "end": 1.387
+          },
+          {
+            "w": "script",
+            "start": 1.387,
+            "end": 1.75
+          },
+          {
+            "w": "graders",
+            "start": 1.75,
+            "end": 2.35
+          },
+          {
+            "w": "and",
+            "start": 2.425,
+            "end": 2.562
+          },
+          {
+            "w": "test",
+            "start": 2.562,
+            "end": 2.875
+          },
+          {
+            "w": "those",
+            "start": 2.875,
+            "end": 3.138
+          },
+          {
+            "w": "with",
+            "start": 3.138,
+            "end": 3.237
+          },
+          {
+            "w": "the",
+            "start": 3.237,
+            "end": 3.35
+          },
+          {
+            "w": "oracle",
+            "start": 3.35,
+            "end": 4.1
+          }
+        ]
+      }
+    ],
+    "s07": [
+      {
+        "i": 0,
+        "text": "The saved trials are about to catch a real mistake, one we made while writing this course.",
+        "tts_text": "The saved trials are about to catch a real mistake, one we made while writing this course.",
+        "file": "audio/s07_00.wav",
+        "duration": 5.025,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "saved",
+            "start": 0.263,
+            "end": 0.625
+          },
+          {
+            "w": "trials",
+            "start": 0.625,
+            "end": 1.075
+          },
+          {
+            "w": "are",
+            "start": 1.075,
+            "end": 1.163
+          },
+          {
+            "w": "about",
+            "start": 1.163,
+            "end": 1.425
+          },
+          {
+            "w": "to",
+            "start": 1.425,
+            "end": 1.55
+          },
+          {
+            "w": "catch",
+            "start": 1.55,
+            "end": 1.8
+          },
+          {
+            "w": "a",
+            "start": 1.8,
+            "end": 1.913
+          },
+          {
+            "w": "real",
+            "start": 1.913,
+            "end": 2.163
+          },
+          {
+            "w": "mistake",
+            "start": 2.163,
+            "end": 2.7
+          },
+          {
+            "w": "one",
+            "start": 2.8,
+            "end": 2.938
+          },
+          {
+            "w": "we",
+            "start": 2.938,
+            "end": 3.075
+          },
+          {
+            "w": "made",
+            "start": 3.075,
+            "end": 3.4
+          },
+          {
+            "w": "while",
+            "start": 3.4,
+            "end": 3.625
+          },
+          {
+            "w": "writing",
+            "start": 3.625,
+            "end": 3.938
+          },
+          {
+            "w": "this",
+            "start": 3.938,
+            "end": 4.1
+          },
+          {
+            "w": "course",
+            "start": 4.1,
+            "end": 4.775
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "When we first wrote no made-up number, this was its pattern.",
+        "tts_text": "When we first wrote no made-up number, this was its pattern.",
+        "file": "audio/s07_01.wav",
+        "duration": 3.7,
+        "words": [
+          {
+            "w": "When",
+            "start": 0.175,
+            "end": 0.287
+          },
+          {
+            "w": "we",
+            "start": 0.287,
+            "end": 0.438
+          },
+          {
+            "w": "first",
+            "start": 0.438,
+            "end": 0.75
+          },
+          {
+            "w": "wrote",
+            "start": 0.75,
+            "end": 1.0
+          },
+          {
+            "w": "no",
+            "start": 1.0,
+            "end": 1.175
+          },
+          {
+            "w": "made-up",
+            "start": 1.175,
+            "end": 1.575
+          },
+          {
+            "w": "number",
+            "start": 1.575,
+            "end": 2.025
+          },
+          {
+            "w": "this",
+            "start": 2.125,
+            "end": 2.325
+          },
+          {
+            "w": "was",
+            "start": 2.325,
+            "end": 2.487
+          },
+          {
+            "w": "its",
+            "start": 2.487,
+            "end": 2.675
+          },
+          {
+            "w": "pattern",
+            "start": 2.675,
+            "end": 3.45
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "The eval file's pattern is the same, plus four characters at the front.",
+        "tts_text": "The [eval](/ˌivˈæl/) file's pattern is the same, plus four characters at the front.",
+        "file": "audio/s07_02.wav",
+        "duration": 4.35,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.15,
+            "end": 0.275
+          },
+          {
+            "w": "eval",
+            "start": 0.275,
+            "end": 0.662
+          },
+          {
+            "w": "file's",
+            "start": 0.662,
+            "end": 1.025
+          },
+          {
+            "w": "pattern",
+            "start": 1.025,
+            "end": 1.45
+          },
+          {
+            "w": "is",
+            "start": 1.45,
+            "end": 1.587
+          },
+          {
+            "w": "the",
+            "start": 1.587,
+            "end": 1.712
+          },
+          {
+            "w": "same",
+            "start": 1.712,
+            "end": 2.125
+          },
+          {
+            "w": "plus",
+            "start": 2.2,
+            "end": 2.462
+          },
+          {
+            "w": "four",
+            "start": 2.462,
+            "end": 2.7
+          },
+          {
+            "w": "characters",
+            "start": 2.7,
+            "end": 3.25
+          },
+          {
+            "w": "at",
+            "start": 3.25,
+            "end": 3.337
+          },
+          {
+            "w": "the",
+            "start": 3.337,
+            "end": 3.438
+          },
+          {
+            "w": "front",
+            "start": 3.438,
+            "end": 4.1
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "And it reads correctly: a line that starts with a plus sign, and contains a number in brackets.",
+        "tts_text": "And it reads correctly: a line that starts with a plus sign, and contains a number in brackets.",
+        "file": "audio/s07_03.wav",
+        "duration": 5.175,
+        "words": [
+          {
+            "w": "And",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "it",
+            "start": 0.263,
+            "end": 0.35
+          },
+          {
+            "w": "reads",
+            "start": 0.35,
+            "end": 0.625
+          },
+          {
+            "w": "correctly",
+            "start": 0.625,
+            "end": 1.25
+          },
+          {
+            "w": "a",
+            "start": 1.35,
+            "end": 1.45
+          },
+          {
+            "w": "line",
+            "start": 1.45,
+            "end": 1.762
+          },
+          {
+            "w": "that",
+            "start": 1.762,
+            "end": 1.875
+          },
+          {
+            "w": "starts",
+            "start": 1.875,
+            "end": 2.237
+          },
+          {
+            "w": "with",
+            "start": 2.237,
+            "end": 2.337
+          },
+          {
+            "w": "a",
+            "start": 2.337,
+            "end": 2.4
+          },
+          {
+            "w": "plus",
+            "start": 2.4,
+            "end": 2.663
+          },
+          {
+            "w": "sign",
+            "start": 2.663,
+            "end": 3.1
+          },
+          {
+            "w": "and",
+            "start": 3.175,
+            "end": 3.288
+          },
+          {
+            "w": "contains",
+            "start": 3.288,
+            "end": 3.688
+          },
+          {
+            "w": "a",
+            "start": 3.688,
+            "end": 3.75
+          },
+          {
+            "w": "number",
+            "start": 3.75,
+            "end": 3.987
+          },
+          {
+            "w": "in",
+            "start": 3.987,
+            "end": 4.075
+          },
+          {
+            "w": "brackets",
+            "start": 4.075,
+            "end": 4.95
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "It's wrong, though.",
+        "tts_text": "It's wrong, though.",
+        "file": "audio/s07_04.wav",
+        "duration": 1.6,
+        "words": [
+          {
+            "w": "It's",
+            "start": 0.175,
+            "end": 0.412
+          },
+          {
+            "w": "wrong",
+            "start": 0.412,
+            "end": 0.8
+          },
+          {
+            "w": "though",
+            "start": 0.838,
+            "end": 1.325
+          }
+        ]
+      }
+    ],
+    "s08": [
+      {
+        "i": 0,
+        "text": "Here's why, on the patch from a saved trial.",
+        "tts_text": "Here's why, on the patch from a saved trial.",
+        "file": "audio/s08_00.wav",
+        "duration": 2.95,
+        "words": [
+          {
+            "w": "Here's",
+            "start": 0.175,
+            "end": 0.45
+          },
+          {
+            "w": "why",
+            "start": 0.45,
+            "end": 0.75
+          },
+          {
+            "w": "on",
+            "start": 0.8,
+            "end": 0.938
+          },
+          {
+            "w": "the",
+            "start": 0.938,
+            "end": 1.025
+          },
+          {
+            "w": "patch",
+            "start": 1.025,
+            "end": 1.375
+          },
+          {
+            "w": "from",
+            "start": 1.375,
+            "end": 1.512
+          },
+          {
+            "w": "a",
+            "start": 1.512,
+            "end": 1.613
+          },
+          {
+            "w": "saved",
+            "start": 1.613,
+            "end": 1.975
+          },
+          {
+            "w": "trial",
+            "start": 1.975,
+            "end": 2.725
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "Those four characters are a switch that makes the caret mean the start of every line.",
+        "tts_text": "Those four characters are a switch that makes the caret mean the start of every line.",
+        "file": "audio/s08_01.wav",
+        "duration": 4.75,
+        "words": [
+          {
+            "w": "Those",
+            "start": 0.175,
+            "end": 0.4
+          },
+          {
+            "w": "four",
+            "start": 0.4,
+            "end": 0.625
+          },
+          {
+            "w": "characters",
+            "start": 0.625,
+            "end": 1.175
+          },
+          {
+            "w": "are",
+            "start": 1.175,
+            "end": 1.288
+          },
+          {
+            "w": "a",
+            "start": 1.288,
+            "end": 1.387
+          },
+          {
+            "w": "switch",
+            "start": 1.387,
+            "end": 1.913
+          },
+          {
+            "w": "that",
+            "start": 1.913,
+            "end": 2.075
+          },
+          {
+            "w": "makes",
+            "start": 2.075,
+            "end": 2.35
+          },
+          {
+            "w": "the",
+            "start": 2.35,
+            "end": 2.45
+          },
+          {
+            "w": "caret",
+            "start": 2.45,
+            "end": 2.8
+          },
+          {
+            "w": "mean",
+            "start": 2.8,
+            "end": 2.987
+          },
+          {
+            "w": "the",
+            "start": 2.987,
+            "end": 3.075
+          },
+          {
+            "w": "start",
+            "start": 3.075,
+            "end": 3.388
+          },
+          {
+            "w": "of",
+            "start": 3.388,
+            "end": 3.5
+          },
+          {
+            "w": "every",
+            "start": 3.5,
+            "end": 3.825
+          },
+          {
+            "w": "line",
+            "start": 3.825,
+            "end": 4.5
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "Without the switch, the caret means only the very start of the whole patch.",
+        "tts_text": "Without the switch, the caret means only the very start of the whole patch.",
+        "file": "audio/s08_02.wav",
+        "duration": 4.05,
+        "words": [
+          {
+            "w": "Without",
+            "start": 0.175,
+            "end": 0.438
+          },
+          {
+            "w": "the",
+            "start": 0.438,
+            "end": 0.537
+          },
+          {
+            "w": "switch",
+            "start": 0.537,
+            "end": 0.925
+          },
+          {
+            "w": "the",
+            "start": 0.963,
+            "end": 1.075
+          },
+          {
+            "w": "caret",
+            "start": 1.075,
+            "end": 1.425
+          },
+          {
+            "w": "means",
+            "start": 1.425,
+            "end": 1.712
+          },
+          {
+            "w": "only",
+            "start": 1.712,
+            "end": 2.013
+          },
+          {
+            "w": "the",
+            "start": 2.013,
+            "end": 2.138
+          },
+          {
+            "w": "very",
+            "start": 2.138,
+            "end": 2.425
+          },
+          {
+            "w": "start",
+            "start": 2.425,
+            "end": 2.763
+          },
+          {
+            "w": "of",
+            "start": 2.763,
+            "end": 2.837
+          },
+          {
+            "w": "the",
+            "start": 2.837,
+            "end": 2.925
+          },
+          {
+            "w": "whole",
+            "start": 2.925,
+            "end": 3.15
+          },
+          {
+            "w": "patch",
+            "start": 3.15,
+            "end": 3.8
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "But a patch never starts with a plus sign; it starts with a header line like this one.",
+        "tts_text": "But a patch never starts with a plus sign; it starts with a header line like this one.",
+        "file": "audio/s08_03.wav",
+        "duration": 4.925,
+        "words": [
+          {
+            "w": "But",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "a",
+            "start": 0.263,
+            "end": 0.338
+          },
+          {
+            "w": "patch",
+            "start": 0.338,
+            "end": 0.738
+          },
+          {
+            "w": "never",
+            "start": 0.738,
+            "end": 1.05
+          },
+          {
+            "w": "starts",
+            "start": 1.05,
+            "end": 1.413
+          },
+          {
+            "w": "with",
+            "start": 1.413,
+            "end": 1.538
+          },
+          {
+            "w": "a",
+            "start": 1.538,
+            "end": 1.6
+          },
+          {
+            "w": "plus",
+            "start": 1.6,
+            "end": 1.863
+          },
+          {
+            "w": "sign",
+            "start": 1.863,
+            "end": 2.3
+          },
+          {
+            "w": "it",
+            "start": 2.4,
+            "end": 2.525
+          },
+          {
+            "w": "starts",
+            "start": 2.525,
+            "end": 2.888
+          },
+          {
+            "w": "with",
+            "start": 2.888,
+            "end": 2.987
+          },
+          {
+            "w": "a",
+            "start": 2.987,
+            "end": 3.05
+          },
+          {
+            "w": "header",
+            "start": 3.05,
+            "end": 3.375
+          },
+          {
+            "w": "line",
+            "start": 3.375,
+            "end": 3.675
+          },
+          {
+            "w": "like",
+            "start": 3.675,
+            "end": 3.9
+          },
+          {
+            "w": "this",
+            "start": 3.9,
+            "end": 4.1
+          },
+          {
+            "w": "one",
+            "start": 4.1,
+            "end": 4.675
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "So the pattern can never be found, however many made-up numbers sit further down.",
+        "tts_text": "So the pattern can never be found, however many made-up numbers sit further down.",
+        "file": "audio/s08_04.wav",
+        "duration": 4.625,
+        "words": [
+          {
+            "w": "So",
+            "start": 0.175,
+            "end": 0.263
+          },
+          {
+            "w": "the",
+            "start": 0.263,
+            "end": 0.35
+          },
+          {
+            "w": "pattern",
+            "start": 0.35,
+            "end": 0.775
+          },
+          {
+            "w": "can",
+            "start": 0.775,
+            "end": 0.95
+          },
+          {
+            "w": "never",
+            "start": 0.95,
+            "end": 1.212
+          },
+          {
+            "w": "be",
+            "start": 1.212,
+            "end": 1.363
+          },
+          {
+            "w": "found",
+            "start": 1.363,
+            "end": 1.85
+          },
+          {
+            "w": "however",
+            "start": 1.925,
+            "end": 2.188
+          },
+          {
+            "w": "many",
+            "start": 2.188,
+            "end": 2.4
+          },
+          {
+            "w": "made-up",
+            "start": 2.4,
+            "end": 2.775
+          },
+          {
+            "w": "numbers",
+            "start": 2.775,
+            "end": 3.212
+          },
+          {
+            "w": "sit",
+            "start": 3.212,
+            "end": 3.45
+          },
+          {
+            "w": "further",
+            "start": 3.45,
+            "end": 3.725
+          },
+          {
+            "w": "down",
+            "start": 3.725,
+            "end": 4.375
+          }
+        ]
+      },
+      {
+        "i": 5,
+        "text": "Any grader that passes when its pattern isn't found will then pass everything.",
+        "tts_text": "Any grader that passes when its pattern isn't found will then pass everything.",
+        "file": "audio/s08_05.wav",
+        "duration": 4.725,
+        "words": [
+          {
+            "w": "Any",
+            "start": 0.175,
+            "end": 0.375
+          },
+          {
+            "w": "grader",
+            "start": 0.375,
+            "end": 0.8
+          },
+          {
+            "w": "that",
+            "start": 0.8,
+            "end": 0.975
+          },
+          {
+            "w": "passes",
+            "start": 0.975,
+            "end": 1.575
+          },
+          {
+            "w": "when",
+            "start": 1.575,
+            "end": 1.712
+          },
+          {
+            "w": "its",
+            "start": 1.712,
+            "end": 1.85
+          },
+          {
+            "w": "pattern",
+            "start": 1.85,
+            "end": 2.275
+          },
+          {
+            "w": "isn't",
+            "start": 2.275,
+            "end": 2.538
+          },
+          {
+            "w": "found",
+            "start": 2.538,
+            "end": 3.0
+          },
+          {
+            "w": "will",
+            "start": 3.0,
+            "end": 3.112
+          },
+          {
+            "w": "then",
+            "start": 3.112,
+            "end": 3.3
+          },
+          {
+            "w": "pass",
+            "start": 3.3,
+            "end": 3.638
+          },
+          {
+            "w": "everything",
+            "start": 3.638,
+            "end": 4.5
+          }
+        ]
+      }
+    ],
+    "s09": [
+      {
+        "i": 0,
+        "text": "That's how it works; now let's catch it.",
+        "tts_text": "That's how it works; now let's catch it.",
+        "file": "audio/s09_00.wav",
+        "duration": 2.55,
+        "words": [
+          {
+            "w": "That's",
+            "start": 0.175,
+            "end": 0.45
+          },
+          {
+            "w": "how",
+            "start": 0.45,
+            "end": 0.613
+          },
+          {
+            "w": "it",
+            "start": 0.613,
+            "end": 0.725
+          },
+          {
+            "w": "works",
+            "start": 0.725,
+            "end": 1.05
+          },
+          {
+            "w": "now",
+            "start": 1.1,
+            "end": 1.325
+          },
+          {
+            "w": "let's",
+            "start": 1.325,
+            "end": 1.6
+          },
+          {
+            "w": "catch",
+            "start": 1.6,
+            "end": 1.875
+          },
+          {
+            "w": "it",
+            "start": 1.875,
+            "end": 2.3
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "First, we'll re-grade a saved run where we know failures happened, with the graders as they are.",
+        "tts_text": "First, we'll re-grade a saved run where we know failures happened, with the graders as they are.",
+        "file": "audio/s09_01.wav",
+        "duration": 5.125,
+        "words": [
+          {
+            "w": "First",
+            "start": 0.2,
+            "end": 0.45
+          },
+          {
+            "w": "we'll",
+            "start": 0.487,
+            "end": 0.65
+          },
+          {
+            "w": "re-grade",
+            "start": 0.65,
+            "end": 1.012
+          },
+          {
+            "w": "a",
+            "start": 1.012,
+            "end": 1.125
+          },
+          {
+            "w": "saved",
+            "start": 1.125,
+            "end": 1.525
+          },
+          {
+            "w": "run",
+            "start": 1.525,
+            "end": 1.85
+          },
+          {
+            "w": "where",
+            "start": 1.85,
+            "end": 1.988
+          },
+          {
+            "w": "we",
+            "start": 1.988,
+            "end": 2.1
+          },
+          {
+            "w": "know",
+            "start": 2.1,
+            "end": 2.288
+          },
+          {
+            "w": "failures",
+            "start": 2.288,
+            "end": 2.75
+          },
+          {
+            "w": "happened",
+            "start": 2.75,
+            "end": 3.225
+          },
+          {
+            "w": "with",
+            "start": 3.3,
+            "end": 3.438
+          },
+          {
+            "w": "the",
+            "start": 3.438,
+            "end": 3.525
+          },
+          {
+            "w": "graders",
+            "start": 3.525,
+            "end": 3.987
+          },
+          {
+            "w": "as",
+            "start": 3.987,
+            "end": 4.15
+          },
+          {
+            "w": "they",
+            "start": 4.15,
+            "end": 4.312
+          },
+          {
+            "w": "are",
+            "start": 4.312,
+            "end": 4.875
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "Then the flawed pattern goes in, and we ask the oracle and the saved trials about it, one after the other.",
+        "tts_text": "Then the flawed pattern goes in, and we ask the oracle and the saved trials about it, one after the other.",
+        "file": "audio/s09_02.wav",
+        "duration": 5.75,
+        "words": [
+          {
+            "w": "Then",
+            "start": 0.175,
+            "end": 0.287
+          },
+          {
+            "w": "the",
+            "start": 0.287,
+            "end": 0.388
+          },
+          {
+            "w": "flawed",
+            "start": 0.388,
+            "end": 0.7
+          },
+          {
+            "w": "pattern",
+            "start": 0.7,
+            "end": 1.025
+          },
+          {
+            "w": "goes",
+            "start": 1.025,
+            "end": 1.3
+          },
+          {
+            "w": "in",
+            "start": 1.3,
+            "end": 1.575
+          },
+          {
+            "w": "and",
+            "start": 1.65,
+            "end": 1.762
+          },
+          {
+            "w": "we",
+            "start": 1.762,
+            "end": 1.887
+          },
+          {
+            "w": "ask",
+            "start": 1.887,
+            "end": 2.138
+          },
+          {
+            "w": "the",
+            "start": 2.138,
+            "end": 2.25
+          },
+          {
+            "w": "oracle",
+            "start": 2.25,
+            "end": 2.65
+          },
+          {
+            "w": "and",
+            "start": 2.65,
+            "end": 2.763
+          },
+          {
+            "w": "the",
+            "start": 2.763,
+            "end": 2.862
+          },
+          {
+            "w": "saved",
+            "start": 2.862,
+            "end": 3.175
+          },
+          {
+            "w": "trials",
+            "start": 3.175,
+            "end": 3.538
+          },
+          {
+            "w": "about",
+            "start": 3.538,
+            "end": 3.825
+          },
+          {
+            "w": "it",
+            "start": 3.825,
+            "end": 4.075
+          },
+          {
+            "w": "one",
+            "start": 4.175,
+            "end": 4.475
+          },
+          {
+            "w": "after",
+            "start": 4.475,
+            "end": 4.737
+          },
+          {
+            "w": "the",
+            "start": 4.737,
+            "end": 4.85
+          },
+          {
+            "w": "other",
+            "start": 4.85,
+            "end": 5.5
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "Last, the right pattern goes back.",
+        "tts_text": "Last, the right pattern goes back.",
+        "file": "audio/s09_03.wav",
+        "duration": 2.45,
+        "words": [
+          {
+            "w": "Last",
+            "start": 0.2,
+            "end": 0.525
+          },
+          {
+            "w": "the",
+            "start": 0.562,
+            "end": 0.65
+          },
+          {
+            "w": "right",
+            "start": 0.65,
+            "end": 0.9
+          },
+          {
+            "w": "pattern",
+            "start": 0.9,
+            "end": 1.325
+          },
+          {
+            "w": "goes",
+            "start": 1.325,
+            "end": 1.625
+          },
+          {
+            "w": "back",
+            "start": 1.625,
+            "end": 2.2
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "What would you expect the oracle to say about a grader that can never fail?",
+        "tts_text": "What would you expect the oracle to say about a grader that can never fail?",
+        "file": "audio/s09_04.wav",
+        "duration": 4.325,
+        "words": [
+          {
+            "w": "What",
+            "start": 0.175,
+            "end": 0.312
+          },
+          {
+            "w": "would",
+            "start": 0.312,
+            "end": 0.425
+          },
+          {
+            "w": "you",
+            "start": 0.425,
+            "end": 0.55
+          },
+          {
+            "w": "expect",
+            "start": 0.55,
+            "end": 0.938
+          },
+          {
+            "w": "the",
+            "start": 0.938,
+            "end": 1.05
+          },
+          {
+            "w": "oracle",
+            "start": 1.05,
+            "end": 1.45
+          },
+          {
+            "w": "to",
+            "start": 1.45,
+            "end": 1.587
+          },
+          {
+            "w": "say",
+            "start": 1.587,
+            "end": 1.9
+          },
+          {
+            "w": "about",
+            "start": 1.9,
+            "end": 2.138
+          },
+          {
+            "w": "a",
+            "start": 2.138,
+            "end": 2.2
+          },
+          {
+            "w": "grader",
+            "start": 2.2,
+            "end": 2.7
+          },
+          {
+            "w": "that",
+            "start": 2.7,
+            "end": 2.85
+          },
+          {
+            "w": "can",
+            "start": 2.85,
+            "end": 3.05
+          },
+          {
+            "w": "never",
+            "start": 3.05,
+            "end": 3.362
+          },
+          {
+            "w": "fail",
+            "start": 3.362,
+            "end": 4.075
+          }
+        ]
+      },
+      {
+        "i": 5,
+        "text": "If you tried it yourself, here's what you'd see.",
+        "tts_text": "If you tried it yourself, here's what you'd see.",
+        "file": "audio/s09_05.wav",
+        "duration": 2.875,
+        "words": [
+          {
+            "w": "If",
+            "start": 0.15,
+            "end": 0.3
+          },
+          {
+            "w": "you",
+            "start": 0.3,
+            "end": 0.438
+          },
+          {
+            "w": "tried",
+            "start": 0.438,
+            "end": 0.738
+          },
+          {
+            "w": "it",
+            "start": 0.738,
+            "end": 0.812
+          },
+          {
+            "w": "yourself",
+            "start": 0.812,
+            "end": 1.3
+          },
+          {
+            "w": "here's",
+            "start": 1.375,
+            "end": 1.675
+          },
+          {
+            "w": "what",
+            "start": 1.675,
+            "end": 1.825
+          },
+          {
+            "w": "you'd",
+            "start": 1.825,
+            "end": 2.038
+          },
+          {
+            "w": "see",
+            "start": 2.038,
+            "end": 2.625
+          }
+        ]
+      }
+    ],
+    "s10": [
+      {
+        "i": 0,
+        "text": "For this, the run we want is the first one we graded with diff graders, made before the skill had any rule about numbers, and before the eval file had a script grader.",
+        "tts_text": "For this, the run we want is the first one we graded with diff graders, made before the skill had any rule about numbers, and before the [eval](/ˌivˈæl/) file had a script grader.",
+        "file": "audio/s10_00.wav",
+        "duration": 8.75,
+        "words": [
+          {
+            "w": "For",
+            "start": 0.15,
+            "end": 0.275
+          },
+          {
+            "w": "this",
+            "start": 0.275,
+            "end": 0.55
+          },
+          {
+            "w": "the",
+            "start": 0.588,
+            "end": 0.675
+          },
+          {
+            "w": "run",
+            "start": 0.675,
+            "end": 0.875
+          },
+          {
+            "w": "we",
+            "start": 0.875,
+            "end": 1.025
+          },
+          {
+            "w": "want",
+            "start": 1.025,
+            "end": 1.35
+          },
+          {
+            "w": "is",
+            "start": 1.35,
+            "end": 1.488
+          },
+          {
+            "w": "the",
+            "start": 1.488,
+            "end": 1.587
+          },
+          {
+            "w": "first",
+            "start": 1.587,
+            "end": 1.887
+          },
+          {
+            "w": "one",
+            "start": 1.887,
+            "end": 2.038
+          },
+          {
+            "w": "we",
+            "start": 2.038,
+            "end": 2.15
+          },
+          {
+            "w": "graded",
+            "start": 2.15,
+            "end": 2.487
+          },
+          {
+            "w": "with",
+            "start": 2.487,
+            "end": 2.65
+          },
+          {
+            "w": "diff",
+            "start": 2.65,
+            "end": 2.875
+          },
+          {
+            "w": "graders",
+            "start": 2.875,
+            "end": 3.45
+          },
+          {
+            "w": "made",
+            "start": 3.525,
+            "end": 3.737
+          },
+          {
+            "w": "before",
+            "start": 3.737,
+            "end": 3.987
+          },
+          {
+            "w": "the",
+            "start": 3.987,
+            "end": 4.075
+          },
+          {
+            "w": "skill",
+            "start": 4.075,
+            "end": 4.4
+          },
+          {
+            "w": "had",
+            "start": 4.4,
+            "end": 4.6
+          },
+          {
+            "w": "any",
+            "start": 4.6,
+            "end": 4.825
+          },
+          {
+            "w": "rule",
+            "start": 4.825,
+            "end": 5.062
+          },
+          {
+            "w": "about",
+            "start": 5.062,
+            "end": 5.325
+          },
+          {
+            "w": "numbers",
+            "start": 5.325,
+            "end": 5.9
+          },
+          {
+            "w": "and",
+            "start": 5.975,
+            "end": 6.088
+          },
+          {
+            "w": "before",
+            "start": 6.088,
+            "end": 6.362
+          },
+          {
+            "w": "the",
+            "start": 6.362,
+            "end": 6.475
+          },
+          {
+            "w": "eval",
+            "start": 6.475,
+            "end": 6.838
+          },
+          {
+            "w": "file",
+            "start": 6.838,
+            "end": 7.175
+          },
+          {
+            "w": "had",
+            "start": 7.175,
+            "end": 7.312
+          },
+          {
+            "w": "a",
+            "start": 7.312,
+            "end": 7.375
+          },
+          {
+            "w": "script",
+            "start": 7.375,
+            "end": 7.725
+          },
+          {
+            "w": "grader",
+            "start": 7.725,
+            "end": 8.475
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "There's one folder, named with the time of the run.",
+        "tts_text": "There's one folder, named with the time of the run.",
+        "file": "audio/s10_01.wav",
+        "duration": 3.125,
+        "words": [
+          {
+            "w": "There's",
+            "start": 0.175,
+            "end": 0.412
+          },
+          {
+            "w": "one",
+            "start": 0.412,
+            "end": 0.688
+          },
+          {
+            "w": "folder",
+            "start": 0.688,
+            "end": 1.2
+          },
+          {
+            "w": "named",
+            "start": 1.275,
+            "end": 1.613
+          },
+          {
+            "w": "with",
+            "start": 1.613,
+            "end": 1.738
+          },
+          {
+            "w": "the",
+            "start": 1.738,
+            "end": 1.825
+          },
+          {
+            "w": "time",
+            "start": 1.825,
+            "end": 2.087
+          },
+          {
+            "w": "of",
+            "start": 2.087,
+            "end": 2.163
+          },
+          {
+            "w": "the",
+            "start": 2.163,
+            "end": 2.25
+          },
+          {
+            "w": "run",
+            "start": 2.25,
+            "end": 2.875
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "We change into it, so the paths stay short.",
+        "tts_text": "We change into it, so the paths stay short.",
+        "file": "audio/s10_02.wav",
+        "duration": 2.9,
+        "words": [
+          {
+            "w": "We",
+            "start": 0.175,
+            "end": 0.3
+          },
+          {
+            "w": "change",
+            "start": 0.3,
+            "end": 0.637
+          },
+          {
+            "w": "into",
+            "start": 0.637,
+            "end": 0.9
+          },
+          {
+            "w": "it",
+            "start": 0.9,
+            "end": 1.025
+          },
+          {
+            "w": "so",
+            "start": 1.075,
+            "end": 1.238
+          },
+          {
+            "w": "the",
+            "start": 1.238,
+            "end": 1.325
+          },
+          {
+            "w": "paths",
+            "start": 1.325,
+            "end": 1.7
+          },
+          {
+            "w": "stay",
+            "start": 1.7,
+            "end": 2.0
+          },
+          {
+            "w": "short",
+            "start": 2.0,
+            "end": 2.65
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "Now the re-grade: the eval file is three folders up, the run dir is this folder, and the saved results are the input.",
+        "tts_text": "Now the re-grade: the [eval](/ˌivˈæl/) file is three folders up, the run dur is this folder, and the saved results are the input.",
+        "file": "audio/s10_03.wav",
+        "duration": 6.625,
+        "words": [
+          {
+            "w": "Now",
+            "start": 0.2,
+            "end": 0.388
+          },
+          {
+            "w": "the",
+            "start": 0.388,
+            "end": 0.475
+          },
+          {
+            "w": "re-grade",
+            "start": 0.475,
+            "end": 1.0
+          },
+          {
+            "w": "the",
+            "start": 1.075,
+            "end": 1.2
+          },
+          {
+            "w": "eval",
+            "start": 1.2,
+            "end": 1.55
+          },
+          {
+            "w": "file",
+            "start": 1.55,
+            "end": 1.825
+          },
+          {
+            "w": "is",
+            "start": 1.825,
+            "end": 1.988
+          },
+          {
+            "w": "three",
+            "start": 1.988,
+            "end": 2.237
+          },
+          {
+            "w": "folders",
+            "start": 2.237,
+            "end": 2.675
+          },
+          {
+            "w": "up",
+            "start": 2.675,
+            "end": 2.975
+          },
+          {
+            "w": "the",
+            "start": 3.05,
+            "end": 3.175
+          },
+          {
+            "w": "run",
+            "start": 3.175,
+            "end": 3.4
+          },
+          {
+            "w": "dir",
+            "start": 3.4,
+            "end": 3.612
+          },
+          {
+            "w": "is",
+            "start": 3.612,
+            "end": 3.712
+          },
+          {
+            "w": "this",
+            "start": 3.712,
+            "end": 3.875
+          },
+          {
+            "w": "folder",
+            "start": 3.875,
+            "end": 4.35
+          },
+          {
+            "w": "and",
+            "start": 4.425,
+            "end": 4.537
+          },
+          {
+            "w": "the",
+            "start": 4.537,
+            "end": 4.65
+          },
+          {
+            "w": "saved",
+            "start": 4.65,
+            "end": 4.987
+          },
+          {
+            "w": "results",
+            "start": 4.987,
+            "end": 5.4
+          },
+          {
+            "w": "are",
+            "start": 5.4,
+            "end": 5.487
+          },
+          {
+            "w": "the",
+            "start": 5.487,
+            "end": 5.6
+          },
+          {
+            "w": "input",
+            "start": 5.6,
+            "end": 6.375
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "Vally prints one block for each saved trial: the stimulus name, a tick or a cross, and each failing grader with its evidence, but not the model.",
+        "tts_text": "Valley prints one block for each saved trial: the stimulus name, a tick or a cross, and each failing grader with its evidence, but not the model.",
+        "file": "audio/s10_04.wav",
+        "duration": 7.625,
+        "words": [
+          {
+            "w": "Vally",
+            "start": 0.175,
+            "end": 0.475
+          },
+          {
+            "w": "prints",
+            "start": 0.475,
+            "end": 0.725
+          },
+          {
+            "w": "one",
+            "start": 0.725,
+            "end": 0.95
+          },
+          {
+            "w": "block",
+            "start": 0.95,
+            "end": 1.25
+          },
+          {
+            "w": "for",
+            "start": 1.25,
+            "end": 1.375
+          },
+          {
+            "w": "each",
+            "start": 1.375,
+            "end": 1.6
+          },
+          {
+            "w": "saved",
+            "start": 1.6,
+            "end": 1.875
+          },
+          {
+            "w": "trial",
+            "start": 1.875,
+            "end": 2.35
+          },
+          {
+            "w": "the",
+            "start": 2.425,
+            "end": 2.525
+          },
+          {
+            "w": "stimulus",
+            "start": 2.525,
+            "end": 3.0
+          },
+          {
+            "w": "name",
+            "start": 3.0,
+            "end": 3.35
+          },
+          {
+            "w": "a",
+            "start": 3.425,
+            "end": 3.538
+          },
+          {
+            "w": "tick",
+            "start": 3.538,
+            "end": 3.825
+          },
+          {
+            "w": "or",
+            "start": 3.825,
+            "end": 3.938
+          },
+          {
+            "w": "a",
+            "start": 3.938,
+            "end": 4.0
+          },
+          {
+            "w": "cross",
+            "start": 4.0,
+            "end": 4.4
+          },
+          {
+            "w": "and",
+            "start": 4.475,
+            "end": 4.6
+          },
+          {
+            "w": "each",
+            "start": 4.6,
+            "end": 4.825
+          },
+          {
+            "w": "failing",
+            "start": 4.825,
+            "end": 5.15
+          },
+          {
+            "w": "grader",
+            "start": 5.15,
+            "end": 5.487
+          },
+          {
+            "w": "with",
+            "start": 5.487,
+            "end": 5.612
+          },
+          {
+            "w": "its",
+            "start": 5.612,
+            "end": 5.725
+          },
+          {
+            "w": "evidence",
+            "start": 5.725,
+            "end": 6.175
+          },
+          {
+            "w": "but",
+            "start": 6.213,
+            "end": 6.35
+          },
+          {
+            "w": "not",
+            "start": 6.35,
+            "end": 6.537
+          },
+          {
+            "w": "the",
+            "start": 6.537,
+            "end": 6.625
+          },
+          {
+            "w": "model",
+            "start": 6.625,
+            "end": 7.375
+          }
+        ]
+      },
+      {
+        "i": 5,
+        "text": "Eighteen blocks come back, for three stimuli run three times on two models, which is more than fits on a screen.",
+        "tts_text": "Eighteen blocks come back, for three stimuli run three times on two models, which is more than fits on a screen.",
+        "file": "audio/s10_05.wav",
+        "duration": 6.225,
+        "words": [
+          {
+            "w": "Eighteen",
+            "start": 0.175,
+            "end": 0.525
+          },
+          {
+            "w": "blocks",
+            "start": 0.525,
+            "end": 0.875
+          },
+          {
+            "w": "come",
+            "start": 0.875,
+            "end": 1.075
+          },
+          {
+            "w": "back",
+            "start": 1.075,
+            "end": 1.425
+          },
+          {
+            "w": "for",
+            "start": 1.5,
+            "end": 1.663
+          },
+          {
+            "w": "three",
+            "start": 1.663,
+            "end": 1.9
+          },
+          {
+            "w": "stimuli",
+            "start": 1.9,
+            "end": 2.375
+          },
+          {
+            "w": "run",
+            "start": 2.375,
+            "end": 2.612
+          },
+          {
+            "w": "three",
+            "start": 2.612,
+            "end": 2.85
+          },
+          {
+            "w": "times",
+            "start": 2.85,
+            "end": 3.163
+          },
+          {
+            "w": "on",
+            "start": 3.163,
+            "end": 3.362
+          },
+          {
+            "w": "two",
+            "start": 3.362,
+            "end": 3.575
+          },
+          {
+            "w": "models",
+            "start": 3.575,
+            "end": 4.05
+          },
+          {
+            "w": "which",
+            "start": 4.112,
+            "end": 4.287
+          },
+          {
+            "w": "is",
+            "start": 4.287,
+            "end": 4.425
+          },
+          {
+            "w": "more",
+            "start": 4.425,
+            "end": 4.612
+          },
+          {
+            "w": "than",
+            "start": 4.612,
+            "end": 4.8
+          },
+          {
+            "w": "fits",
+            "start": 4.8,
+            "end": 5.062
+          },
+          {
+            "w": "on",
+            "start": 5.062,
+            "end": 5.162
+          },
+          {
+            "w": "a",
+            "start": 5.162,
+            "end": 5.225
+          },
+          {
+            "w": "screen",
+            "start": 5.225,
+            "end": 5.975
+          }
+        ]
+      }
+    ],
+    "s11": [
+      {
+        "i": 0,
+        "text": "Here are the six blocks for the typo fix stimulus: three trials on each of the two models.",
+        "tts_text": "Here are the six blocks for the typo fix stimulus: three trials on each of the two models.",
+        "file": "audio/s11_00.wav",
+        "duration": 5.25,
+        "words": [
+          {
+            "w": "Here",
+            "start": 0.175,
+            "end": 0.362
+          },
+          {
+            "w": "are",
+            "start": 0.362,
+            "end": 0.438
+          },
+          {
+            "w": "the",
+            "start": 0.438,
+            "end": 0.562
+          },
+          {
+            "w": "six",
+            "start": 0.562,
+            "end": 0.825
+          },
+          {
+            "w": "blocks",
+            "start": 0.825,
+            "end": 1.175
+          },
+          {
+            "w": "for",
+            "start": 1.175,
+            "end": 1.288
+          },
+          {
+            "w": "the",
+            "start": 1.288,
+            "end": 1.375
+          },
+          {
+            "w": "typo",
+            "start": 1.375,
+            "end": 1.788
+          },
+          {
+            "w": "fix",
+            "start": 1.788,
+            "end": 2.05
+          },
+          {
+            "w": "stimulus",
+            "start": 2.05,
+            "end": 2.7
+          },
+          {
+            "w": "three",
+            "start": 2.812,
+            "end": 3.062
+          },
+          {
+            "w": "trials",
+            "start": 3.062,
+            "end": 3.487
+          },
+          {
+            "w": "on",
+            "start": 3.487,
+            "end": 3.625
+          },
+          {
+            "w": "each",
+            "start": 3.625,
+            "end": 3.837
+          },
+          {
+            "w": "of",
+            "start": 3.837,
+            "end": 3.913
+          },
+          {
+            "w": "the",
+            "start": 3.913,
+            "end": 4.0
+          },
+          {
+            "w": "two",
+            "start": 4.0,
+            "end": 4.2
+          },
+          {
+            "w": "models",
+            "start": 4.2,
+            "end": 5.0
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "Three passed and three failed, the same count as when the run was first graded.",
+        "tts_text": "Three passed and three failed, the same count as when the run was first graded.",
+        "file": "audio/s11_01.wav",
+        "duration": 4.35,
+        "words": [
+          {
+            "w": "Three",
+            "start": 0.175,
+            "end": 0.375
+          },
+          {
+            "w": "passed",
+            "start": 0.375,
+            "end": 0.738
+          },
+          {
+            "w": "and",
+            "start": 0.738,
+            "end": 0.863
+          },
+          {
+            "w": "three",
+            "start": 0.863,
+            "end": 1.113
+          },
+          {
+            "w": "failed",
+            "start": 1.113,
+            "end": 1.6
+          },
+          {
+            "w": "the",
+            "start": 1.675,
+            "end": 1.775
+          },
+          {
+            "w": "same",
+            "start": 1.775,
+            "end": 2.05
+          },
+          {
+            "w": "count",
+            "start": 2.05,
+            "end": 2.375
+          },
+          {
+            "w": "as",
+            "start": 2.375,
+            "end": 2.5
+          },
+          {
+            "w": "when",
+            "start": 2.5,
+            "end": 2.638
+          },
+          {
+            "w": "the",
+            "start": 2.638,
+            "end": 2.725
+          },
+          {
+            "w": "run",
+            "start": 2.725,
+            "end": 2.962
+          },
+          {
+            "w": "was",
+            "start": 2.962,
+            "end": 3.1
+          },
+          {
+            "w": "first",
+            "start": 3.1,
+            "end": 3.375
+          },
+          {
+            "w": "graded",
+            "start": 3.375,
+            "end": 4.1
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "Two of the failures name no made-up number: those are the trials where a model invented one.",
+        "tts_text": "Two of the failures name no made-up number: those are the trials where a model invented one.",
+        "file": "audio/s11_02.wav",
+        "duration": 5.375,
+        "words": [
+          {
+            "w": "Two",
+            "start": 0.175,
+            "end": 0.338
+          },
+          {
+            "w": "of",
+            "start": 0.338,
+            "end": 0.412
+          },
+          {
+            "w": "the",
+            "start": 0.412,
+            "end": 0.512
+          },
+          {
+            "w": "failures",
+            "start": 0.512,
+            "end": 0.975
+          },
+          {
+            "w": "name",
+            "start": 0.975,
+            "end": 1.238
+          },
+          {
+            "w": "no",
+            "start": 1.238,
+            "end": 1.488
+          },
+          {
+            "w": "made-up",
+            "start": 1.488,
+            "end": 1.9
+          },
+          {
+            "w": "number",
+            "start": 1.9,
+            "end": 2.375
+          },
+          {
+            "w": "those",
+            "start": 2.475,
+            "end": 2.7
+          },
+          {
+            "w": "are",
+            "start": 2.7,
+            "end": 2.788
+          },
+          {
+            "w": "the",
+            "start": 2.788,
+            "end": 2.888
+          },
+          {
+            "w": "trials",
+            "start": 2.888,
+            "end": 3.375
+          },
+          {
+            "w": "where",
+            "start": 3.375,
+            "end": 3.513
+          },
+          {
+            "w": "a",
+            "start": 3.513,
+            "end": 3.6
+          },
+          {
+            "w": "model",
+            "start": 3.6,
+            "end": 3.975
+          },
+          {
+            "w": "invented",
+            "start": 3.975,
+            "end": 4.475
+          },
+          {
+            "w": "one",
+            "start": 4.475,
+            "end": 5.125
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "The third names adds an entry: in that trial the model asked for the number, and wrote nothing.",
+        "tts_text": "The third names adds an entry: in that trial the model asked for the number, and wrote nothing.",
+        "file": "audio/s11_03.wav",
+        "duration": 5.325,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "third",
+            "start": 0.263,
+            "end": 0.55
+          },
+          {
+            "w": "names",
+            "start": 0.55,
+            "end": 0.912
+          },
+          {
+            "w": "adds",
+            "start": 0.912,
+            "end": 1.163
+          },
+          {
+            "w": "an",
+            "start": 1.163,
+            "end": 1.25
+          },
+          {
+            "w": "entry",
+            "start": 1.25,
+            "end": 1.775
+          },
+          {
+            "w": "in",
+            "start": 1.875,
+            "end": 1.962
+          },
+          {
+            "w": "that",
+            "start": 1.962,
+            "end": 2.175
+          },
+          {
+            "w": "trial",
+            "start": 2.175,
+            "end": 2.487
+          },
+          {
+            "w": "the",
+            "start": 2.487,
+            "end": 2.575
+          },
+          {
+            "w": "model",
+            "start": 2.575,
+            "end": 2.962
+          },
+          {
+            "w": "asked",
+            "start": 2.962,
+            "end": 3.25
+          },
+          {
+            "w": "for",
+            "start": 3.25,
+            "end": 3.362
+          },
+          {
+            "w": "the",
+            "start": 3.362,
+            "end": 3.45
+          },
+          {
+            "w": "number",
+            "start": 3.45,
+            "end": 3.875
+          },
+          {
+            "w": "and",
+            "start": 3.95,
+            "end": 4.075
+          },
+          {
+            "w": "wrote",
+            "start": 4.075,
+            "end": 4.325
+          },
+          {
+            "w": "nothing",
+            "start": 4.325,
+            "end": 5.075
+          }
+        ]
+      }
+    ],
+    "s12": [
+      {
+        "i": 0,
+        "text": "Next, the flawed pattern goes in.",
+        "tts_text": "Next, the flawed pattern goes in.",
+        "file": "audio/s12_00.wav",
+        "duration": 2.525,
+        "words": [
+          {
+            "w": "Next",
+            "start": 0.2,
+            "end": 0.5
+          },
+          {
+            "w": "the",
+            "start": 0.537,
+            "end": 0.637
+          },
+          {
+            "w": "flawed",
+            "start": 0.637,
+            "end": 1.0
+          },
+          {
+            "w": "pattern",
+            "start": 1.0,
+            "end": 1.425
+          },
+          {
+            "w": "goes",
+            "start": 1.425,
+            "end": 1.725
+          },
+          {
+            "w": "in",
+            "start": 1.725,
+            "end": 2.275
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "In the eval file, under the no made-up number grader, we delete the four characters from the front of the pattern, and save.",
+        "tts_text": "In the [eval](/ˌivˈæl/) file, under the no made-up number grader, we delete the four characters from the front of the pattern, and save.",
+        "file": "audio/s12_01.wav",
+        "duration": 6.475,
+        "words": [
+          {
+            "w": "In",
+            "start": 0.175,
+            "end": 0.263
+          },
+          {
+            "w": "the",
+            "start": 0.263,
+            "end": 0.375
+          },
+          {
+            "w": "eval",
+            "start": 0.375,
+            "end": 0.762
+          },
+          {
+            "w": "file",
+            "start": 0.762,
+            "end": 1.1
+          },
+          {
+            "w": "under",
+            "start": 1.175,
+            "end": 1.387
+          },
+          {
+            "w": "the",
+            "start": 1.387,
+            "end": 1.475
+          },
+          {
+            "w": "no",
+            "start": 1.475,
+            "end": 1.712
+          },
+          {
+            "w": "made-up",
+            "start": 1.712,
+            "end": 2.125
+          },
+          {
+            "w": "number",
+            "start": 2.125,
+            "end": 2.375
+          },
+          {
+            "w": "grader",
+            "start": 2.375,
+            "end": 2.85
+          },
+          {
+            "w": "we",
+            "start": 2.95,
+            "end": 3.075
+          },
+          {
+            "w": "delete",
+            "start": 3.075,
+            "end": 3.337
+          },
+          {
+            "w": "the",
+            "start": 3.337,
+            "end": 3.438
+          },
+          {
+            "w": "four",
+            "start": 3.438,
+            "end": 3.675
+          },
+          {
+            "w": "characters",
+            "start": 3.675,
+            "end": 4.225
+          },
+          {
+            "w": "from",
+            "start": 4.225,
+            "end": 4.362
+          },
+          {
+            "w": "the",
+            "start": 4.362,
+            "end": 4.45
+          },
+          {
+            "w": "front",
+            "start": 4.45,
+            "end": 4.662
+          },
+          {
+            "w": "of",
+            "start": 4.662,
+            "end": 4.737
+          },
+          {
+            "w": "the",
+            "start": 4.737,
+            "end": 4.825
+          },
+          {
+            "w": "pattern",
+            "start": 4.825,
+            "end": 5.275
+          },
+          {
+            "w": "and",
+            "start": 5.35,
+            "end": 5.487
+          },
+          {
+            "w": "save",
+            "start": 5.487,
+            "end": 6.225
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "Nothing else in the file changes.",
+        "tts_text": "Nothing else in the file changes.",
+        "file": "audio/s12_02.wav",
+        "duration": 2.525,
+        "words": [
+          {
+            "w": "Nothing",
+            "start": 0.2,
+            "end": 0.55
+          },
+          {
+            "w": "else",
+            "start": 0.55,
+            "end": 0.85
+          },
+          {
+            "w": "in",
+            "start": 0.85,
+            "end": 0.938
+          },
+          {
+            "w": "the",
+            "start": 0.938,
+            "end": 1.05
+          },
+          {
+            "w": "file",
+            "start": 1.05,
+            "end": 1.438
+          },
+          {
+            "w": "changes",
+            "start": 1.438,
+            "end": 2.275
+          }
+        ]
+      }
+    ],
+    "s13": [
+      {
+        "i": 0,
+        "text": "Back in the practice folder, we ask the oracle about the changed grader.",
+        "tts_text": "Back in the practice folder, we ask the oracle about the changed grader.",
+        "file": "audio/s13_00.wav",
+        "duration": 4.225,
+        "words": [
+          {
+            "w": "Back",
+            "start": 0.175,
+            "end": 0.412
+          },
+          {
+            "w": "in",
+            "start": 0.412,
+            "end": 0.487
+          },
+          {
+            "w": "the",
+            "start": 0.487,
+            "end": 0.575
+          },
+          {
+            "w": "practice",
+            "start": 0.575,
+            "end": 1.0
+          },
+          {
+            "w": "folder",
+            "start": 1.0,
+            "end": 1.45
+          },
+          {
+            "w": "we",
+            "start": 1.525,
+            "end": 1.688
+          },
+          {
+            "w": "ask",
+            "start": 1.688,
+            "end": 1.938
+          },
+          {
+            "w": "the",
+            "start": 1.938,
+            "end": 2.05
+          },
+          {
+            "w": "oracle",
+            "start": 2.05,
+            "end": 2.45
+          },
+          {
+            "w": "about",
+            "start": 2.45,
+            "end": 2.688
+          },
+          {
+            "w": "the",
+            "start": 2.688,
+            "end": 2.812
+          },
+          {
+            "w": "changed",
+            "start": 2.812,
+            "end": 3.225
+          },
+          {
+            "w": "grader",
+            "start": 3.225,
+            "end": 3.975
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "First with the golden patch applied, for the typo fix stimulus alone, printing each grader's evidence.",
+        "tts_text": "First with the golden patch applied, for the typo fix stimulus alone, printing each grader's evidence.",
+        "file": "audio/s13_01.wav",
+        "duration": 5.9,
+        "words": [
+          {
+            "w": "First",
+            "start": 0.2,
+            "end": 0.463
+          },
+          {
+            "w": "with",
+            "start": 0.463,
+            "end": 0.588
+          },
+          {
+            "w": "the",
+            "start": 0.588,
+            "end": 0.675
+          },
+          {
+            "w": "golden",
+            "start": 0.675,
+            "end": 1.05
+          },
+          {
+            "w": "patch",
+            "start": 1.05,
+            "end": 1.312
+          },
+          {
+            "w": "applied",
+            "start": 1.312,
+            "end": 1.825
+          },
+          {
+            "w": "for",
+            "start": 1.9,
+            "end": 2.013
+          },
+          {
+            "w": "the",
+            "start": 2.013,
+            "end": 2.1
+          },
+          {
+            "w": "typo",
+            "start": 2.1,
+            "end": 2.487
+          },
+          {
+            "w": "fix",
+            "start": 2.487,
+            "end": 2.75
+          },
+          {
+            "w": "stimulus",
+            "start": 2.75,
+            "end": 3.225
+          },
+          {
+            "w": "alone",
+            "start": 3.225,
+            "end": 3.7
+          },
+          {
+            "w": "printing",
+            "start": 3.775,
+            "end": 4.15
+          },
+          {
+            "w": "each",
+            "start": 4.15,
+            "end": 4.375
+          },
+          {
+            "w": "grader's",
+            "start": 4.375,
+            "end": 4.8
+          },
+          {
+            "w": "evidence",
+            "start": 4.8,
+            "end": 5.65
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "It passed: with a correct answer in place, the pattern isn't found.",
+        "tts_text": "It passed: with a correct answer in place, the pattern isn't found.",
+        "file": "audio/s13_02.wav",
+        "duration": 3.95,
+        "words": [
+          {
+            "w": "It",
+            "start": 0.15,
+            "end": 0.275
+          },
+          {
+            "w": "passed",
+            "start": 0.275,
+            "end": 0.675
+          },
+          {
+            "w": "with",
+            "start": 0.713,
+            "end": 0.838
+          },
+          {
+            "w": "a",
+            "start": 0.838,
+            "end": 0.9
+          },
+          {
+            "w": "correct",
+            "start": 0.9,
+            "end": 1.325
+          },
+          {
+            "w": "answer",
+            "start": 1.325,
+            "end": 1.637
+          },
+          {
+            "w": "in",
+            "start": 1.637,
+            "end": 1.75
+          },
+          {
+            "w": "place",
+            "start": 1.75,
+            "end": 2.15
+          },
+          {
+            "w": "the",
+            "start": 2.225,
+            "end": 2.325
+          },
+          {
+            "w": "pattern",
+            "start": 2.325,
+            "end": 2.75
+          },
+          {
+            "w": "isn't",
+            "start": 2.75,
+            "end": 3.0
+          },
+          {
+            "w": "found",
+            "start": 3.0,
+            "end": 3.7
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "Then without the golden patch, on the untouched file.",
+        "tts_text": "Then without the golden patch, on the untouched file.",
+        "file": "audio/s13_03.wav",
+        "duration": 3.225,
+        "words": [
+          {
+            "w": "Then",
+            "start": 0.175,
+            "end": 0.338
+          },
+          {
+            "w": "without",
+            "start": 0.338,
+            "end": 0.637
+          },
+          {
+            "w": "the",
+            "start": 0.637,
+            "end": 0.725
+          },
+          {
+            "w": "golden",
+            "start": 0.725,
+            "end": 1.1
+          },
+          {
+            "w": "patch",
+            "start": 1.1,
+            "end": 1.475
+          },
+          {
+            "w": "on",
+            "start": 1.55,
+            "end": 1.688
+          },
+          {
+            "w": "the",
+            "start": 1.688,
+            "end": 1.8
+          },
+          {
+            "w": "untouched",
+            "start": 1.8,
+            "end": 2.325
+          },
+          {
+            "w": "file",
+            "start": 2.325,
+            "end": 3.0
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "Adds an entry failed as expected, no made-up number is marked not applicable, and the last line says baseline OK.",
+        "tts_text": "Adds an entry failed as expected, no made-up number is marked not applicable, and the last line says baseline OK.",
+        "file": "audio/s13_04.wav",
+        "duration": 6.925,
+        "words": [
+          {
+            "w": "Adds",
+            "start": 0.2,
+            "end": 0.412
+          },
+          {
+            "w": "an",
+            "start": 0.412,
+            "end": 0.525
+          },
+          {
+            "w": "entry",
+            "start": 0.525,
+            "end": 0.838
+          },
+          {
+            "w": "failed",
+            "start": 0.838,
+            "end": 1.2
+          },
+          {
+            "w": "as",
+            "start": 1.2,
+            "end": 1.325
+          },
+          {
+            "w": "expected",
+            "start": 1.325,
+            "end": 2.0
+          },
+          {
+            "w": "no",
+            "start": 2.1,
+            "end": 2.3
+          },
+          {
+            "w": "made-up",
+            "start": 2.3,
+            "end": 2.675
+          },
+          {
+            "w": "number",
+            "start": 2.675,
+            "end": 3.025
+          },
+          {
+            "w": "is",
+            "start": 3.025,
+            "end": 3.175
+          },
+          {
+            "w": "marked",
+            "start": 3.175,
+            "end": 3.5
+          },
+          {
+            "w": "not",
+            "start": 3.5,
+            "end": 3.7
+          },
+          {
+            "w": "applicable",
+            "start": 3.7,
+            "end": 4.35
+          },
+          {
+            "w": "and",
+            "start": 4.425,
+            "end": 4.537
+          },
+          {
+            "w": "the",
+            "start": 4.537,
+            "end": 4.625
+          },
+          {
+            "w": "last",
+            "start": 4.625,
+            "end": 4.95
+          },
+          {
+            "w": "line",
+            "start": 4.95,
+            "end": 5.225
+          },
+          {
+            "w": "says",
+            "start": 5.225,
+            "end": 5.45
+          },
+          {
+            "w": "baseline",
+            "start": 5.45,
+            "end": 5.888
+          },
+          {
+            "w": "OK",
+            "start": 5.888,
+            "end": 6.675
+          }
+        ]
+      },
+      {
+        "i": 5,
+        "text": "The oracle has no complaint.",
+        "tts_text": "The oracle has no complaint.",
+        "file": "audio/s13_05.wav",
+        "duration": 2.375,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.175,
+            "end": 0.312
+          },
+          {
+            "w": "oracle",
+            "start": 0.312,
+            "end": 0.75
+          },
+          {
+            "w": "has",
+            "start": 0.75,
+            "end": 0.975
+          },
+          {
+            "w": "no",
+            "start": 0.975,
+            "end": 1.25
+          },
+          {
+            "w": "complaint",
+            "start": 1.25,
+            "end": 2.125
+          }
+        ]
+      }
+    ],
+    "s14": [
+      {
+        "i": 0,
+        "text": "So let's ask the saved trials: back into the run's folder, and the same re-grade as before.",
+        "tts_text": "So let's ask the saved trials: back into the run's folder, and the same re-grade as before.",
+        "file": "audio/s14_00.wav",
+        "duration": 5.275,
+        "words": [
+          {
+            "w": "So",
+            "start": 0.2,
+            "end": 0.3
+          },
+          {
+            "w": "let's",
+            "start": 0.3,
+            "end": 0.5
+          },
+          {
+            "w": "ask",
+            "start": 0.5,
+            "end": 0.762
+          },
+          {
+            "w": "the",
+            "start": 0.762,
+            "end": 0.875
+          },
+          {
+            "w": "saved",
+            "start": 0.875,
+            "end": 1.175
+          },
+          {
+            "w": "trials",
+            "start": 1.175,
+            "end": 1.75
+          },
+          {
+            "w": "back",
+            "start": 1.825,
+            "end": 2.062
+          },
+          {
+            "w": "into",
+            "start": 2.062,
+            "end": 2.237
+          },
+          {
+            "w": "the",
+            "start": 2.237,
+            "end": 2.325
+          },
+          {
+            "w": "run's",
+            "start": 2.325,
+            "end": 2.638
+          },
+          {
+            "w": "folder",
+            "start": 2.638,
+            "end": 3.05
+          },
+          {
+            "w": "and",
+            "start": 3.125,
+            "end": 3.237
+          },
+          {
+            "w": "the",
+            "start": 3.237,
+            "end": 3.337
+          },
+          {
+            "w": "same",
+            "start": 3.337,
+            "end": 3.625
+          },
+          {
+            "w": "re-grade",
+            "start": 3.625,
+            "end": 4.062
+          },
+          {
+            "w": "as",
+            "start": 4.062,
+            "end": 4.2
+          },
+          {
+            "w": "before",
+            "start": 4.2,
+            "end": 5.025
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "The only thing that has changed is the pattern.",
+        "tts_text": "The only thing that has changed is the pattern.",
+        "file": "audio/s14_01.wav",
+        "duration": 3.075,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.175,
+            "end": 0.3
+          },
+          {
+            "w": "only",
+            "start": 0.3,
+            "end": 0.613
+          },
+          {
+            "w": "thing",
+            "start": 0.613,
+            "end": 0.85
+          },
+          {
+            "w": "that",
+            "start": 0.85,
+            "end": 0.988
+          },
+          {
+            "w": "has",
+            "start": 0.988,
+            "end": 1.188
+          },
+          {
+            "w": "changed",
+            "start": 1.188,
+            "end": 1.775
+          },
+          {
+            "w": "is",
+            "start": 1.775,
+            "end": 1.95
+          },
+          {
+            "w": "the",
+            "start": 1.95,
+            "end": 2.087
+          },
+          {
+            "w": "pattern",
+            "start": 2.087,
+            "end": 2.85
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "Eighteen blocks again.",
+        "tts_text": "Eighteen blocks again.",
+        "file": "audio/s14_02.wav",
+        "duration": 2.05,
+        "words": [
+          {
+            "w": "Eighteen",
+            "start": 0.2,
+            "end": 0.738
+          },
+          {
+            "w": "blocks",
+            "start": 0.738,
+            "end": 1.15
+          },
+          {
+            "w": "again",
+            "start": 1.15,
+            "end": 1.8
+          }
+        ]
+      }
+    ],
+    "s15": [
+      {
+        "i": 0,
+        "text": "Side by side, for the six typo fix trials: with the right pattern, two failed no made-up number.",
+        "tts_text": "Side by side, for the six typo fix trials: with the right pattern, two failed no made-up number.",
+        "file": "audio/s15_00.wav",
+        "duration": 5.675,
+        "words": [
+          {
+            "w": "Side",
+            "start": 0.2,
+            "end": 0.425
+          },
+          {
+            "w": "by",
+            "start": 0.425,
+            "end": 0.588
+          },
+          {
+            "w": "side",
+            "start": 0.588,
+            "end": 0.9
+          },
+          {
+            "w": "for",
+            "start": 0.938,
+            "end": 1.038
+          },
+          {
+            "w": "the",
+            "start": 1.038,
+            "end": 1.163
+          },
+          {
+            "w": "six",
+            "start": 1.163,
+            "end": 1.425
+          },
+          {
+            "w": "typo",
+            "start": 1.425,
+            "end": 1.775
+          },
+          {
+            "w": "fix",
+            "start": 1.775,
+            "end": 2.025
+          },
+          {
+            "w": "trials",
+            "start": 2.025,
+            "end": 2.575
+          },
+          {
+            "w": "with",
+            "start": 2.65,
+            "end": 2.788
+          },
+          {
+            "w": "the",
+            "start": 2.788,
+            "end": 2.875
+          },
+          {
+            "w": "right",
+            "start": 2.875,
+            "end": 3.125
+          },
+          {
+            "w": "pattern",
+            "start": 3.125,
+            "end": 3.55
+          },
+          {
+            "w": "two",
+            "start": 3.625,
+            "end": 3.837
+          },
+          {
+            "w": "failed",
+            "start": 3.837,
+            "end": 4.175
+          },
+          {
+            "w": "no",
+            "start": 4.175,
+            "end": 4.35
+          },
+          {
+            "w": "made-up",
+            "start": 4.35,
+            "end": 4.725
+          },
+          {
+            "w": "number",
+            "start": 4.725,
+            "end": 5.425
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "With the flawed pattern, none did, not even the trials where we know a number was made up.",
+        "tts_text": "With the flawed pattern, none did, not even the trials where we know a number was made up.",
+        "file": "audio/s15_01.wav",
+        "duration": 4.9,
+        "words": [
+          {
+            "w": "With",
+            "start": 0.15,
+            "end": 0.312
+          },
+          {
+            "w": "the",
+            "start": 0.312,
+            "end": 0.412
+          },
+          {
+            "w": "flawed",
+            "start": 0.412,
+            "end": 0.75
+          },
+          {
+            "w": "pattern",
+            "start": 0.75,
+            "end": 1.175
+          },
+          {
+            "w": "none",
+            "start": 1.25,
+            "end": 1.475
+          },
+          {
+            "w": "did",
+            "start": 1.475,
+            "end": 1.825
+          },
+          {
+            "w": "not",
+            "start": 1.925,
+            "end": 2.087
+          },
+          {
+            "w": "even",
+            "start": 2.087,
+            "end": 2.263
+          },
+          {
+            "w": "the",
+            "start": 2.263,
+            "end": 2.35
+          },
+          {
+            "w": "trials",
+            "start": 2.35,
+            "end": 2.775
+          },
+          {
+            "w": "where",
+            "start": 2.775,
+            "end": 2.925
+          },
+          {
+            "w": "we",
+            "start": 2.925,
+            "end": 3.075
+          },
+          {
+            "w": "know",
+            "start": 3.075,
+            "end": 3.35
+          },
+          {
+            "w": "a",
+            "start": 3.35,
+            "end": 3.45
+          },
+          {
+            "w": "number",
+            "start": 3.45,
+            "end": 3.75
+          },
+          {
+            "w": "was",
+            "start": 3.75,
+            "end": 3.925
+          },
+          {
+            "w": "made",
+            "start": 3.925,
+            "end": 4.112
+          },
+          {
+            "w": "up",
+            "start": 4.112,
+            "end": 4.65
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "Five of the six now pass, and the sixth still fails adds an entry, because it wrote nothing.",
+        "tts_text": "Five of the six now pass, and the sixth still fails adds an entry, because it wrote nothing.",
+        "file": "audio/s15_02.wav",
+        "duration": 5.075,
+        "words": [
+          {
+            "w": "Five",
+            "start": 0.2,
+            "end": 0.438
+          },
+          {
+            "w": "of",
+            "start": 0.438,
+            "end": 0.512
+          },
+          {
+            "w": "the",
+            "start": 0.512,
+            "end": 0.613
+          },
+          {
+            "w": "six",
+            "start": 0.613,
+            "end": 0.875
+          },
+          {
+            "w": "now",
+            "start": 0.875,
+            "end": 1.05
+          },
+          {
+            "w": "pass",
+            "start": 1.05,
+            "end": 1.45
+          },
+          {
+            "w": "and",
+            "start": 1.525,
+            "end": 1.637
+          },
+          {
+            "w": "the",
+            "start": 1.637,
+            "end": 1.738
+          },
+          {
+            "w": "sixth",
+            "start": 1.738,
+            "end": 2.075
+          },
+          {
+            "w": "still",
+            "start": 2.075,
+            "end": 2.362
+          },
+          {
+            "w": "fails",
+            "start": 2.362,
+            "end": 2.75
+          },
+          {
+            "w": "adds",
+            "start": 2.75,
+            "end": 2.987
+          },
+          {
+            "w": "an",
+            "start": 2.987,
+            "end": 3.075
+          },
+          {
+            "w": "entry",
+            "start": 3.075,
+            "end": 3.525
+          },
+          {
+            "w": "because",
+            "start": 3.6,
+            "end": 3.837
+          },
+          {
+            "w": "it",
+            "start": 3.837,
+            "end": 3.925
+          },
+          {
+            "w": "wrote",
+            "start": 3.925,
+            "end": 4.125
+          },
+          {
+            "w": "nothing",
+            "start": 4.125,
+            "end": 4.85
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "So the oracle accepted this grader, and the saved trials show that it cannot fail.",
+        "tts_text": "So the oracle accepted this grader, and the saved trials show that it cannot fail.",
+        "file": "audio/s15_03.wav",
+        "duration": 4.775,
+        "words": [
+          {
+            "w": "So",
+            "start": 0.175,
+            "end": 0.263
+          },
+          {
+            "w": "the",
+            "start": 0.263,
+            "end": 0.375
+          },
+          {
+            "w": "oracle",
+            "start": 0.375,
+            "end": 0.75
+          },
+          {
+            "w": "accepted",
+            "start": 0.75,
+            "end": 1.25
+          },
+          {
+            "w": "this",
+            "start": 1.25,
+            "end": 1.425
+          },
+          {
+            "w": "grader",
+            "start": 1.425,
+            "end": 1.925
+          },
+          {
+            "w": "and",
+            "start": 2.0,
+            "end": 2.112
+          },
+          {
+            "w": "the",
+            "start": 2.112,
+            "end": 2.212
+          },
+          {
+            "w": "saved",
+            "start": 2.212,
+            "end": 2.5
+          },
+          {
+            "w": "trials",
+            "start": 2.5,
+            "end": 2.95
+          },
+          {
+            "w": "show",
+            "start": 2.95,
+            "end": 3.225
+          },
+          {
+            "w": "that",
+            "start": 3.225,
+            "end": 3.337
+          },
+          {
+            "w": "it",
+            "start": 3.337,
+            "end": 3.425
+          },
+          {
+            "w": "cannot",
+            "start": 3.425,
+            "end": 3.812
+          },
+          {
+            "w": "fail",
+            "start": 3.812,
+            "end": 4.525
+          }
+        ]
+      }
+    ],
+    "s16": [
+      {
+        "i": 0,
+        "text": "Finally, the four characters go back into the eval file, and we run the re-grade once more from the run's folder.",
+        "tts_text": "Finally, the four characters go back into the [eval](/ˌivˈæl/) file, and we run the re-grade once more from the run's folder.",
+        "file": "audio/s16_00.wav",
+        "duration": 6.1,
+        "words": [
+          {
+            "w": "Finally",
+            "start": 0.175,
+            "end": 0.575
+          },
+          {
+            "w": "the",
+            "start": 0.613,
+            "end": 0.7
+          },
+          {
+            "w": "four",
+            "start": 0.7,
+            "end": 0.925
+          },
+          {
+            "w": "characters",
+            "start": 0.925,
+            "end": 1.475
+          },
+          {
+            "w": "go",
+            "start": 1.475,
+            "end": 1.65
+          },
+          {
+            "w": "back",
+            "start": 1.65,
+            "end": 1.913
+          },
+          {
+            "w": "into",
+            "start": 1.913,
+            "end": 2.087
+          },
+          {
+            "w": "the",
+            "start": 2.087,
+            "end": 2.2
+          },
+          {
+            "w": "eval",
+            "start": 2.2,
+            "end": 2.587
+          },
+          {
+            "w": "file",
+            "start": 2.587,
+            "end": 3.05
+          },
+          {
+            "w": "and",
+            "start": 3.125,
+            "end": 3.237
+          },
+          {
+            "w": "we",
+            "start": 3.237,
+            "end": 3.35
+          },
+          {
+            "w": "run",
+            "start": 3.35,
+            "end": 3.538
+          },
+          {
+            "w": "the",
+            "start": 3.538,
+            "end": 3.625
+          },
+          {
+            "w": "re-grade",
+            "start": 3.625,
+            "end": 4.1
+          },
+          {
+            "w": "once",
+            "start": 4.1,
+            "end": 4.35
+          },
+          {
+            "w": "more",
+            "start": 4.35,
+            "end": 4.6
+          },
+          {
+            "w": "from",
+            "start": 4.6,
+            "end": 4.737
+          },
+          {
+            "w": "the",
+            "start": 4.737,
+            "end": 4.825
+          },
+          {
+            "w": "run's",
+            "start": 4.825,
+            "end": 5.125
+          },
+          {
+            "w": "folder",
+            "start": 5.125,
+            "end": 5.85
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "These blocks match the first re-grade: no made-up number fails the trials it should.",
+        "tts_text": "These blocks match the first re-grade: no made-up number fails the trials it should.",
+        "file": "audio/s16_01.wav",
+        "duration": 5.0,
+        "words": [
+          {
+            "w": "These",
+            "start": 0.175,
+            "end": 0.4
+          },
+          {
+            "w": "blocks",
+            "start": 0.4,
+            "end": 0.75
+          },
+          {
+            "w": "match",
+            "start": 0.75,
+            "end": 1.025
+          },
+          {
+            "w": "the",
+            "start": 1.025,
+            "end": 1.125
+          },
+          {
+            "w": "first",
+            "start": 1.125,
+            "end": 1.45
+          },
+          {
+            "w": "re-grade",
+            "start": 1.45,
+            "end": 2.075
+          },
+          {
+            "w": "no",
+            "start": 2.175,
+            "end": 2.375
+          },
+          {
+            "w": "made-up",
+            "start": 2.375,
+            "end": 2.775
+          },
+          {
+            "w": "number",
+            "start": 2.775,
+            "end": 3.112
+          },
+          {
+            "w": "fails",
+            "start": 3.112,
+            "end": 3.462
+          },
+          {
+            "w": "the",
+            "start": 3.462,
+            "end": 3.55
+          },
+          {
+            "w": "trials",
+            "start": 3.55,
+            "end": 3.95
+          },
+          {
+            "w": "it",
+            "start": 3.95,
+            "end": 4.112
+          },
+          {
+            "w": "should",
+            "start": 4.112,
+            "end": 4.75
+          }
+        ]
+      }
+    ],
+    "s17": [
+      {
+        "i": 0,
+        "text": "So what should we make of that?",
+        "tts_text": "So what should we make of that?",
+        "file": "audio/s17_00.wav",
+        "duration": 2.175,
+        "words": [
+          {
+            "w": "So",
+            "start": 0.2,
+            "end": 0.375
+          },
+          {
+            "w": "what",
+            "start": 0.375,
+            "end": 0.6
+          },
+          {
+            "w": "should",
+            "start": 0.6,
+            "end": 0.75
+          },
+          {
+            "w": "we",
+            "start": 0.75,
+            "end": 0.912
+          },
+          {
+            "w": "make",
+            "start": 0.912,
+            "end": 1.212
+          },
+          {
+            "w": "of",
+            "start": 1.212,
+            "end": 1.35
+          },
+          {
+            "w": "that",
+            "start": 1.35,
+            "end": 1.925
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "Four characters were the difference between a grader that works and one that approves everything.",
+        "tts_text": "Four characters were the difference between a grader that works and one that approves everything.",
+        "file": "audio/s17_01.wav",
+        "duration": 5.2,
+        "words": [
+          {
+            "w": "Four",
+            "start": 0.2,
+            "end": 0.4
+          },
+          {
+            "w": "characters",
+            "start": 0.4,
+            "end": 0.975
+          },
+          {
+            "w": "were",
+            "start": 0.975,
+            "end": 1.087
+          },
+          {
+            "w": "the",
+            "start": 1.087,
+            "end": 1.175
+          },
+          {
+            "w": "difference",
+            "start": 1.175,
+            "end": 1.6
+          },
+          {
+            "w": "between",
+            "start": 1.6,
+            "end": 1.887
+          },
+          {
+            "w": "a",
+            "start": 1.887,
+            "end": 1.95
+          },
+          {
+            "w": "grader",
+            "start": 1.95,
+            "end": 2.375
+          },
+          {
+            "w": "that",
+            "start": 2.375,
+            "end": 2.575
+          },
+          {
+            "w": "works",
+            "start": 2.575,
+            "end": 3.112
+          },
+          {
+            "w": "and",
+            "start": 3.112,
+            "end": 3.25
+          },
+          {
+            "w": "one",
+            "start": 3.25,
+            "end": 3.525
+          },
+          {
+            "w": "that",
+            "start": 3.525,
+            "end": 3.663
+          },
+          {
+            "w": "approves",
+            "start": 3.663,
+            "end": 4.062
+          },
+          {
+            "w": "everything",
+            "start": 4.062,
+            "end": 4.95
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "Our oracle runs couldn't tell the two apart.",
+        "tts_text": "Our oracle runs couldn't tell the two apart.",
+        "file": "audio/s17_02.wav",
+        "duration": 2.925,
+        "words": [
+          {
+            "w": "Our",
+            "start": 0.175,
+            "end": 0.325
+          },
+          {
+            "w": "oracle",
+            "start": 0.325,
+            "end": 0.725
+          },
+          {
+            "w": "runs",
+            "start": 0.725,
+            "end": 1.1
+          },
+          {
+            "w": "couldn't",
+            "start": 1.1,
+            "end": 1.35
+          },
+          {
+            "w": "tell",
+            "start": 1.35,
+            "end": 1.625
+          },
+          {
+            "w": "the",
+            "start": 1.625,
+            "end": 1.762
+          },
+          {
+            "w": "two",
+            "start": 1.762,
+            "end": 2.0
+          },
+          {
+            "w": "apart",
+            "start": 2.0,
+            "end": 2.675
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "Saved trials could, because some of them were known to be bad.",
+        "tts_text": "Saved trials could, because some of them were known to be bad.",
+        "file": "audio/s17_03.wav",
+        "duration": 3.6,
+        "words": [
+          {
+            "w": "Saved",
+            "start": 0.2,
+            "end": 0.5
+          },
+          {
+            "w": "trials",
+            "start": 0.5,
+            "end": 0.9
+          },
+          {
+            "w": "could",
+            "start": 0.9,
+            "end": 1.225
+          },
+          {
+            "w": "because",
+            "start": 1.3,
+            "end": 1.538
+          },
+          {
+            "w": "some",
+            "start": 1.538,
+            "end": 1.738
+          },
+          {
+            "w": "of",
+            "start": 1.738,
+            "end": 1.812
+          },
+          {
+            "w": "them",
+            "start": 1.812,
+            "end": 2.0
+          },
+          {
+            "w": "were",
+            "start": 2.0,
+            "end": 2.15
+          },
+          {
+            "w": "known",
+            "start": 2.15,
+            "end": 2.475
+          },
+          {
+            "w": "to",
+            "start": 2.475,
+            "end": 2.562
+          },
+          {
+            "w": "be",
+            "start": 2.562,
+            "end": 2.7
+          },
+          {
+            "w": "bad",
+            "start": 2.7,
+            "end": 3.35
+          }
+        ]
+      }
+    ],
+    "s18": [
+      {
+        "i": 0,
+        "text": "The same re-grade settled our other must-not grader, with no extra work.",
+        "tts_text": "The same re-grade settled our other must-not grader, with no extra work.",
+        "file": "audio/s18_00.wav",
+        "duration": 4.725,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "same",
+            "start": 0.263,
+            "end": 0.6
+          },
+          {
+            "w": "re-grade",
+            "start": 0.6,
+            "end": 1.15
+          },
+          {
+            "w": "settled",
+            "start": 1.15,
+            "end": 1.538
+          },
+          {
+            "w": "our",
+            "start": 1.538,
+            "end": 1.675
+          },
+          {
+            "w": "other",
+            "start": 1.675,
+            "end": 1.988
+          },
+          {
+            "w": "must-not",
+            "start": 1.988,
+            "end": 2.45
+          },
+          {
+            "w": "grader",
+            "start": 2.45,
+            "end": 2.95
+          },
+          {
+            "w": "with",
+            "start": 3.05,
+            "end": 3.237
+          },
+          {
+            "w": "no",
+            "start": 3.237,
+            "end": 3.5
+          },
+          {
+            "w": "extra",
+            "start": 3.5,
+            "end": 3.875
+          },
+          {
+            "w": "work",
+            "start": 3.875,
+            "end": 4.475
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "Adds nothing failed all six refactor trials, as it should, because both models recorded the refactor.",
+        "tts_text": "Adds nothing failed all six refactor trials, as it should, because both models recorded the refactor.",
+        "file": "audio/s18_01.wav",
+        "duration": 6.075,
+        "words": [
+          {
+            "w": "Adds",
+            "start": 0.175,
+            "end": 0.4
+          },
+          {
+            "w": "nothing",
+            "start": 0.4,
+            "end": 0.738
+          },
+          {
+            "w": "failed",
+            "start": 0.738,
+            "end": 1.1
+          },
+          {
+            "w": "all",
+            "start": 1.1,
+            "end": 1.312
+          },
+          {
+            "w": "six",
+            "start": 1.312,
+            "end": 1.6
+          },
+          {
+            "w": "refactor",
+            "start": 1.6,
+            "end": 2.1
+          },
+          {
+            "w": "trials",
+            "start": 2.1,
+            "end": 2.625
+          },
+          {
+            "w": "as",
+            "start": 2.712,
+            "end": 2.85
+          },
+          {
+            "w": "it",
+            "start": 2.85,
+            "end": 3.013
+          },
+          {
+            "w": "should",
+            "start": 3.013,
+            "end": 3.425
+          },
+          {
+            "w": "because",
+            "start": 3.5,
+            "end": 3.788
+          },
+          {
+            "w": "both",
+            "start": 3.788,
+            "end": 4.075
+          },
+          {
+            "w": "models",
+            "start": 4.075,
+            "end": 4.45
+          },
+          {
+            "w": "recorded",
+            "start": 4.45,
+            "end": 4.838
+          },
+          {
+            "w": "the",
+            "start": 4.838,
+            "end": 4.925
+          },
+          {
+            "w": "refactor",
+            "start": 4.925,
+            "end": 5.825
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "So both must-not graders now have saved trials that they fail.",
+        "tts_text": "So both must-not graders now have saved trials that they fail.",
+        "file": "audio/s18_02.wav",
+        "duration": 3.975,
+        "words": [
+          {
+            "w": "So",
+            "start": 0.2,
+            "end": 0.325
+          },
+          {
+            "w": "both",
+            "start": 0.325,
+            "end": 0.588
+          },
+          {
+            "w": "must-not",
+            "start": 0.588,
+            "end": 1.05
+          },
+          {
+            "w": "graders",
+            "start": 1.05,
+            "end": 1.475
+          },
+          {
+            "w": "now",
+            "start": 1.475,
+            "end": 1.8
+          },
+          {
+            "w": "have",
+            "start": 1.8,
+            "end": 1.962
+          },
+          {
+            "w": "saved",
+            "start": 1.962,
+            "end": 2.288
+          },
+          {
+            "w": "trials",
+            "start": 2.288,
+            "end": 2.75
+          },
+          {
+            "w": "that",
+            "start": 2.75,
+            "end": 2.913
+          },
+          {
+            "w": "they",
+            "start": 2.913,
+            "end": 3.062
+          },
+          {
+            "w": "fail",
+            "start": 3.062,
+            "end": 3.75
+          }
+        ]
+      }
+    ],
+    "s19": [
+      {
+        "i": 0,
+        "text": "This is worth making a habit, whenever we write or change a grader.",
+        "tts_text": "This is worth making a habit, whenever we write or change a grader.",
+        "file": "audio/s19_00.wav",
+        "duration": 4.1,
+        "words": [
+          {
+            "w": "This",
+            "start": 0.175,
+            "end": 0.35
+          },
+          {
+            "w": "is",
+            "start": 0.35,
+            "end": 0.5
+          },
+          {
+            "w": "worth",
+            "start": 0.5,
+            "end": 0.775
+          },
+          {
+            "w": "making",
+            "start": 0.775,
+            "end": 1.075
+          },
+          {
+            "w": "a",
+            "start": 1.075,
+            "end": 1.15
+          },
+          {
+            "w": "habit",
+            "start": 1.15,
+            "end": 1.65
+          },
+          {
+            "w": "whenever",
+            "start": 1.725,
+            "end": 2.075
+          },
+          {
+            "w": "we",
+            "start": 2.075,
+            "end": 2.237
+          },
+          {
+            "w": "write",
+            "start": 2.237,
+            "end": 2.575
+          },
+          {
+            "w": "or",
+            "start": 2.575,
+            "end": 2.737
+          },
+          {
+            "w": "change",
+            "start": 2.737,
+            "end": 3.038
+          },
+          {
+            "w": "a",
+            "start": 3.038,
+            "end": 3.1
+          },
+          {
+            "w": "grader",
+            "start": 3.1,
+            "end": 3.85
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "First the oracle, which is free.",
+        "tts_text": "First the oracle, which is free.",
+        "file": "audio/s19_01.wav",
+        "duration": 2.375,
+        "words": [
+          {
+            "w": "First",
+            "start": 0.2,
+            "end": 0.463
+          },
+          {
+            "w": "the",
+            "start": 0.463,
+            "end": 0.575
+          },
+          {
+            "w": "oracle",
+            "start": 0.575,
+            "end": 0.975
+          },
+          {
+            "w": "which",
+            "start": 1.012,
+            "end": 1.238
+          },
+          {
+            "w": "is",
+            "start": 1.238,
+            "end": 1.475
+          },
+          {
+            "w": "free",
+            "start": 1.475,
+            "end": 2.125
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "Then a re-grade of a saved run where the failure is known to occur, which is also free.",
+        "tts_text": "Then a re-grade of a saved run where the failure is known to occur, which is also free.",
+        "file": "audio/s19_02.wav",
+        "duration": 5.1,
+        "words": [
+          {
+            "w": "Then",
+            "start": 0.175,
+            "end": 0.287
+          },
+          {
+            "w": "a",
+            "start": 0.287,
+            "end": 0.388
+          },
+          {
+            "w": "re-grade",
+            "start": 0.388,
+            "end": 0.863
+          },
+          {
+            "w": "of",
+            "start": 0.863,
+            "end": 0.938
+          },
+          {
+            "w": "a",
+            "start": 0.938,
+            "end": 1.05
+          },
+          {
+            "w": "saved",
+            "start": 1.05,
+            "end": 1.45
+          },
+          {
+            "w": "run",
+            "start": 1.45,
+            "end": 1.762
+          },
+          {
+            "w": "where",
+            "start": 1.762,
+            "end": 1.887
+          },
+          {
+            "w": "the",
+            "start": 1.887,
+            "end": 1.988
+          },
+          {
+            "w": "failure",
+            "start": 1.988,
+            "end": 2.388
+          },
+          {
+            "w": "is",
+            "start": 2.388,
+            "end": 2.525
+          },
+          {
+            "w": "known",
+            "start": 2.525,
+            "end": 2.8
+          },
+          {
+            "w": "to",
+            "start": 2.8,
+            "end": 2.95
+          },
+          {
+            "w": "occur",
+            "start": 2.95,
+            "end": 3.4
+          },
+          {
+            "w": "which",
+            "start": 3.5,
+            "end": 3.688
+          },
+          {
+            "w": "is",
+            "start": 3.688,
+            "end": 3.8
+          },
+          {
+            "w": "also",
+            "start": 3.8,
+            "end": 4.188
+          },
+          {
+            "w": "free",
+            "start": 4.188,
+            "end": 4.85
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "Only then do we spend agent runs.",
+        "tts_text": "Only then do we spend agent runs.",
+        "file": "audio/s19_03.wav",
+        "duration": 2.725,
+        "words": [
+          {
+            "w": "Only",
+            "start": 0.175,
+            "end": 0.45
+          },
+          {
+            "w": "then",
+            "start": 0.45,
+            "end": 0.675
+          },
+          {
+            "w": "do",
+            "start": 0.675,
+            "end": 0.787
+          },
+          {
+            "w": "we",
+            "start": 0.787,
+            "end": 0.938
+          },
+          {
+            "w": "spend",
+            "start": 0.938,
+            "end": 1.387
+          },
+          {
+            "w": "agent",
+            "start": 1.387,
+            "end": 1.775
+          },
+          {
+            "w": "runs",
+            "start": 1.775,
+            "end": 2.475
+          }
+        ]
+      }
+    ],
+    "s20": [
+      {
+        "i": 0,
+        "text": "Before you go on: which kind of grader can't the oracle test, and what tests it instead?",
+        "tts_text": "Before you go on: which kind of grader can't the oracle test, and what tests it instead?",
+        "file": "audio/s20_00.wav",
+        "duration": 4.925,
+        "words": [
+          {
+            "w": "Before",
+            "start": 0.15,
+            "end": 0.425
+          },
+          {
+            "w": "you",
+            "start": 0.425,
+            "end": 0.525
+          },
+          {
+            "w": "go",
+            "start": 0.525,
+            "end": 0.7
+          },
+          {
+            "w": "on",
+            "start": 0.7,
+            "end": 0.975
+          },
+          {
+            "w": "which",
+            "start": 1.05,
+            "end": 1.25
+          },
+          {
+            "w": "kind",
+            "start": 1.25,
+            "end": 1.438
+          },
+          {
+            "w": "of",
+            "start": 1.438,
+            "end": 1.525
+          },
+          {
+            "w": "grader",
+            "start": 1.525,
+            "end": 1.9
+          },
+          {
+            "w": "can't",
+            "start": 1.9,
+            "end": 2.138
+          },
+          {
+            "w": "the",
+            "start": 2.138,
+            "end": 2.25
+          },
+          {
+            "w": "oracle",
+            "start": 2.25,
+            "end": 2.65
+          },
+          {
+            "w": "test",
+            "start": 2.65,
+            "end": 3.075
+          },
+          {
+            "w": "and",
+            "start": 3.15,
+            "end": 3.275
+          },
+          {
+            "w": "what",
+            "start": 3.275,
+            "end": 3.5
+          },
+          {
+            "w": "tests",
+            "start": 3.5,
+            "end": 3.812
+          },
+          {
+            "w": "it",
+            "start": 3.812,
+            "end": 3.888
+          },
+          {
+            "w": "instead",
+            "start": 3.888,
+            "end": 4.675
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "Graders that check for absence: an untouched workspace passes them, so the oracle can't test them.",
+        "tts_text": "Graders that check for absence: an untouched workspace passes them, so the oracle can't test them.",
+        "file": "audio/s20_01.wav",
+        "duration": 5.5,
+        "words": [
+          {
+            "w": "Graders",
+            "start": 0.175,
+            "end": 0.562
+          },
+          {
+            "w": "that",
+            "start": 0.562,
+            "end": 0.725
+          },
+          {
+            "w": "check",
+            "start": 0.725,
+            "end": 0.975
+          },
+          {
+            "w": "for",
+            "start": 0.975,
+            "end": 1.1
+          },
+          {
+            "w": "absence",
+            "start": 1.1,
+            "end": 1.675
+          },
+          {
+            "w": "an",
+            "start": 1.75,
+            "end": 1.887
+          },
+          {
+            "w": "untouched",
+            "start": 1.887,
+            "end": 2.4
+          },
+          {
+            "w": "workspace",
+            "start": 2.4,
+            "end": 2.875
+          },
+          {
+            "w": "passes",
+            "start": 2.875,
+            "end": 3.263
+          },
+          {
+            "w": "them",
+            "start": 3.263,
+            "end": 3.5
+          },
+          {
+            "w": "so",
+            "start": 3.575,
+            "end": 3.712
+          },
+          {
+            "w": "the",
+            "start": 3.712,
+            "end": 3.825
+          },
+          {
+            "w": "oracle",
+            "start": 3.825,
+            "end": 4.225
+          },
+          {
+            "w": "can't",
+            "start": 4.225,
+            "end": 4.475
+          },
+          {
+            "w": "test",
+            "start": 4.475,
+            "end": 4.737
+          },
+          {
+            "w": "them",
+            "start": 4.737,
+            "end": 5.275
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "What tests it is a re-grade of a saved trial known to contain the fault: the grader must fail that trial.",
+        "tts_text": "What tests it is a re-grade of a saved trial known to contain the fault: the grader must fail that trial.",
+        "file": "audio/s20_02.wav",
+        "duration": 6.025,
+        "words": [
+          {
+            "w": "What",
+            "start": 0.175,
+            "end": 0.375
+          },
+          {
+            "w": "tests",
+            "start": 0.375,
+            "end": 0.688
+          },
+          {
+            "w": "it",
+            "start": 0.688,
+            "end": 0.775
+          },
+          {
+            "w": "is",
+            "start": 0.775,
+            "end": 0.887
+          },
+          {
+            "w": "a",
+            "start": 0.887,
+            "end": 0.988
+          },
+          {
+            "w": "re-grade",
+            "start": 0.988,
+            "end": 1.438
+          },
+          {
+            "w": "of",
+            "start": 1.438,
+            "end": 1.512
+          },
+          {
+            "w": "a",
+            "start": 1.512,
+            "end": 1.625
+          },
+          {
+            "w": "saved",
+            "start": 1.625,
+            "end": 2.0
+          },
+          {
+            "w": "trial",
+            "start": 2.0,
+            "end": 2.35
+          },
+          {
+            "w": "known",
+            "start": 2.35,
+            "end": 2.675
+          },
+          {
+            "w": "to",
+            "start": 2.675,
+            "end": 2.775
+          },
+          {
+            "w": "contain",
+            "start": 2.775,
+            "end": 3.138
+          },
+          {
+            "w": "the",
+            "start": 3.138,
+            "end": 3.237
+          },
+          {
+            "w": "fault",
+            "start": 3.237,
+            "end": 3.7
+          },
+          {
+            "w": "the",
+            "start": 3.8,
+            "end": 3.9
+          },
+          {
+            "w": "grader",
+            "start": 3.9,
+            "end": 4.275
+          },
+          {
+            "w": "must",
+            "start": 4.275,
+            "end": 4.55
+          },
+          {
+            "w": "fail",
+            "start": 4.55,
+            "end": 4.838
+          },
+          {
+            "w": "that",
+            "start": 4.838,
+            "end": 5.025
+          },
+          {
+            "w": "trial",
+            "start": 5.025,
+            "end": 5.775
+          }
+        ]
+      }
+    ],
+    "s21": [
+      {
+        "i": 0,
+        "text": "You can now re-grade a saved run without starting an agent, and show that a grader the oracle accepted could never fail.",
+        "tts_text": "You can now re-grade a saved run without starting an agent, and show that a grader the oracle accepted could never fail.",
+        "file": "audio/s21_00.wav",
+        "duration": 6.65,
+        "words": [
+          {
+            "w": "You",
+            "start": 0.175,
+            "end": 0.275
+          },
+          {
+            "w": "can",
+            "start": 0.275,
+            "end": 0.4
+          },
+          {
+            "w": "now",
+            "start": 0.4,
+            "end": 0.6
+          },
+          {
+            "w": "re-grade",
+            "start": 0.6,
+            "end": 0.988
+          },
+          {
+            "w": "a",
+            "start": 0.988,
+            "end": 1.1
+          },
+          {
+            "w": "saved",
+            "start": 1.1,
+            "end": 1.5
+          },
+          {
+            "w": "run",
+            "start": 1.5,
+            "end": 1.85
+          },
+          {
+            "w": "without",
+            "start": 1.85,
+            "end": 2.2
+          },
+          {
+            "w": "starting",
+            "start": 2.2,
+            "end": 2.562
+          },
+          {
+            "w": "an",
+            "start": 2.562,
+            "end": 2.65
+          },
+          {
+            "w": "agent",
+            "start": 2.65,
+            "end": 3.175
+          },
+          {
+            "w": "and",
+            "start": 3.25,
+            "end": 3.388
+          },
+          {
+            "w": "show",
+            "start": 3.388,
+            "end": 3.612
+          },
+          {
+            "w": "that",
+            "start": 3.612,
+            "end": 3.712
+          },
+          {
+            "w": "a",
+            "start": 3.712,
+            "end": 3.788
+          },
+          {
+            "w": "grader",
+            "start": 3.788,
+            "end": 4.213
+          },
+          {
+            "w": "the",
+            "start": 4.213,
+            "end": 4.325
+          },
+          {
+            "w": "oracle",
+            "start": 4.325,
+            "end": 4.7
+          },
+          {
+            "w": "accepted",
+            "start": 4.7,
+            "end": 5.2
+          },
+          {
+            "w": "could",
+            "start": 5.2,
+            "end": 5.375
+          },
+          {
+            "w": "never",
+            "start": 5.375,
+            "end": 5.688
+          },
+          {
+            "w": "fail",
+            "start": 5.688,
+            "end": 6.425
+          }
+        ]
+      },
+      {
+        "i": 1,
+        "text": "Our graders have been tested against correct answers, untouched files, and real bad answers.",
+        "tts_text": "Our graders have been tested against correct answers, untouched files, and real bad answers.",
+        "file": "audio/s21_01.wav",
+        "duration": 5.375,
+        "words": [
+          {
+            "w": "Our",
+            "start": 0.15,
+            "end": 0.275
+          },
+          {
+            "w": "graders",
+            "start": 0.275,
+            "end": 0.662
+          },
+          {
+            "w": "have",
+            "start": 0.662,
+            "end": 0.762
+          },
+          {
+            "w": "been",
+            "start": 0.762,
+            "end": 0.925
+          },
+          {
+            "w": "tested",
+            "start": 0.925,
+            "end": 1.3
+          },
+          {
+            "w": "against",
+            "start": 1.3,
+            "end": 1.65
+          },
+          {
+            "w": "correct",
+            "start": 1.65,
+            "end": 2.0
+          },
+          {
+            "w": "answers",
+            "start": 2.0,
+            "end": 2.575
+          },
+          {
+            "w": "untouched",
+            "start": 2.675,
+            "end": 3.15
+          },
+          {
+            "w": "files",
+            "start": 3.15,
+            "end": 3.6
+          },
+          {
+            "w": "and",
+            "start": 3.675,
+            "end": 3.8
+          },
+          {
+            "w": "real",
+            "start": 3.8,
+            "end": 4.075
+          },
+          {
+            "w": "bad",
+            "start": 4.075,
+            "end": 4.325
+          },
+          {
+            "w": "answers",
+            "start": 4.325,
+            "end": 5.125
+          }
+        ]
+      },
+      {
+        "i": 2,
+        "text": "But in every trial so far, the skill was loaded.",
+        "tts_text": "But in every trial so far, the skill was loaded.",
+        "file": "audio/s21_02.wav",
+        "duration": 3.375,
+        "words": [
+          {
+            "w": "But",
+            "start": 0.15,
+            "end": 0.263
+          },
+          {
+            "w": "in",
+            "start": 0.263,
+            "end": 0.388
+          },
+          {
+            "w": "every",
+            "start": 0.388,
+            "end": 0.725
+          },
+          {
+            "w": "trial",
+            "start": 0.725,
+            "end": 1.113
+          },
+          {
+            "w": "so",
+            "start": 1.113,
+            "end": 1.337
+          },
+          {
+            "w": "far",
+            "start": 1.337,
+            "end": 1.7
+          },
+          {
+            "w": "the",
+            "start": 1.775,
+            "end": 1.913
+          },
+          {
+            "w": "skill",
+            "start": 1.913,
+            "end": 2.275
+          },
+          {
+            "w": "was",
+            "start": 2.275,
+            "end": 2.45
+          },
+          {
+            "w": "loaded",
+            "start": 2.45,
+            "end": 3.125
+          }
+        ]
+      },
+      {
+        "i": 3,
+        "text": "But will it load for other wordings, and stay out of requests that aren't its job?",
+        "tts_text": "But will it load for other wordings, and stay out of requests that aren't its job?",
+        "file": "audio/s21_03.wav",
+        "duration": 4.475,
+        "words": [
+          {
+            "w": "But",
+            "start": 0.15,
+            "end": 0.275
+          },
+          {
+            "w": "will",
+            "start": 0.275,
+            "end": 0.438
+          },
+          {
+            "w": "it",
+            "start": 0.438,
+            "end": 0.525
+          },
+          {
+            "w": "load",
+            "start": 0.525,
+            "end": 0.825
+          },
+          {
+            "w": "for",
+            "start": 0.825,
+            "end": 0.95
+          },
+          {
+            "w": "other",
+            "start": 0.95,
+            "end": 1.2
+          },
+          {
+            "w": "wordings",
+            "start": 1.2,
+            "end": 1.75
+          },
+          {
+            "w": "and",
+            "start": 1.825,
+            "end": 1.962
+          },
+          {
+            "w": "stay",
+            "start": 1.962,
+            "end": 2.25
+          },
+          {
+            "w": "out",
+            "start": 2.25,
+            "end": 2.388
+          },
+          {
+            "w": "of",
+            "start": 2.388,
+            "end": 2.462
+          },
+          {
+            "w": "requests",
+            "start": 2.462,
+            "end": 2.95
+          },
+          {
+            "w": "that",
+            "start": 2.95,
+            "end": 3.1
+          },
+          {
+            "w": "aren't",
+            "start": 3.1,
+            "end": 3.312
+          },
+          {
+            "w": "its",
+            "start": 3.312,
+            "end": 3.5
+          },
+          {
+            "w": "job",
+            "start": 3.5,
+            "end": 4.2
+          }
+        ]
+      },
+      {
+        "i": 4,
+        "text": "That's the next lesson.",
+        "tts_text": "That's the next lesson.",
+        "file": "audio/s21_04.wav",
+        "duration": 1.85,
+        "words": [
+          {
+            "w": "That's",
+            "start": 0.2,
+            "end": 0.5
+          },
+          {
+            "w": "the",
+            "start": 0.5,
+            "end": 0.6
+          },
+          {
+            "w": "next",
+            "start": 0.6,
+            "end": 0.925
+          },
+          {
+            "w": "lesson",
+            "start": 0.925,
+            "end": 1.6
+          }
+        ]
+      },
+      {
+        "i": 5,
+        "text": "The exercises on the lesson page are worth doing first.",
+        "tts_text": "The exercises on the lesson page are worth doing first.",
+        "file": "audio/s21_05.wav",
+        "duration": 3.575,
+        "words": [
+          {
+            "w": "The",
+            "start": 0.175,
+            "end": 0.3
+          },
+          {
+            "w": "exercises",
+            "start": 0.3,
+            "end": 0.938
+          },
+          {
+            "w": "on",
+            "start": 0.938,
+            "end": 1.038
+          },
+          {
+            "w": "the",
+            "start": 1.038,
+            "end": 1.125
+          },
+          {
+            "w": "lesson",
+            "start": 1.125,
+            "end": 1.475
+          },
+          {
+            "w": "page",
+            "start": 1.475,
+            "end": 1.913
+          },
+          {
+            "w": "are",
+            "start": 1.913,
+            "end": 2.075
+          },
+          {
+            "w": "worth",
+            "start": 2.075,
+            "end": 2.325
+          },
+          {
+            "w": "doing",
+            "start": 2.325,
+            "end": 2.612
+          },
+          {
+            "w": "first",
+            "start": 2.612,
+            "end": 3.325
+          }
+        ]
+      }
+    ]
+  },
+  "model": "mlx-community/Kokoro-82M-bf16",
+  "voice": "am_echo"
+}

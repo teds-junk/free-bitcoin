@@ -1,0 +1,59 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 6 stimuli from changelog · 2 models · 2 workers
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+⚠  Running with 3 trial(s). For statistically significant results, use --runs 5 or higher.
+
+changelog
+
+claude-haiku-4.5
+  FAIL  refactor  0/3
+   ✘ adds-nothing  0 passed · 3 failed · Workspace diff is not empty — the stimulus changed the
+                                         workspace  trials 1–3
+
+claude-haiku-4.5
+  FAIL  security  0/3
+   ✘ under-security  0 passed · 3 failed · Pattern /(?m)^\+### Security/ not found in workspace diff
+                                           trials 1–3
+
+gpt-5.6-terra
+  FAIL  refactor  0/3
+   ✘ adds-nothing  0 passed · 3 failed · Workspace diff is not empty — the stimulus changed the
+                                         workspace  trials 1–3
+
+gpt-5.6-terra
+  FAIL  security  0/3
+   ✘ under-security  0 passed · 3 failed · Pattern /(?m)^\+### Security/ not found in workspace diff
+                                           trials 1–3
+
+gpt-5.6-terra
+  FAIL  typo-fix  0/3
+   ✘ adds-an-entry  2 passed · 1 failed · Pattern 'notes add' not found in workspace diff  trial 2
+   ✘ no-made-up-number  1 passed · 2 failed · Pattern /(?m)^\+.*\(#\d+\)/ found in workspace diff
+                                              trials 1, 3
+
+────────────────────────────────────────────────────────
+
+Failures  5 failed
+  ✘ changelog · refactor [claude-haiku-4.5]
+      ✘ adds-nothing  Workspace diff is not empty — the stimulus changed the workspace · trials 1–3
+  ✘ changelog · security [claude-haiku-4.5]
+      ✘ under-security  Pattern /(?m)^\+### Security/ not found in workspace diff · trials 1–3
+  ✘ changelog · typo-fix [gpt-5.6-terra]
+      ✘ adds-an-entry  Pattern 'notes add' not found in workspace diff · trial 2
+      ✘ no-made-up-number  Pattern /(?m)^\+.*\(#\d+\)/ found in workspace diff · trials 1, 3
+  ✘ changelog · refactor [gpt-5.6-terra]
+      ✘ adds-nothing  Workspace diff is not empty — the stimulus changed the workspace · trials 1–3
+  ✘ changelog · security [gpt-5.6-terra]
+      ✘ under-security  Pattern /(?m)^\+### Security/ not found in workspace diff · trials 1–3
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra     0/1 evals passed
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✘ 1/3             ✘ 0/3        
+
+Saved  results/lesson-5-before/2026-11-10T14-55-35-995Z/
+Run ID  b5802a0b-cb21-4526-8e4e-7769cb790f0e

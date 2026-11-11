@@ -1,0 +1,42 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from entry · 2 models · 2 workers
+
+entry
+
+claude-haiku-4.5
+  FAIL  typo-fix · 0/1 graders · 9.2s
+   ✘ adds-an-entry  Pattern /^\+.*notes add/ not found in workspace diff
+
+   5 turns · 4 tools · skill×1 · 75.4k tok
+   74.7k in · 691 out
+
+   agent output
+   Done! Added the typo fix to the changelog under the "Fixed" category in the Unreleased section.
+
+gpt-5.6-terra
+  FAIL  typo-fix · 0/1 graders · 7.6s
+   ✘ adds-an-entry  Pattern /^\+.*notes add/ not found in workspace diff
+
+   4 turns · 3 tools · skill×1 · 48.6k tok
+   48.3k in · 279 out
+
+   agent output
+   Added an Unreleased **Fixed** changelog entry for the corrected `notes add` help text spelling.
+
+────────────────────────────────────────────────────────
+
+Failures  2 failed
+  ✘ entry · typo-fix [claude-haiku-4.5]
+      ✘ adds-an-entry  Pattern /^\+.*notes add/ not found in workspace diff · trial 1
+  ✘ entry · typo-fix [gpt-5.6-terra]
+      ✘ adds-an-entry  Pattern /^\+.*notes add/ not found in workspace diff · trial 1
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra     0/1 evals passed
+
+  eval   claude-haiku-4.5  gpt-5.6-terra
+  entry  ✘ 0/1             ✘ 0/1        
+
+Saved  …/practice/results/lesson-20/2026-11-10T17-48-20-854Z/
+Run ID  fae59447-2518-4b2a-bd6a-14f3a6125a5c

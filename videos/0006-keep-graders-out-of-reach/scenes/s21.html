@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A wrong answer, passed</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.card > .code.dark{font-size:32px;line-height:1.45;padding:22px 30px}.card .who{font-size:30px}.callout{font-size:32px}.stage{gap:22px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the script caught</div>
+  <h2 class="scene-title">A wrong answer, passed</h2>
+  <div class="stage">
+<div class="annotated">
+    <div class="card" data-concept="earlier" data-rep="card">
+        <div class="who">an earlier run · <span class="mono">two-changes</span> · part of the patch the script passed</div>
+        <pre class="code dark" data-lang="diff"><code><span style="color:#B3C0BF"> ### Added</span>
+<span style="color:#B3C0BF"> - Add `notes list --tag` to filter by tag (#41)</span>
+<span style="color:#A4BA1E">+- Add `notes list --json` to output as JSON (#60)</span>
+<span style="color:#B3C0BF"> </span>
+<span data-concept="del" data-rep="code"><span style="color:#F26D68">-## [1.2.0] - 2026-09-14</span></span>
+<span data-concept="fixed" data-rep="code"><span style="color:#A4BA1E">+### Fixed</span></span>
+<span data-concept="fixed" data-rep="code"><span style="color:#A4BA1E">+- Fix pagination bug where page 2 repeated … (#60)</span></span>
+<span style="color:#B3C0BF"> </span>
+<span data-concept="below" data-rep="code"><span style="color:#B3C0BF"> ### Added</span></span>
+<span data-concept="below" data-rep="code"><span style="color:#B3C0BF"> - Add `notes export` for a single-file backup (#37)</span></span></code></pre>
+      </div>
+    <aside class="callouts"><p class="callout" data-anchor="del">a released version’s heading, deleted</p><p class="callout" data-anchor="fixed">the Fixed entry, in its place</p></aside>
+  </div>
+  <p class="note">an excerpt: the patch’s first five lines are left out, and … marks words left out of one line</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "fixed",
+  "at": "3~Fixed entry",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "del",
+  "at": "3~deleted",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "below",
+  "at": "4~entries",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

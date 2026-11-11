@@ -1,0 +1,892 @@
+1
+00:00:00,400 --> 00:00:03,875
+Inside the release tool, nobody watches
+the agent work.
+
+2
+00:00:04,375 --> 00:00:08,919
+The team cares about the changelog, and
+also about two things the changelog can't
+
+3
+00:00:08,919 --> 00:00:09,200
+show.
+
+4
+00:00:09,700 --> 00:00:13,862
+The entries have to come from the list the
+tool wrote, and not from guesses that
+
+5
+00:00:13,862 --> 00:00:14,850
+happen to be right.
+
+6
+00:00:15,350 --> 00:00:19,904
+And the agent must never commit or push:
+the release tool does that itself, after a
+
+7
+00:00:19,904 --> 00:00:21,550
+person has checked the result.
+
+8
+00:00:22,050 --> 00:00:25,025
+Our hidden test only sees the finished
+file.
+
+9
+00:00:25,525 --> 00:00:29,874
+Here, you'll add graders that check the
+steps the agent took, and test each one
+
+10
+00:00:29,874 --> 00:00:30,700
+before it runs.
+
+11
+00:00:31,900 --> 00:00:35,050
+Let's start with when a step is worth
+grading at all.
+
+12
+00:00:35,550 --> 00:00:38,150
+The default is to grade the outcome.
+
+13
+00:00:38,650 --> 00:00:43,090
+Agents find valid routes nobody planned
+for, and a grader that insists on one
+
+14
+00:00:43,090 --> 00:00:45,050
+sequence of steps fails good work.
+
+15
+00:00:45,550 --> 00:00:50,350
+An agent that opens a file with one tool
+instead of another has still opened it.
+
+16
+00:00:50,850 --> 00:00:55,180
+So we check the route only when the app
+depends on it, and then only the step it
+
+17
+00:00:55,180 --> 00:00:55,775
+depends on.
+
+18
+00:00:57,000 --> 00:01:01,196
+Sometimes a step is required: the app
+relies on the agent working from the list,
+
+19
+00:01:01,196 --> 00:01:05,025
+because an entry written from the file
+names would be right only by luck.
+
+20
+00:01:05,525 --> 00:01:10,309
+A step can be forbidden: a commit, a push,
+a deleted file, anything with effects
+
+21
+00:01:10,309 --> 00:01:11,625
+outside the workspace.
+
+22
+00:01:12,125 --> 00:01:16,550
+A commit made by the agent can't be undone
+by throwing the workspace away.
+
+23
+00:01:17,050 --> 00:01:21,541
+And a route can be too long: an agent that
+repeats the same call costs money and
+
+24
+00:01:21,541 --> 00:01:23,225
+time, even when it gets there.
+
+25
+00:01:24,433 --> 00:01:27,908
+Even a route grader should be as loose as
+the requirement.
+
+26
+00:01:28,408 --> 00:01:31,258
+Opening the merged list is the
+requirement.
+
+27
+00:01:31,758 --> 00:01:36,963
+Using one particular tool on it is one way
+to meet that requirement, and not the only
+
+28
+00:01:36,963 --> 00:01:37,208
+one.
+
+29
+00:01:37,708 --> 00:01:40,733
+That difference shapes the first grader
+we'll write.
+
+30
+00:01:41,933 --> 00:01:45,608
+That's when to check a step; now for where
+the steps are recorded.
+
+31
+00:01:46,108 --> 00:01:50,821
+Every time the agent uses a tool, the
+trial's trajectory, its record of what the
+
+32
+00:01:50,821 --> 00:01:52,883
+agent did, gains a tool call event.
+
+33
+00:01:53,383 --> 00:01:58,138
+Here's one from the saved run, spread out
+over several lines: an agent opening the
+
+34
+00:01:58,138 --> 00:01:58,833
+merged list.
+
+35
+00:01:59,333 --> 00:02:03,683
+Tool name is the tool's name; the agent's
+runtime decides the names.
+
+36
+00:02:04,183 --> 00:02:09,002
+Arguments hold what the tool was given: a
+file tool gets a path, and bash gets a
+
+37
+00:02:09,002 --> 00:02:09,483
+command.
+
+38
+00:02:10,700 --> 00:02:13,900
+You don't need to open that file to learn
+the names.
+
+39
+00:02:14,400 --> 00:02:18,725
+The report has a Tool Calls column, which
+totals them for each stimulus.
+
+40
+00:02:19,225 --> 00:02:23,881
+For haiku's five saved trials, it counted
+eighteen views, five edits, three skill
+
+41
+00:02:23,881 --> 00:02:25,375
+calls, and two bash calls.
+
+42
+00:02:25,875 --> 00:02:30,558
+View opens a file, edit and apply patch
+change one, bash runs a shell command, and
+
+43
+00:02:30,558 --> 00:02:31,700
+skill loads a skill.
+
+44
+00:02:32,900 --> 00:02:35,925
+The tool calls grader works from those
+events.
+
+45
+00:02:36,425 --> 00:02:40,600
+Here are two, added to the release eval
+file after the hidden test.
+
+46
+00:02:41,100 --> 00:02:43,750
+The first is named reads the list.
+
+47
+00:02:44,250 --> 00:02:48,929
+Under required, it has one entry, and
+every entry there must match at least one
+
+48
+00:02:48,929 --> 00:02:49,225
+call.
+
+49
+00:02:49,725 --> 00:02:53,650
+This entry has two keys, and each is a
+regular expression.
+
+50
+00:02:54,150 --> 00:02:56,875
+Name is matched against the tool's name.
+
+51
+00:02:57,375 --> 00:03:01,950
+The pattern is matched against all of the
+call's arguments, written out as text.
+
+52
+00:03:02,450 --> 00:03:06,852
+Both have to match the same call, so this
+grader needs a call to view, or to bash,
+
+53
+00:03:06,852 --> 00:03:09,000
+whose arguments mention the merged list.
+
+54
+00:03:10,200 --> 00:03:11,950
+Why both tools?
+
+55
+00:03:12,450 --> 00:03:17,225
+Either one can open a file: view directly,
+and bash with a command such as cat.
+
+56
+00:03:17,725 --> 00:03:22,415
+If a grader required view alone, it would
+fail a trial that opened the list with
+
+57
+00:03:22,415 --> 00:03:22,650
+cat.
+
+58
+00:03:23,150 --> 00:03:27,451
+That trial would have done exactly what
+the app needs, so the requirement names
+
+59
+00:03:27,451 --> 00:03:28,050
+both tools.
+
+60
+00:03:28,550 --> 00:03:33,014
+We anchor the name at both ends, because
+an expression otherwise matches anywhere
+
+61
+00:03:33,014 --> 00:03:33,675
+in the text.
+
+62
+00:03:34,175 --> 00:03:37,375
+Without the anchors, view would also match
+preview.
+
+63
+00:03:38,600 --> 00:03:41,675
+The second grader is named never commits.
+
+64
+00:03:42,175 --> 00:03:45,325
+No call may match an entry under
+disallowed.
+
+65
+00:03:45,825 --> 00:03:50,340
+This entry has a name too, and a second
+key, command, which is matched against a
+
+66
+00:03:50,340 --> 00:03:51,525
+shell call's command.
+
+67
+00:03:52,025 --> 00:03:56,150
+So it matches any bash call that contains
+git commit or git push.
+
+68
+00:03:56,650 --> 00:04:01,263
+When a grader has only a disallowed list,
+it checks for absence, so a trajectory
+
+69
+00:04:01,263 --> 00:04:03,050
+with no calls at all passes it.
+
+70
+00:04:03,550 --> 00:04:08,079
+That decides how we test it: the oracle
+can't show such a grader failing, and only
+
+71
+00:04:08,079 --> 00:04:10,675
+a saved trial that did the forbidden thing
+can.
+
+72
+00:04:11,900 --> 00:04:14,375
+Two more graders complete the set.
+
+73
+00:04:14,875 --> 00:04:19,325
+The last one we already know: skill
+invocation, here named loads the skill.
+
+74
+00:04:19,825 --> 00:04:24,261
+In the saved run's report, haiku loaded
+the skill in three of its five trials, and
+
+75
+00:04:24,261 --> 00:04:26,750
+this grader gives every trial a verdict on
+it.
+
+76
+00:04:27,250 --> 00:04:31,188
+The other, named no loop, checks for
+loops, and that's the next thing to
+
+77
+00:04:31,188 --> 00:04:31,625
+explain.
+
+78
+00:04:32,833 --> 00:04:37,413
+An agent loops when it repeats the same
+action without getting anywhere: reopening
+
+79
+00:04:37,413 --> 00:04:39,758
+a file, or rerunning a command that fails.
+
+80
+00:04:40,258 --> 00:04:44,379
+Vally has two graders for that: max
+repeat, which counts repeats, and loop
+
+81
+00:04:44,379 --> 00:04:47,108
+outcome, which asks whether looping was
+expected.
+
+82
+00:04:47,608 --> 00:04:51,882
+Both work from the trajectory after the
+trial has ended, so neither stops a
+
+83
+00:04:51,882 --> 00:04:54,958
+running agent; the time limits we set
+earlier do that.
+
+84
+00:04:55,458 --> 00:05:00,537
+Let's take max repeat first: it fails when
+one action is repeated, back to back, more
+
+85
+00:05:00,537 --> 00:05:01,433
+than max times.
+
+86
+00:05:01,933 --> 00:05:06,108
+Ours allows three, so four identical
+results in a row fail.
+
+87
+00:05:07,333 --> 00:05:11,483
+For max repeat, what counts as the same
+action is set by match.
+
+88
+00:05:11,983 --> 00:05:15,983
+Observation, the default, means calls that
+got the same result.
+
+89
+00:05:16,483 --> 00:05:21,048
+Name means calls to the same tool, and a
+third value adds the arguments: the same
+
+90
+00:05:21,048 --> 00:05:23,133
+tool, called with the same arguments.
+
+91
+00:05:23,633 --> 00:05:28,138
+Max repeat has two more settings, which
+narrow it to some tools, or catch an
+
+92
+00:05:28,138 --> 00:05:30,508
+alternating pattern, such as A, B, A, B.
+
+93
+00:05:31,733 --> 00:05:36,115
+Loop outcome is for a stimulus where
+retrying is the very thing under test,
+
+94
+00:05:36,115 --> 00:05:37,633
+such as a tool that fails.
+
+95
+00:05:38,133 --> 00:05:42,695
+There, max repeat can only say that the
+agent repeated itself; loop outcome says
+
+96
+00:05:42,695 --> 00:05:44,633
+whether that was what we expected.
+
+97
+00:05:45,133 --> 00:05:49,252
+This grader counts retries, the repeats
+after a first call, against a limit we
+
+98
+00:05:49,252 --> 00:05:52,683
+choose, and a setting named should loop
+says which answer passes.
+
+99
+00:05:53,183 --> 00:05:58,047
+None of our stimuli has a failing tool
+yet, so loop outcome isn't in this eval
+
+100
+00:05:58,047 --> 00:05:58,358
+file.
+
+101
+00:05:59,567 --> 00:06:03,942
+Those are the graders; now let's test
+them, before any of them costs a run.
+
+102
+00:06:04,442 --> 00:06:08,492
+First on the baseline: the workspace as it
+starts, with no agent.
+
+103
+00:06:08,992 --> 00:06:12,992
+Then on the ten trials of the saved run,
+again with no agent.
+
+104
+00:06:13,492 --> 00:06:17,392
+Then we make sure the forbidding grader
+can fail, and run once more.
+
+105
+00:06:17,892 --> 00:06:22,342
+Which of these five would you expect to
+fail on a workspace nobody has touched?
+
+106
+00:06:24,842 --> 00:06:27,717
+If you tried it yourself, here's what
+you'd see.
+
+107
+00:06:28,933 --> 00:06:33,483
+The four new graders are in the eval file,
+so we lint it first, which is free.
+
+108
+00:06:36,573 --> 00:06:40,804
+There's one warning, the usual one about
+scoring: with no scoring block, every
+
+109
+00:06:40,804 --> 00:06:42,973
+grader must pass, which is what we want.
+
+110
+00:06:45,473 --> 00:06:50,373
+Next, the oracle with no golden input: it
+builds the workspace, applies nothing, and
+
+111
+00:06:50,373 --> 00:06:51,073
+grades that.
+
+112
+00:06:51,573 --> 00:06:54,723
+A grader that requires something should
+fail here.
+
+113
+00:06:55,787 --> 00:07:00,337
+Three failed as expected: the hidden test,
+reads the list, and loads the skill.
+
+114
+00:07:04,837 --> 00:07:09,831
+The two that only forbid something are
+marked N/A, because doing nothing breaks
+
+115
+00:07:09,831 --> 00:07:10,337
+no rule.
+
+116
+00:07:13,837 --> 00:07:16,337
+So those two still need testing.
+
+117
+00:07:19,267 --> 00:07:23,706
+Now the saved trials: we change into the
+saved run's folder, which holds ten
+
+118
+00:07:23,706 --> 00:07:25,342
+trials, five for each model.
+
+119
+00:07:27,767 --> 00:07:32,448
+Vally grade re-grades them with the eval
+file as it is now, starting no agent, and
+
+120
+00:07:32,448 --> 00:07:35,017
+dash dash verbose prints every grader's
+line.
+
+121
+00:07:35,517 --> 00:07:39,672
+The hidden test needs the finished
+workspace, which a re-grade doesn't have,
+
+122
+00:07:39,672 --> 00:07:41,367
+so it will fail in every block.
+
+123
+00:07:41,867 --> 00:07:44,592
+The four new graders are what we're
+checking.
+
+124
+00:07:45,100 --> 00:07:49,725
+The command prints ten blocks, one for
+each trial; the last of them is on screen.
+
+125
+00:07:53,225 --> 00:07:57,822
+In it, the hidden test has failed, as
+expected, and under it are the four new
+
+126
+00:07:57,822 --> 00:07:58,300
+graders.
+
+127
+00:08:04,500 --> 00:08:07,100
+Here are both tests, side by side.
+
+128
+00:08:07,600 --> 00:08:11,525
+Reads the list, never commits and no loop
+passed all ten trials.
+
+129
+00:08:12,025 --> 00:08:16,225
+Loads the skill failed two: the two haiku
+trials that hadn't loaded it.
+
+130
+00:08:16,725 --> 00:08:21,327
+Never commits hasn't failed anywhere yet,
+and a grader that has never failed might
+
+131
+00:08:21,327 --> 00:08:22,450
+be checking nothing.
+
+132
+00:08:23,667 --> 00:08:27,973
+No saved trial committed anything, so
+we'll test the grader on a command that
+
+133
+00:08:27,973 --> 00:08:29,092
+one of them did run.
+
+134
+00:08:29,592 --> 00:08:32,442
+In one of its trials, haiku ran find.
+
+135
+00:08:32,942 --> 00:08:37,742
+So, for one re-grade, the pattern forbids
+find, in place of git commit or push.
+
+136
+00:08:38,967 --> 00:08:42,517
+With that one change, we re-grade the same
+ten trials.
+
+137
+00:08:43,017 --> 00:08:47,192
+Never commits should now fail wherever a
+trial ran that command.
+
+138
+00:08:48,887 --> 00:08:53,065
+It's the same ten blocks, and the one that
+changed has scrolled off the top, so we'll
+
+139
+00:08:53,065 --> 00:08:54,687
+bring it back on the next screen.
+
+140
+00:09:00,900 --> 00:09:03,650
+Here's the block for the trial that ran
+it.
+
+141
+00:09:04,150 --> 00:09:08,724
+Never commits failed, and its evidence
+names the entry that matched: a bash call
+
+142
+00:09:08,724 --> 00:09:10,325
+whose command contains find.
+
+143
+00:09:10,825 --> 00:09:14,300
+It failed in that one trial, and passed in
+the other nine.
+
+144
+00:09:14,800 --> 00:09:18,350
+So the grader can fail, which gives its
+passes some meaning.
+
+145
+00:09:19,567 --> 00:09:23,267
+With that shown, the pattern goes back to
+git commit or push.
+
+146
+00:09:23,767 --> 00:09:27,092
+This is the eval file the real run will
+use.
+
+147
+00:09:28,300 --> 00:09:32,948
+Last, a real run with every grader: the
+release stimulus, three trials on each
+
+148
+00:09:32,948 --> 00:09:34,200
+model, two at a time.
+
+149
+00:09:34,700 --> 00:09:36,875
+That's six agent runs.
+
+150
+00:09:45,840 --> 00:09:49,915
+When it finishes, the summary lists each
+grader that failed any trial.
+
+151
+00:09:53,415 --> 00:09:56,615
+Terra passed every grader in all three
+trials.
+
+152
+00:09:59,115 --> 00:10:03,794
+Haiku's first and third trials each failed
+two graders: the hidden test, and loads
+
+153
+00:10:03,794 --> 00:10:04,365
+the skill.
+
+154
+00:10:08,865 --> 00:10:11,415
+Its second trial passed all five.
+
+155
+00:10:14,633 --> 00:10:17,083
+So what did checking the route show?
+
+156
+00:10:17,583 --> 00:10:22,285
+Our two guards, never commits and no loop,
+didn't fail a single real trial: no agent
+
+157
+00:10:22,285 --> 00:10:23,908
+committed, pushed, or looped.
+
+158
+00:10:24,408 --> 00:10:28,884
+That's what we'd expect of a guard: it's
+there for the day a model update changes
+
+159
+00:10:28,884 --> 00:10:29,933
+the agent's habits.
+
+160
+00:10:30,433 --> 00:10:34,995
+And we've seen that never commits can
+fail, which is what makes its passes worth
+
+161
+00:10:34,995 --> 00:10:35,508
+anything.
+
+162
+00:10:36,733 --> 00:10:40,408
+The more interesting result is the route
+each model took.
+
+163
+00:10:40,908 --> 00:10:44,583
+Haiku has eight trials in all, five saved
+and three new.
+
+164
+00:10:45,083 --> 00:10:49,051
+It loaded the skill in four of them, and
+five of the eight have an entry for the
+
+165
+00:10:49,051 --> 00:10:51,233
+refactor, which the skill says to leave
+out.
+
+166
+00:10:51,733 --> 00:10:54,983
+Terra loaded the skill in all eight, and
+passed all eight.
+
+167
+00:10:55,483 --> 00:10:59,579
+That points at loading, but it isn't the
+whole story: all four haiku trials without
+
+168
+00:10:59,579 --> 00:11:03,033
+the skill wrote that entry, and so did one
+of the four that loaded it.
+
+169
+00:11:03,533 --> 00:11:06,208
+Eight trials are too few to say more.
+
+170
+00:11:07,433 --> 00:11:10,083
+For the team, this changes the question.
+
+171
+00:11:10,583 --> 00:11:14,583
+Whether the skill writes good entries is
+something we measured earlier.
+
+172
+00:11:15,083 --> 00:11:19,108
+Whether the app gets the skill used is
+new, and it depends on the model, and on
+
+173
+00:11:19,108 --> 00:11:21,808
+the app's own prompt, which never mentions
+the skill.
+
+174
+00:11:22,308 --> 00:11:26,540
+Both are things the team controls: the app
+can name the skill in its prompt, or the
+
+175
+00:11:26,540 --> 00:11:28,783
+skill's description can name this
+situation.
+
+176
+00:11:29,283 --> 00:11:33,904
+Either one is an edit to measure, before
+and after, the way we've measured edits
+
+177
+00:11:33,904 --> 00:11:34,308
+before.
+
+178
+00:11:35,533 --> 00:11:40,011
+Before you go on: when is a step worth
+grading, and how is a grader that only
+
+179
+00:11:40,011 --> 00:11:40,883
+forbids tested?
+
+180
+00:11:43,883 --> 00:11:47,858
+It's worth grading when the app requires
+it, such as opening the list.
+
+181
+00:11:48,358 --> 00:11:51,733
+Or when the app forbids it, such as a
+commit or a push.
+
+182
+00:11:52,233 --> 00:11:55,633
+Or when a long route costs too much, as a
+loop does.
+
+183
+00:11:56,133 --> 00:12:00,519
+And a grader that only forbids is tested
+on a saved trial that did the forbidden
+
+184
+00:12:00,519 --> 00:12:03,533
+thing, because an untouched workspace
+always passes it.
+
+185
+00:12:04,733 --> 00:12:08,946
+You can now add graders for the steps an
+agent took: one that requires opening the
+
+186
+00:12:08,946 --> 00:12:13,004
+merged list, one that forbids a commit or
+a push, and a loop check, each tested
+
+187
+00:12:13,004 --> 00:12:14,083
+against saved trials.
+
+188
+00:12:14,583 --> 00:12:18,158
+In practice, the tracker or the network
+sometimes fails.
+
+189
+00:12:18,658 --> 00:12:22,608
+Does the agent cope, and can that be
+tested without breaking anything?
+
+190
+00:12:23,108 --> 00:12:24,958
+That's the next lesson.
+
+191
+00:12:25,458 --> 00:12:29,033
+The exercises on the lesson page are worth
+doing first.

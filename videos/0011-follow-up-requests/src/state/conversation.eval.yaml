@@ -1,0 +1,48 @@
+name: conversation
+
+defaults:
+  timeout: 5m
+
+agent_environment:
+  skills:
+    - ../skills/changelog-entry
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+
+stimuli:
+  - name: three-requests
+    turns:
+      - |
+        PR 64 is merged: `notes delete` now asks for
+        confirmation before it deletes anything. Update
+        the changelog.
+      - |
+        One more, PR 65: I renamed some internal helper
+        functions. Add that too.
+      - |
+        I also fixed the exit code of `notes export` when
+        the disk is full. Record that as well.
+    graders:
+      - type: diff-contains
+        name: first-adds-64
+        turn: 0
+        config:
+          pattern: '(?m)^\+.*\(#64\)'
+      - type: diff-empty
+        name: second-adds-nothing
+        turn: 1
+      - type: diff-contains
+        name: third-adds-entry
+        turn: 2
+        config:
+          value: "notes export"
+      - type: diff-not-contains
+        name: third-no-made-up-number
+        turn: 2
+        config:
+          pattern: '(?m)^\+.*\(#\d+\)'
+      - type: diff-contains
+        name: first-entry-survives
+        config:
+          pattern: '(?m)^\+.*\(#64\)'

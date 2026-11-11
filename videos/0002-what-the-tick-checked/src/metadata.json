@@ -1,0 +1,17 @@
+{
+  "evalName": "one-request",
+  "evalFilePath": "~/src/demo/practice/evals/one-request.eval.yaml",
+  "variant": "main",
+  "stimulusName": "typo-fix",
+  "trialId": "~/src/demo/practice/evals/one-request.eval.yaml::main::claude-haiku-4.5::typo-fix::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "claude-haiku-4.5",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-11T00:11:52.436Z",
+  "status": "success",
+  "trajectoryId": "ecebbe8f-eb3d-4798-a15d-70cde07a349d",
+  "executorSessionId": "ed8d1cf5-f0b4-4c68-9e6d-b0ce2fa07586",
+  "completedAt": "2026-11-11T00:12:02.291Z",
+  "logSource": "native",
+  "eventsPath": "~/src/demo/practice/results/lesson-1/2026-11-11T00-11-52-424Z/one-request/typo-fix/claude-haiku-4.5/0/events.jsonl"
+}

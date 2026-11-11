@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The oracle plays the agent</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.two{align-items:start}.col{display:flex;flex-direction:column;gap:14px}.col .code.dark{font-size:34px;padding:18px 26px}.col .semantic-block{flex-direction:row;align-items:center;gap:22px;min-height:0;padding:16px 26px}.col .semantic-block .title{font-size:38px}.col .semantic-block .label{display:none}.col .lead{font-size:36px;margin:6px 0 0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the oracle does</div>
+  <h2 class="scene-title">The oracle plays the agent</h2>
+  <div class="stage">
+<div class="cols two">
+    <div class="col">
+      <pre class="code dark" data-lang="bash"><code><span data-concept="cmd-a" data-rep="code"><span style="color:#4EA5E6">vally</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">oracle</span></span></code></pre>
+      <div class="semantic-block" data-concept="a1" data-rep="block" data-role="structure">
+      <div class="step">1</div><div class="title words">Fresh workspace</div><div class="label"></div>
+    </div><div class="semantic-block" data-concept="a2" data-rep="block" data-role="success">
+      <div class="step">2</div><div class="title words">Apply the golden patch</div><div class="label"></div>
+    </div><div class="semantic-block" data-concept="a3" data-rep="block" data-role="transform">
+      <div class="step">3</div><div class="title words">Run the graders</div><div class="label"></div>
+    </div>
+      <p class="lead"><span data-concept="out-a" data-rep="note">every grader should pass</span></p>
+    </div>
+    <div class="col">
+      <pre class="code dark" data-lang="bash"><code><span data-concept="cmd-b" data-rep="code"><span style="color:#4EA5E6">vally</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">oracle</span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">--no-golden-input</span></span></code></pre>
+      <div class="semantic-block" data-concept="b1" data-rep="block" data-role="structure">
+      <div class="step">1</div><div class="title words">Fresh workspace</div><div class="label"></div>
+    </div><div class="semantic-block" data-concept="b2" data-rep="block" data-role="attention">
+      <div class="step">2</div><div class="title words">Apply nothing</div><div class="label"></div>
+    </div><div class="semantic-block" data-concept="b3" data-rep="block" data-role="transform">
+      <div class="step">3</div><div class="title words">Run the graders</div><div class="label"></div>
+    </div>
+      <p class="lead"><span data-concept="out-b" data-rep="note">every grader should fail</span></p>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "cmd-b",
+  "at": "0",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "b2",
+  "at": "1~baseline",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "out-a",
+  "at": "2~everything right",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "out-b",
+  "at": "2~did nothing",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

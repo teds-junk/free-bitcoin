@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 9: Does the skill load when it should — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 9 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Does the skill load when it should</h1>
+    <div class="lesson-meta">15 min · Show, with a loading eval that includes near-miss requests, what rewriting the description changed on both models.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What is a failure mode?
+        <details class="answer"><summary>Show answer</summary><p>A named way in which the skill's output goes wrong, seen in at least one real trial.</p></details></li>
+      <li>A stimulus is marked <code>FLAKY</code>. What happened?
+        <details class="answer"><summary>Show answer</summary><p>Its trials all finished, and some passed while others failed.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You have graders you have tested, and a skill whose rules you have improved twice. In every trial so far, the skill was the only one installed and every request said "changelog".</p>
+    <p><strong>This lesson answers:</strong> Does the agent load the skill for the requests it is meant for, and leave it alone for the others?</p>
+  </div>
+
+  <p class="drop-cap">All the rules you have added to the skill do nothing unless the agent reads them. And an agent does not read every skill it has. It reads a one-line description of each, and opens a skill only when that line seems to fit the request. Your skill's description is still the one from the first draft: "Adds an entry to the project changelog." So far that has been tested only in the easiest possible conditions. This lesson tests it in harder ones, and then improves it.</p>
+
+  <h2 id="description-decides" data-mode="think">The description decides</h2>
+
+  <p>When an agent starts, it is given the name and description of every installed skill, and nothing else about them. When a request arrives, the model decides whether any description fits. If one does, the agent loads that skill, which means it reads the rest of <code>SKILL.md</code>. If none does, the instructions are never seen.</p>
+
+  <p>That gives two new ways for a skill to fail, both invisible to the graders you have written.</p>
+
+  <ul>
+    <li><strong>It does not load when it should.</strong> The agent does the task anyway, from its own habits, without your rules. The result may even look fine.</li>
+    <li><strong>It loads when it should not.</strong> The agent applies changelog rules to a task that is not a changelog entry.</li>
+  </ul>
+
+  <p>The first is common. In one vendor's 2026 report, a skill went unused in 56% of the cases it was meant for. That figure is the vendor's own, and the number of runs behind it was not published, but the pattern is widely reported.</p>
+
+  <p>Obvious requests test neither failure well. "Update the changelog" will load a changelog skill almost whatever its description says. The informative requests sit near the edge.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">Near-miss request</div>
+    <p>A request that shares words or a subject with the skill's job, but is not its job. "Draft the release notes from the changelog" mentions the changelog and is not a request for a changelog entry.</p>
+  </div>
+
+  <p>A loading test therefore needs two groups: requests that should load the skill, including ones that never use its obvious word, and near-miss requests that should not. And it needs to observe what the agent did. Asking a model "would you use this skill?" tests what it says, not what it does.</p>
+
+  <p>When a test shows the description is at fault, a better one says three things: what the skill does, when to use it, described as a situation and not as a word to look for, and what it is not for.</p>
+
+  <p>How big should such a test be? For a skill you depend on, the guidance in this lesson's primary source is about twenty requests and three trials each, with some requests kept aside that you never look at while rewording, so that you are not just fitting the description to your test. Those numbers are conventions; nobody has published a calculation behind them. This lesson uses six requests and two trials, which is enough to learn the method.</p>
+
+  <div class="source-citation">Sources: <a href="https://agentskills.io/skill-creation/optimizing-descriptions">agentskills.io, Optimizing skill descriptions</a>, which uses "near-miss" for these requests; <a href="https://vercel.com/blog/agents-md-outperforms-skills-in-our-agent-evals">Vercel, AGENTS.md outperforms skills in our agent evals</a> (vendor-reported, run counts not disclosed).</div>
+
+  <h2 id="how-loading-is-recorded" data-mode="works">How a trial records loading</h2>
+
+  <p>When an agent loads a skill, Vally records an event in the trial's trajectory. It is named <code>skill_activation</code>. Vally's words for this one thing vary: the event says "activation", the grader below is named <code>skill-invocation</code>, and its evidence says a skill was or was not "called". All three mean what this course calls loading. Spread out, one event looks like this:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results.jsonl (one event inside one trial's trajectory)</div>
+<pre><code class="language-json">{
+  "type": "skill_activation",<span class="mark">1</span>
+  "timestamp": "2026-11-10T14:55:54.427Z",
+  "data": {
+    "name": "changelog-entry",<span class="mark">2</span>
+<span class="gap">5 fields hidden: path, full text, 3 empty</span>
+  },
+  "turn": 0<span class="mark">3</span>
+}</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The kind of event. One is recorded each time a skill is loaded.</li>
+      <li>Which skill was loaded.</li>
+      <li>Which turn of the conversation it happened in, counting from 0. Every trial so far has had one turn; lesson 11 has more.</li>
+    </ol>
+  </div>
+
+  <p>You rarely need to open that. The report has a column named Skills, which lists the skills that loaded in each stimulus's trials and how many times. A dash means none loaded.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Stimulus</th><th>Skills</th><th>Pass Rate</th></tr></thead>
+    <tbody>
+      <tr><td>load-plain</td><td><code>changelog-entry</code> (2×)</td><td>2/2</td></tr>
+      <tr><td>load-no-keyword</td><td><code>changelog-entry</code></td><td>1/2</td></tr>
+      <tr><td>skip-commit</td><td><code>commit-message</code> (2×)</td><td>2/2</td></tr>
+      <tr><td>skip-release-notes</td><td><code>release-notes</code> (2×)</td><td>2/2</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>The grader that reads these events is <code>skill-invocation</code>. It takes two lists. Every skill under <code>required</code> must have loaded. No skill under <code>disallowed</code> may have. The starter folder has an eval file that uses it.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/loading.eval.yaml</div>
+<pre><code class="language-yaml">name: loading
+<span class="gap">4 lines hidden</span>
+agent_environment:
+  skills:<span class="mark">1</span>
+    - ../skills/changelog-entry
+    - ../skills/commit-message
+    - ../skills/release-notes
+<span class="gap">4 lines hidden: the starting changelog</span>
+stimuli:
+<span class="gap">9 lines hidden: the stimulus load-plain</span>
+  - name: load-no-keyword<span class="mark">2</span>
+    prompt: |
+      I just merged PR 71, which makes `notes search`
+      about twice as fast. Can you note that down where
+      we track what's going into the next release?
+    graders:
+      - type: skill-invocation
+        config:
+          required: [changelog-entry]<span class="mark">3</span>
+<span class="gap">20 lines hidden: load-indirect and skip-commit</span>
+  - name: skip-release-notes<span class="mark">4</span>
+    prompt: |
+      We're announcing 1.2.0 today. Draft the release
+      notes from the changelog.
+    graders:
+      - type: skill-invocation
+        config:
+          disallowed: [changelog-entry]<span class="mark">5</span>
+<span class="gap">9 lines hidden: the stimulus skip-question</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>Three skills are installed, so the agent has a real choice. The two neighbours are short skills that ship with the starter. One writes commit messages, the notes attached to a saved change to the code. The other drafts release notes, the announcement of a new version.</li>
+      <li>A request that should load the skill and never says "changelog".</li>
+      <li>Passes only if <code>changelog-entry</code> loaded.</li>
+      <li>A near-miss request: it mentions the changelog and belongs to a neighbour.</li>
+      <li>Passes only if <code>changelog-entry</code> did not load. Which other skill loaded, if any, does not matter to this grader.</li>
+    </ol>
+  </div>
+
+  <p>The four stimuli hidden above follow the same two shapes. <code>load-plain</code> says "Update the changelog". <code>load-indirect</code> asks that users be able to see a fix when the tool ships. <code>skip-commit</code> asks for a commit message. <code>skip-question</code> asks what changed in a past version.</p>
+
+  <p>These graders have no <code>name</code>, so Vally names them itself, for example <code>skill-invocation requires changelog-ent…</code>. Loading varies from trial to trial like everything else, so the checkpoint runs each stimulus twice.</p>
+
+  <p>A skill's description may run over several lines if it begins with <code>&gt;-</code>, as the new one in the checkpoint does.</p>
+
+  <p>If you ever read a trial's record, you will see that the agent is offered a few skills besides yours. They come with Copilot itself; on our machine there were three. They are not part of this course, and the graders ignore them.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/graders/skill-invocation/">Vally docs, Grader: skill-invocation</a>; <a href="https://microsoft.github.io/vally/reference/trajectory-format/">Trajectory Format</a>. The report column and the extra skills are from our runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <div class="sorter" data-categories="Should load|Near-miss">
+    <p>For the changelog-entry skill, which of these should load it, and which is a near-miss?</p>
+    <div class="sort-item" data-answer="Should load" data-why="A fix has been merged and needs recording for users. That is the skill's job, even though the word changelog is absent.">"We fixed the export bug in PR 81. Record it for the next version."</div>
+    <div class="sort-item" data-answer="Near-miss" data-why="It reads the changelog to write something else. No entry is being added.">"Summarise the changelog for this month's newsletter."</div>
+    <div class="sort-item" data-answer="Near-miss" data-why="It is about a release, but tagging is a git task. No entry is being added.">"Tag the 1.3.0 release in git."</div>
+    <div class="sort-item" data-answer="Should load" data-why="A change needs noting where changes are tracked. That is a changelog entry in other words.">"PR 80 drops support for Node 18. Add it to the list of changes."</div>
+  </div>
+
+  <h2 id="test-then-fix" data-mode="use">Test loading, then fix the description</h2>
+
+  <p>You will run the loading eval as the skill stands, read the Skills column, rewrite the description, and run again. This is the new description, for step 6. It replaces the one <code>description</code> line at the top of the skill.</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">skills/changelog-entry/SKILL.md (the new description)</div>
+<pre><code class="language-yaml">description: >-
+  Records a change in the project's CHANGELOG.md. Use whenever
+  a change, fix or merged pull request should be noted for the
+  next release, even if the request does not say "changelog".
+  Not for commit messages, release notes or questions about
+  past versions.</code></pre>
+  </div>
+
+
+  <section class="checkpoint">
+    <h3>Six requests, three skills, two models</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: read the two neighbouring skills.</span>
+        Open a terminal in <code>practice</code>.
+<pre><code class="language-bash">cat skills/commit-message/SKILL.md</code></pre>
+<pre><code class="language-bash">cat skills/release-notes/SKILL.md</code></pre>
+        <p class="expect">You should see: two short skills, each with its own one-line description.</p></li>
+
+      <li><span class="goal">Goal: read the six requests.</span>
+<pre><code class="language-bash">cat evals/loading.eval.yaml</code></pre>
+        <p class="expect">You should see: three stimuli whose names begin <code>load-</code> and three that begin <code>skip-</code>.</p></li>
+
+      <li><span class="goal">Goal: confirm the file has no mistakes.</span>
+<pre><code class="language-bash">vally lint -e evals/loading.eval.yaml</code></pre>
+<pre class="output"><code>✔ evals/loading.eval.yaml is valid</code></pre></li>
+
+      <li><span class="goal">Goal: measure loading with the description as it is. This spends twenty-four short agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/loading.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 2 --workers 2 \
+  --output-dir results/lesson-9-before</code></pre>
+<pre class="output"><code>claude-haiku-4.5
+  FLAKY  load-no-keyword  1 passed · 1 failed
+
+  eval     claude-haiku-4.5  gpt-5.6-terra
+  loading  ✘ 4/6             ✘ 5/6</code></pre>
+        <p class="expect">You should see: a block for each stimulus that was not a clean pass. A loading failure has the evidence <code>The following required skills were not called: changelog-entry</code>. An <code>ERROR</code> is a dropped session, not a loading failure; we had one on each model.</p></li>
+
+      <li><span class="goal">Goal: see which skills loaded, in the report.</span>
+        Find the run folder, move into it, print the report, and come back. Use your folder's name.
+<pre><code class="language-bash">ls results/lesson-9-before</code></pre>
+<pre><code class="language-bash">cd results/lesson-9-before/2026-11-10T14-55-46-638Z
+cat eval-results.md
+cd ../../..</code></pre>
+        <p class="expect">You should see: a table per model. Read down the Skills column. For the <code>skip-</code> stimuli it should name a neighbour or show a dash.</p></li>
+
+      <li><span class="goal">Goal: rewrite the description. This edits one file.</span>
+        In <code>skills/changelog-entry/SKILL.md</code>, replace the <code>description</code> line with the six lines shown above the checkpoint.</li>
+
+      <li><span class="goal">Goal: measure loading again. This spends another twenty-four agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/loading.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 2 --workers 2 \
+  --output-dir results/lesson-9-after</code></pre>
+<pre class="output"><code>  eval     claude-haiku-4.5  gpt-5.6-terra
+  loading  ✘ 5/6             ✘ 5/6</code></pre>
+        <p class="expect">You should see: your own summary. In ours, the stimulus still short of a pass on each model was an <code>ERROR</code>, not a loading failure.</p></li>
+
+      <li><span class="goal">Goal: compare, stimulus by stimulus.</span>
+        For each stimulus and model, note the trials that passed before and after.
+        <details class="answer"><summary>Show our counts</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Stimulus</th><th>haiku before</th><th>haiku after</th><th>terra before</th><th>terra after</th></tr></thead>
+            <tbody>
+              <tr><td>load-plain</td><td>2 of 2</td><td>2 of 2</td><td>2 of 2</td><td>2 of 2</td></tr>
+              <tr><td>load-no-keyword</td><td>1 of 2</td><td>2 of 2</td><td>2 of 2</td><td>1 of 1, 1 error</td></tr>
+              <tr><td>load-indirect</td><td>2 of 2</td><td>2 of 2</td><td>2 of 2</td><td>2 of 2</td></tr>
+              <tr><td>skip-commit</td><td>2 of 2</td><td>2 of 2</td><td>2 of 2</td><td>2 of 2</td></tr>
+              <tr><td>skip-release-notes</td><td>2 of 2</td><td>1 of 1, 1 error</td><td>2 of 2</td><td>2 of 2</td></tr>
+              <tr><td>skip-question</td><td>1 of 1, 1 error</td><td>2 of 2</td><td>1 of 1, 1 error</td><td>2 of 2</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </details></li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-loading-test-showed" data-mode="think">What the loading test showed</h2>
+
+  <p>Our result is undramatic, and that is worth being honest about. With only two neighbours, the one-line description already kept the skill out of every near-miss. It missed once: on one model, the request that never says "changelog" was handled without loading the skill. The agent edited the changelog anyway, from habit, with none of your rules in front of it. After the rewrite, the skill loaded in every finished trial that should load it.</p>
+
+  <p>One miss in two trials becoming none in two is a small sample, and lesson 15 will make you cautious about it. What you have for certain is the test itself. Real projects install dozens of skills, descriptions get edited, and neighbours get added. Each of those can move the boundary, and now one command shows whether it did.</p>
+
+
+  <div class="primary-source">
+    <p><a href="https://agentskills.io/skill-creation/optimizing-descriptions">Optimizing skill descriptions, agentskills.io</a></p>
+    <p>Read the whole page. It gives the method this lesson uses at small scale: requests that should and should not load the skill, several trials, and a held-back set.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, explain why a loading test needs near-miss requests as well as requests that should load the skill.
+        <details class="answer"><summary>Show model answer</summary><p>A skill can fail by loading when it should not, and only requests that should not load it can show that. Near-miss requests share words with the skill's job, so they are where a too-broad description goes wrong. Obvious requests test neither boundary.</p></details></li>
+      <li>Write one more request that should load the skill without saying "changelog", and one more near-miss. Add them to <code>evals/loading.eval.yaml</code> with the right grader, lint, and run.
+        <details class="answer"><summary>Show model answer</summary><p>For example, should load: "PR 90 removes the deprecated <code>--old</code> flag. Users need to know before they upgrade." Near-miss: "Is the fix for the export crash in a released version yet?" The first gets <code>required: [changelog-entry]</code>, the second <code>disallowed: [changelog-entry]</code>.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="9" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> show, with a loading eval that includes near-miss requests, what rewriting the description changed on both models.</p>
+    <p><strong>Up next:</strong> <a href="./0010-is-the-agent-better-with-the-skill.html">Is the agent better with the skill</a>. It loads at the right times. But in one trial the agent did the job without it. Is the result any better with the skill than with no skill at all?</p>
+    <a class="next-lesson" href="./0010-is-the-agent-better-with-the-skill.html">Next lesson: Is the agent better with the skill <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

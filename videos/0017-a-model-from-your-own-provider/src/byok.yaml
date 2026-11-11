@@ -1,0 +1,9 @@
+defaults:
+  model: my-model-name
+  executor:
+    name: copilot-sdk
+    config:
+      provider:
+        baseUrl: https://api.example.com/v1
+        type: openai
+        apiKeyEnv: MY_PROVIDER_KEY

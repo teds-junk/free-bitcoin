@@ -1,0 +1,808 @@
+1
+00:00:00,400 --> 00:00:04,925
+Every rule we've added to the skill does
+nothing unless the agent reads it.
+
+2
+00:00:05,425 --> 00:00:08,350
+Agents don't read every skill they have.
+
+3
+00:00:08,850 --> 00:00:12,964
+Instead, an agent reads a one-line
+description of each, and opens a skill
+
+4
+00:00:12,964 --> 00:00:15,500
+only when that line seems to fit the
+request.
+
+5
+00:00:16,000 --> 00:00:20,125
+Here, you'll test whether an agent opens
+the skill for the requests it's meant for
+
+6
+00:00:20,125 --> 00:00:23,848
+and leaves it alone for the others, and
+see what rewriting its description
+
+7
+00:00:23,848 --> 00:00:24,250
+changes.
+
+8
+00:00:25,467 --> 00:00:28,492
+Let's start with how an agent chooses a
+skill.
+
+9
+00:00:28,992 --> 00:00:33,196
+When it starts, it's given the name and
+description of every installed skill, and
+
+10
+00:00:33,196 --> 00:00:34,442
+nothing else about them.
+
+11
+00:00:34,942 --> 00:00:39,292
+When a request arrives, the model decides
+whether any description fits.
+
+12
+00:00:39,792 --> 00:00:44,592
+If one does, the agent loads that skill,
+which means it reads the rest of the file.
+
+13
+00:00:45,092 --> 00:00:48,392
+If none does, those instructions are never
+seen.
+
+14
+00:00:48,892 --> 00:00:52,692
+Our skill's description is still the one
+line from the first draft.
+
+15
+00:00:53,900 --> 00:00:58,384
+That gives a skill two new ways to fail,
+and the graders we've written can't see
+
+16
+00:00:58,384 --> 00:00:59,000
+either one.
+
+17
+00:00:59,500 --> 00:01:01,975
+First, it doesn't load when it should.
+
+18
+00:01:02,475 --> 00:01:07,114
+Then the agent does the task anyway, from
+its own habits, without our rules, and the
+
+19
+00:01:07,114 --> 00:01:08,550
+result may even look fine.
+
+20
+00:01:09,050 --> 00:01:13,316
+Second, it loads when it shouldn't, and
+the agent applies changelog rules to a
+
+21
+00:01:13,316 --> 00:01:15,175
+task that isn't a changelog entry.
+
+22
+00:01:16,400 --> 00:01:18,775
+Not loading is the common one.
+
+23
+00:01:19,275 --> 00:01:23,271
+In one vendor's report from twenty
+twenty-six, a skill went unused in
+
+24
+00:01:23,271 --> 00:01:26,050
+fifty-six percent of the cases it was
+meant for.
+
+25
+00:01:26,550 --> 00:01:31,157
+That figure is the vendor's own, and the
+number of runs behind it wasn't published,
+
+26
+00:01:31,157 --> 00:01:33,100
+but the pattern is widely reported.
+
+27
+00:01:34,300 --> 00:01:37,800
+Obvious requests tell us little about
+either failure.
+
+28
+00:01:38,300 --> 00:01:42,858
+Any request to update the changelog will
+load a changelog skill with almost any
+
+29
+00:01:42,858 --> 00:01:43,550
+description.
+
+30
+00:01:44,050 --> 00:01:48,200
+What tells us something is a request near
+the edge of the skill's job.
+
+31
+00:01:48,700 --> 00:01:53,399
+So here's a term: a near-miss request
+shares words or a subject with the skill's
+
+32
+00:01:53,399 --> 00:01:54,750
+job, but isn't its job.
+
+33
+00:01:55,250 --> 00:01:59,529
+Draft the release notes from the changelog
+mentions the changelog, and it isn't
+
+34
+00:01:59,529 --> 00:02:01,100
+asking for a changelog entry.
+
+35
+00:02:02,300 --> 00:02:05,375
+So a loading test needs two groups of
+requests.
+
+36
+00:02:05,875 --> 00:02:10,661
+Some should load the skill, including ones
+that never use its obvious word, which for
+
+37
+00:02:10,661 --> 00:02:11,675
+ours is changelog.
+
+38
+00:02:12,175 --> 00:02:15,675
+The rest are near-miss requests, which
+should not load it.
+
+39
+00:02:16,175 --> 00:02:20,374
+And the test has to observe what the agent
+did, because asking a model whether it
+
+40
+00:02:20,374 --> 00:02:23,225
+would use a skill tests what it says, not
+what it does.
+
+41
+00:02:24,433 --> 00:02:28,883
+When a test shows the description is at
+fault, a better one says three things.
+
+42
+00:02:29,383 --> 00:02:31,583
+It says what the skill does.
+
+43
+00:02:32,083 --> 00:02:37,083
+It says when to use it, described as a
+situation, and not as a word to look for.
+
+44
+00:02:37,583 --> 00:02:40,183
+And it says what the skill is not for.
+
+45
+00:02:41,400 --> 00:02:43,750
+How big should such a test be?
+
+46
+00:02:44,250 --> 00:02:48,596
+For a skill you depend on, the usual
+guidance is about twenty requests, with
+
+47
+00:02:48,596 --> 00:02:49,625
+three trials each.
+
+48
+00:02:50,125 --> 00:02:54,006
+Some of those requests are kept aside and
+never looked at while rewording the
+
+49
+00:02:54,006 --> 00:02:56,475
+description, so it isn't just fitted to
+the test.
+
+50
+00:02:56,975 --> 00:03:01,775
+Those numbers are conventions; nobody has
+published a calculation behind them.
+
+51
+00:03:02,275 --> 00:03:07,025
+Our test has six requests and two trials
+each, which is enough to show the method.
+
+52
+00:03:08,233 --> 00:03:11,483
+That's the idea; here's where a trial
+records it.
+
+53
+00:03:11,983 --> 00:03:16,786
+Each trial's record in results dot jsonl
+holds its trajectory, the full record of
+
+54
+00:03:16,786 --> 00:03:19,158
+what the agent did, as a list of events.
+
+55
+00:03:19,658 --> 00:03:24,308
+When the agent loads a skill, Vally adds
+an event of the type skill activation.
+
+56
+00:03:24,808 --> 00:03:27,533
+Its data names the skill that loaded.
+
+57
+00:03:28,033 --> 00:03:32,828
+Its turn field says which request of a
+conversation that was, counting from zero;
+
+58
+00:03:32,828 --> 00:03:34,958
+every trial so far has had just one.
+
+59
+00:03:35,458 --> 00:03:39,683
+Vally calls this activation, and it means
+what we've been calling loading.
+
+60
+00:03:40,900 --> 00:03:44,125
+You rarely need to open a record to find
+that out.
+
+61
+00:03:44,625 --> 00:03:47,550
+Every report has a column named Skills.
+
+62
+00:03:48,050 --> 00:03:52,550
+For each stimulus, it lists the skills
+that loaded in its trials, with a count.
+
+63
+00:03:53,050 --> 00:03:57,361
+Here it is in the report from our
+five-trial run: the changelog entry skill
+
+64
+00:03:57,361 --> 00:03:59,200
+loaded five times on each model.
+
+65
+00:03:59,700 --> 00:04:02,750
+When no skill loaded, the column shows a
+dash.
+
+66
+00:04:03,967 --> 00:04:08,513
+Events like that are read by a grader
+named skill invocation, which is one more
+
+67
+00:04:08,513 --> 00:04:09,492
+word for loading.
+
+68
+00:04:09,992 --> 00:04:14,192
+The starter folder has an eval file that
+uses it, named loading.
+
+69
+00:04:14,692 --> 00:04:19,442
+Its agent environment installs three
+skills, so the agent has a real choice.
+
+70
+00:04:19,942 --> 00:04:24,336
+Beside ours, one writes commit messages,
+and one drafts release notes; we'll call
+
+71
+00:04:24,336 --> 00:04:25,692
+those two the neighbours.
+
+72
+00:04:26,192 --> 00:04:30,731
+This stimulus, load no keyword, should
+load the skill, and its request never says
+
+73
+00:04:30,731 --> 00:04:31,292
+changelog.
+
+74
+00:04:31,792 --> 00:04:36,742
+Its grader lists our skill under required,
+so it passes only if that skill loaded.
+
+75
+00:04:37,967 --> 00:04:42,053
+Here's the other kind: a near-miss
+request, which mentions the changelog, and
+
+76
+00:04:42,053 --> 00:04:44,017
+is a job for the release notes skill.
+
+77
+00:04:44,517 --> 00:04:48,705
+Its grader lists our skill under
+disallowed, so it passes only if that
+
+78
+00:04:48,705 --> 00:04:49,842
+skill did not load.
+
+79
+00:04:50,342 --> 00:04:54,217
+Which other skill loaded, if any, doesn't
+matter to this grader.
+
+80
+00:04:55,433 --> 00:04:58,658
+That file has six stimuli, in those two
+shapes.
+
+81
+00:04:59,158 --> 00:05:02,708
+Three should load the skill, and their
+names begin with load.
+
+82
+00:05:03,208 --> 00:05:08,006
+Only load plain says changelog; the other
+two ask to note a change down, and to make
+
+83
+00:05:08,006 --> 00:05:09,433
+sure users can see a fix.
+
+84
+00:05:09,933 --> 00:05:14,124
+The other three are near-miss requests,
+named skip: one wants a commit message,
+
+85
+00:05:14,124 --> 00:05:17,783
+one wants release notes, and one asks what
+changed in a past version.
+
+86
+00:05:18,283 --> 00:05:22,720
+These graders have no name of their own,
+so in its output Vally labels each with
+
+87
+00:05:22,720 --> 00:05:24,383
+its type and what it requires.
+
+88
+00:05:24,883 --> 00:05:29,145
+Loading varies from trial to trial like
+everything else, so we'll run each
+
+89
+00:05:29,145 --> 00:05:30,008
+stimulus twice.
+
+90
+00:05:31,233 --> 00:05:34,508
+That's how loading is recorded; now let's
+test it.
+
+91
+00:05:35,008 --> 00:05:38,858
+First, we'll read the two neighbouring
+skills and check the eval file.
+
+92
+00:05:39,358 --> 00:05:44,133
+Then we'll run the six requests on both
+models, with the description as it stands.
+
+93
+00:05:44,633 --> 00:05:48,033
+After that, we'll rewrite the description
+and run them again.
+
+94
+00:05:48,533 --> 00:05:52,058
+What would you expect a one-line
+description to get wrong?
+
+95
+00:05:54,558 --> 00:05:57,433
+If you tried it yourself, here's what
+you'd see.
+
+96
+00:05:58,633 --> 00:06:02,308
+Here are the two neighbours, starting with
+the commit message skill.
+
+97
+00:06:04,973 --> 00:06:09,685
+It has a one-line description of its own,
+and it tells the agent to reply without
+
+98
+00:06:09,685 --> 00:06:10,673
+editing any file.
+
+99
+00:06:15,173 --> 00:06:17,423
+Then the release notes skill.
+
+100
+00:06:19,967 --> 00:06:23,992
+It drafts an announcement from the
+changelog, and doesn't edit it either.
+
+101
+00:06:28,492 --> 00:06:32,542
+Lint checks the eval file for mistakes
+without starting an agent.
+
+102
+00:06:35,813 --> 00:06:37,113
+It's valid.
+
+103
+00:06:40,633 --> 00:06:44,133
+Now the first measurement, with the
+description as it stands.
+
+104
+00:06:44,633 --> 00:06:49,544
+Six stimuli, two models and two trials
+each: it spends twenty-four short agent
+
+105
+00:06:49,544 --> 00:06:49,858
+runs.
+
+106
+00:06:50,358 --> 00:06:54,383
+We're watching the list of failures at the
+end, and the summary under it.
+
+107
+00:06:56,700 --> 00:07:01,179
+About two minutes later, that list has a
+single line: an error on terra, where a
+
+108
+00:07:01,179 --> 00:07:02,075
+session dropped.
+
+109
+00:07:02,575 --> 00:07:06,400
+That trial has no verdict, and it says
+nothing about loading.
+
+110
+00:07:06,900 --> 00:07:11,109
+A loading failure would appear here with
+evidence that a required skill was not
+
+111
+00:07:11,109 --> 00:07:14,200
+called, Vally's third word for loading;
+this run has none.
+
+112
+00:07:14,700 --> 00:07:19,510
+So the table shows six of six stimuli
+passing on haiku, and five of six on
+
+113
+00:07:19,510 --> 00:07:19,900
+terra.
+
+114
+00:07:24,400 --> 00:07:27,025
+Vally saved the run under results.
+
+115
+00:07:29,180 --> 00:07:31,430
+That folder holds the report.
+
+116
+00:07:34,333 --> 00:07:38,833
+Here's the Skills column from that report,
+beside the pass rate, for each model.
+
+117
+00:07:39,333 --> 00:07:44,108
+For the three skip stimuli, it names a
+neighbour or shows a dash, on both models.
+
+118
+00:07:47,608 --> 00:07:50,883
+So our skill stayed out of every near-miss
+request.
+
+119
+00:07:51,383 --> 00:07:56,174
+And for the three load stimuli, it shows
+our skill loading in both trials, on both
+
+120
+00:07:56,174 --> 00:07:56,583
+models.
+
+121
+00:08:00,800 --> 00:08:05,576
+An earlier run of this same test, with the
+same one-line description, did find a
+
+122
+00:08:05,576 --> 00:08:05,875
+miss.
+
+123
+00:08:06,375 --> 00:08:10,850
+On haiku, load no keyword loaded the skill
+in only one of its two trials.
+
+124
+00:08:11,350 --> 00:08:15,225
+In the other, the evidence says the
+required skill was not called.
+
+125
+00:08:15,725 --> 00:08:19,807
+So the one-line description can miss a
+request that never says changelog, even
+
+126
+00:08:19,807 --> 00:08:21,900
+though our run didn't catch it doing so.
+
+127
+00:08:25,100 --> 00:08:28,850
+That one line says what the skill does,
+and nothing about when.
+
+128
+00:08:29,350 --> 00:08:32,550
+Here's the rewrite, which replaces that
+one line.
+
+129
+00:08:33,050 --> 00:08:36,175
+Its first sentence still says what the
+skill does.
+
+130
+00:08:36,675 --> 00:08:41,259
+Then comes the situation: a change, fix or
+merged pull request to note for the next
+
+131
+00:08:41,259 --> 00:08:44,075
+release, even if the request doesn't say
+changelog.
+
+132
+00:08:44,575 --> 00:08:48,814
+And last, what it's not for: commit
+messages, release notes, or questions
+
+133
+00:08:48,814 --> 00:08:49,975
+about past versions.
+
+134
+00:08:50,475 --> 00:08:52,975
+Nothing else in the skill changes.
+
+135
+00:08:54,200 --> 00:08:58,536
+With the new description in place, we run
+the same command, saving to a second
+
+136
+00:08:58,536 --> 00:08:58,925
+folder.
+
+137
+00:08:59,425 --> 00:09:02,250
+That's another twenty-four agent runs.
+
+138
+00:09:10,887 --> 00:09:15,487
+This time every trial finished, and the
+list has one line of a different kind.
+
+139
+00:09:15,987 --> 00:09:20,736
+On terra, skip question failed the grader
+that forbids our skill, in one of its two
+
+140
+00:09:20,736 --> 00:09:21,137
+trials.
+
+141
+00:09:21,637 --> 00:09:26,212
+So the skill loaded for a near-miss
+request, which is the second way to fail.
+
+142
+00:09:31,433 --> 00:09:36,196
+Now the comparison, stimulus by stimulus:
+the trials that passed before the rewrite,
+
+143
+00:09:36,196 --> 00:09:36,933
+and after it.
+
+144
+00:09:37,433 --> 00:09:41,133
+On terra, skip question went from two of
+two to one of two.
+
+145
+00:09:41,633 --> 00:09:45,883
+In every other cell, each trial that
+finished passed, before and after.
+
+146
+00:09:51,100 --> 00:09:53,500
+So what did the loading test show?
+
+147
+00:09:54,000 --> 00:09:58,213
+In our run, the one-line description did
+its job in every trial that finished: the
+
+148
+00:09:58,213 --> 00:10:01,450
+skill loaded when it should, and stayed
+out of every near-miss.
+
+149
+00:10:01,950 --> 00:10:06,700
+An earlier run caught it missing once, on
+a request that never says changelog.
+
+150
+00:10:07,200 --> 00:10:11,475
+After the rewrite, the skill still loaded
+in every trial that should load it.
+
+151
+00:10:11,975 --> 00:10:16,431
+But on terra, it also loaded once for a
+question about a past version, which the
+
+152
+00:10:16,431 --> 00:10:18,325
+new description says it's not for.
+
+153
+00:10:19,533 --> 00:10:23,666
+One failure in two trials is a small
+sample, too small to blame the rewrite,
+
+154
+00:10:23,666 --> 00:10:26,983
+and we'll get more careful about samples
+that small later on.
+
+155
+00:10:27,483 --> 00:10:30,508
+What we have for certain is the test
+itself.
+
+156
+00:10:31,008 --> 00:10:35,757
+Real projects install dozens of skills,
+descriptions get edited, and neighbours
+
+157
+00:10:35,757 --> 00:10:36,358
+get added.
+
+158
+00:10:36,858 --> 00:10:41,415
+Each of those can change which requests
+load the skill, and now one command shows
+
+159
+00:10:41,415 --> 00:10:42,258
+whether it did.
+
+160
+00:10:43,467 --> 00:10:47,521
+Before you go on: why does a loading test
+need near-miss requests, as well as
+
+161
+00:10:47,521 --> 00:10:49,417
+requests that should load the skill?
+
+162
+00:10:52,417 --> 00:10:55,367
+Because a skill can fail in two
+directions.
+
+163
+00:10:55,867 --> 00:10:59,592
+Requests that should load it catch a skill
+that stays unused.
+
+164
+00:11:00,092 --> 00:11:04,376
+Near-miss requests catch one that loads
+where it doesn't belong, and obvious
+
+165
+00:11:04,376 --> 00:11:05,617
+requests test neither.
+
+166
+00:11:06,833 --> 00:11:11,318
+You can now show, with a loading eval,
+what rewriting a description changed on
+
+167
+00:11:11,318 --> 00:11:12,008
+both models.
+
+168
+00:11:12,508 --> 00:11:16,108
+As far as this test shows, the skill loads
+when it should.
+
+169
+00:11:16,608 --> 00:11:21,454
+But in one trial of an earlier run, the
+agent handled the request without loading
+
+170
+00:11:21,454 --> 00:11:21,633
+it.
+
+171
+00:11:22,133 --> 00:11:26,058
+Is the result any better with the skill
+than with no skill at all?
+
+172
+00:11:26,558 --> 00:11:28,408
+That's the next lesson.
+
+173
+00:11:28,908 --> 00:11:32,483
+The exercises on the lesson page are worth
+doing first.

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval file cheat sheet — Vally &amp; Agent Evals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Reference · Vally &amp; Agent Evals</div>
+    <h1>Eval file cheat sheet</h1>
+    <div class="lesson-meta">Verified 2026-11-10 · Vally 0.21.0</div>
+  </div>
+
+  <p>Every key this course used in an eval file, an experiment file and <code>.vally.yaml</code>, with the lesson that explains it. Each snippet is from a file we ran, except where it says it was only linted.</p>
+
+  <h2 id="eval-file">An eval file</h2>
+  <p>Only <code>name</code>, <code>stimuli</code>, and each stimulus's <code>name</code> and <code>prompt</code> (or <code>turns</code>) are required.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">The top of an eval file</div>
+<pre><code class="language-yaml">name: changelog<span class="mark">1</span>
+
+defaults:
+  timeout: 3m<span class="mark">2</span>
+  judge_model: claude-sonnet-5.5<span class="mark">3</span>
+
+agent_environment:<span class="mark">4</span>
+  skills:
+    - ../skills/changelog-entry
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+
+stimuli:</code></pre>
+    </div>
+    <ol class="notes">
+      <li>Used as a folder name in the results. <a href="../lessons/0002-what-the-tick-checked.html#eval-file">Lesson 2</a></li>
+      <li>How long one trial may take. The unit is required.</li>
+      <li>The model that judges, for a <code>prompt</code> grader. <a href="../lessons/0012-a-judge-for-what-code-cannot-check.html#how-the-judge-decides">Lesson 12</a></li>
+      <li>Skills and files copied into the workspace before the agent starts. A skill is copied as a whole folder. Paths are relative to the eval file. <a href="../lessons/0006-keep-graders-out-of-reach.html#what-goes-in">Lesson 6</a></li>
+    </ol>
+  </div>
+
+  <p>Two more keys can go under <code>defaults</code>: <code>model</code>, and <code>reasoning_effort</code>, how much the agent's model reasons before it acts. Accepted efforts depend on the model; in our account <code>claude-haiku-4.5</code> took none, <code>claude-haiku-5.5</code> took <code>low</code> to <code>max</code>. <a href="../lessons/0016-what-a-passing-trial-costs.html#reasoning-effort">Lesson 16</a></p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">One stimulus, with the keys from lessons 2 to 13</div>
+<pre><code class="language-yaml">  - name: two-changes
+    tags: { tier: quick }<span class="mark">1</span>
+    prompt: |<span class="mark">2</span>
+      PR 60 is in. Changelog please.
+    agent_environment:<span class="mark">3</span>
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    grading_environment:<span class="mark">4</span>
+      files:
+        - src: grading/check-entry.mjs
+          dest: .vally-grading/check-entry.mjs
+    golden_patch:<span class="mark">5</span>
+      path: golden/two-changes.patch
+    rubric:<span class="mark">6</span>
+      - One criterion, answerable yes or no.
+    graders:<span class="mark">7</span>
+      - type: diff-contains
+        name: cites-60
+        turn: 0<span class="mark">8</span>
+        config:
+          pattern: '(?m)^\+.*\(#60\)'</code></pre>
+    </div>
+    <ol class="notes">
+      <li>Labels for choosing stimuli, in a suite or with <code>vally eval --tag tier=quick</code>. <a href="../lessons/0021-keep-it-working.html#tags-suites-exit-codes">Lesson 21</a>, <a href="../lessons/0024-when-a-tool-fails.html#simulation">Lesson 24</a></li>
+      <li>The request. Use <code>turns:</code> and a list of requests for a conversation. <code>&gt;-</code> in place of <code>|</code> joins the lines into one, as an app sends it. <a href="../lessons/0011-follow-up-requests.html#turns-and-scoped-graders">Lesson 11</a>, <a href="../lessons/0022-start-the-agent-where-the-app-would.html#setup-commands">Lesson 22</a></li>
+      <li>Files for this stimulus only. A file here may not have the same <code>dest</code> as a file in the top-level agent environment.</li>
+      <li>Files added for graders only, after the agent stops. The source must be somewhere no agent environment copies. <a href="../lessons/0006-keep-graders-out-of-reach.html#grading-only">Lesson 6</a></li>
+      <li>A patch recording a correct answer, for <code>vally oracle</code>. The path must be in the eval file's folder or below. <a href="../lessons/0007-test-a-grader.html#golden-patch">Lesson 7</a></li>
+      <li>Criteria for a judge, in plain words. <a href="../lessons/0012-a-judge-for-what-code-cannot-check.html#how-the-judge-decides">Lesson 12</a></li>
+      <li>The checks. With no <code>scoring</code> block, a trial passes only if every grader passes. Names must be unique across the whole file, so budget graders repeated under several stimuli are left unnamed. <a href="../lessons/0005-turn-a-failure-into-a-grader.html#diff-graders">Lesson 5</a>, <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#budget-graders">Lesson 18</a>. Every grader's options are on the <a href="grader-catalog.html">grader catalog</a>.</li>
+      <li>Limits a grader to one request of a conversation, counted from 0. It sits beside <code>type</code>, not inside <code>config</code>. <a href="../lessons/0011-follow-up-requests.html#turns-and-scoped-graders">Lesson 11</a></li>
+    </ol>
+  </div>
+
+  <h2 id="setup">Setting up before the agent starts</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/release.eval.yaml (one stimulus's environment)</div>
+<pre><code class="language-yaml">    agent_environment:
+      files:
+        - src: ../tools/list-merged.mjs
+          dest: tools/list-merged.mjs
+      commands:<span class="mark">1</span>
+        - "mkdir -p release"
+        - "node tools/list-merged.mjs &gt; release/merged.txt"</code></pre>
+    </div>
+    <ol class="notes">
+      <li>Shell commands run in the workspace, in order, after the files and skills are copied and before the agent starts. What they create is part of the starting state, so it is not in the patch. Each has 60 seconds unless <code>commandTimeout</code> says otherwise. Quote every entry: one containing a colon and a space is read as a mapping. <a href="../lessons/0022-start-the-agent-where-the-app-would.html#setup-commands">Lesson 22</a>, <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></li>
+    </ol>
+  </div>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">Other environment keys (linted by us, not run)</div>
+<pre><code class="language-yaml">agent_environment:
+  commandTimeout: 2m<span class="mark">1</span>
+  env:<span class="mark">2</span>
+    LOG_LEVEL: debug
+  git:<span class="mark">3</span>
+    type: worktree
+    ref: v2.1.0
+    source: ../my-repo
+  mcpServers:<span class="mark">4</span>
+    db:
+      type: stdio
+      command: db-serve
+      args: ["--port", "5432"]
+    api:
+      type: http
+      url: http://localhost:3000/mcp</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The time limit for each setup command.</li>
+      <li>Environment variables for the agent's process: a mapping of names to values, every value a string (quote numbers). Values can appear in saved trials, so no secrets. <a href="../lessons/0022-start-the-agent-where-the-app-would.html#setup-commands">Lesson 22</a></li>
+      <li>Builds the workspace from a repository: <code>worktree</code> checks out a ref of a repository on your machine, <code>clone</code> takes a <code>url</code>. Explained, not run, in <a href="../lessons/0022-start-the-agent-where-the-app-would.html#setup-commands">Lesson 22</a>.</li>
+      <li>MCP servers to attach to the agent's session. Not taught in the course: the shape is from the <a href="https://microsoft.github.io/vally/reference/eval-spec/#agent-environment-fields">Eval Spec reference</a>, and lint does not check the keys inside it.</li>
+    </ol>
+  </div>
+
+  <h2 id="limits">Limits that stop the agent</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/changelog.eval.yaml (one stimulus, start)</div>
+<pre><code class="language-yaml">  - name: typo-fix
+    prompt: |
+      I fixed the typo in the help text for `notes add`
+      (it said "tittle"). Put that in the changelog.
+    constraints:<span class="mark">1</span>
+      max_agent_duration: 1m<span class="mark">2</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>Per stimulus only; there is no eval-wide version.</li>
+      <li>Stops the agent and grades what it had done; the record's <code>endReason</code> reads <code>agent_timeout</code>. <code>max_duration</code> stops the trial and fails it; keep <code>max_agent_duration</code> below it. <code>max_turns</code> is documented but its behaviour at the limit is not, so the course uses the <code>turn-count</code> grader instead. <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#limits-that-stop">Lesson 18</a></li>
+    </ol>
+  </div>
+
+  <h2 id="simulation">Making a tool fail</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/release.eval.yaml (tracker-down's simulation block, shifted left)</div>
+<pre><code class="language-yaml">simulation:
+  tool_overrides:
+    shell:<span class="mark">1</span>
+      patterns:
+        - match: list-merged<span class="mark">2</span>
+          output: "error: tracker did not answer (timeout)"
+          is_error: true<span class="mark">3</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>The tool to override. <code>shell</code>, <code>bash</code> and <code>powershell</code> all mean the agent's shell tool. Shell tools can succeed or fail; other tools, such as <code>view</code>, can only fail.</li>
+      <li>A regular expression tested against the whole command, ignoring case; the first match wins. Calls that match nothing, and tools not named, run for real. A <code>default:</code> beside <code>patterns</code>, with its own <code>output</code> and <code>is_error</code>, answers every call the patterns miss.</li>
+      <li>The command does not run; the agent gets the output as a failure. Without it, the same output comes back as success. Needs the <code>copilot-sdk</code> executor. <a href="../lessons/0024-when-a-tool-fails.html#simulation">Lesson 24</a></li>
+    </ol>
+  </div>
+  <p><code>vally simulate record</code> prints a block like this from a saved run's shell calls, as a starting point to edit. <a href="../lessons/0024-when-a-tool-fails.html#recording">Lesson 24</a></p>
+
+  <h2 id="scoring">Combining graders into a score</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/wording-scaled.eval.yaml (the end)</div>
+<pre><code class="language-yaml">scoring:<span class="mark">1</span>
+  weights:<span class="mark">2</span>
+    prompt: 0.5
+    diff-contains: 0.5
+  threshold: 0.75<span class="mark">3</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>Top level, beside <code>stimuli</code>; applies to every stimulus. Without it, every grader must pass.</li>
+      <li>Keyed by grader type, not name; lint expects them to add up to 1. A type left out counts 0. With a threshold and no weights, every grader counts equally.</li>
+      <li>The trial passes when its weighted score reaches this, whatever any single grader said. Keep checks that must all hold out of a weighted score. <a href="../lessons/0014-partial-credit.html#how-vally-decides">Lesson 14</a></li>
+    </ol>
+  </div>
+  <p>Not to be confused with a judge's own <code>scoring: scale_1_5</code> and <code>threshold</code>, inside the <code>prompt</code> grader's <code>config</code>. See <a href="judges-and-statistics.html#scaled-scores">Judges and small counts</a>.</p>
+
+  <h2 id="executor">Running the agent somewhere else</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">An eval file's defaults, for a hosted provider (linted, not run)</div>
+<pre><code class="language-yaml">defaults:
+  model: my-model-name<span class="mark">1</span>
+  executor:
+    name: copilot-sdk<span class="mark">2</span>
+    config:
+      provider:
+        baseUrl: https://api.example.com/v1<span class="mark">3</span>
+        type: openai<span class="mark">4</span>
+        apiKeyEnv: MY_PROVIDER_KEY<span class="mark">5</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>The name the provider knows the model by. Vally does not check it against your account's list.</li>
+      <li>The built-in executor, the part of Vally that runs the agent. Only where it sends model requests changes.</li>
+      <li>The only required field. Ollama on your own computer: <code>http://localhost:11434/v1</code>, and nothing else.</li>
+      <li>The kind of interface; <code>openai</code> is the default.</li>
+      <li>The name of an environment variable holding the key, read from the environment of the <code>vally</code> command. The key itself never goes in the file; lint rejects <code>apiKey</code>. No <code>cost</code> is recorded for these trials, and a judge still goes through your Copilot account. <a href="../lessons/0017-a-model-from-your-own-provider.html#byok">Lesson 17</a></li>
+    </ol>
+  </div>
+  <p>An executor loaded as a plugin is named by itself, as in <code>executor: release-app</code>, or chosen per run with <code>vally eval --executor release-app</code>. <a href="../lessons/0026-let-vally-run-the-app.html#executor-contract">Lesson 26</a></p>
+
+  <h2 id="things-that-bite">What Vally refuses, and when</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Mistake</th><th>What happens</th></tr></thead>
+    <tbody>
+      <tr><td>A misspelt key in a stimulus</td><td><code>vally lint</code> reports <code>eval-load-error</code> and lists the allowed keys</td></tr>
+      <tr><td>A file under <code>files</code> that does not exist</td><td><code>vally lint</code> reports <code>environment-file-not-found</code></td></tr>
+      <tr><td>A grading file staged from inside a skill folder</td><td><code>vally lint</code> reports <code>grading-file-src-agent-visible</code></td></tr>
+      <tr><td>A stimulus file with the same <code>dest</code> as a top-level file</td><td>Lint passes; the run stops before any agent starts, with <code>environment-resolution-failed</code></td></tr>
+      <tr><td>More than one grader and no <code>scoring</code> block</td><td>Lint warns <code>scoring-defaults-applied</code>. This is the every-grader-must-pass rule, and is usually what you want. <a href="../lessons/0014-partial-credit.html#how-vally-decides">Lesson 14</a></td></tr>
+      <tr><td>Two graders with the same name, such as a named budget under every stimulus</td><td><code>vally lint</code> reports <code>duplicate-grader-name</code>. <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#set-budgets">Lesson 18</a></td></tr>
+      <tr><td>A <code>commands:</code> entry with a colon and a space, unquoted</td><td>Lint passes; every trial ends in <code>ERROR</code> within milliseconds: <code>The "command" argument must be of type string</code>. <a href="../lessons/0020-when-a-run-goes-wrong.html#fix-four">Lesson 20</a></td></tr>
+      <tr><td>An <code>env</code> written as a list, or a number left unquoted</td><td><code>vally lint</code> reports <code>environment-env-invalid</code> (our lint, 2026-11-10)</td></tr>
+      <tr><td><code>apiKey</code> in a provider block</td><td><code>vally lint</code> reports <code>executor-config-invalid</code> and lists the allowed fields. <a href="../lessons/0017-a-model-from-your-own-provider.html#byok">Lesson 17</a></td></tr>
+      <tr><td><code>apiKeyEnv</code> naming a variable that is not set</td><td>Lint passes; every trial ends in <code>ERROR</code> before the agent starts</td></tr>
+      <tr><td>A stimulus with <code>simulation</code>, run by an executor that does not support it</td><td>That stimulus ends in <code>ERROR</code> before any agent starts, at no cost. <a href="../lessons/0026-let-vally-run-the-app.html#executor-contract">Lesson 26</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="experiment-file">An experiment file</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/before-and-after.experiment.yaml</div>
+<pre><code class="language-yaml">name: before-and-after
+evals:
+  - wording.eval.yaml<span class="mark">1</span>
+vary: [/environment/skills, /defaults/model]<span class="mark">2</span>
+baseline: haiku-before<span class="mark">3</span>
+overrides:
+  runs: 3<span class="mark">4</span>
+variants:
+  haiku-before:
+    overrides:
+      model: claude-haiku-4.5
+    environment:
+      skills: [../skills/changelog-entry-before]
+  haiku-after:
+    overrides:
+      model: claude-haiku-4.5
+    environment:
+      skills: [../skills/changelog-entry]<span class="mark">5</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>The eval file whose stimuli and graders every variant uses.</li>
+      <li>The only settings variants may differ in. Anything else stops the run with <code>Experiment drift detected</code>.</li>
+      <li>The variant the others are compared with.</li>
+      <li>Settings for every variant. Here, three trials each. An executor set here, as in <code>executor: release-app</code>, applies to every variant. <a href="../lessons/0026-let-vally-run-the-app.html#write-and-run">Lesson 26</a></li>
+      <li>An empty list, <code>skills: []</code>, means no skill. <a href="../lessons/0010-is-the-agent-better-with-the-skill.html#experiment-file">Lesson 10</a></li>
+    </ol>
+  </div>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/cost.experiment.yaml (after lesson 17)</div>
+<pre><code class="language-yaml">name: cost
+evals:
+  - changelog.eval.yaml
+vary:<span class="mark">1</span>
+  - /defaults/model
+  - /defaults/reasoning_effort
+  - /defaults/executor
+  - /defaults/timeout
+  - /defaults/runs
+baseline: haiku-low
+overrides:
+  runs: 3
+variants:
+  haiku-low:
+    overrides:
+      model: claude-haiku-5.5
+      reasoning_effort: low<span class="mark">2</span>
+<span class="gap">12 lines hidden: haiku-high, terra-low and terra-high</span>
+  qwen-local:
+    overrides:
+      model: qwen3.5:9b
+      timeout: 9m
+      runs: 1<span class="mark">3</span>
+      executor:
+        name: copilot-sdk
+        config:
+          provider:
+            baseUrl: http://localhost:11434/v1</code></pre>
+    </div>
+    <ol class="notes">
+      <li>One path per line. A variant that sets its own executor, timeout or trial count needs that path here; <code>vally experiment run</code> has no <code>--runs</code> or <code>--timeout</code> options. <a href="../lessons/0017-a-model-from-your-own-provider.html#run-provider">Lesson 17</a></li>
+      <li>Reasoning effort varied like the model. Lesson 16's file has four variants: two models at <code>low</code> and <code>high</code>. <a href="../lessons/0016-what-a-passing-trial-costs.html#reasoning-effort">Lesson 16</a></li>
+      <li>Per-variant overrides of the trial count, time limit and executor. Run one variant alone with <code>--variant qwen-local</code>.</li>
+    </ol>
+  </div>
+
+  <h2 id="vally-yaml">Suites and plugins in .vally.yaml</h2>
+  <div class="file-excerpt">
+    <div class="file-name">.vally.yaml, in the folder you run Vally from</div>
+<pre><code class="language-yaml">plugins:
+  executor:
+    - ./app/vally-executor.mjs
+suites:
+  quick:
+    description: Code graders and budgets, one trial.
+    evals:
+      - evals/changelog.eval.yaml
+    filter: { tier: quick }
+  full:
+    description: Everything, with loading and the judge.
+    evals:
+      - evals/changelog.eval.yaml
+      - evals/conversation.eval.yaml
+      - evals/loading.eval.yaml
+      - evals/wording.eval.yaml</code></pre>
+  </div>
+  <p>A suite is a list of eval files, optionally narrowed to stimuli with a tag. It adds no graders of its own; the quick suite carries budgets because its stimuli do. <a href="../lessons/0021-keep-it-working.html#tags-suites-exit-codes">Lesson 21</a></p>
+  <p><code>plugins.executor</code> loads executor files. Loading one does not select it. <a href="../lessons/0026-let-vally-run-the-app.html#executor-contract">Lesson 26</a></p>
+
+  <nav class="course-map" data-current="0" data-root="../"></nav>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

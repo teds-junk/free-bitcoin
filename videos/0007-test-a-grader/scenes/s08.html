@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three reports on the baseline</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.card > .code.dark{font-size:36px;line-height:1.5;padding:26px 32px;min-width:900px}.card .who{font-size:30px}.callout{font-size:32px}.callouts{margin-top:52px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the oracle does</div>
+  <h2 class="scene-title">Three reports on the baseline</h2>
+  <div class="stage">
+<div class="annotated">
+    <div class="card" data-concept="says" data-rep="card">
+        <div class="who">what the oracle says about a grader, with nothing applied</div>
+        <pre class="code dark" data-lang="text"><code><span data-concept="fae" data-rep="code"><span>✓ failed as expected</span></span>
+
+<span data-concept="na" data-rep="code"><span>⊘ N/A</span></span>
+
+<span data-concept="triv" data-rep="code"><span>✗ passed without the golden solution</span></span>
+<span data-concept="triv" data-rep="code"><span>  (trivially passing)</span></span></code></pre>
+      </div>
+    <aside class="callouts"><p class="callout" data-anchor="fae">it depends on the work: good</p><p class="callout" data-anchor="na">an absence check: not tested</p><p class="callout" data-anchor="triv">it depends on nothing: <span class="mono">baseline PROBLEM</span></p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "fae",
+  "at": "0~failed as expected",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "na",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "triv",
+  "at": "5",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

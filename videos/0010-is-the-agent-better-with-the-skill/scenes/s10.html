@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One column per variant</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.exp{font-size:44px}.exp th{font-size:27px;vertical-align:bottom}.exp th .mono{font-family:var(--font-code);color:var(--ink)}.exp td{padding-top:30px;padding-bottom:30px;height:60px}.exp td:first-child{font-size:38px}.exp th:last-child,.exp td:last-child{padding-right:16px}.exp th,.exp td{padding-right:40px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">An experiment file</div>
+  <h2 class="scene-title">One column per variant</h2>
+  <div class="stage">
+<table class="data-table full exp">
+    <thead><tr><th></th><th class="num"><span data-concept="vcol" data-rep="cell"><span class="mono">haiku-no-skill</span></span><br><span data-concept="basecol" data-rep="cell">(baseline)</span></th><th class="num"><span data-concept="vcol" data-rep="cell"><span class="mono">haiku-with-skill</span></span></th><th class="num"><span data-concept="vcol" data-rep="cell"><span class="mono">terra-no-skill</span></span></th><th class="num"><span data-concept="vcol" data-rep="cell"><span class="mono">terra-with-skill</span></span></th></tr></thead>
+    <tbody>
+<tr><td><span data-concept="r-sti" data-rep="head">stimuli</span></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+<tr><td><span data-concept="r-tok" data-rep="head">tokens</span></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+<tr><td><span data-concept="r-tri" data-rep="head">trial time</span></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+    </tbody>
+  </table>
+  <p class="note"><span data-concept="above" data-rep="note">above the table: a block for each stimulus that failed</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "vcol",
+  "at": "0~one column",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "basecol",
+  "at": "0~baseline",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r-sti",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "r-tok",
+  "at": "2~tokens",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "r-tri",
+  "at": "2~trial time",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "above",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

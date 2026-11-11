@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One worker at a time</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px}.terms .label{font-size:36px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A variant on a local model</div>
+  <h2 class="scene-title">One worker at a time</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="w2" data-rep="block" data-role="structure">
+      <div class="title">--workers 2</div><div class="label">each trial waits on the other, and can run out of its nine minutes</div>
+    </div>
+    <div class="semantic-block" data-concept="w1" data-rep="block" data-role="attention">
+      <div class="title">--workers 1</div><div class="label">one request at a time, the way this server answers</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "w1",
+  "at": "0~one worker",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "w2",
+  "at": "1~two workers",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

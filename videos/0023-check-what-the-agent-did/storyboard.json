@@ -1,0 +1,705 @@
+{
+  "schema": 2,
+  "title": "Check what the agent did",
+  "slug": "0023-check-what-the-agent-did",
+  "kind": "lesson",
+  "lesson_number": 23,
+  "source": "/Users/ted/src/learn/vally/lessons/0023-check-what-the-agent-did.html",
+  "created": "2026-11-11",
+  "poster": "s01",
+  "people": [],
+  "pacing": {
+    "lead_in": 0.4,
+    "gap": 0.5,
+    "tail": 0.8
+  },
+  "narrative": {
+    "question": "How do I check the steps the agent took, not just the file it changed?",
+    "viewer_starts": "A professional programmer who knows the shell, YAML, regular expressions and git, and has watched the changelog-entry skill measured and improved on two models (claude-haiku-4.5 and gpt-5.6-terra) in the practice folder. Knows skill, agent, eval, eval file, stimulus, grader, trial, workspace and patch; that a trial's trajectory, its record of what the agent did, is saved in the run's results.jsonl, one trial per line; that a loaded skill is recorded there and read by the skill-invocation grader, and shown in the report's Skills column; the agent environment and the grading environment; that every grader on a stimulus must pass unless a scoring block says otherwise, and that vally lint prints a scoring warning to say so; vally oracle with --no-golden-input, which grades the untouched workspace (the baseline), where a grader that requires something should fail and a grader that only checks for absence is marked N/A; vally grade, which applies the eval file's current graders to saved trials without starting an agent, with --run-dir and --verbose, and which cannot re-run a grader that needs the finished workspace; that a grader which checks for absence is tested on a saved trial known to be bad; vally eval with -e, --model, --runs, --workers and --output-dir; time limits that stop an agent. Has just seen the release stimulus: the notes-cli team's release tool writes the list of merged changes to release/merged.txt with a setup command, asks the agent for the Unreleased entries, and a hidden test named every-change-handled checks the finished changelog against that list. Ten trials of it are saved, five on each model; the skill says a refactor gets no entry. Has not seen a tool call event, the tool-calls grader, or a loop check.",
+    "arc": [
+      {
+        "stage": "when-it-matters",
+        "viewer_can": "say when a step the agent took is worth grading: when the app requires it, forbids it, or the route is too long"
+      },
+      {
+        "stage": "tool-calls",
+        "viewer_can": "read a tool-calls grader and predict which trials it passes"
+      },
+      {
+        "stage": "loops",
+        "viewer_can": "say what the loop check counts, and when it fails"
+      },
+      {
+        "stage": "test-then-run",
+        "viewer_can": "test route graders on the baseline and on saved trials, show that a forbidding grader can fail, and then run them"
+      },
+      {
+        "stage": "what-it-showed",
+        "viewer_can": "add graders that require a step and forbid another, with a loop check, each tested against saved trials, and say what the route showed about each model"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "role": "hook",
+      "mode": "think",
+      "stage": "when-it-matters",
+      "chapter": "Check the route",
+      "renderer": "html",
+      "visual": "scenes/s01.html",
+      "on_screen": "Headline 'Check what the agent did' in the display serif. Three blocks in a row, no arrows: 'CHANGELOG.md · what the hidden test sees', 'Did the entries come from the list?', 'Did the agent commit or push?'. The first fills as the changelog is named, then the second and third as each question is asked; all rest for the promise.",
+      "introduces": [],
+      "narration": [
+        "Inside the release tool, nobody watches the agent work.",
+        "The team cares about the changelog, and also about two things the changelog can't show.",
+        "The entries have to come from the list the tool wrote, and not from guesses that happen to be right.",
+        "And the agent must never commit or push: the release tool does that itself, after a person has checked the result.",
+        "Our hidden test only sees the finished file.",
+        "Here, you'll add graders that check the steps the agent took, and test each one before it runs."
+      ]
+    },
+    {
+      "id": "s02",
+      "role": "body",
+      "mode": "think",
+      "stage": "when-it-matters",
+      "chapter": "When a step is worth grading",
+      "renderer": "html",
+      "visual": "scenes/s02.html",
+      "on_screen": "Eyebrow 'When the route matters'. Headline 'Grade the outcome by default'. Two blocks side by side: 'The outcome · what the agent left behind · the default' and 'The route · the steps it took · only where the app depends on one'. The first fills, then the second. A source note: Anthropic, Demystifying evals for AI agents (2026).",
+      "introduces": [],
+      "narration": [
+        "Let's start with when a step is worth grading at all.",
+        "The default is to grade the outcome.",
+        "Agents find valid routes nobody planned for, and a grader that insists on one sequence of steps fails good work.",
+        "An agent that opens a file with one tool instead of another has still opened it.",
+        "So we check the route only when the app depends on it, and then only the step it depends on."
+      ]
+    },
+    {
+      "id": "s03",
+      "role": "body",
+      "mode": "think",
+      "stage": "when-it-matters",
+      "renderer": "html",
+      "visual": "scenes/s03.html",
+      "on_screen": "Headline 'Required, forbidden, or too long'. Three blocks in a row, no arrows: 'Required · the agent works from the list', 'Forbidden · a commit, a push, a deleted file', 'Too long · the same call, again and again'. Each fills as it is named.",
+      "introduces": [],
+      "narration": [
+        "Sometimes a step is required: the app relies on the agent working from the list, because an entry written from the file names would be right only by luck.",
+        "A step can be forbidden: a commit, a push, a deleted file, anything with effects outside the workspace.",
+        "A commit made by the agent can't be undone by throwing the workspace away.",
+        "And a route can be too long: an agent that repeats the same call costs money and time, even when it gets there."
+      ]
+    },
+    {
+      "id": "s04",
+      "role": "body",
+      "mode": "think",
+      "stage": "when-it-matters",
+      "renderer": "html",
+      "visual": "scenes/s04.html",
+      "on_screen": "Headline 'As loose as the requirement'. Two blocks side by side: 'The requirement · open release/merged.txt' and 'One way to meet it · one particular tool'. The first fills, then the second.",
+      "introduces": [],
+      "narration": [
+        "Even a route grader should be as loose as the requirement.",
+        "Opening the merged list is the requirement.",
+        "Using one particular tool on it is one way to meet that requirement, and not the only one.",
+        "That difference shapes the first grader we'll write."
+      ]
+    },
+    {
+      "id": "s05",
+      "role": "body",
+      "mode": "works",
+      "stage": "tool-calls",
+      "chapter": "Read a tool-calls grader",
+      "renderer": "html",
+      "visual": "scenes/s05.html",
+      "on_screen": "Eyebrow 'The tool-calls grader'. Headline 'Every tool use is recorded'. File panel labelled 'results.jsonl · one event of one trial', with a minimap: one tool_call event, spread over its lines. Notes on the right, level with their lines: 'the tool's name' beside toolName, 'what the tool was given' beside the path. A note under it says the workspace's real location is shown as <workspace>.",
+      "introduces": [
+        "results.jsonl",
+        "results.jsonl · one event of one trial"
+      ],
+      "narration": [
+        "That's when to check a step; now for where the steps are recorded.",
+        "Every time the agent uses a tool, the trial's trajectory, its record of what the agent did, gains a tool call event.",
+        {
+          "text": "Here's one from the saved run, spread out over several lines: an agent opening the merged list.",
+          "outcome": true
+        },
+        "Tool name is the tool's name; the agent's runtime decides the names.",
+        "Arguments hold what the tool was given: a file tool gets a path, and bash gets a command."
+      ],
+      "shows": [
+        "results.jsonl"
+      ]
+    },
+    {
+      "id": "s06",
+      "role": "body",
+      "mode": "works",
+      "stage": "tool-calls",
+      "renderer": "html",
+      "visual": "scenes/s06.html",
+      "on_screen": "Headline 'The report counts them'. Left: a card labelled 'eval-results.md · Tool Calls · claude-haiku-4.5' with a dark box holding that cell of the report. Right: a table, 'Tool' and 'What it does': view, edit, apply_patch, bash, skill. The card lights, then each table row as its tool is named.",
+      "introduces": [
+        "eval-results.md"
+      ],
+      "narration": [
+        "You don't need to open that file to learn the names.",
+        "The report has a Tool Calls column, which totals them for each stimulus.",
+        {
+          "text": "For haiku's five saved trials, it counted eighteen views, five edits, three skill calls, and two bash calls.",
+          "outcome": true
+        },
+        "View opens a file, edit and apply patch change one, bash runs a shell command, and skill loads a skill."
+      ]
+    },
+    {
+      "id": "s07",
+      "role": "body",
+      "mode": "works",
+      "stage": "tool-calls",
+      "renderer": "html",
+      "visual": "scenes/s07.html",
+      "on_screen": "Headline 'Required: one call must match'. File panel labelled 'evals/release.eval.yaml' with a minimap, opened on the first new grader (lines 33 to 38). Notes on the right, level with their lines: 'exactly view, or exactly bash' beside the name pattern, 'its arguments mention the list' beside the pattern line. The grader's name lights, then 'required', then each of the two lines.",
+      "introduces": [
+        "release.eval.yaml",
+        "evals/release.eval.yaml"
+      ],
+      "narration": [
+        "The tool calls grader works from those events.",
+        "Here are two, added to the release eval file after the hidden test.",
+        "The first is named reads the list.",
+        "Under required, it has one entry, and every entry there must match at least one call.",
+        "This entry has two keys, and each is a regular expression.",
+        "Name is matched against the tool's name.",
+        "The pattern is matched against all of the call's arguments, written out as text.",
+        "Both have to match the same call, so this grader needs a call to view, or to bash, whose arguments mention the merged list."
+      ],
+      "shows": [
+        "release.eval.yaml"
+      ]
+    },
+    {
+      "id": "s08",
+      "role": "body",
+      "mode": "works",
+      "stage": "tool-calls",
+      "renderer": "html",
+      "visual": "scenes/s08.html",
+      "on_screen": "Headline 'Why view or bash?'. The same panel on the same lines. The name pattern stays lit while the reason is given, with its note 'exactly view, or exactly bash'.",
+      "introduces": [],
+      "narration": [
+        "Why both tools?",
+        "Either one can open a file: view directly, and bash with a command such as cat.",
+        "If a grader required view alone, it would fail a trial that opened the list with cat.",
+        "That trial would have done exactly what the app needs, so the requirement names both tools.",
+        "We anchor the name at both ends, because an expression otherwise matches anywhere in the text.",
+        "Without the anchors, view would also match preview."
+      ],
+      "shows": [
+        "release.eval.yaml"
+      ]
+    },
+    {
+      "id": "s09",
+      "role": "body",
+      "mode": "works",
+      "stage": "tool-calls",
+      "renderer": "html",
+      "visual": "scenes/s09.html",
+      "on_screen": "Headline 'Disallowed: no call may match'. The same panel, scrolled to the second grader (lines 39 to 44). Notes on the right: 'none of these may happen' beside disallowed, 'git commit, or git push' beside the command pattern. The name lights, then 'disallowed', then the command line.",
+      "introduces": [],
+      "narration": [
+        "The second grader is named never commits.",
+        "No call may match an entry under disallowed.",
+        "This entry has a name too, and a second key, command, which is matched against a shell call's command.",
+        "So it matches any bash call that contains git commit or git push.",
+        "When a grader has only a disallowed list, it checks for absence, so a trajectory with no calls at all passes it.",
+        "That decides how we test it: the oracle can't show such a grader failing, and only a saved trial that did the forbidden thing can."
+      ],
+      "shows": [
+        "release.eval.yaml"
+      ]
+    },
+    {
+      "id": "s10",
+      "role": "body",
+      "mode": "works",
+      "stage": "tool-calls",
+      "renderer": "html",
+      "visual": "scenes/s10.html",
+      "on_screen": "Headline 'Two more complete the set'. The same panel, scrolled to the last two graders (lines 45 to 52). The skill-invocation grader's name lights, then the loop check's name. Notes on the right: 'the skill must load' beside required, 'a loop check' beside max-repeat.",
+      "introduces": [],
+      "narration": [
+        "Two more graders complete the set.",
+        "The last one we already know: skill invocation, here named loads the skill.",
+        {
+          "text": "In the saved run's report, haiku loaded the skill in three of its five trials, and this grader gives every trial a verdict on it.",
+          "outcome": true
+        },
+        "The other, named no loop, checks for loops, and that's the next thing to explain."
+      ],
+      "shows": [
+        "release.eval.yaml"
+      ]
+    },
+    {
+      "id": "s11",
+      "role": "body",
+      "mode": "works",
+      "stage": "loops",
+      "chapter": "Catch a loop",
+      "renderer": "html",
+      "visual": "scenes/s11.html",
+      "on_screen": "Eyebrow 'Catching loops'. Headline 'Four in a row fail'. The same panel on the loop check (lines 45 to 48). A note on the right, level with 'max: 3': 'a fourth identical result fails'. The grader type lights, then the max line.",
+      "introduces": [],
+      "narration": [
+        "An agent loops when it repeats the same action without getting anywhere: reopening a file, or rerunning a command that fails.",
+        "Vally has two graders for that: max repeat, which counts repeats, and loop outcome, which asks whether looping was expected.",
+        "Both work from the trajectory after the trial has ended, so neither stops a running agent; the time limits we set earlier do that.",
+        "Let's take max repeat first: it fails when one action is repeated, back to back, more than max times.",
+        "Ours allows three, so four identical results in a row fail."
+      ],
+      "shows": [
+        "release.eval.yaml"
+      ]
+    },
+    {
+      "id": "s12",
+      "role": "body",
+      "mode": "works",
+      "stage": "loops",
+      "renderer": "html",
+      "visual": "scenes/s12.html",
+      "on_screen": "Headline 'What counts as the same?'. Dark box, left: three lines, 'match: observation', 'match: name', 'match: name-args'. Notes on the right, level with each: 'calls that got the same result · the default', 'calls to the same tool', 'the same tool, the same arguments'. Each line lights as it is named. A note under it: 'also: tools, max_cycle_period'.",
+      "introduces": [],
+      "narration": [
+        "For max repeat, what counts as the same action is set by match.",
+        "Observation, the default, means calls that got the same result.",
+        "Name means calls to the same tool, and a third value adds the arguments: the same tool, called with the same arguments.",
+        "Max repeat has two more settings, which narrow it to some tools, or catch an alternating pattern, such as A, B, A, B."
+      ]
+    },
+    {
+      "id": "s13",
+      "role": "body",
+      "mode": "works",
+      "stage": "loops",
+      "renderer": "html",
+      "visual": "scenes/s13.html",
+      "on_screen": "Headline 'A second grader, for retries'. Two blocks side by side: 'max-repeat · the same action, back to back, more than max times' and 'loop-outcome · did it loop, and was that expected?'. The second fills as it is named, then the first, then the second again.",
+      "introduces": [],
+      "narration": [
+        "Loop outcome is for a stimulus where retrying is the very thing under test, such as a tool that fails.",
+        "There, max repeat can only say that the agent repeated itself; loop outcome says whether that was what we expected.",
+        "This grader counts retries, the repeats after a first call, against a limit we choose, and a setting named should loop says which answer passes.",
+        "None of our stimuli has a failing tool yet, so loop outcome isn't in this eval file."
+      ]
+    },
+    {
+      "id": "s14",
+      "role": "practice",
+      "mode": "use",
+      "stage": "test-then-run",
+      "chapter": "Test graders before they run",
+      "renderer": "html",
+      "visual": "scenes/s14.html",
+      "on_screen": "Eyebrow 'Require, forbid, re-grade'. Headline 'Which fail on an untouched workspace?'. A table of the stimulus's five graders, 'Grader', 'It', 'On the baseline', 'On ten saved trials': every-change-handled (requires), reads-the-list (requires), never-commits (forbids), no-loop (forbids), loads-the-skill (requires); the last two columns are empty. The 'On the baseline' column lights, then the 'On ten saved trials' column, then the never-commits row; all rest for the question and a beat.",
+      "introduces": [
+        "vally lint",
+        "vally oracle",
+        "--no-golden-input",
+        "vally grade",
+        "--run-dir",
+        "--verbose",
+        "vally eval",
+        "-e",
+        "--model",
+        "--runs",
+        "--workers",
+        "--output-dir",
+        "cd",
+        "lesson-22",
+        "2026",
+        "lesson-23"
+      ],
+      "narration": [
+        "Those are the graders; now let's test them, before any of them costs a run.",
+        "First on the baseline: the workspace as it starts, with no agent.",
+        "Then on the ten trials of the saved run, again with no agent.",
+        "Then we make sure the forbidding grader can fail, and run once more.",
+        {
+          "text": "Which of these five would you expect to fail on a workspace nobody has touched?",
+          "read": 2
+        },
+        "If you tried it yourself, here's what you'd see."
+      ]
+    },
+    {
+      "id": "s15",
+      "role": "practice",
+      "mode": "use",
+      "stage": "test-then-run",
+      "renderer": "terminal",
+      "visual": "tapes/s15.tape",
+      "on_screen": "Terminal in the practice folder; the prompt shows only the folder name. vally lint -e evals/release.eval.yaml prints one warning, scoring-defaults-applied, held. The screen is cleared out of sight. vally oracle -e evals/release.eval.yaml --no-golden-input, over two lines, prints the baseline report: three graders 'failed as expected', two 'N/A', and a last line beginning 'Score'. Held until it has been read.",
+      "introduces": [],
+      "shows": [
+        "vally lint",
+        "vally oracle"
+      ],
+      "narration": [
+        {
+          "text": "The four new graders are in the eval file, so we lint it first, which is free.",
+          "before": "typed:1"
+        },
+        {
+          "text": "There's one warning, the usual one about scoring: with no scoring block, every grader must pass, which is what we want.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 2
+        },
+        {
+          "text": "Next, the oracle with no golden input: it builds the workspace, applies nothing, and grades that.",
+          "before": "typed:2"
+        },
+        {
+          "text": "A grader that requires something should fail here.",
+          "before": "enter:2"
+        },
+        {
+          "text": "Three failed as expected: the hidden test, reads the list, and loads the skill.",
+          "wait_for": "output:2",
+          "outcome": true,
+          "read": 4
+        },
+        {
+          "text": "The two that only forbid something are marked N/A, because doing nothing breaks no rule.",
+          "wait_for": "output:2",
+          "outcome": true,
+          "read": 3
+        },
+        {
+          "text": "So those two still need testing.",
+          "wait_for": "output:2"
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "role": "practice",
+      "mode": "use",
+      "stage": "test-then-run",
+      "renderer": "terminal",
+      "visual": "tapes/s16.tape",
+      "on_screen": "Terminal, continuing in the practice folder. cd into the saved run's folder under results/lesson-22 (its name completed with Tab). vally grade -e ../../../evals/release.eval.yaml --run-dir . --verbose < results.jsonl, over two lines; ten blocks scroll by, one per trial, and the screen holds on the last one, listing the five graders.",
+      "introduces": [],
+      "shows": [
+        "cd",
+        "vally grade"
+      ],
+      "narration": [
+        {
+          "text": "Now the saved trials: we change into the saved run's folder, which holds ten trials, five for each model.",
+          "before": "typed:1"
+        },
+        {
+          "text": "Vally grade re-grades them with the eval file as it is now, starting no agent, and dash dash verbose prints every grader's line.",
+          "wait_for": "output:1",
+          "before": "typed:2"
+        },
+        {
+          "text": "The hidden test needs the finished workspace, which a re-grade doesn't have, so it will fail in every block.",
+          "before": "enter:2"
+        },
+        {
+          "text": "The four new graders are what we're checking.",
+          "before": "enter:2"
+        },
+        {
+          "text": "The command prints ten blocks, one for each trial; the last of them is on screen.",
+          "wait_for": "output:2",
+          "outcome": true,
+          "read": 3
+        },
+        {
+          "text": "In it, the hidden test has failed, as expected, and under it are the four new graders.",
+          "wait_for": "output:2",
+          "outcome": true,
+          "read": 5
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "role": "practice",
+      "mode": "use",
+      "stage": "test-then-run",
+      "renderer": "html",
+      "visual": "scenes/s17.html",
+      "on_screen": "Headline 'Three passed all ten'. The table from before, both columns filled from our output: 'On the baseline' (failed as expected, or N/A) and 'On ten saved trials' (passed n of 10; the hidden test: needs the workspace). The three route graders' cells light together, then the loads-the-skill cell, then the never-commits row.",
+      "introduces": [],
+      "narration": [
+        "Here are both tests, side by side.",
+        {
+          "text": "Reads the list, never commits and no loop passed all ten trials.",
+          "outcome": true
+        },
+        {
+          "text": "Loads the skill failed two: the two haiku trials that hadn't loaded it.",
+          "outcome": true
+        },
+        "Never commits hasn't failed anywhere yet, and a grader that has never failed might be checking nothing."
+      ]
+    },
+    {
+      "id": "s18",
+      "role": "practice",
+      "mode": "use",
+      "stage": "test-then-run",
+      "renderer": "html",
+      "visual": "scenes/s18.html",
+      "on_screen": "Headline 'Forbid a command one ran'. File panel labelled 'evals/release.eval.yaml · for one re-grade' with a minimap, on the never-commits grader (lines 39 to 44), its command pattern now the one word. A note on the right, level with that line: 'in place of git (commit|push), for a moment'.",
+      "introduces": [
+        "release.eval.yaml · for one re-grade",
+        "evals/release.eval.yaml · for one re-grade"
+      ],
+      "narration": [
+        "No saved trial committed anything, so we'll test the grader on a command that one of them did run.",
+        {
+          "text": "In one of its trials, haiku ran find.",
+          "outcome": true
+        },
+        {
+          "text": "So, for one re-grade, the pattern forbids find, in place of git commit or push.",
+          "outcome": true
+        }
+      ],
+      "shows": [
+        "release.eval.yaml"
+      ]
+    },
+    {
+      "id": "s19",
+      "role": "practice",
+      "mode": "use",
+      "stage": "test-then-run",
+      "renderer": "terminal",
+      "visual": "tapes/s19.tape",
+      "on_screen": "Terminal in the saved run's folder; the prompt shows its name. The same vally grade command, over two lines; the ten blocks scroll by again and the screen holds on the last ones.",
+      "introduces": [],
+      "shows": [
+        "vally grade"
+      ],
+      "narration": [
+        {
+          "text": "With that one change, we re-grade the same ten trials.",
+          "before": "typed:1"
+        },
+        {
+          "text": "Never commits should now fail wherever a trial ran that command.",
+          "before": "enter:1"
+        },
+        {
+          "text": "It's the same ten blocks, and the one that changed has scrolled off the top, so we'll bring it back on the next screen.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 5
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "role": "practice",
+      "mode": "use",
+      "stage": "test-then-run",
+      "renderer": "html",
+      "visual": "scenes/s20.html",
+      "on_screen": "Headline 'Now it can fail'. A dark box across the width with lines from that re-grade's output, as printed: the failing trial's header line, its never-commits line with a cross, and the evidence line naming the entry that matched. A note under it: 'from the block of the one trial that ran the command · other lines left out'. The never-commits line lights, then the evidence line.",
+      "introduces": [],
+      "narration": [
+        "Here's the block for the trial that ran it.",
+        {
+          "text": "Never commits failed, and its evidence names the entry that matched: a bash call whose command contains find.",
+          "outcome": true
+        },
+        {
+          "text": "It failed in that one trial, and passed in the other nine.",
+          "outcome": true
+        },
+        "So the grader can fail, which gives its passes some meaning."
+      ]
+    },
+    {
+      "id": "s20b",
+      "role": "practice",
+      "mode": "use",
+      "stage": "test-then-run",
+      "renderer": "html",
+      "visual": "scenes/s20b.html",
+      "on_screen": "Headline 'The real pattern goes back'. The eval file's panel again, labelled 'evals/release.eval.yaml' with a minimap, on the never-commits grader (lines 39 to 44); its command pattern, git (commit|push), is lit, with the note 'git commit, or git push'.",
+      "introduces": [],
+      "shows": [
+        "release.eval.yaml"
+      ],
+      "narration": [
+        "With that shown, the pattern goes back to git commit or push.",
+        "This is the eval file the real run will use."
+      ]
+    },
+    {
+      "id": "s21",
+      "role": "practice",
+      "mode": "use",
+      "stage": "test-then-run",
+      "renderer": "terminal",
+      "visual": "tapes/s21.tape",
+      "on_screen": "Terminal, back in the practice folder. vally eval on the release eval file over four lines, with both models, --runs 3 --workers 2 and --output-dir results/lesson-23; a jump cut; then the end of the run's output: the failures, the model summary, the table and the Saved line (shown as ~/src/demo). Held until it has been read.",
+      "introduces": [],
+      "shows": [
+        "vally eval"
+      ],
+      "spend": "6 agent runs",
+      "narration": [
+        {
+          "text": "Last, a real run with every grader: the release stimulus, three trials on each model, two at a time.",
+          "before": "typed:1"
+        },
+        {
+          "text": "That's six agent runs.",
+          "before": "enter:1"
+        },
+        {
+          "text": "When it finishes, the summary lists each grader that failed any trial.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 3
+        },
+        {
+          "text": "Terra passed every grader in all three trials.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 2
+        },
+        {
+          "text": "Haiku's first and third trials each failed two graders: the hidden test, and loads the skill.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 4
+        },
+        {
+          "text": "Its second trial passed all five.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 2
+        }
+      ]
+    },
+    {
+      "id": "s22",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-it-showed",
+      "chapter": "What the route showed",
+      "renderer": "html",
+      "visual": "scenes/s22.html",
+      "on_screen": "Eyebrow 'What the path showed'. Headline 'Two guards never fired'. Two blocks side by side: 'never-commits · failed 0 of 16 real trials' and 'no-loop · failed 0 of 16 real trials'. A note: 'ten saved trials and six new ones'. Both fill together, then the never-commits block alone.",
+      "introduces": [],
+      "narration": [
+        "So what did checking the route show?",
+        {
+          "text": "Our two guards, never commits and no loop, didn't fail a single real trial: no agent committed, pushed, or looped.",
+          "outcome": true
+        },
+        "That's what we'd expect of a guard: it's there for the day a model update changes the agent's habits.",
+        "And we've seen that never commits can fail, which is what makes its passes worth anything."
+      ]
+    },
+    {
+      "id": "s23",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-it-showed",
+      "renderer": "html",
+      "visual": "scenes/s23.html",
+      "on_screen": "Headline 'The route each model took'. A table, one row per model, eight trials each (five saved, three new): 'Loaded the skill', 'Recorded the refactor', 'Passed every grader'. Haiku's row lights, then terra's, then haiku's 'loaded' cell.",
+      "introduces": [],
+      "narration": [
+        "The more interesting result is the route each model took.",
+        {
+          "text": "Haiku has eight trials in all, five saved and three new.",
+          "outcome": true
+        },
+        {
+          "text": "It loaded the skill in four of them, and five of the eight have an entry for the refactor, which the skill says to leave out.",
+          "outcome": true
+        },
+        {
+          "text": "Terra loaded the skill in all eight, and passed all eight.",
+          "outcome": true
+        },
+        {
+          "text": "That points at loading, but it isn't the whole story: all four haiku trials without the skill wrote that entry, and so did one of the four that loaded it.",
+          "outcome": true
+        },
+        "Eight trials are too few to say more."
+      ]
+    },
+    {
+      "id": "s24",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-it-showed",
+      "renderer": "html",
+      "visual": "scenes/s24.html",
+      "on_screen": "Headline 'A new question for the team'. Two blocks side by side: 'Does the skill write good entries? · measured earlier' and 'Does the app get the skill used? · new'. Under them, the app's prompt as a quote: 'Write the Unreleased changelog entries for every change listed in release/merged.txt.' The first block fills, then the second, then the quote.",
+      "introduces": [],
+      "narration": [
+        "For the team, this changes the question.",
+        "Whether the skill writes good entries is something we measured earlier.",
+        "Whether the app gets the skill used is new, and it depends on the model, and on the app's own prompt, which never mentions the skill.",
+        "Both are things the team controls: the app can name the skill in its prompt, or the skill's description can name this situation.",
+        "Either one is an edit to measure, before and after, the way we've measured edits before."
+      ]
+    },
+    {
+      "id": "s25",
+      "role": "recap",
+      "stage": "what-it-showed",
+      "renderer": "html",
+      "visual": "scenes/s25.html",
+      "on_screen": "Headline 'When is a step worth grading?'. One block, 'grade a step when the app…', which opens after the question and a pause into three parts, each lit as it is said: 'requires it', 'forbids it', 'pays for a long route'.",
+      "introduces": [],
+      "narration": [
+        "Before you go on: when is a step worth grading, and how is a grader that only forbids tested?",
+        {
+          "text": "It's worth grading when the app requires it, such as opening the list.",
+          "pause": 2.5
+        },
+        "Or when the app forbids it, such as a commit or a push.",
+        "Or when a long route costs too much, as a loop does.",
+        "And a grader that only forbids is tested on a saved trial that did the forbidden thing, because an untouched workspace always passes it."
+      ]
+    },
+    {
+      "id": "s26",
+      "role": "next",
+      "stage": "what-it-showed",
+      "renderer": "slide",
+      "visual": "scenes/s26.html",
+      "on_screen": "'Next: When a tool fails' in the display serif. Below, the hand-off question: 'Does the agent cope, and can you test that without breaking anything?' A note: 'Exercises are on the lesson page · Source: Vally docs, Choose a Grader; Grader: tool-calls'.",
+      "introduces": [],
+      "narration": [
+        "You can now add graders for the steps an agent took: one that requires opening the merged list, one that forbids a commit or a push, and a loop check, each tested against saved trials.",
+        "In practice, the tracker or the network sometimes fails.",
+        "Does the agent cope, and can that be tested without breaking anything?",
+        "That's the next lesson.",
+        "The exercises on the lesson page are worth doing first."
+      ]
+    }
+  ]
+}

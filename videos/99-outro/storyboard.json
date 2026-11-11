@@ -1,0 +1,62 @@
+{
+  "schema": 2,
+  "title": "What you can now do",
+  "slug": "99-outro",
+  "kind": "outro",
+  "source": "",
+  "created": "2026-11-11",
+  "pacing": {
+    "lead_in": 0.4,
+    "gap": 0.5,
+    "tail": 0.8
+  },
+  "narrative": {
+    "question": "What can the viewer do now, and where do they go next?",
+    "viewer_starts": "Has watched the whole course.",
+    "arc": [
+      {
+        "stage": "can-do",
+        "viewer_can": "say what they can now do with a skill and with an app"
+      },
+      {
+        "stage": "next",
+        "viewer_can": "find the exercises and the workflow guide"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "role": "hook",
+      "mode": "think",
+      "stage": "can-do",
+      "chapter": "What you can now do",
+      "renderer": "slide",
+      "visual": "scenes/s01.html",
+      "on_screen": "Headline 'What you can now do'. Four blocks: say what changed, trust the checks, repeat it, evaluate the app.",
+      "introduces": [],
+      "narration": [
+        "That's the whole course.",
+        "You can now edit a skill, or change the model under it, and say with evidence whether it got better, and what it costs.",
+        "Your graders are tested, your judge is checked against your own labels, and your results come with ranges.",
+        "Those checks run as a routine that a teammate can repeat.",
+        "And you can evaluate the same skill when an app, not a person, starts the agent."
+      ]
+    },
+    {
+      "id": "s02",
+      "role": "body",
+      "mode": "think",
+      "stage": "next",
+      "renderer": "slide",
+      "visual": "scenes/s02.html",
+      "on_screen": "'The workflow guide' in the display serif under the eyebrow 'Where to go next'. Below: 'On the course site: the whole procedure, for a skill or for a feature in an app.'",
+      "introduces": [],
+      "narration": [
+        "On the course site, you'll find the exercises for every part.",
+        "There's also a workflow guide, which walks the whole procedure, for a skill or for a feature in an app."
+      ]
+    }
+  ],
+  "poster": "s01"
+}

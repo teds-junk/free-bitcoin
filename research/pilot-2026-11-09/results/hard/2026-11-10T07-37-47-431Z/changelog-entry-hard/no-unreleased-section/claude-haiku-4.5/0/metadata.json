@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "no-unreleased-section",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::claude-haiku-4.5::no-unreleased-section::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "claude-haiku-4.5",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:37:57.890Z",
+  "status": "success",
+  "trajectoryId": "803878b3-b10a-4776-80a1-5e9efa6303ba",
+  "executorSessionId": "0fae934f-9873-4c61-a99a-61ddb6486986",
+  "completedAt": "2026-11-10T07:38:06.434Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/no-unreleased-section/claude-haiku-4.5/0/events.jsonl"
+}

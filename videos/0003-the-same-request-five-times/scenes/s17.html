@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What are the four words?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#words{width:100%;padding:36px 40px 44px;gap:24px}#words .parts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%}#words .part{min-height:300px}#words .part .title{font-size:52px;line-height:1.2}#words .part .label{font-size:30px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">What are the four words?</h2>
+  <div class="stage">
+<div class="semantic-block" id="words" data-role="structure">
+    <div class="title words">one stimulus, five trials</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title">PASS</div><div class="label">every trial passed</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title">FLAKY</div><div class="label">some passed, some failed</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title">FAIL</div><div class="label">none passed</div></div><div class="part" data-concept="p4" data-rep="part">
+      <div class="title">ERROR</div><div class="label">a trial didn’t finish: no verdict</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#words",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "p4",
+  "at": "4",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

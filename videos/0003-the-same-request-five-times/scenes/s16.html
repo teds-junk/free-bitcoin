@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>And every one passed</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.pair{align-items:stretch}.cases{display:flex;flex-direction:column;gap:22px;justify-content:center}.cases .semantic-block{min-height:130px;justify-content:center}.cases .title{font-size:36px}.cases .label{font-size:30px}.card > .code.dark{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the tally says</div>
+  <h2 class="scene-title">And every one passed</h2>
+  <div class="stage">
+<div class="cols pair">
+    <div class="card" data-concept="g" data-rep="card">
+        <div class="who">The only grader</div>
+        <pre class="code dark" data-lang="yaml"><code><span style="color:#4EA5E6">graders</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">file-contains</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">mentions-the-command</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">path</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">CHANGELOG.md</span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">value</span><span style="color:#B3C0BF">: </span><span data-concept="value" data-rep="code"><span style="color:#3CC0B3">"notes add"</span></span></code></pre>
+      </div>
+    <div class="cases">
+      <div class="semantic-block" data-concept="case1" data-rep="block" data-role="structure">
+      <div class="title words">Entry, no number</div><div class="label">passes</div>
+    </div>
+      <div class="semantic-block" data-concept="case2" data-rep="block" data-role="structure">
+      <div class="title words">Entry, made-up number</div><div class="label">passes</div>
+    </div>
+      <div class="semantic-block" data-concept="case3" data-rep="block" data-role="structure">
+      <div class="title words">No entry: the agent asks instead</div><div class="label">fails</div>
+    </div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "case2",
+  "at": "0",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "value",
+  "at": "1~notes add",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "case1",
+  "at": "1~whether",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "case3",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "case3",
+  "at": "3",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

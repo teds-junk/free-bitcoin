@@ -1,0 +1,45 @@
+{
+  "voice": {
+    "voice": "am_echo",
+    "speed": 1.2
+  },
+  "output_dir": "videos",
+  "demos": {
+    "record_real_runs": true,
+    "credentials": "scan",
+    "perform_checkpoint": true,
+    "_note": "2026-11-10, Ted on a paid take that ends in ERROR: \"rerun ERROR unless you're expecting it to fail.\" A lesson whose subject is the error (e.g. lesson 20) keeps it."
+  },
+  "spend": {
+    "budget": 1500,
+    "unit": "agent runs",
+    "_note": "Ted allowed up to $50 for recordings; a typical run is ~2 AIU (~2 cents), so 1500 runs ~ $30 plus judge calls. Stop and ask before passing it."
+  },
+  "bridging_sentences": "allowed",
+  "approval": {
+    "style_approved": "0001-it-works-for-me",
+    "batch": true,
+    "_note": "2026-11-10, after approving lesson 3: Ted wants the remaining lessons made in parallel, not serially. \"We can skip reviews of the storyboard if they follow the lesson. I'll still review any new pronunciations as needed.\" So: no storyboard checkpoint for a video that follows its lesson page; stop only for new pronunciation words (review page in the browser), for a storyboard that departs from its lesson, or for spend that would pass the budget. Earlier note, superseded: lessons 2-26 approved one Part at a time."
+  },
+  "style_notes": [
+    "Audience: professional programmers who don't know evals. Don't explain basic shell (cp, cd, cat, ls, backslash line continuations). Brief action lines like \"we change into…\" are fine.",
+    "Headlines use the display serif, but never for a pile of words: keep them short. Don't italicise part of every headline; the title \"It works for me\" has \"me\" in blue italic, and the first slide shows it.",
+    "Gray text on the cream background needs strong contrast, everywhere that colour is used.",
+    "Never say how long the video is. Prefer \"In this lesson, you'll …\".",
+    "Don't command people. \"Let's start with what a skill is\", not \"Start with what a skill is\". Apply this to every sentence.",
+    "Viewers don't stop the video. Not \"Now do it yourself\" or \"Pause here\"; say \"If you tried it yourself, you'd see…\".",
+    "Keep the opening abstract enough to follow: promise an experiment and its outcome, not details that haven't been introduced.",
+    "Show the actual difference (the request and what each model did), not placeholders. Never put a tick and a question mark on the same box.",
+    "No arrows between blocks unless one thing is passed into or turned into the next. For a list of things, highlight each as you talk.",
+    "One visual language on every slide: code in a code-looking box on the left, explanations of its parts on the right.",
+    "Highlights follow the voice. Nothing stays highlighted after the narration has moved on.",
+    "The minimap is a small rendering of the file, like an editor's minimap. Show it whenever the entire file isn't being displayed, so a viewer can see they're looking at partial info. If there's no room for the minimap, at least draw a scrollbar; that isn't needed when all the rows are in view with the lines above and below shown as elided.",
+    "Made-up short paths on screen (~/src/demo style). Never long or machine-specific paths; label a file panel with a short name.",
+    "Show files in panels rather than grep/jq/sed; keep typed commands plain; don't print a file the video has already shown.",
+    "Hold on a screen of terminal output long enough to read it, especially after telling the viewer what to look at.",
+    "Never show a mistake and then fix it. Explain a concept before doing anything with it.",
+    "Don't overclaim (\"would never have…\"). Say what would be difficult, and give results their context (\"in this rudimentary eval…\").",
+    "If you ask what something does, answer with verbs.",
+    "Say a thing once, plainly: \"we'll explain it later\", not \"for now it's…\"; \"we're going to start by giving it three things\", not \"in the next few minutes it takes three things\"."
+  ]
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Failures come from the models</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:200px}.terms .label{font-size:34px}.stage{gap:36px}.card{width:100%}.card > .code.dark{font-size:36px;padding:24px 32px}.card .who{font-size:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Why reading comes first</div>
+  <h2 class="scene-title">Failures come from the models</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="imagined" data-rep="block" data-role="structure">
+      <div class="title words">A list written beforehand</div><div class="label">comes from your imagination</div>
+    </div>
+    <div class="semantic-block" data-concept="found" data-rep="block" data-role="attention">
+      <div class="title words">What a model did</div><div class="label">found by reading a run</div>
+    </div>
+  </div>
+  <div class="card" data-concept="seen" data-rep="card">
+        <div class="who"><span class="mono">gpt-5.6-terra</span> · the entry it wrote in the first run we saw</div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix the help text typo in </span><span style="color:#3CC0B3">`notes add`</span><span> </span><span data-concept="pr" data-rep="code"><span>(#42)</span></span></code></pre>
+      </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "imagined",
+  "at": "2~imagination",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "found",
+  "at": "2~models",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "pr",
+  "at": "3~made-up",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

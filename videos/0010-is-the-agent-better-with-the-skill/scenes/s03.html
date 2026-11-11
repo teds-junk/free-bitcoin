@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Skills don’t always help</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:300px}.terms .label{font-size:32px}.terms .title{font-size:42px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Does the skill beat no skill?</div>
+  <h2 class="scene-title">Skills don’t always help</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="care" data-rep="block" data-role="success">
+      <div class="title words">About +17 points</div><div class="label">more tasks completed, with skills written with care</div>
+    </div>
+    <div class="semantic-block" data-concept="worse" data-rep="block" data-role="attention">
+      <div class="title words">13 of 87 tasks</div><div class="label">made worse by those same skills</div>
+    </div>
+    <div class="semantic-block" data-concept="self" data-rep="block" data-role="failure">
+      <div class="title words">Fewer tasks completed</div><div class="label">with skills the models wrote themselves</div>
+    </div>
+  </div>
+  <p class="note">Source: SkillsBench, version 4, 2026 · a preprint · one benchmark of 87 tasks</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "care",
+  "at": "2~seventeen",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "worse",
+  "at": "3~thirteen",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "self",
+  "at": "4~fewer",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

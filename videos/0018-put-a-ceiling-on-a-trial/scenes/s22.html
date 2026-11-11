@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three trials, then none</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.cmp{font-size:50px}.cmp th{font-size:28px}.cmp td{padding-top:24px;padding-bottom:24px}.cmp td:first-child{font-size:36px}.cmp th:last-child,.cmp td:last-child{padding-right:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Set budgets from your runs</div>
+  <h2 class="scene-title">Three trials, then none</h2>
+  <div class="stage">
+<table class="data-table full cmp"><thead><tr><th>trials that failed</th><th class=num><span class="mono">token-budget</span></th><th class=num><span class="mono">turn-count</span></th><th class=num><span class="mono">wall-time</span></th><th class=num>any budget</th></tr></thead><tbody><tr><td>with the first budgets</td><td class="num">1</td><td class="num">2</td><td class="num">0</td><td class="num"><span data-concept="f-any" data-rep="cell">3</span></td></tr><tr><td>with the wider budgets</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num"><span data-concept="w-any" data-rep="cell">0</span></td></tr></tbody></table>
+  <p class="note">the same 30 saved trials, re-graded twice · no agent ran</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "f-any",
+  "at": "0~three",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "w-any",
+  "at": "0~every",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

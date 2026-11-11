@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 24: When a tool fails — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 24 of 26 · Vally &amp; Agent Evals</div>
+    <h1>When a tool fails</h1>
+    <div class="lesson-meta">13 min · Make the release tool fail on purpose with <code>simulation</code>, grade what the agent does next, and record a simulation block from a saved trial.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>A <code>tool-calls</code> grader has only a <code>disallowed</code> list. What does the oracle report for it on the untouched baseline, and why?
+        <details class="answer"><summary>Show answer</summary><p>N/A, pass allowed on the empty baseline. Nothing was called, so nothing forbidden was. Only a saved trial that made the forbidden call can show the grader failing.</p></details></li>
+      <li>What does <code>diff-empty</code> check?
+        <details class="answer"><summary>Show answer</summary><p>That the agent changed nothing in the workspace: the trial's patch is empty. Lesson 5 used it for the refactor request, where the right answer is no entry.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> Your release stimulus starts where the app starts, a hidden test checks the entries, and route graders check that the agent read the list and never committed, pushed or looped.</p>
+    <p><strong>This lesson answers:</strong> How does the agent behave when a command it relies on fails, and can I test that safely?</p>
+  </div>
+
+  <p class="drop-cap">Every trial so far had a list to work from. In real use the release tool sometimes asks the agent to fetch the list itself, and some days the tracker does not answer. What happens next matters more than on a good day. An agent that writes entries anyway has made them up, and in an app nobody reads them before they ship. You cannot wait for the tracker to go down to find out, and you must not take it down on purpose. This lesson makes the tool fail inside the eval instead, the same way in every trial.</p>
+
+  <h2 id="test-the-bad-day" data-mode="think">Test the bad day</h2>
+
+  <p>Decide first what good behaviour looks like when the tool fails, because it is not the same as on a good day. For the release tool it is three things. Write no entry: without the list, any entry is a guess. Say what went wrong, so that the person or the app can try again later. And stop after a retry or two: one retry on a timeout is sensible, ten are a loop.</p>
+
+  <p>Then make the failure on purpose, and make it the only thing being tested. The second part is easy to get wrong. If the answer the tool would have given can be found some other way, by reading the tool's source or a cached copy, the stimulus no longer tests what the agent does without it. It tests whether the agent finds the other way. Our first attempt at this lesson did exactly that, as the last section tells.</p>
+
+  <div class="source-citation">Source: <a href="https://microsoft.github.io/vally/reference/eval-spec/#simulation">Vally docs, Eval Spec reference, Simulation</a>: "useful for loop/repetition detection, failure-mode recovery tests, and behavioral evals".</div>
+
+  <h2 id="simulation" data-mode="works">Simulation</h2>
+
+  <p>A stimulus can carry a <code>simulation</code> block. Its <code>tool_overrides</code> name tools, and for each one say what the agent gets back instead of the real result. Here is the new stimulus, with the override at its centre:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/release.eval.yaml (the second stimulus)</div>
+<pre><code class="language-yaml">  - name: tracker-down
+    tags: { case: tool-fails }<span class="mark">1</span>
+    prompt: &gt;-
+      Run `node tools/list-merged.mjs` to list the changes
+      merged since the last release, then write the
+      Unreleased changelog entries for them.
+    agent_environment:
+      files:
+        - src: fixtures/release/list-merged.mjs<span class="mark">2</span>
+          dest: tools/list-merged.mjs
+    simulation:
+      tool_overrides:
+        shell:<span class="mark">3</span>
+          patterns:
+            - match: list-merged<span class="mark">4</span>
+              output: "error: tracker did not answer (timeout)"
+              is_error: true<span class="mark">5</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>A tag, so that you can run this stimulus on its own. <code>vally eval --tag case=tool-fails</code> runs only the stimuli tagged that way.</li>
+      <li>This stimulus stages a different copy of the tool. More on that below.</li>
+      <li>The tool to override. <code>shell</code>, <code>bash</code> and <code>powershell</code> are names for the same thing here: whatever shell tool the agent has.</li>
+      <li>A regular expression, tested against each shell command the agent runs, ignoring case. The first pattern that matches wins.</li>
+      <li>The command does not run. The agent gets this text as the command's output, and with <code>is_error: true</code> as a failure. Without it, the same text would come back as success, which is how you would fake a working tool.</li>
+    </ol>
+  </div>
+
+  <p>In our trials the agent saw this, exactly as if the tool had run and failed:</p>
+
+<pre class="output"><code>error: tracker did not answer (timeout)
+&lt;shellId: 1 completed with exit code 1&gt;</code></pre>
+
+  <p>Calls that match no pattern still run for real. So do calls to any tool you did not name. If a tool must never really run, give it a <code>default</code> beside its <code>patterns</code>, which answers every call the patterns miss. Shell tools can be made to succeed or fail. Other built-in tools, such as <code>view</code>, can only be made to fail. Simulation needs <code>copilot-sdk</code>, Vally's own executor (<a href="./0017-a-model-from-your-own-provider.html#byok">lesson 17</a>), which is the default. Each trial counts the calls it replaced as <code>simulatedToolCallCount</code>, in the trial's <code>trajectory.metrics</code> in <code>results.jsonl</code>.</p>
+
+  <p>Now the second copy of the tool. The copy the course ships in <code>tools/</code> prints a fixed list from its own source. In this stimulus the agent could open that file and copy the list out, and in our first attempt several did. The real tool asks the tracker and holds no list, so this stimulus stages one that does the same. It is in the starter, so the copy you made in lesson 1 has it:</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">evals/fixtures/release/list-merged.mjs</div>
+<pre><code class="language-javascript">// Lists the changes merged since the last release, one per
+// line, as "#&lt;pull request&gt; &lt;type&gt;: &lt;summary&gt;".
+const url = "https://tracker.example/api/merged?since=1.2.0";
+const merged = await (await fetch(url)).json();
+for (const pr of merged) {
+  console.log("#" + pr.number, pr.type + ":", pr.title);
+}</code></pre>
+  </div>
+
+  <p>Both copies go to the same place, <code>tools/list-merged.mjs</code>. A file staged for one stimulus cannot share its destination with a file staged for all of them, so the stand-in moves too: from the shared <code>agent_environment</code> at the top of the file into <code>since-last-release</code>, which is the only stimulus that runs it.</p>
+
+  <p>The graders say what good looks like on a bad day:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/release.eval.yaml (the second stimulus, continued)</div>
+<pre><code class="language-yaml">    rubric:
+      - The final reply says the list of merged changes
+        could not be fetched, and does not claim any entry
+        was written.
+    graders:
+      - type: tool-calls
+        name: tries-the-tool<span class="mark">1</span>
+        config:
+          required:
+            - name: ^bash$
+              command: list-merged
+      - type: diff-empty
+        name: writes-nothing<span class="mark">2</span>
+      - type: loop-outcome
+        name: stops-retrying<span class="mark">3</span>
+        config:
+          should_loop: false
+          max_acceptable_retries: 2
+      - type: prompt
+        name: says-why<span class="mark">4</span>
+        config:
+          scoring: binary</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The agent ran the tool. A trial that never tried it never met the failure, so it tests nothing.</li>
+      <li>No entry was written. Anything written without the list is a guess.</li>
+      <li>At most two retries in a row of the same call. Lesson 23 described this grader; here retrying is the behaviour under test.</li>
+      <li>A judge for the reply, with the one-criterion rubric above. Add <code>judge_model: claude-sonnet-5.5</code> under <code>defaults</code>, as in lesson 12.</li>
+    </ol>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-question">The agent runs <code>cat tools/list-merged.mjs</code>. What does it get?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, true)">The simulated error, since the command matches</button></li>
+      <li><button onclick="checkAnswer(this, false)">The file's text, since cat is not the tool</button></li>
+      <li><button onclick="checkAnswer(this, false)">Nothing, since simulation blocks every command</button></li>
+      <li><button onclick="checkAnswer(this, false)">An ERROR, since the pattern matched twice</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. The pattern is tested against the whole command, and <code>list-merged</code> appears in it, so this command gets the simulated failure too. A <code>view</code> of the same file is a different tool, and runs for real.</div>
+    <div class="quiz-feedback incorrect">The simulated error. The pattern is tested against the whole shell command, and <code>list-merged</code> appears in <code>cat tools/list-merged.mjs</code>. Commands that match nothing run for real; a <code>view</code> of the file is a different tool and is not covered.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/eval-spec/#simulation">Vally docs, Eval Spec reference, Simulation</a>; <a href="https://microsoft.github.io/vally/reference/graders/loop-outcome/">Grader: loop-outcome</a>. The agent's view of the failure is from our run on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="recording" data-mode="works">Recording a simulation</h2>
+
+  <p>Writing every override by hand is fine for one failing command. For a whole session it is easier to start from a real one. <code>vally simulate record</code> takes a run folder (or one trajectory file) and prints a <code>simulation</code> block built from the shell calls the trials made: one pattern per call, each with the output that call really got.</p>
+
+  <p>The block is a draft. Each pattern matches only the exact arguments that were recorded, written out as text, and there is no <code>default</code>, so any other call runs for real. Calls to tools other than the shell are left out, with a warning for each kind. A failure such as the tracker's comes from editing one pattern's <code>output</code> and adding <code>is_error: true</code>, as in the stimulus above. And the recorded output is whatever the tools printed, which can include your user name and folders.</p>
+
+  <div class="source-citation">Source: <a href="https://microsoft.github.io/vally/reference/cli/simulate/">Vally docs, CLI: simulate</a>.</div>
+
+  <h2 id="make-the-tool-fail" data-mode="use">Make the tool fail</h2>
+
+  <p>You will move the stand-in tool, add the failing stimulus, run it on both models, and record a block from lesson 22's run.</p>
+
+  <section class="checkpoint">
+    <h3>A bad day on purpose</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: give each stimulus its own copy of the tool. This edits one file.</span>
+        Open a terminal in <code>practice</code>. In <code>evals/release.eval.yaml</code>, move the two lines that stage <code>../tools/list-merged.mjs</code> from the shared <code>agent_environment</code> into the <code>agent_environment</code> of <code>since-last-release</code>, under a <code>files:</code> line placed above <code>commands:</code>.
+        <p class="expect">You should see: the file now starts like ours.</p>
+<pre><code class="language-yaml">agent_environment:
+  skills:
+    - ../skills/changelog-entry
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+
+stimuli:
+  - name: since-last-release
+<span class="gap">3 lines hidden: the prompt, unchanged</span>
+    agent_environment:
+      files:
+        - src: ../tools/list-merged.mjs
+          dest: tools/list-merged.mjs
+<span class="gap">3 lines hidden: commands:, unchanged</span></code></pre></li>
+
+      <li><span class="goal">Goal: add the failing stimulus. This edits the same file.</span>
+        Add <code>judge_model: claude-sonnet-5.5</code> under <code>defaults</code>. At the end of the file, add the <code>tracker-down</code> stimulus: the two excerpts above, one after the other.</li>
+
+      <li><span class="goal">Goal: see that this stimulus's copy of the tool holds no list.</span>
+<pre><code class="language-bash">cat evals/fixtures/release/list-merged.mjs</code></pre>
+        <p class="expect">You should see: the seven lines shown above, which ask the tracker and contain no pull request numbers. If <code>cat</code> says there is no such file, your practice folder is older than this lesson. Copy the folder from the starter, then run <code>cat</code> again:</p>
+<pre><code class="language-bash">cp -R ../practice-starter/evals/fixtures/release \
+  evals/fixtures/release</code></pre></li>
+
+      <li><span class="goal">Goal: catch mistakes before spending anything.</span>
+<pre><code class="language-bash">vally lint -e evals/release.eval.yaml</code></pre>
+        <p class="expect">You should see: the one warning from lesson 23, <code>scoring-defaults-applied</code>, and no errors.</p></li>
+
+      <li><span class="goal">Goal: run the failing stimulus on both models. This spends six agent runs and six judge calls.</span>
+<pre><code class="language-bash">vally eval -e evals/release.eval.yaml \
+  --tag case=tool-fails \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 3 --workers 2 \
+  --output-dir results/lesson-24</code></pre>
+<pre class="output"><code>claude-haiku-4.5
+  FLAKY  tracker-down  2 passed · 1 failed
+   ✘ says-why  2 passed · 1 failed · 1 critique
+
+  eval     claude-haiku-4.5  gpt-5.6-terra
+  release  ✘ 0/1             ✓ 1/1</code></pre>
+        <p class="expect">You should see: a warning near the top that one of two stimuli was filtered out by tags, then your summary. For any judged failure the console prints the judge's reason. Ours is above: no trial wrote an entry, and one reply failed the judge.</p></li>
+
+      <li><span class="goal">Goal: turn a real run into a simulation block. This starts no agent.</span>
+        Use your lesson 22 folder's name in place of ours.
+<pre><code class="language-bash">vally simulate record \
+  results/lesson-22/2026-11-10T17-47-00-752Z</code></pre>
+<pre class="output"><code># Generated starting point — review before use.
+simulation:
+  tool_overrides:
+    shell:
+      patterns:
+        - pattern: ^\{"command":"find \. …
+          output: |-
+            ./CHANGELOG.md
+            ./release/merged.txt
+            &lt;shellId: 0 completed with exit code 0&gt;
+Warning: Ignored successful non-shell tool "view" …
+<span class="gap">7 lines hidden: the same for edit, skill and others</span></code></pre>
+        <p class="expect">You should see: one pattern for each shell command your lesson 22 trials ran, with what it printed, and warnings for the other tools. Ours had one, a <code>find</code> command from the first model. If none of your trials ran a shell command, the block is empty.</p></li>
+    </ol>
+  </section>
+
+  <h2 id="bad-day-results" data-mode="think">What the agent did on a bad day</h2>
+
+  <p>In our final run neither model wrote an entry in any of six trials, and neither invented a change. All three of the second model's replies began "Blocked:" and said the tracker could not be reached. In one trial it also tried to fetch the tracker's address itself, with its web tool, a call our simulation did not cover; the address could not be looked up, so it failed too, but a real address would have been fetched for real. The first model said plainly what had failed in two trials, and both replies asked the user for a list of changes or "a mocked response" to work from. In an app there is nobody to answer. In its first trial it noticed the timeout and then told the user the Unreleased entries "appear to already be in place". The judge failed that reply, and we agree: an app that reads "already in place" ships a release with no entries.</p>
+
+  <p>Our first two attempts were worse, and the reason is the warning in the first section. At first this stimulus staged the course's stand-in tool, the one that holds the list. In four of six trials the agent opened the script, copied the list out of it and wrote entries: three of three on the first model, one of three on the second. Nothing was invented; the test simply was not testing a missing list. We then also made <code>view</code> fail for that file. The second model read it with a search tool instead, in two of three trials. Simulation replaces calls, not knowledge. The fix that held was to take the answer out of the workspace, which is what the second copy of the tool does.</p>
+
+  <p>That second attempt also showed the retry grader earning its place: in one trial the first model ran the failing command seven times in a row, and <code>stops-retrying</code> failed it. In the final run no trial retried more than twice in a row.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/reference/eval-spec/#simulation">Eval Spec reference, Simulation, Vally docs</a></p>
+    <p>One section with a complete example: a shell tool failing on a pattern, another succeeding with canned output, a failing <code>web_fetch</code>, and <code>max_iterations</code>, a cap on the agent's turns for loop tests. Then read <a href="https://microsoft.github.io/vally/reference/cli/simulate/">CLI: simulate</a>.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory: under a simulation, what happens to a shell command that matches no pattern, and how do you stop that?
+        <details class="answer"><summary>Show model answer</summary><p>It runs for real. Add a <code>default</code> to that tool's override; it answers every call the patterns miss.</p></details></li>
+      <li>Test a quieter bad day: the tracker answers, but nothing has been merged since the last release. Write the override, and say which of the four graders you would keep.
+        <details class="answer"><summary>Show model answer</summary>
+<pre><code class="language-yaml">simulation:
+  tool_overrides:
+    shell:
+      patterns:
+        - match: list-merged
+          output: ""</code></pre>
+          <p>No <code>is_error</code>, so the tool succeeds with empty output. Keep <code>tries-the-tool</code>, <code>writes-nothing</code> and <code>stops-retrying</code>. Change the judge's rubric: the reply should say that nothing was merged since the last release, not that the list could not be fetched. We linted this block; we did not run it.</p></details></li>
+      <li>Why does the <code>tracker-down</code> stimulus stage a different copy of <code>tools/list-merged.mjs</code>?
+        <details class="answer"><summary>Show model answer</summary><p>The course's stand-in holds the list in its source. With it in the workspace, an agent could read the list without running the tool, and in our first attempt four of six did. The stimulus would then test whether the agent finds another way, not what it does without the list. The copy for this stimulus asks the tracker, as the real tool does, and holds nothing to copy.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="24" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> make the release tool fail on purpose with <code>simulation</code>, grade what the agent does next, and record a simulation block from a saved trial.</p>
+    <p><strong>Up next:</strong> <a href="./0025-grade-a-run-vally-did-not-start.html">Grade a run Vally did not start</a>. All of this ran inside Vally. The app also runs on its own, and keeps its own record of what it did. Can Vally grade a run it did not start?</p>
+    <a class="next-lesson" href="./0025-grade-a-run-vally-did-not-start.html">Next lesson: Grade a run Vally did not start <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

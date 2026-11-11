@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One variant beats the rest</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.price{font-size:34px}.price th{font-size:28px}.price td{padding-top:15px;padding-bottom:15px;font-family:var(--font-code)}.stage{gap:18px;justify-content:flex-start}.quote{width:100%;padding-top:12px;padding-bottom:14px}.quote p{font-size:31px;line-height:1.36}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Price the variants</div>
+  <h2 class="scene-title">One variant beats the rest</h2>
+  <div class="stage">
+<table class="data-table full price">
+    <thead><tr><th>Variant</th><th>Passing</th><th>Total</th><th>Per passing trial</th><th>Median tokens</th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="row_hl" data-rep="cell">haiku-low</span></td><td><span data-concept="pass" data-rep="cell">15 of 15</span></td>
+        <td>3.13 AIU</td><td><span data-concept="per_hl" data-rep="cell">0.21 AIU</span></td><td>105.2k</td></tr>
+<tr><td class="mono"><span data-concept="row_hh" data-rep="cell">haiku-high</span></td><td><span data-concept="pass" data-rep="cell">15 of 15</span></td>
+        <td>3.55 AIU</td><td><span data-concept="per_hh" data-rep="cell">0.24 AIU</span></td><td>105.8k</td></tr>
+<tr><td class="mono"><span data-concept="row_terra" data-rep="cell">terra-low</span></td><td><span data-concept="pass" data-rep="cell">15 of 15</span></td>
+        <td>41.45 AIU</td><td><span data-concept="per_terra" data-rep="cell">2.76 AIU</span></td><td>61.0k</td></tr>
+<tr><td class="mono"><span data-concept="row_terra" data-rep="cell">terra-high</span></td><td><span data-concept="pass" data-rep="cell">15 of 15</span></td>
+        <td>42.38 AIU</td><td><span data-concept="per_terra" data-rep="cell">2.83 AIU</span></td><td>61.0k</td></tr>
+    </tbody>
+  </table>
+  <div class="quote" data-concept="ours" data-rep="quote"><span class="who">Our sentence</span><p>“On these five stimuli, claude-haiku-5.5 at low effort passed all 15 trials at 0.21 AIU each, against 2.76 and 2.83 AIU on gpt-5.6-terra, so we would run them on haiku-low.”</p></div>
+  <p class="note">our run · 2026-11-11T08-39-02-179Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "pass",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "per_hl",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "per_hh",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "per_terra",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "row_hl",
+  "at": "5",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ours",
+  "at": "6",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

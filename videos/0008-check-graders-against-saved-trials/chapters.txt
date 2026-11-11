@@ -1,0 +1,4 @@
+0:00 Saved trials are tests
+1:38 Re-grade a saved run
+4:06 Catch a grader that cannot fail
+7:59 A habit for every grader

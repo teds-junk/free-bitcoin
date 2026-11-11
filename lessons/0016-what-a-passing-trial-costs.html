@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 16: What a passing trial costs — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 16 of 26 · Vally &amp; Agent Evals</div>
+    <h1>What a passing trial costs</h1>
+    <div class="lesson-meta">15 min · Work out the cost per passing trial for two models at two reasoning efforts from one experiment, and state a choice with its evidence.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>In a report, what does a stimulus's Pass Rate count?
+        <details class="answer"><summary>Show answer</summary><p>The trials of that stimulus that passed, out of the trials that finished. A trial that ended in <code>ERROR</code> is not counted either way.</p></details></li>
+      <li>What is a variant, and what may two variants in one experiment differ in?
+        <details class="answer"><summary>Show answer</summary><p>One version of the set-up being compared: the same eval with one setting changed. Variants may differ only in the settings listed under <code>vary</code>; anything else is reported as drift.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You can compare variants on the same stimuli and say how far a count can be trusted. Every trial also records the tokens it used and what it cost.</p>
+    <p><strong>This lesson answers:</strong> Which model, at which reasoning effort, gives the most passing trials for what it costs?</p>
+  </div>
+
+  <p class="drop-cap">Lesson 15's table ended with a row of tokens, and it is tempting to read the variant with fewer tokens as the cheaper one. It is not that simple. This lesson's run compares <code>gpt-5.6-terra</code> with <code>claude-haiku-5.5</code>, a newer model in the same family as the course's <code>claude-haiku-4.5</code>; the section on reasoning effort says why we switched. In our run a terra trial used a median of 61.0k tokens against Haiku's 105.1k, and yet each passing terra trial cost about thirteen times as much: each model has its own price per token. And a cheap trial that fails has bought you nothing. This lesson works out what you pay for each trial that passes, for two models at two settings, and picks one.</p>
+
+  <h2 id="cost-per-pass" data-mode="think">Cost per passing trial</h2>
+
+  <div class="callout definition">
+    <div class="callout-title">Cost per passing trial</div>
+    <p>A variant's total cost over all its trials, divided by the number of trials that passed. It is what one useful result costs you.</p>
+  </div>
+
+  <p>Dividing by passing trials, not all trials, is the point. Suppose variant A costs 2 AIU a trial and passes 5 of 10, and variant B costs 3 AIU a trial and passes 10 of 10. A spends 20 AIU for 5 passes, 4 AIU each. B spends 30 AIU for 10 passes, 3 AIU each. The cheaper trial is the dearer result. Every failure is paid for and then thrown away, and someone still has to do the work.</p>
+
+  <p>With several variants, put each one's pass rate beside its cost and look for any variant that another beats on both counts: one that costs more and passes no more often. A variant beaten on both counts can be dropped. Those left are real choices, a trade between paying more and passing more, and which to pick depends on what a failure costs you.</p>
+
+  <p>This way of comparing comes from research on agent benchmarks. Kapoor and colleagues found agent leaderboards that ranked on accuracy alone, where simple agents that retried a few times matched the leaders at a fraction of the cost. They argued that every evaluation should report cost beside accuracy.</p>
+
+  <p>One thing the cost you will see leaves out: judge calls. A trial graded by an LLM judge costs the agent's run plus the judge's, and Vally records only the first. For an eval with a judge, the true cost is higher than the figures in this lesson's calculator.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">Variant A costs 1 AIU a trial and passes 3 of 10. Variant B costs 2 AIU a trial and passes 9 of 10. Which costs less per passing trial?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">A, because each of its trials is cheaper</button></li>
+      <li><button onclick="checkAnswer(this, true)">B, about 2.2 AIU against A's 3.3</button></li>
+      <li><button onclick="checkAnswer(this, false)">Neither: they cost the same per pass</button></li>
+      <li><button onclick="checkAnswer(this, false)">It cannot be said without a range</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. A spends 10 AIU for 3 passes, about 3.3 each. B spends 20 AIU for 9 passes, about 2.2 each. A's cheaper trials buy fewer results.</div>
+    <div class="quiz-feedback incorrect">B. A spends 10 AIU for 3 passes, about 3.3 AIU each; B spends 20 AIU for 9 passes, about 2.2 each. Cost per passing trial divides by passes, so a cheap trial that fails makes the result dearer.</div>
+  </div>
+
+  <div class="source-citation">Source: <a href="https://arxiv.org/abs/2407.01502">Kapoor et al., AI Agents That Matter, 2024-07</a>, a preprint. Their term for this kind of comparison is cost-controlled evaluation; "cost per passing trial" is our plain description of the figure this lesson computes.</div>
+
+  <h2 id="where-cost-is-recorded" data-mode="works">Where cost is recorded</h2>
+
+  <p>Lesson 2 showed a trial's <code>tokenUsage</code>: its input, output and cache read tokens, and its <code>cost</code> in nano-AIU. In an experiment, each variant folder has its own <code>results.jsonl</code>, with one record per trial. The record is the one you know, with a variant name added. This is one of ours, from the run in this lesson's checkpoint:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results/lesson-16/…/haiku-low/results.jsonl (one record)</div>
+<pre><code class="language-json">{
+  "type": "trial-result",
+<span class="gap">4 fields hidden: identifiers and long file paths</span>
+  "variant": "haiku-low",<span class="mark">1</span>
+  "stimulus": "typo-fix",
+<span class="gap">1 field hidden: a key too wide for the page</span>
+  "model": "claude-haiku-5.5",
+  "trialIndex": 0,
+  "totalTrials": 3,
+  "status": "success",<span class="mark">2</span>
+  "durationMs": 7440,
+  "gradeResult": {
+    "name": "trajectory-grade",
+    "kind": "code",
+    "passed": true,<span class="mark">3</span>
+<span class="gap">the score, evidence and each grader's result hidden</span>
+  },</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The variant this trial belongs to, as named in the experiment file. Every record in this file has the same one.</li>
+      <li>Whether the trial finished. Anything else is an <code>ERROR</code>.</li>
+      <li>The trial's verdict. Passing trials are the ones with <code>true</code> here.</li>
+    </ol>
+  </div>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results/lesson-16/…/haiku-low/results.jsonl (the same record, continued)</div>
+<pre><code class="language-json">  "trajectory": {
+<span class="gap">7 fields hidden: events, final reply, paths and timings</span>
+    "metrics": {
+      "tokenUsage": {
+<span class="gap">6 fields hidden: the token counts from lesson 2</span>
+        "byModel": {<span class="mark">1</span>
+          "claude-haiku-5.5": {
+            "inputTokens": 104384,
+            "outputTokens": 657,
+            "callCount": 5
+          }
+        },
+        "cost": {<span class="mark">2</span>
+          "provider": "github-copilot",
+          "unit": "nano-aiu",
+          "amount": 228842500<span class="mark">3</span>
+        }
+      },
+<span class="gap">8 fields hidden: counts of tool calls, turns, errors and time</span>
+    },
+<span class="gap">4 fields hidden: the starting point and the workspace diff</span>
+  },
+<span class="gap">the experiment's name and run identifier hidden</span>
+}</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The tokens split by model. An agent that called two models would list both here, each with its own counts.</li>
+      <li>The cost appears only when every model call in the trial reported its cost the same way, which is what happens when the agent runs through your Copilot account. A trial whose calls went to a model service of your own, as in lesson 17, has tokens and no <code>cost</code>.</li>
+      <li>228,842,500 nano-AIU: 0.23 AIU, a quarter of a cent, for 105,041 tokens.</li>
+    </ol>
+  </div>
+
+  <p>Two things are not in that figure. Calls made by an LLM judge to grade the trial are not counted. And a trial that ended in <code>ERROR</code> before the agent finished may have no usage recorded at all.</p>
+
+  <p>Vally prints no total cost for a variant. The experiment's table gives total tokens, its <code>report.md</code> gives median tokens per stimulus, and neither turns tokens into cost. The course's calculator does that. It reads the <code>results.jsonl</code> files you pick, in your browser, and for each variant adds up the cost of every trial, counts the trials that passed and the ones that ended in <code>ERROR</code>, and divides. It tells you when a variant's trials have no cost recorded, and it converts AIU to dollars at $0.01 each, the rate from lesson 2.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/trajectory-format/">Vally docs, Trajectory Format</a>, which says when the cost is present and that it does not include judge usage; the record is from our run on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="reasoning-effort" data-mode="works">Reasoning effort as a variant</h2>
+
+  <p>Some models can work through a problem in hidden reasoning before they reply or call a tool. <code>reasoning_effort</code> sets how much of that the agent's model does. More effort usually means more tokens and more time on each call, and sometimes better results. It goes under <code>defaults</code> in an eval file, beside <code>model</code>, so an experiment can vary it exactly as it varies the model.</p>
+
+  <p>The values a model accepts depend on the model. Vally checks the value against your account's list of models before any session starts, so asking for a value no model has is a free way to find out. In our account:</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Model</th><th>Reasoning efforts it accepts</th></tr></thead>
+    <tbody>
+      <tr><td><code>claude-haiku-4.5</code></td><td>none: "does not support reasoning effort configuration"</td></tr>
+      <tr><td><code>claude-haiku-5.5</code></td><td><code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, <code>max</code></td></tr>
+      <tr><td><code>gpt-5.6-terra</code></td><td><code>none</code>, <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, <code>max</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>The course's first model, <code>claude-haiku-4.5</code>, refuses any effort. So for this lesson the two Haiku variants use its newer sibling, <code>claude-haiku-5.5</code>, which takes one. This is the experiment file:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/cost.experiment.yaml</div>
+<pre><code class="language-yaml">name: cost
+
+evals:
+  - changelog.eval.yaml<span class="mark">1</span>
+
+vary: [/defaults/model, /defaults/reasoning_effort]<span class="mark">2</span>
+
+baseline: haiku-low
+
+overrides:
+  runs: 3<span class="mark">3</span>
+
+variants:
+  haiku-low:
+    overrides:
+      model: claude-haiku-5.5
+      reasoning_effort: low<span class="mark">4</span>
+  haiku-high:
+    overrides:
+      model: claude-haiku-5.5
+      reasoning_effort: high
+  terra-low:
+    overrides:
+      model: gpt-5.6-terra
+      reasoning_effort: low
+  terra-high:
+    overrides:
+      model: gpt-5.6-terra
+      reasoning_effort: high</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The five stimuli from lessons 5 and 6 that this eval file holds, with their code graders. No judge, so the costs below are the whole cost.</li>
+      <li>The variants may differ in model and in reasoning effort, and in nothing else. All of them use the skill as it stands.</li>
+      <li>Three trials of each stimulus: fifteen trials per variant, sixty in all.</li>
+      <li>The reasoning effort for this variant. <code>low</code> and <code>high</code> are values both models accept.</li>
+    </ol>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/eval-spec/">Vally docs, Eval Spec reference</a>, <code>defaults.reasoning_effort</code>; the accepted values are from our account on 2026-11-10 and will differ on yours.</div>
+
+  <h2 id="price-the-variants" data-mode="use">Price the variants</h2>
+
+  <p>You will check which efforts your models accept, create the experiment file, run it, and give the four <code>results.jsonl</code> files to the calculator.</p>
+
+  <section class="checkpoint">
+    <h3>Two models, two efforts, one bill</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: find the reasoning efforts your models accept. This asks for a value no model has, so every trial stops before it starts and nothing is spent.</span>
+        Open a terminal in <code>practice</code>. <code>--reasoning-effort</code> is the command-line form of the <code>reasoning_effort</code> key, as <code>--model</code> is of <code>model</code>: it sets the effort for every trial of this run. Put your own models after <code>--model</code>, separated by commas.
+<pre><code class="language-bash">vally eval -e evals/one-request.eval.yaml \
+  --model \
+  claude-haiku-4.5,claude-haiku-5.5,gpt-5.6-terra \
+  --reasoning-effort list \
+  --output-dir results/lesson-16-efforts</code></pre>
+        <p class="expect">You should see: an <code>ERROR</code> for each model, saying either "Supported reasoning efforts:" followed by a list, or that the model "does not support reasoning effort configuration". Ours are in the table above. Pick two models that accept an effort, and two efforts each accepts.</p></li>
+
+      <li><span class="goal">Goal: write the experiment. This creates one file.</span>
+        Create <code>evals/cost.experiment.yaml</code> with the contents shown above, putting in your two models and two efforts. Keep the variant names; lesson 17 adds to this file.</li>
+
+      <li><span class="goal">Goal: check the plan. This starts nothing.</span>
+<pre><code class="language-bash">vally experiment run \
+  evals/cost.experiment.yaml --dry-run</code></pre>
+<pre class="output"><code>Experiment: cost
+Baseline:   haiku-low
+Plans:      4</code></pre>
+        <p class="expect">You should see: those three lines, then a block for each variant naming its model.</p></li>
+
+      <li><span class="goal">Goal: run the four variants, three trials of each stimulus. This spends sixty short agent runs and takes several minutes.</span>
+<pre><code class="language-bash">vally experiment run \
+  evals/cost.experiment.yaml \
+  --workers 2 --output-dir results/lesson-16</code></pre>
+        <p class="expect">You should see: a block for any stimulus that was not a clean pass, then the table. In our run every trial passed, so there were no blocks, only the line "No variant beat baseline. Same pass rate (5/5) for all." and this table:</p>
+        <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th>haiku-low</th><th>haiku-high</th><th>terra-low</th><th>terra-high</th></tr></thead>
+          <tbody>
+            <tr><td>stimuli</td><td>5/5</td><td>5/5</td><td>5/5</td><td>5/5</td></tr>
+            <tr><td>tokens</td><td>1324.0k</td><td>1397.5k</td><td>795.8k</td><td>772.5k</td></tr>
+            <tr><td>trial time</td><td>1m38s</td><td>2m04s</td><td>2m27s</td><td>2m29s</td></tr>
+          </tbody>
+        </table>
+        </div></li>
+
+      <li><span class="goal">Goal: find the run folder's name.</span>
+<pre><code class="language-bash">ls results/lesson-16</code></pre>
+        <p class="expect">You should see: one folder named with the time of your run, such as our <code>2026-11-10T17-47-01-928Z</code>. Inside it is a folder for each variant, and each of those holds a <code>results.jsonl</code>.</p></li>
+
+      <li><span class="goal">Goal: price each variant. This reads files on your computer and sends nothing anywhere.</span>
+        In the calculator below, choose the files. Go into <code>practice/results/lesson-16</code>, then your run folder, and pick <code>results.jsonl</code> from each of the four variant folders. Most file pickers let you pick one at a time; pick all four in one go if yours allows it, or choose again after each to add the next, picking every file you want each time.
+        <p class="expect">You should see: a card for each variant with its trials, passing trials, <code>ERROR</code> count, total cost, cost per passing trial and median tokens, and a total underneath.</p></li>
+
+      <li><span class="goal">Goal: choose, and say why.</span>
+        Write down each variant's passing trials and cost per passing trial. Cross out any variant another beats on both counts. Then write one sentence naming the variant you would run these five stimuli on, with the numbers that justify it.
+        <details class="answer"><summary>Show our table and our sentence</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Variant</th><th>Passing</th><th>Total</th><th>Per passing trial</th><th>Median tokens</th></tr></thead>
+            <tbody>
+              <tr><td>haiku-low</td><td>15 of 15</td><td>3.14 AIU</td><td>0.21 AIU</td><td>105.1k</td></tr>
+              <tr><td>haiku-high</td><td>15 of 15</td><td>3.56 AIU</td><td>0.24 AIU</td><td>105.8k</td></tr>
+              <tr><td>terra-low</td><td>15 of 15</td><td>41.17 AIU</td><td>2.74 AIU</td><td>61.0k</td></tr>
+              <tr><td>terra-high</td><td>15 of 15</td><td>41.34 AIU</td><td>2.76 AIU</td><td>48.9k</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>"On these five stimuli, <code>claude-haiku-5.5</code> at low effort passed all 15 trials at 0.21 AIU each, a thirteenth of what <code>gpt-5.6-terra</code> cost for the same 15 passes, so we would run them on haiku-low."</p></details></li>
+    </ol>
+  </section>
+
+  <div class="cost-calc"></div>
+
+  <h2 id="what-the-table-says" data-mode="think">What the table says</h2>
+
+  <p>In our run every trial passed, so cost per passing trial was simply cost per trial, and the differences were all in cost. Three of the four variants are beaten on both counts by haiku-low. haiku-high passed no more often and cost more: about 14% more per trial, with about a third more output tokens (a median of 876 against 661) and the slower Haiku trials. Both terra variants passed no more often and cost about thirteen times as much. On terra, high effort changed almost nothing: 2.76 AIU per passing trial against 2.74.</p>
+
+  <p>Notice what the token counts would have told you on their own. terra used the fewest tokens, a median of 49,000 to 61,000 a trial against Haiku's 105,000 to 106,000, and cost the most by far. On our account a Haiku 5.5 trial was recorded at 0.14 to 0.39 AIU and a terra trial at 1.59 to 5.20 AIU. Tokens measure work, not price.</p>
+
+  <h3>Price per token differs by model</h3>
+
+  <p><strong>The price of a token depends on the model, even between two versions of one family.</strong> Lesson 2's <code>claude-haiku-4.5</code> trial cost 2.89 AIU for 74,052 tokens, about 3.9 AIU per 100,000 tokens. The <code>claude-haiku-5.5</code> record in this lesson cost 0.23 AIU for 105,041 tokens, about 0.22 AIU per 100,000. On our account the newer Haiku was about 18 times cheaper per token than the older one.</p>
+
+  <p>That is why this lesson measures cost per passing trial for each model, rather than carrying one model's figure over to another. It is also why lesson 2's "a typical trial costs about 2 cents" holds only for the models used there, <code>claude-haiku-4.5</code> and <code>gpt-5.6-terra</code>. A haiku-low trial here cost about a fifth of a cent. Change the model and you have to measure again.</p>
+
+  <p>Now apply lesson 15's habit. Fifteen passes in fifteen trials gives a range of 80% to 100%, and every variant had that. The four ranges are the same, so three trials per stimulus cannot tell the variants apart on pass rate. They do not need to here. The case for haiku-low rests on cost. Each model's trials cost different amounts, within a band about three times wide: 0.14 to 0.39 AIU for Haiku 5.5, 1.59 to 5.20 AIU for terra. But the two bands do not overlap: every Haiku trial cost less than the cheapest terra trial. The fair statement is "as good as far as these trials can tell, and far cheaper". It is also a statement about these five requests only. They are the stimuli the skill now passes easily; lesson 12's wording requests, graded by a judge, are where the models differed, and they should be priced the same way before you change the model for everything.</p>
+
+  <p>Prices change, and your account's may differ from ours. Treat these numbers as a method you can repeat, not as facts about the models.</p>
+
+  <h3>What it comes to in dollars</h3>
+
+  <p>At $0.01 per AIU, and using averages from our runs:</p>
+
+  <ul>
+    <li><strong>This experiment</strong>: 89.21 AIU for 60 trials, about 89 cents.</li>
+    <li><strong>A quick check after every edit</strong>: lesson 21 runs these five stimuli on two models, ten trials. Across our clean re-run of lessons 1 to 15, the 213 trials with usage recorded, nearly all on <code>claude-haiku-4.5</code> and <code>gpt-5.6-terra</code>, averaged about 2.2 AIU, so that is about 22 AIU, 22 cents, an edit. Twenty edits in a month is about $4.40. The same five on haiku-low alone would be about 1 AIU, a cent an edit.</li>
+    <li><strong>Every stimulus every night</strong>: lesson 21's full run is thirty trials, about 66 AIU at the same average, or about $20 over thirty nights. Its judged stimuli add judge calls, which Vally does not count.</li>
+    <li><strong>What verifying this course cost, for scale</strong>: the pilot before the plan, 42 trials, about 70 AIU. Writing lessons 1 to 15 took 251 agent runs and 66 judge calls; we did not total their cost, and at the 2.2 AIU average the runs come to about 550 AIU. Our clean re-run of lessons 1 to 15 took 249 agent runs, with usage recorded for 213 of them, about 473 AIU, and 52 judge calls on top. In all, about $11 of agent runs, plus the judge calls.</li>
+  </ul>
+
+  <p>None of that is large for one person. It grows with stimuli, trials, models and how often you run, which is why the cheapest check that answers your question comes first, and why lesson 21's check after every edit stays small. Your plan's monthly allowance is spent first, as lesson 2 said, so much of this may cost you nothing extra.</p>
+
+  <div class="primary-source">
+    <p><a href="https://arxiv.org/abs/2407.01502">AI Agents That Matter, Kapoor et al., 2024-07</a></p>
+    <p>The paper that made cost a first-class result for agent evaluations. Read the introduction and the section on cost-controlled evaluation, and look at how its first figure plots accuracy against cost. Its agents and benchmarks are not ours; the argument for reporting both numbers carries over directly.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, say what cost per passing trial is, and why it divides by passing trials rather than all trials.
+        <details class="answer"><summary>Show model answer</summary><p>A variant's total cost divided by the number of its trials that passed. Dividing by passes charges each useful result with the cost of the failures it took to get it, so a cheap variant that fails often can be the dearer one.</p></details></li>
+      <li>One variant passes 12 of 15 trials at 0.3 AIU a trial. Another passes 15 of 15 at 2.7 AIU. Is either beaten on both counts? What would you need to know to choose?
+        <details class="answer"><summary>Show model answer</summary><p>Neither. The first costs 4.5 AIU for 12 passes, about 0.38 per passing trial; the second 40.5 AIU for 15, 2.7 each. The second may pass more often, but the ranges, 55% to 93% and 80% to 100%, overlap, so these trials cannot say. To choose you need more trials, to know whether the pass rates really differ, and what a failure costs you: if each failure means a person fixing a changelog by hand, a few more passes may be worth seven times the price.</p></details></li>
+      <li>A teammate runs the same experiment through a model service of their own instead of Copilot, and the calculator shows "—" for every cost. What happened, and how do they get a cost?
+        <details class="answer"><summary>Show model answer</summary><p>Their trials' calls did not go through Copilot, so Vally recorded tokens and no <code>cost</code>. They multiply the tokens by their service's price per token themselves. Lesson 17 does this.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="16" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> work out the cost per passing trial for two models at two reasoning efforts from one experiment, and state a choice with its evidence.</p>
+    <p><strong>Up next:</strong> <a href="./0017-a-model-from-your-own-provider.html">A model from your own provider</a>. You can price the models your Copilot account offers. The release app in part 2 of the course, which begins after lesson 21, may call a model through a service of its own. Can Vally run that model too, and what does a passing trial cost there?</p>
+    <a class="next-lesson" href="./0017-a-model-from-your-own-provider.html">Next lesson: A model from your own provider <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+  <script src="../assets/cost-calculator.js"></script>
+</body>
+</html>

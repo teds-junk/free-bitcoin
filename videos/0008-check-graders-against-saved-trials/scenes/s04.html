@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Grade again, with no agent</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.annotated .code.dark{font-size:36px;line-height:1.9;padding:34px 40px}.callout{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Re-grade a saved run</div>
+  <h2 class="scene-title">Grade again, with no agent</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark" data-lang="bash"><code><span data-concept="cmd" data-rep="code"><span style="color:#4EA5E6">vally</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">grade</span></span><span style="color:#B3C0BF"> </span><span data-concept="e" data-rep="code"><span style="color:#F0733F">-e</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">../../../evals/changelog.eval.yaml</span></span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="rundir" data-rep="code"><span style="color:#F0733F">--run-dir</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">.</span></span><span style="color:#B3C0BF"> </span><span data-concept="input" data-rep="code"><span style="color:#A4BA1E">&lt;</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">results.jsonl</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="e">the graders, as they are now</p><p class="callout" data-anchor="input">the saved trials, as input</p></aside>
+  </div>
+  <p class="note">no agent starts · nothing is spent</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "cmd",
+  "at": "1~grade",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "e",
+  "at": "3~Dash e",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "input",
+  "at": "6~results",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "rundir",
+  "at": "7~run dir",
+  "color": "orange"
+ }
+]
+</script>
+</body>
+</html>

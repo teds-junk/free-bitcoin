@@ -1,0 +1,26 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 10 stimuli from changelog · 2 models · 2 workers
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+changelog
+
+claude-haiku-4.5
+  ERROR  after-release
+   Session disconnected while waiting for a response
+
+────────────────────────────────────────────────────────
+
+Failures  1 failed
+  ERROR changelog · after-release [claude-haiku-4.5]  Session disconnected while waiting for a response
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✘ 4/5             ✓ 5/5        
+
+Saved  results/lesson-6-after/2026-11-10T15-01-51-246Z/
+Run ID  8c2ed37c-7518-46a1-8039-99f2bfff099c

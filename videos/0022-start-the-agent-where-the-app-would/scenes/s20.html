@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Did it load the skill?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.counts{font-size:46px}.counts th{font-size:30px}.counts th.mono{font-family:var(--font-code);font-size:32px}.counts td{padding-top:32px;padding-bottom:32px;height:60px}.counts td.mono{font-family:var(--font-code);font-size:38px}.counts th:last-child,.counts td:last-child{padding-right:16px}.load{font-size:36px}.load td{padding-top:15px;padding-bottom:15px;height:auto}.load td.mono{font-size:32px}.load th{font-size:28px}.stage{gap:18px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What it showed</div>
+  <h2 class="scene-title">Did it load the skill?</h2>
+  <div class="stage">
+<table class="data-table full counts load">
+    <thead><tr><th></th><th class="num">loaded the skill</th><th class="num">entry for the refactor</th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="skip" data-rep="row">claude-haiku-4.5 · trial 1</span></td><td class="num"><span data-concept="skip" data-rep="cell">no</span></td><td class="num"><span data-concept="skip" data-rep="cell">yes</span></td></tr>
+<tr><td class="mono"><span data-concept="skip" data-rep="row">claude-haiku-4.5 · trial 2</span></td><td class="num"><span data-concept="skip" data-rep="cell">no</span></td><td class="num"><span data-concept="skip" data-rep="cell">yes</span></td></tr>
+<tr><td class="mono"><span data-concept="used" data-rep="row">claude-haiku-4.5 · trial 3</span></td><td class="num"><span data-concept="used" data-rep="cell">yes</span></td><td class="num"><span data-concept="used" data-rep="cell">no</span></td></tr>
+<tr><td class="mono"><span data-concept="used" data-rep="row">claude-haiku-4.5 · trial 4</span></td><td class="num"><span data-concept="used" data-rep="cell">yes</span></td><td class="num"><span data-concept="used" data-rep="cell">no</span></td></tr>
+<tr><td class="mono"><span data-concept="odd" data-rep="row">claude-haiku-4.5 · trial 5</span></td><td class="num"><span data-concept="odd" data-rep="cell">yes</span></td><td class="num"><span data-concept="odd" data-rep="cell">yes</span></td></tr>
+<tr><td class="mono"><span data-concept="t" data-rep="row">gpt-5.6-terra · all five trials</span></td><td class="num"><span data-concept="t" data-rep="cell">yes</span></td><td class="num"><span data-concept="t" data-rep="cell">no</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">from the saved records of our run · 2026-11-11T16-51-44-338Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "t",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "skip",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "used",
+  "at": "2~three with it",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "odd",
+  "at": "2~anyway",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

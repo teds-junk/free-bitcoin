@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 13: Check the judge against your own labels — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 13 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Check the judge against your own labels</h1>
+    <div class="lesson-meta">12 min · Measure a judge against your own labels as two numbers, and decide whether to rely on it.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What is a rubric, and how many criteria did yours have?
+        <details class="answer"><summary>Show answer</summary><p>The list of criteria, in plain words, that the judge applies to a stimulus. Yours had one, so that the judge's single verdict answers a single question.</p></details></li>
+      <li>In lesson 7, what were the two ways a grader can be wrong?
+        <details class="answer"><summary>Show answer</summary><p>It can fail correct work, or it can pass work that was not done.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You have a judge that says yes or no to "written for people who use the tool", and your own yes or no for the same twelve entries, written before the judge ran.</p>
+    <p><strong>This lesson answers:</strong> Can I trust the judge's verdicts?</p>
+  </div>
+
+  <p class="drop-cap">You tested your code graders two ways: against a known-correct answer and against known-bad ones. A judge deserves the same suspicion and cannot be tested the same way, because there is no golden patch for "reads well to a user". What you have in its place is your own judgement, written down in lesson 12 before the judge spoke. Putting the two lists side by side is the whole method. The only subtlety is how to count.</p>
+
+  <h2 id="measured-not-trusted" data-mode="think">A judge is measured, not trusted</h2>
+
+  <p>Like any grader, a judge can be wrong in two directions. It can say yes to an entry you would reject: a failure slips through, and you believe the skill is better than it is. Or it can say no to an entry you would accept: a false alarm, and you go hunting for a problem that is not there.</p>
+
+  <p>The obvious measure is agreement: on what share of the trials did the judge and I say the same thing? It is a poor measure, because it hides which direction the errors run in. Suppose you label twenty entries, and eighteen are fine. A judge that says yes to everything agrees with you eighteen times out of twenty, which is 90%, and it has caught neither of the two bad entries. It is useless, and its agreement looks excellent.</p>
+
+  <p>So count the two directions separately. Of the entries you said yes to, how many did the judge pass? Of the entries you said no to, how many did it fail? Two numbers, and a judge has to do well on both.</p>
+
+  <p>How well is well enough, and on how many labels? The practitioners this course has leaned on suggest aiming above 90% on each number, and labelling a hundred or more examples for a judge you intend to depend on. Twelve labels, which is what you have, can show that a judge is badly wrong. They cannot show that it is reliably right.</p>
+
+  <p>Three things undo this measurement, and each means labelling again: changing the rubric's wording, changing the judge model, and pointing the judge at a different kind of request. When you reword a rubric to fix a disagreement, keep some labelled entries aside that you do not look at while rewording. Otherwise you are fitting the rubric to the examples you are testing it on.</p>
+
+  <div class="source-citation">Sources: <a href="https://raw.githubusercontent.com/ai-evals-course/evals-skills/main/skills/validate-evaluator/SKILL.md">Husain and Shankar, validate-evaluator skill</a>, for the two rates and the 90% aim; <a href="https://hamel.dev/blog/posts/evals-faq/">AI Evals FAQ, reissued 2026-09-18</a>, for the number of labels.</div>
+
+  <h2 id="tpr-and-tnr" data-mode="works">TPR and TNR</h2>
+
+  <p>The two numbers have standard names.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">TPR, the true positive rate</div>
+    <p>Of the trials you labelled yes, the share the judge also passed. "Positive" is the statistician's word for yes.</p>
+  </div>
+
+  <div class="callout definition">
+    <div class="callout-title">TNR, the true negative rate</div>
+    <p>Of the trials you labelled no, the share the judge also failed. "Negative" is the word for no.</p>
+  </div>
+
+  <p>To work them out, sort every trial into one of four boxes, by what the judge said and what you said.</p>
+
+  <div class="callout example">
+    <div class="callout-title">An invented judge, to show the arithmetic</div>
+    <p>Suppose you labelled twenty entries: twelve yes and eight no. The judge passed eleven of your twelve, and also passed three of your eight.</p>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th></th><th>You: yes</th><th>You: no</th></tr></thead>
+      <tbody>
+        <tr><td>Judge: yes</td><td>11</td><td>3</td></tr>
+        <tr><td>Judge: no</td><td>1</td><td>5</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>TPR is 11 out of 12, which is 92%. TNR is 5 out of 8, which is 63%. Agreement is 16 out of 20, which is 80%, and sounds respectable. The TNR tells the real story: this judge lets through more than a third of the entries you would reject.</p>
+  </div>
+
+  <p>Read down the columns, not across the rows. Each rate uses one column: TPR the left, TNR the right. The calculator below does the division. It starts with the invented numbers above; change any box and the rates update.</p>
+
+  <div class="agreement-calc" data-yy="11" data-ny="1" data-yn="3" data-nn="5"></div>
+
+  <p>A low TPR means false alarms: the judge is stricter than you. A low TNR means missed failures: it is more lenient than you. Which matters more depends on what you use the judge for, but a judge with either number low is not measuring your criterion.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">A judge says yes to every trial. You labelled nine trials yes and one no. What are its TPR and TNR?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, true)">TPR 100% and TNR 0%</button></li>
+      <li><button onclick="checkAnswer(this, false)">TPR 90% and TNR 10%</button></li>
+      <li><button onclick="checkAnswer(this, false)">TPR 90% and TNR 100%</button></li>
+      <li><button onclick="checkAnswer(this, false)">TPR 100% and TNR 90%</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. It passed all nine of your yes labels, so TPR is 100%. It failed none of your no labels, so TNR is 0%. Its agreement, 90%, hides that completely.</div>
+    <div class="quiz-feedback incorrect">TPR is 100% and TNR is 0%. The judge passed all nine of your yes labels, and failed none of your no labels. The 90% figure is its agreement, which hides that it never says no.</div>
+  </div>
+
+  <h2 id="label-compare-decide" data-mode="use">Count, compare, decide</h2>
+
+  <p>You will count your twelve trials into the four boxes, work out the two rates, look closely at any disagreement, and write down what you will and will not rely on the judge for. Nothing here runs an agent or a judge.</p>
+
+  <section class="checkpoint">
+    <h3>Two lists, four boxes, two numbers</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: have both lists in front of you.</span>
+        Open <code>notes/wording-labels.md</code> in <code>practice</code>. Each of the twelve entries should have your yes or no, and the judge's from lesson 12.</li>
+
+      <li><span class="goal">Goal: sort the twelve trials into four boxes.</span>
+        Count how many entries fall in each: judge yes and you yes, judge yes and you no, judge no and you yes, judge no and you no.
+        <details class="answer"><summary>Show our four counts</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>You: yes</th><th>You: no</th></tr></thead>
+            <tbody>
+              <tr><td>Judge: yes</td><td>6</td><td>0</td></tr>
+              <tr><td>Judge: no</td><td>0</td><td>6</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </details></li>
+
+      <li><span class="goal">Goal: work out the two rates.</span>
+        Type your four counts into the calculator above, or divide by hand.
+        <p class="expect">You should see: a TPR, a TNR, and a note that the rates are rough. For our counts both rates are 100%.</p></li>
+
+      <li><span class="goal">Goal: understand every disagreement.</span>
+        For each entry where you and the judge differ, read the entry and the judge's reason again. Decide who is right. If you still disagree, that is one error of the judge's. If the judge has persuaded you, your criterion was not what you thought. Note that, but leave the label as you first wrote it and count the entry as a disagreement: changing labels to match a judge would make any judge look good. The remedy is to reword the criterion and measure again on fresh labels.
+        <p class="expect">You should see: in our run there were none to examine. The one entry we had hesitated over, "by caching the tag index", the judge also called a no, in both trials that wrote it, saying it fails "a strict reading of the rubric".</p></li>
+
+      <li><span class="goal">Goal: decide, and write the decision down.</span>
+        Add two sentences to the end of <code>notes/wording-labels.md</code>: what the two rates were and on how many labels, and what you will use the judge for.
+        <details class="answer"><summary>Show our two sentences</summary><p>"On 12 labels (6 yes, 6 no) the judge matched every one: TPR 100%, TNR 100%. That is enough to use it to compare versions of the skill, and not enough to trust a single verdict without reading its reason; we will label more whenever the rubric or the judge model changes."</p></details></li>
+    </ol>
+  </section>
+
+  <h2 id="what-twelve-labels-show" data-mode="think">What twelve labels can show</h2>
+
+  <p>Our judge agreed with every label, and it is worth being exact about what that shows. It shows that on these twelve entries, this judge model applied this criterion the way we do. With six "no" labels, a single miss would have put the TNR at 83%. The sample is too small to tell a judge that is right 99% of the time from one that is right 85% of the time.</p>
+
+  <p>It is still a real result. A judge that had passed everything, or had failed entries for reasons unrelated to the criterion, would have shown up at once, and that is the most common way judges go wrong.</p>
+
+  <div class="primary-source">
+    <p><a href="https://raw.githubusercontent.com/ai-evals-course/evals-skills/main/skills/validate-evaluator/SKILL.md">validate-evaluator skill, Hamel Husain and Shreya Shankar</a></p>
+    <p>A short, exact procedure for what this lesson did at small scale: label, keep some labels aside, measure both rates, and only then rely on the judge. Read it through once.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, define TPR and TNR, and say what a low value of each means in practice.
+        <details class="answer"><summary>Show model answer</summary><p>TPR is the share of your yes labels the judge also passed; a low TPR means false alarms, a judge stricter than you. TNR is the share of your no labels the judge also failed; a low TNR means missed failures, a judge more lenient than you.</p></details></li>
+      <li>A teammate reports that their judge "agrees with human labels 94% of the time". Write the two questions you would ask.
+        <details class="answer"><summary>Show model answer</summary><p>"What are the TPR and the TNR separately?" and "How many of the labels were no?" If nearly all the labels were yes, 94% agreement is what a judge that always says yes would score.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="13" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> measure a judge against your own labels as two numbers, and decide whether to rely on it.</p>
+    <p><strong>Up next:</strong> <a href="./0014-partial-credit.html">Partial credit</a>. The judge's yes and no agree with your labels. But some of the "no" entries were nearly right and some were far off, and a yes-or-no cannot tell them apart. Can a grader give partial credit without hiding a failure?</p>
+    <a class="next-lesson" href="./0014-partial-credit.html">Next lesson: Partial credit <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+  <script src="../assets/judge-agreement-calculator.js"></script>
+</body>
+</html>

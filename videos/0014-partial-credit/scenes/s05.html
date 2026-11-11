@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Every grader gives a score</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">From scores to a verdict</div>
+  <h2 class="scene-title">Every grader gives a score</h2>
+  <div class="stage">
+<div class="cols terms">
+    <div class="semantic-block" data-concept="grader" data-rep="block" data-role="structure">
+      <div class="title words">a grader</div><div class="label">a pass or a fail, and a score from 0 to 1</div>
+    </div>
+    <div class="semantic-block" data-concept="diff" data-rep="block" data-role="transform">
+      <div class="title">diff-contains</div><div class="label">passes: 1 · fails: 0</div>
+    </div>
+    <div class="semantic-block" data-concept="trial" data-rep="block" data-role="attention">
+      <div class="title words">a trial</div><div class="label">one score, from its graders’ scores</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "grader",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "diff",
+  "at": "2",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "trial",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

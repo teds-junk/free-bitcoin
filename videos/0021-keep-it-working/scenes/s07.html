@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A suite names a group</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.suites{min-width:900px;font-size:30px;line-height:1.36;padding:22px 34px}.callout{font-size:32px}.stage{gap:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Tags, suites and exit codes</div>
+  <h2 class="scene-title">A suite names a group</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark suites" data-lang="yaml"><code><span style="color:#4EA5E6">suites</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  </span><span data-concept="q" data-rep="code"><span style="color:#4EA5E6">quick</span></span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">description</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">Code graders and budgets, one trial.</span>
+<span style="color:#B3C0BF">    </span><span data-concept="ev" data-rep="code"><span style="color:#4EA5E6">evals</span></span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">      - </span><span style="color:#3CC0B3">evals/changelog.eval.yaml</span>
+<span style="color:#B3C0BF">    </span><span data-concept="flt" data-rep="code"><span style="color:#4EA5E6">filter</span><span style="color:#B3C0BF">: { </span><span style="color:#4EA5E6">tier</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">quick</span><span style="color:#B3C0BF"> }</span></span>
+<span style="color:#B3C0BF">  </span><span data-concept="f" data-rep="code"><span style="color:#4EA5E6">full</span></span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">description</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">Everything, with loading and the judge.</span>
+<span style="color:#B3C0BF">    </span><span data-concept="ev2" data-rep="code"><span style="color:#4EA5E6">evals</span></span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">      - </span><span style="color:#3CC0B3">evals/changelog.eval.yaml</span>
+<span style="color:#B3C0BF">      - </span><span style="color:#3CC0B3">evals/conversation.eval.yaml</span>
+<span style="color:#B3C0BF">      - </span><span style="color:#3CC0B3">evals/loading.eval.yaml</span>
+<span style="color:#B3C0BF">      - </span><span style="color:#3CC0B3">evals/wording.eval.yaml</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="q">the name we type</p><p class="callout" data-anchor="ev">eval files it draws on</p><p class="callout" data-anchor="flt">only stimuli tagged tier: quick</p><p class="callout" data-anchor="ev2">no filter: every stimulus in these four</p></aside>
+  </div>
+  <p class="note"><span class="mono">.vally.yaml</span> · the whole file, in the practice folder</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "q",
+  "at": "3~quick",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ev",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "flt",
+  "at": "4~filter",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "f",
+  "at": "5",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ev2",
+  "at": "5~four eval files",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

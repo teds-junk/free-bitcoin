@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A block for every miss</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.out{font-size:34px;line-height:1.45;padding:24px 34px;min-width:1000px}.callout{font-size:32px}.lead{font-size:38px;margin:0}.stage{gap:26px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the experiment prints</div>
+  <h2 class="scene-title">A block for every miss</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark out" data-lang="yaml"><code><span data-concept="hd" data-rep="code"><span style="color:#3CC0B3">haiku-before · claude-haiku-4.5</span></span>
+<span style="color:#B3C0BF">  </span><span data-concept="st" data-rep="code"><span style="color:#3CC0B3">FAIL  cache  0/3</span></span>
+
+<span style="color:#3CC0B3">haiku-before · claude-haiku-4.5</span>
+<span style="color:#B3C0BF">  </span><span style="color:#3CC0B3">FLAKY  parser  2 passed · 1 failed</span>
+
+<span style="color:#3CC0B3">terra-before · gpt-5.6-terra</span>
+<span style="color:#B3C0BF">  </span><span style="color:#3CC0B3">ERROR  cache  1 passed · 1 failed · 1 error</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="hd">variant · model</p><p class="callout" data-anchor="st">state · stimulus · trials passed and failed</p></aside>
+  </div>
+  <p class="lead"><span data-concept="noblock" data-rep="note">A stimulus with no block passed every trial.</span></p>
+  <p class="note">the first two lines of each block · our run · 2026-11-11T07-53-29-176Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "hd",
+  "at": "0~headed",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "st",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "noblock",
+  "at": "4",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

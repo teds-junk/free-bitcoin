@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Some of it is taste</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.modes{font-size:32px;margin-top:30px}.modes th{font-size:28px}.modes td{padding-top:20px;padding-bottom:20px}.modes td.mono{font-family:var(--font-code);font-size:28px;white-space:nowrap}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Where the failures come from</div>
+  <h2 class="scene-title">Some of it is taste</h2>
+  <div class="stage">
+<table class="data-table full modes">
+    <thead><tr><th></th><th>Failure mode</th><th>Seen in</th><th>Settled by</th></tr></thead>
+    <tbody>
+<tr><td class="num">1</td><td><span data-concept="mode1" data-rep="cell">No rule for a missing pull request number: invents one</span></td>
+        <td class="mono">typo-fix, terra</td><td></td></tr>
+<tr><td class="num">2</td><td><span data-concept="mode2" data-rep="cell">Records a change users cannot see</span></td>
+        <td class="mono">refactor, both</td><td></td></tr>
+<tr><td class="num">3</td><td><span data-concept="mode3" data-rep="cell">Files a security fix under Fixed</span></td>
+        <td class="mono">security, both</td><td>the format: a Security category</td></tr>
+<tr><td class="num">4</td><td><span data-concept="mode4" data-rep="cell">Describes how the fix was coded</span></td>
+        <td class="mono">parser, haiku</td><td></td></tr>
+<tr><td class="num">5</td><td><span data-concept="mode5" data-rep="cell">New Unreleased heading does not match the file</span></td>
+        <td class="mono">after-release, terra</td><td>the format: ## [Unreleased]</td></tr>
+    </tbody>
+  </table>
+  <p class="note">from the top of <span class="mono">notes/failures.md</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "mode3",
+  "at": "2~security",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "mode5",
+  "at": "2~heading",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

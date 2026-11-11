@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "no-unreleased-section",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::gpt-5.6-terra::no-unreleased-section::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "gpt-5.6-terra",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:38:26.577Z",
+  "status": "success",
+  "trajectoryId": "33f3cd3e-f0ef-451d-9fc0-f743af158c6c",
+  "executorSessionId": "ee1e9dea-1de5-4bf4-844d-c60e8d177552",
+  "completedAt": "2026-11-10T07:38:34.183Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/no-unreleased-section/gpt-5.6-terra/0/events.jsonl"
+}

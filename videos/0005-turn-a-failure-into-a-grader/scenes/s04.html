@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Can this grader fail?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.pair{align-items:stretch}.card > .code.dark{font-size:34px}.big{justify-content:center;min-height:300px}.big .title{font-size:110px;line-height:1.1}.big .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Three habits for graders</div>
+  <h2 class="scene-title">Can this grader fail?</h2>
+  <div class="stage">
+<div class="cols pair">
+    <div class="card" data-concept="g" data-rep="card">
+        <div class="who">The only grader so far</div>
+        <pre class="code dark" data-lang="yaml"><code><span style="color:#4EA5E6">graders</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">file-contains</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">mentions-the-command</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">path</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">CHANGELOG.md</span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">value</span><span style="color:#B3C0BF">: </span><span data-concept="value" data-rep="code"><span style="color:#3CC0B3">"notes add"</span></span></code></pre>
+      </div>
+    <div class="semantic-block big" data-concept="passed" data-rep="block" data-role="attention">
+      <div class="title">10 of 10</div>
+      <div class="label">trials passed · 5 of them with a made-up number</div>
+    </div>
+  </div>
+  <p class="note">from the five-trial run · 2026-11-11T04-09-57-574Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "passed",
+  "at": "1~passed every trial",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "value",
+  "at": "2~checking",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

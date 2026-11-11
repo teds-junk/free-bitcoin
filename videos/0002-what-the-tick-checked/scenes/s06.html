@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One run, one folder.</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.tree{min-width:820px;font-size:30px;line-height:1.6;padding-top:14px;padding-bottom:14px}.callout{font-size:28px}.stage{justify-content:flex-start}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What a run leaves behind</div>
+  <h2 class="scene-title">One run, one folder.</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark tree" data-lang="text"><code><span data-concept="seg-time" data-rep="code"><span>2026-11-11T00-11-52-424Z/</span></span>
+<span>  </span><span data-concept="seg-report" data-rep="code"><span>eval-results.md</span></span>
+<span>  </span><span data-concept="seg-results" data-rep="code"><span>results.jsonl</span></span>
+<span>  </span><span data-concept="seg-otel" data-rep="code"><span>otel-spans.jsonl</span></span>
+<span>  </span><span data-concept="seg-eval" data-rep="code"><span>one-request/</span></span>
+<span>    </span><span data-concept="seg-stim" data-rep="code"><span>typo-fix/</span></span>
+<span>      </span><span data-concept="seg-model" data-rep="code"><span>claude-haiku-4.5/</span></span>
+<span>        </span><span data-concept="seg-num" data-rep="code"><span>0/</span></span>
+<span>          </span><span data-concept="seg-patch" data-rep="code"><span>workspace.patch</span></span>
+<span>          </span><span data-concept="seg-events" data-rep="code"><span>events.jsonl</span></span>
+<span>          </span><span data-concept="seg-meta" data-rep="code"><span>metadata.json</span></span>
+<span>      </span><span data-concept="seg-other" data-rep="code"><span>gpt-5.6-terra/0/</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="seg-time">when the run started</p><p class="callout" data-anchor="seg-report">the report, for people</p><p class="callout" data-anchor="seg-results">the same, for programs</p><p class="callout" data-anchor="seg-otel">timing data, not used here</p><p class="callout" data-anchor="seg-eval">the eval</p><p class="callout" data-anchor="seg-stim">the stimulus</p><p class="callout" data-anchor="seg-model">the model</p><p class="callout" data-anchor="seg-num">the trial number, from 0</p><p class="callout" data-anchor="seg-patch">what the agent changed</p><p class="callout" data-anchor="seg-events">the agent’s own log</p><p class="callout" data-anchor="seg-meta">facts about the trial</p><p class="callout" data-anchor="seg-other">the same three files</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "seg-time",
+  "at": "0~named",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "seg-report",
+  "at": "1~eval results"
+ },
+ {
+  "type": "focus",
+  "target": "seg-results",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "seg-otel",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "seg-eval",
+  "at": "4~eval"
+ },
+ {
+  "type": "focus",
+  "target": "seg-stim",
+  "at": "4~stimulus"
+ },
+ {
+  "type": "focus",
+  "target": "seg-model",
+  "at": "4~model"
+ },
+ {
+  "type": "focus",
+  "target": "seg-num",
+  "at": "4~trial number"
+ },
+ {
+  "type": "focus",
+  "target": "seg-patch",
+  "at": "6",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "seg-events",
+  "at": "7"
+ },
+ {
+  "type": "focus",
+  "target": "seg-meta",
+  "at": "8"
+ }
+]
+</script>
+</body>
+</html>

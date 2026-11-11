@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Each test needs its example</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Who grades the grader?</div>
+  <h2 class="scene-title">Each test needs its example</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="right" data-rep="block" data-role="success">
+      <div class="title words">A result known to be correct</div><div class="label">if the grader fails it, the grader is wrong</div>
+    </div>
+    <div class="semantic-block" data-concept="nothing" data-rep="block" data-role="attention">
+      <div class="title words">The starting files, untouched</div><div class="label">if the grader passes them, it isn’t checking the work</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "right",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "nothing",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Five checks, cheapest first</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.five{gap:24px}.five .semantic-block{min-height:240px;justify-content:center}.five .title{font-size:44px}.five .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Cheapest check first</div>
+  <h2 class="scene-title">Five checks, cheapest first</h2>
+  <div class="stage">
+<div class="cols five">
+    <div class="semantic-block" data-concept="free" data-rep="block" data-role="structure">
+      <div class="title"><span class="mono">lint</span></div><div class="label">free</div>
+    </div><div class="semantic-block" data-concept="free" data-rep="block" data-role="structure">
+      <div class="title"><span class="mono">oracle</span></div><div class="label">free</div>
+    </div><div class="semantic-block" data-concept="free" data-rep="block" data-role="structure">
+      <div class="title"><span class="mono">re-grade</span></div><div class="label">free</div>
+    </div><div class="semantic-block" data-concept="quick" data-rep="block" data-role="attention">
+      <div class="title"><span class="mono">quick</span></div><div class="label">10 agent runs</div>
+    </div><div class="semantic-block" data-concept="full" data-rep="block" data-role="attention">
+      <div class="title"><span class="mono">full</span></div><div class="label">30 agent runs</div>
+    </div>
+  </div>
+  <p class="note">agent runs, on two models · re-grading a judge spends one judge call per trial</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "free",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "quick",
+  "at": "3~quick run",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "full",
+  "at": "3~full run",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "quick",
+  "at": "4~ten",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "full",
+  "at": "4~thirty",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

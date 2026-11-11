@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Which skills loaded</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.skl{font-size:28px}.skl th{font-size:28px;white-space:nowrap}.skl td{padding:11px 26px 11px 0}.skl td.mono{font-family:var(--font-code);font-size:28px;white-space:nowrap}.card .who{font-size:32px}.stage{gap:26px}.cols.wide{gap:36px}.skl td:last-child,.skl th:last-child{padding-right:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Test loading, then fix it</div>
+  <h2 class="scene-title">Which skills loaded</h2>
+  <div class="stage">
+<div class="cols wide">
+    <div class="card">
+      <div class="who"><span class="mono">claude-haiku-4.5</span></div>
+      <table class="data-table full skl">
+        <thead><tr><th>Stimulus</th><th>Skills</th><th class="num">Pass Rate</th></tr></thead>
+        <tbody>
+<tr><td class="mono">load-plain</td><td class="mono"><span data-concept="loadsk" data-rep="cell">changelog-entry (2×)</span></td><td class="num">2/2</td></tr>
+<tr><td class="mono">load-no-keyword</td><td class="mono"><span data-concept="loadsk" data-rep="cell">changelog-entry (2×)</span></td><td class="num">2/2</td></tr>
+<tr><td class="mono">load-indirect</td><td class="mono"><span data-concept="loadsk" data-rep="cell">changelog-entry (2×)</span></td><td class="num">2/2</td></tr>
+<tr><td class="mono">skip-commit</td><td class="mono"><span data-concept="skipsk" data-rep="cell">commit-message (2×)</span></td><td class="num">2/2</td></tr>
+<tr><td class="mono">skip-release-notes</td><td class="mono"><span data-concept="skipsk" data-rep="cell">release-notes (2×)</span></td><td class="num">2/2</td></tr>
+<tr><td class="mono">skip-question</td><td class="mono"><span data-concept="skipsk" data-rep="cell">—</span></td><td class="num">2/2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="who"><span class="mono">gpt-5.6-terra</span></div>
+      <table class="data-table full skl">
+        <thead><tr><th>Stimulus</th><th>Skills</th><th class="num">Pass Rate</th></tr></thead>
+        <tbody>
+<tr><td class="mono">load-plain</td><td class="mono"><span data-concept="loadsk" data-rep="cell">changelog-entry (2×)</span></td><td class="num">2/2</td></tr>
+<tr><td class="mono">load-no-keyword</td><td class="mono"><span data-concept="loadsk" data-rep="cell">changelog-entry (2×)</span></td><td class="num">2/2</td></tr>
+<tr><td class="mono">load-indirect</td><td class="mono"><span data-concept="loadsk" data-rep="cell">changelog-entry (2×)</span></td><td class="num">2/2</td></tr>
+<tr><td class="mono">skip-commit</td><td class="mono"><span data-concept="skipsk" data-rep="cell">commit-message (2×)</span></td><td class="num">2/2</td></tr>
+<tr><td class="mono">skip-release-notes</td><td class="mono"><span data-concept="skipsk" data-rep="cell">release-notes</span></td><td class="num">—</td></tr>
+<tr><td class="mono">skip-question</td><td class="mono"><span data-concept="skipsk" data-rep="cell">release-notes</span></td><td class="num">2/2</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p class="note"><span class="mono">eval-results.md</span> · three of its twelve columns · the run with the one-line description</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "skipsk",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "loadsk",
+  "at": "3",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

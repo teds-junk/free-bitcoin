@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Which stimuli failed</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.fails{font-size:38px}.fails td{padding-top:18px;padding-bottom:18px}.fails td.mono{font-family:var(--font-code)}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Four variants, one table</div>
+  <h2 class="scene-title">Which stimuli failed</h2>
+  <div class="stage">
+<table class="data-table full fails">
+    <thead><tr><th>variant</th><th>stimulus</th><th>the grader that failed</th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="fv" data-rep="cell">haiku-no-skill</span></td><td class="mono"><span data-concept="f-after-release" data-rep="cell">after-release</span></td><td class="mono"><span data-concept="f-after-release" data-rep="cell">entry-in-new-unreleased</span></td></tr>
+<tr><td class="mono"><span data-concept="fv" data-rep="cell">haiku-no-skill</span></td><td class="mono"><span data-concept="f-refactor" data-rep="cell">refactor</span></td><td class="mono"><span data-concept="f-refactor" data-rep="cell">adds-nothing</span></td></tr>
+<tr><td class="mono"><span data-concept="fv" data-rep="cell">haiku-no-skill</span></td><td class="mono"><span data-concept="f-security" data-rep="cell">security</span></td><td class="mono"><span data-concept="f-security" data-rep="cell">under-security</span></td></tr>
+<tr><td class="mono"><span data-concept="fv" data-rep="cell">terra-no-skill</span></td><td class="mono"><span data-concept="f-refactor" data-rep="cell">refactor</span></td><td class="mono"><span data-concept="f-refactor" data-rep="cell">adds-nothing</span></td></tr>
+<tr><td class="mono"><span data-concept="fv" data-rep="cell">terra-no-skill</span></td><td class="mono"><span data-concept="f-security" data-rep="cell">security</span></td><td class="mono"><span data-concept="f-security" data-rep="cell">under-security</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">the blocks our run printed above the table · 2026-11-11T06-23-41-042Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "fv",
+  "at": "1~no-skill",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "f-refactor",
+  "at": "2~refactor",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "f-security",
+  "at": "3~security fix",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "f-after-release",
+  "at": "4",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

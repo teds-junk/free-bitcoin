@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml",
+  "variant": "main",
+  "stimulusName": "change-list-sort",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml::main::gpt-5.6-terra::change-list-sort::trial-2",
+  "executorName": "copilot-sdk",
+  "model": "gpt-5.6-terra",
+  "trialIndex": 2,
+  "startedAt": "2026-11-10T07:35:59.324Z",
+  "status": "success",
+  "trajectoryId": "c84b6693-2c5c-494f-b4a2-63eff3a45284",
+  "executorSessionId": "c3265f53-8d25-4ef7-9a1f-06d1ed02bd23",
+  "completedAt": "2026-11-10T07:36:08.382Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/pilot2/2026-11-10T07-35-23-904Z/changelog-entry/change-list-sort/gpt-5.6-terra/2/events.jsonl"
+}

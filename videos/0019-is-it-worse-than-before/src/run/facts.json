@@ -1,0 +1,14 @@
+{
+ "_about": "Choices made after reading this video's own record file (src/run/haiku-compare.jsonl). make-scenes.py asserts each against the record. before_entry and after_entry are the two changelog entries of the shown pair, found in src/run/pair-before.patch and pair-after.patch (copies of that trial's workspace.patch). second_pair is a pair whose two orders agreed on the winner but not on the strength.",
+ "shown_pair": {
+  "stimulus": "dates",
+  "trial": 0
+ },
+ "reason_quote": "A adds an example date (2026-1-5), which makes the change more concrete for users.",
+ "before_entry": "- Fix date parser to handle single-digit months and days (e.g., 2026-1-5) (#67)",
+ "after_entry": "- Fix date parser to accept single-digit months and days (#67)",
+ "second_pair": {
+  "stimulus": "parser",
+  "trial": 0
+ }
+}

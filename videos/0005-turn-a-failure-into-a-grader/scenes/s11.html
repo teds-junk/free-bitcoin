@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Every grader has to pass</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.rows{display:flex;flex-direction:column;gap:14px;width:100%}.trow{display:flex;align-items:center;gap:36px;padding:12px 22px;border-radius:10px;width:fit-content}.boxes{display:flex;gap:14px}.box{display:flex;align-items:center;justify-content:center;width:320px;height:70px;border-radius:8px;border:3px solid var(--ink-muted);font:700 42px/1 var(--font-body);color:var(--ink)}.box.tick{color:var(--green-ink)}.box.cross{color:var(--red-ink)}.trow.head{padding-top:0;padding-bottom:0}.gname{width:326px;text-align:center;font:500 28px/1 var(--font-code);color:var(--ink)}.trow .mean{font:400 36px/1.3 var(--font-body);color:var(--ink-soft)}.annotated .code.dark{font-size:38px;padding:22px 34px}.callout{font-size:34px}.stage{gap:26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Graders that read the diff</div>
+  <h2 class="scene-title">Every grader has to pass</h2>
+  <div class="stage">
+<div class="rows">
+    <div class="trow head"><span class="boxes"><span class="gname">adds-an-entry</span><span class="gname">no-made-up-number</span></span></div>
+    <div class="trow" data-concept="both" data-rep="row"><span class="boxes"><span class="box tick">✔</span><span class="box tick">✔</span></span><span class="mean">the trial passes</span></div>
+    <div class="trow" data-concept="one" data-rep="row"><span class="boxes"><span class="box tick">✔</span><span class="box cross">✘</span></span><span class="mean">the trial fails</span></div>
+    <div class="trow" data-concept="other" data-rep="row"><span class="boxes"><span class="box cross">✘</span><span class="box tick">✔</span></span><span class="mean">the trial fails</span></div>
+  </div>
+  <div class="annotated">
+    <pre class="code dark" data-lang="text"><code><span>warning </span><span data-concept="warn" data-rep="code"><span>[scoring-defaults-applied]</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="warn">lint’s reminder that this rule is in force</p></aside>
+  </div>
+  <p class="note">An illustration: one trial of <span class="mono">typo-fix</span>, which has two graders</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "both",
+  "at": "0~passes only",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "warn",
+  "at": "1~warning",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2~expect"
+ }
+]
+</script>
+</body>
+</html>

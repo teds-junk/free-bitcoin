@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Script graders can’t be re-graded</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:210px}.terms .label{font-size:32px}.annotated .code.dark{font-size:38px;padding:24px 36px}.callout{font-size:32px}.stage{gap:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Re-grade a saved run</div>
+  <h2 class="scene-title">Script graders can’t be re-graded</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="diffg" data-rep="block" data-role="success">
+      <div class="title words">diff grader</div><div class="label">works from the saved diff · its result holds</div>
+    </div>
+    <div class="semantic-block" data-concept="scriptg" data-rep="block" data-role="failure">
+      <div class="title words">script grader</div><div class="label">needs the workspace, which is gone · fails every trial</div>
+    </div>
+  </div>
+  <div class="annotated">
+    <pre class="code dark" data-lang="text"><code><span data-concept="msg" data-rep="code"><span>no CHANGELOG.md to check</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="msg">what our script says in a re-grade</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "diffg",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "scriptg",
+  "at": "2",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "msg",
+  "at": "4~no changelog",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

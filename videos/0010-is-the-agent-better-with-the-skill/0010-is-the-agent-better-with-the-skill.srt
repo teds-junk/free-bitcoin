@@ -1,0 +1,708 @@
+1
+00:00:00,400 --> 00:00:03,200
+Models already know what a changelog is.
+
+2
+00:00:03,700 --> 00:00:08,650
+So perhaps they'd pass our graders with no
+skill at all, and the skill is decoration.
+
+3
+00:00:09,150 --> 00:00:12,075
+Or perhaps the skill matters a great deal.
+
+4
+00:00:12,575 --> 00:00:16,927
+So far, we've measured the skill against
+earlier versions of itself, but not
+
+5
+00:00:16,927 --> 00:00:17,900
+against no skill.
+
+6
+00:00:18,400 --> 00:00:22,520
+Here, you'll run the same stimuli with the
+skill and without it, and say where the
+
+7
+00:00:22,520 --> 00:00:23,625
+skill earns its place.
+
+8
+00:00:24,833 --> 00:00:27,333
+Let's start with what a skill costs.
+
+9
+00:00:27,833 --> 00:00:31,458
+It adds to the text the model reads on
+every request.
+
+10
+00:00:31,958 --> 00:00:34,933
+It has to be maintained, and it can be
+wrong.
+
+11
+00:00:35,433 --> 00:00:39,701
+So it earns its place only on requests
+where the agent does better with it than
+
+12
+00:00:39,701 --> 00:00:40,133
+without.
+
+13
+00:00:41,333 --> 00:00:43,458
+We can't assume that it does.
+
+14
+00:00:43,958 --> 00:00:48,890
+One study from twenty twenty-six ran the
+same eighty-seven tasks with skills and
+
+15
+00:00:48,890 --> 00:00:49,383
+without.
+
+16
+00:00:49,883 --> 00:00:54,413
+Skills written with care raised the share
+of tasks completed by about seventeen
+
+17
+00:00:54,413 --> 00:00:56,133
+percentage points, on average.
+
+18
+00:00:56,633 --> 00:01:00,008
+Yet they made thirteen of the eighty-seven
+tasks worse.
+
+19
+00:01:00,508 --> 00:01:04,866
+And skills that the models wrote for
+themselves completed fewer tasks than no
+
+20
+00:01:04,866 --> 00:01:05,658
+skills at all.
+
+21
+00:01:06,867 --> 00:01:09,817
+The way to find out is a fair comparison.
+
+22
+00:01:10,317 --> 00:01:14,387
+It keeps the same stimuli, the same
+graders and the same model, and changes
+
+23
+00:01:14,387 --> 00:01:16,667
+one thing: whether the skill is installed.
+
+24
+00:01:17,167 --> 00:01:21,666
+Here the baseline, the thing a result is
+compared against, is the run with no
+
+25
+00:01:21,666 --> 00:01:22,017
+skill.
+
+26
+00:01:23,233 --> 00:01:26,983
+For each stimulus, the comparison gives
+one of three answers.
+
+27
+00:01:27,483 --> 00:01:31,358
+The skill helps: the stimulus fails
+without it, and passes with it.
+
+28
+00:01:31,858 --> 00:01:36,312
+The skill makes no difference: the model
+manages either way, so the skill isn't
+
+29
+00:01:36,312 --> 00:01:37,608
+earning anything there.
+
+30
+00:01:38,108 --> 00:01:42,108
+Or the skill hurts: the stimulus passes
+without it, and fails with it.
+
+31
+00:01:42,608 --> 00:01:44,733
+All three are worth knowing.
+
+32
+00:01:45,933 --> 00:01:49,158
+That's the idea; here's the file that
+expresses it.
+
+33
+00:01:49,658 --> 00:01:54,333
+An experiment file lists variants of an
+eval, and one command runs them all.
+
+34
+00:01:54,833 --> 00:01:59,625
+Each variant is one version of the set-up
+being compared: the same eval, run with
+
+35
+00:01:59,625 --> 00:02:00,808
+one setting changed.
+
+36
+00:02:01,308 --> 00:02:05,433
+Our practice folder came with one, for
+comparing with and without the skill.
+
+37
+00:02:05,933 --> 00:02:10,756
+Its evals line names the eval file to run:
+the changelog eval, whose stimuli and
+
+38
+00:02:10,756 --> 00:02:13,408
+graders are used unchanged in every
+variant.
+
+39
+00:02:14,633 --> 00:02:19,008
+Next, the vary line lists the settings
+that variants are allowed to differ in.
+
+40
+00:02:19,508 --> 00:02:23,703
+Each is written as a path into the eval's
+settings: one for the list of skills in
+
+41
+00:02:23,703 --> 00:02:26,033
+the agent environment, and one for the
+model.
+
+42
+00:02:26,533 --> 00:02:30,977
+If a variant differed in anything else,
+Vally would refuse to run, and report
+
+43
+00:02:30,977 --> 00:02:31,958
+experiment drift.
+
+44
+00:02:32,458 --> 00:02:34,983
+That's what keeps the comparison fair.
+
+45
+00:02:35,483 --> 00:02:39,708
+Then the baseline line names the variant
+that the others are compared with.
+
+46
+00:02:40,933 --> 00:02:44,533
+After that come the variants, each under a
+name we choose.
+
+47
+00:02:45,033 --> 00:02:49,993
+The first, haiku no skill, sets its model
+under overrides, and overrides replace the
+
+48
+00:02:49,993 --> 00:02:51,233
+eval file's defaults.
+
+49
+00:02:51,733 --> 00:02:55,533
+Its list of skills is empty, so no skill
+is installed.
+
+50
+00:02:56,033 --> 00:03:01,112
+Haiku with skill keeps the same model, and
+installs the changelog entry skill, as the
+
+51
+00:03:01,112 --> 00:03:02,008
+eval file does.
+
+52
+00:03:02,508 --> 00:03:05,308
+Two more variants do the same for terra.
+
+53
+00:03:05,808 --> 00:03:10,527
+So an experiment sets the model in the
+file, and not with the dash dash model
+
+54
+00:03:10,527 --> 00:03:10,833
+flag.
+
+55
+00:03:12,033 --> 00:03:16,383
+The command is vally experiment run,
+followed by the experiment file.
+
+56
+00:03:16,883 --> 00:03:21,536
+Adding dash dash dry run makes it print
+the plan, one block per variant, without
+
+57
+00:03:21,536 --> 00:03:22,583
+starting an agent.
+
+58
+00:03:23,083 --> 00:03:25,758
+That's the experiment's version of lint.
+
+59
+00:03:26,258 --> 00:03:31,229
+For the real run, it takes dash dash
+workers and dash dash output dir, as vally
+
+60
+00:03:31,229 --> 00:03:31,858
+eval does.
+
+61
+00:03:33,067 --> 00:03:37,258
+When the run finishes, it prints a table
+with one column per variant, and the
+
+62
+00:03:37,258 --> 00:03:38,892
+baseline's column is labelled.
+
+63
+00:03:39,392 --> 00:03:42,442
+Its first row counts the stimuli that
+passed.
+
+64
+00:03:42,942 --> 00:03:47,479
+Beneath that are each variant's total
+tokens over all its trials, and its trial
+
+65
+00:03:47,479 --> 00:03:47,767
+time.
+
+66
+00:03:48,267 --> 00:03:52,367
+Above the table, it prints a block for
+each stimulus that failed, naming its
+
+67
+00:03:52,367 --> 00:03:54,417
+variant, the stimulus, and the grader.
+
+68
+00:03:55,633 --> 00:04:00,033
+The run's folder gets one subfolder per
+variant, named after it.
+
+69
+00:04:00,533 --> 00:04:05,444
+Each has its own results dot jsonl, and a
+folder for the eval, laid out like the
+
+70
+00:04:05,444 --> 00:04:06,733
+ones we already know.
+
+71
+00:04:07,233 --> 00:04:11,750
+There's also one report for the whole
+experiment, report dot md, with a heading
+
+72
+00:04:11,750 --> 00:04:13,408
+and a table for each variant.
+
+73
+00:04:13,908 --> 00:04:17,883
+An experiment writes it in place of a
+single eval's report.
+
+74
+00:04:19,100 --> 00:04:21,700
+That's how it works; now let's run it.
+
+75
+00:04:22,200 --> 00:04:26,798
+The changelog eval's stimuli are the typo
+fix with no pull request number, the
+
+76
+00:04:26,798 --> 00:04:28,625
+refactor, and the security fix.
+
+77
+00:04:29,125 --> 00:04:33,378
+Then come the two changes in one pull
+request, and the changelog with no
+
+78
+00:04:33,378 --> 00:04:34,500
+Unreleased section.
+
+79
+00:04:35,000 --> 00:04:39,225
+Which of them would you expect a model to
+get right with no skill at all?
+
+80
+00:04:41,725 --> 00:04:44,600
+If you tried it yourself, here's what
+you'd see.
+
+81
+00:04:45,800 --> 00:04:50,950
+Our experiment file already names the two
+models we use, so nothing needs editing.
+
+82
+00:04:51,450 --> 00:04:55,625
+First comes the dry run, which checks the
+plan and starts no agent.
+
+83
+00:04:56,360 --> 00:05:00,499
+It prints a block for each of the four
+variants, naming its model; the screen
+
+84
+00:05:00,499 --> 00:05:01,735
+holds the last of them.
+
+85
+00:05:06,967 --> 00:05:10,817
+Now the real run, with two workers and a
+folder for the results.
+
+86
+00:05:11,317 --> 00:05:16,289
+It spends twenty short agent runs: each of
+the four variants runs the five stimuli
+
+87
+00:05:16,289 --> 00:05:16,592
+once.
+
+88
+00:05:17,092 --> 00:05:19,817
+What we're after is the table at the end.
+
+89
+00:05:22,080 --> 00:05:26,389
+About a minute and a half later, the table
+is there, with the last of the failed
+
+90
+00:05:26,389 --> 00:05:27,305
+stimuli above it.
+
+91
+00:05:32,533 --> 00:05:35,133
+Here's that table again, as a slide.
+
+92
+00:05:37,633 --> 00:05:42,308
+With no skill, haiku passes two of the
+five stimuli, and terra passes three.
+
+93
+00:05:42,808 --> 00:05:45,508
+With the skill, each passes all five.
+
+94
+00:05:48,733 --> 00:05:51,208
+Now for the blocks above the table.
+
+95
+00:05:51,708 --> 00:05:55,733
+Our run printed five, and every one is in
+a no-skill variant.
+
+96
+00:05:59,233 --> 00:06:03,311
+Without the skill, both models wrote an
+entry for the refactor, where nothing
+
+97
+00:06:03,311 --> 00:06:04,158
+should be added.
+
+98
+00:06:04,658 --> 00:06:09,558
+Both also filed the security fix under
+Fixed, when it belongs under Security.
+
+99
+00:06:10,058 --> 00:06:14,533
+Haiku, with no skill, also failed the
+changelog with no Unreleased section.
+
+100
+00:06:17,733 --> 00:06:22,335
+The typo fix is where a model once made up
+a pull request number, so let's read what
+
+101
+00:06:22,335 --> 00:06:24,033
+one wrote for it with no skill.
+
+102
+00:06:25,867 --> 00:06:30,542
+As before, the run's folder is named with
+its time, and we change into it.
+
+103
+00:06:32,940 --> 00:06:37,461
+Each variant's folder is named after the
+variant, so we go into terra no skill,
+
+104
+00:06:37,461 --> 00:06:39,865
+then the eval, then the typo fix stimulus.
+
+105
+00:06:43,573 --> 00:06:46,523
+Here's the patch from that model's one
+trial.
+
+106
+00:06:51,840 --> 00:06:56,640
+It adds an entry for the typo, and the
+entry ends with no pull request number.
+
+107
+00:07:03,867 --> 00:07:06,492
+So, are the results better with the skill?
+
+108
+00:07:06,992 --> 00:07:11,388
+In our run, yes: five of five with the
+skill on both models, against two of five
+
+109
+00:07:11,388 --> 00:07:13,917
+for haiku and three of five for terra
+without.
+
+110
+00:07:14,417 --> 00:07:18,242
+The skill earns its place on the refactor
+and the security fix.
+
+111
+00:07:18,742 --> 00:07:22,992
+On the typo fix and the two changes, both
+models managed without it.
+
+112
+00:07:23,492 --> 00:07:28,223
+The changelog with no Unreleased section
+split them: terra handled it alone, and
+
+113
+00:07:28,223 --> 00:07:28,992
+haiku didn't.
+
+114
+00:07:32,200 --> 00:07:35,100
+Now, back to that patch of the typo fix.
+
+115
+00:07:35,600 --> 00:07:40,086
+With the first-draft skill, this same
+model ended its entry with a made-up pull
+
+116
+00:07:40,086 --> 00:07:42,300
+request number, in five trials of five.
+
+117
+00:07:42,800 --> 00:07:47,285
+With no skill installed, it made nothing
+up in its one trial, and neither did the
+
+118
+00:07:47,285 --> 00:07:47,950
+other model.
+
+119
+00:07:48,450 --> 00:07:52,100
+So the made-up number wasn't that model's
+own weakness.
+
+120
+00:07:52,600 --> 00:07:54,775
+Our first draft caused it.
+
+121
+00:07:55,275 --> 00:07:59,426
+It said to reference the pull request,
+with no word on what to do when there is
+
+122
+00:07:59,426 --> 00:08:02,000
+none, and that pushed a model into making
+one up.
+
+123
+00:08:03,200 --> 00:08:07,981
+That's the third kind of answer: the first
+draft made this result worse than no skill
+
+124
+00:08:07,981 --> 00:08:08,375
+at all.
+
+125
+00:08:08,875 --> 00:08:11,925
+We fixed it earlier, without knowing its
+cause.
+
+126
+00:08:12,425 --> 00:08:16,000
+It took a comparison with no skill to show
+that cause.
+
+127
+00:08:16,500 --> 00:08:21,233
+That's a good reason to run one before
+trusting any skill, and again after any
+
+128
+00:08:21,233 --> 00:08:21,900
+large edit.
+
+129
+00:08:23,100 --> 00:08:25,175
+Then there are the tokens.
+
+130
+00:08:25,675 --> 00:08:28,600
+A skill adds text for the model to read.
+
+131
+00:08:29,100 --> 00:08:33,225
+Yet in our run, both models used fewer
+tokens with it than without.
+
+132
+00:08:33,725 --> 00:08:37,766
+On haiku, that's about three hundred
+thirty thousand with the skill, against
+
+133
+00:08:37,766 --> 00:08:40,425
+about three hundred seventy-five thousand
+without.
+
+134
+00:08:40,925 --> 00:08:45,017
+On terra, it's about two hundred
+eighty-two thousand, against about two
+
+135
+00:08:45,017 --> 00:08:46,400
+hundred ninety thousand.
+
+136
+00:08:46,900 --> 00:08:51,726
+Each figure covers five trials: too few to
+say the skill saves tokens, but enough to
+
+137
+00:08:51,726 --> 00:08:53,450
+see that it doesn't cost many.
+
+138
+00:08:54,667 --> 00:08:59,441
+One caution about those ticks and crosses:
+each is one trial of one stimulus, so
+
+139
+00:08:59,441 --> 00:09:01,292
+small differences deserve care.
+
+140
+00:09:01,792 --> 00:09:06,517
+When a stimulus fails without the skill on
+every model, that's solid evidence.
+
+141
+00:09:07,017 --> 00:09:11,364
+When a single cell differs, as haiku's did
+on the changelog with no Unreleased
+
+142
+00:09:11,364 --> 00:09:13,817
+section, that's a reason to run more
+trials.
+
+143
+00:09:15,033 --> 00:09:19,713
+Before you go on: what three answers can a
+with-and-without comparison give for a
+
+144
+00:09:19,713 --> 00:09:20,233
+stimulus?
+
+145
+00:09:23,233 --> 00:09:27,108
+The skill helps: the stimulus fails
+without it, and passes with it.
+
+146
+00:09:27,608 --> 00:09:31,658
+The skill makes no difference: the result
+is the same either way.
+
+147
+00:09:32,158 --> 00:09:36,158
+Or the skill hurts: the stimulus passes
+without it, and fails with it.
+
+148
+00:09:37,367 --> 00:09:41,551
+You can now say where a skill helps, where
+it makes no difference, and what it
+
+149
+00:09:41,551 --> 00:09:42,517
+changes in tokens.
+
+150
+00:09:43,017 --> 00:09:46,292
+But every stimulus so far was one request.
+
+151
+00:09:46,792 --> 00:09:51,217
+Real use goes on: someone asks for a
+follow-up, or changes their mind.
+
+152
+00:09:51,717 --> 00:09:53,817
+Does the skill still hold?
+
+153
+00:09:54,317 --> 00:09:56,167
+That's the next lesson.
+
+154
+00:09:56,667 --> 00:10:00,242
+The exercises on the lesson page are worth
+doing first.

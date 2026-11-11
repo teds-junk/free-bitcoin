@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three passed all ten</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.tests{font-size:38px}.tests th{font-size:30px}.tests td{padding-top:20px;padding-bottom:20px;height:52px}.tests td.mono{font-family:var(--font-code);font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Require, forbid, re-grade</div>
+  <h2 class="scene-title">Three passed all ten</h2>
+  <div class="stage">
+<table class="data-table full tests">
+    <thead><tr><th>Grader</th><th>It</th><th><span data-concept="col-base" data-rep="cell">On the baseline</span></th>
+      <th><span data-concept="col-saved" data-rep="cell">On ten saved trials</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono">every-change-handled</td><td>requires</td><td>failed as expected</td><td>needs the workspace</td></tr>
+<tr><td class="mono">reads-the-list</td><td>requires</td><td>failed as expected</td><td><span data-concept="three" data-rep="cell">passed 10 of 10</span></td></tr>
+<tr><td class="mono"><span data-concept="nc" data-rep="cell">never-commits</span></td><td>forbids</td><td>N/A</td><td><span data-concept="three" data-rep="cell">passed 10 of 10</span></td></tr>
+<tr><td class="mono">no-loop</td><td>forbids</td><td>N/A</td><td><span data-concept="three" data-rep="cell">passed 10 of 10</span></td></tr>
+<tr><td class="mono">loads-the-skill</td><td>requires</td><td>failed as expected</td><td><span data-concept="loads" data-rep="cell">passed 8 of 10</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">the saved run · 2026-11-11T16-51-44-338Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "three",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "loads",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "nc",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

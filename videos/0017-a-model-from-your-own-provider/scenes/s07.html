@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A local model needs no key</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.stage{gap:30px}.stage > .semantic-block{width:100%}.stage > .semantic-block .label{font-size:36px}.code.dark.local{font-size:36px;line-height:1.45;min-width:900px}.callout{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Bring your own key</div>
+  <h2 class="scene-title">A local model needs no key</h2>
+  <div class="stage">
+<div class="semantic-block" data-concept="oll" data-rep="block" data-role="structure">
+      <div class="title">Ollama</div><div class="label">A free program that downloads open models and serves them on your machine.</div>
+    </div>
+  <div class="annotated">
+    <pre class="code dark local" data-lang="yaml"><code><span style="color:#4EA5E6">executor</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">copilot-sdk</span>
+<span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">provider</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">      </span><span data-concept="lurl" data-rep="code"><span style="color:#4EA5E6">baseUrl</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">http://localhost:11434/v1</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="lurl">Ollama’s address on this computer · no key</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "oll",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "lurl",
+  "at": "2~local address",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>And cat on the tool’s file?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.two{font-size:42px;line-height:1.5;min-width:1000px}.callout{font-size:34px}.stage{gap:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Simulation</div>
+  <h2 class="scene-title">And cat on the tool’s file?</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark two" data-lang="text"><code><span>bash   cat tools/</span><span data-concept="cat" data-rep="code"><span>list-merged</span></span><span>.mjs</span>
+
+<span>view   </span><span data-concept="view" data-rep="code"><span>tools/list-merged.mjs</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="cat">a shell command</p><p class="callout" data-anchor="view">another tool</p></aside>
+  </div>
+  <p class="note">the pattern in the override: <span class="mono">match: list-merged</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "cat",
+  "at": "3~list merged",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "view",
+  "at": "4",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

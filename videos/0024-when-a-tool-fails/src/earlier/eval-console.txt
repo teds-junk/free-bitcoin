@@ -1,0 +1,40 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from release · 2 models · 2 workers
+  WARN release · stimuli-filtered  Running 1 of 2 stimuli (1 filtered by tags) (2x)
+    <practice>/evals/release.eval.yaml
+  WARN release · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+⚠  Running with 3 trial(s). For statistically significant results, use --runs 5 or higher.
+
+release
+
+claude-haiku-4.5
+  FLAKY  tracker-down  2 passed · 1 failed
+   ✘ says-why  2 passed · 1 failed · 1 critique
+     ✘ trial 1   The reply mentions the timeout but then asserts the Unreleased entries are already
+                 in place, which blurs the failure. It also speculates that PR #41 is the only
+                 change, so it does not cleanly report that the merged-change list could not be
+                 fetched.
+     ✓ trial 2   passed
+     ✓ trial 3   passed
+
+────────────────────────────────────────────────────────
+
+Failures  1 failed
+  ✘ release · tracker-down [claude-haiku-4.5]
+      ✘ says-why  1 failed · per-trial (1 different critique)
+        trial 1  "The reply mentions the timeout but then asserts the Unreleased entries are
+                  already in place, which blurs the failure. It also speculates that PR #41 is the
+                  only change, so it does not cleanly report that the merged-change list could not
+                  be fetched."
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval     claude-haiku-4.5  gpt-5.6-terra
+  release  ✘ 0/1             ✓ 1/1        
+
+Saved  <practice>/results/lesson-24/2026-11-10T17-52-07-284Z/
+Run ID  bb706aa4-ce31-472c-b647-bd56206dd800

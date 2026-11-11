@@ -1,0 +1,9 @@
+{
+  "name": "notes-cli-release-app",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@github/copilot-sdk": "1.0.30",
+    "@microsoft/vally": "0.21.0"
+  }
+}

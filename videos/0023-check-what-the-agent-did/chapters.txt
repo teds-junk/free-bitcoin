@@ -1,0 +1,6 @@
+0:00 Check the route
+0:31 When a step is worth grading
+1:41 Read a tool-calls grader
+4:32 Catch a loop
+5:59 Test graders before they run
+10:14 What the route showed

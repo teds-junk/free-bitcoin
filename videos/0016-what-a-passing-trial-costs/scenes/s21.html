@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tokens measure work, not price</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.big .semantic-block{min-height:360px;justify-content:center;gap:6px}.big .who{font-family:var(--font-code);font-size:32px;color:var(--ink)}.big .title{font-size:84px;line-height:1.15}.big .label{font-size:32px}.big .cost{font-family:var(--font-code);font-size:38px;color:var(--ink);margin-top:18px}.stage{gap:24px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the table says</div>
+  <h2 class="scene-title">Tokens measure work, not price</h2>
+  <div class="stage">
+<div class="cols wide big">
+    <div class="semantic-block" data-role="structure">
+      <div class="who">claude-haiku-5.5</div><div class="title">105.2k</div><div class="label">median tokens in a trial</div>
+      <div class="cost">0.14 to 0.39 AIU a trial</div>
+    </div>
+    <div class="semantic-block" data-role="structure">
+      <div class="who">gpt-5.6-terra</div><div class="title"><span data-concept="ttok" data-rep="cell">61.0k</span></div><div class="label">median tokens in a trial</div>
+      <div class="cost"><span data-concept="tcost" data-rep="cell">1.67 to 4.21 AIU a trial</span></div>
+    </div>
+  </div>
+  <p class="note">our run · 2026-11-11T08-39-02-179Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "tcost",
+  "at": "2~cost the most",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ttok",
+  "at": "2~fewest",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

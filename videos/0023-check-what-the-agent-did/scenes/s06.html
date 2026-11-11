@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The report counts them</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:40px}.data-table th{font-size:30px}.data-table td{padding-top:22px;padding-bottom:22px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:34px}.pair{align-items:center;gap:60px}.card > .code.dark{font-size:31px}.tools{width:100%}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">The tool-calls grader</div>
+  <h2 class="scene-title">The report counts them</h2>
+  <div class="stage">
+<div class="cols pair">
+    <div class="card" data-concept="cell" data-rep="card">
+        <div class="who">eval-results.md · Tool Calls · <span class="mono">claude-haiku-4.5</span></div>
+        <pre class="code dark" data-lang="text"><code><span>view: 18, edit: 5, skill: 3, bash: 2</span></code></pre>
+      </div>
+    <table class="data-table tools">
+      <thead><tr><th>Tool</th><th>What it does</th></tr></thead>
+      <tbody>
+<tr><td class="mono"><span data-concept="t-view" data-rep="cell">view</span></td><td>opens a file</td></tr>
+<tr><td class="mono"><span data-concept="t-edit" data-rep="cell">edit</span></td><td>changes a file</td></tr>
+<tr><td class="mono"><span data-concept="t-edit" data-rep="cell">apply_patch</span></td><td>changes a file</td></tr>
+<tr><td class="mono"><span data-concept="t-bash" data-rep="cell">bash</span></td><td>runs a shell command</td></tr>
+<tr><td class="mono"><span data-concept="t-skill" data-rep="cell">skill</span></td><td>loads a skill</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="note">the five saved trials of <span class="mono">since-last-release</span> · 2026-11-11T16-51-44-338Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "cell",
+  "at": "1~Tool Calls",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "t-view",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "t-edit",
+  "at": "3~edit",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "t-bash",
+  "at": "3~bash",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "t-skill",
+  "at": "3~skill loads",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

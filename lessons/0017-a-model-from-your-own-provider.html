@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 17: A model from your own provider — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 17 of 26 · Vally &amp; Agent Evals</div>
+    <h1>A model from your own provider</h1>
+    <div class="lesson-meta">12 min, plus about 15 for the optional local run · Run one variant through your own provider beside the account's models, and work out its cost from your own price per token.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What does <code>reasoning_effort</code> set, and why could one model accept a value that another refuses?
+        <details class="answer"><summary>Show answer</summary><p>How much the agent's model reasons before it replies or calls a tool. The accepted values depend on the model: in lesson 16, <code>claude-haiku-4.5</code> refused any effort while <code>claude-haiku-5.5</code> took one.</p></details></li>
+      <li>Why compare cost per passing trial rather than cost per trial?
+        <details class="answer"><summary>Show answer</summary><p>Every trial is paid for, useful or not. A cheap model that fails often can cost more for each useful result than a dearer one that passes, and dividing the total cost by the passing trials shows that.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You can price the models your Copilot account offers, per passing trial.</p>
+    <p><strong>This lesson answers:</strong> My app calls a model through its own provider, not my Copilot account. Can Vally run that same model?</p>
+  </div>
+
+  <p class="drop-cap">Every trial so far has gone through your Copilot account: Vally asked for a model by name, the account served it, and the trial recorded what it cost. The <code>notes-cli</code> team's release tool, which part 2 of the course looks at after lesson 21, may not work that way. Teams often call a model through a provider they pay directly, or one they run themselves, for reasons of price, data rules or speed. If that is the model your skill will meet, it is the model to evaluate. In this lesson you point one variant of lesson 16's experiment at a model running on your own computer, and work out what its trials would cost.</p>
+
+  <h2 id="model-you-ship" data-mode="think">Evaluate the model you ship</h2>
+
+  <p>Lesson 1 showed two models reading the same skill two ways. Less obviously, one model served two ways can behave differently too. Whoever serves a model decides how it is stored (often compressed to fit smaller machines: the copy we used in this lesson is a 4-bit compressed version), how the conversation and the agent's tool calls are turned into the text the model reads, and which default settings it runs with. Each of those can change what the agent does. So a result for "the same model" from somewhere else says little about yours, even when the name matches.</p>
+
+  <p>We met this while preparing the lesson. The first local model we tried, <code>gpt-oss:20b</code>, failed every trial before it changed a file: the server answered <code>400 invalid tool call arguments</code>. The model may well be able to write a changelog entry. The way this server passed its tool calls to the agent did not work, and only a run through that endpoint could show it.</p>
+
+  <p>So evaluate through the endpoint the app uses, with the model name the app sends. Keep the stimuli, graders and skill the same, so that the results line up with every other variant.</p>
+
+  <h2 id="byok" data-mode="works">Bring your own key</h2>
+
+  <div class="callout definition">
+    <div class="callout-title">Executor</div>
+    <p>The part of Vally that runs the agent for each trial: it starts a session, sends the stimulus, and records what happened. Unless a file says otherwise, Vally uses its built-in executor, <code>copilot-sdk</code>, which reaches models through your Copilot account.</p>
+  </div>
+
+  <div class="callout definition">
+    <div class="callout-title">Bring your own key</div>
+    <p>Having the executor call a model provider you choose, with your own credentials, instead of your Copilot account. The Vally docs call it BYOK.</p>
+  </div>
+
+  <p>The executor is set under <code>defaults</code> in an eval file, or under <code>overrides</code> in an experiment variant. To bring your own key, give it a <code>config</code> holding a <code>provider</code> block. This one is for a hosted provider. We checked it with <code>vally lint</code>; we did not run it.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">an eval file's defaults, for a hosted provider</div>
+<pre><code class="language-yaml">defaults:
+  model: my-model-name<span class="mark">1</span>
+  executor:
+    name: copilot-sdk<span class="mark">2</span>
+    config:
+      provider:
+        baseUrl: https://api.example.com/v1<span class="mark">3</span>
+        type: openai<span class="mark">4</span>
+        apiKeyEnv: MY_PROVIDER_KEY<span class="mark">5</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>The name the provider knows the model by. Vally does not check it against your account's list of models, as it does for Copilot models.</li>
+      <li>Still the built-in executor. Only where it sends the model's requests changes.</li>
+      <li>The provider's address. The only required field.</li>
+      <li>The kind of interface the provider offers. <code>openai</code> is the default, and many servers other than OpenAI's offer that kind, Ollama among them.</li>
+      <li>The name of an environment variable that holds the key, not the key itself. Vally reads it from the environment of the <code>vally</code> command when each trial starts.</li>
+    </ol>
+  </div>
+
+  <p>The key never goes in the file, because eval files are shared and kept with results. Vally enforces this: there is no field for a key, and lint rejects one. This is lint on a copy of the file above with <code>apiKey: abc123</code> in place of line 5:</p>
+
+<pre class="output"><code>✘ error [executor-config-invalid]
+  defaults.executor.config.provider has unknown
+  field 'apiKey' (allowed: type, baseUrl, wireApi,
+  transport, apiKeyEnv, bearerTokenEnv, azure, headers,
+  modelId, wireModel, maxPromptTokens, maxOutputTokens)</code></pre>
+
+  <p>The other allowed fields serve providers with their own conventions, such as Azure's deployment names; the primary source below describes each. If the variable is not set when you run, lint still passes, but every trial stops with <code>ERROR</code> before the agent starts. Ours:</p>
+
+<pre class="output"><code>ERROR  hello
+ defaults.executor.config.provider.apiKeyEnv
+ references environment variable "MY_PROVIDER_KEY",
+ but it is not set. Export MY_PROVIDER_KEY with your
+ provider credential before running.</code></pre>
+
+  <p>A model on your own computer needs no key. Ollama, a free program that downloads open models and serves them on your machine, answers at <code>http://localhost:11434/v1</code> with the <code>openai</code> kind of interface, so a provider block with only <code>baseUrl</code> is enough.</p>
+
+  <p>What a trial records changes in one way. Its tokens are counted as before, in <code>tokenUsage</code>. Its <code>cost</code> is absent: as lesson 16 said, Vally records a cost only when every call in the trial reported one the Copilot way. You price the tokens yourself, at your provider's rates. This is a record from our run in this lesson, the same stimulus as lesson 16's excerpt:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results/lesson-17/…/qwen-local/results.jsonl (part of one record)</div>
+<pre><code class="language-json">    "metrics": {
+      "tokenUsage": {
+        "inputTokens": 46630,
+        "outputTokens": 379,
+        "totalTokens": 47009,
+        "cacheReadTokens": 0,<span class="mark">1</span>
+        "cacheWriteTokens": 0,
+        "callCount": 4,
+        "byModel": {<span class="mark">2</span>
+          "qwen3.5:9b": {
+            "inputTokens": 46630,
+            "outputTokens": 379,
+            "callCount": 4
+          }
+        }
+      },<span class="mark">3</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>No input read from cache. Lesson 16's Haiku trial on this stimulus read 96,415 of its 104,384 input tokens from cache. Our local server reported none, so every turn counted the whole conversation again as fresh input.</li>
+      <li>The tokens for each model. These are what you multiply by your provider's prices, one model at a time.</li>
+      <li>The end of <code>tokenUsage</code>. Where lesson 16's record had its <code>cost</code> block, this one has nothing.</li>
+    </ol>
+  </div>
+
+  <p>One more consequence. A judge, as in lesson 12, still goes through your Copilot account: the Vally docs say that credentials set only for the agent's provider do not configure the judge.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">Your provider block names <code>apiKeyEnv: MY_PROVIDER_KEY</code>. Where must the key itself be?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">In the provider block, as apiKey</button></li>
+      <li><button onclick="checkAnswer(this, false)">In the agent environment's env list</button></li>
+      <li><button onclick="checkAnswer(this, true)">In the environment where vally runs</button></li>
+      <li><button onclick="checkAnswer(this, false)">In the experiment file's overrides</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. Vally reads the variable from the environment of the <code>vally</code> command itself, so the key never appears in a file you share or in what the agent can see.</div>
+    <div class="quiz-feedback incorrect">In the environment where <code>vally</code> runs. Vally reads <code>MY_PROVIDER_KEY</code> from its own environment when a trial starts. Lint rejects an <code>apiKey</code> field, and the agent environment is what the agent can see, which is the wrong place for a key.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/eval-spec/#executor-config--byok">Vally docs, Eval Spec reference: Executor config &amp; BYOK</a>; <a href="https://microsoft.github.io/vally/reference/graders/prompt/">Vally docs, Grader: prompt</a> (Authentication). The two outputs and the record are from our runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="local-variant" data-mode="works">A variant on a local model</h2>
+
+  <p>The checkpoint adds a fifth variant to lesson 16's experiment, <code>qwen-local</code>, which runs <code>qwen3.5:9b</code> through Ollama on your computer. It is a small open model that can call the agent's tools, and the one that worked for us. Three of its settings differ from the other variants, so <code>vary</code> gains three paths. Without <code>/defaults/executor</code> among them, the dry run stops with <code>Experiment drift detected</code>, as lesson 10 described.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/cost.experiment.yaml (after this lesson)</div>
+<pre><code class="language-yaml">vary:
+  - /defaults/model
+  - /defaults/reasoning_effort
+  - /defaults/executor<span class="mark">1</span>
+  - /defaults/timeout
+  - /defaults/runs
+<span class="gap">23 lines hidden: baseline, overrides and lesson 16's four variants</span>
+  qwen-local:
+    overrides:
+      model: qwen3.5:9b
+      timeout: 9m<span class="mark">2</span>
+      runs: 1<span class="mark">3</span>
+      executor:
+        name: copilot-sdk
+        config:
+          provider:
+            baseUrl: http://localhost:11434/v1<span class="mark">4</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>The same list as lesson 16's one-line <code>vary</code>, written one path per line, with three new paths: the executor, the time limit and the number of trials may now differ between variants.</li>
+      <li>A local model is slow. Our trials took two to three and a half minutes, and one took five and a half in an earlier run, so the limit is nine minutes instead of the eval file's three.</li>
+      <li>One trial of each stimulus instead of three, so the run takes about a quarter of an hour. This variant's count comes from fewer trials than the others'; the last section takes that into account.</li>
+      <li>Ollama's address on your computer. No key, so no <code>apiKeyEnv</code>.</li>
+    </ol>
+  </div>
+
+  <p>Run it with one worker, not the course's usual two. Our local server answered one request at a time, so with two workers each trial waited on the other: in our first attempt, both trials ran out of their nine minutes and ended in <code>ERROR</code> ("timed out after 540000 ms").</p>
+
+  <p>To price the tokens, this lesson uses a price we made up for the arithmetic: <strong>$0.10 per million input tokens and $0.40 per million output tokens</strong>. It is not any provider's price. Your real prices are on your provider's pricing page or in your contract; check there too whether input read from cache is charged less.</p>
+
+  <h2 id="run-provider" data-mode="use">Run a variant on your provider</h2>
+
+  <p>You will install Ollama, add the variant shown above, run it on its own, and price its tokens. This checkpoint is optional. It needs Ollama, about 7 GB of disk for the model, and enough memory to run it: Ollama used about 10 GB on our 32 GB computer. It costs nothing in Copilot usage. If you skip it, read our output at each step.</p>
+
+  <section class="checkpoint">
+    <h3>One variant on a local model (optional)</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: install Ollama. This installs a program on your computer.</span>
+        Download and run the installer for your system from <a href="https://ollama.com/download">ollama.com/download</a>. Then, in a terminal:
+<pre><code class="language-bash">ollama --version</code></pre>
+        <p class="expect">You should see a version of 0.17.1 or later, which this model needs. Ours: <code>ollama version is 0.18.1</code>.</p></li>
+
+      <li><span class="goal">Goal: download the model. This downloads about 6.6 GB.</span>
+<pre><code class="language-bash">ollama pull qwen3.5:9b</code></pre></li>
+
+      <li><span class="goal">Goal: check the model is there.</span>
+<pre><code class="language-bash">ollama list</code></pre>
+        <p class="expect">You should see a line for <code>qwen3.5:9b</code> with a size of <code>6.6 GB</code>, beside any other models you have. Ollama serves it while its app is running.</p></li>
+
+      <li><span class="goal">Goal: add the variant. This edits one file.</span>
+        Open a terminal in <code>practice</code>, and open <code>evals/cost.experiment.yaml</code> in your editor. Replace the <code>vary</code> line with the six lines shown above, and add the <code>qwen-local</code> variant after the other four.</li>
+
+      <li><span class="goal">Goal: check the plan. This starts nothing.</span>
+<pre><code class="language-bash">vally experiment run \
+  evals/cost.experiment.yaml --dry-run</code></pre>
+        <p class="expect">You should see: <code>Plans: 5</code>, and a last block headed <code>qwen-local</code> with <code>Model: qwen3.5:9b</code>.</p></li>
+
+      <li><span class="goal">Goal: run only the new variant. This runs five trials on your computer and takes about a quarter of an hour.</span>
+        <code>--variant</code> runs one named variant; lesson 16's results stay as they were.
+<pre><code class="language-bash">vally experiment run \
+  evals/cost.experiment.yaml \
+  --variant qwen-local \
+  --workers 1 --output-dir results/lesson-17</code></pre>
+        <p class="expect">You should see: a <code>FAIL</code> block for each stimulus that failed, then a one-column table for <code>qwen-local</code>. Ours is just below the checkpoint.</p></li>
+
+      <li><span class="goal">Goal: count passes and confirm there is no cost.</span>
+        Find the run folder with <code>ls results/lesson-17</code>. In the calculator below, pick <code>results.jsonl</code> from that run's <code>qwen-local</code> folder.
+        <p class="expect">You should see: a card for <code>qwen-local</code>. Ours: 5 trials, passing 2 of 5, no <code>ERROR</code>, dashes for every cost, median tokens 47.2k, and the note "No cost recorded for any trial."</p></li>
+
+      <li><span class="goal">Goal: read each trial's tokens.</span>
+        Open the same <code>results.jsonl</code> in your editor and search for <code>"byModel"</code>. Each of the five matches is one trial: write down the <code>inputTokens</code> and <code>outputTokens</code> under it, and add them up.
+        <details class="answer"><summary>Show our tokens</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Stimulus</th><th>Passed</th><th>Input</th><th>Output</th></tr></thead>
+            <tbody>
+              <tr><td>after-release</td><td>no</td><td>46,792</td><td>432</td></tr>
+              <tr><td>refactor</td><td>no</td><td>101,515</td><td>956</td></tr>
+              <tr><td>security</td><td>no</td><td>46,686</td><td>384</td></tr>
+              <tr><td>two-changes</td><td>yes</td><td>58,906</td><td>625</td></tr>
+              <tr><td>typo-fix</td><td>yes</td><td>46,630</td><td>379</td></tr>
+              <tr><td>Total</td><td>2 of 5</td><td>300,529</td><td>2,776</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </details></li>
+
+      <li><span class="goal">Goal: price the variant, and put it beside lesson 16's.</span>
+        Multiply the input total by the input price and the output total by the output price, add them, and divide by the passing trials. Put the result beside lesson 16's cost per passing trial; one AIU is one cent.
+        <details class="answer"><summary>Show our arithmetic</summary>
+          <p>Input: 300,529 × $0.10 per million = $0.0301. Output: 2,776 × $0.40 per million = $0.0011. Total: $0.0312 for five trials, about 3.1 cents. Per passing trial: $0.0312 ÷ 2 = $0.0156, about 1.6 cents. Lesson 16's haiku-low cost 0.21 AIU per passing trial, 0.2 cents; terra-low 2.74 AIU, 2.7 cents.</p>
+        </details></li>
+    </ol>
+  </section>
+
+  <p>Our run's output from step 6, with the line listing the <code>vary</code> paths and the folder path left out, and long lines wrapped to fit the page:</p>
+
+<pre class="output"><code>  FAIL  after-release · 0/1 graders · 115.8s
+   ✘ entry-in-new-unreleased  no '## [Unreleased]' heading
+
+  FAIL  refactor · 0/1 graders · 196.1s
+   ✘ adds-nothing  Workspace diff is not empty — the
+     stimulus changed the workspace
+
+  FAIL  security · 0/1 graders · 116.0s
+   ✘ under-security  Pattern /(?m)^\+### Security/ not
+     found in workspace diff
+
+  → Comparison unavailable — baseline not run
+    (no observed stimuli).
+
+  eval       qwen-local
+  changelog  ✘ 2/5
+  ─────────  ──────────
+  stimuli    2/5</code></pre>
+
+  <p>The line "Comparison unavailable — baseline not run" is expected. With <code>--variant</code>, only <code>qwen-local</code> ran, so this run has no result for the baseline, haiku-low, to compare it with; lesson 16's results sit in a different run folder. Step 9 makes that comparison by hand.</p>
+
+  <div class="cost-calc"></div>
+
+  <h2 id="what-changed" data-mode="think">What changed</h2>
+
+  <p>A good deal carried over unchanged. The same eval file, stimuli, graders and skill ran; the trial folders, patches, report and <code>results.jsonl</code> had the shape you know; the calculator read the file as it reads lesson 16's. Changing the provider was a few lines in one variant, and every tool from the earlier lessons still applied. That is the payoff of evaluating through the endpoint: nothing else has to change.</p>
+
+  <p>The results did not carry over. Our local model passed 2 of 5, where lesson 16's variants passed every trial that finished. Its patches read like lesson 4's list of failure modes: the security fix filed under Fixed, an entry for the internal refactor, and a new entry added to the 1.3.0 release that had already shipped. The trial records show why: the skill was in the workspace, but none of the five trials activated it. Everything lessons 5 to 15 taught the skill, this model never read. Lesson 9's question, does the skill load, comes back with each new model.</p>
+
+  <p>Is 2 of 5 too few trials to say anything? Apply lesson 15's habit. Two passes in five gives a range of 12% to 77%. haiku-low's 15 in 15 gives 80% to 100%. The ranges do not overlap, so even five trials show this model doing worse on these stimuli. A count that low settles "worse"; it would take many more trials to say by how much.</p>
+
+  <p>Cost did not carry over either. Run locally, the tokens cost nothing, though the trials took two to three and a half minutes each against seconds through Copilot, and they used the computer's memory the whole time. Priced at our made-up hosted rate, the variant came to about 1.6 cents per passing trial: over seven times haiku-low's 0.2 cents, though below terra-low's 2.7. Two things drove that, and neither is the price per token: three of five trials failed, and with nothing read from cache every turn paid for the whole conversation again. That is lesson 16's point from the other side: a low price per token is not a low cost per passing trial.</p>
+
+  <p>Keep the scope in mind. This is one model, served one way, on one computer, with a price we invented. The same model from a hosted provider might load the skill, cache its input, or be priced differently, and the first section says why you cannot assume any of that. The method is what carries over: run the endpoint your app uses, read the tokens, price them at your own rates, and divide by the passes.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/reference/eval-spec/#executor-config--byok">Vally docs, Eval Spec reference: Executor config &amp; BYOK</a></p>
+    <p>The one section to read for this lesson. It lists every field of the <code>provider</code> block, the kinds of provider it has been used with, and how the key variable is read. The rest of that page is the eval file reference you already know.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory: where does Vally find the key for your own provider, and why is the key never in the eval file?
+        <details class="answer"><summary>Show model answer</summary><p>In an environment variable of the <code>vally</code> command, named by <code>apiKeyEnv</code> in the <code>provider</code> block. Eval files are shared and kept with results, so a key written there would leak; Vally has no field for one, and lint rejects <code>apiKey</code>.</p></details></li>
+      <li>A teammate says: "The local model is free, so it is the cheapest choice for lesson 16's five stimuli." Answer with this lesson's numbers.
+        <details class="answer"><summary>Show model answer</summary><p>Free per token, but it passed 2 of 5 where haiku-low passed 15 of 15, and the ranges (12% to 77% against 80% to 100%) do not overlap. Each trial took minutes and the machine's memory. Priced as if hosted it came to about 1.6 cents per passing trial against haiku-low's 0.2. Free tokens do not make a passing trial cheap.</p></details></li>
+      <li>Your app actually calls a hosted provider at <code>https://api.example.com/v1</code>, with its key in a variable called <code>RELEASE_APP_KEY</code>. What do you change in the <code>qwen-local</code> variant, and what must you do before running it?
+        <details class="answer"><summary>Show model answer</summary><p>Rename the variant, set <code>model</code> to the name the app sends, set <code>baseUrl</code> to the provider's address, add <code>apiKeyEnv: RELEASE_APP_KEY</code> (and <code>type</code> if the provider's interface is not the <code>openai</code> kind), and put <code>timeout</code> and <code>runs</code> back to the other variants' values if the provider is fast. Before running, set <code>RELEASE_APP_KEY</code> in the terminal where you run <code>vally</code>; otherwise every trial stops with <code>ERROR</code>. Then price the tokens at the provider's real rates.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="17" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> run one variant through your own provider beside the account's models, and work out its cost from your own price per token.</p>
+    <p><strong>Up next:</strong> <a href="./0018-put-a-ceiling-on-a-trial.html">Put a ceiling on a trial</a>. You can price any model, including one you run yourself, and ours took two to three and a half minutes a trial. One trial that loops can cost or take ten times the typical one. How do you fail, or stop, a trial that costs or takes too much?</p>
+    <a class="next-lesson" href="./0018-put-a-ceiling-on-a-trial.html">Next lesson: Put a ceiling on a trial <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+  <script src="../assets/cost-calculator.js"></script>
+</body>
+</html>

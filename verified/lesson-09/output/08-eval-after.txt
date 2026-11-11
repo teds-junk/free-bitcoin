@@ -1,0 +1,33 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 12 stimuli from loading · 2 models · 2 workers
+⚠  Running with 2 trial(s). For statistically significant results, use --runs 5 or higher.
+
+loading
+
+claude-haiku-4.5
+  ERROR  skip-release-notes  1 passed · 1 error
+   trial 1 · Session disconnected while waiting for a response
+   ✓ passed   skill-invocation forbids changelog-ent…
+
+gpt-5.6-terra
+  ERROR  load-no-keyword  1 passed · 1 error
+   trial 2 · Session disconnected while waiting for a response
+   ✓ passed   skill-invocation requires changelog-ent…
+
+────────────────────────────────────────────────────────
+
+Failures  2 failed
+  ERROR loading · skip-release-notes [claude-haiku-4.5]
+      Session disconnected while waiting for a response
+  ERROR loading · load-no-keyword [gpt-5.6-terra]
+      Session disconnected while waiting for a response
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra     0/1 evals passed
+
+  eval     claude-haiku-4.5  gpt-5.6-terra
+  loading  ✘ 5/6             ✘ 5/6        
+
+Saved  results/lesson-9-after/2026-11-10T14-58-18-645Z/
+Run ID  ce6bc660-3a35-47da-a57a-af25b1db1b71

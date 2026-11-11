@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A stimulus with turns</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Turns and scoped graders</div>
+  <h2 class="scene-title">A stimulus with turns</h2>
+  <div class="stage">
+<!-- file-panel:conv · regenerate with: node file-panel.js --file src/state/conversation.start.eval.yaml --label conversation.eval.yaml --id conv --lang yaml --width 58 --rows 9 --show 13-25 --expect 15=turns: --expect '21=PR 65' --mark 15=turns:turns: --mark 16-19=r1 --mark 20-22=r2 --mark 23-25=r3 --into scenes/s06.html -->
+<div class="file-panel" id="conv" data-file="conversation.eval.yaml" data-lines="25" data-rows="9" style="--rows:9;--cols:58;--ln:2">
+<div class="code-file">conversation.eval.yaml<span class="file-meta">25 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="yaml"><code>
+<span class="file-row file-skip" data-hidden="1-12"><span class="ln">⋮</span><span class="elide">12 lines hidden · 1–12</span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span style="color:#4EA5E6">stimuli</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span><span style="color:#B3C0BF">  - </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">three-requests</span></span>
+<span class="file-row" data-line="15"><span class="ln">15</span><span style="color:#B3C0BF">    </span><span data-concept="turns" data-rep="code"><span style="color:#4EA5E6">turns</span><span style="color:#B3C0BF">:</span></span></span>
+<span class="file-row" data-line="16"><span class="ln">16</span><span style="color:#B3C0BF">      </span><span data-concept="r1" data-rep="code"><span style="color:#B3C0BF">- </span><span style="color:#A4BA1E">|</span></span></span>
+<span class="file-row" data-line="17"><span class="ln">17</span><span style="color:#3CC0B3">        </span><span data-concept="r1" data-rep="code"><span style="color:#3CC0B3">PR 64 is merged: `notes delete` now asks for</span></span></span>
+<span class="file-row" data-line="18"><span class="ln">18</span><span style="color:#3CC0B3">        </span><span data-concept="r1" data-rep="code"><span style="color:#3CC0B3">confirmation before it deletes anything. Update</span></span></span>
+<span class="file-row" data-line="19"><span class="ln">19</span><span style="color:#3CC0B3">        </span><span data-concept="r1" data-rep="code"><span style="color:#3CC0B3">the changelog.</span></span></span>
+<span class="file-row" data-line="20"><span class="ln">20</span><span style="color:#B3C0BF">      </span><span data-concept="r2" data-rep="code"><span style="color:#B3C0BF">- </span><span style="color:#A4BA1E">|</span></span></span>
+<span class="file-row" data-line="21"><span class="ln">21</span><span style="color:#3CC0B3">        </span><span data-concept="r2" data-rep="code"><span style="color:#3CC0B3">One more, PR 65: I renamed some internal helper</span></span></span>
+<span class="file-row" data-line="22"><span class="ln">22</span><span style="color:#3CC0B3">        </span><span data-concept="r2" data-rep="code"><span style="color:#3CC0B3">functions. Add that too.</span></span></span>
+<span class="file-row" data-line="23"><span class="ln">23</span><span style="color:#B3C0BF">      </span><span data-concept="r3" data-rep="code"><span style="color:#B3C0BF">- </span><span style="color:#A4BA1E">|</span></span></span>
+<span class="file-row" data-line="24"><span class="ln">24</span><span style="color:#3CC0B3">        </span><span data-concept="r3" data-rep="code"><span style="color:#3CC0B3">I also fixed the exit code of `notes export` when</span></span></span>
+<span class="file-row" data-line="25"><span class="ln">25</span><span style="color:#3CC0B3">        </span><span data-concept="r3" data-rep="code"><span style="color:#3CC0B3">the disk is full. Record that as well.</span></span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="25" style="height:175px" aria-hidden="true"><b class="file-map-view" style="top:84px;height:56px"></b><svg width="120" height="175" viewBox="0 0 120 175" shape-rendering="crispEdges"><rect x="0" y="0" width="7.82" height="4" fill="#4EA5E6" opacity=".38"/><rect x="8.42" y="0" width="1.51" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.63" y="0" width="24.66" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="14" width="16.24" height="4" fill="#4EA5E6" opacity=".38"/><rect x="16.84" y="14" width="1.51" height="4" fill="#B3C0BF" opacity=".38"/><rect x="4.21" y="21" width="14.14" height="4" fill="#4EA5E6" opacity=".38"/><rect x="18.95" y="21" width="1.51" height="4" fill="#B3C0BF" opacity=".38"/><rect x="23.16" y="21" width="3.61" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="35" width="35.19" height="4" fill="#4EA5E6" opacity=".38"/><rect x="35.79" y="35" width="1.51" height="4" fill="#B3C0BF" opacity=".38"/><rect x="4.21" y="42" width="12.03" height="4" fill="#4EA5E6" opacity=".38"/><rect x="16.84" y="42" width="1.51" height="4" fill="#B3C0BF" opacity=".38"/><rect x="8.42" y="49" width="1.51" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.63" y="49" width="52.03" height="4" fill="#3CC0B3" opacity=".38"/><rect x="4.21" y="56" width="9.93" height="4" fill="#4EA5E6" opacity=".38"/><rect x="14.74" y="56" width="1.51" height="4" fill="#B3C0BF" opacity=".38"/><rect x="8.42" y="63" width="1.51" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.63" y="63" width="5.72" height="4" fill="#4EA5E6" opacity=".38"/><rect x="18.95" y="63" width="1.51" height="4" fill="#B3C0BF" opacity=".38"/><rect x="23.16" y="63" width="64.66" height="4" fill="#3CC0B3" opacity=".38"/><rect x="12.63" y="70" width="7.82" height="4" fill="#4EA5E6" opacity=".38"/><rect x="21.05" y="70" width="1.51" height="4" fill="#B3C0BF" opacity=".38"/><rect x="25.26" y="70" width="24.66" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="84" width="14.14" height="4" fill="#4EA5E6"/><rect x="14.74" y="84" width="1.51" height="4" fill="#B3C0BF"/><rect x="4.21" y="91" width="1.51" height="4" fill="#B3C0BF"/><rect x="8.42" y="91" width="7.82" height="4" fill="#4EA5E6"/><rect x="16.84" y="91" width="1.51" height="4" fill="#B3C0BF"/><rect x="21.05" y="91" width="28.87" height="4" fill="#3CC0B3"/><rect x="8.42" y="98" width="9.93" height="4" fill="#4EA5E6"/><rect x="18.95" y="98" width="1.51" height="4" fill="#B3C0BF"/><rect x="12.63" y="105" width="1.51" height="4" fill="#B3C0BF"/><rect x="16.84" y="105" width="1.51" height="4" fill="#A4BA1E"/><rect x="16.84" y="112" width="3.61" height="4" fill="#3CC0B3"/><rect x="23.16" y="112" width="3.61" height="4" fill="#3CC0B3"/><rect x="29.47" y="112" width="3.61" height="4" fill="#3CC0B3"/><rect x="35.79" y="112" width="14.14" height="4" fill="#3CC0B3"/><rect x="52.63" y="112" width="12.03" height="4" fill="#3CC0B3"/><rect x="67.37" y="112" width="14.14" height="4" fill="#3CC0B3"/><rect x="84.21" y="112" width="5.72" height="4" fill="#3CC0B3"/><rect x="92.63" y="112" width="7.82" height="4" fill="#3CC0B3"/><rect x="103.16" y="112" width="5.72" height="4" fill="#3CC0B3"/><rect x="16.84" y="119" width="24.66" height="4" fill="#3CC0B3"/><rect x="44.21" y="119" width="12.03" height="4" fill="#3CC0B3"/><rect x="58.95" y="119" width="3.61" height="4" fill="#3CC0B3"/><rect x="65.26" y="119" width="14.14" height="4" fill="#3CC0B3"/><rect x="82.11" y="119" width="18.35" height="4" fill="#3CC0B3"/><rect x="103.16" y="119" width="12.03" height="4" fill="#3CC0B3"/><rect x="16.84" y="126" width="5.72" height="4" fill="#3CC0B3"/><rect x="25.26" y="126" width="20.45" height="4" fill="#3CC0B3"/><rect x="12.63" y="133" width="1.51" height="4" fill="#B3C0BF"/><rect x="16.84" y="133" width="1.51" height="4" fill="#A4BA1E"/><rect x="16.84" y="140" width="5.72" height="4" fill="#3CC0B3"/><rect x="25.26" y="140" width="9.93" height="4" fill="#3CC0B3"/><rect x="37.89" y="140" width="3.61" height="4" fill="#3CC0B3"/><rect x="44.21" y="140" width="5.72" height="4" fill="#3CC0B3"/><rect x="52.63" y="140" width="1.51" height="4" fill="#3CC0B3"/><rect x="56.84" y="140" width="14.14" height="4" fill="#3CC0B3"/><rect x="73.68" y="140" width="7.82" height="4" fill="#3CC0B3"/><rect x="84.21" y="140" width="16.24" height="4" fill="#3CC0B3"/><rect x="103.16" y="140" width="12.03" height="4" fill="#3CC0B3"/><rect x="16.84" y="147" width="20.45" height="4" fill="#3CC0B3"/><rect x="40" y="147" width="5.72" height="4" fill="#3CC0B3"/><rect x="48.42" y="147" width="7.82" height="4" fill="#3CC0B3"/><rect x="58.95" y="147" width="7.82" height="4" fill="#3CC0B3"/><rect x="12.63" y="154" width="1.51" height="4" fill="#B3C0BF"/><rect x="16.84" y="154" width="1.51" height="4" fill="#A4BA1E"/><rect x="16.84" y="161" width="1.51" height="4" fill="#3CC0B3"/><rect x="21.05" y="161" width="7.82" height="4" fill="#3CC0B3"/><rect x="31.58" y="161" width="9.93" height="4" fill="#3CC0B3"/><rect x="44.21" y="161" width="5.72" height="4" fill="#3CC0B3"/><rect x="52.63" y="161" width="7.82" height="4" fill="#3CC0B3"/><rect x="63.16" y="161" width="7.82" height="4" fill="#3CC0B3"/><rect x="73.68" y="161" width="3.61" height="4" fill="#3CC0B3"/><rect x="80" y="161" width="12.03" height="4" fill="#3CC0B3"/><rect x="94.74" y="161" width="14.14" height="4" fill="#3CC0B3"/><rect x="111.58" y="161" width="7.82" height="4" fill="#3CC0B3"/><rect x="16.84" y="168" width="5.72" height="4" fill="#3CC0B3"/><rect x="25.26" y="168" width="7.82" height="4" fill="#3CC0B3"/><rect x="35.79" y="168" width="3.61" height="4" fill="#3CC0B3"/><rect x="42.11" y="168" width="9.93" height="4" fill="#3CC0B3"/><rect x="54.74" y="168" width="12.03" height="4" fill="#3CC0B3"/><rect x="69.47" y="168" width="7.82" height="4" fill="#3CC0B3"/><rect x="80" y="168" width="3.61" height="4" fill="#3CC0B3"/><rect x="86.32" y="168" width="9.93" height="4" fill="#3CC0B3"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:conv -->
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "turns",
+  "at": "1~turns",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "r1",
+  "at": "2~first",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

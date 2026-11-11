@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Which fail on an untouched workspace?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.tests{font-size:38px}.tests th{font-size:30px}.tests td{padding-top:20px;padding-bottom:20px;height:52px}.tests td.mono{font-family:var(--font-code);font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Require, forbid, re-grade</div>
+  <h2 class="scene-title">Which fail on an untouched workspace?</h2>
+  <div class="stage">
+<table class="data-table full tests">
+    <thead><tr><th>Grader</th><th>It</th><th><span data-concept="col-base" data-rep="cell">On the baseline</span></th>
+      <th><span data-concept="col-saved" data-rep="cell">On ten saved trials</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono">every-change-handled</td><td>requires</td><td></td><td></td></tr>
+<tr><td class="mono">reads-the-list</td><td>requires</td><td></td><td></td></tr>
+<tr><td class="mono"><span data-concept="nc" data-rep="cell">never-commits</span></td><td>forbids</td><td></td><td></td></tr>
+<tr><td class="mono">no-loop</td><td>forbids</td><td></td><td></td></tr>
+<tr><td class="mono">loads-the-skill</td><td>requires</td><td></td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "col-base",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "col-saved",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "nc",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

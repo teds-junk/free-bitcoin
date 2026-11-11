@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What a low rate means</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.rates .semantic-block{min-height:300px}.rates .title{font-size:64px}.rates .label.full{font-size:44px;color:var(--ink);font-weight:600}.rates .label{font-size:36px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">TPR and TNR</div>
+  <h2 class="scene-title">What a low rate means</h2>
+  <div class="stage">
+<div class="cols wide rates">
+    <div class="semantic-block" data-concept="low-tpr" data-rep="block" data-role="attention">
+      <div class="title">low TPR</div><div class="label full">false alarms</div>
+      <div class="label">the judge is stricter than we are</div>
+    </div>
+    <div class="semantic-block" data-concept="low-tnr" data-rep="block" data-role="failure">
+      <div class="title">low TNR</div><div class="label full">missed failures</div>
+      <div class="label">the judge is more lenient than we are</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "low-tpr",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "low-tnr",
+  "at": "2",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

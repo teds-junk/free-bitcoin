@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 22: Start the agent where the app would — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 22 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Start the agent where the app would</h1>
+    <div class="lesson-meta">14 min · Set up a stimulus the way the release tool does, with its own setup command writing <code>release/merged.txt</code>, and grade the result with a hidden test run by <code>run-command</code>.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What does the grading environment add, and when?
+        <details class="answer"><summary>Show answer</summary><p>Files, such as a grading script, copied into a copy of the finished workspace after the agent has stopped. The agent never sees them, so it cannot read or change them.</p></details></li>
+      <li>What must a script run by a <code>program</code> grader print?
+        <details class="answer"><summary>Show answer</summary><p>One line of JSON holding Vally's full result: <code>name</code>, <code>kind</code>, <code>passed</code>, <code>score</code> and <code>evidence</code>. Printing only <code>passed</code> and <code>evidence</code> is rejected.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You can measure the skill on two models with tested graders and a checked judge, say what a passing trial costs, and run a quick and a full suite that fail loudly.</p>
+    <p><strong>This lesson answers:</strong> Inside the release tool, the agent does not start from a person's request: the tool first lists what was merged since the last release, then asks for the entries. How do I set that up for a stimulus?</p>
+  </div>
+
+  <p class="drop-cap">The <code>notes-cli</code> team liked the skill enough to build it into their release tooling. Before each release, a small tool lists the pull requests merged since the last one and writes the list to a file. The tool then asks an agent, with the skill installed, to write the Unreleased entries for everything on the list. Nobody types a request, and nobody reads the entries before they ship. Every stimulus in part 1 was a person describing one change in their own words. This part asks whether the skill still holds when an app, not a person, starts the agent, and the first step is a stimulus that starts the agent exactly where the app does.</p>
+
+  <h2 id="app-situation" data-mode="think">The stimulus is the app's situation</h2>
+
+  <p>When you evaluate a feature of an app, the stimulus has two halves, and both come from the app. The prompt is whatever the app sends: usually short, always the same, and written by a developer rather than a user. The workspace is whatever the app has prepared by the time it calls the agent. A stimulus that rewrites the prompt in friendlier words, or hands the agent a tidier workspace, measures a situation the app never creates.</p>
+
+  <p>Copy the prompt from the app's code, word for word. For the workspace, run the app's own setup steps rather than writing their output by hand. If the team changes the list's format next month, an eval that runs their tool sees the new format; an eval with a hand-written copy of the old list keeps passing and tells you nothing.</p>
+
+  <p>Our release tool's prompt is one sentence: "Write the Unreleased changelog entries for every change listed in release/merged.txt." Its setup is one command that writes that file. The rest of this lesson reproduces both.</p>
+
+  <div class="source-citation">Source: <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Anthropic, Demystifying evals for AI agents (2026-01-09)</a>, on building tasks from the situations a deployed agent really meets.</div>
+
+  <h2 id="setup-commands" data-mode="works">Setting up before the agent starts</h2>
+
+  <p>The release tool's first job is done by <code>tools/list-merged.mjs</code>, a short Node script. The real one asks the team's issue tracker. We have no tracker, so the copy the course ships prints a fixed list.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">tools/list-merged.mjs</div>
+<pre><code class="language-javascript">// Lists the changes merged since the last release, one per
+// line, as "#&lt;pull request&gt; &lt;type&gt;: &lt;summary&gt;".
+// The real release tool asks the team's tracker. This copy
+// prints a fixed list, so every trial starts the same way.
+const merged = [
+  "#74 feat: add --since &lt;date&gt; to notes list",<span class="mark">1</span>
+  "#75 fix: notes search missed titles with accents",
+  "#76 refactor: move config loading out of cli.js",<span class="mark">2</span>
+];
+
+for (const line of merged) console.log(line);</code></pre>
+    </div>
+    <ol class="notes">
+      <li>Each line starts with a pull request number and a type, as in the team's commit messages: <code>feat</code> is a new feature and <code>fix</code> a bug fix. Both change what users notice, so both need an entry.</li>
+      <li>A refactor changes only the code. The skill says to add nothing for it. In part 1 the request said so too ("nothing changes for users"); here the list says only <code>refactor</code>, and the agent has to decide.</li>
+    </ol>
+  </div>
+
+  <p>An eval file can run commands like this one. Inside an agent environment, <code>commands:</code> is a list of shell commands. Vally runs them in the workspace, in order, after it has copied the files and the skill and before the agent starts. Each command may take 60 seconds. A longer limit goes in <code>commandTimeout</code>, a key beside <code>commands:</code> in the same <code>agent_environment</code>, written as a length such as <code>2m</code>. This lesson's eval file sets none.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="Three boxes left to right: stage files, run commands, agent works. A dashed line before the third box marks where the patch starts.">
+      <rect x="10" y="40" width="180" height="80" rx="4"/>
+      <rect x="225" y="40" width="180" height="80" rx="4"/>
+      <rect x="450" y="40" width="180" height="80" rx="4" style="stroke: var(--accent); stroke-width: 2"/>
+      <path d="M190 80 H220 M405 80 H445"/>
+      <path d="M214 74 L222 80 L214 86 M439 74 L447 80 L439 86"/>
+      <path d="M428 20 V170" stroke-dasharray="6 6" style="stroke: var(--accent)"/>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: currentColor; stroke: none">
+        <text x="100" y="76" text-anchor="middle">Stage files</text>
+        <text x="100" y="102" text-anchor="middle">and skill</text>
+        <text x="315" y="76" text-anchor="middle">Run</text>
+        <text x="315" y="102" text-anchor="middle">commands</text>
+        <text x="540" y="76" text-anchor="middle">Agent</text>
+        <text x="540" y="102" text-anchor="middle">works</text>
+      </g>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="208" y="200" text-anchor="middle">starting state</text>
+        <text x="540" y="200" text-anchor="middle">in the patch</text>
+      </g>
+    </svg>
+    <figcaption>The order of setup. Whatever exists when the agent starts, including files the commands made, is the starting state. The patch records only what changes after the dashed line.</figcaption>
+  </figure>
+
+  <p>That order matters for grading. A file made by a command is part of the starting state, exactly like a staged file: the agent can read it, and it does not appear in the patch. Only what the agent changes does. We checked this before writing the lesson, and our patches below show it.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/release.eval.yaml (the start)</div>
+<pre><code class="language-yaml">name: release
+
+defaults:
+  timeout: 3m
+
+agent_environment:
+  skills:
+    - ../skills/changelog-entry
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+    - src: ../tools/list-merged.mjs<span class="mark">1</span>
+      dest: tools/list-merged.mjs
+
+stimuli:
+  - name: since-last-release
+    prompt: &gt;-<span class="mark">2</span>
+      Write the Unreleased changelog entries for every
+      change listed in release/merged.txt.
+    agent_environment:
+      commands:<span class="mark">3</span>
+        - "mkdir -p release"
+        - "node tools/list-merged.mjs &gt; release/merged.txt"</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The tool is staged into the workspace like the changelog. Its source is outside <code>evals/</code>, so the path starts with <code>..</code>, as the skill's does.</li>
+      <li><code>&gt;-</code> joins the indented lines into one line of text, which is how the app sends its prompt. The <code>|</code> you used before keeps the line breaks; either would work here.</li>
+      <li>The setup: make the <code>release</code> folder, then run the tool and save what it prints into <code>release/merged.txt</code>. The <code>&gt;</code> sends a command's output to a file. Quote every command: a command containing a colon followed by a space is otherwise read as YAML structure, and the trial fails in milliseconds while <code>vally lint</code> says nothing.</li>
+    </ol>
+  </div>
+
+  <p>Two more fields set up the start, and you will not need either here.</p>
+
+  <p><code>env:</code> sets environment variables on the agent's process, one name and value per line. An app that passes settings to its agent that way would have them copied here. The values can appear in saved trials, so it is not a place for secrets.</p>
+
+  <p><code>git:</code> builds the workspace from a git repository instead of copied files: <code>type: worktree</code> checks out a commit, tag or branch of a repository on your machine, and <code>type: clone</code> clones one from a URL. A real release tool would read the history this way. This course ships no repository, so we explain the field and do not run it. The shape, from the Vally docs:</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">From the Eval Spec reference (not run by us)</div>
+<pre><code class="language-yaml">agent_environment:
+  git:
+    type: worktree
+    ref: v2.1.0
+    source: ../my-repo</code></pre>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-question">The setup command writes <code>release/merged.txt</code>. The agent then edits only <code>CHANGELOG.md</code>. Which files appear in the trial's patch?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">Both files, since both are new</button></li>
+      <li><button onclick="checkAnswer(this, true)">Only CHANGELOG.md, the agent's change</button></li>
+      <li><button onclick="checkAnswer(this, false)">Only merged.txt, made during setup</button></li>
+      <li><button onclick="checkAnswer(this, false)">Neither, because setup resets them</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. The setup ran before the agent started, so its file is part of the starting state. The patch holds only what the agent changed.</div>
+    <div class="quiz-feedback incorrect">Only <code>CHANGELOG.md</code>. Commands run before the agent starts, so <code>release/merged.txt</code> is part of the starting state, like a staged file. The patch holds only what the agent changed.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/eval-spec/#agent-environment-fields">Vally docs, Eval Spec reference, Agent environment fields</a>; <a href="https://microsoft.github.io/vally/reference/eval-spec/#git-config">Git config</a>. The starting-state behaviour and the quoting failure are from our runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="hidden-test" data-mode="works">A hidden test with run-command</h2>
+
+  <p>What should the grader check? For every change on the list, the release needs the right number of entries: one line for each feature and fix, citing its pull request, and none for the refactor. That depends on the list, so the check has to read <code>release/merged.txt</code>, and a pattern on the diff cannot do that. It needs a script.</p>
+
+  <p>In lesson 6 you ran a script with the <code>program</code> grader, which reads a line of JSON that the script prints. The <code>run-command</code> grader is simpler. It runs a shell command in the graded copy of the workspace and passes when the command's exit code is 0. Exit code 0 means success, and anything else failure, as lesson 6 explained. A different expected code goes in <code>expected_exit_code</code>; <code>stdout_contains</code> and <code>stdout_matches</code> add checks on what the command prints; <code>timeout</code> defaults to 30 seconds. Because only the exit code matters, any existing test works unchanged: a test suite, a linter, a script like ours.</p>
+
+  <p>Stage the script through the grading environment and the agent never sees it. The Vally docs call these grader-only files, and a test run this way is a hidden test.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/grading/check-release.mjs</div>
+<pre><code class="language-javascript">// Hidden test for the release stimulus. Each feature and
+// fix in release/merged.txt needs a line of its own under
+// Unreleased; a refactor needs none. Exit 1 means fail.
+import { readFileSync } from "node:fs";
+
+const merged = readFileSync("release/merged.txt", "utf8");<span class="mark">1</span>
+const log = readFileSync("CHANGELOG.md", "utf8");
+const start = log.indexOf("## [Unreleased]");
+const end = log.indexOf("\n## [", start + 1);
+const lines = log.slice(start, end).split("\n");<span class="mark">2</span>
+
+for (const item of merged.trim().split("\n")) {
+  const [, number, type] = item.match(/^#(\d+) (\w+):/);<span class="mark">3</span>
+  const cite = "(#" + number + ")";
+  const found = lines.filter((line) =&gt; line.includes(cite));
+  if (type === "refactor") {
+    if (found.length &gt; 0) fail(cite + " is internal");<span class="mark">4</span>
+  } else if (found.length !== 1) {
+    fail(cite + " needs one line, found " + found.length);
+  } else if (found[0].split("(#").length &gt; 2) {
+    fail(cite + " shares a line with another change");<span class="mark">5</span>
+  }
+}
+console.log("every merged change handled");
+
+function fail(why) {
+  console.error(why);
+  process.exit(1);<span class="mark">6</span>
+}</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The list the setup command wrote. It is still in the graded copy, because it was part of the starting state.</li>
+      <li>The lines of the Unreleased section: from its heading to the next version heading.</li>
+      <li>From a line such as <code>#74 feat: add …</code>, take the number and the type.</li>
+      <li>An entry citing the refactor fails.</li>
+      <li>A feature or fix must be cited on exactly one line, and that line must not cite a second pull request. This catches a skipped change and two changes merged into one entry.</li>
+      <li>Exit code 1 is the verdict. The reason goes to the error output, which helps when you run the script yourself; Vally's evidence records only the exit code.</li>
+    </ol>
+  </div>
+
+  <p>The grader that runs it sits under the stimulus, beside a grading environment that copies the script in:</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">evals/release.eval.yaml (the end)</div>
+<pre><code class="language-yaml">    grading_environment:
+      files:
+        - src: grading/check-release.mjs
+          dest: .vally-grading/check-release.mjs
+    graders:
+      - type: run-command
+        name: every-change-handled
+        config:
+          command: node .vally-grading/check-release.mjs</code></pre>
+  </div>
+
+  <p>One limit to know before you rely on it: a hidden test needs the finished workspace, and Vally does not keep it. A later <code>vally grade</code> of these trials fails this grader on every trial, as it failed the <code>program</code> grader in lesson 8. Graders that read the patch or the trajectory can be re-graded; this one cannot.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/graders/run-command/">Vally docs, Grader: run-command</a>; <a href="https://microsoft.github.io/vally/guides/writing-eval-specs/#grader-only-files">Writing Eval Specs, Grader-only files</a>.</div>
+
+  <h2 id="run-the-setup" data-mode="use">Run the setup, then grade</h2>
+
+  <p>You will run the release tool once by hand, write the hidden test and the eval file, run five trials on each model, and read a patch.</p>
+
+  <section class="checkpoint">
+    <h3>The release tool's situation, as a stimulus</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: see what the setup command will write.</span>
+        Open a terminal in <code>practice</code>. The tool came with the starter folder you copied in lesson 1.
+<pre><code class="language-bash">node tools/list-merged.mjs</code></pre>
+<pre class="output"><code>#74 feat: add --since &lt;date&gt; to notes list
+#75 fix: notes search missed titles with accents
+#76 refactor: move config loading out of cli.js</code></pre></li>
+
+      <li><span class="goal">Goal: write the hidden test. This creates one file.</span>
+        Create <code>evals/grading/check-release.mjs</code> with the 29 lines shown above.</li>
+
+      <li><span class="goal">Goal: write the eval file. This creates one file.</span>
+        Create <code>evals/release.eval.yaml</code>: the start shown in the previous section, followed by the end shown just above.</li>
+
+      <li><span class="goal">Goal: catch mistakes before spending anything.</span>
+<pre><code class="language-bash">vally lint -e evals/release.eval.yaml</code></pre>
+<pre class="output"><code>✔ evals/release.eval.yaml is valid</code></pre></li>
+
+      <li><span class="goal">Goal: run the app's situation on both models. This spends ten agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/release.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 5 --workers 2 \
+  --output-dir results/lesson-22</code></pre>
+<pre class="output"><code>claude-haiku-4.5
+  FAIL  since-last-release  0/5
+   ✘ every-change-handled  0 passed · 5 failed
+     … Expected exit code 0, got 1  trials 1–5
+
+  eval     claude-haiku-4.5  gpt-5.6-terra
+  release  ✘ 0/1             ✓ 1/1</code></pre>
+        <p class="expect">You should see: a block for any model whose trials did not all pass, and the summary. Ours is above: the second model passed all five trials, the first none of five. Your counts will differ. The table counts stimuli, not trials: this file has one stimulus, and it counts as passed only when every trial passed. <code>FAIL</code> means every trial failed; had some passed, it would read <code>FLAKY</code>, as in lesson 3, and still show as <code>✘ 0/1</code>.</p></li>
+
+      <li><span class="goal">Goal: move to the saved trials.</span>
+        List <code>results/lesson-22</code> for the run folder's name, then use yours in place of ours:
+<pre><code class="language-bash">cd results/lesson-22/2026-11-10T17-47-00-752Z
+cd release/since-last-release</code></pre></li>
+
+      <li><span class="goal">Goal: read what a failing trial changed.</span>
+        The console numbers trials from 1 and the folders from 0, so our trial 2 is folder <code>1</code>. Pick one of your failing trials.
+<pre><code class="language-bash">cat claude-haiku-4.5/1/workspace.patch</code></pre>
+        <p class="expect">You should see: changes to <code>CHANGELOG.md</code> only; ours is printed in full just after these steps. <code>release/merged.txt</code> is not in the patch, because the setup command made it before the agent started. In our five failing trials, every one recorded the refactor.</p></li>
+
+      <li><span class="goal">Goal: compare with a passing trial.</span>
+<pre><code class="language-bash">cat gpt-5.6-terra/0/workspace.patch</code></pre>
+        <p class="expect">You should see: two entries, for #74 and #75, and nothing for #76. Then return to <code>practice</code> with <code>cd ../../../../..</code>.</p></li>
+    </ol>
+  </section>
+
+  <div class="file-excerpt">
+    <div class="file-name">claude-haiku-4.5/1/workspace.patch (our failing trial)</div>
+<pre><code class="language-diff">diff --git a/CHANGELOG.md b/CHANGELOG.md
+<span class="gap">3 header lines hidden</span>
+@@ -6,6 +6,13 @@ All notable changes to notes-cli.
+
+ ### Added
+ - Add `notes list --tag` to filter by tag (#41)
++- Add `--since &lt;date&gt;` to `notes list` (#74)
++
++### Changed
++- Move config loading out of cli.js (#76)
++
++### Fixed
++- Fix `notes search` missing titles with accents (#75)</code></pre>
+  </div>
+
+  <h2 id="what-it-showed" data-mode="think">What it showed</h2>
+
+  <p>In our run no model skipped a change and none merged two into one entry. The failures were all one kind. The first model recorded the refactor in all five of its trials, filed under Changed in words that name a source file. The skill forbids both. The second model left the refactor out every time and said why in its reply.</p>
+
+  <p>In part 1 the refactor request told the agent that nothing changes for users. Here the list says only <code>refactor</code>, and deciding is left to the agent. That is the kind of difference an app introduces without anyone noticing: the same skill, a terser input, a rule that held before and now holds on one model only.</p>
+
+  <p>Passing the test is not the same as being right, either. Three of the second model's five entries for #74 said <code>--since</code> shows notes "created on or after a date", and the other two "only newer notes". The list says neither; it might as well filter by the date a note was changed. No grader we have checks for details the list does not support, and in an app nobody reads the entry before it ships.</p>
+
+  <p>One more thing in our report gives a clue to why the first model behaved as it did. The second model's table has a Skills column reading <code>changelog-entry (5×)</code>; the first model's has no Skills column at all. The second model loaded the skill in every trial, the first in none. The hidden test sees only the finished changelog, so it cannot say whether the agent read the list, used the skill, or did anything else on the way.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/guides/writing-eval-specs/#grader-only-files">Writing Eval Specs, Grader-only files, Vally docs</a></p>
+    <p>A short section with a complete hidden-test example. Read it, then the <a href="https://microsoft.github.io/vally/reference/eval-spec/#agent-environment-fields">agent environment fields</a> in the Eval Spec reference for the other ways to prepare a workspace.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory: a setup command creates a file, and the agent creates another. Which one can a diff grader see, and why?
+        <details class="answer"><summary>Show model answer</summary><p>Only the agent's. Setup commands run before the agent starts, so what they create is part of the starting state, like a staged file. The patch, which diff graders read, records only changes made after that.</p></details></li>
+      <li>The team changes the tool to print the type first, as in <code>feat #74: add --since …</code>. What happens to the next run, and is that what you want?
+        <details class="answer"><summary>Show model answer</summary><p>The setup command runs the real tool, so <code>release/merged.txt</code> takes the new format at once. The hidden test's pattern <code>^#(\d+) (\w+):</code> no longer matches, the script crashes, and every trial fails with exit code 1. That is the right signal: the eval noticed that the app changed. A hand-written copy of the old list would have kept passing. Update the test's pattern and run again.</p></details></li>
+      <li>Why is <code>run-command</code> a better fit than a diff grader for this check?
+        <details class="answer"><summary>Show model answer</summary><p>What counts as correct depends on the list in <code>release/merged.txt</code>, which is not in the patch. A script in the graded workspace can read both the list and the changelog; a pattern on the diff sees only the changelog's changes.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="22" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> set up a stimulus the way the release tool does, with its own setup command writing <code>release/merged.txt</code>, and grade the result with a hidden test run by <code>run-command</code>.</p>
+    <p><strong>Up next:</strong> <a href="./0023-check-what-the-agent-did.html">Check what the agent did</a>. The entries can be checked. But in the app, how the agent got there matters too: did it read the list, did it touch files it should not, did it try to commit or push?</p>
+    <a class="next-lesson" href="./0023-check-what-the-agent-did.html">Next lesson: Check what the agent did <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

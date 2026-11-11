@@ -1,0 +1,378 @@
+$ vally lint -e evals/changelog.eval.yaml   # budgets 107000 / 5 / 14s
+Eval: evals/changelog.eval.yaml
+⚠ warning [scoring-defaults-applied] Multiple graders with no scoring config
+  at scoring
+  Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+  1 warning(s)
+
+$ cd results/lesson-16/2026-11-10T16-29-20-716Z/haiku-high; vally grade -e ../../../../evals/changelog.eval.yaml --run-dir . < results.jsonl
+warning: Multiple graders with no scoring config
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ refactor ━━━
+✅ refactor (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ refactor ━━━
+✅ refactor (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ refactor ━━━
+✅ refactor (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ two-changes ━━━
+❌ two-changes (3/4 graders passed, 1 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ two-changes ━━━
+❌ two-changes (3/4 graders passed, 1 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ two-changes ━━━
+❌ two-changes (2/4 graders passed, 2 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+  ✗ [token-budget max 107000] 107126 tokens exceeds max of 107000
+
+Score: 75.0% | FAILED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ typo-fix ━━━
+❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [token-budget max 107000] 107028 tokens exceeds max of 107000
+
+Score: 100.0% | FAILED
+
+$ cd ../terra-high; vally grade -e ../../../../evals/changelog.eval.yaml --run-dir . < results.jsonl
+warning: Multiple graders with no scoring config
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ after-release ━━━
+❌ after-release (2/4 graders passed, 2 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+  ✗ [turn-count max 5] 6 turns exceeds max of 5
+
+Score: 70.0% | FAILED
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+⚠  Stimulus error: Session disconnected while waiting for a response
+
+━━━ refactor ━━━
+✅ refactor (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ refactor ━━━
+✅ refactor (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [turn-count max 5] 6 turns exceeds max of 5
+
+Score: 95.0% | FAILED
+
+━━━ two-changes ━━━
+❌ two-changes (3/4 graders passed, 1 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ two-changes ━━━
+❌ two-changes (1/4 graders passed, 3 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+  ✗ [turn-count max 5] 6 turns exceeds max of 5
+  ✗ [wall-time max 14s] 15.5s exceeds max of 14s
+
+Score: 67.3% | FAILED
+
+━━━ two-changes ━━━
+❌ two-changes (3/4 graders passed, 1 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+$ # budgets raised to 215000 / 10 / 30s; terra-high re-grade
+warning: Multiple graders with no scoring config
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+⚠  Stimulus error: Session disconnected while waiting for a response
+
+━━━ refactor ━━━
+✅ refactor (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ refactor ━━━
+✅ refactor (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ two-changes ━━━
+❌ two-changes (3/4 graders passed, 1 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ two-changes ━━━
+❌ two-changes (3/4 graders passed, 1 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ two-changes ━━━
+❌ two-changes (3/4 graders passed, 1 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+$ # same, haiku-high re-grade
+warning: Multiple graders with no scoring config
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ after-release ━━━
+❌ after-release (3/4 graders passed, 1 failed)
+  ✗ [entry-in-new-unreleased] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ refactor ━━━
+✅ refactor (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ refactor ━━━
+✅ refactor (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ refactor ━━━
+✅ refactor (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ security ━━━
+✅ security (4/4 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ two-changes ━━━
+❌ two-changes (3/4 graders passed, 1 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ two-changes ━━━
+❌ two-changes (3/4 graders passed, 1 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ two-changes ━━━
+❌ two-changes (3/4 graders passed, 1 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+
+Score: 75.0% | FAILED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+$ vally lint -e evals/changelog.eval.yaml   # with constraints
+Eval: evals/changelog.eval.yaml
+⚠ warning [scoring-defaults-applied] Multiple graders with no scoring config
+  at scoring
+  Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+  1 warning(s)
+
+$ vally eval -e evals/changelog.eval.yaml --model claude-haiku-4.5,gpt-5.6-terra --workers 2 --output-dir results/lesson-18
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 10 stimuli from changelog · 2 models · 2 workers
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+changelog
+
+gpt-5.6-terra
+  ERROR  typo-fix
+   Session disconnected while waiting for a response
+
+────────────────────────────────────────────────────────
+
+Failures  1 failed
+  ERROR changelog · typo-fix [gpt-5.6-terra]  Session disconnected while waiting for a response
+
+Model summary
+  ✓ claude-haiku-4.5  1/1 evals passed
+  ✘ gpt-5.6-terra     0/1 evals passed
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✓ 5/5             ✘ 4/5        
+
+Saved  <practice>/results/lesson-18/2026-11-10T17-47-13-690Z/
+Run ID  329724c0-5ddd-4c62-b119-54f85eb7255a
+

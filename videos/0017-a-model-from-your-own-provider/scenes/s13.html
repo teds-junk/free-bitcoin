@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What would you expect?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.variants{font-size:44px}.variants th{font-size:30px}.variants td{padding-top:26px;padding-bottom:26px}.variants td.mono{font-family:var(--font-code)}.stage{gap:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Run a variant on your provider</div>
+  <h2 class="scene-title">What would you expect?</h2>
+  <div class="stage">
+<table class="data-table full variants">
+    <thead><tr><th>Variant</th><th class="num">trials passed</th><th class="num">per passing trial</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">haiku-low</td><td class="num"><span data-concept="acct" data-rep="cell">15 of 15</span></td><td class="num">0.2¢</td></tr>
+      <tr><td class="mono">terra-low</td><td class="num"><span data-concept="acct" data-rep="cell">15 of 15</span></td><td class="num">2.8¢</td></tr>
+      <tr><td class="mono"><span data-concept="q" data-rep="cell">qwen-local</span></td><td class="num"></td><td class="num"></td></tr>
+    </tbody>
+  </table>
+  <p class="note">The first two rows are from the cost comparison · our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "acct",
+  "at": "2~every trial",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "q",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Is a better count real?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#steps{width:100%;padding:36px 40px 44px;gap:24px}#steps .parts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%}#steps .part{min-height:300px}#steps .part .title{font-size:46px;line-height:1.2}#steps .part .label{font-size:30px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">Is a better count real?</h2>
+  <div class="stage">
+<div class="semantic-block" id="steps" data-role="structure">
+    <div class="title words">before believing a count</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="step">1</div><div class="title">Like with like</div><div class="label">one experiment, before and after</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="step">2</div><div class="title">Count trials</div><div class="label">not stimuli or percentages</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="step">3</div><div class="title">Find each range</div><div class="label">the calculator</div></div><div class="part" data-concept="p4" data-rep="part">
+      <div class="step">4</div><div class="title">Say what it supports</div><div class="label">overlap: these trials cannot tell</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#steps",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "3",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p4",
+  "at": "5",
+  "color": "orange"
+ }
+]
+</script>
+</body>
+</html>

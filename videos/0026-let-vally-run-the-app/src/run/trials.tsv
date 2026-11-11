@@ -1,0 +1,9 @@
+run	variant	model	passed	skills	tokens	calls	aiu	entry76	wall_ms
+eval	-	claude-haiku-4.5	false	-	87262	5	3.44945	true	13861
+eval	-	gpt-5.6-terra	true	changelog-entry	69884	5	5.35433	false	14980
+experiment	haiku	claude-haiku-4.5	false	changelog-entry	105576	6	2.49057	true	16009
+experiment	haiku	claude-haiku-4.5	false	-	86816	5	2.09139	true	14304
+experiment	haiku	claude-haiku-4.5	false	-	87221	5	2.11243	true	13814
+experiment	terra	gpt-5.6-terra	true	changelog-entry	70566	5	3.67671	false	17141
+experiment	terra	gpt-5.6-terra	true	changelog-entry	70285	5	3.53558	false	17584
+experiment	terra	gpt-5.6-terra	true	changelog-entry	70270	5	3.53601	false	20477

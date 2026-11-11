@@ -1,0 +1,1582 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/0015-is-the-change-real",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "554ded8b3fc308b5",
+      "text": "After an edit to the skill, seven of ten trials passing becomes nine of ten.",
+      "tts_text": "After an edit to the skill, seven of ten trials passing becomes nine of ten.",
+      "heard": "After an edit to the skill, 7 of 10 trials passing becomes 9 of 10.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "fcfffe32c45885a5",
+      "text": "That looks like an improvement, but the same model with the same request gives different results from run to run.",
+      "tts_text": "That looks like an improvement, but the same model with the same request gives different results from run to run.",
+      "heard": "That looks like an improvement, but the same model with the same request gives different results from run to run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "fcf23351ea048e8e",
+      "text": "So some of that gain may be chance, and we've already edited this skill four times on counts smaller than these.",
+      "tts_text": "So some of that gain may be chance, and we've already edited this skill four times on counts smaller than these.",
+      "heard": "So some of that gain may be chance, and we've already edited this skill four times on counts smaller than these.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "e8c5bf0d957e6ce9",
+      "text": "In this lesson, you'll make one more edit, measure the skill before and after it, and say in one sentence what the result supports.",
+      "tts_text": "In this lesson, you'll make one more edit, measure the skill before and after it, and say in one sentence what the result supports.",
+      "heard": "In this lesson, you'll make one more edit, measure the skill before and after it, and say in one sentence what the result supports.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "c1b713b152be759a",
+      "text": "Let's start with what a count from a few trials can tell us.",
+      "tts_text": "Let's start with what a count from a few trials can tell us.",
+      "heard": "Let's start with what account from a few trials can tell us.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "43c1f877a9299f81",
+      "text": "When seven of ten trials pass, seventy percent is an estimate.",
+      "tts_text": "When seven of ten trials pass, seventy percent is an estimate.",
+      "heard": "When 7 of 10 trials pass, 70% is an estimate.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "a408b4fcf6c2e0a8",
+      "text": "Ten more trials might give five passes, or nine.",
+      "tts_text": "Ten more trials might give five passes, or nine.",
+      "heard": "10 more trials might give five passes or nine.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s02",
+      "i": 3,
+      "file": "audio/s02_03.wav",
+      "clip_sha": "8169297f1aadb426",
+      "text": "The true pass rate is the one we'd see over a very large number of trials.",
+      "tts_text": "The true pass rate is the one we'd see over a very large number of trials.",
+      "heard": "The true pass rate is the one we'd see over a very large number of trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 4,
+      "file": "audio/s02_04.wav",
+      "clip_sha": "6ac4fdf140c0b8af",
+      "text": "All we know is a range for it: probably between forty and eighty-nine percent.",
+      "tts_text": "All we know is a range for it: probably between forty and eighty-nine percent.",
+      "heard": "All we know is a range for it, probably between 40 and 89%.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s02",
+      "i": 5,
+      "file": "audio/s02_05.wav",
+      "clip_sha": "0fcbe98c5dc669a5",
+      "text": "Probably means that a range worked out this way holds the true rate about ninety-five times in a hundred.",
+      "tts_text": "Probably means that a range worked out this way holds the true rate about ninety-five times in a hundred.",
+      "heard": "Probably means that a range worked out this way holds the true rate about 95 times in 100.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "da191cf96672a24a",
+      "text": "Now back to the edit that took seven of ten to nine of ten.",
+      "tts_text": "Now back to the edit that took seven of ten to nine of ten.",
+      "heard": "Now back to the edit that took 7 of 10 to 9 of 10.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "239ab22c9e2ae07c",
+      "text": "Here are the two ranges, forty to eighty-nine, and sixty to ninety-eight, and they overlap almost completely.",
+      "tts_text": "Here are the two ranges, forty to eighty-nine, and sixty to ninety-eight, and they overlap almost completely.",
+      "heard": "Here are the two ranges, 40 to 89 and 60 to 98 and they overlap almost completely.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s03",
+      "i": 2,
+      "file": "audio/s03_02.wav",
+      "clip_sha": "b5703451f0c3e338",
+      "text": "If the skill's true pass rate were eighty percent both before and after, it could easily produce those two counts.",
+      "tts_text": "If the skill's true pass rate were eighty percent both before and after, it could easily produce those two counts.",
+      "heard": "If the skills true pass rate were 80% both before and after, it could easily produce those two counts.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s03",
+      "i": 3,
+      "file": "audio/s03_03.wav",
+      "clip_sha": "872aa4dee0d0a1a2",
+      "text": "So this result doesn't show a change.",
+      "tts_text": "So this result doesn't show a change.",
+      "heard": "So this result doesn't show a change.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 4,
+      "file": "audio/s03_04.wav",
+      "clip_sha": "d77620c311c0ecf4",
+      "text": "With the same two rates over a hundred trials each, the ranges don't touch, and that would be evidence.",
+      "tts_text": "With the same two rates over a hundred trials each, the ranges don't touch, and that would be evidence.",
+      "heard": "With the same two rates over 100 trials each, the ranges don't touch and that would be evidence.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s04",
+      "i": 0,
+      "file": "audio/s04_00.wav",
+      "clip_sha": "243ed608f2d218bc",
+      "text": "Three habits follow from that.",
+      "tts_text": "Three habits follow from that.",
+      "heard": "3 habits follow from that.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s04",
+      "i": 1,
+      "file": "audio/s04_01.wav",
+      "clip_sha": "88284521a173fd05",
+      "text": "First, we compare like with like: the same stimuli, the same graders and the same model, with both versions run in one sitting.",
+      "tts_text": "First, we compare like with like: the same stimuli, the same graders and the same model, with both versions run in one sitting.",
+      "heard": "First, we compare like with like, the same stimuli, the same graders and the same model, with both versions run in one sitting.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 2,
+      "file": "audio/s04_02.wav",
+      "clip_sha": "8aa1cf6d2a6294cb",
+      "text": "Second, we report counts, and not only percentages, because one hundred percent could be three of three, or three hundred of three hundred.",
+      "tts_text": "Second, we report counts, and not only percentages, because one hundred percent could be three of three, or three hundred of three hundred.",
+      "heard": "Second, we report counts and not only percentages because 100% could be 3 of 3 or 300 of 300.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 5
+    },
+    {
+      "scene": "s04",
+      "i": 3,
+      "file": "audio/s04_03.wav",
+      "clip_sha": "aff85de5371215d1",
+      "text": "Third, when the ranges overlap, we say that these trials cannot tell.",
+      "tts_text": "Third, when the ranges overlap, we say that these trials cannot tell.",
+      "heard": "Third, when the range is overlap, we say that these trials cannot tell.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s04",
+      "i": 4,
+      "file": "audio/s04_04.wav",
+      "clip_sha": "cfd55afa3e5c52cf",
+      "text": "That doesn't mean the edit did nothing; it means we don't know yet, and more trials are how to find out.",
+      "tts_text": "That doesn't mean the edit did nothing; it means we don't know yet, and more trials are how to find out.",
+      "heard": "That doesn't mean the edit did nothing, it means we don't know yet, and more trials are how to find out.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 0,
+      "file": "audio/s05_00.wav",
+      "clip_sha": "3aa8288ea730c3ef",
+      "text": "More trials narrow a range, but slowly: it takes about four times the trials to halve its width.",
+      "tts_text": "More trials narrow a range, but slowly: it takes about four times the trials to halve its width.",
+      "heard": "More trials narrow a range, but slowly. It takes about four times the trials to have its width.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s05",
+      "i": 1,
+      "file": "audio/s05_01.wav",
+      "clip_sha": "f364aa1a8eae296d",
+      "text": "That's the real price of certainty, and the reason to spend trials where a decision depends on them.",
+      "tts_text": "That's the real price of certainty, and the reason to spend trials where a decision depends on them.",
+      "heard": "That's the real price of certainty and the reason to spend trials where a decision depends on them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 0,
+      "file": "audio/s06_00.wav",
+      "clip_sha": "e67a9e05d7178b98",
+      "text": "The arithmetic is tedious, so the course has a small calculator for it.",
+      "tts_text": "The arithmetic is tedious, so the course has a small calculator for it.",
+      "heard": "The arithmetic is tedious, so the course has a small calculator for it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 1,
+      "file": "audio/s06_01.wav",
+      "clip_sha": "29e327d06aa66282",
+      "text": "It takes a count before and a count after, and shows the range around each.",
+      "tts_text": "It takes a count before and a count after, and shows the range around each.",
+      "heard": "It takes account before an account after and shows the range around each.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "and a count",
+          "heard": "an account",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 2,
+      "file": "audio/s06_02.wav",
+      "clip_sha": "e37620672a1eb4a2",
+      "text": "Then it says whether the two ranges overlap, which here they do.",
+      "tts_text": "Then it says whether the two ranges overlap, which here they do.",
+      "heard": "Then it says whether the two ranges overlap, which here they do.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 0,
+      "file": "audio/s07_00.wav",
+      "clip_sha": "981176dc73386433",
+      "text": "That's how to read a count; here's the experiment that will give us some.",
+      "tts_text": "That's how to read a count; here's the experiment that will give us some.",
+      "heard": "That's how to read account, here's the experiment that will give us some.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 1,
+      "file": "audio/s07_01.wav",
+      "clip_sha": "3e116015c1ff8274",
+      "text": "It's an experiment file, which names variants of one eval, and this one comes with the starter folder.",
+      "tts_text": "It's an experiment file, which names variants of one [eval](/ˌivˈæl/), and this one comes with the starter folder.",
+      "heard": "It's an experiment file, which names variants of one eval, and this one comes with the starter folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 2,
+      "file": "audio/s07_02.wav",
+      "clip_sha": "be1369c0e148bd92",
+      "text": "The eval is the one graded by our judge: three requests worded in coding terms.",
+      "tts_text": "The [eval](/ˌivˈæl/) is the one graded by our judge: three requests worded in coding terms.",
+      "heard": "The EVAL is the one graded by our judge, three requests worded in coding terms.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 3,
+      "file": "audio/s07_03.wav",
+      "clip_sha": "5484d275863944fb",
+      "text": "Runs, set to three under overrides, gives every variant three trials of each stimulus.",
+      "tts_text": "Runs, set to three under overrides, gives every variant three trials of each stimulus.",
+      "heard": "Runs set to three under overrides gives every variant three trials of each stimulus.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 4,
+      "file": "audio/s07_04.wav",
+      "clip_sha": "8603b83801f11a86",
+      "text": "Both of our models, haiku and terra, get two variants each.",
+      "tts_text": "Both of our models, haiku and terra, get two variants each.",
+      "heard": "Both of our models, Haiku and Terra, get two variants each.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 5,
+      "file": "audio/s07_05.wav",
+      "clip_sha": "bbf00d98fdf02360",
+      "text": "One uses a copy of the skill as it is before our edit, in a folder named changelog entry before.",
+      "tts_text": "One uses a copy of the skill as it is before our edit, in a folder named changelog entry before.",
+      "heard": "One uses a copy of the skill as it is before our edit, in a folder named changelog entry before.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 6,
+      "file": "audio/s07_06.wav",
+      "clip_sha": "3406156f944d5774",
+      "text": "Its partner uses the skill itself, which we're about to edit.",
+      "tts_text": "Its partner uses the skill itself, which we're about to edit.",
+      "heard": "Its partner uses the skill itself, which we're about to edit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 0,
+      "file": "audio/s08_00.wav",
+      "clip_sha": "5e3d21d155ea4413",
+      "text": "When the experiment runs, each stimulus that wasn't a clean pass gets a block, headed by its variant and model.",
+      "tts_text": "When the experiment runs, each stimulus that wasn't a clean pass gets a block, headed by its variant and model.",
+      "heard": "When the experiment runs, each stimulus that wasn't a clean pass gets a block, headed by its variant and model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 1,
+      "file": "audio/s08_01.wav",
+      "clip_sha": "7a446acbb43a80b1",
+      "text": "With a judge, the block lists the judge's verdict for each trial.",
+      "tts_text": "With a judge, the block lists the judge's verdict for each trial.",
+      "heard": "With a judge, the block lists the judge's verdict for each trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 2,
+      "file": "audio/s08_02.wav",
+      "clip_sha": "2fe163dd9c4a3e96",
+      "text": "Here are some from a run of this experiment, cut down to their first two lines.",
+      "tts_text": "Here are some from a run of this experiment, cut down to their first two lines.",
+      "heard": "Here are some from a run of this experiment, cut down to their first two lines.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 3,
+      "file": "audio/s08_03.wav",
+      "clip_sha": "aef42d3a2b9d1d90",
+      "text": "After the stimulus name comes the count of trials that passed and failed.",
+      "tts_text": "After the stimulus name comes the count of trials that passed and failed.",
+      "heard": "After the stimulus name comes the count of trials that passed and failed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 4,
+      "file": "audio/s08_04.wav",
+      "clip_sha": "08e79becab86141b",
+      "text": "A stimulus with no block passed all of its trials, so the blocks are enough to count trials for each variant.",
+      "tts_text": "A stimulus with no block passed all of its trials, so the blocks are enough to count trials for each variant.",
+      "heard": "Stimulus with no block passed all of its trials, so the blocks are enough to count trials for each variant.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "A",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 0,
+      "file": "audio/s09_00.wav",
+      "clip_sha": "9d2a4f137d53a38e",
+      "text": "The saved report, in the experiment's run folder, gives the same counts another way.",
+      "tts_text": "The saved report, in the experiment's run folder, gives the same counts another way.",
+      "heard": "The saved report in the experiment's run folder gives the same counts another way.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 1,
+      "file": "audio/s09_01.wav",
+      "clip_sha": "5965447a73f21a2d",
+      "text": "When a stimulus runs more than once, its row gains three columns, and in their names, k is the number of trials.",
+      "tts_text": "When a stimulus runs more than once, its row gains three columns, and in their names, k is the number of trials.",
+      "heard": "When a stimulus runs more than once, its row gains three columns, and in their names, K is the number of trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 2,
+      "file": "audio/s09_02.wav",
+      "clip_sha": "70aa3e51e69c37fb",
+      "text": "This row is from the same run: one stimulus, three trials, two of which passed.",
+      "tts_text": "This row is from the same run: one stimulus, three trials, two of which passed.",
+      "heard": "This row is from the same run, one stimulus, three trials, two of which passed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 3,
+      "file": "audio/s09_03.wav",
+      "clip_sha": "36f860992a6614c6",
+      "text": "Pass rate is the count: trials that passed, out of trials that finished.",
+      "tts_text": "Pass rate is the count: trials that passed, out of trials that finished.",
+      "heard": "Pass rate is the count, trials that passed out of trials that finished.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 4,
+      "file": "audio/s09_04.wav",
+      "clip_sha": "cd6b3833248a1b19",
+      "text": "Pass at k asks whether at least one of the k trials passed, so it answers: can the agent do this at all?",
+      "tts_text": "Pass at k asks whether at least one of the k trials passed, so it answers: can the agent do this at all?",
+      "heard": "HACICAY asks whether at least one of the K trials passed, so it answers, can the agent do this at all?",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Pass at k",
+          "heard": "HACICAY",
+          "similarity": 0.22
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 5,
+      "file": "audio/s09_05.wav",
+      "clip_sha": "9714b29a56842dd7",
+      "text": "Here one did, so it shows one hundred percent.",
+      "tts_text": "Here one did, so it shows one hundred percent.",
+      "heard": "Here one did, so it shows 100%.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s09",
+      "i": 6,
+      "file": "audio/s09_06.wav",
+      "clip_sha": "ba987737929cf97e",
+      "text": "Pass hat k asks a harder question: how likely is it that k trials in a row would all pass?",
+      "tts_text": "Pass hat k asks a harder question: how likely is it that k trials in a row would all pass?",
+      "heard": "As Hat Kay asks a harder question, how likely is it that Kay trials in a row would all pass?",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Pass",
+          "heard": "As",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s09",
+      "i": 7,
+      "file": "audio/s09_07.wav",
+      "clip_sha": "659ec32629455f40",
+      "text": "Passing two times in three, three times running, comes to just under thirty percent.",
+      "tts_text": "Passing two times in three, three times running, comes to just under thirty percent.",
+      "heard": "Passing two times in three, three times running, comes to just under 30%.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 0,
+      "file": "audio/s10_00.wav",
+      "clip_sha": "c9b69073c9b68b95",
+      "text": "So which column describes a skill that has to work every time?",
+      "tts_text": "So which column describes a skill that has to work every time?",
+      "heard": "So which column describes a skill that has to work every time?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 1,
+      "file": "audio/s10_01.wav",
+      "clip_sha": "49450159db0f5e70",
+      "text": "Pass hat k does, because a single passing trial is enough to make pass at k show one hundred percent.",
+      "tts_text": "Pass hat k does, because a single passing trial is enough to make pass at k show one hundred percent.",
+      "heard": "Has Hat K does because a single passing trial is enough to make pass a K show 100%.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Pass",
+          "heard": "Has",
+          "similarity": 0.33
+        },
+        {
+          "kind": "different",
+          "expected": "at",
+          "heard": "a",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 2,
+      "file": "audio/s10_02.wav",
+      "clip_sha": "e229c9fac3942d6b",
+      "text": "If any trial ends in error, the stimulus shows dashes in these columns, and its finished trials are counted in the terminal output only.",
+      "tts_text": "If any trial ends in error, the stimulus shows dashes in these columns, and its finished trials are counted in the terminal output only.",
+      "heard": "If any trial ends in error, the stimulus shows dashes in these columns, and its finished trials are counted in the terminal output only.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 3,
+      "file": "audio/s10_03.wav",
+      "clip_sha": "724bde7fae7f5a07",
+      "text": "None of these columns gives a range, which is what the calculator is for.",
+      "tts_text": "None of these columns gives a range, which is what the calculator is for.",
+      "heard": "None of these columns gives a range, which is what the calculator is for.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 0,
+      "file": "audio/s11_00.wav",
+      "clip_sha": "b4d6c2c497e57e7e",
+      "text": "That's what the experiment prints; now let's use it on a real edit.",
+      "tts_text": "That's what the experiment prints; now let's use it on a real edit.",
+      "heard": "That's what the experiment prints. Now let's use it on a real edit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 1,
+      "file": "audio/s11_01.wav",
+      "clip_sha": "f2142e8bd0fca109",
+      "text": "Our judge found entries that still say how a fix was coded.",
+      "tts_text": "Our judge found entries that still say how a fix was coded.",
+      "heard": "Our judge found entries that still say how a fix was coded.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 2,
+      "file": "audio/s11_02.wav",
+      "clip_sha": "17df0a50bf7473df",
+      "text": "Until now, the skill's second rule only said to write for people who use the tool.",
+      "tts_text": "Until now, the skill's second rule only said to write for people who use the tool.",
+      "heard": "Until now, the skills second rule only said to write for people who use the tool.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 3,
+      "file": "audio/s11_03.wav",
+      "clip_sha": "b8f1061ca5656abf",
+      "text": "Our edit adds two lines to it: say what they'll notice, and don't say how it was coded.",
+      "tts_text": "Our edit adds two lines to it: say what they'll notice, and don't say how it was coded.",
+      "heard": "Our edit adds two lines to it, say what they'll notice and don't say how it was coded.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 4,
+      "file": "audio/s11_04.wav",
+      "clip_sha": "538c6d8c62979828",
+      "text": "It also names what to leave out: any library, algorithm, data structure or source file.",
+      "tts_text": "It also names what to leave out: any library, algorithm, data structure or source file.",
+      "heard": "It also names what to leave out, any library, algorithm, data structure or source file.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 5,
+      "file": "audio/s11_05.wav",
+      "clip_sha": "714d6de4dbc6ce5a",
+      "text": "To compare fairly, we keep a copy of the skill as it was, beside the edited one.",
+      "tts_text": "To compare fairly, we keep a copy of the skill as it was, beside the edited one.",
+      "heard": "To compare fairly, we keep a copy of the skill as it was, beside the edited one.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 0,
+      "file": "audio/s12_00.wav",
+      "clip_sha": "181a7658ffbc2663",
+      "text": "Each variant runs three stimuli three times, so every count will be out of nine trials.",
+      "tts_text": "Each variant runs three stimuli three times, so every count will be out of nine trials.",
+      "heard": "Each variant runs 3 stimuli 3 times, so every count will be out of 9 trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s12",
+      "i": 1,
+      "file": "audio/s12_01.wav",
+      "clip_sha": "583ec25bd1b12040",
+      "text": "What would you expect: will the count go up on both models, and will nine trials be enough to show it?",
+      "tts_text": "What would you expect: will the count go up on both models, and will nine trials be enough to show it?",
+      "heard": "What would you expect? Will the count go up on both models and will nine trials be enough to show it?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 2,
+      "file": "audio/s12_02.wav",
+      "clip_sha": "b749f7ec6a23fa0f",
+      "text": "If you tried it yourself, here's what you'd see.",
+      "tts_text": "If you tried it yourself, here's what you'd see.",
+      "heard": "If you tried it yourself, here's what you'd see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 0,
+      "file": "audio/s13_00.wav",
+      "clip_sha": "f58165bad10d7a04",
+      "text": "First, we copy the skill folder, so the version before the edit is kept.",
+      "tts_text": "First, we copy the skill folder, so the version before the edit is kept.",
+      "heard": "First, we copy the skill folder, so the version before the edit is kept.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 1,
+      "file": "audio/s13_01.wav",
+      "clip_sha": "4871ed904831cb32",
+      "text": "With the copy made, the new rule goes into the skill itself, which is an edit to one file.",
+      "tts_text": "With the copy made, the new rule goes into the skill itself, which is an edit to one file.",
+      "heard": "With the copy made, the new rule goes into the skill itself, which is an edit to one file.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 2,
+      "file": "audio/s13_02.wav",
+      "clip_sha": "e33b86ebe5c0d780",
+      "text": "Before spending anything, a dry run checks the plan.",
+      "tts_text": "Before spending anything, a dry run checks the plan.",
+      "heard": "Before spending anything, a dry run checks the plan.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 3,
+      "file": "audio/s13_03.wav",
+      "clip_sha": "860da8b628c55d3e",
+      "text": "It starts no agent, and it should list four plans, one for each variant.",
+      "tts_text": "It starts no agent, and it should list four plans, one for each variant.",
+      "heard": "It starts no agent and it should list four plans, one for each variant.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 4,
+      "file": "audio/s13_04.wav",
+      "clip_sha": "e1f886d5efebddba",
+      "text": "It does: the list is longer than the screen, and these are the last of the four.",
+      "tts_text": "It does: the list is longer than the screen, and these are the last of the four.",
+      "heard": "It does the list is longer than the screen, and these are the last of the four.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 0,
+      "file": "audio/s14_00.wav",
+      "clip_sha": "37bab8e009fa7949",
+      "text": "Now the experiment itself: both versions of the skill, on both models, two trials at a time, saved in a results folder of its own.",
+      "tts_text": "Now the experiment itself: both versions of the skill, on both models, two trials at a time, saved in a results folder of its own.",
+      "heard": "Now the experiment itself, both versions of the skill on both models, two trials at a time, saved in a results folder of its own.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 1,
+      "file": "audio/s14_01.wav",
+      "clip_sha": "92707b33a823c3f1",
+      "text": "It spends thirty-six agent runs, and thirty-six calls to the judge.",
+      "tts_text": "It spends thirty-six agent runs, and thirty-six calls to the judge.",
+      "heard": "It spends 36 agent runs and 36 calls to the judge.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s14",
+      "i": 2,
+      "file": "audio/s14_02.wav",
+      "clip_sha": "b509a7ccb364a90a",
+      "text": "We're after the table at the end: its stimuli row counts, for each variant, the stimuli that passed in all three trials.",
+      "tts_text": "We're after the table at the end: its stimuli row counts, for each variant, the stimuli that passed in all three trials.",
+      "heard": "Whereafter the table at the end, its stimuli row counts for each variant, the stimuli that passed in all three trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s14",
+      "i": 3,
+      "file": "audio/s14_03.wav",
+      "clip_sha": "854c80861f1c072a",
+      "text": "Several minutes later, that row reads one of three, then three of three, for haiku, and zero of three, then three of three, for terra.",
+      "tts_text": "Several minutes later, that row reads one of three, then three of three, for haiku, and zero of three, then three of three, for terra.",
+      "heard": "Several minutes later that row reads one of three, then three of three for haiku, and zero of three, then three of three for terra.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 4,
+      "file": "audio/s14_04.wav",
+      "clip_sha": "be9e3d19606aa62e",
+      "text": "Terra's zero isn't three failures: each of its stimuli lost a trial to an error, and an unfinished trial has no verdict.",
+      "tts_text": "Terra's zero isn't three failures: each of its stimuli lost a trial to an error, and an unfinished trial has no verdict.",
+      "heard": "Terra's zero isn't three failures. Each of its stimuli lost a trial to an error, and an unfinished trial has no verdict.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 5,
+      "file": "audio/s14_05.wav",
+      "clip_sha": "111325cf55162d22",
+      "text": "Those are counts of stimuli, and a range needs trials.",
+      "tts_text": "Those are counts of stimuli, and a range needs trials.",
+      "heard": "Those are counts of stimuli and a range needs trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 0,
+      "file": "audio/s15_00.wav",
+      "clip_sha": "c9bf93470d629c15",
+      "text": "Above the table, the output has a block for each stimulus that wasn't a clean pass.",
+      "tts_text": "Above the table, the output has a block for each stimulus that wasn't a clean pass.",
+      "heard": "Above the table, the output has a block for each stimulus that wasn't a clean pass.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 1,
+      "file": "audio/s15_01.wav",
+      "clip_sha": "3c5dd4e5b030e32d",
+      "text": "For each variant, we add up the trials that passed over its three stimuli, leaving out any trial that ended in error.",
+      "tts_text": "For each variant, we add up the trials that passed over its three stimuli, leaving out any trial that ended in error.",
+      "heard": "For each variant, we add up the trials that passed over its three stimuli, leaving out any trial that ended in error.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 2,
+      "file": "audio/s15_02.wav",
+      "clip_sha": "e4ac984f9acbbb45",
+      "text": "Haiku passed five of nine before the edit, and nine of nine after.",
+      "tts_text": "Haiku passed five of nine before the edit, and nine of nine after.",
+      "heard": "I go past 5 of 9 before the edit and 9 of 9 after.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Haiku passed five",
+          "heard": "I go past 5",
+          "similarity": 0.76
+        }
+      ],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s15",
+      "i": 3,
+      "file": "audio/s15_03.wav",
+      "clip_sha": "f5b73802c06431c9",
+      "text": "Terra passed five of six before, with three trials lost to errors, and nine of nine after.",
+      "tts_text": "Terra passed five of six before, with three trials lost to errors, and nine of nine after.",
+      "heard": "Terra passed five of six before, with three trials lost to errors and nine of nine after.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 0,
+      "file": "audio/s16_00.wav",
+      "clip_sha": "a754426ccd622063",
+      "text": "Now the range around each count, from the calculator.",
+      "tts_text": "Now the range around each count, from the calculator.",
+      "heard": "Now the range around each count from the calculator.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 1,
+      "file": "audio/s16_01.wav",
+      "clip_sha": "cfbe731ff7e6fda3",
+      "text": "For haiku, it's twenty-seven to eighty-one percent before, and seventy to one hundred after.",
+      "tts_text": "For haiku, it's twenty-seven to eighty-one percent before, and seventy to one hundred after.",
+      "heard": "For Hiku, it's 27-81% before and 70-100 after.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s16",
+      "i": 2,
+      "file": "audio/s16_02.wav",
+      "clip_sha": "ca063caf5a609cf9",
+      "text": "Those two ranges overlap, by eleven points.",
+      "tts_text": "Those two ranges overlap, by eleven points.",
+      "heard": "Those two ranges overlap by 11 points.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s16",
+      "i": 3,
+      "file": "audio/s16_03.wav",
+      "clip_sha": "8215c4cb35dea7d9",
+      "text": "For terra, it's forty-four to ninety-seven, and seventy to one hundred, which overlap too.",
+      "tts_text": "For terra, it's forty-four to ninety-seven, and seventy to one hundred, which overlap too.",
+      "heard": "For Terra, it's 44 to 97 and 70 to 100, which overlap too.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s17",
+      "i": 0,
+      "file": "audio/s17_00.wav",
+      "clip_sha": "b633ab1a7e83ec11",
+      "text": "The last step is to say what the result supports, and no more, in one sentence per model.",
+      "tts_text": "The last step is to say what the result supports, and no more, in one sentence per model.",
+      "heard": "The last step is to say what the result supports and no more in one sentence per model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 1,
+      "file": "audio/s17_01.wav",
+      "clip_sha": "3d2daa5c36f4a4d7",
+      "text": "For haiku, ours says the judge's passes went from five of nine to nine of nine, and that these trials can't yet tell whether the improvement is real.",
+      "tts_text": "For haiku, ours says the judge's passes went from five of nine to nine of nine, and that these trials can't yet tell whether the improvement is real.",
+      "heard": "For Haiku, our says the judges passes went from 5 of 9 to 9 of 9, and that these trials can't yet tell whether the improvement is real.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 5
+    },
+    {
+      "scene": "s17",
+      "i": 2,
+      "file": "audio/s17_02.wav",
+      "clip_sha": "51a2397288f01eec",
+      "text": "For terra, it says they went from five of six to nine of nine, and that these trials can't tell whether the rule made any difference.",
+      "tts_text": "For terra, it says they went from five of six to nine of nine, and that these trials can't tell whether the rule made any difference.",
+      "heard": "For Terra, it says they went from 5 of 6 to 9 of 9, and that these trials can't tell whether the rule made any difference.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s18",
+      "i": 0,
+      "file": "audio/s18_00.wav",
+      "clip_sha": "ff3dccf6a086a10e",
+      "text": "So what should we make of those two sentences?",
+      "tts_text": "So what should we make of those two sentences?",
+      "heard": "So what should we make of those two sentences?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 1,
+      "file": "audio/s18_01.wav",
+      "clip_sha": "3fc269225d3f31e1",
+      "text": "On haiku, four trials failed before the edit, three of them on one request.",
+      "tts_text": "On haiku, four trials failed before the edit, three of them on one request.",
+      "heard": "On HIKU, four trials fail before the edit, three of them on one request.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "HIKU",
+          "similarity": 0.55
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 2,
+      "file": "audio/s18_02.wav",
+      "clip_sha": "332d9f61f141a0ef",
+      "text": "After the edit, none failed.",
+      "tts_text": "After the edit, none failed.",
+      "heard": "After the edit, none failed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 3,
+      "file": "audio/s18_03.wav",
+      "clip_sha": "71d7c0c98cdb7467",
+      "text": "Even so, the two ranges still overlap.",
+      "tts_text": "Even so, the two ranges still overlap.",
+      "heard": "Even so, the two ranges still overlap.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 4,
+      "file": "audio/s18_04.wav",
+      "clip_sha": "4ce9f324e44bf266",
+      "text": "Nine trials a side are too few to pull them apart, and more trials are the way to find out.",
+      "tts_text": "Nine trials a side are too few to pull them apart, and more trials are the way to find out.",
+      "heard": "Nine trials aside are too few to pull them apart, and more trials are the way to find out.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 5,
+      "file": "audio/s18_05.wav",
+      "clip_sha": "4c758e26185553b9",
+      "text": "On terra, only one finished trial failed before the edit, so there was almost nothing left to fix, and nothing these trials could show.",
+      "tts_text": "On terra, only one finished trial failed before the edit, so there was almost nothing left to fix, and nothing these trials could show.",
+      "heard": "On Terra, only one finished trial failed before the edit, so there was almost nothing left to fix, and nothing these trials could show.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 6,
+      "file": "audio/s18_06.wav",
+      "clip_sha": "db0231e1bf33be37",
+      "text": "Neither result is a failure of the edit: both are honest statements of what a handful of trials can and can't tell us.",
+      "tts_text": "Neither result is a failure of the edit: both are honest statements of what a handful of trials can and can't tell us.",
+      "heard": "Neither result is a failure of the edit. Both are honest statements of what a handful of trials can and can't tell us.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 0,
+      "file": "audio/s19_00.wav",
+      "clip_sha": "1d0f0e3eb4d3f663",
+      "text": "Now let's apply the same honesty to the earlier fixes.",
+      "tts_text": "Now let's apply the same honesty to the earlier fixes.",
+      "heard": "Now let's apply the same honesty to the earlier fixes.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 1,
+      "file": "audio/s19_01.wav",
+      "clip_sha": "c87be22bfd705f0f",
+      "text": "When we added the rule for follow-up requests, haiku's conversation test went from two of three to three of three.",
+      "tts_text": "When we added the rule for follow-up requests, haiku's conversation test went from two of three to three of three.",
+      "heard": "When we added the rule for follow-up requests, Haiku's conversation test went from 2 of 3 to 3 of 3.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s19",
+      "i": 2,
+      "file": "audio/s19_02.wav",
+      "clip_sha": "beb4b66c367e817a",
+      "text": "When we rewrote the skill's description, the loading test had no failure left to fix: terra passed all eleven trials that finished before, and eleven of twelve after.",
+      "tts_text": "When we rewrote the skill's description, the loading test had no failure left to fix: terra passed all eleven trials that finished before, and eleven of twelve after.",
+      "heard": "When we rewrote the skills description, the loading test had no failure left to fix. Terra passed all 11 trials that finished before and 11 of 12 after.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s19",
+      "i": 3,
+      "file": "audio/s19_03.wav",
+      "clip_sha": "f3caa685bd023e79",
+      "text": "In the calculator, the ranges overlap for both fixes.",
+      "tts_text": "In the calculator, the ranges overlap for both fixes.",
+      "heard": "In the calculator, the range is overlapped for both fixes.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s19",
+      "i": 4,
+      "file": "audio/s19_04.wav",
+      "clip_sha": "114932e041d2e3b0",
+      "text": "So those runs didn't prove that the fixes worked.",
+      "tts_text": "So those runs didn't prove that the fixes worked.",
+      "heard": "So those runs didn't prove that the fixes worked.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 5,
+      "file": "audio/s19_05.wav",
+      "clip_sha": "a00cb39cbf334166",
+      "text": "What made the follow-up rule reasonable was something else: a patch showed what caused the failure, the rule addressed exactly that cause, and the result moved the right way.",
+      "tts_text": "What made the follow-up rule reasonable was something else: a patch showed what caused the failure, the rule addressed exactly that cause, and the result moved the right way.",
+      "heard": "What made the follow-up rule reasonable was something else. A patch showed what caused the failure. The rule addressed exactly that cause, and the result moved the right way.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 6,
+      "file": "audio/s19_06.wav",
+      "clip_sha": "b355ab8effd5026f",
+      "text": "That's a sound reason to keep a rule, but it isn't the same as having measured it, and it's worth knowing which of the two we have.",
+      "tts_text": "That's a sound reason to keep a rule, but it isn't the same as having measured it, and it's worth knowing which of the two we have.",
+      "heard": "That's a sound reason to keep a rule, but it isn't the same as having measured it, and it's worth knowing which of the two we have.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 0,
+      "file": "audio/s20_00.wav",
+      "clip_sha": "b8dbd1bbbb593031",
+      "text": "Even our clearest early fix needs this care: on terra, the grader for made-up numbers went from one of three to three of three, and alone, those ranges overlap widely.",
+      "tts_text": "Even our clearest early fix needs this care: on terra, the grader for made-up numbers went from one of three to three of three, and alone, those ranges overlap widely.",
+      "heard": "Even our clearest early fix needs this care. On Terra, the greater for made-up numbers went from one of three to three of three, and alone, those ranges overlap widely.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 1,
+      "file": "audio/s20_01.wav",
+      "clip_sha": "1c36c13b065c0e2d",
+      "text": "What makes that result strong is everything around it: five of five trials with the same failure before the fix, and the same stimulus passing in every run since.",
+      "tts_text": "What makes that result strong is everything around it: five of five trials with the same failure before the fix, and the same stimulus passing in every run since.",
+      "heard": "What makes that result strong is everything around it. Five of five trials with the same failure before the fix, and the same stimulus passing in every run since.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 2,
+      "file": "audio/s20_02.wav",
+      "clip_sha": "5b1fa18542fa94a8",
+      "text": "The run with no skill at all showed that the first draft caused it.",
+      "tts_text": "The run with no skill at all showed that the first draft caused it.",
+      "heard": "The run with no skill at all showed that the first draft caused it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 3,
+      "file": "audio/s20_03.wav",
+      "clip_sha": "c4a42c85131ddd9a",
+      "text": "Several small results that agree, a cause we can see in a patch, and a comparison with no skill: that's what a result we can defend looks like.",
+      "tts_text": "Several small results that agree, a cause we can see in a patch, and a comparison with no skill: that's what a result we can defend looks like.",
+      "heard": "Several small results that agree, a cause we can see in a patch, and a comparison with no skill. That's what a result we can defend looks like.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 0,
+      "file": "audio/s21_00.wav",
+      "clip_sha": "e7d8a5b0172ddd23",
+      "text": "One more caution: every count here is only as good as the grader that produced it.",
+      "tts_text": "One more caution: every count here is only as good as the grader that produced it.",
+      "heard": "One more caution, every count here is only as good as the grader that produced it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 1,
+      "file": "audio/s21_01.wav",
+      "clip_sha": "810e692351a1c1d5",
+      "text": "If a grader passes work that's wrong, a range around its count is a careful measurement of the wrong thing.",
+      "tts_text": "If a grader passes work that's wrong, a range around its count is a careful measurement of the wrong thing.",
+      "heard": "For greater passes work that's wrong, a range around its count is a careful measurement of the wrong thing.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "If a grader",
+          "heard": "For greater",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 2,
+      "file": "audio/s21_02.wav",
+      "clip_sha": "b3b43271e91206c6",
+      "text": "So we test the graders first, with the oracle and with saved trials, and only then work out a range.",
+      "tts_text": "So we test the graders first, with the oracle and with saved trials, and only then work out a range.",
+      "heard": "So we test the graders first with the oracle and with saved trials and only then work out a range.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 0,
+      "file": "audio/s22_00.wav",
+      "clip_sha": "a2d6af4b3376542b",
+      "text": "One row of the experiment's table hasn't come up yet.",
+      "tts_text": "One row of the experiment's table hasn't come up yet.",
+      "heard": "One row of the experiment's table hasn't come up yet.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 1,
+      "file": "audio/s22_01.wav",
+      "clip_sha": "23ed798c4fb6e6a4",
+      "text": "Beneath the counts are each variant's tokens, added up over all of its trials; they're the agent's tokens, and the judge's aren't included.",
+      "tts_text": "Beneath the counts are each variant's tokens, added up over all of its trials; they're the agent's tokens, and the judge's aren't included.",
+      "heard": "Beneath the counts are each variance tokens, added up over all of its trials, they're the agents' tokens, and the judges aren't included.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s22",
+      "i": 2,
+      "file": "audio/s22_02.wav",
+      "clip_sha": "4f6398b9335ac5af",
+      "text": "In our run, the two models differ from each other by more than the edit changed either of them.",
+      "tts_text": "In our run, the two models differ from each other by more than the edit changed either of them.",
+      "heard": "In our run, the two models differ from each other by more than the edit changed either of them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 3,
+      "file": "audio/s22_03.wav",
+      "clip_sha": "2f7ca3e072b7cf34",
+      "text": "What that difference costs, for each trial that passes, is a question for later.",
+      "tts_text": "What that difference costs, for each trial that passes, is a question for later.",
+      "heard": "What that difference costs for each trial that passes is a question for later.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 0,
+      "file": "audio/s23_00.wav",
+      "clip_sha": "48e65333a520294e",
+      "text": "Before you go on: a count goes up after an edit.",
+      "tts_text": "Before you go on: a count goes up after an edit.",
+      "heard": "Before you go on, account goes up after an edit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s23",
+      "i": 1,
+      "file": "audio/s23_01.wav",
+      "clip_sha": "d559d6086f1b9d11",
+      "text": "What do we do before believing it?",
+      "tts_text": "What do we do before believing it?",
+      "heard": "What do we do before believing it?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 2,
+      "file": "audio/s23_02.wav",
+      "clip_sha": "e7dcee70bc739555",
+      "text": "We compare like with like: the same stimuli, graders and model, before and after, in one experiment.",
+      "tts_text": "We compare like with like: the same stimuli, graders and model, before and after, in one experiment.",
+      "heard": "We compare like with like, the same stimuli, graders and model, before and after in one experiment.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 3,
+      "file": "audio/s23_03.wav",
+      "clip_sha": "2525c39c83af826a",
+      "text": "We count trials, not stimuli or percentages.",
+      "tts_text": "We count trials, not stimuli or percentages.",
+      "heard": "We count trials, not stimuli or percentages.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 4,
+      "file": "audio/s23_04.wav",
+      "clip_sha": "24d5114c13a4678e",
+      "text": "We work out the range around each count.",
+      "tts_text": "We work out the range around each count.",
+      "heard": "We work out the range around each count.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 5,
+      "file": "audio/s23_05.wav",
+      "clip_sha": "ddc8544cd3008d32",
+      "text": "Finally, if the ranges overlap, we say that these trials can't tell.",
+      "tts_text": "Finally, if the ranges overlap, we say that these trials can't tell.",
+      "heard": "Finally, if the range is overlap, we say that these trials can't tell.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s24",
+      "i": 0,
+      "file": "audio/s24_00.wav",
+      "clip_sha": "fea217cb93265c8b",
+      "text": "You can now compare a skill before and after an edit, and say in one sentence what the result supports.",
+      "tts_text": "You can now compare a skill before and after an edit, and say in one sentence what the result supports.",
+      "heard": "You can now compare a skill before and after an edit and say in one sentence what the result supports.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 1,
+      "file": "audio/s24_01.wav",
+      "clip_sha": "8e9c373d779d39c2",
+      "text": "The same table also printed tokens for each variant, and they differ by model.",
+      "tts_text": "The same table also printed tokens for each variant, and they differ by model.",
+      "heard": "The same table also printed tokens for each variant, and they differ by model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 2,
+      "file": "audio/s24_02.wav",
+      "clip_sha": "44e6e07ef88a42ba",
+      "text": "So what does a passing trial cost?",
+      "tts_text": "So what does a passing trial cost?",
+      "heard": "So what does a passing trial cost?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 3,
+      "file": "audio/s24_03.wav",
+      "clip_sha": "c0fa80d6856b024e",
+      "text": "That's the next lesson.",
+      "tts_text": "That's the next lesson.",
+      "heard": "That's the next lesson.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 4,
+      "file": "audio/s24_04.wav",
+      "clip_sha": "27d9bef028570df3",
+      "text": "For practice, the exercises on the lesson page are worth doing first.",
+      "tts_text": "For practice, the exercises on the lesson page are worth doing first.",
+      "heard": "For practice, the exercises on the lesson page are worth doing first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "Haiku",
+      "sentences": 3,
+      "heard": [
+        "I go past 5",
+        "Hiku",
+        "HIKU"
+      ],
+      "of": 7,
+      "share": 0.43
+    },
+    {
+      "word": "at",
+      "sentences": 2,
+      "heard": [
+        "HACICAY",
+        "a"
+      ],
+      "of": 5,
+      "share": 0.4
+    },
+    {
+      "word": "grader",
+      "sentences": 1,
+      "heard": [
+        "For greater"
+      ],
+      "of": 3,
+      "share": 0.33
+    },
+    {
+      "word": "Pass",
+      "sentences": 3,
+      "heard": [
+        "HACICAY",
+        "As",
+        "Has"
+      ],
+      "of": 11,
+      "share": 0.27
+    },
+    {
+      "word": "k",
+      "sentences": 1,
+      "heard": [
+        "HACICAY"
+      ],
+      "of": 4,
+      "share": 0.25
+    },
+    {
+      "word": "If",
+      "sentences": 1,
+      "heard": [
+        "For greater"
+      ],
+      "of": 5,
+      "share": 0.2
+    },
+    {
+      "word": "five",
+      "sentences": 1,
+      "heard": [
+        "I go past 5"
+      ],
+      "of": 6,
+      "share": 0.17
+    },
+    {
+      "word": "passed",
+      "sentences": 1,
+      "heard": [
+        "I go past 5"
+      ],
+      "of": 10,
+      "share": 0.1
+    },
+    {
+      "word": "a",
+      "sentences": 3,
+      "heard": [
+        "an account",
+        "For greater"
+      ],
+      "of": 40,
+      "share": 0.07
+    },
+    {
+      "word": "count",
+      "sentences": 1,
+      "heard": [
+        "an account"
+      ],
+      "of": 14,
+      "share": 0.07
+    },
+    {
+      "word": "and",
+      "sentences": 1,
+      "heard": [
+        "an account"
+      ],
+      "of": 46,
+      "share": 0.02
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 116,
+    "mismatched": 9,
+    "transcribed": 116,
+    "reused": 0,
+    "seconds_per_sentence": 0.118
+  }
+}

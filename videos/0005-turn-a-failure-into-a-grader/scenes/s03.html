@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One grader per failure mode</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:40px}.data-table th{font-size:30px}.data-table td{padding-top:30px;padding-bottom:30px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Three habits for graders</div>
+  <h2 class="scene-title">One grader per failure mode</h2>
+  <div class="stage">
+<table class="data-table full names">
+    <thead><tr><th>Failure mode</th><th>A grader named after it</th></tr></thead>
+    <tbody>
+<tr><td>A made-up pull request number</td><td class="mono"><span data-concept="n-f1" data-rep="cell">no-made-up-number</span></td></tr>
+<tr><td>An entry for a change users can’t see</td><td class="mono"><span data-concept="n-f2" data-rep="cell">adds-nothing</span></td></tr>
+<tr><td>A security fix filed under Fixed</td><td class="mono"><span data-concept="n-f3" data-rep="cell">under-security</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "n-f1",
+  "at": "1~no made-up number",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

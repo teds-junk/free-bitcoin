@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 19: Is it worse than before — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 19 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Is it worse than before</h1>
+    <div class="lesson-meta">13 min · Judge lesson 15's before and after runs side by side, read the win rate and the change in tokens with its range, and run a command that exits 1 on a regression.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What does pass^k estimate, and why is it the column to trust for a skill you rely on?
+        <details class="answer"><summary>Show answer</summary><p>The chance that k trials in a row all pass: the pass rate multiplied by itself k times. A skill you rely on has to work every time, and pass^k describes that; pass@k only says whether one trial in k passed.</p></details></li>
+      <li>Before an edit a count's range is 12% to 65%; after it, 57% to 98%. What can you say?
+        <details class="answer"><summary>Show answer</summary><p>The ranges overlap, so these trials cannot tell whether the edit made a real difference. That was lesson 15's result for <code>claude-haiku-4.5</code>, from 3 of 9 to 8 of 9.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You can count passing trials before and after an edit and put a range around each count, and you can price trials, run a model from your own provider, and fail a trial that costs too much.</p>
+    <p><strong>This lesson answers:</strong> Can a check tell me that a change made things worse, in quality or in cost, and fail when it did?</p>
+  </div>
+
+  <p class="drop-cap">Lesson 15 ended with a careful "cannot tell yet". On one model the judge's passes went from 3 of 9 to 8 of 9, and the ranges still touched. That is the honest answer to "did it get better?", but it is not the question you ask before every change you keep. The everyday question is narrower: is it any worse than before? A check that answers that, in quality and in tokens, and fails loudly when the answer is yes, is something you can run after every edit. Vally has a command for it. This lesson runs it on lesson 15's saved trials, so it spends judge calls and no agent runs.</p>
+
+  <h2 id="side-by-side" data-mode="think">Graders and side-by-side judging</h2>
+
+  <p>Every grader so far looks at one trial at a time and holds it against a fixed check: a pattern, a script, a rubric. That is what you want for "does the entry cite the pull request?" It is less good at "is the new skill's entry better than the old one's?" A yes-or-no judge passes both entries, or fails both, and the difference between them disappears. Even lesson 14's 1-to-5 scale has to place each entry on its own, and a small improvement can land on the same number.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">Pairwise judge</div>
+    <p>An LLM judge that is shown two answers to the same request, one from each version being compared, and says which is better and by how much. Vally's documentation calls this comparison mode.</p>
+  </div>
+
+  <p>Comparing two answers side by side is easier than scoring either one alone, for people and for models. "B leaves the coding detail out and A does not" is a judgement a model makes reliably even when both entries would get the same yes or no. So a pairwise judge notices smaller changes.</p>
+
+  <p>It has one well-known weakness. Shown two answers, judges tend to prefer one position, often the first, whatever is in it. The fix is to ask twice, with the two answers in opposite order, and to believe the verdict only when both orders agree. When they disagree, the honest result is a tie.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 290" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="One pair of trials judged twice in swapped order">
+      <rect x="10" y="10" width="300" height="56" rx="6" stroke-width="2"/>
+      <text x="160" y="45" text-anchor="middle" font-size="20" fill="currentColor" stroke="none">before · cache · trial 0</text>
+      <rect x="330" y="10" width="300" height="56" rx="6" stroke-width="2"/>
+      <text x="480" y="45" text-anchor="middle" font-size="20" fill="currentColor" stroke="none">after · cache · trial 0</text>
+      <line x1="160" y1="66" x2="160" y2="120" stroke-width="2" style="stroke: var(--ink-soft)"/>
+      <line x1="480" y1="66" x2="480" y2="120" stroke-width="2" style="stroke: var(--ink-soft)"/>
+      <line x1="160" y1="66" x2="480" y2="120" stroke-width="2" style="stroke: var(--ink-soft)"/>
+      <line x1="480" y1="66" x2="160" y2="120" stroke-width="2" style="stroke: var(--ink-soft)"/>
+      <rect x="10" y="120" width="300" height="56" rx="6" stroke-width="2" style="stroke: var(--accent)"/>
+      <text x="160" y="155" text-anchor="middle" font-size="20" fill="currentColor" stroke="none">judge: before, after</text>
+      <rect x="330" y="120" width="300" height="56" rx="6" stroke-width="2" style="stroke: var(--accent)"/>
+      <text x="480" y="155" text-anchor="middle" font-size="20" fill="currentColor" stroke="none">judge: after, before</text>
+      <line x1="160" y1="176" x2="320" y2="224" stroke-width="2" style="stroke: var(--ink-soft)"/>
+      <line x1="480" y1="176" x2="320" y2="224" stroke-width="2" style="stroke: var(--ink-soft)"/>
+      <rect x="110" y="224" width="420" height="56" rx="6" stroke-width="2"/>
+      <text x="320" y="259" text-anchor="middle" font-size="20" fill="currentColor" stroke="none">agree: a score · disagree: a tie</text>
+    </svg>
+    <figcaption>One pair: the same stimulus and trial number from each version. The judge reads the pair twice, in opposite order, so a preference for one position cannot decide the result.</figcaption>
+  </figure>
+
+  <p>Use a pairwise judge to compare two versions of the same thing. It does not replace graders: it cannot tell you that both versions are wrong, only which is less wrong. Keep the graders for "is it right?" and use the side-by-side judgement for "is it worse?"</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/cli/compare/">Vally docs, CLI: compare</a>, on judging each pair twice with the positions swapped; <a href="https://arxiv.org/abs/2306.05685">Zheng et al., Judging LLM-as-a-Judge, 2023</a>, section 3, on position bias in pairwise judges and swapping as the remedy.</div>
+
+  <h2 id="what-compare-reports" data-mode="works">What vally compare reports</h2>
+
+  <p><code>vally compare</code> runs a pairwise judge over two sets of saved trials and adds up the result. It starts no agent. The two sets have Vally's names: the <strong>baseline</strong> is the version you compare against, as in the <code>baseline:</code> line of an experiment file, and the <strong>treatment</strong> is the version you changed. It can be given them in two ways.</p>
+
+  <ul>
+    <li><strong>An experiment folder.</strong> <code>vally compare &lt;folder&gt;</code> compares every variant with the experiment's <code>baseline</code>. Lesson 15's baseline is <code>haiku-before</code>, so the two <code>gpt-5.6-terra</code> variants would be judged against <code>claude-haiku-4.5</code>, mixing a change of model into a question about the edit.</li>
+    <li><strong>Two runs.</strong> <code>--baseline</code> and <code>--treatment</code> each name a run folder or a <code>results.jsonl</code> file. Each variant's folder inside the experiment folder holds its own <code>results.jsonl</code>, so this compares exactly two variants. The checkpoint uses this way, once per model.</li>
+  </ul>
+
+  <p>Vally pairs the trials by stimulus name and trial number: the before skill's <code>cache</code> trial 0 with the after skill's <code>cache</code> trial 0, and so on. The judge reads each stimulus's rubric from the saved trials, the same rubric lesson 12 wrote, and gives each pair a verdict from the treatment's side.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Verdict</th><th>Score</th></tr></thead>
+    <tbody>
+      <tr><td>much better</td><td>+1.0</td></tr>
+      <tr><td>slightly better</td><td>+0.4</td></tr>
+      <tr><td>equal, or the two orders disagree</td><td>0</td></tr>
+      <tr><td>slightly worse</td><td>−0.4</td></tr>
+      <tr><td>much worse</td><td>−1.0</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Each pair costs two judge calls, one per order. The judge must be named with <code>--judge-model</code>: standalone <code>compare</code> does not read <code>judge_model</code> from the eval file or the saved trials, and without the option it uses Vally's default judge, which may be one of the models you are testing. This is what it printed for <code>claude-haiku-4.5</code> in our run, with two long lines wrapped to fit.</p>
+
+  <div class="annotated">
+<pre class="output"><code>haiku-after vs haiku-before (baseline)
+  Win rate: 67%  6 wins / 3 ties / 0 losses<span class="mark">1</span>
+    over 9 trials
+  Mean score: +0.53 [95% CI +0.17, +0.89]<span class="mark">2</span>
+    (+ = treatment better)
+  Grader pass/fail (McNemar): +5/-0 pass-fail flips,<span class="mark">3</span>
+    p=0.063 (exact, not significant)
+  Metric deltas (treatment − baseline):<span class="mark">4</span>
+    tokens         -5106 [-13751, +3539] ⚠ high variance
+    turns          -0.3 [-0.9, +0.2] ⚠ high variance
+    tool calls     -0.3 [-0.9, +0.2] ⚠ high variance
+    wall time (ms) -216 [-1217, +786] ⚠ high variance
+    errors         +0.0 [+0.0, +0.0]</code></pre>
+    <ol class="notes">
+      <li>The <strong>win rate</strong> is the share of pairs the treatment won: 6 of 9. Ties count against it, so it is not the same as "not worse".</li>
+      <li>The mean of the nine scores, with a range. CI stands for confidence interval: the range lesson 15 described, here around a mean rather than a count, and the true mean is probably inside it. This range lies wholly above zero.</li>
+      <li>A second test that ignores the judge. It looks only at the graders' pass or fail: pairs where only the treatment passed (+5) and pairs where only the baseline passed (−0). McNemar's test asks whether a split like 5 to 0 could easily be chance; p is that probability, and below 0.05 counts as significant. It is printed only when the saved trials were graded.</li>
+      <li>After minus before for each measure, averaged over the pairs, each with a range. "High variance" means the pairs differed a lot from one another. Tokens are the total per trial from lesson 2.</li>
+    </ol>
+  </div>
+
+  <p>Vally also writes a record of every pair to the file named by <code>--output</code>. It is one line of JSON per comparison; this is part of ours, spread over several lines.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">haiku-compare.jsonl (one record, spread out)</div>
+<pre><code class="language-json">{"type": "comparison",
+ "baseline": "haiku-before",
+ "treatment": "haiku-after",
+<span class="gap">"summary" hidden: the numbers printed above</span>
+ "stimuli": [{"stimulusName": "cache",
+   "trials": [
+<span class="gap">2 pairs hidden: trials 0 and 1, laid out as below</span>
+     {"trialIndex": 2,<span class="mark">1</span>
+      "winner": "treatment",
+      "magnitude": "slightly-better",
+      "score": 0.4,
+<span class="gap">1 line hidden: the judge's reason, too wide; quoted below</span>
+      "baselinePassed": false,<span class="mark">2</span>
+      "treatmentPassed": false,</code></pre>
+    </div>
+    <ol class="notes">
+      <li>One pair: <code>cache</code>, trial 2 from each version.</li>
+      <li>The yes-or-no judge from lesson 12 failed both entries. The pairwise judge still found the after entry slightly better.</li>
+    </ol>
+  </div>
+
+  <p>The reason, in full: "Response B's entry is 'Improve performance of `notes list --tag` with caching (#66)'. It describes the user-facing effect, though 'with caching' hints at the implementation and the entry doesn't say the speedup is on large folders. Response A's entry is 'Speed up `notes list --tag` on large folders with LRU cache for tag index (#66)'. It gives the useful user benefit, but it names the LRU cache and the tag index, which are implementation details the rubric says to leave out. B leaks less, so B is slightly better." (In the file the inner quotation marks are double.) A in the reason is the baseline and B the treatment. Later in the file, the pair for <code>dates</code> trial 0 has the reason "Position-swap inconsistent (forward: A, reverse: tie). Defaulting to tie.": the two orders disagreed, and the pair scored 0.</p>
+
+  <p><strong>Failing on a regression.</strong> Every command ends with an exit code, a number that scripts and automated checks read: 0 for success, anything else for failure. <code>vally compare</code> exits 1 whenever the judging did not finish: some pair could not be judged even after retries, with or without any option. A trial with no partner is different. It is left out before judging, a warning says so, and the exit code does not change; step 4 below shows one, and it exited 0. With <code>--fail-on-regression</code> the command also exits 1 when the treatment is significantly worse: its mean score is below zero and the whole range is below zero too. Nothing else counts. A rise in tokens, however clear, does not change the exit code, and neither does McNemar's test.</p>
+
+  <p>In a terminal, the shell keeps the last command's exit code in <code>$?</code>, and <code>echo $?</code> prints it. Run it straight after the command you want to check, because the next command replaces it.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">A comparison prints "Mean score: −0.20 [95% CI −0.55, +0.15]". What does <code>--fail-on-regression</code> do?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">Exits 1, because the mean score is negative</button></li>
+      <li><button onclick="checkAnswer(this, true)">Exits 0, because the range reaches above zero</button></li>
+      <li><button onclick="checkAnswer(this, false)">Exits 1, because part of the range is negative</button></li>
+      <li><button onclick="checkAnswer(this, false)">Exits 0, because the win rate is not printed</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. A negative mean is not enough: the whole range must lie below zero. This one reaches +0.15, so the trials cannot tell whether the change made things worse.</div>
+    <div class="quiz-feedback incorrect">It exits 0. The option fails only when the mean is negative and the whole range lies below zero. This range reaches +0.15, so the trials cannot tell whether the change made things worse.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/cli/compare/">Vally docs, CLI: compare</a>; <code>vally compare --help</code> in Vally 0.21.0. The output and the record are from our run on 2026-11-10.</div>
+
+  <h2 id="compare-before-and-after" data-mode="use">Compare before and after</h2>
+
+  <p>You will judge lesson 15's saved trials: the before skill against the after skill, once per model, then the same pair the other way round with <code>--fail-on-regression</code>, to see whether the check fails. All three commands run from inside lesson 15's experiment folder, so the variant folders can be named directly.</p>
+
+  <section class="checkpoint">
+    <h3>Judge the edit side by side</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: move into lesson 15's experiment folder.</span>
+        Open a terminal in <code>practice</code> and list <code>results/lesson-15</code> for the folder's name. Ours was <code>2026-11-10T14-55-58-278Z</code>; use yours.
+<pre><code class="language-bash">cd results/lesson-15/2026-11-10T14-55-58-278Z
+ls</code></pre>
+<pre class="output"><code>haiku-after
+haiku-before
+otel-context.json
+otel-spans.jsonl
+plan-snapshot.json
+report.md
+shard-manifest.json
+terra-after
+terra-before</code></pre>
+        <p class="expect">You should see: one folder per variant, beside <code>report.md</code>, the report every experiment writes, as <a href="./0010-is-the-agent-better-with-the-skill.html#experiment-file">lesson 10</a> showed.</p></li>
+
+      <li><span class="goal">Goal: judge the before skill against the after skill on your first model. This starts no agent and spends eighteen judge calls; ours took about two minutes.</span>
+        Use your own judge model if it differs.
+<pre><code class="language-bash">vally compare \
+  --baseline haiku-before \
+  --treatment haiku-after \
+  --judge-model claude-sonnet-5.5 \
+  --output haiku-compare.jsonl</code></pre>
+        <p class="expect">You should see: a block like the one in the previous section, then <code>Wrote 1 comparison record(s) to haiku-compare.jsonl</code>.</p></li>
+
+      <li><span class="goal">Goal: read what it says.</span>
+        From the block, write down the win rate, the mean score with its range, whether the range is above zero, and the change in tokens with its range.
+        <details class="answer"><summary>Show ours</summary><p>Win rate 67%: 6 wins, 3 ties, no losses. Mean +0.53, range +0.17 to +0.89, wholly above zero. Tokens −5,106 per trial, range −13,751 to +3,539, which includes zero. Every tie was on <code>dates</code>, which both versions already passed.</p></details></li>
+
+      <li><span class="goal">Goal: judge the second model, with the regression check on. This spends sixteen to eighteen judge calls.</span>
+<pre><code class="language-bash">vally compare \
+  --baseline terra-before \
+  --treatment terra-after \
+  --judge-model claude-sonnet-5.5 \
+  --fail-on-regression \
+  --output terra-compare.jsonl</code></pre>
+<pre class="output"><code>  Win rate: 13%  1 win / 7 ties / 0 losses
+    over 8 trials
+  Mean score: +0.05 [95% CI -0.07, +0.17]
+    (+ = treatment better)
+    tokens         +11132 [+665, +21599]
+      ⚠ high variance
+  ⚠ 1 treatment trajectory(s) had no
+    baseline match</code></pre>
+        <p class="expect">You should see: lines like these among the rest, wrapped here to fit. Ours compared 8 pairs, because one before trial had ended in <code>ERROR</code> and its partner had nothing to be judged against.</p></li>
+
+      <li><span class="goal">Goal: read the exit code of that comparison.</span>
+<pre data-shell="taught"><code class="language-bash">echo $?</code></pre>
+<pre class="output"><code>0</code></pre>
+        <p class="expect">You should see: <code>0</code>. No regression in the judged score, even though the tokens went up.</p></li>
+
+      <li><span class="goal">Goal: see whether the check fails. Swapping the two roles makes the before skill the change under test. This spends eighteen judge calls.</span>
+<pre><code class="language-bash">vally compare \
+  --baseline haiku-after \
+  --treatment haiku-before \
+  --judge-model claude-sonnet-5.5 \
+  --fail-on-regression</code></pre>
+<pre class="output"><code>  Win rate: 11%  1 win / 3 ties / 5 losses
+    over 9 trials
+  Mean score: -0.38 [95% CI -0.78, +0.02]
+    (+ = treatment better)</code></pre>
+        <p class="expect">You should see: a mean below zero. Whether its whole range is below zero is close, and it can go either way. In our latest run, above, the range reached +0.02 and no regression line was printed. In an earlier run of the same command the judge gave 2 ties and 6 losses, a mean of −0.49 with a range from −0.90 to −0.07, and the line <code>❌ Regression: 'haiku-before' scored significantly worse than baseline.</code></p></li>
+
+      <li><span class="goal">Goal: read the exit code, then go back.</span>
+<pre data-shell="taught"><code class="language-bash">echo $?</code></pre>
+<pre class="output"><code>0</code></pre>
+        <p class="expect">You should see: <code>1</code> if your range lay wholly below zero, as in our earlier run, and <code>0</code> if it reached above zero, as in our latest one. Then return to <code>practice</code> with <code>cd ../../..</code>.</p></li>
+    </ol>
+  </section>
+
+  <h2 id="what-it-supports" data-mode="think">What it supports</h2>
+
+  <p><strong>Where it agrees with lesson 15, and where it goes further.</strong> For <code>claude-haiku-4.5</code>, lesson 15's counts, 3 of 9 and 8 of 9, gave ranges that just touched: cannot tell. McNemar's line says the same thing in another way. It looks only at pass or fail, finds five pairs that flipped from fail to pass and none the other way, and calls that not significant, because five coin tosses all landing the same way happen about one time in sixteen. The pairwise judge went further: a mean of +0.53 with its range wholly above zero. It could, because it compared each pair directly and gave credit for the pair that both versions failed but the after skill failed less badly. In our run, side-by-side judging found an improvement that counting passes could not yet show.</p>
+
+  <p>Hold that loosely, for three reasons. The nine pairs are three stimuli tried three times, not nine independent requests, so the range is narrower than the evidence really allows. The judge is a model, and you have not checked this pairwise judge against your own labels as lesson 13 did for the yes-or-no one. And it varies: judging the same pairs the other way round gave −0.38, not −0.53, because one pair went to the before skill that time. Run twice, that swapped comparison landed on both sides of the line: once at −0.49 with its range wholly below zero, which failed the check, and once at −0.38 with its range reaching +0.02, which passed it. Trust the sign and whether the range crosses zero, not the second decimal, and expect a range that ends near zero to land on either side of it on another run.</p>
+
+  <p><strong>Worse in cost.</strong> On <code>gpt-5.6-terra</code> the judged quality did not move: 7 ties in 8, and a range from −0.07 to +0.17 that includes zero. The tokens did move. The after skill used about 11,000 more per trial, with a range from +665 to +21,599, wholly above zero; it took about one turn more. That is the "worse in cost" half of this lesson's question, and <code>--fail-on-regression</code> exited 0 through it, because the option gates on the judged score alone. To fail a run on cost, use the budget graders from lesson 18, set from the before trials. Read the metric lines every time, and use the exit code only for quality.</p>
+
+  <div class="source-citation">Every number in this section is from our runs on 2026-11-10.</div>
+
+  <h2 id="experiment-compare" data-mode="works">The experiment's own comparison</h2>
+
+  <p><code>vally experiment run</code> also takes <code>--compare</code>, which runs this same judging over every variant against the baseline as soon as the experiment ends, using the judge named in the eval files. It reports and does not gate: it exits 1 only when the comparison cannot finish, and a regression it finds does not fail the command. Vally's own guide gives the order: run the experiment, then run <code>vally compare</code> on its folder with <code>--fail-on-regression</code> as the step that can fail. We have not run <code>--compare</code>, because it needs a fresh experiment with agent runs.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/guides/run-your-first-experiment/">Vally docs, Run Your First Experiment</a>, on <code>--compare</code> reporting and <code>vally compare --fail-on-regression</code> gating; <a href="https://microsoft.github.io/vally/reference/cli/experiment/">CLI: experiment</a>, on the judge settings <code>--compare</code> uses.</div>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/reference/cli/compare/">Vally docs, CLI: compare</a></p>
+    <p>The whole command on one page: the two ways to name the versions, how pairs are judged, the verdict scale, what is printed and what each exit code means. Read it to the end; the last part, on partial comparisons, says what happens when some pairs cannot be judged.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory: what must be true for <code>--fail-on-regression</code> to exit 1, and name two things in the printed block it ignores.
+        <details class="answer"><summary>Show model answer</summary><p>The treatment's mean score is negative and its whole 95% range lies below zero. (With or without the option, the command also exits 1 when some pair could not be judged; a trial with no partner is only left out and does not change the exit code.) It ignores the metric deltas, such as tokens and wall time, and McNemar's test.</p></details></li>
+      <li>In our run, the edit made <code>gpt-5.6-terra</code> use about 11,000 more tokens per trial, and the regression check passed. You want the next edit to fail if it does that again. What would you add, and from which numbers would you set it?
+        <details class="answer"><summary>Show model answer</summary><p>A <code>token-budget</code> grader, from lesson 18, on these stimuli, with its <code>max</code> set just above the tokens of the trials you accept now (the before trials used about 49,000 each in our run). Then a trial of an edit that costs more fails like any other grader's failure. Test the budget on the saved trials with <code>vally grade</code> first, so you know it does not fail good work.</p></details></li>
+      <li>Why does the pairwise judge read each pair twice, and what does a tie mean in the comparison record?
+        <details class="answer"><summary>Show model answer</summary><p>Judges tend to favour one position. Reading the pair in both orders and keeping only a verdict both orders agree on stops that from deciding the result. A tie means the judge found the two equal, or that the two orders disagreed, which the record's reason says ("Position-swap inconsistent … Defaulting to tie").</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="19" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> judge lesson 15's before and after runs side by side, read the win rate and the change in tokens with its range, and run a command that exits 1 on a regression.</p>
+    <p><strong>Up next:</strong> <a href="./0020-when-a-run-goes-wrong.html">When a run goes wrong</a>. You have many moving parts now, and runs sometimes end in <code>ERROR</code> or fail for reasons that are not the skill. When a run goes wrong, where do you look first?</p>
+    <a class="next-lesson" href="./0020-when-a-run-goes-wrong.html">Next lesson: When a run goes wrong <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

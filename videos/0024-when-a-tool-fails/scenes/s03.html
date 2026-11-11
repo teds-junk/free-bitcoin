@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Only the failure is tested</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Test the bad day</div>
+  <h2 class="scene-title">Only the failure is tested</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="fails" data-rep="block" data-role="structure">
+      <div class="title words">The script fails</div><div class="label">on purpose, the same way in every trial</div>
+    </div>
+    <div class="semantic-block" data-concept="noway" data-rep="block" data-role="attention">
+      <div class="title words">No other way to the answer</div><div class="label">not the script’s source, not a cached copy</div>
+    </div>
+  </div>
+  <p class="note">Source: Vally docs, Eval Spec reference, Simulation</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "fails",
+  "at": "0~on purpose",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "noway",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

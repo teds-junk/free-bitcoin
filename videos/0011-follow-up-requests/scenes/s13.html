@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Which turn goes wrong?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.asked .semantic-block{min-height:300px}.asked .title{font-family:var(--font-code);font-size:42px}.asked .label{font-size:32px;line-height:1.5}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Run the conversation</div>
+  <h2 class="scene-title">Which turn goes wrong?</h2>
+  <div class="stage">
+<div class="cols asked">
+    <div class="semantic-block" data-concept="t0" data-rep="block" data-role="structure">
+      <div class="title">turn 0</div><div class="label">PR 64: a change in behaviour<br>wanted: an entry citing (#64)</div>
+    </div><div class="semantic-block" data-concept="t1" data-rep="block" data-role="structure">
+      <div class="title">turn 1</div><div class="label">PR 65: an internal rename<br>wanted: nothing added</div>
+    </div><div class="semantic-block" data-concept="t2" data-rep="block" data-role="structure">
+      <div class="title">turn 2</div><div class="label">a fix, with no number given<br>wanted: an entry citing nothing</div>
+    </div>
+  </div>
+  <p class="note">three conversations on each model · every turn graded on its own</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "t0",
+  "at": "2~three turns",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "t1",
+  "at": "2~expect",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "t2",
+  "at": "2~wrong",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

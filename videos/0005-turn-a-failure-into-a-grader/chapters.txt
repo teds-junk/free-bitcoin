@@ -1,0 +1,5 @@
+0:00 Hand the reading to code
+0:29 Three habits for graders
+1:51 Graders that read the diff
+4:39 Measure, edit, measure again
+7:47 What the counts show

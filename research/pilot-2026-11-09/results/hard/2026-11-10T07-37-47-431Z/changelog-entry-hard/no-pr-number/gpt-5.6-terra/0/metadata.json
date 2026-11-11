@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "no-pr-number",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::gpt-5.6-terra::no-pr-number::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "gpt-5.6-terra",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:38:24.403Z",
+  "status": "success",
+  "trajectoryId": "ea9c4dda-c7af-4f79-80bd-d6c926b787ba",
+  "executorSessionId": "e73d61ac-ae14-4011-b2b5-39a73979110b",
+  "completedAt": "2026-11-10T07:38:36.399Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/no-pr-number/gpt-5.6-terra/0/events.jsonl"
+}

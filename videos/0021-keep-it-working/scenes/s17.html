@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Over budget fails like any other</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.blk{min-width:980px;font-size:36px;line-height:1.5;padding:28px 36px}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Two suites and a conventions page</div>
+  <h2 class="scene-title">Over budget fails like any other</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark blk" data-lang="text"><code><span>❌ typo-fix (</span><span data-concept="did" data-rep="code"><span>4/5 graders passed</span></span><span>, 1 failed)</span>
+<span>  ✗ </span><span data-concept="over" data-rep="code"><span>[token-budget max 70000] 74099 tokens</span></span>
+<span>    exceeds max of 70000</span>
+
+<span data-concept="score" data-rep="code"><span>Score: 98.8% | FAILED</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="did">did the work</p><p class="callout" data-anchor="over">cost too much</p><p class="callout" data-anchor="score">decides nothing without a scoring block</p></aside>
+  </div>
+  <p class="note">3 typo-fix trials failed on the budget alone: 74,099 · 74,239 · 74,122 tokens · our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "did",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "over",
+  "at": "2",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "score",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "6"
+ }
+]
+</script>
+</body>
+</html>

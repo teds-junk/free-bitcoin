@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>To the agent, the tool failed</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.saw{font-size:38px;line-height:1.6;min-width:1100px}.callout{font-size:34px}.stage{gap:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Simulation</div>
+  <h2 class="scene-title">To the agent, the tool failed</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark saw" data-lang="text"><code><span data-concept="txt" data-rep="code"><span>error: tracker did not answer (timeout)</span></span>
+<span data-concept="exit" data-rep="code"><span>&lt;shellId: 0 completed with exit code 1&gt;</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="txt">our text</p><p class="callout" data-anchor="exit">a failed command</p></aside>
+  </div>
+  <p class="note">each trial counts the calls that were replaced as <span class="mono">simulatedToolCallCount</span>, in <span class="mono">results.jsonl</span> · our run · 2026-11-11T17-49-59-016Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "txt",
+  "at": "0~our text",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "exit",
+  "at": "0~an exit code",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "1"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>About 1.9 cents per pass</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.arith{font-size:34px;line-height:1.45;padding:20px 32px;min-width:1000px}.callout{font-size:32px}.variants{font-size:34px}.variants th{font-size:28px}.variants td{padding-top:12px;padding-bottom:12px}.variants td.mono{font-family:var(--font-code)}.variants .unit{font-family:var(--font-body)}.stage{gap:24px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Run a variant on your provider</div>
+  <h2 class="scene-title">About 1.9 cents per pass</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark arith" data-lang="text"><code><span data-concept="ain" data-rep="code"><span> 364,787 × $0.10 per million = $0.0365</span></span>
+<span data-concept="aout" data-rep="code"><span>   3,857 × $0.40 per million = $0.0015</span></span>
+<span data-concept="atot" data-rep="code"><span>              total, 5 trials = $0.0380</span></span>
+<span data-concept="app" data-rep="code"><span>           ÷ 2 passing trials = $0.0190</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="ain">input</p><p class="callout" data-anchor="aout">output</p><p class="callout" data-anchor="atot">about 3.8 cents</p><p class="callout" data-anchor="app">about 1.9 cents</p></aside>
+  </div>
+  <table class="data-table full variants">
+    <thead><tr><th>Variant</th><th class="num">per passing trial</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">qwen-local <span class="unit">at the made-up price</span></td><td class="num">1.9¢</td></tr>
+      <tr><td class="mono">haiku-low</td><td class="num"><span data-concept="hl" data-rep="cell">0.2¢</span></td></tr>
+      <tr><td class="mono">terra-low</td><td class="num"><span data-concept="tl" data-rep="cell">2.8¢</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "ain",
+  "at": "1~input",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "aout",
+  "at": "1~output",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "atot",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "app",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "hl",
+  "at": "4~haiku",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "tl",
+  "at": "4~terra",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

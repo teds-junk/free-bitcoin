@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Four steps, no agent runs</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.steps .semantic-block{min-height:330px}.steps .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Catch a grader that cannot fail</div>
+  <h2 class="scene-title">Four steps, no agent runs</h2>
+  <div class="stage">
+<div class="cols steps">
+    <div class="semantic-block" data-concept="st1" data-rep="block" data-role="structure">
+      <div class="step">1</div><div class="title words">re-grade</div><div class="label">the saved run, with the graders as they are</div>
+    </div>
+    <div class="semantic-block" data-concept="st2" data-rep="block" data-role="change">
+      <div class="step">2</div><div class="title words">swap</div><div class="label">the flawed pattern goes in</div>
+    </div>
+    <div class="semantic-block" data-concept="st3" data-rep="block" data-role="attention">
+      <div class="step">3</div><div class="title words">ask twice</div><div class="label">the oracle, then the saved trials</div>
+    </div>
+    <div class="semantic-block" data-concept="st4" data-rep="block" data-role="success">
+      <div class="step">4</div><div class="title words">restore</div><div class="label">the right pattern goes back</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "st1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "st2",
+  "at": "2",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "st3",
+  "at": "2~ask the oracle",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "st4",
+  "at": "3",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

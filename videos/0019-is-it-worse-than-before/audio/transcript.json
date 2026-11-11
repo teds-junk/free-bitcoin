@@ -1,0 +1,1771 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/0019-is-it-worse-than-before",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "ed82ead9c071d28f",
+      "text": "After one edit to the skill, the passing trials on one model went from five of nine to nine of nine, and the two ranges still overlapped.",
+      "tts_text": "After one edit to the skill, the passing trials on one model went from five of nine to nine of nine, and the two ranges still overlapped.",
+      "heard": "After one edit to the skill, the passing trials on one model went from 5 of 9 to 9 of 9 and the two ranges still overlapped.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "7dfba187c5ad04de",
+      "text": "So those trials couldn't yet say the edit made things better.",
+      "tts_text": "So those trials couldn't yet say the edit made things better.",
+      "heard": "So those trials couldn't yet say the edit made things better.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "b90e64b9ba3008c8",
+      "text": "Before every change we keep, there's a narrower question: is it any worse than before?",
+      "tts_text": "Before every change we keep, there's a narrower question: is it any worse than before?",
+      "heard": "Before every change we keep, there's a narrower question. Is it any worse than before?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "05ba4f2c8cf0af26",
+      "text": "In this lesson, you'll judge two saved runs side by side, and run a check that's built to fail when a change made things worse.",
+      "tts_text": "In this lesson, you'll judge two saved runs side by side, and run a check that's built to fail when a change made things worse.",
+      "heard": "In this lesson, you'll judge two saved runs side by side, and run a check that's built to fail when a change made things worse.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "fff3ab11aabf5cc6",
+      "text": "Let's start with what our graders can't see.",
+      "tts_text": "Let's start with what our graders can't see.",
+      "heard": "Let's start with what our graders can't see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "37bf65a1baee265e",
+      "text": "Each grader takes one trial at a time, and holds it against a fixed check.",
+      "tts_text": "Each grader takes one trial at a time, and holds it against a fixed check.",
+      "heard": "Each grader takes one trial at a time and holds it against a fixed check.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "ca58c9233c490e07",
+      "text": "That can't answer a question like: is the new skill's entry better than the old one's?",
+      "tts_text": "That can't answer a question like: is the new skill's entry better than the old one's?",
+      "heard": "That can't answer a question like, is the new skills entry better than the old ones?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 3,
+      "file": "audio/s02_03.wav",
+      "clip_sha": "e496e54c5a4c3a85",
+      "text": "Here are two entries for the same request, and the graders passed both, so the difference between them disappears.",
+      "tts_text": "Here are two entries for the same request, and the graders passed both, so the difference between them disappears.",
+      "heard": "Here are two entries for the same request, and the graders passed both, so the difference between them disappears.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 4,
+      "file": "audio/s02_04.wav",
+      "clip_sha": "9216c62a24977a4f",
+      "text": "A one-to-five scale has the same limit, since it places each entry by itself.",
+      "tts_text": "A one-to-five scale has the same limit, since it places each entry by itself.",
+      "heard": "1 to 5 scale has the same limit since it places each entry by itself.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "52696cbf1a2d5756",
+      "text": "A pairwise judge works differently.",
+      "tts_text": "A pairwise judge works differently.",
+      "heard": "A pairwise judge works differently.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "58e7e4357c8ef822",
+      "text": "It's an LLM judge that's shown two answers to the same request, one from each version, and says which is better, and by how much.",
+      "tts_text": "It's an LLM judge that's shown two answers to the same request, one from each version, and says which is better, and by how much.",
+      "heard": "It's an LLM judge that's shown two answers to the same request, one from each version, and says which is better and by how much.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 2,
+      "file": "audio/s03_02.wav",
+      "clip_sha": "870e44264a6ce5c7",
+      "text": "Comparing two answers side by side is easier than scoring either one alone, for people and for models.",
+      "tts_text": "Comparing two answers side by side is easier than scoring either one alone, for people and for models.",
+      "heard": "Comparing two answers side by side is easier than scoring either one alone for people and for models.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 3,
+      "file": "audio/s03_03.wav",
+      "clip_sha": "da276eed1bd0b7ed",
+      "text": "So a pairwise judge notices smaller changes.",
+      "tts_text": "So a pairwise judge notices smaller changes.",
+      "heard": "But pairwise judge notices smaller changes.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "So a",
+          "heard": "But",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 0,
+      "file": "audio/s04_00.wav",
+      "clip_sha": "f2a0251ff42cc710",
+      "text": "It has one well-known weakness.",
+      "tts_text": "It has one well-known weakness.",
+      "heard": "It has one well-known weakness.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 1,
+      "file": "audio/s04_01.wav",
+      "clip_sha": "e9d9a47f196dc5ac",
+      "text": "Shown two answers, a judge tends to prefer one position, often the first, whatever is in it.",
+      "tts_text": "Shown two answers, a judge tends to prefer one position, often the first, whatever is in it.",
+      "heard": "Shown two answers, a judge tends to prefer one position, often the first, whatever is in it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 2,
+      "file": "audio/s04_02.wav",
+      "clip_sha": "3c43e4e4cf435996",
+      "text": "So Vally asks twice, with the two answers in the opposite order.",
+      "tts_text": "So Valley asks twice, with the two answers in the opposite order.",
+      "heard": "So Valley asks twice with the two answers in the opposite order.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 3,
+      "file": "audio/s04_03.wav",
+      "clip_sha": "ff931081ed2d543f",
+      "text": "When both orders agree, the pair gets that verdict.",
+      "tts_text": "When both orders agree, the pair gets that verdict.",
+      "heard": "When both orders agree, the pair gets that verdict.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 4,
+      "file": "audio/s04_04.wav",
+      "clip_sha": "5ad1489be81680c8",
+      "text": "When they disagree, the pair is scored as a tie.",
+      "tts_text": "When they disagree, the pair is scored as a tie.",
+      "heard": "When they disagree, the pair is scored as a tie.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 0,
+      "file": "audio/s05_00.wav",
+      "clip_sha": "3eab608b0dfa8b6f",
+      "text": "A pairwise judge doesn't replace graders.",
+      "tts_text": "A pairwise judge doesn't replace graders.",
+      "heard": "A pairwise judge doesn't replace graders.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 1,
+      "file": "audio/s05_01.wav",
+      "clip_sha": "f668c855ed2c4727",
+      "text": "It can't say that both versions are wrong, only which one is less wrong.",
+      "tts_text": "It can't say that both versions are wrong, only which one is less wrong.",
+      "heard": "It can't say that both versions are wrong, only which one is less wrong.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 2,
+      "file": "audio/s05_02.wav",
+      "clip_sha": "c4d60ffbcd3c2d8e",
+      "text": "So graders stay for the question: is it right?",
+      "tts_text": "So graders stay for the question: is it right?",
+      "heard": "So, greater stay for the question, is it right?",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "graders",
+          "heard": "greater",
+          "similarity": 0.77
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 3,
+      "file": "audio/s05_03.wav",
+      "clip_sha": "5dd7bff3d658d37d",
+      "text": "The side-by-side judgement is for the other one: is it worse?",
+      "tts_text": "The side-by-side judgement is for the other one: is it worse?",
+      "heard": "The side-by-side judgment is for the other one. Is it worse?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 0,
+      "file": "audio/s06_00.wav",
+      "clip_sha": "a8b096e56a80e73d",
+      "text": "That's the idea; here's the command that does it.",
+      "tts_text": "That's the idea; here's the command that does it.",
+      "heard": "That's the idea. Here's the command that does it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 1,
+      "file": "audio/s06_01.wav",
+      "clip_sha": "d43834d1d25733d1",
+      "text": "Vally compare runs a pairwise judge over two sets of saved trials, and adds up the result, without starting an agent.",
+      "tts_text": "Valley compare runs a pairwise judge over two sets of saved trials, and adds up the result, without starting an agent.",
+      "heard": "Valley Compare runs a pairwise judge over two sets of saved trials and adds up the result without starting an agent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 2,
+      "file": "audio/s06_02.wav",
+      "clip_sha": "01c7837f3f37442c",
+      "text": "Its baseline is the version we compare against, and Vally's word for the version we changed is the treatment.",
+      "tts_text": "Its baseline is the version we compare against, and Valley's word for the version we changed is the treatment.",
+      "heard": "Its baseline is the version we compare against, and Valley's word for the version we changed is the treatment.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 3,
+      "file": "audio/s06_03.wav",
+      "clip_sha": "e047fbad429f9d4f",
+      "text": "Here, both are variants of our before-and-after experiment: one model, with the skill before the edit and after it.",
+      "tts_text": "Here, both are variants of our before-and-after experiment: one model, with the skill before the edit and after it.",
+      "heard": "Here both are variants of our before and after experiment, one model with the skill before the edit and after it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 4,
+      "file": "audio/s06_04.wav",
+      "clip_sha": "829f0b4fe1ab4171",
+      "text": "Next, the judge has to be named with dash dash judge model, because this command doesn't take it from the eval file, and its default may be a model under test.",
+      "tts_text": "Next, the judge has to be named with dash dash judge model, because this command doesn't take it from the [eval](/ˌivˈæl/) file, and its default may be a model under test.",
+      "heard": "Next, the judge has to be named with dash dash judge model because this command doesn't take it from the eval file and its default may be a model under test.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 5,
+      "file": "audio/s06_05.wav",
+      "clip_sha": "c3475815f7238043",
+      "text": "Finally, dash dash output names a file for a record of every pair.",
+      "tts_text": "Finally, dash dash output names a file for a record of every pair.",
+      "heard": "Finally, Dash-Output names a file for a record of every pair.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 0,
+      "file": "audio/s07_00.wav",
+      "clip_sha": "713cc678512f55fe",
+      "text": "Vally compare can also be given a whole experiment folder.",
+      "tts_text": "Valley compare can also be given a whole experiment folder.",
+      "heard": "Valley Compare can also be given a whole experiment folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 1,
+      "file": "audio/s07_01.wav",
+      "clip_sha": "33c62b44801f1b52",
+      "text": "Then the baseline is the one the experiment file names, here haiku before, and every other variant is judged against it.",
+      "tts_text": "Then the baseline is the one the experiment file names, here haiku before, and every other variant is judged against it.",
+      "heard": "Then the baseline is the one the experiment file names, hear haiku before, and every other variant is judged against it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 2,
+      "file": "audio/s07_02.wav",
+      "clip_sha": "f9202b4220dfa3a2",
+      "text": "That would set the terra variants against haiku, and mix a change of model into a question about the edit.",
+      "tts_text": "That would set the terra variants against haiku, and mix a change of model into a question about the edit.",
+      "heard": "That would set the terra variance against haiku and mix a change of model into a question about the edit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 3,
+      "file": "audio/s07_03.wav",
+      "clip_sha": "7b36e14b0f768c23",
+      "text": "So we'll name two variant folders instead, one model at a time.",
+      "tts_text": "So we'll name two variant folders instead, one model at a time.",
+      "heard": "So we'll name two variant folders instead, one model at a time.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 4,
+      "file": "audio/s07_04.wav",
+      "clip_sha": "f6332cc98a4c98e1",
+      "text": "Each holds its own results dot jsonl, which is all compare needs.",
+      "tts_text": "Each holds its own results dot jay-son-ell, which is all compare needs.",
+      "heard": "Each holds its own results.json, which is all compare needs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 0,
+      "file": "audio/s08_00.wav",
+      "clip_sha": "712d82746c011cc3",
+      "text": "Vally pairs the trials by stimulus name and trial number: trial zero with trial zero, and so on.",
+      "tts_text": "Valley pairs the trials by stimulus name and trial number: trial zero with trial zero, and so on.",
+      "heard": "Valley Pairs the Trials by Stimulus Name and Trial Number, Trial Zero with Trial Zero, and so on.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 1,
+      "file": "audio/s08_01.wav",
+      "clip_sha": "265a3769bdabcd68",
+      "text": "For each pair, the judge works from the rubric saved with the trials, and gives a verdict from the treatment's side.",
+      "tts_text": "For each pair, the judge works from the rubric saved with the trials, and gives a verdict from the treatment's side.",
+      "heard": "For each pair, the judge works from the rubric saved with the trials and gives a verdict from the treatment side.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 2,
+      "file": "audio/s08_02.wav",
+      "clip_sha": "365a8eedce130f07",
+      "text": "Much better scores plus one, and slightly better, plus zero point four.",
+      "tts_text": "Much better scores plus one, and slightly better, plus zero point four.",
+      "heard": "Much better scores plus 1 and slightly better plus 0.4.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s08",
+      "i": 3,
+      "file": "audio/s08_03.wav",
+      "clip_sha": "40b947ac4a05c7df",
+      "text": "Ties score zero.",
+      "tts_text": "Ties score zero.",
+      "heard": "Ties score zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 4,
+      "file": "audio/s08_04.wav",
+      "clip_sha": "057ed0817d1faa69",
+      "text": "The worse verdicts mirror those, below zero.",
+      "tts_text": "The worse verdicts mirror those, below zero.",
+      "heard": "The worst verdicts mirror those below zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 5,
+      "file": "audio/s08_05.wav",
+      "clip_sha": "94ccae470923e2f5",
+      "text": "Each pair costs two judge calls, one for each order.",
+      "tts_text": "Each pair costs two judge calls, one for each order.",
+      "heard": "Each pair costs two judge calls, one for each order.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 0,
+      "file": "audio/s09_00.wav",
+      "clip_sha": "31ea02d58f4841af",
+      "text": "Here's what compare printed in an earlier run, on other saved trials.",
+      "tts_text": "Here's what compare printed in an earlier run, on other saved trials.",
+      "heard": "Here's what Compare printed in an earlier run on other saved trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 1,
+      "file": "audio/s09_01.wav",
+      "clip_sha": "e4b46521dff8a4b1",
+      "text": "First, the win rate is the share of pairs that the treatment won: six of nine here.",
+      "tts_text": "First, the win rate is the share of pairs that the treatment won: six of nine here.",
+      "heard": "First, the win rate is the share of pairs that the treatment won, 6 of 9 here.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s09",
+      "i": 2,
+      "file": "audio/s09_02.wav",
+      "clip_sha": "8755cfb4dee26441",
+      "text": "Ties count against it, so a win rate isn't the same as not worse.",
+      "tts_text": "Ties count against it, so a win rate isn't the same as not worse.",
+      "heard": "Ties count against it, so a win rate isn't the same as not worse.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 3,
+      "file": "audio/s09_03.wav",
+      "clip_sha": "759dce481f605d34",
+      "text": "Next is the mean of the nine scores, with a range around it.",
+      "tts_text": "Next is the mean of the nine scores, with a range around it.",
+      "heard": "Next is the mean of the nine scores with a range around it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 4,
+      "file": "audio/s09_04.wav",
+      "clip_sha": "c641bc7ea6e34974",
+      "text": "That range is a confidence interval: the kind we put around a count, here around a mean, and the true mean is probably inside it.",
+      "tts_text": "That range is a confidence interval: the kind we put around a count, here around a mean, and the true mean is probably inside it.",
+      "heard": "That range is a confidence interval, the kind we put around account, hear around a mean, and the true mean is probably inside it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s09",
+      "i": 5,
+      "file": "audio/s09_05.wav",
+      "clip_sha": "282d758934fcb61d",
+      "text": "This one lies wholly above zero.",
+      "tts_text": "This one lies wholly above zero.",
+      "heard": "This one lies wholly above zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 0,
+      "file": "audio/s10_00.wav",
+      "clip_sha": "5a7a1c9e681079c9",
+      "text": "Below that is a second test, and it ignores the judge.",
+      "tts_text": "Below that is a second test, and it ignores the judge.",
+      "heard": "Below that is a second test and it ignores the judge.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 1,
+      "file": "audio/s10_01.wav",
+      "clip_sha": "2557839e9adb82e7",
+      "text": "It looks only at the graders' pass or fail, and counts the pairs that flipped: five went from fail to pass, and none the other way.",
+      "tts_text": "It looks only at the graders' pass or fail, and counts the pairs that flipped: five went from fail to pass, and none the other way.",
+      "heard": "Looks only at the grader's pass or fail, and counts the pairs that flipped, five went from fail to pass and none the other way.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "It",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 2,
+      "file": "audio/s10_02.wav",
+      "clip_sha": "851de177290003be",
+      "text": "The name of the test is on that line, and it asks whether a split like five to nothing could easily be chance.",
+      "tts_text": "The name of the test is on that line, and it asks whether a split like five to nothing could easily be chance.",
+      "heard": "Name of the test is on that line, and it asks whether a split like 5 to nothing could easily be chance.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "The",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 3,
+      "file": "audio/s10_03.wav",
+      "clip_sha": "eb0d9fc0f4c17b01",
+      "text": "By chance alone, a split that lopsided turns up about six times in a hundred.",
+      "tts_text": "By chance alone, a split that lopsided turns up about six times in a hundred.",
+      "heard": "I chance alone, a split that lopsided turns up about six times in 100.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "By",
+          "heard": "I",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 4,
+      "file": "audio/s10_04.wav",
+      "clip_sha": "3451a710a6c83612",
+      "text": "The usual bar for calling a result significant is under five in a hundred.",
+      "tts_text": "The usual bar for calling a result significant is under five in a hundred.",
+      "heard": "The usual bar for calling a result significant is under 5 in 100.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s10",
+      "i": 5,
+      "file": "audio/s10_05.wav",
+      "clip_sha": "73001996079e515a",
+      "text": "So this one is not significant.",
+      "tts_text": "So this one is not significant.",
+      "heard": "So, this one is not significant.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 6,
+      "file": "audio/s10_06.wav",
+      "clip_sha": "e227d0057e4cb2a4",
+      "text": "Last come the metric changes: the treatment minus the baseline for each measure, averaged over the pairs, each with a range.",
+      "tts_text": "Last come the metric changes: the treatment minus the baseline for each measure, averaged over the pairs, each with a range.",
+      "heard": "Last come the metric changes. The treatment minus the baseline for each measure averaged over the pairs, each with a range.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 7,
+      "file": "audio/s10_07.wav",
+      "clip_sha": "b4f3327669d85e94",
+      "text": "High variance means the pairs differed a lot from one another.",
+      "tts_text": "High variance means the pairs differed a lot from one another.",
+      "heard": "Hiberience means the pairs differed a lot from one another.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "High variance",
+          "heard": "Hiberience",
+          "similarity": 0.74
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 0,
+      "file": "audio/s11_00.wav",
+      "clip_sha": "606e52e8ffadeda3",
+      "text": "One option turns compare into a regression check: dash dash fail on regression.",
+      "tts_text": "One option turns compare into a regression check: dash dash fail on regression.",
+      "heard": "One option turns compare into a regression check, dash-fail on regression.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s11",
+      "i": 1,
+      "file": "audio/s11_01.wav",
+      "clip_sha": "f6e03ea81848c5a7",
+      "text": "With it, the command exits one when the treatment is significantly worse.",
+      "tts_text": "With it, the command exits one when the treatment is significantly worse.",
+      "heard": "With it, the command exits one when the treatment is significantly worse.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 2,
+      "file": "audio/s11_02.wav",
+      "clip_sha": "78372b5f77db2b42",
+      "text": "That means its mean score is below zero, and its whole range is below zero too.",
+      "tts_text": "That means its mean score is below zero, and its whole range is below zero too.",
+      "heard": "That means its mean score is below zero, and its whole range is below zero too.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 3,
+      "file": "audio/s11_03.wav",
+      "clip_sha": "b4167c1e2ee79ab3",
+      "text": "So a negative mean isn't enough if the range reaches above zero.",
+      "tts_text": "So a negative mean isn't enough if the range reaches above zero.",
+      "heard": "So a negative mean isn't enough if the range reaches above zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 4,
+      "file": "audio/s11_04.wav",
+      "clip_sha": "b9cdfb4afadac5c7",
+      "text": "Nothing else counts: a rise in tokens doesn't change the exit code, and neither does the second test.",
+      "tts_text": "Nothing else counts: a rise in tokens doesn't change the exit code, and neither does the second test.",
+      "heard": "Nothing else counts, a rise in tokens doesn't change the exit code, and neither does the second test.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 5,
+      "file": "audio/s11_05.wav",
+      "clip_sha": "a30fdf7c55abee5d",
+      "text": "Apart from that, with or without the option, compare exits one when some pair couldn't be judged, even after retries.",
+      "tts_text": "Apart from that, with or without the option, compare exits one when some pair couldn't be judged, even after retries.",
+      "heard": "Apart from that with or without the option, compare exits one when some pair couldn't be judged, even after retries.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 6,
+      "file": "audio/s11_06.wav",
+      "clip_sha": "1a1ea6d1bf6f5d36",
+      "text": "To print the exit code, there's echo dollar question mark, typed straight after the command.",
+      "tts_text": "To print the exit code, there's echo dollar question mark, typed straight after the command.",
+      "heard": "To print the exit code, there's Echo Dollar question mark, typed straight after the command.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 0,
+      "file": "audio/s12_00.wav",
+      "clip_sha": "76f87ea14cdac6ac",
+      "text": "That's how compare works; now let's run it on the saved trials of our before-and-after experiment.",
+      "tts_text": "That's how compare works; now let's run it on the saved trials of our before-and-after experiment.",
+      "heard": "That's how Compare works. Now let's run it on the saved trials of our before and after experiment.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s12",
+      "i": 1,
+      "file": "audio/s12_01.wav",
+      "clip_sha": "02e2f41c24d0cf82",
+      "text": "First, the before skill against the after skill, on haiku.",
+      "tts_text": "First, the before skill against the after skill, on haiku.",
+      "heard": "First, the before skill against the after skill on Haiku.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 2,
+      "file": "audio/s12_02.wav",
+      "clip_sha": "2331d1398f938137",
+      "text": "Then the same on terra, with the regression check on.",
+      "tts_text": "Then the same on terra, with the regression check on.",
+      "heard": "Then the same on Terra with the regression check on.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 3,
+      "file": "audio/s12_03.wav",
+      "clip_sha": "e29a6fe3a3060a94",
+      "text": "Last, haiku again with the two roles swapped, so the before skill becomes the change under test.",
+      "tts_text": "Last, haiku again with the two roles swapped, so the before skill becomes the change under test.",
+      "heard": "Last haiku again with the two rolls swapped, so the before skill becomes the change under test.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s12",
+      "i": 4,
+      "file": "audio/s12_04.wav",
+      "clip_sha": "d0c25998056e41b0",
+      "text": "Which of the three would you expect the check to fail?",
+      "tts_text": "Which of the three would you expect the check to fail?",
+      "heard": "Which of the three would you expect the check to fail?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 5,
+      "file": "audio/s12_05.wav",
+      "clip_sha": "b749f7ec6a23fa0f",
+      "text": "If you tried it yourself, here's what you'd see.",
+      "tts_text": "If you tried it yourself, here's what you'd see.",
+      "heard": "If you tried it yourself, here's what you'd see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 0,
+      "file": "audio/s13_00.wav",
+      "clip_sha": "64d594eed09f54da",
+      "text": "All three run from inside the experiment's folder, so we change into it.",
+      "tts_text": "All three run from inside the experiment's folder, so we change into it.",
+      "heard": "All three run from inside the experiments folder, so we change into it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 1,
+      "file": "audio/s13_01.wav",
+      "clip_sha": "ea4e2464dfecaec3",
+      "text": "Let's see what it holds.",
+      "tts_text": "Let's see what it holds.",
+      "heard": "Let's see what it holds.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 2,
+      "file": "audio/s13_02.wav",
+      "clip_sha": "c2b20cb079603f7c",
+      "text": "There's one folder for each variant, beside the experiment's report.",
+      "tts_text": "There's one folder for each variant, beside the experiment's report.",
+      "heard": "There's one folder for each variant beside the experiment's report.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 0,
+      "file": "audio/s14_00.wav",
+      "clip_sha": "f94e4d5b0423fc60",
+      "text": "First, haiku: the before skill as the baseline, and the after skill as the treatment.",
+      "tts_text": "First, haiku: the before skill as the baseline, and the after skill as the treatment.",
+      "heard": "First, haiku, the before skill as the baseline and the after skill as the treatment.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 1,
+      "file": "audio/s14_01.wav",
+      "clip_sha": "739f2388225c3450",
+      "text": "It spends eighteen judge calls, two for each of nine pairs.",
+      "tts_text": "It spends eighteen judge calls, two for each of nine pairs.",
+      "heard": "It spends 18 judge calls, two for each of nine pairs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s14",
+      "i": 2,
+      "file": "audio/s14_02.wav",
+      "clip_sha": "a8f4a3fe8bd0f121",
+      "text": "We're after the mean score, and whether its range clears zero.",
+      "tts_text": "We're after the mean score, and whether its range clears zero.",
+      "heard": "We are after the mean score and whether its range clears zero.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "We're",
+          "heard": "We are",
+          "similarity": 0.57
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 3,
+      "file": "audio/s14_03.wav",
+      "clip_sha": "3958ee4c734a2b00",
+      "text": "About two minutes later, the treatment has won four of nine pairs, and the mean is plus zero point three three.",
+      "tts_text": "About two minutes later, the treatment has won four of nine pairs, and the mean is plus zero point three three.",
+      "heard": "About two minutes later, the treatment has one four of nine pairs, and the mean is plus 0.33.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s14",
+      "i": 4,
+      "file": "audio/s14_04.wav",
+      "clip_sha": "8dcecb7f355c030c",
+      "text": "Its range runs from minus zero point zero eight to plus zero point seven five, so it includes zero.",
+      "tts_text": "Its range runs from minus zero point zero eight to plus zero point seven five, so it includes zero.",
+      "heard": "Its range runs from minus 0.08 to plus 0.75, so it includes zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s14",
+      "i": 5,
+      "file": "audio/s14_05.wav",
+      "clip_sha": "1dda71dc672c0d15",
+      "text": "On tokens, the range is wholly below zero: the after skill used about fourteen thousand fewer per trial.",
+      "tts_text": "On tokens, the range is wholly below zero: the after skill used about fourteen thousand fewer per trial.",
+      "heard": "On tokens, the range is wholly below zero. The after-skill used about 14,000 fewer per trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s15",
+      "i": 0,
+      "file": "audio/s15_00.wav",
+      "clip_sha": "76608ff87cf99177",
+      "text": "The same command also wrote its record: one line of JSON, spread out here so we can go through it.",
+      "tts_text": "The same command also wrote its record: one line of jay-son, spread out here so we can go through it.",
+      "heard": "The same command also wrote its record, one line of JSON, spread out here so we can go through it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 1,
+      "file": "audio/s15_01.wav",
+      "clip_sha": "ee6a23a3f5e14535",
+      "text": "This pair is the dates request, trial zero from each version.",
+      "tts_text": "This pair is the dates request, trial zero from each version.",
+      "heard": "This pair is the date's request, trial zero from each version.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 2,
+      "file": "audio/s15_02.wav",
+      "clip_sha": "059f9f7a2e14d8cb",
+      "text": "The pairwise judge found the after skill's entry slightly worse, for a score of minus zero point four.",
+      "tts_text": "The pairwise judge found the after skill's entry slightly worse, for a score of minus zero point four.",
+      "heard": "The pairwise judge found the after-skills entry slightly worse for a score of minus 0.4.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s15",
+      "i": 3,
+      "file": "audio/s15_03.wav",
+      "clip_sha": "2ea6c6e8df2f73b2",
+      "text": "Its reason is kept too: the before entry adds an example date, which makes the change more concrete.",
+      "tts_text": "Its reason is kept too: the before entry adds an example date, which makes the change more concrete.",
+      "heard": "Its reason is kept to, the before entry adds an example date, which makes the change more concrete.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s15",
+      "i": 4,
+      "file": "audio/s15_04.wav",
+      "clip_sha": "6cbdfe5f4872c922",
+      "text": "On this same pair, both entries had passed their graders.",
+      "tts_text": "On this same pair, both entries had passed their graders.",
+      "heard": "On this same pair, both entries had passed their graders.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 5,
+      "file": "audio/s15_05.wav",
+      "clip_sha": "d61aac6c16192a1f",
+      "text": "In another pair, the two orders agreed on the winner but not on how much, so the record keeps the weaker verdict.",
+      "tts_text": "In another pair, the two orders agreed on the winner but not on how much, so the record keeps the weaker verdict.",
+      "heard": "In another pair, the two orders agreed on the winner, but not on how much, so the record keeps the weaker verdict.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 0,
+      "file": "audio/s17_00.wav",
+      "clip_sha": "03df3b698f737b0d",
+      "text": "Now the second model, with the regression check on, and a record file of its own.",
+      "tts_text": "Now the second model, with the regression check on, and a record file of its own.",
+      "heard": "Now the second model with the regression check on and a record file of its own.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 1,
+      "file": "audio/s17_01.wav",
+      "clip_sha": "fd65772e53ead195",
+      "text": "On the result, there are two things to look at: the mean score's range, and the tokens line.",
+      "tts_text": "On the result, there are two things to look at: the mean score's range, and the tokens line.",
+      "heard": "On the result there are two things to look at, the mean scores range and the tokens line.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 2,
+      "file": "audio/s17_02.wav",
+      "clip_sha": "2a3518287936ff28",
+      "text": "This time only six pairs were judged: three of the before trials did not finish, so their partners were left out, as the warning says.",
+      "tts_text": "This time only six pairs were judged: three of the before trials did not finish, so their partners were left out, as the warning says.",
+      "heard": "This time only six pairs were judged. Three of the before trials did not finish, so their partners were left out, as the warning says.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 3,
+      "file": "audio/s17_03.wav",
+      "clip_sha": "4acd9b394184b0d3",
+      "text": "The judged score barely moved: three of the six are ties, and the range includes zero.",
+      "tts_text": "The judged score barely moved: three of the six are ties, and the range includes zero.",
+      "heard": "The judge score barely moved, three of the six are ties, and the range includes zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 4,
+      "file": "audio/s17_04.wav",
+      "clip_sha": "84fe153b55d93e1b",
+      "text": "The tokens fell, by about eight thousand per trial, with a range wholly below zero.",
+      "tts_text": "The tokens fell, by about eight thousand per trial, with a range wholly below zero.",
+      "heard": "The tokens fell by about 8,000 per trial, with a range wholly below zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 5,
+      "file": "audio/s17_05.wav",
+      "clip_sha": "829405123436e3f2",
+      "text": "So did the check fail?",
+      "tts_text": "So did the check fail?",
+      "heard": "So did the check fail.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 6,
+      "file": "audio/s17_06.wav",
+      "clip_sha": "f16503e3bd2566f6",
+      "text": "Exit code zero: no regression in the judged score.",
+      "tts_text": "Exit code zero: no regression in the judged score.",
+      "heard": "Exit code 0, no regression in the judge score.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s18",
+      "i": 0,
+      "file": "audio/s18_00.wav",
+      "clip_sha": "911f632e26cf6c00",
+      "text": "To see whether the check fails, we swap the two roles: the after skill is the baseline now, and the before skill is the change under test.",
+      "tts_text": "To see whether the check fails, we swap the two roles: the after skill is the baseline now, and the before skill is the change under test.",
+      "heard": "To see whether the check fails, we swap the two roles. The after skill is the baseline now, and the before skill is the change under test.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 1,
+      "file": "audio/s18_01.wav",
+      "clip_sha": "32b41c058fb64493",
+      "text": "A consistent judge would print the first comparison's mean with its sign flipped: minus zero point three three.",
+      "tts_text": "A consistent judge would print the first comparison's mean with its sign flipped: minus zero point three three.",
+      "heard": "A consistent judge would print the first comparison's mean with its sign flipped, minus 0.33.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 2,
+      "file": "audio/s18_02.wav",
+      "clip_sha": "3c29b6bf07a327e8",
+      "text": "This one printed exactly that, and its range reaches above zero.",
+      "tts_text": "This one printed exactly that, and its range reaches above zero.",
+      "heard": "This one printed exactly that, and its range reaches above zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 3,
+      "file": "audio/s18_03.wav",
+      "clip_sha": "56a3636aff7776e4",
+      "text": "So what does the check make of that?",
+      "tts_text": "So what does the check make of that?",
+      "heard": "So what does the check make of that?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 4,
+      "file": "audio/s18_04.wav",
+      "clip_sha": "5935b92460a774fe",
+      "text": "Exit code zero: the check passed, because the range isn't wholly below zero.",
+      "tts_text": "Exit code zero: the check passed, because the range isn't wholly below zero.",
+      "heard": "Exit code 0, the check passed, because the range isn't wholly below 0.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s19",
+      "i": 0,
+      "file": "audio/s19_00.wav",
+      "clip_sha": "01b0f535008d5ade",
+      "text": "Here are all three, side by side.",
+      "tts_text": "Here are all three, side by side.",
+      "heard": "Here are all three side by side.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 1,
+      "file": "audio/s19_01.wav",
+      "clip_sha": "1231adb103dc61e5",
+      "text": "So which of the three did the check fail?",
+      "tts_text": "So which of the three did the check fail?",
+      "heard": "So which of the three did the check fail?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 2,
+      "file": "audio/s19_02.wav",
+      "clip_sha": "70e619394100cd16",
+      "text": "None of them, in our run.",
+      "tts_text": "None of them, in our run.",
+      "heard": "None of them in our run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 3,
+      "file": "audio/s19_03.wav",
+      "clip_sha": "0769fe4cc7f455bd",
+      "text": "The swapped comparison came closest: its mean is below zero, but its range crosses it.",
+      "tts_text": "The swapped comparison came closest: its mean is below zero, but its range crosses it.",
+      "heard": "The swapped comparison came closest, its mean is below zero, but its range crosses it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 0,
+      "file": "audio/s20_00.wav",
+      "clip_sha": "6e576b8edafaeb1d",
+      "text": "So what does this support?",
+      "tts_text": "So what does this support?",
+      "heard": "So what does this support?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 1,
+      "file": "audio/s20_01.wav",
+      "clip_sha": "19d072afcdffb0ad",
+      "text": "Counting passes on haiku gave two ranges that overlapped, so the counts couldn't tell.",
+      "tts_text": "Counting passes on haiku gave two ranges that overlapped, so the counts couldn't tell.",
+      "heard": "Counting passes on haiku gave two ranges that overlapped, so the counts couldn't tell.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 2,
+      "file": "audio/s20_02.wav",
+      "clip_sha": "ea5f3c255760dd9c",
+      "text": "The second test says the same: four pairs flipped from fail to pass, none flipped back, and it still calls that not significant.",
+      "tts_text": "The second test says the same: four pairs flipped from fail to pass, none flipped back, and it still calls that not significant.",
+      "heard": "The second test says the same. Four pairs flipped from fail to pass, none flipped back, and it still calls that not significant.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 3,
+      "file": "audio/s20_03.wav",
+      "clip_sha": "cdbb32b6ceb706a5",
+      "text": "Its number is coin-toss odds: four tosses all landing the same way happen one time in eight.",
+      "tts_text": "Its number is coin-toss odds: four tosses all landing the same way happen one time in eight.",
+      "heard": "Its number is coin toss odds, four tosses all landing the same way happen one time in eight.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 4,
+      "file": "audio/s20_04.wav",
+      "clip_sha": "a7c38fd943a8336b",
+      "text": "The pairwise judge leans the same way, with a mean above zero, but its range includes zero too.",
+      "tts_text": "The pairwise judge leans the same way, with a mean above zero, but its range includes zero too.",
+      "heard": "The pairwise judge leans the same way, with a mean above zero, but its range includes zero too.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 5,
+      "file": "audio/s20_05.wav",
+      "clip_sha": "a307a560ef82f6e7",
+      "text": "So in our run, all three agree: the edit looks better, and these trials can't yet show it.",
+      "tts_text": "So in our run, all three agree: the edit looks better, and these trials can't yet show it.",
+      "heard": "So in our run all three agree, the edit looks better and these trials can't yet show it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 6,
+      "file": "audio/s20_06.wav",
+      "clip_sha": "2de0f3b009aca2b4",
+      "text": "An earlier run, on other saved trials, went further: there the pairwise range was wholly above zero, while the counts still overlapped.",
+      "tts_text": "An earlier run, on other saved trials, went further: there the pairwise range was wholly above zero, while the counts still overlapped.",
+      "heard": "An earlier run on other saved trials went further, there the pairwise range was wholly above zero while the count still overlapped.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 7,
+      "file": "audio/s20_07.wav",
+      "clip_sha": "02e026c2db2d7279",
+      "text": "A pairwise judge can do that, because it compares the two entries of each pair directly, and sees differences that pass or fail can't.",
+      "tts_text": "A pairwise judge can do that, because it compares the two entries of each pair directly, and sees differences that pass or fail can't.",
+      "heard": "A pairwise judge can do that because it compares the two entries of each pair directly and sees differences that pass or fail can't.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 0,
+      "file": "audio/s21_00.wav",
+      "clip_sha": "0273a9532529e60e",
+      "text": "Hold that loosely, for three reasons.",
+      "tts_text": "Hold that loosely, for three reasons.",
+      "heard": "Hold that loosely for three reasons.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 1,
+      "file": "audio/s21_01.wav",
+      "clip_sha": "c5f8e1a2108efc62",
+      "text": "First, the nine pairs aren't nine independent requests: they're three stimuli, tried three times each.",
+      "tts_text": "First, the nine pairs aren't nine independent requests: they're three stimuli, tried three times each.",
+      "heard": "First, the nine pairs aren't nine independent requests. They're three stimuli, tried three times each.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 2,
+      "file": "audio/s21_02.wav",
+      "clip_sha": "effb1a3f0981fcd7",
+      "text": "So the range looks narrower than the evidence really allows.",
+      "tts_text": "So the range looks narrower than the evidence really allows.",
+      "heard": "So the range looks narrower than the evidence really allows.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 3,
+      "file": "audio/s21_03.wav",
+      "clip_sha": "6804999868c760bf",
+      "text": "Next, the judge is a model, and this pairwise judge hasn't been checked against our own labels, the way the yes-or-no judge was.",
+      "tts_text": "Next, the judge is a model, and this pairwise judge hasn't been checked against our own labels, the way the yes-or-no judge was.",
+      "heard": "Next, the judge is a model, and this pairwise judge hasn't been checked against our own labels the way the yes or no judge was.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s21",
+      "i": 4,
+      "file": "audio/s21_04.wav",
+      "clip_sha": "4596e7c3714393dd",
+      "text": "Third, it varies from one run to the next.",
+      "tts_text": "Third, it varies from one run to the next.",
+      "heard": "Third, it varies from one run to the next.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 5,
+      "file": "audio/s21_05.wav",
+      "clip_sha": "c5b9c46a93c33097",
+      "text": "Two earlier runs of the swapped comparison, both on the same saved trials, landed on both sides of the line: one failed the check, and one passed it.",
+      "tts_text": "Two earlier runs of the swapped comparison, both on the same saved trials, landed on both sides of the line: one failed the check, and one passed it.",
+      "heard": "Two earlier runs of the swapped comparison, both on the same saved trials, landed on both sides of the line, one failed the check and one passed it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 6,
+      "file": "audio/s21_06.wav",
+      "clip_sha": "6695436d432738b2",
+      "text": "Ours passed it too, with a range that reaches above zero.",
+      "tts_text": "Ours passed it too, with a range that reaches above zero.",
+      "heard": "Hours passed at 2, with a range that reaches above 0.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "it too",
+          "heard": "at 2",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s21",
+      "i": 7,
+      "file": "audio/s21_07.wav",
+      "clip_sha": "9b6923c084286ecc",
+      "text": "So trust the sign, and whether the range crosses zero, not the second decimal.",
+      "tts_text": "So trust the sign, and whether the range crosses zero, not the second decimal.",
+      "heard": "So trust the sign and whether the range crosses zero, not the second decimal.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 0,
+      "file": "audio/s22_00.wav",
+      "clip_sha": "c5bfb228e566de8d",
+      "text": "Now the other half of the question: worse in cost.",
+      "tts_text": "Now the other half of the question: worse in cost.",
+      "heard": "Now the other half of the question, worse in cost.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 1,
+      "file": "audio/s22_01.wav",
+      "clip_sha": "07c053f573e00d39",
+      "text": "In our run, the edit made nothing cost more: tokens fell on both models.",
+      "tts_text": "In our run, the edit made nothing cost more: tokens fell on both models.",
+      "heard": "In our run the edit made nothing cost more, tokens fell on both models.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 2,
+      "file": "audio/s22_02.wav",
+      "clip_sha": "63d9014c206beddf",
+      "text": "In an earlier run, on other saved trials, the after skill took about eleven thousand more tokens per trial on terra, with a range wholly above zero, and the check still exited zero.",
+      "tts_text": "In an earlier run, on other saved trials, the after skill took about eleven thousand more tokens per trial on terra, with a range wholly above zero, and the check still exited zero.",
+      "heard": "In an earlier run on other saved trials, the Afterskill took about 11,000 more tokens per trial on Terra, with a range wholly above zero, and the check still exited zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s22",
+      "i": 3,
+      "file": "audio/s22_03.wav",
+      "clip_sha": "4fe5ca2cb7a90b3c",
+      "text": "That's by design: the check looks at the judged score alone.",
+      "tts_text": "That's by design: the check looks at the judged score alone.",
+      "heard": "That's by design, the check looks at the judged score alone.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 4,
+      "file": "audio/s22_04.wav",
+      "clip_sha": "a40e6d47fd4bdfda",
+      "text": "So cost needs a guard of its own: the budget graders, with their limits set from the before trials.",
+      "tts_text": "So cost needs a guard of its own: the budget graders, with their limits set from the before trials.",
+      "heard": "So, cost needs a guard of its own, the budget graders, with their limits set from the before trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 5,
+      "file": "audio/s22_05.wav",
+      "clip_sha": "d15c5c8a89ea9b33",
+      "text": "Then an edit that costs more fails a trial, like any other grader's failure.",
+      "tts_text": "Then an edit that costs more fails a trial, like any other grader's failure.",
+      "heard": "than an edit that costs more fails a trial, like any other grader's failure.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Then",
+          "heard": "than",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 0,
+      "file": "audio/s23_00.wav",
+      "clip_sha": "f3b1982e4909b8dd",
+      "text": "One last piece of how this works: an experiment can run the same judging as soon as it ends, with dash dash compare.",
+      "tts_text": "One last piece of how this works: an experiment can run the same judging as soon as it ends, with dash dash compare.",
+      "heard": "One last piece of how this works, an experiment can run the same judging as soon as it ends, with dash dash compare.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 1,
+      "file": "audio/s23_01.wav",
+      "clip_sha": "361dd556ed6cb75a",
+      "text": "That option only reports: a regression it finds doesn't fail the command.",
+      "tts_text": "That option only reports: a regression it finds doesn't fail the command.",
+      "heard": "That option only reports, a regression it finds doesn't fail the command.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 2,
+      "file": "audio/s23_02.wav",
+      "clip_sha": "4966335ac5bb3713",
+      "text": "Vally's own guide gives the order: run the experiment, then run compare on its folder with fail on regression, as the step that can fail.",
+      "tts_text": "Valley's own guide gives the order: run the experiment, then run compare on its folder with fail on regression, as the step that can fail.",
+      "heard": "Bally's own guide gives the order, run the experiment, then run compare on its folder with fail on regression as the step that can fail.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Vally's",
+          "heard": "Bally's",
+          "similarity": 0.6
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 0,
+      "file": "audio/s24_00.wav",
+      "clip_sha": "f03bfa8869723f0e",
+      "text": "Before you go on: what has to be true for the regression check to exit one?",
+      "tts_text": "Before you go on: what has to be true for the regression check to exit one?",
+      "heard": "Before you go on, what has to be true for the regression check to exit one?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 1,
+      "file": "audio/s24_01.wav",
+      "clip_sha": "f2ebc5598a08c3fc",
+      "text": "First, the treatment's mean score is below zero.",
+      "tts_text": "First, the treatment's mean score is below zero.",
+      "heard": "First, the treatment's mean score is below zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 2,
+      "file": "audio/s24_02.wav",
+      "clip_sha": "a4f24ecad096fd8e",
+      "text": "Second, its whole range is below zero too.",
+      "tts_text": "Second, its whole range is below zero too.",
+      "heard": "Second, its whole range is below 0-2.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s24",
+      "i": 3,
+      "file": "audio/s24_03.wav",
+      "clip_sha": "7a74ed02aed4cc62",
+      "text": "Nothing else that compare prints counts.",
+      "tts_text": "Nothing else that compare prints counts.",
+      "heard": "Nothing else that compare Prince counts.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s25",
+      "i": 0,
+      "file": "audio/s25_00.wav",
+      "clip_sha": "4a98dba2727af1a3",
+      "text": "You can now judge two saved runs side by side, and run a check that fails on a regression.",
+      "tts_text": "You can now judge two saved runs side by side, and run a check that fails on a regression.",
+      "heard": "You can now judge two saved runs side by side and run a check that fails on a regression.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 1,
+      "file": "audio/s25_01.wav",
+      "clip_sha": "72fe9ac508961e96",
+      "text": "By now there are many moving parts, and runs sometimes end in error, or fail for reasons that aren't the skill.",
+      "tts_text": "By now there are many moving parts, and runs sometimes end in error, or fail for reasons that aren't the skill.",
+      "heard": "I now there are many moving parts and runs sometimes end in error or fail for reasons that aren't the skill.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "By",
+          "heard": "I",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 2,
+      "file": "audio/s25_02.wav",
+      "clip_sha": "505e24dc23f1d0cd",
+      "text": "When a run goes wrong, where do you look first?",
+      "tts_text": "When a run goes wrong, where do you look first?",
+      "heard": "When a run goes wrong, where do you look first?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 3,
+      "file": "audio/s25_03.wav",
+      "clip_sha": "c0fa80d6856b024e",
+      "text": "That's the next lesson.",
+      "tts_text": "That's the next lesson.",
+      "heard": "That's the next lesson.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 4,
+      "file": "audio/s25_04.wav",
+      "clip_sha": "1ebfb40727709c44",
+      "text": "The exercises on the lesson page are worth doing first.",
+      "tts_text": "The exercises on the lesson page are worth doing first.",
+      "heard": "The exercises on the lesson page are worth doing first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "High",
+      "sentences": 1,
+      "heard": [
+        "Hiberience"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "We're",
+      "sentences": 1,
+      "heard": [
+        "We are"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "variance",
+      "sentences": 1,
+      "heard": [
+        "Hiberience"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "Then",
+      "sentences": 1,
+      "heard": [
+        "than"
+      ],
+      "of": 4,
+      "share": 0.25
+    },
+    {
+      "word": "too",
+      "sentences": 1,
+      "heard": [
+        "at 2"
+      ],
+      "of": 5,
+      "share": 0.2
+    },
+    {
+      "word": "By",
+      "sentences": 2,
+      "heard": [
+        "I"
+      ],
+      "of": 11,
+      "share": 0.18
+    },
+    {
+      "word": "Vally's",
+      "sentences": 1,
+      "heard": [
+        "Bally's"
+      ],
+      "of": 6,
+      "share": 0.17
+    },
+    {
+      "word": "graders",
+      "sentences": 1,
+      "heard": [
+        "greater"
+      ],
+      "of": 7,
+      "share": 0.14
+    },
+    {
+      "word": "It",
+      "sentences": 2,
+      "heard": [
+        "at 2"
+      ],
+      "of": 36,
+      "share": 0.06
+    },
+    {
+      "word": "So",
+      "sentences": 1,
+      "heard": [
+        "But"
+      ],
+      "of": 25,
+      "share": 0.04
+    },
+    {
+      "word": "a",
+      "sentences": 1,
+      "heard": [
+        "But"
+      ],
+      "of": 43,
+      "share": 0.02
+    },
+    {
+      "word": "The",
+      "sentences": 1,
+      "heard": [],
+      "of": 99,
+      "share": 0.01
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 131,
+    "mismatched": 11,
+    "transcribed": 131,
+    "reused": 0,
+    "seconds_per_sentence": 0.115
+  }
+}

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 1: It works for me — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 1 of 26 · Vally &amp; Agent Evals</div>
+    <h1>It works for me</h1>
+    <div class="lesson-meta">15 min · Run one request on two models and find, in the files Vally saved, that the two models changed the file differently.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You have written a skill for an AI agent, or are about to, and you have tried it by hand.</p>
+    <p><strong>This lesson answers:</strong> My skill works when I try it. Does it do the same thing on another model?</p>
+  </div>
+
+  <p class="drop-cap">You write a skill, try it once, and the agent does what you wanted. Then a teammate uses it with a different model and gets something else, and neither of you can say which result is normal. This course is about replacing "it worked when I tried it" with evidence. It follows one small skill from a first draft to a version you can defend, and this lesson starts by showing the problem on your own machine.</p>
+
+  <h2 id="skill-is-advice" data-mode="think">A skill is advice, and each model reads it its own way</h2>
+
+  <div class="callout definition">
+    <div class="callout-title">Skill</div>
+    <p>A folder containing a file named <code>SKILL.md</code>: a name, a one-line description, and instructions. An AI agent loads the instructions when a task matches the description.</p>
+  </div>
+
+  <p>An <strong>agent</strong> is a program that uses a language model to carry out a task with tools: it reads files, edits them and runs commands. The <strong>model</strong> is the part that decides what to do. The same agent can run on different models.</p>
+
+  <p>The skill this course improves is about one small chore: keeping a changelog.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">Changelog</div>
+    <p>A file, usually named <code>CHANGELOG.md</code>, that lists what changed in each version of a tool, for the people who use it. Changes that have not shipped yet go under a heading called Unreleased, grouped into categories such as Added and Fixed. Each line is one entry. An entry often ends with a reference such as <code>(#41)</code>, the number of the pull request that made the change. A pull request, or PR, is a numbered proposal to change a project's code.</p>
+  </div>
+
+  <p>Here is the skill. It tells an agent how to add an entry, and it is a plain first draft, the kind written in five minutes.</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">skills/changelog-entry/SKILL.md</div>
+<pre><code class="language-markdown">---
+name: changelog-entry
+description: Adds an entry to the project changelog.
+---
+
+# Changelog entry
+
+Use this when a change needs to be recorded in CHANGELOG.md.
+
+- Add the entry under Unreleased, in the right category.
+- One line per change, written for people who use the tool.
+- Reference the pull request.
+- Leave released versions alone.</code></pre>
+  </div>
+
+  <p>Read it the way a model has to. "The right category": which categories exist? "Reference the pull request": in what form, and what if there is no pull request? The skill does not say, so each model fills the gap with its own guess. When you try the skill by hand you see one model's guess, once. That is one observation, and it tells you little about the next model or the next request.</p>
+
+  <div class="source-citation">Source: <a href="https://agentskills.io/">agentskills.io</a>, the open description of the skill format.</div>
+
+  <h2 id="one-run" data-mode="works">What one Vally run does</h2>
+
+  <p>Vally is a command-line tool that runs an agent for you in a controlled way and keeps a record of what it did. The agent it runs is the one that comes with GitHub Copilot, which is why this course needs a Copilot account.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">Eval</div>
+    <p>A repeatable test of an agent: the same request, in the same starting folder, checked the same way every time.</p>
+  </div>
+
+  <p>An eval is described in an <strong>eval file</strong>. The starter folder for this course has one, <code>evals/one-request.eval.yaml</code>. It holds a single request ("I fixed the typo in the help text for <code>notes add</code> (it said "tittle"). Put that in the changelog."), the starting files, and one check. Lesson 2 reads that file line by line. For now, this is what happens when you run it:</p>
+
+  <ol>
+    <li>Vally makes a fresh scratch folder and copies in the starting files and the skill.</li>
+    <li>It starts an agent on the model you named and gives it the request.</li>
+    <li>When the agent stops, Vally saves a record of what the agent changed.</li>
+    <li>It runs the check and prints a tick or a cross.</li>
+  </ol>
+
+  <div class="callout definition">
+    <div class="callout-title">Workspace</div>
+    <p>The scratch folder an agent works in during one run. Vally creates a new one for every run, so no run can see what another did.</p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="A request goes to an agent working in a workspace; the change is saved as a patch; a check gives a tick or a cross">
+      <rect x="8" y="70" width="120" height="50" rx="3"/>
+      <rect x="160" y="14" width="196" height="176" rx="3" style="stroke-dasharray: 6 5"/>
+      <rect x="178" y="70" width="160" height="50" rx="3" style="stroke: var(--accent)"/>
+      <rect x="390" y="70" width="110" height="50" rx="3"/>
+      <rect x="540" y="70" width="92" height="50" rx="3"/>
+      <path d="M128 95 L176 95 M168 89 L176 95 L168 101"/>
+      <path d="M338 95 L388 95 M380 89 L388 95 L380 101"/>
+      <path d="M500 95 L538 95 M530 89 L538 95 L530 101"/>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: currentColor; stroke: none">
+        <text x="68" y="101" text-anchor="middle">Request</text>
+        <text x="258" y="101" text-anchor="middle">Agent + model</text>
+        <text x="445" y="101" text-anchor="middle">Patch</text>
+        <text x="586" y="101" text-anchor="middle">Check</text>
+      </g>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="258" y="44" text-anchor="middle">WORKSPACE</text>
+        <text x="445" y="146" text-anchor="middle">saved</text>
+        <text x="586" y="146" text-anchor="middle">✓ or ✘</text>
+        <text x="320" y="232" text-anchor="middle">Repeated once for each model you name</text>
+      </g>
+      <g style="font-family: var(--mono); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="258" y="150" text-anchor="middle">CHANGELOG.md</text>
+        <text x="258" y="176" text-anchor="middle">the skill</text>
+      </g>
+    </svg>
+    <figcaption>One run. The agent works only inside the workspace. What it changed there is saved, and the check looks at the result.</figcaption>
+  </figure>
+
+  <p>The command is <code>vally eval</code>. It takes three things in this lesson:</p>
+  <ul>
+    <li><code>-e</code>, followed by the path of the eval file to run.</li>
+    <li><code>--model</code>, followed by one model name, or several separated by commas. With several, Vally does the whole run once per model.</li>
+    <li><code>--output-dir</code>, followed by the folder to save results in.</li>
+  </ul>
+  <p>It writes only inside that results folder. It does spend requests from your GitHub Copilot plan: each run is one short session, meaning one conversation with the agent.</p>
+  <p>Long commands in this course are split over several lines, with a backslash at the end of every line but the last. Type them as shown, or on one line without the backslashes.</p>
+  <p>If the agent's connection drops, the run does not finish and Vally prints <code>ERROR</code> for that model. That says nothing about the skill. Run the command again.</p>
+  <p>Model names differ from account to account. If you name a model your account does not have, Vally stops before starting any agent and prints the names you do have. The checkpoint uses that to show your list. The command still needs <code>--output-dir</code>, and Vally writes a small record of the failed attempt there.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/concepts/how-it-works/">Vally docs, How It Works</a>; <a href="https://microsoft.github.io/vally/reference/cli/eval/">Vally docs, CLI: eval</a>. The behaviour with an unknown model name is from our run on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="reading-a-patch" data-mode="works">Reading a patch</h2>
+
+  <div class="callout definition">
+    <div class="callout-title">Patch</div>
+    <p>A text file that records a change to other files as lines added and lines removed.</p>
+  </div>
+
+  <p>Step 3 above, "saves a record of what the agent changed", produces a patch. Vally writes one for every run and names it <code>workspace.patch</code>. It saves the results of each command in a folder named with the time the command started. Inside that folder, the patch is under the eval's name, then the request's name, then the model, then a run number that starts at 0. This is a real patch, from the run you are about to repeat:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">workspace.patch (model: claude-haiku-4.5)</div>
+<pre><code class="language-diff">diff --git a/CHANGELOG.md b/CHANGELOG.md<span class="mark">1</span>
+index 616c9f6..5045ff4 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,6 +7,9 @@ All notable changes to notes-cli.<span class="mark">2</span>
+ ### Added<span class="mark">3</span>
+ - Add `notes list --tag` to filter by tag (#41)
+
+<span class="hl">+### Fixed<span class="mark">4</span></span>
+<span class="hl">+- Fix typo in help text for `notes add` command</span>
+<span class="hl">+</span>
+ ## [1.2.0] - 2026-09-14
+
+ ### Added</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The file that changed. The next three lines repeat it in other forms; you can skip them.</li>
+      <li>Where in the file the change is: starting at line 7.</li>
+      <li>A line that begins with a space was already there and is unchanged. These lines are context, so you can see where the change sits.</li>
+      <li>A line that begins with <code>+</code> was added by the agent. A line that begins with <code>-</code> would be one the agent removed; this patch has none.</li>
+    </ol>
+  </div>
+
+  <p>So this model added a "Fixed" heading and one entry under "Unreleased", and touched nothing else. You can read exactly what an agent did to a file without opening the file.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">In a patch, a line begins with a single space. What does that tell you?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">The agent added that line there</button></li>
+      <li><button onclick="checkAnswer(this, false)">The agent removed that line there</button></li>
+      <li><button onclick="checkAnswer(this, true)">The line was there and unchanged</button></li>
+      <li><button onclick="checkAnswer(this, false)">The line was moved from elsewhere</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. A leading space marks context: a line that was already in the file and still is.</div>
+    <div class="quiz-feedback incorrect">The line was there and unchanged. Added lines begin with a plus sign and removed lines with a minus sign; a leading space marks unchanged context around the change.</div>
+  </div>
+
+  <h2 id="run-on-two-models" data-mode="use">Run it on two models</h2>
+
+  <p>You will copy the starter folder, look at the skill and the changelog, find your account's model names, run the one request on two models, and read the two patches.</p>
+
+  <div class="predict">
+    <p>Both models get the same skill, the same changelog and the same request. The request does not mention a pull request. What do you expect each model to do about "Reference the pull request"?</p>
+    <details class="answer"><summary>Check your prediction</summary><p>Do the checkpoint first and look at your own two patches. In our run, one model left the reference off and the other made up a pull request number.</p></details>
+  </div>
+
+  <section class="checkpoint">
+    <h3>One request, two models</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: confirm the tools are installed.</span>
+<pre><code class="language-bash">node --version
+vally --version</code></pre>
+        <p class="expect">You should see: a Node version of 22.15 or higher, then <code>0.21.0</code>. If either command is missing, follow <a href="../index.html#before-you-start">Before you start</a> on the course home.</p></li>
+
+      <li><span class="goal">Goal: make your own practice folder from the starter. This creates a new folder named <code>practice</code>.</span>
+        Open a terminal in the course folder: the one this course came in, which contains <code>index.html</code> and <code>practice-starter</code>.
+<pre><code class="language-bash">cp -R practice-starter practice
+cd practice</code></pre>
+        <p class="expect">You should see: nothing printed. Every lesson's checkpoint starts in <code>practice</code>.</p></li>
+
+      <li><span class="goal">Goal: read the skill you will be improving.</span>
+<pre><code class="language-bash">cat skills/changelog-entry/SKILL.md</code></pre>
+        <p class="expect">You should see: the thirteen lines shown at the top of this lesson.</p></li>
+
+      <li><span class="goal">Goal: read the changelog the agent will be asked to edit. It is in <code>evals/fixtures</code>, the folder for starting files.</span>
+<pre><code class="language-bash">cat evals/fixtures/notes-cli/CHANGELOG.md</code></pre>
+        <p class="expect">You should see: a changelog for a made-up tool, <code>notes-cli</code>. Find the "Unreleased" section. It has one entry, which ends with <code>(#41)</code>, a reference to pull request 41.</p></li>
+
+      <li><span class="goal">Goal: see the model names your account has. This starts no agent and spends nothing.</span>
+<pre><code class="language-bash">vally eval -e evals/one-request.eval.yaml \
+  --model list-my-models \
+  --output-dir results/models</code></pre>
+        <p class="expect">You should see: the word <code>ERROR</code>, then <code>Model "list-my-models" is not available in Copilot. Available models:</code> followed by a list. Yours will differ from ours. Pick two. This course used <code>claude-haiku-4.5</code> and <code>gpt-5.6-terra</code>, checked on 2026-11-10.</p></li>
+
+      <li><span class="goal">Goal: run the request on both models. This spends two short agent runs from your Copilot plan.</span>
+        Put your two model names in place of the course's.
+<pre><code class="language-bash">vally eval -e evals/one-request.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --output-dir results/lesson-1</code></pre>
+<pre class="output"><code>Model summary
+  ✓ claude-haiku-4.5  1/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval         claude-haiku-4.5  gpt-5.6-terra
+  one-request  ✓ 1/1             ✓ 1/1</code></pre>
+        <p class="expect">You should see: a tick for each model, after about twenty seconds, then a line beginning <code>Saved</code> that names the results folder. "1/1 evals passed" counts eval files, and you ran one. If a model shows <code>ERROR</code>, the run did not finish, usually a dropped connection: run the command again.</p></li>
+
+      <li><span class="goal">Goal: find the folder this run was saved in.</span>
+<pre><code class="language-bash">ls results/lesson-1</code></pre>
+        <p class="expect">You should see: one folder named with the time of your run, such as <code>2026-11-10T14-55-22-404Z</code>. Use your folder's name in place of that one in the next step.</p></li>
+
+      <li><span class="goal">Goal: move into the saved results for this request, so the next paths are short.</span>
+<pre><code class="language-bash">cd results/lesson-1/2026-11-10T14-55-22-404Z
+cd one-request/typo-fix
+ls</code></pre>
+        <p class="expect">You should see: one folder for each model you named. The two folders you moved through are named after the eval and the request; lesson 2 explains where those names come from.</p></li>
+
+      <li><span class="goal">Goal: read what the first model changed.</span>
+<pre><code class="language-bash">cat claude-haiku-4.5/0/workspace.patch</code></pre>
+        <p class="expect">You should see: a patch like the one in "Reading a patch". Read the lines that begin with <code>+</code>. The <code>0</code> in the path is the first run for that model.</p></li>
+
+      <li><span class="goal">Goal: read what the second model changed, and compare.</span>
+<pre><code class="language-bash">cat gpt-5.6-terra/0/workspace.patch</code></pre>
+<pre class="output"><code>+### Fixed
++- Fix the help text typo in `notes add` (#42)
++</code></pre>
+        <p class="expect">You should see: the same kind of patch with different added lines. Those above are ours. Compare the end of each model's entry.</p></li>
+
+      <li><span class="goal">Goal: return to the practice folder.</span>
+<pre><code class="language-bash">cd ../../../../..</code></pre>
+        <p class="expect">You should see: nothing printed. The five <code>../</code> climb back up to <code>practice</code>.</p></li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-patches-show" data-mode="think">What the two patches show</h2>
+
+  <p>In our run, both models got a tick. One wrote an entry with no pull request number. The other ended its entry with <code>(#42)</code>. Nobody mentioned a pull request 42. The entry above it in the file is <code>#41</code>, and the model made up the next number. In our runs, <code>gpt-5.6-terra</code> usually made up a number and <code>claude-haiku-4.5</code> usually did not.</p>
+
+  <p>Your two models may differ in another way, or agree. Either result is evidence about your skill that trying it by hand would not have given you.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/get-started/run-your-first-eval/">Run Your First Eval, Vally docs</a></p>
+    <p>The official walk-through of a first run, using Vally's own starter eval. Read it for a second view of the four steps in "What one Vally run does".</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, list the four things Vally does in one run, in order.
+        <details class="answer"><summary>Show model answer</summary><p>It makes a fresh workspace and copies in the starting files and the skill. It starts an agent on the named model and gives it the request. When the agent stops, it saves what the agent changed as a patch. It runs the check and reports a tick or a cross.</p></details></li>
+      <li>The skill says "Reference the pull request." Write one sentence saying what you want the agent to do when the request names no pull request. Keep it: lesson 5 turns it into a rule in the skill.
+        <details class="answer"><summary>Show model answer</summary><p>There is no single right answer. One reasonable rule: "If no pull request number is given, leave the reference off. Never make one up." What matters is that the rule is stated, so that every model follows the same one.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="1" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> run one request on two models and find, in the files Vally saved, that the two models changed the file differently.</p>
+    <p><strong>Up next:</strong> <a href="./0002-what-the-tick-checked.html">What the tick checked</a>. Both models got a green tick, yet they did different things. So what did the tick check?</p>
+    <a class="next-lesson" href="./0002-what-the-tick-checked.html">Next lesson: What the tick checked <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

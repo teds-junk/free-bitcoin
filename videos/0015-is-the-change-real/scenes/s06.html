@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A calculator for the range</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.calc{background:var(--paper-muted);border-radius:var(--radius);padding:26px 36px 30px;display:flex;flex-direction:column;gap:16px;min-width:0}.calc .who{font:600 26px/1.2 var(--font-body);letter-spacing:.03em;color:var(--ink-muted)}.calc .who .mono{font-family:var(--font-code);color:var(--ink)}.calc .crow{display:grid;grid-template-columns:150px 96px 44px 96px 1fr;gap:16px;align-items:center;font:400 34px/1.2 var(--font-body);color:var(--ink)}.calc .cl{font:600 26px/1.2 var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}.calc .cb{font:500 36px/1 var(--font-code);background:var(--paper);border:2px solid var(--rule);border-radius:8px;padding:12px 0;text-align:center}.calc .co{font:500 34px/1.2 var(--font-code);white-space:nowrap}.calc .cv{font:400 34px/1.35 var(--font-body);color:var(--ink);margin:6px 0 0}.calc{width:100%;padding:36px 48px 40px;gap:22px}.calc .crow{font-size:40px;grid-template-columns:190px 120px 50px 120px 1fr}.calc .cb{font-size:44px}.calc .co{font-size:40px}.calc .cv{font-size:40px}.calc .cl{font-size:30px}.calc .who{font-size:28px}.stage{gap:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What a small sample can show</div>
+  <h2 class="scene-title">A calculator for the range</h2>
+  <div class="stage">
+<div class="calc" data-concept="calc" data-rep="card">
+      <div class="who">the range around a count</div>
+      <div class="crow"><span class="cl">Before</span><span class="cb">7</span><span>of</span><span class="cb">10</span><span class="co"><span data-concept="cb" data-rep="cell">70%, range 40% to 89%</span></span></div>
+      <div class="crow"><span class="cl">After</span><span class="cb">9</span><span>of</span><span class="cb">10</span><span class="co"><span data-concept="ca" data-rep="cell">90%, range 60% to 98%</span></span></div>
+      <p class="cv"><span data-concept="cv" data-rep="cell">The ranges overlap. This result does not show a change.</span></p>
+    </div>
+  <p class="note">On the course site · 95% Wilson interval · Source: Evan Miller, “Adding Error Bars to Evals” (2024)</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "cb",
+  "at": "1~count before",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ca",
+  "at": "1~count after",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "cv",
+  "at": "2",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

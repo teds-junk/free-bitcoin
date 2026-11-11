@@ -1,0 +1,7 @@
+take1-s14.log: the first take of tapes/s14.tape, run 2026-11-11T07-36-56-350Z (terminal codes and redraws removed).
+terra-before lost one cache trial to ERROR ("1 passed · 1 failed · 1 error"), so the take was rerun under the standing rule.
+Its results folder was moved aside by the tape to /Users/Shared/.demo-old.lesson-15.<time>; nothing was deleted.
+take2-s14.log: the second take, run 2026-11-11T07-45-16-299Z. terra-after lost two trials to ERROR (dates trial 3 and parser trial 3,
+both "Session disconnected while waiting for a response"), so it was rerun once more. Its results folder was also moved aside by the tape.
+take3 (kept): run 2026-11-11T07-53-29-176Z is the one this video quotes (src/run/s14.log). It was the third and last take allowed; terra-before lost three trials to ERROR
+(cache trial 3, dates trial 3, parser trial 2), which have no verdict and are left out of the counts.

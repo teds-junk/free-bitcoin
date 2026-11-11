@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One folder per variant</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.tree{min-width:820px;font-size:36px;line-height:1.62}.callout{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">An experiment file</div>
+  <h2 class="scene-title">One folder per variant</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark tree" data-lang="text"><code><span data-concept="run" data-rep="code"><span>results/lesson-10/2026-…/</span></span>
+<span>  </span><span data-concept="v" data-rep="code"><span>haiku-no-skill/</span></span>
+<span>    </span><span data-concept="res" data-rep="code"><span>results.jsonl</span></span>
+<span>    </span><span data-concept="ev" data-rep="code"><span>changelog/</span></span>
+<span>  </span><span data-concept="v2" data-rep="code"><span>haiku-with-skill/</span></span>
+<span>  </span><span data-concept="v2" data-rep="code"><span>terra-no-skill/</span></span>
+<span>  </span><span data-concept="v2" data-rep="code"><span>terra-with-skill/</span></span>
+<span>  </span><span data-concept="report" data-rep="code"><span>report.md</span></span>
+<span>  </span><span data-concept="more" data-rep="code"><span>…</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="run">the run’s folder, named with its time</p><p class="callout" data-anchor="v">one folder per variant</p><p class="callout" data-anchor="res">its own results</p><p class="callout" data-anchor="ev">the eval’s folder, laid out as before</p><p class="callout" data-anchor="report">one report for the whole experiment</p><p class="callout" data-anchor="more">and a few files of Vally’s own</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "v",
+  "at": "0~subfolder",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "res",
+  "at": "1~results",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ev",
+  "at": "1~folder for the eval",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "report",
+  "at": "2~report",
+  "color": "orange"
+ }
+]
+</script>
+</body>
+</html>

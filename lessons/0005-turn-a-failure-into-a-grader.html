@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 5: Turn a failure into a grader — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 5 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Turn a failure into a grader</h1>
+    <div class="lesson-meta">15 min · Show, with three graders and a count before and after, what one edit to the skill changed on each model.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What is a failure mode, and what makes it different from one odd trial?
+        <details class="answer"><summary>Show answer</summary><p>A named way in which the skill's output goes wrong, seen in at least one real trial. Naming it turns an observation into something you can look for again and count.</p></details></li>
+      <li>What does <code>--runs 5</code> do?
+        <details class="answer"><summary>Show answer</summary><p>It runs every stimulus five times on every model named, each time as a separate trial in a fresh workspace, in folders <code>0</code> to <code>4</code>.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You have a list of the skill's failure modes, found by reading twelve trials.</p>
+    <p><strong>This lesson answers:</strong> How do I make code decide whether a trial has one of these failures?</p>
+  </div>
+
+  <p class="drop-cap">You could fix the skill now. Add a rule about pull request numbers, try it, look at the result, and feel better. But "look at the result" means reading patches again, on both models, several times each, after every edit, for as long as the skill lives. Nobody keeps that up. This lesson hands the reading to code: one small grader per failure mode, so that a single command tells you how often each failure happens, before your edit and after it.</p>
+
+  <h2 id="worth-having" data-mode="think">What makes a grader worth having</h2>
+
+  <p>Three habits separate graders that earn their keep from graders like the one in lesson 2.</p>
+
+  <p><strong>Grade the result, not the route.</strong> An agent can reach a correct changelog by many routes: reading the file first or searching it, one edit or two. A grader that insists on a route fails every good route you did not think of. Look at what the agent left behind.</p>
+
+  <p><strong>One grader per failure mode, named after it.</strong> When a grader called <code>no-made-up-number</code> fails, you know what went wrong without opening a file. A single grader that checks five things at once only tells you that something did.</p>
+
+  <p><strong>A grader has to be able to fail.</strong> Lesson 2's grader passed almost anything. A grader that has never failed might be checking nothing. So the first time you run a new grader, run it where you already know the failure happens. If it passes there, the grader is wrong.</p>
+
+  <p>And use code for everything code can decide. A pattern costs nothing to run and gives the same answer every time. Some qualities on your list, such as whether an entry is written for users, are beyond a pattern. Those wait until lesson 12.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/guides/choosing-graders/">Vally docs, Choose a Grader</a>, which says to prefer an exact check "when the requirement can be expressed exactly"; <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Anthropic, Demystifying evals for AI agents, 2026-01-09</a>, on grading outcomes over paths.</div>
+
+  <h2 id="diff-graders" data-mode="works">Graders that read the diff</h2>
+
+  <p>Three of the failure modes from lesson 4 are about what the agent added to the changelog, or whether it should have added anything. The patch already records exactly that. Vally has three graders that read it. They call it the diff, which is another word for the same thing.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Grader</th><th>Passes when</th></tr></thead>
+    <tbody>
+      <tr><td><code>diff-contains</code></td><td>the patch contains the text or pattern you give</td></tr>
+      <tr><td><code>diff-not-contains</code></td><td>the patch does not contain it</td></tr>
+      <tr><td><code>diff-empty</code></td><td>the agent changed nothing at all</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>One thing to know before using them: these graders see the whole patch, including the unchanged lines around the change. Here is the patch from a trial that made up a number.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">workspace.patch (model: gpt-5.6-terra, before any edit)</div>
+<pre><code class="language-diff"><span class="gap">4 lines hidden</span>
+@@ -7,6 +7,9 @@ All notable changes to notes-cli.
+ ### Added
+ - Add `notes list --tag` to filter by tag (#41)<span class="mark">1</span>
+
+<span class="hl">+### Fixed</span>
+<span class="hl">+- Fix a typo in the `notes add` help text (#42)<span class="mark">2</span></span>
+<span class="hl">+</span>
+ ## [1.2.0] - 2026-09-14
+
+ ### Added</code></pre>
+    </div>
+    <ol class="notes">
+      <li>An unchanged line that happens to contain a pull request number. It is in the patch, so a grader that just looks for "a number in brackets" would find this one in every trial.</li>
+      <li>The line that matters: one the agent added. A grader for made-up numbers has to look only at lines that begin with <code>+</code>.</li>
+    </ol>
+  </div>
+
+  <p>These graders take either a <code>value</code>, which is exact text, or a <code>pattern</code>. A pattern is a regular expression: a short piece of text, written in a notation of its own, that describes the text to look for. You do not need to learn the notation. This course uses three patterns, and each is explained piece by piece.</p>
+
+  <p>Here is the first stimulus, complete, with the two graders you will add at its end.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/changelog.eval.yaml (the first stimulus)</div>
+<pre><code class="language-yaml">  - name: typo-fix
+    prompt: |
+      I fixed the typo in the help text for `notes add`
+      (it said "tittle"). Put that in the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    graders:<span class="mark">1</span>
+      - type: diff-contains<span class="mark">2</span>
+        name: adds-an-entry
+        config:
+          value: "notes add"
+      - type: diff-not-contains<span class="mark">3</span>
+        name: no-made-up-number
+        config:
+          pattern: '(?m)^\+.*\(#\d+\)'<span class="mark">4</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li><code>graders</code> goes last in the stimulus, lined up under <code>agent_environment</code>.</li>
+      <li>Did the agent add an entry at all? The starting changelog never mentions <code>notes add</code>, so that text can only be in the patch if the agent wrote it.</li>
+      <li>Passes only if the pattern is found nowhere in the patch.</li>
+      <li>The pattern, in single quotes so that its backslashes are kept exactly as typed. In words: an added line that contains a hash and digits in brackets.</li>
+    </ol>
+  </div>
+
+  <p>Read the pattern from left to right.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Piece</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>^</code></td><td>The start of a line.</td></tr>
+      <tr><td><code>(?m)</code></td><td>A switch, written at the front. It makes <code>^</code> mean the start of every line. Without it, <code>^</code> means only the very start of the whole patch.</td></tr>
+      <tr><td><code>\+</code></td><td>A plus sign. So <code>^\+</code> is a line that starts with a plus: a line the agent added.</td></tr>
+      <tr><td><code>.</code></td><td>Any one character.</td></tr>
+      <tr><td><code>*</code></td><td>The piece before it, repeated any number of times. So <code>.*</code> is "anything", up to the end of the line.</td></tr>
+      <tr><td><code>\(#</code></td><td>An opening bracket and a hash.</td></tr>
+      <tr><td><code>\d+</code></td><td>One or more digits.</td></tr>
+      <tr><td><code>\)</code></td><td>A closing bracket.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>The backslashes are there because <code>+</code>, <code>(</code> and <code>)</code> have special meanings in a pattern, and a backslash says "this character itself".</p>
+
+  <p>The other two stimuli each get one grader.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/changelog.eval.yaml (graders for the other two stimuli)</div>
+<pre><code class="language-yaml">  - name: refactor
+<span class="gap">4 lines hidden: the prompt</span>
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    graders:
+      - type: diff-empty<span class="mark">1</span>
+        name: adds-nothing
+
+  - name: security
+<span class="gap">4 lines hidden: the prompt</span>
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    graders:
+      - type: diff-contains
+        name: under-security
+        config:
+          pattern: '(?m)^\+### Security'<span class="mark">2</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>The refactor changes nothing for users, so the right result is no change to the changelog. <code>diff-empty</code> takes no <code>config</code>.</li>
+      <li>An added line that starts with <code>### Security</code>: the agent created a Security category.</li>
+    </ol>
+  </div>
+
+  <p>When a stimulus has more than one grader, a trial passes only if every grader passes. <code>vally lint</code> prints a warning named <code>scoring-defaults-applied</code> to tell you that this rule is in force. It is the rule you want, so the warning is expected.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">Why does the pattern for <code>no-made-up-number</code> ask for a line that starts with a plus sign?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, true)">So that only added lines can match</button></li>
+      <li><button onclick="checkAnswer(this, false)">So that only removed lines can match</button></li>
+      <li><button onclick="checkAnswer(this, false)">So the first patch line is skipped</button></li>
+      <li><button onclick="checkAnswer(this, false)">So that file names are never matched</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. The patch also contains unchanged lines, and one of them ends with (#41). Requiring a leading plus sign limits the grader to what the agent wrote.</div>
+    <div class="quiz-feedback incorrect">So that only added lines can match. The patch includes unchanged lines around the change, and one of them ends with (#41). Without the plus sign the grader would object to every trial.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/graders/diff-contains/">Vally docs, Grader: diff-contains</a>; <a href="https://microsoft.github.io/vally/reference/graders/diff-empty/">Grader: diff-empty</a>; <a href="https://microsoft.github.io/vally/concepts/scoring/">Scoring</a>. That these graders see unchanged lines is from our test on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="measure-edit-measure" data-mode="use">Measure, edit the skill, measure again</h2>
+
+  <p>You will add the graders above to an eval file, run it against the skill as it is, add three rules to the skill, and run again. These are the rules, one per failure mode. Each names a case the skill left open and says what to do. The first also says not to stop and ask: when a skill is used unattended, as it is in every Vally run, nobody is there to answer, so we chose "leave it off". You will add them to the end of the skill in step 5.</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">skills/changelog-entry/SKILL.md (lines to add at the end)</div>
+<pre><code class="language-markdown">- If no pull request number is given, leave the reference
+  off. Never make one up, and do not stop to ask.
+- If a change makes no difference to people who use the
+  tool, such as a refactor, add nothing and say so.
+- The categories, in this order: Added, Changed, Deprecated,
+  Removed, Fixed, Security. A security fix goes under
+  Security.</code></pre>
+  </div>
+
+  <section class="checkpoint">
+    <h3>A count before, an edit, a count after</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: add the graders. This edits one file.</span>
+        Open a terminal in <code>practice</code>, and open <code>evals/changelog.eval.yaml</code> in a text editor. It holds three of lesson 4's six stimuli, with no graders. At the end of each stimulus, add the <code>graders</code> lines shown in "Graders that read the diff", with <code>graders:</code> lined up under <code>agent_environment:</code>.</li>
+
+      <li><span class="goal">Goal: catch typing mistakes before spending anything.</span>
+<pre><code class="language-bash">vally lint -e evals/changelog.eval.yaml</code></pre>
+        <p class="expect">You should see: one warning, <code>scoring-defaults-applied</code>, and no errors. If lint reports an error, compare your file with ours. The course folder has a folder named <code>verified</code>, beside <code>practice</code>, that holds our files as they stood at the end of each lesson.</p></li>
+
+      <li><span class="goal">Goal: measure the skill as it is. This spends eighteen short agent runs and takes about three minutes.</span>
+<pre><code class="language-bash">vally eval -e evals/changelog.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 3 --workers 2 \
+  --output-dir results/lesson-5-before</code></pre>
+<pre class="output"><code>gpt-5.6-terra
+  FAIL  typo-fix  0/3
+   ✘ adds-an-entry  2 passed · 1 failed
+   ✘ no-made-up-number  1 passed · 2 failed
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✘ 1/3             ✘ 0/3</code></pre>
+        <p class="expect">You should see: a block like the first one for each stimulus that did not pass, with the grader's name and its evidence, then the summary. Ours above is shortened to its first block. In a block, <code>0/3</code> counts trials: none of that stimulus's three passed. The last line counts stimuli that passed in every trial: one of three on the first model, none on the second.</p></li>
+
+      <li><span class="goal">Goal: write down the count before the edit.</span>
+        For each stimulus and each model, note how many of the three trials passed. A stimulus with no block passed all three. Every grader should have failed somewhere. If one never failed, check its spelling against the lesson.
+        <details class="answer"><summary>Show our count before the edit</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Stimulus</th><th>claude-haiku-4.5</th><th>gpt-5.6-terra</th></tr></thead>
+            <tbody>
+              <tr><td>typo-fix</td><td>3 of 3</td><td>0 of 3</td></tr>
+              <tr><td>refactor</td><td>0 of 3</td><td>0 of 3</td></tr>
+              <tr><td>security</td><td>0 of 3</td><td>0 of 3</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </details></li>
+
+      <li><span class="goal">Goal: close three gaps in the skill. This edits one file.</span>
+        Open <code>skills/changelog-entry/SKILL.md</code> and add the seven lines shown above the checkpoint to the end of the list.</li>
+
+      <li><span class="goal">Goal: measure the edited skill the same way. This spends another eighteen agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/changelog.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 3 --workers 2 \
+  --output-dir results/lesson-5-after</code></pre>
+<pre class="output"><code>  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✘ 2/3             ✓ 3/3</code></pre>
+        <p class="expect">You should see: a different summary from step 3. Ours is above.</p></li>
+
+      <li><span class="goal">Goal: write down the count after the edit and say what changed.</span>
+        Note the passes per stimulus and model again, and write one sentence for each failure mode.
+        <details class="answer"><summary>Show our count after the edit</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Stimulus</th><th>claude-haiku-4.5</th><th>gpt-5.6-terra</th></tr></thead>
+            <tbody>
+              <tr><td>typo-fix</td><td>3 of 3</td><td>3 of 3</td></tr>
+              <tr><td>refactor</td><td>3 of 3</td><td>3 of 3</td></tr>
+              <tr><td>security</td><td>2 of 3</td><td>3 of 3</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>The made-up number is gone on the model that produced it every time. Neither model records the refactor any more. The security rule took on one model every time; the first model still filed the fix under Fixed in one of its three trials.</p>
+        </details></li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-counts-show" data-mode="think">What the counts show</h2>
+
+  <p>That last row is the reason for this whole course. One edit, three rules, and on one model all three took. On the other, the same words fixed one failure and left another only partly fixed. Reading a couple of patches by hand might well have shown you the model where it worked. The count shows you both, and it will show you again, in three minutes, after your next edit.</p>
+
+  <p>Notice also what the graders did in step 3. Every one of them failed somewhere, on trials you already knew were bad from your own reading. That is a first piece of evidence that they check what you meant. Lesson 7 makes that test deliberate.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/guides/choosing-graders/">Choose a Grader, Vally docs</a></p>
+    <p>Read "Choose by evidence": it sorts Vally's graders by what each one looks at, which is the fastest way to find the right one for a failure mode.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, give the three habits that make a grader worth having.
+        <details class="answer"><summary>Show model answer</summary><p>Grade the result the agent left, not the route it took. Write one grader per failure mode and name it after the failure. Make sure the grader can fail, by running it first where you know the failure happens.</p></details></li>
+      <li>One of your models may still fail a stimulus after the edit, as ours did with the security fix. Reword that one rule in the skill, run again into <code>results/lesson-5-retry</code>, and compare the count for that stimulus.
+        <details class="answer"><summary>Show model answer</summary><p>There is no fixed answer: what matters is that you change one thing and measure. Even three trials moving from 2 of 3 to 3 of 3, as the one stimulus left failing in our run would, cannot tell you whether the rewording helped; lesson 15 explains why and what to do about it. Put the skill back as the lesson left it before you go on, so that your later results can be compared with ours.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="5" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> show, with three graders and a count before and after, what one edit to the skill changed on each model.</p>
+    <p><strong>Up next:</strong> <a href="./0006-keep-graders-out-of-reach.html">Keep graders out of the agent's reach</a>. Patterns caught three failures. "Nothing else in the file changed" is not a pattern: it needs a script. Where can a script live so the agent cannot read or edit it?</p>
+    <a class="next-lesson" href="./0006-keep-graders-out-of-reach.html">Next lesson: Keep graders out of the agent's reach <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

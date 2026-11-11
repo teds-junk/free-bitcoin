@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "implementation-words",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::mai-code-1.1-flash::implementation-words::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "mai-code-1.1-flash",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:38:41.707Z",
+  "status": "success",
+  "trajectoryId": "8326d1e5-60f2-4e1b-ade2-dc2ab1a276f9",
+  "executorSessionId": "d4ff9c18-434e-49b4-a56e-7aaa1cc65f81",
+  "completedAt": "2026-11-10T07:38:57.125Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/implementation-words/mai-code-1.1-flash/0/events.jsonl"
+}

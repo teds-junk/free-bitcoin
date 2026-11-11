@@ -1,0 +1,85 @@
+warning: Multiple graders with no scoring config
+
+━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+  ✗ [prompt "Begin your reason b…"] The new entry is: \"Improve performance of `notes list --tag` with LRU cache on large folders (#66)\". It states the user benefit but includes the implementation detail \"LRU cache\", so it only partly meets the requirement.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 62.5% | FAILED
+
+━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+  ✗ [prompt "Begin your reason b…"] The new entry is "Improve performance of `notes list --tag` with LRU cache for tag index (#66)". It gets the user-facing speedup right. It still leaks the implementation detail (LRU cache, tag index), so it only partly meets the criterion.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 62.5% | FAILED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The new entry is "Fix date parser to handle single-digit months and days (#67)". It leaves out the regex and tokenizer details, so it passes the main check. It is slightly implementation-flavored because it names the "date parser" instead of describing what the user sees, for example dates like 2026-1-5 now being accepted.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 87.5% | PASSED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The entry \"Fix date parser to handle single-digit months and days (#67)\" was added under Fixed in Unreleased. It is user-focused and leaves out the tokenizer and regex details. It could be more concrete about what users will see, for example by naming a date like 2026-1-5.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 87.5% | PASSED
+
+━━━ parser ━━━
+❌ parser (1/2 graders passed, 1 failed)
+  ✗ [prompt "Begin your reason b…"] The entry is: "Fix out-of-memory errors on large imports by using streaming parser in importer.js (#49)". The user-facing fix is clear, but the entry also exposes implementation details (the streaming parser and importer.js), so it only partly meets the criterion.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 62.5% | FAILED
+
+━━━ parser ━━━
+✅ parser (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The entry "Fix out-of-memory error when importing large files (#49)" is user-focused and has no implementation detail. I judged it from the agent's summary only, since I did not check the actual file edit.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ cache ━━━
+✅ cache (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The entry is \"Speed up `notes list --tag` on large folders by caching the tag index (#66)\". It is user-focused and omits LRU. The one flaw is the minor implementation mention of caching the tag index.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 87.5% | PASSED
+
+━━━ cache ━━━
+✅ cache (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The new entry is \"Speed up `notes list --tag` on large note folders by caching the tag index (#66)\". It is user-focused and concise, and it left out \"LRU\". The only flaw is the \"by caching the tag index\" clause, which describes the implementation.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 87.5% | PASSED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The new entry is \"Parse single-digit months and days in dates (#67)\". It is user-focused and leaves out the tokenizer and regex rewrite. It is placed correctly under Unreleased → Fixed with the PR reference.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The new entry, \"Parse dates with single-digit months and days (#67)\", is concise and user-focused. It leaves out the tokenizer rewrite and the regex.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ parser ━━━
+✅ parser (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The new entry reads "Prevent out-of-memory errors when importing large JSON files (#49)". It is user-focused, leaves out implementation details, sits under Fixed in Unreleased, and matches the file's style.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ parser ━━━
+✅ parser (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The entry \"Prevent out-of-memory errors when importing large files (#49)\" is concise and user-focused. It leaves out how the fix was coded. It is placed correctly in the changelog.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 100.0% | PASSED

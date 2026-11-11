@@ -1,0 +1,72 @@
+$ cd results/lesson-15/2026-11-10T14-55-58-278Z; ls
+haiku-after
+haiku-before
+otel-context.json
+otel-spans.jsonl
+plan-snapshot.json
+report.md
+shard-manifest.json
+terra-after
+terra-before
+
+$ vally compare --baseline haiku-before --treatment haiku-after --judge-model claude-sonnet-5.5 --output haiku-compare.jsonl
+Baseline: haiku-before (9 trajectory(s))
+Treatment(s): haiku-after (9)
+Judge model: claude-sonnet-5.5
+
+haiku-after vs haiku-before (baseline)
+  Win rate: 67%  6 wins / 3 ties / 0 losses over 9 trials
+  Mean score: +0.53 [95% CI +0.17, +0.89] (+ = treatment better)
+  Grader pass/fail (McNemar): +5/-0 pass-fail flips, p=0.063 (exact, not significant)
+  Metric deltas (treatment − baseline):
+    tokens         -5106 [-13751, +3539] ⚠ high variance
+    turns          -0.3 [-0.9, +0.2] ⚠ high variance
+    tool calls     -0.3 [-0.9, +0.2] ⚠ high variance
+    wall time (ms) -216 [-1217, +786] ⚠ high variance
+    errors         +0.0 [+0.0, +0.0]
+
+
+Wrote 1 comparison record(s) to haiku-compare.jsonl
+
+$ vally compare --baseline terra-before --treatment terra-after --judge-model claude-sonnet-5.5 --fail-on-regression --output terra-compare.jsonl
+Baseline: terra-before (8 trajectory(s))
+Treatment(s): terra-after (9)
+Judge model: claude-sonnet-5.5
+
+terra-after vs terra-before (baseline)
+  Win rate: 13%  1 win / 7 ties / 0 losses over 8 trials
+  Mean score: +0.05 [95% CI -0.07, +0.17] (+ = treatment better)
+  Grader pass/fail (McNemar): +1/-0 pass-fail flips, p=1.000 (exact, not significant)
+  Metric deltas (treatment − baseline):
+    tokens         +11132 [+665, +21599] ⚠ high variance
+    turns          +0.9 [+0.0, +1.7] ⚠ high variance
+    tool calls     +1.6 [+0.0, +3.2] ⚠ high variance
+    wall time (ms) +1361 [-324, +3046] ⚠ high variance
+    errors         +0.0 [+0.0, +0.0]
+  ⚠ 1 treatment trajectory(s) had no baseline match
+
+
+Wrote 1 comparison record(s) to terra-compare.jsonl
+
+$ echo $?
+0
+
+$ vally compare --baseline haiku-after --treatment haiku-before --judge-model claude-sonnet-5.5 --fail-on-regression
+Baseline: haiku-after (9 trajectory(s))
+Treatment(s): haiku-before (9)
+Judge model: claude-sonnet-5.5
+
+haiku-before vs haiku-after (baseline)
+  Win rate: 11%  1 win / 3 ties / 5 losses over 9 trials
+  Mean score: -0.38 [95% CI -0.78, +0.02] (+ = treatment better)
+  Grader pass/fail (McNemar): +0/-5 pass-fail flips, p=0.063 (exact, not significant)
+  Metric deltas (treatment − baseline):
+    tokens         +5106 [-3539, +13751] ⚠ high variance
+    turns          +0.3 [-0.2, +0.9] ⚠ high variance
+    tool calls     +0.3 [-0.2, +0.9] ⚠ high variance
+    wall time (ms) +216 [-786, +1217] ⚠ high variance
+    errors         +0.0 [+0.0, +0.0]
+
+$ echo $?
+0
+

@@ -1,0 +1,38 @@
+name: changelog
+
+defaults:
+  timeout: 3m
+
+agent_environment:
+  skills:
+    - ../skills/changelog-entry
+
+stimuli:
+  - name: typo-fix
+    prompt: |
+      I fixed the typo in the help text for `notes add`
+      (it said "tittle"). Put that in the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+
+  - name: refactor
+    prompt: |
+      PR 61 is merged. It splits storage.js into three
+      smaller modules. Nothing changes for users, it's
+      purely a cleanup. Update the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+
+  - name: security
+    prompt: |
+      PR 63 closes a hole: `notes export --out` let you
+      write outside the notes folder with a path like
+      ../../etc. It now refuses. Update the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md

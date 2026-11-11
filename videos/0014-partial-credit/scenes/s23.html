@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A threshold is a decision</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:250px;justify-content:center}.terms .title{font-size:52px}.terms .label{font-size:32px}.lead{font-size:40px;margin:0}.stage{gap:38px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the scores showed</div>
+  <h2 class="scene-title">A threshold is a decision</h2>
+  <div class="stage">
+<div class="cols terms">
+    <div class="semantic-block" data-concept="yn" data-rep="block" data-role="structure">
+      <div class="title">TNR 4 of 5</div><div class="label">the yes-or-no judge</div>
+    </div>
+    <div class="semantic-block" data-concept="ours" data-rep="block" data-role="attention">
+      <div class="title">TNR 3 of 5</div><div class="label">1 to 5, threshold 0.75</div>
+    </div>
+    <div class="semantic-block" data-concept="default" data-rep="block" data-role="change">
+      <div class="title">TNR 3 of 5</div><div class="label">1 to 5, default threshold 0.5</div>
+    </div>
+  </div>
+  <p class="lead"><span data-concept="check" data-rep="note">The same check as before: its verdicts against our labels.</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "yn",
+  "at": "1~four of five",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ours",
+  "at": "1~three of five",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "default",
+  "at": "2",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "check",
+  "at": "4",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

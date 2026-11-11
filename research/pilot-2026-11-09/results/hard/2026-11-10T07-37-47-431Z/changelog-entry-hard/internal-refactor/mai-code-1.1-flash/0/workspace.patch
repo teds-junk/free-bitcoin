@@ -1,0 +1,14 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 697937c..24fc645 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -4,6 +4,9 @@ All notable changes to notes-cli are recorded in this file.
+ 
+ ## [Unreleased]
+ 
++### Changed
++- Split the internal storage implementation into multiple smaller modules for maintainability without changing behavior (#61)
++
+ ### Added
+ - Add `notes list --tag` to show only notes with a given tag (#41)
+ 

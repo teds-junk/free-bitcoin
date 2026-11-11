@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Added after the agent stops</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.two .card > .code.dark{font-size:38px;line-height:1.6;padding:30px 36px;min-height:330px}.two .card .who{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Files only graders get</div>
+  <h2 class="scene-title">Added after the agent stops</h2>
+  <div class="stage">
+<div class="cols wide two">
+    <div class="card" data-concept="ws" data-rep="card">
+        <div class="who">Workspace · the agent works here</div>
+        <pre class="code dark" data-lang="text"><code><span>CHANGELOG.md</span>
+<span>changelog-entry/</span>
+<span>  SKILL.md</span></code></pre>
+      </div>
+    <div class="card" data-concept="gc" data-rep="card">
+        <div class="who">Grading copy · only graders run here</div>
+        <pre class="code dark" data-lang="text"><code><span>CHANGELOG.md</span>
+<span>changelog-entry/</span>
+<span>  SKILL.md</span>
+<span data-concept="added" data-rep="code"><span>.vally-grading/</span></span>
+<span>  </span><span data-concept="added" data-rep="code"><span>check-entry.mjs</span></span></code></pre>
+      </div>
+  </div>
+  <p class="note">the grading copy is made when the agent stops, and thrown away when grading ends</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "gc",
+  "at": "2~copy",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "added",
+  "at": "4~script",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

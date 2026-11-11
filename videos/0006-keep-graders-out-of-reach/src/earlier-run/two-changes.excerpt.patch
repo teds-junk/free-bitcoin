@@ -1,0 +1,10 @@
+ ### Added
+ - Add `notes list --tag` to filter by tag (#41)
++- Add `notes list --json` to output as JSON (#60)
+ 
+-## [1.2.0] - 2026-09-14
++### Fixed
++- Fix pagination bug where page 2 repeated … (#60)
+ 
+ ### Added
+ - Add `notes export` for a single-file backup (#37)

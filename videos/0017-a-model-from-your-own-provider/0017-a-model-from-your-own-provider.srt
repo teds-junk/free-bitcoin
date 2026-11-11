@@ -1,0 +1,919 @@
+1
+00:00:00,400 --> 00:00:04,870
+Every trial so far has gone through our
+Copilot account: Vally asked for a model
+
+2
+00:00:04,870 --> 00:00:06,825
+by name, and the account served it.
+
+3
+00:00:07,325 --> 00:00:09,700
+An app may not work that way.
+
+4
+00:00:10,200 --> 00:00:14,248
+Teams often call a model through a
+provider they pay directly, or one they
+
+5
+00:00:14,248 --> 00:00:17,475
+run themselves, for reasons of price, data
+rules, or speed.
+
+6
+00:00:17,975 --> 00:00:21,992
+Here, you'll point one variant of an
+experiment at a model running on our own
+
+7
+00:00:21,992 --> 00:00:24,600
+computer, and work out what its trials
+would cost.
+
+8
+00:00:25,800 --> 00:00:28,175
+Let's start with why that matters.
+
+9
+00:00:28,675 --> 00:00:32,125
+We've seen two models take the same skill
+two ways.
+
+10
+00:00:32,625 --> 00:00:37,125
+Less obviously, one model served two ways
+can behave differently too.
+
+11
+00:00:37,625 --> 00:00:42,181
+Whoever serves a model decides how it's
+stored, and that's often compressed to fit
+
+12
+00:00:42,181 --> 00:00:43,125
+smaller machines.
+
+13
+00:00:43,625 --> 00:00:48,256
+They decide how the conversation, and the
+agent's tool calls, are turned into the
+
+14
+00:00:48,256 --> 00:00:49,400
+text the model sees.
+
+15
+00:00:49,900 --> 00:00:52,575
+They also choose its default settings.
+
+16
+00:00:53,075 --> 00:00:57,317
+Each of those can change what the agent
+does, so a result for the same model from
+
+17
+00:00:57,317 --> 00:01:00,825
+somewhere else says little about yours,
+even when the name matches.
+
+18
+00:01:02,033 --> 00:01:04,533
+Here's a case from our own computer.
+
+19
+00:01:05,033 --> 00:01:09,500
+Another local model failed every trial
+before it changed a file, because the
+
+20
+00:01:09,500 --> 00:01:11,733
+server refused the agent's tool calls.
+
+21
+00:01:12,233 --> 00:01:15,783
+That model may well be able to write a
+changelog entry.
+
+22
+00:01:16,283 --> 00:01:19,658
+Only a run through that endpoint could
+show the problem.
+
+23
+00:01:20,158 --> 00:01:24,139
+So we evaluate through the endpoint the
+app calls, with the model name the app
+
+24
+00:01:24,139 --> 00:01:27,558
+sends, and we keep the stimuli, the
+graders and the skill the same.
+
+25
+00:01:28,767 --> 00:01:32,442
+That's the reasoning; now for how Vally
+reaches a model at all.
+
+26
+00:01:32,942 --> 00:01:37,585
+When Vally says executor, it means the
+part of it that runs the agent for each
+
+27
+00:01:37,585 --> 00:01:37,942
+trial.
+
+28
+00:01:38,442 --> 00:01:42,367
+It starts a session, sends the stimulus,
+and records what happened.
+
+29
+00:01:42,867 --> 00:01:47,836
+Unless a file says otherwise, Vally uses
+its built-in executor, named copilot SDK,
+
+30
+00:01:47,836 --> 00:01:50,867
+which reaches models through your Copilot
+account.
+
+31
+00:01:51,367 --> 00:01:55,792
+Having that executor call a provider you
+choose, with your own credentials, is
+
+32
+00:01:55,792 --> 00:01:57,267
+called bring your own key.
+
+33
+00:01:58,467 --> 00:02:02,342
+The executor is chosen in an eval file,
+under defaults.
+
+34
+00:02:02,842 --> 00:02:06,992
+And in an experiment, a variant can choose
+it too, under its overrides.
+
+35
+00:02:07,492 --> 00:02:11,434
+Providers come in two kinds: hosted,
+meaning a service you pay, or local,
+
+36
+00:02:11,434 --> 00:02:15,592
+meaning a program on your own computer;
+this file is set up for a hosted one.
+
+37
+00:02:16,092 --> 00:02:20,182
+Here, the model line gives the name the
+provider knows the model by, and Vally
+
+38
+00:02:20,182 --> 00:02:22,542
+doesn't check it against your account's
+list.
+
+39
+00:02:23,042 --> 00:02:27,678
+The executor is still the built-in one;
+only where it sends the model's requests
+
+40
+00:02:27,678 --> 00:02:28,142
+changes.
+
+41
+00:02:28,642 --> 00:02:33,172
+The executor's settings go in a block
+named config, and here that's a single
+
+42
+00:02:33,172 --> 00:02:34,067
+provider block.
+
+43
+00:02:35,267 --> 00:02:38,117
+The provider block has three fields here.
+
+44
+00:02:38,617 --> 00:02:43,417
+Base URL is the provider's address, and
+it's the only field that's required.
+
+45
+00:02:43,917 --> 00:02:47,192
+Type names the kind of interface the
+provider speaks.
+
+46
+00:02:47,692 --> 00:02:52,370
+Its default is the interface that Open
+AI's own servers use, and many other
+
+47
+00:02:52,370 --> 00:02:54,117
+servers copy that interface.
+
+48
+00:02:54,617 --> 00:02:57,467
+The last field is API key env.
+
+49
+00:02:57,967 --> 00:03:02,517
+It holds the name of an environment
+variable, and that variable holds the key.
+
+50
+00:03:03,733 --> 00:03:08,257
+The key never goes in the file, because
+eval files are shared, and kept with
+
+51
+00:03:08,257 --> 00:03:08,733
+results.
+
+52
+00:03:09,233 --> 00:03:14,114
+Vally enforces that: the provider block
+has no field for a key, and lint rejects
+
+53
+00:03:14,114 --> 00:03:14,358
+one.
+
+54
+00:03:14,858 --> 00:03:19,240
+Vally takes the key from the environment
+of the vally command, when each trial
+
+55
+00:03:19,240 --> 00:03:19,633
+starts.
+
+56
+00:03:20,133 --> 00:03:24,793
+If that variable isn't set, lint still
+passes, but every trial stops with ERROR
+
+57
+00:03:24,793 --> 00:03:26,208
+before the agent starts.
+
+58
+00:03:27,433 --> 00:03:30,533
+A model on your own computer needs no key.
+
+59
+00:03:31,033 --> 00:03:35,557
+Ollama is a free program that downloads
+open models, and serves them on your
+
+60
+00:03:35,557 --> 00:03:36,033
+machine.
+
+61
+00:03:36,533 --> 00:03:41,267
+It answers at a local address, with that
+same Open AI interface, so a provider
+
+62
+00:03:41,267 --> 00:03:43,633
+block with only the base URL is enough.
+
+63
+00:03:44,833 --> 00:03:47,658
+One thing changes in what a trial saves.
+
+64
+00:03:48,158 --> 00:03:51,808
+Its tokens are counted as before, under
+token usage.
+
+65
+00:03:52,308 --> 00:03:56,922
+Its cost is absent, because a cost is
+recorded only when every call in the trial
+
+66
+00:03:56,922 --> 00:03:58,133
+went through Copilot.
+
+67
+00:03:58,633 --> 00:04:03,250
+So we price the tokens ourselves, at our
+provider's rates, from the counts for each
+
+68
+00:04:03,250 --> 00:04:03,583
+model.
+
+69
+00:04:04,083 --> 00:04:07,433
+In this trial from our run, nothing came
+from cache.
+
+70
+00:04:07,933 --> 00:04:12,583
+So on every turn, the whole conversation
+was counted again as new input.
+
+71
+00:04:13,083 --> 00:04:17,520
+One more consequence: a judge still goes
+through your Copilot account, because the
+
+72
+00:04:17,520 --> 00:04:20,008
+provider's credentials are for the agent
+only.
+
+73
+00:04:21,233 --> 00:04:25,811
+Here's the experiment file from the cost
+comparison, as it stands once a fifth
+
+74
+00:04:25,811 --> 00:04:26,808
+variant is added.
+
+75
+00:04:27,308 --> 00:04:31,841
+We've named the new variant qwen local,
+and it runs a small open model, qwen three
+
+76
+00:04:31,841 --> 00:04:33,333
+point five, through Ollama.
+
+77
+00:04:33,833 --> 00:04:37,683
+It's one that can call the agent's tools,
+and the one that worked for us.
+
+78
+00:04:38,183 --> 00:04:42,433
+The vary list has to name every setting
+that differs between variants.
+
+79
+00:04:42,933 --> 00:04:46,832
+Three of this variant's settings differ,
+so the list gains three paths: the
+
+80
+00:04:46,832 --> 00:04:49,483
+executor, the time limit, and the number
+of trials.
+
+81
+00:04:49,983 --> 00:04:54,406
+If one were missing, say the executor
+path, a dry run would stop and report
+
+82
+00:04:54,406 --> 00:04:55,408
+experiment drift.
+
+83
+00:04:56,633 --> 00:04:59,908
+Down at the end of the file is the variant
+itself.
+
+84
+00:05:00,408 --> 00:05:05,350
+Because a local model is slow, its time
+limit is nine minutes, instead of the eval
+
+85
+00:05:05,350 --> 00:05:06,133
+file's three.
+
+86
+00:05:06,633 --> 00:05:11,029
+It runs each stimulus once, where the
+other variants run each one three times,
+
+87
+00:05:11,029 --> 00:05:13,283
+so its pass count rests on fewer trials.
+
+88
+00:05:13,783 --> 00:05:17,033
+Its provider block holds only Ollama's
+address.
+
+89
+00:05:18,233 --> 00:05:21,408
+We'll run it with one worker, not our
+usual two.
+
+90
+00:05:21,908 --> 00:05:26,338
+This local server answers one request at a
+time, so with two workers each trial would
+
+91
+00:05:26,338 --> 00:05:29,308
+wait on the other, and could run out of
+its nine minutes.
+
+92
+00:05:30,533 --> 00:05:35,208
+To price the tokens we need a price, and a
+model on our own computer has none.
+
+93
+00:05:35,708 --> 00:05:40,285
+So we've made one up for the arithmetic:
+ten cents per million input tokens, and
+
+94
+00:05:40,285 --> 00:05:42,458
+forty cents per million output tokens.
+
+95
+00:05:42,958 --> 00:05:47,618
+This rate isn't any provider's price;
+yours are on your provider's pricing page,
+
+96
+00:05:47,618 --> 00:05:48,783
+or in your contract.
+
+97
+00:05:50,000 --> 00:05:52,400
+That's the file; now let's run it.
+
+98
+00:05:52,900 --> 00:05:57,521
+We'll check Ollama, check the plan, run
+only the new variant, and then price its
+
+99
+00:05:57,521 --> 00:05:57,925
+tokens.
+
+100
+00:05:58,425 --> 00:06:02,900
+On these five stimuli, the account's
+variants passed every trial that finished.
+
+101
+00:06:03,400 --> 00:06:08,205
+How many would you expect a small local
+model to pass, and what would each passing
+
+102
+00:06:08,205 --> 00:06:08,850
+trial cost?
+
+103
+00:06:11,350 --> 00:06:14,225
+If you tried it yourself, here's what
+you'd see.
+
+104
+00:06:15,433 --> 00:06:20,410
+First, Ollama itself: older versions can't
+run this model, so we check for zero point
+
+105
+00:06:20,410 --> 00:06:22,108
+seventeen point one or later.
+
+106
+00:06:24,013 --> 00:06:25,813
+Ours is newer.
+
+107
+00:06:26,313 --> 00:06:31,078
+Our model is a download of about six point
+six gigabytes, which we already have, so
+
+108
+00:06:31,078 --> 00:06:32,513
+we list what's installed.
+
+109
+00:06:33,920 --> 00:06:38,246
+There's the line for qwen three point
+five; Ollama serves it while its app is
+
+110
+00:06:38,246 --> 00:06:38,695
+running.
+
+111
+00:06:41,900 --> 00:06:46,175
+The variant is now in the experiment file,
+exactly as we saw it.
+
+112
+00:06:46,675 --> 00:06:50,275
+Next, a dry run, which checks the plan and
+starts nothing.
+
+113
+00:06:50,775 --> 00:06:53,875
+We're looking for a last block headed qwen
+local.
+
+114
+00:06:55,140 --> 00:06:58,315
+There it is, the fifth plan, with our
+model's name.
+
+115
+00:07:07,533 --> 00:07:12,432
+Now the run: dash dash variant runs one
+named variant, so the earlier results stay
+
+116
+00:07:12,432 --> 00:07:13,208
+as they were.
+
+117
+00:07:13,708 --> 00:07:17,258
+We give it one worker, and a results
+folder of its own.
+
+118
+00:07:17,758 --> 00:07:22,139
+That's one trial of each of the five
+stimuli, all on our computer, so it spends
+
+119
+00:07:22,139 --> 00:07:23,858
+nothing on the Copilot account.
+
+120
+00:07:26,147 --> 00:07:30,797
+About a quarter of an hour later, the
+table has one column: qwen local passed
+
+121
+00:07:30,797 --> 00:07:31,522
+two of five.
+
+122
+00:07:36,022 --> 00:07:40,372
+The stimuli that failed are listed further
+up, and we'll go through them shortly.
+
+123
+00:07:42,872 --> 00:07:46,172
+The run is saved in a folder named with
+the time.
+
+124
+00:07:47,980 --> 00:07:49,355
+There it is.
+
+125
+00:07:52,300 --> 00:07:55,800
+One line in that output looks like a
+problem, and isn't.
+
+126
+00:07:56,300 --> 00:08:00,675
+It says the comparison is unavailable,
+because the baseline wasn't run.
+
+127
+00:08:01,175 --> 00:08:05,700
+With dash dash variant, only qwen local
+ran, so this run has nothing from the
+
+128
+00:08:05,700 --> 00:08:08,050
+baseline, haiku low, to compare it with.
+
+129
+00:08:08,550 --> 00:08:13,525
+The earlier results sit in a different run
+folder, so we'll make that comparison by
+
+130
+00:08:13,525 --> 00:08:13,825
+hand.
+
+131
+00:08:15,033 --> 00:08:19,745
+The course's cost calculator takes this
+variant's results file, just as it took
+
+132
+00:08:19,745 --> 00:08:20,758
+the earlier ones.
+
+133
+00:08:21,258 --> 00:08:25,958
+The calculator counts five trials, two of
+them passing, and none ending in ERROR.
+
+134
+00:08:26,458 --> 00:08:30,883
+Every cost is a dash, because no cost was
+recorded for any trial.
+
+135
+00:08:34,100 --> 00:08:36,600
+So we add up the tokens ourselves.
+
+136
+00:08:37,100 --> 00:08:42,080
+Each record in the results file holds that
+trial's input and output tokens for each
+
+137
+00:08:42,080 --> 00:08:43,100
+model, as we saw.
+
+138
+00:08:43,600 --> 00:08:48,124
+Across the five trials, that's about three
+hundred and sixty-five thousand input
+
+139
+00:08:48,124 --> 00:08:50,725
+tokens, and under four thousand output
+tokens.
+
+140
+00:08:54,933 --> 00:08:58,383
+Each total is priced at its rate per
+million tokens.
+
+141
+00:08:58,883 --> 00:09:03,390
+Nearly all of the cost is input: about
+three and a half cents, against a fraction
+
+142
+00:09:03,390 --> 00:09:04,558
+of a cent for output.
+
+143
+00:09:05,058 --> 00:09:08,908
+Together, the five trials would cost about
+three point eight cents.
+
+144
+00:09:09,408 --> 00:09:14,183
+Only two of them passed, so each passing
+trial cost about one point nine cents.
+
+145
+00:09:14,683 --> 00:09:19,080
+For comparison, haiku low came to about a
+fifth of a cent per passing trial, and
+
+146
+00:09:19,080 --> 00:09:21,333
+terra low to about two point eight cents.
+
+147
+00:09:24,533 --> 00:09:26,858
+So what changed, and what didn't?
+
+148
+00:09:27,358 --> 00:09:29,533
+A good deal carried over.
+
+149
+00:09:30,033 --> 00:09:35,062
+The same eval file, stimuli, graders and
+skill ran, and the results had the shape
+
+150
+00:09:35,062 --> 00:09:35,558
+we know.
+
+151
+00:09:36,058 --> 00:09:40,224
+Changing the provider was a few lines in
+one variant, and that's the payoff of
+
+152
+00:09:40,224 --> 00:09:41,933
+evaluating through the endpoint.
+
+153
+00:09:43,133 --> 00:09:45,483
+The results did not carry over.
+
+154
+00:09:45,983 --> 00:09:50,449
+This model passed two of five, where the
+account's variants passed every trial that
+
+155
+00:09:50,449 --> 00:09:50,933
+finished.
+
+156
+00:09:51,433 --> 00:09:55,458
+Its failures are ones we've met before:
+the security fix filed under Fixed, an
+
+157
+00:09:55,458 --> 00:09:59,535
+entry for the internal refactor, and,
+after a release, an entry under a version
+
+158
+00:09:59,535 --> 00:10:01,908
+number it made up, with no Unreleased
+heading.
+
+159
+00:10:02,408 --> 00:10:06,708
+The saved trials show why: the skill was
+in the workspace, but only one of the five
+
+160
+00:10:06,708 --> 00:10:09,608
+trials loaded it, and none of the three
+that failed did.
+
+161
+00:10:10,108 --> 00:10:14,283
+So the question of whether the skill loads
+comes back with each new model.
+
+162
+00:10:15,500 --> 00:10:18,900
+Is two of five too few trials to say
+anything?
+
+163
+00:10:19,400 --> 00:10:23,775
+Two passes in five gives a range of twelve
+to seventy-seven percent.
+
+164
+00:10:24,275 --> 00:10:28,000
+Haiku low's fifteen in fifteen gives
+eighty to a hundred.
+
+165
+00:10:28,500 --> 00:10:33,269
+These ranges don't overlap, so even five
+trials show this model doing worse on
+
+166
+00:10:33,269 --> 00:10:34,125
+these stimuli.
+
+167
+00:10:34,625 --> 00:10:39,338
+A count that low is enough to say worse;
+saying by how much would take many more
+
+168
+00:10:39,338 --> 00:10:39,750
+trials.
+
+169
+00:10:40,967 --> 00:10:43,217
+Cost didn't carry over either.
+
+170
+00:10:43,717 --> 00:10:47,939
+Run locally, the tokens cost nothing,
+though each trial took minutes, and used
+
+171
+00:10:47,939 --> 00:10:49,942
+the computer's memory the whole time.
+
+172
+00:10:50,442 --> 00:10:55,213
+Priced at our made-up rate, each passing
+trial cost about nine times what haiku
+
+173
+00:10:55,213 --> 00:10:55,817
+low's did.
+
+174
+00:10:56,317 --> 00:10:58,817
+It was still cheaper than terra low's.
+
+175
+00:10:59,317 --> 00:11:03,471
+Two things drove that, and neither is the
+price per token: three of five trials
+
+176
+00:11:03,471 --> 00:11:07,626
+failed, and with nothing from cache, every
+turn paid for the whole conversation
+
+177
+00:11:07,626 --> 00:11:07,942
+again.
+
+178
+00:11:08,442 --> 00:11:12,542
+So a low price per token is not a low cost
+per passing trial.
+
+179
+00:11:13,767 --> 00:11:18,418
+Scope matters here: this is one model,
+served one way, on one computer, with a
+
+180
+00:11:18,418 --> 00:11:19,492
+price we invented.
+
+181
+00:11:19,992 --> 00:11:24,403
+From a hosted provider, the same model
+might load the skill, cache its input, or
+
+182
+00:11:24,403 --> 00:11:25,617
+be priced differently.
+
+183
+00:11:26,117 --> 00:11:30,338
+What carries over is the method: run the
+endpoint your app calls, count the tokens,
+
+184
+00:11:30,338 --> 00:11:33,542
+price them at your own rates, and divide
+by the passing trials.
+
+185
+00:11:34,767 --> 00:11:39,017
+Before you go on: with your own provider,
+where is the key kept, and what does a
+
+186
+00:11:39,017 --> 00:11:39,867
+trial leave out?
+
+187
+00:11:42,867 --> 00:11:47,788
+The key is in an environment variable of
+the vally command, and never in the eval
+
+188
+00:11:47,788 --> 00:11:48,092
+file.
+
+189
+00:11:48,592 --> 00:11:51,867
+The trial still counts its tokens, for
+each model.
+
+190
+00:11:52,367 --> 00:11:56,575
+It leaves out the cost, so we price the
+tokens ourselves, and divide by the
+
+191
+00:11:56,575 --> 00:11:57,417
+passing trials.
+
+192
+00:11:58,633 --> 00:12:03,035
+You can now run a variant through your own
+provider, and work out its cost from your
+
+193
+00:12:03,035 --> 00:12:04,083
+own price per token.
+
+194
+00:12:04,583 --> 00:12:08,997
+Our local trials took minutes each, and a
+trial that gets stuck in a loop can cost
+
+195
+00:12:08,997 --> 00:12:12,333
+ten times as much as a typical one, or
+take ten times as long.
+
+196
+00:12:12,833 --> 00:12:16,858
+How do you fail, or stop, a trial that
+costs or takes too much?
+
+197
+00:12:17,358 --> 00:12:19,208
+That's the next lesson.
+
+198
+00:12:19,708 --> 00:12:23,858
+For practice, the exercises on the lesson
+page are worth doing first.

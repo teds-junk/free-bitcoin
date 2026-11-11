@@ -1,0 +1,25 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from release · 2 models · 2 workers
+
+release
+
+claude-haiku-4.5
+  FAIL  since-last-release  0/5
+   ✘ every-change-handled  0 passed · 5 failed · Command 'node .vally-grading/check-release.mjs'
+                                                 failed: Expected exit code 0, got 1  trials 1–5
+
+────────────────────────────────────────────────────────
+
+Failures  1 failed
+  ✘ release · since-last-release [claude-haiku-4.5]
+      ✘ every-change-handled  Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1 · trials 1–5
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval     claude-haiku-4.5  gpt-5.6-terra
+  release  ✘ 0/1             ✓ 1/1        
+
+Saved  <practice>/results/lesson-22/2026-11-10T17-47-00-752Z/
+Run ID  2509896c-12d0-410f-8c44-591b92eb74d1

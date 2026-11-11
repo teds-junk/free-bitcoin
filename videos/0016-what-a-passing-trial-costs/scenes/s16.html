@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Two models take an effort</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.eff{font-size:36px}.eff th{font-size:30px}.eff td{padding-top:30px;padding-bottom:30px}.eff td.mono{font-family:var(--font-code);font-size:34px}.stage{gap:26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Price the variants</div>
+  <h2 class="scene-title">Two models take an effort</h2>
+  <div class="stage">
+<table class="data-table full eff">
+    <thead><tr><th>Model</th><th>Reasoning efforts it accepts</th></tr></thead>
+    <tbody>
+      <tr><td class="mono"><span data-concept="m45" data-rep="cell">claude-haiku-4.5</span></td><td>does not support reasoning effort configuration</td></tr>
+      <tr><td class="mono"><span data-concept="m55" data-rep="cell">claude-haiku-5.5</span></td><td class="mono"><span data-concept="lowhigh" data-rep="cell">low</span>, medium, <span data-concept="lowhigh" data-rep="cell">high</span>, xhigh, max</td></tr>
+      <tr><td class="mono"><span data-concept="mterra" data-rep="cell">gpt-5.6-terra</span></td><td class="mono">none, <span data-concept="lowhigh" data-rep="cell">low</span>, medium, <span data-concept="lowhigh" data-rep="cell">high</span>, xhigh, max</td></tr>
+    </tbody>
+  </table>
+  <p class="note">from our account · the check we just ran · yours will differ</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "m45",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "m55",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "mterra",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "lowhigh",
+  "at": "4",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

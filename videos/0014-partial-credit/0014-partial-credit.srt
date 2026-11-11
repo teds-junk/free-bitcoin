@@ -1,0 +1,996 @@
+1
+00:00:00,400 --> 00:00:04,800
+Our judge said no to four of the twelve
+entries, and we said no to five.
+
+2
+00:00:05,300 --> 00:00:07,050
+Here are two of them.
+
+3
+00:00:07,550 --> 00:00:10,575
+One says outright how the change was
+coded.
+
+4
+00:00:11,075 --> 00:00:15,100
+The other starts with what users notice,
+and only hints at how.
+
+5
+00:00:15,600 --> 00:00:19,400
+Both got the same no, and a yes or no
+can't tell them apart.
+
+6
+00:00:19,900 --> 00:00:24,375
+Here, you'll give the judge a scale, and
+see how an average can let a failure pass.
+
+7
+00:00:25,600 --> 00:00:28,500
+Let's start with when a score is worth
+having.
+
+8
+00:00:29,000 --> 00:00:33,232
+We asked the judge for a yes or no on
+purpose: a yes-or-no criterion has to be
+
+9
+00:00:33,232 --> 00:00:36,650
+clear, and the difference between a three
+and a four rarely is.
+
+10
+00:00:37,150 --> 00:00:40,050
+That still holds for the question, did it
+pass?
+
+11
+00:00:40,550 --> 00:00:44,626
+A scale is worth adding when the work
+really can be partly right, and you want
+
+12
+00:00:44,626 --> 00:00:46,350
+to know how far off a failure is.
+
+13
+00:00:46,850 --> 00:00:51,147
+Wording is like that: an entry can be
+mostly for users, with one word of
+
+14
+00:00:51,147 --> 00:00:52,400
+implementation in it.
+
+15
+00:00:53,600 --> 00:00:55,675
+Other checks aren't like that.
+
+16
+00:00:56,175 --> 00:01:00,990
+An entry either cites its pull request or
+it doesn't, and a security fix is either
+
+17
+00:01:00,990 --> 00:01:02,575
+under Security or it isn't.
+
+18
+00:01:03,075 --> 00:01:07,449
+For these there's no nearly: a skill that
+gets one wrong has failed, however good
+
+19
+00:01:07,449 --> 00:01:08,475
+everything else is.
+
+20
+00:01:08,975 --> 00:01:13,191
+Vally's docs draw the same line: a
+threshold, meaning a pass mark on a score,
+
+21
+00:01:13,191 --> 00:01:16,750
+is for work that's genuinely graded, not
+for pass-or-fail checks.
+
+22
+00:01:17,250 --> 00:01:21,525
+So we keep checks that must all hold out
+of any score that gets averaged.
+
+23
+00:01:22,733 --> 00:01:25,908
+The sources we rely on differ about
+scales.
+
+24
+00:01:26,408 --> 00:01:30,392
+One argues for yes-or-no judges
+throughout, and another treats partial
+
+25
+00:01:30,392 --> 00:01:32,383
+success as a range worth recording.
+
+26
+00:01:32,883 --> 00:01:37,086
+They agree on the part that matters here:
+whatever the scale, you still decide pass
+
+27
+00:01:37,086 --> 00:01:40,883
+or fail with a clear line, and you check
+that line against your own labels.
+
+28
+00:01:42,100 --> 00:01:47,100
+That's when a score helps; now, here's how
+Vally turns grader results into a verdict.
+
+29
+00:01:47,600 --> 00:01:52,525
+Every grader gives a score between zero
+and one, as well as a pass or a fail.
+
+30
+00:01:53,025 --> 00:01:57,453
+A pass-or-fail grader, such as diff
+contains, scores one when it passes and
+
+31
+00:01:57,453 --> 00:01:58,575
+zero when it fails.
+
+32
+00:01:59,075 --> 00:02:03,275
+For each trial, Vally combines its
+graders' scores into one score.
+
+33
+00:02:03,775 --> 00:02:08,181
+What decides the trial's verdict depends
+on one optional part of the eval file,
+
+34
+00:02:08,181 --> 00:02:09,575
+called the scoring block.
+
+35
+00:02:10,800 --> 00:02:15,807
+With no scoring block, which is what every
+eval file so far has had, every grader
+
+36
+00:02:15,807 --> 00:02:16,425
+must pass.
+
+37
+00:02:16,925 --> 00:02:21,374
+Vally still works out a score, the plain
+average of the graders' scores, and prints
+
+38
+00:02:21,374 --> 00:02:23,250
+it, but that score decides nothing.
+
+39
+00:02:23,750 --> 00:02:27,125
+Lint's familiar warning is saying exactly
+that.
+
+40
+00:02:28,333 --> 00:02:32,646
+Here's the scoring block we'll add later,
+at the end of a copy of our judge's eval
+
+41
+00:02:32,646 --> 00:02:35,433
+file, where it applies to every stimulus
+in the file.
+
+42
+00:02:35,933 --> 00:02:39,858
+Weights say how much each grader type
+counts towards the trial's score.
+
+43
+00:02:40,358 --> 00:02:44,408
+They're keyed by the grader's type, not
+its name: prompt is the judge, and diff
+
+44
+00:02:44,408 --> 00:02:47,483
+contains is the check that the entry cites
+its pull request.
+
+45
+00:02:47,983 --> 00:02:50,183
+Here, the two count equally.
+
+46
+00:02:50,683 --> 00:02:55,458
+The threshold is the score, from zero to
+one, that a trial must reach to pass.
+
+47
+00:02:55,958 --> 00:03:00,408
+With this block, a trial passes when its
+weighted score reaches the threshold,
+
+48
+00:03:00,408 --> 00:03:02,233
+whatever any single grader said.
+
+49
+00:03:02,733 --> 00:03:07,345
+Sixty percent sounds like a fair bar;
+we're using it to show what goes wrong,
+
+50
+00:03:07,345 --> 00:03:08,183
+not as advice.
+
+51
+00:03:09,400 --> 00:03:13,900
+Two rules follow from the arithmetic, and
+each lets an average hide a failure.
+
+52
+00:03:14,400 --> 00:03:18,625
+First, a strong score on one grader can
+carry a failure on another.
+
+53
+00:03:19,125 --> 00:03:23,218
+In this trial, the judge fails with a
+score of a quarter, and the pull request
+
+54
+00:03:23,218 --> 00:03:24,950
+check passes with a score of one.
+
+55
+00:03:25,450 --> 00:03:30,306
+The trial's score comes to zero point six
+two five, which reaches the threshold, so
+
+56
+00:03:30,306 --> 00:03:31,300
+the trial passes.
+
+57
+00:03:31,800 --> 00:03:36,482
+The judge's failure is still printed with
+a cross; it just no longer decides the
+
+58
+00:03:36,482 --> 00:03:36,950
+verdict.
+
+59
+00:03:38,167 --> 00:03:42,886
+Second, a grader type that's left out of
+the weights stops counting: its weight is
+
+60
+00:03:42,886 --> 00:03:43,692
+taken as zero.
+
+61
+00:03:44,192 --> 00:03:48,159
+With diff contains alone in the weights,
+the judge would still be called and paid
+
+62
+00:03:48,159 --> 00:03:50,217
+for, and its verdict would change nothing.
+
+63
+00:03:50,717 --> 00:03:54,192
+The docs put it plainly: omitting a type
+silences it.
+
+64
+00:03:54,692 --> 00:03:59,242
+A threshold with no weights at all takes
+the plain average of every grader.
+
+65
+00:03:59,742 --> 00:04:04,117
+Here's a stimulus with three graders: a
+yes-or-no judge, and two checks.
+
+66
+00:04:04,617 --> 00:04:09,205
+The judge fails, which for a yes-or-no
+judge is a score of zero, and both checks
+
+67
+00:04:09,205 --> 00:04:09,492
+pass.
+
+68
+00:04:09,992 --> 00:04:14,948
+The average is zero point six seven, which
+reaches zero point six, so the judge is
+
+69
+00:04:14,948 --> 00:04:15,492
+outvoted.
+
+70
+00:04:16,700 --> 00:04:21,475
+That's the scoring block; next, here's a
+judge that can score between zero and one.
+
+71
+00:04:21,975 --> 00:04:26,758
+The judge is the prompt grader, and its
+config has a scoring setting, which so far
+
+72
+00:04:26,758 --> 00:04:28,800
+we've set to binary: a yes or a no.
+
+73
+00:04:29,300 --> 00:04:33,668
+That setting has two other values: scale
+one to five, which is also what a judge
+
+74
+00:04:33,668 --> 00:04:36,725
+does when the setting is left out, and
+scale one to ten.
+
+75
+00:04:37,225 --> 00:04:39,800
+We'll give ours scale one to five.
+
+76
+00:04:40,300 --> 00:04:44,194
+It's a different thing from the scoring
+block: this setting sits inside the
+
+77
+00:04:44,194 --> 00:04:47,050
+judge's config, and changes only how the
+judge answers.
+
+78
+00:04:47,550 --> 00:04:50,625
+Beside it goes a threshold of the judge's
+own.
+
+79
+00:04:51,833 --> 00:04:56,733
+On this scale, the judge gives each rubric
+criterion a whole number from one to five.
+
+80
+00:04:57,233 --> 00:05:01,809
+Vally rescales that number to the range
+zero to one, so it can be combined with
+
+81
+00:05:01,809 --> 00:05:03,083
+other graders' scores.
+
+82
+00:05:03,583 --> 00:05:07,808
+A one becomes zero, a five becomes one,
+and each step is a quarter.
+
+83
+00:05:08,308 --> 00:05:12,483
+The judge passes when its rescaled score
+reaches its own threshold.
+
+84
+00:05:12,983 --> 00:05:16,833
+Left out, that threshold is a half, which
+means a three passes.
+
+85
+00:05:17,333 --> 00:05:21,883
+Ours is zero point seven five, so the
+judge has to give at least a four.
+
+86
+00:05:23,100 --> 00:05:26,825
+So there are two thresholds, and it
+matters which one decides.
+
+87
+00:05:27,325 --> 00:05:31,624
+With no scoring block, the judge's own
+threshold decides: it sets the judge's
+
+88
+00:05:31,624 --> 00:05:34,025
+tick or cross, and a cross fails the
+trial.
+
+89
+00:05:34,525 --> 00:05:38,855
+With a scoring block, only the judge's
+score goes into the trial's score, and the
+
+90
+00:05:38,855 --> 00:05:41,475
+judge's own threshold stops deciding the
+verdict.
+
+91
+00:05:42,700 --> 00:05:45,975
+There's one thing to know before the
+output appears.
+
+92
+00:05:46,475 --> 00:05:50,891
+Vally grade prints a reason and a tick or
+cross for the judge, and a score line for
+
+93
+00:05:50,891 --> 00:05:53,125
+the trial, but not the judge's own number.
+
+94
+00:05:53,625 --> 00:05:57,869
+In our trials, every pull request check
+passes and scores one, so the trial's
+
+95
+00:05:57,869 --> 00:06:00,625
+score is the average of one and the
+judge's score.
+
+96
+00:06:01,125 --> 00:06:05,262
+That means the judge's answer can be
+worked out from the score line: a hundred
+
+97
+00:06:05,262 --> 00:06:09,770
+percent is a five, eighty-seven point five
+is a four, and so on down to fifty percent
+
+98
+00:06:09,770 --> 00:06:10,300
+for a one.
+
+99
+00:06:10,800 --> 00:06:14,200
+If a trial's check failed, this table
+wouldn't apply.
+
+100
+00:06:15,400 --> 00:06:19,325
+That's how the scale works; now let's
+score our twelve entries with it.
+
+101
+00:06:19,825 --> 00:06:24,103
+We'll copy the judge's eval file, put the
+judge on the scale, and re-grade the
+
+102
+00:06:24,103 --> 00:06:25,200
+twelve saved trials.
+
+103
+00:06:25,700 --> 00:06:29,075
+No agent starts; the cost is twelve judge
+calls.
+
+104
+00:06:29,575 --> 00:06:33,425
+The yes-or-no judge agreed with eleven of
+our twelve labels.
+
+105
+00:06:33,925 --> 00:06:38,163
+Which of these verdicts would you expect
+to change, with a judge that has to give
+
+106
+00:06:38,163 --> 00:06:39,000
+at least a four?
+
+107
+00:06:41,500 --> 00:06:44,375
+If you tried it yourself, here's what
+you'd see.
+
+108
+00:06:45,600 --> 00:06:50,378
+First, we copy the judge's eval file, so
+that the original stays as it is for
+
+109
+00:06:50,378 --> 00:06:50,750
+later.
+
+110
+00:06:55,280 --> 00:06:59,379
+In the copy, the name becomes wording
+scaled, and each of the three judges gets
+
+111
+00:06:59,379 --> 00:07:03,530
+the two lines we looked at: the scale, and
+a threshold of zero point seven five.
+
+112
+00:07:04,030 --> 00:07:07,180
+Lint checks the copy before anything is
+spent.
+
+113
+00:07:11,127 --> 00:07:14,227
+It prints the familiar warning, and no
+errors.
+
+114
+00:07:18,433 --> 00:07:22,608
+The twelve saved trials are in their run
+folder, so we change into it.
+
+115
+00:07:25,033 --> 00:07:29,504
+Then we re-grade them with the copy, and
+the verbose flag asks for each grader's
+
+116
+00:07:29,504 --> 00:07:29,783
+line.
+
+117
+00:07:30,283 --> 00:07:32,858
+Each block will end in a score line.
+
+118
+00:07:38,740 --> 00:07:42,954
+A little later there are twelve blocks,
+one for each trial, and these are the last
+
+119
+00:07:42,954 --> 00:07:43,365
+of them.
+
+120
+00:07:53,567 --> 00:07:56,017
+Here's one of those blocks in full.
+
+121
+00:07:56,517 --> 00:08:00,392
+The judge's line has a cross, and its
+reason quotes the entry.
+
+122
+00:08:00,892 --> 00:08:03,392
+The pull request check has a tick.
+
+123
+00:08:03,892 --> 00:08:08,252
+And the score line says sixty-two point
+five percent, which, in the table, is a
+
+124
+00:08:08,252 --> 00:08:09,467
+judge's answer of two.
+
+125
+00:08:09,967 --> 00:08:14,814
+A two is below the judge's threshold, so
+the judge fails, and the trial fails with
+
+126
+00:08:14,814 --> 00:08:14,992
+it.
+
+127
+00:08:18,200 --> 00:08:22,607
+The blocks don't name the model or the
+trial, so we match each one to its row by
+
+128
+00:08:22,607 --> 00:08:24,150
+the entry its reason quotes.
+
+129
+00:08:24,650 --> 00:08:28,600
+Then each score goes beside the yes-or-no
+verdict and our label.
+
+130
+00:08:29,100 --> 00:08:33,050
+The three entries that say how the change
+was coded all got a two.
+
+131
+00:08:33,550 --> 00:08:36,900
+The entries we labelled yes got fours and
+fives.
+
+132
+00:08:37,400 --> 00:08:40,800
+The two entries that only hint at how both
+got a four.
+
+133
+00:08:41,300 --> 00:08:45,421
+At our threshold a four passes, so both
+now pass, and since the yes-or-no judge
+
+134
+00:08:45,421 --> 00:08:47,925
+had failed one of them, one verdict has
+changed.
+
+135
+00:08:48,425 --> 00:08:50,500
+We had labelled both no.
+
+136
+00:08:54,700 --> 00:08:58,629
+Now for the average: we put the scoring
+block from before at the end of the copy,
+
+137
+00:08:58,629 --> 00:09:02,656
+with half the weight on the judge, half on
+the check, and a threshold of zero point
+
+138
+00:09:02,656 --> 00:09:02,850
+six.
+
+139
+00:09:06,300 --> 00:09:10,842
+Lint now says the file is valid, and the
+warning has gone, because the file says
+
+140
+00:09:10,842 --> 00:09:12,375
+how to combine its graders.
+
+141
+00:09:14,875 --> 00:09:19,500
+Then it's the same re-grade, in the same
+run folder, for twelve more judge calls.
+
+142
+00:09:21,907 --> 00:09:25,257
+This time, each score line ends with the
+threshold.
+
+143
+00:09:31,587 --> 00:09:35,537
+These last blocks have passed, and so has
+every block above them.
+
+144
+00:09:45,767 --> 00:09:47,617
+Here's one of the twelve.
+
+145
+00:09:48,117 --> 00:09:52,392
+The judge's line still has a cross, and a
+reason that faults the entry.
+
+146
+00:09:52,892 --> 00:09:54,942
+But the trial has a tick.
+
+147
+00:09:55,442 --> 00:09:59,798
+The judge's two rescales to a quarter, the
+check adds a full one, and half of each
+
+148
+00:09:59,798 --> 00:10:03,092
+comes to zero point six two five, which
+reaches the threshold.
+
+149
+00:10:03,592 --> 00:10:07,617
+Four of the twelve passed this way, with a
+cross from the judge inside.
+
+150
+00:10:10,833 --> 00:10:14,158
+Last, we take the scoring block out of the
+copy again.
+
+151
+00:10:14,658 --> 00:10:17,908
+The scores go into our notes file as a new
+column.
+
+152
+00:10:18,408 --> 00:10:20,983
+Under the table goes one sentence.
+
+153
+00:10:21,483 --> 00:10:24,458
+One verdict changed between the two
+judges.
+
+154
+00:10:24,958 --> 00:10:29,608
+Against our twelve labels, the one-to-five
+judge has TPR seven of seven.
+
+155
+00:10:30,108 --> 00:10:32,583
+Its TNR is three of five.
+
+156
+00:10:35,800 --> 00:10:37,875
+So what did the scores show?
+
+157
+00:10:38,375 --> 00:10:42,730
+For one thing, the scale did show which
+failures were close, and which were far
+
+158
+00:10:42,730 --> 00:10:42,950
+off.
+
+159
+00:10:43,450 --> 00:10:46,350
+These entries say how the change was
+coded.
+
+160
+00:10:46,850 --> 00:10:49,425
+These start with what users notice.
+
+161
+00:10:49,925 --> 00:10:54,119
+If we were choosing what to fix in the
+skill, the entries that are far off say
+
+162
+00:10:54,119 --> 00:10:54,925
+where to start.
+
+163
+00:10:56,133 --> 00:10:59,608
+The scale also changed a verdict, and not
+for the better.
+
+164
+00:11:00,108 --> 00:11:04,679
+With the judge's threshold at zero point
+seven five, two entries passed that we had
+
+165
+00:11:04,679 --> 00:11:07,983
+labelled no, so TNR fell from four of five
+to three of five.
+
+166
+00:11:08,483 --> 00:11:12,725
+At the default threshold of a half, a
+three would pass as well; in this grading
+
+167
+00:11:12,725 --> 00:11:15,033
+no entry got one, so the count is the
+same.
+
+168
+00:11:15,533 --> 00:11:19,108
+A threshold is a decision about where good
+enough starts.
+
+169
+00:11:19,608 --> 00:11:23,676
+The way to know whether it sits where
+you'd put it is the same check as before:
+
+170
+00:11:23,676 --> 00:11:25,633
+compare its verdicts with your labels.
+
+171
+00:11:26,833 --> 00:11:31,429
+We graded the same twelve entries twice:
+once without the scoring block, and once
+
+172
+00:11:31,429 --> 00:11:31,883
+with it.
+
+173
+00:11:32,383 --> 00:11:36,700
+The judge's answer changed for one of
+them: a four the first time, and a three
+
+174
+00:11:36,700 --> 00:11:37,308
+the second.
+
+175
+00:11:37,808 --> 00:11:42,333
+At the judge's own threshold, that's a
+pass and then a fail, for the same entry.
+
+176
+00:11:42,833 --> 00:11:47,385
+A judge is a model, so its answer can vary
+from one grading to the next, and near the
+
+177
+00:11:47,385 --> 00:11:50,383
+threshold that variation turns into a
+different verdict.
+
+178
+00:11:50,883 --> 00:11:54,108
+The entries that got a two got a two both
+times.
+
+179
+00:11:55,333 --> 00:11:59,883
+The scale also invited the judge to mark
+things the rubric didn't ask about.
+
+180
+00:12:00,383 --> 00:12:05,083
+This entry got a four, not a five, though
+we and the yes-or-no judge both said yes.
+
+181
+00:12:05,583 --> 00:12:10,162
+Its reason says the entry could be more
+concrete, with an example date, which our
+
+182
+00:12:10,162 --> 00:12:11,858
+one criterion doesn't ask for.
+
+183
+00:12:15,358 --> 00:12:19,783
+A rubric with one criterion keeps a
+yes-or-no judge on its question.
+
+184
+00:12:20,283 --> 00:12:23,858
+Given a scale, the same judge finds other
+things to mark.
+
+185
+00:12:25,067 --> 00:12:27,317
+Then there's the scoring block.
+
+186
+00:12:27,817 --> 00:12:31,217
+These are the trials that passed with a
+cross from the judge.
+
+187
+00:12:31,717 --> 00:12:35,728
+The judge failed each of them, in plain
+words, and each passed as a trial, because
+
+188
+00:12:35,728 --> 00:12:38,467
+the check scored a full one, and the
+average carried it.
+
+189
+00:12:38,967 --> 00:12:42,567
+The check nearly always passes, and it
+carries half the weight.
+
+190
+00:12:43,067 --> 00:12:47,355
+So while the check passes, a trial fails
+at this threshold only if the judge
+
+191
+00:12:47,355 --> 00:12:48,992
+answers one, the lowest mark.
+
+192
+00:12:49,492 --> 00:12:53,611
+All twelve trials passed, so nothing in a
+summary would say that the judge had
+
+193
+00:12:53,611 --> 00:12:54,667
+failed four of them.
+
+194
+00:12:55,167 --> 00:12:57,942
+That's how a failure hides in an average.
+
+195
+00:12:59,167 --> 00:13:03,503
+So we follow Vally's advice: thresholds
+are for judged quality, and pass-or-fail
+
+196
+00:13:03,503 --> 00:13:05,292
+checks stay out of the weighting.
+
+197
+00:13:05,792 --> 00:13:09,192
+From here on, the yes-or-no judge decides
+the verdict.
+
+198
+00:13:09,692 --> 00:13:14,131
+The one-to-five judge is a tool to reach
+for when you want to know how far off a
+
+199
+00:13:14,131 --> 00:13:14,742
+failure is.
+
+200
+00:13:15,967 --> 00:13:20,283
+Before you go on: what decides a trial's
+verdict with no scoring block, and what
+
+201
+00:13:20,283 --> 00:13:22,442
+decides it with weights and a threshold?
+
+202
+00:13:25,442 --> 00:13:30,011
+With no scoring block, every grader must
+pass, and the printed score decides
+
+203
+00:13:30,011 --> 00:13:30,492
+nothing.
+
+204
+00:13:30,992 --> 00:13:35,403
+With weights and a threshold, each grader
+type's score counts by its weight, and the
+
+205
+00:13:35,403 --> 00:13:39,342
+trial passes when the total reaches the
+threshold, even if a grader failed.
+
+206
+00:13:40,567 --> 00:13:44,680
+You can now re-grade saved trials with a
+judge that scores one to five, and say
+
+207
+00:13:44,680 --> 00:13:47,492
+which verdicts changed, and whether your
+labels agree.
+
+208
+00:13:47,992 --> 00:13:50,992
+Scores and counts both move after an edit.
+
+209
+00:13:51,492 --> 00:13:54,842
+After an edit, seven of ten becomes nine
+of ten.
+
+210
+00:13:55,342 --> 00:13:56,942
+Is that real?
+
+211
+00:13:57,442 --> 00:13:59,292
+That's the next lesson.
+
+212
+00:13:59,792 --> 00:14:03,942
+For practice, the exercises on the lesson
+page are worth doing first.

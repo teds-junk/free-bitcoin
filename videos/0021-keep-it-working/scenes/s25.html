@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What are the five checks?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#checks{width:100%;padding:36px 40px 44px;gap:24px}#checks .parts{display:grid;grid-template-columns:repeat(5,1fr);gap:20px;width:100%}#checks .part{min-height:300px}#checks .part .title{font-size:44px;line-height:1.2}#checks .part .label{font-size:30px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">What are the five checks?</h2>
+  <div class="stage">
+<div class="semantic-block" id="checks" data-role="structure">
+    <div class="title words">cheapest check first</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title words">Lint</div><div class="label">after editing an eval file</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title words">Oracle</div><div class="label">after changing a grader</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title words">Re-grade</div><div class="label">after changing a pattern, a budget or a rubric</div></div><div class="part" data-concept="p4" data-rep="part">
+      <div class="title words">Quick suite</div><div class="label">after every edit to the skill</div></div><div class="part" data-concept="p5" data-rep="part">
+      <div class="title words">Full suite</div><div class="label">before sharing · when a model changes</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#checks",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p4",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p5",
+  "at": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Same words, different effect</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:300px;justify-content:center}.terms .title{font-size:110px;line-height:1.1}.terms .label{font-size:34px}.lead{font-size:40px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the counts show</div>
+  <h2 class="scene-title">Same words, different effect</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="ours" data-rep="block" data-role="success">
+      <div class="title">9 of 9</div><div class="label"><span class="mono">gpt-5.6-terra</span> · 0 of 9 before the edit</div>
+    </div>
+    <div class="semantic-block" data-concept="ours" data-rep="block" data-role="success">
+      <div class="title">9 of 9</div><div class="label"><span class="mono">claude-haiku-4.5</span> · 3 of 9 before the edit</div>
+    </div>
+    <div class="semantic-block" data-concept="earlier" data-rep="block" data-role="attention">
+      <div class="title">8 of 9</div><div class="label"><span class="mono">claude-haiku-4.5</span> · an earlier run</div>
+    </div>
+  </div>
+  <p class="lead"><span data-concept="what" data-rep="note">trials passed after one edit of three rules</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "ours",
+  "at": "1~our run",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "earlier",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

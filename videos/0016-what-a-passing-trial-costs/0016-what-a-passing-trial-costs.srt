@@ -1,0 +1,889 @@
+1
+00:00:00,400 --> 00:00:05,103
+Every comparison table so far has ended
+with a row of tokens, and it's tempting to
+
+2
+00:00:05,103 --> 00:00:08,200
+read the variant with fewer tokens as the
+cheaper one.
+
+3
+00:00:08,700 --> 00:00:13,956
+When we ran it, a typical trial on terra
+used far fewer tokens than one on a newer
+
+4
+00:00:13,956 --> 00:00:14,725
+haiku model.
+
+5
+00:00:15,225 --> 00:00:19,385
+But each model has its own price per
+token, and a cheap trial that fails has
+
+6
+00:00:19,385 --> 00:00:20,425
+bought you nothing.
+
+7
+00:00:20,925 --> 00:00:25,192
+Here, you'll run two models at two
+settings, work out what each passing trial
+
+8
+00:00:25,192 --> 00:00:26,300
+costs, and pick one.
+
+9
+00:00:27,500 --> 00:00:30,000
+Let's start with the figure itself.
+
+10
+00:00:30,500 --> 00:00:34,649
+Cost per passing trial is a variant's
+total cost, over all of its trials,
+
+11
+00:00:34,649 --> 00:00:37,150
+divided by the number of trials that
+passed.
+
+12
+00:00:37,650 --> 00:00:40,375
+It's what one useful result costs you.
+
+13
+00:00:41,600 --> 00:00:46,406
+Here's a made-up pair of variants, priced
+in AIU, which are cents: variant A costs
+
+14
+00:00:46,406 --> 00:00:48,750
+two AIU a trial, and passes five of ten.
+
+15
+00:00:49,250 --> 00:00:53,275
+Variant B costs three AIU a trial, and
+passes all ten.
+
+16
+00:00:53,775 --> 00:00:58,125
+For A, that's twenty AIU for five passes:
+four AIU each.
+
+17
+00:00:58,625 --> 00:01:02,775
+For B, thirty AIU buys ten passes: three
+AIU each.
+
+18
+00:01:03,275 --> 00:01:07,500
+So the variant with the cheaper trial
+gives the more expensive result.
+
+19
+00:01:08,000 --> 00:01:11,200
+Every failure is paid for, and then thrown
+away.
+
+20
+00:01:12,400 --> 00:01:16,525
+With several variants, we put each one's
+pass rate beside its cost.
+
+21
+00:01:17,025 --> 00:01:21,284
+Then we look for a variant that's beaten
+on both counts: some other variant costs
+
+22
+00:01:21,284 --> 00:01:23,125
+less, and passes at least as often.
+
+23
+00:01:23,625 --> 00:01:26,575
+Any variant beaten that way can be
+dropped.
+
+24
+00:01:27,075 --> 00:01:31,550
+Those left are real choices, a trade
+between paying more and passing more.
+
+25
+00:01:32,050 --> 00:01:35,075
+Which to pick depends on what a failure
+costs you.
+
+26
+00:01:36,300 --> 00:01:40,845
+This way of comparing comes from research
+on agent benchmarks, which argued that
+
+27
+00:01:40,845 --> 00:01:43,800
+every evaluation should report cost beside
+accuracy.
+
+28
+00:01:44,300 --> 00:01:48,335
+Its authors had found simple agents
+matching the leaders of accuracy-only
+
+29
+00:01:48,335 --> 00:01:50,325
+rankings, at a fraction of the cost.
+
+30
+00:01:51,533 --> 00:01:55,258
+That's the figure; now let's see where its
+two numbers are recorded.
+
+31
+00:01:55,758 --> 00:02:00,808
+Every experiment saves a folder for each
+variant, and each folder holds its own
+
+32
+00:02:00,808 --> 00:02:01,958
+results dot jsonl.
+
+33
+00:02:02,458 --> 00:02:07,522
+Inside is one record per trial: the record
+we've met before, with the variant's name
+
+34
+00:02:07,522 --> 00:02:07,883
+added.
+
+35
+00:02:09,100 --> 00:02:11,950
+Here's one of them, spread over several
+lines.
+
+36
+00:02:12,450 --> 00:02:15,750
+Variant names the variant this trial
+belongs to.
+
+37
+00:02:16,250 --> 00:02:19,925
+Status is success for a trial that
+finished, as before.
+
+38
+00:02:20,425 --> 00:02:24,950
+And passed, under grade result, is the
+verdict: passing trials say true here.
+
+39
+00:02:26,167 --> 00:02:29,542
+Further down, the token usage ends with
+two blocks.
+
+40
+00:02:30,042 --> 00:02:34,450
+Next, by model splits the tokens between
+models, and an agent that called two
+
+41
+00:02:34,450 --> 00:02:35,767
+models would list both.
+
+42
+00:02:36,267 --> 00:02:39,292
+Then the cost, in nano-AIU as before.
+
+43
+00:02:39,792 --> 00:02:44,348
+This trial's amount is about point two
+three AIU, under a quarter of a cent, for
+
+44
+00:02:44,348 --> 00:02:46,342
+a hundred and five thousand tokens.
+
+45
+00:02:46,842 --> 00:02:51,972
+That cost appears only when every model
+call in the trial reported Copilot as its
+
+46
+00:02:51,972 --> 00:02:52,542
+provider.
+
+47
+00:02:53,767 --> 00:02:56,342
+Two things are missing from that figure.
+
+48
+00:02:56,842 --> 00:03:01,562
+Calls that an LLM judge makes to grade the
+trial aren't counted, so for an eval with
+
+49
+00:03:01,562 --> 00:03:03,417
+a judge, the true cost is higher.
+
+50
+00:03:03,917 --> 00:03:08,512
+Also, a trial that ended in ERROR before
+the agent finished may have no usage
+
+51
+00:03:08,512 --> 00:03:09,467
+recorded at all.
+
+52
+00:03:10,667 --> 00:03:14,017
+Vally itself prints no total cost for a
+variant.
+
+53
+00:03:14,517 --> 00:03:19,187
+Each experiment's table gives total
+tokens, its report gives median tokens,
+
+54
+00:03:19,187 --> 00:03:21,367
+and neither turns tokens into cost.
+
+55
+00:03:21,867 --> 00:03:26,319
+So the course has a small calculator: a
+page that reads the results files you
+
+56
+00:03:26,319 --> 00:03:27,592
+pick, in your browser.
+
+57
+00:03:28,092 --> 00:03:32,347
+For each variant, it adds up the cost of
+every trial, counts the trials that
+
+58
+00:03:32,347 --> 00:03:33,467
+passed, and divides.
+
+59
+00:03:34,667 --> 00:03:38,542
+Besides the model, we'll vary one more
+setting: reasoning effort.
+
+60
+00:03:39,042 --> 00:03:43,542
+Some models can work through a problem in
+hidden reasoning, before they reply or
+
+61
+00:03:43,542 --> 00:03:44,217
+call a tool.
+
+62
+00:03:44,717 --> 00:03:48,717
+Reasoning effort sets how much of that the
+agent's model does.
+
+63
+00:03:49,217 --> 00:03:53,839
+More effort usually means more tokens and
+more time on each call, and sometimes
+
+64
+00:03:53,839 --> 00:03:54,717
+better results.
+
+65
+00:03:55,933 --> 00:04:00,409
+In an eval file, reasoning effort goes
+under defaults, beside the model, so an
+
+66
+00:04:00,409 --> 00:04:03,508
+experiment can vary it exactly as it
+varies the model.
+
+67
+00:04:04,008 --> 00:04:07,108
+Which values are accepted depends on the
+model.
+
+68
+00:04:07,608 --> 00:04:12,176
+Vally refuses a value the model doesn't
+accept before any session starts, and its
+
+69
+00:04:12,176 --> 00:04:14,883
+message lists the values that model does
+accept.
+
+70
+00:04:15,383 --> 00:04:20,179
+So asking for a value that no model has is
+a free way to see each model's list, and
+
+71
+00:04:20,179 --> 00:04:21,508
+that's how we'll begin.
+
+72
+00:04:22,733 --> 00:04:25,308
+Here's the experiment file we'll run.
+
+73
+00:04:25,808 --> 00:04:30,465
+It runs the changelog eval file: five
+stimuli from earlier, each graded by code,
+
+74
+00:04:30,465 --> 00:04:33,608
+with no judge, so the recorded cost is the
+whole cost.
+
+75
+00:04:34,108 --> 00:04:38,558
+Its variants may differ in the model and
+in reasoning effort, and in nothing else.
+
+76
+00:04:39,058 --> 00:04:43,512
+There are three trials of each stimulus,
+which makes fifteen trials per variant,
+
+77
+00:04:43,512 --> 00:04:44,458
+and sixty in all.
+
+78
+00:04:44,958 --> 00:04:49,458
+Then come the four variants: two models,
+each at low effort and at high effort.
+
+79
+00:04:49,958 --> 00:04:54,431
+For haiku, the file names haiku five point
+five, a newer model in the same family,
+
+80
+00:04:54,431 --> 00:04:59,013
+because the haiku model we've used so far
+takes no effort setting, as the first step
+
+81
+00:04:59,013 --> 00:04:59,558
+will show.
+
+82
+00:05:00,767 --> 00:05:04,242
+That's the file; now let's run it and
+price each variant.
+
+83
+00:05:04,742 --> 00:05:09,224
+We'll end with one sentence that names the
+variant we'd choose, and the numbers
+
+84
+00:05:09,224 --> 00:05:09,792
+behind it.
+
+85
+00:05:10,292 --> 00:05:14,292
+Which of the four would you expect to cost
+least for each passing trial?
+
+86
+00:05:16,792 --> 00:05:19,667
+If you tried it yourself, here's what
+you'd see.
+
+87
+00:05:20,867 --> 00:05:25,162
+First, the free check: we run the eval
+file with the one typo-fix request, from
+
+88
+00:05:25,162 --> 00:05:27,392
+the start of the course, on three models.
+
+89
+00:05:27,892 --> 00:05:32,815
+Dash dash reasoning effort sets the effort
+for every trial of a run, as dash dash
+
+90
+00:05:32,815 --> 00:05:34,092
+model sets the model.
+
+91
+00:05:34,592 --> 00:05:38,567
+We give it a value that no model accepts:
+here, the word list.
+
+92
+00:05:39,067 --> 00:05:43,442
+Every trial should be rejected before it
+starts, so nothing is spent.
+
+93
+00:05:51,000 --> 00:05:55,587
+Each trial ends in ERROR, as planned, and
+each error names the efforts that its
+
+94
+00:05:55,587 --> 00:05:56,400
+model accepts.
+
+95
+00:06:05,600 --> 00:06:10,200
+That output runs past one screen, so
+here's what it said, model by model.
+
+96
+00:06:10,700 --> 00:06:15,079
+Haiku four point five, the model we've
+used so far, doesn't support reasoning
+
+97
+00:06:15,079 --> 00:06:15,875
+effort at all.
+
+98
+00:06:16,375 --> 00:06:20,675
+Haiku five point five accepts five values,
+from low to max.
+
+99
+00:06:21,175 --> 00:06:24,975
+Terra accepts the same five, and also a
+value named none.
+
+100
+00:06:25,475 --> 00:06:29,375
+Low and high are accepted by both, so
+those are our two efforts.
+
+101
+00:06:30,600 --> 00:06:34,025
+Our experiment file is now in the evals
+folder.
+
+102
+00:06:34,525 --> 00:06:39,016
+Before spending anything, we check the
+plan with a dry run, which starts no
+
+103
+00:06:39,016 --> 00:06:39,375
+agent.
+
+104
+00:06:44,040 --> 00:06:48,283
+It prints a block for each of the four
+variants, naming its model, and the last
+
+105
+00:06:48,283 --> 00:06:49,465
+of them are on screen.
+
+106
+00:06:58,667 --> 00:07:03,346
+Now the real run: the same command without
+the dry run, with two workers, saved under
+
+107
+00:07:03,346 --> 00:07:04,667
+results, lesson sixteen.
+
+108
+00:07:05,167 --> 00:07:07,917
+It spends sixty short agent runs.
+
+109
+00:07:08,417 --> 00:07:12,922
+At the end, we're after the table, with
+its row of stimuli passed and its row of
+
+110
+00:07:12,922 --> 00:07:13,317
+tokens.
+
+111
+00:07:15,580 --> 00:07:20,509
+Several minutes later, every variant shows
+five of five stimuli passed, so Vally says
+
+112
+00:07:20,509 --> 00:07:22,480
+that no variant beat the baseline.
+
+113
+00:07:26,980 --> 00:07:31,397
+Under that is the row of total tokens,
+where the two terra variants are lowest,
+
+114
+00:07:31,397 --> 00:07:33,130
+and nothing here mentions cost.
+
+115
+00:07:36,630 --> 00:07:39,105
+So let's look in the results folder.
+
+116
+00:07:40,947 --> 00:07:45,414
+There's one folder, named with the time of
+the run, and inside it, as we saw, is a
+
+117
+00:07:45,414 --> 00:07:46,722
+folder for each variant.
+
+118
+00:07:49,633 --> 00:07:54,033
+We give those four results files to the
+cost calculator, which reads them in the
+
+119
+00:07:54,033 --> 00:07:55,958
+browser and sends nothing anywhere.
+
+120
+00:07:56,458 --> 00:08:00,657
+The page shows a card for each variant,
+with the trials, how many passed, how many
+
+121
+00:08:00,657 --> 00:08:03,883
+ended in ERROR, the total cost, and the
+cost per passing trial.
+
+122
+00:08:04,383 --> 00:08:09,177
+Underneath is the bill for the whole
+experiment: about ninety-one AIU, which is
+
+123
+00:08:09,177 --> 00:08:10,208
+ninety-one cents.
+
+124
+00:08:11,433 --> 00:08:14,433
+Here are the columns we need, side by
+side.
+
+125
+00:08:14,933 --> 00:08:18,308
+All four variants passed fifteen of
+fifteen trials.
+
+126
+00:08:18,808 --> 00:08:23,408
+At low effort, haiku cost about point two
+one AIU for each passing trial.
+
+127
+00:08:23,908 --> 00:08:27,858
+At high effort, haiku passed no more
+often, and cost a little more.
+
+128
+00:08:28,358 --> 00:08:33,252
+Both terra variants passed no more often,
+and cost thirteen to fourteen times as
+
+129
+00:08:33,252 --> 00:08:33,558
+much.
+
+130
+00:08:34,058 --> 00:08:37,233
+So haiku low beats the other three on both
+counts.
+
+131
+00:08:37,733 --> 00:08:42,055
+That gives us our sentence: on these five
+stimuli, haiku at low effort passed all
+
+132
+00:08:42,055 --> 00:08:46,484
+fifteen trials at point two one AIU each,
+against two point seven six and two point
+
+133
+00:08:46,484 --> 00:08:49,258
+eight three on terra, so we'd run them on
+haiku low.
+
+134
+00:08:52,467 --> 00:08:54,992
+So what should we make of that table?
+
+135
+00:08:55,492 --> 00:09:00,267
+Every trial passed, so here, cost per
+passing trial is simply cost per trial.
+
+136
+00:09:00,767 --> 00:09:05,387
+But the variants that cost the most by far
+are the ones that used the fewest tokens:
+
+137
+00:09:05,387 --> 00:09:07,092
+tokens measure work, not price.
+
+138
+00:09:08,300 --> 00:09:13,200
+The cost of a token depends on the model,
+even between two versions of one family.
+
+139
+00:09:13,700 --> 00:09:18,516
+Our very first haiku trial, on version
+four point five, cost about two point four
+
+140
+00:09:18,516 --> 00:09:20,775
+AIU for every hundred thousand tokens.
+
+141
+00:09:21,275 --> 00:09:26,296
+This run's haiku five point five record
+cost about point two two AIU for the same
+
+142
+00:09:26,296 --> 00:09:27,350
+number of tokens.
+
+143
+00:09:27,850 --> 00:09:32,550
+On our account, that makes the newer model
+about eleven times cheaper per token.
+
+144
+00:09:33,050 --> 00:09:37,399
+So the cost we measure on one model can't
+be carried over to another: change the
+
+145
+00:09:37,399 --> 00:09:38,975
+model, and you measure again.
+
+146
+00:09:40,200 --> 00:09:44,125
+Now the habit from before: how far can
+these counts be trusted?
+
+147
+00:09:44,625 --> 00:09:49,397
+Fifteen passes in fifteen trials gives a
+range of eighty to a hundred percent, and
+
+148
+00:09:49,397 --> 00:09:51,375
+every variant has that same range.
+
+149
+00:09:51,875 --> 00:09:56,046
+So these trials can't tell the variants
+apart on pass rate, and here they don't
+
+150
+00:09:56,046 --> 00:09:58,475
+need to: the case for haiku low rests on
+cost.
+
+151
+00:09:58,975 --> 00:10:03,373
+Each model's most expensive trial cost
+between two and three times its cheapest,
+
+152
+00:10:03,373 --> 00:10:07,715
+but the two bands are well apart: every
+haiku trial cost less than the cheapest
+
+153
+00:10:07,715 --> 00:10:08,375
+terra trial.
+
+154
+00:10:08,875 --> 00:10:13,322
+So the ranges make our sentence more
+careful: haiku low is as good, as far as
+
+155
+00:10:13,322 --> 00:10:15,575
+these trials can tell, and far cheaper.
+
+156
+00:10:16,800 --> 00:10:21,133
+That statement is about these five
+requests only, the ones the skill now
+
+157
+00:10:21,133 --> 00:10:21,975
+passes easily.
+
+158
+00:10:22,475 --> 00:10:26,623
+But the wording requests, the ones graded
+by a judge, are where the models differed,
+
+159
+00:10:26,623 --> 00:10:30,475
+and they'd need pricing the same way
+before changing the model for everything.
+
+160
+00:10:30,975 --> 00:10:35,419
+Prices change, too, and your account's may
+differ from ours, so treat these numbers
+
+161
+00:10:35,419 --> 00:10:38,525
+as a method you can repeat, not as facts
+about the models.
+
+162
+00:10:39,733 --> 00:10:43,133
+Let's put that in dollars, at one cent per
+AIU.
+
+163
+00:10:43,633 --> 00:10:47,458
+This experiment's sixty trials came to
+ninety-one cents.
+
+164
+00:10:47,958 --> 00:10:53,133
+One check after every edit, with these
+five stimuli on two models, is ten trials.
+
+165
+00:10:53,633 --> 00:10:57,485
+On the two models from earlier in the
+course, where our trials have averaged
+
+166
+00:10:57,485 --> 00:11:01,286
+about two point four AIU, that's
+twenty-four cents an edit, or four dollars
+
+167
+00:11:01,286 --> 00:11:02,908
+eighty for twenty edits a month.
+
+168
+00:11:03,408 --> 00:11:08,858
+On haiku low alone, the same five stimuli
+would cost about one AIU: a cent an edit.
+
+169
+00:11:09,358 --> 00:11:13,409
+Running every stimulus in the course each
+night, about thirty trials, comes to
+
+170
+00:11:13,409 --> 00:11:17,512
+roughly twenty-one dollars over thirty
+nights at that earlier average, plus the
+
+171
+00:11:17,512 --> 00:11:19,433
+judge calls that Vally doesn't count.
+
+172
+00:11:20,633 --> 00:11:25,054
+For scale, verifying this whole course
+took about eleven dollars of agent runs,
+
+173
+00:11:25,054 --> 00:11:27,908
+plus judge calls, which isn't large for
+one person.
+
+174
+00:11:28,408 --> 00:11:32,615
+But it grows with the stimuli, the trials,
+the models, and how often you run, which
+
+175
+00:11:32,615 --> 00:11:35,858
+is why the cheapest check that answers the
+question comes first.
+
+176
+00:11:36,358 --> 00:11:40,647
+Your plan's monthly allowance is spent
+first, so much of this may cost you
+
+177
+00:11:40,647 --> 00:11:41,458
+nothing extra.
+
+178
+00:11:42,667 --> 00:11:47,214
+Before you go on: what is cost per passing
+trial, and why does it divide by the
+
+179
+00:11:47,214 --> 00:11:47,617
+passes?
+
+180
+00:11:50,617 --> 00:11:55,067
+It's a variant's total cost, divided by
+the number of its trials that passed.
+
+181
+00:11:55,567 --> 00:12:00,511
+Dividing by the passes charges each useful
+result with the failures it took to get
+
+182
+00:12:00,511 --> 00:12:00,692
+it.
+
+183
+00:12:01,192 --> 00:12:05,920
+So a cheap variant that often fails can be
+the more expensive one, and each model has
+
+184
+00:12:05,920 --> 00:12:07,367
+to be measured for itself.
+
+185
+00:12:08,567 --> 00:12:12,983
+You can now price the models your Copilot
+account offers, and state a choice with
+
+186
+00:12:12,983 --> 00:12:13,692
+its evidence.
+
+187
+00:12:14,192 --> 00:12:17,642
+But an app may call a model through a
+service of its own.
+
+188
+00:12:18,142 --> 00:12:22,417
+Can Vally run that model too, and what
+does a passing trial cost there?
+
+189
+00:12:22,917 --> 00:12:24,767
+That's the next lesson.
+
+190
+00:12:25,267 --> 00:12:29,417
+For practice, the exercises on the lesson
+page are worth doing first.

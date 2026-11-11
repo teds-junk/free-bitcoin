@@ -1,0 +1,46 @@
+Running experiment 'release-app'
+
+Loaded 4 stimuli from release · 2 models · 2 workers
+  WARN release · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN release · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+release
+
+haiku · claude-haiku-4.5
+  ERROR  tracker-down  0 passed · 3 errors
+   trials 1–3 · Executor 'release-app' does not support tool-call simulation, but stimulus
+                'tracker-down' declares a 'simulation' block. Use a simulation-capable executor
+                (e.g. 'copilot-sdk') or remove the simulation config.
+
+haiku · claude-haiku-4.5
+  FAIL  since-last-release  0/3
+   ✘ every-change-handled  0 passed · 3 failed · Command 'node .vally-grading/check-release.mjs'
+                                                 failed: Expected exit code 0, got 1  trials 1–3
+   ✘ loads-the-skill  0 passed · 3 failed · The following required skills were not called:
+                                            changelog-entry  trials 1–3
+
+terra · gpt-5.6-terra
+  ERROR  tracker-down  0 passed · 3 errors
+   trials 1–3 · Executor 'release-app' does not support tool-call simulation, but stimulus
+                'tracker-down' declares a 'simulation' block. Use a simulation-capable executor
+                (e.g. 'copilot-sdk') or remove the simulation config.
+
+────────────────────────────────────────────────────────
+
+Experiment  release-app   varying /defaults/model · baseline haiku
+
+  → terra beat baseline — 1/2 vs 0/2 stimuli.
+    terra used −26% tokens, +4% trial time.
+
+  eval        haiku (baseline)  terra   Δ   
+  release     ✘ 0/2             ✘ 1/2   +1  
+  ──────────  ────────────────  ──────  ────
+  stimuli     0/2               1/2     +1  
+  tokens      243.3k            181.0k  −26%
+  trial time  40.0s             41.5s   +4% 
+
+Run ID: ea0c237d-ca08-4568-a2ab-278d63967c02
+Output: …/practice/results/lesson-26-experiment/2026-11-10T17-53-13-866Z

@@ -1,0 +1,131 @@
+warning: Multiple graders with no scoring config
+
+━━━ since-last-release ━━━
+❌ since-last-release (3/5 graders passed, 2 failed)
+  ✗ [every-change-handled] Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] All required tools were called
+                     No disallowed tools were called
+  ✓ [never-commits] All required tools were called
+                    No disallowed tools were called
+  ✓ [no-loop] No action repeated more than 3 time(s) consecutively (max observed: 1, match: observation)
+  ✗ [loads-the-skill] The following required skills were not called: changelog-entry
+                      No disallowed skills were called
+
+Score: 60.0% | FAILED
+
+━━━ since-last-release ━━━
+❌ since-last-release (3/5 graders passed, 2 failed)
+  ✗ [every-change-handled] Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] All required tools were called
+                     No disallowed tools were called
+  ✓ [never-commits] All required tools were called
+                    No disallowed tools were called
+  ✓ [no-loop] No action repeated more than 3 time(s) consecutively (max observed: 1, match: observation)
+  ✗ [loads-the-skill] The following required skills were not called: changelog-entry
+                      No disallowed skills were called
+
+Score: 60.0% | FAILED
+
+━━━ since-last-release ━━━
+❌ since-last-release (4/5 graders passed, 1 failed)
+  ✗ [every-change-handled] Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] All required tools were called
+                     No disallowed tools were called
+  ✓ [never-commits] All required tools were called
+                    No disallowed tools were called
+  ✓ [no-loop] No action repeated more than 3 time(s) consecutively (max observed: 1, match: observation)
+  ✓ [loads-the-skill] All required skills were called
+                      No disallowed skills were called
+
+Score: 80.0% | FAILED
+
+━━━ since-last-release ━━━
+❌ since-last-release (4/5 graders passed, 1 failed)
+  ✗ [every-change-handled] Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] All required tools were called
+                     No disallowed tools were called
+  ✓ [never-commits] All required tools were called
+                    No disallowed tools were called
+  ✓ [no-loop] No action repeated more than 3 time(s) consecutively (max observed: 1, match: observation)
+  ✓ [loads-the-skill] All required skills were called
+                      No disallowed skills were called
+
+Score: 80.0% | FAILED
+
+━━━ since-last-release ━━━
+❌ since-last-release (4/5 graders passed, 1 failed)
+  ✗ [every-change-handled] Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] All required tools were called
+                     No disallowed tools were called
+  ✓ [never-commits] All required tools were called
+                    No disallowed tools were called
+  ✓ [no-loop] No action repeated more than 3 time(s) consecutively (max observed: 1, match: observation)
+  ✓ [loads-the-skill] All required skills were called
+                      No disallowed skills were called
+
+Score: 80.0% | FAILED
+
+━━━ since-last-release ━━━
+❌ since-last-release (4/5 graders passed, 1 failed)
+  ✗ [every-change-handled] Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] All required tools were called
+                     No disallowed tools were called
+  ✓ [never-commits] All required tools were called
+                    No disallowed tools were called
+  ✓ [no-loop] No action repeated more than 3 time(s) consecutively (max observed: 1, match: observation)
+  ✓ [loads-the-skill] All required skills were called
+                      No disallowed skills were called
+
+Score: 80.0% | FAILED
+
+━━━ since-last-release ━━━
+❌ since-last-release (4/5 graders passed, 1 failed)
+  ✗ [every-change-handled] Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] All required tools were called
+                     No disallowed tools were called
+  ✓ [never-commits] All required tools were called
+                    No disallowed tools were called
+  ✓ [no-loop] No action repeated more than 3 time(s) consecutively (max observed: 1, match: observation)
+  ✓ [loads-the-skill] All required skills were called
+                      No disallowed skills were called
+
+Score: 80.0% | FAILED
+
+━━━ since-last-release ━━━
+❌ since-last-release (4/5 graders passed, 1 failed)
+  ✗ [every-change-handled] Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] All required tools were called
+                     No disallowed tools were called
+  ✓ [never-commits] All required tools were called
+                    No disallowed tools were called
+  ✓ [no-loop] No action repeated more than 3 time(s) consecutively (max observed: 1, match: observation)
+  ✓ [loads-the-skill] All required skills were called
+                      No disallowed skills were called
+
+Score: 80.0% | FAILED
+
+━━━ since-last-release ━━━
+❌ since-last-release (4/5 graders passed, 1 failed)
+  ✗ [every-change-handled] Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] All required tools were called
+                     No disallowed tools were called
+  ✓ [never-commits] All required tools were called
+                    No disallowed tools were called
+  ✓ [no-loop] No action repeated more than 3 time(s) consecutively (max observed: 1, match: observation)
+  ✓ [loads-the-skill] All required skills were called
+                      No disallowed skills were called
+
+Score: 80.0% | FAILED
+
+━━━ since-last-release ━━━
+❌ since-last-release (4/5 graders passed, 1 failed)
+  ✗ [every-change-handled] Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] All required tools were called
+                     No disallowed tools were called
+  ✓ [never-commits] All required tools were called
+                    No disallowed tools were called
+  ✓ [no-loop] No action repeated more than 3 time(s) consecutively (max observed: 1, match: observation)
+  ✓ [loads-the-skill] All required skills were called
+                      No disallowed skills were called
+
+Score: 80.0% | FAILED

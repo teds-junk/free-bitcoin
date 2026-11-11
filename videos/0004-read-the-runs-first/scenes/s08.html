@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Four more, each with a gap</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 28px;width:100%}.grid .quote{padding-top:16px;padding-bottom:18px}.grid .quote p{font-size:30px;line-height:1.36}.grid .quote .who{font-family:var(--font-code)}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Six ordinary requests</div>
+  <h2 class="scene-title">Four more, each with a gap</h2>
+  <div class="stage">
+<div class="grid">
+    <div class="quote" data-concept="refactor" data-rep="quote"><span class="who">refactor</span><p>“PR 61 is merged. It splits storage.js into three smaller modules. Nothing changes for users, it's purely a cleanup. Update the changelog.”</p></div>
+    <div class="quote" data-concept="two" data-rep="quote"><span class="who">two-changes</span><p>“PR 60 is in. It adds a `--json` flag to `notes list`, and while I was in there I fixed the bug where page 2 repeated the last note of page 1. Changelog please.”</p></div>
+    <div class="quote" data-concept="security" data-rep="quote"><span class="who">security</span><p>“PR 63 closes a hole: `notes export --out` let you write outside the notes folder with a path like ../../etc. It now refuses. Update the changelog.”</p></div>
+    <div class="quote" data-concept="parser" data-rep="quote"><span class="who">parser</span><p>“Merged PR 49. I swapped JSON.parse for a streaming parser in importer.js so we stop loading the whole file into memory. Big imports used to die with an out-of-memory error. Changelog it.”</p></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "refactor",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "two",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "security",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "parser",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

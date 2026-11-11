@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Before and after</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.cmp{font-size:32px}.cmp th{font-size:28px}.cmp td{padding:13px 40px 13px 0;height:44px}.cmp{table-layout:fixed}.cmp th{padding-right:40px}.cmp th:first-child{width:24%}.cmp td.mono{font-family:var(--font-code);font-size:30px}.cmp td.num{font-size:27px;white-space:nowrap}.cmp th:last-child,.cmp td:last-child{padding-right:12px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Test loading, then fix it</div>
+  <h2 class="scene-title">Before and after</h2>
+  <div class="stage">
+<table class="data-table full cmp">
+    <thead><tr><th>Stimulus</th><th class="num"><span data-concept="before" data-rep="head">haiku before</span></th><th class="num"><span data-concept="after" data-rep="head">haiku after</span></th><th class="num"><span data-concept="before" data-rep="head">terra before</span></th><th class="num"><span data-concept="after" data-rep="head">terra after</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="loadname" data-rep="cell">load-plain</span></td><td class="num"><span data-concept="b-h-load-plain" data-rep="cell"></span></td><td class="num"><span data-concept="a-h-load-plain" data-rep="cell"></span></td><td class="num"><span data-concept="b-t-load-plain" data-rep="cell"></span></td><td class="num"><span data-concept="a-t-load-plain" data-rep="cell"></span></td></tr>
+<tr><td class="mono"><span data-concept="loadname" data-rep="cell">load-no-keyword</span></td><td class="num"><span data-concept="b-h-load-no-keyword" data-rep="cell"></span></td><td class="num"><span data-concept="a-h-load-no-keyword" data-rep="cell"></span></td><td class="num"><span data-concept="b-t-load-no-keyword" data-rep="cell"></span></td><td class="num"><span data-concept="a-t-load-no-keyword" data-rep="cell"></span></td></tr>
+<tr><td class="mono"><span data-concept="loadname" data-rep="cell">load-indirect</span></td><td class="num"><span data-concept="b-h-load-indirect" data-rep="cell"></span></td><td class="num"><span data-concept="a-h-load-indirect" data-rep="cell"></span></td><td class="num"><span data-concept="b-t-load-indirect" data-rep="cell"></span></td><td class="num"><span data-concept="a-t-load-indirect" data-rep="cell"></span></td></tr>
+<tr><td class="mono"><span data-concept="skipname" data-rep="cell">skip-commit</span></td><td class="num"><span data-concept="b-h-skip-commit" data-rep="cell"></span></td><td class="num"><span data-concept="a-h-skip-commit" data-rep="cell"></span></td><td class="num"><span data-concept="b-t-skip-commit" data-rep="cell"></span></td><td class="num"><span data-concept="a-t-skip-commit" data-rep="cell"></span></td></tr>
+<tr><td class="mono"><span data-concept="skipname" data-rep="cell">skip-release-notes</span></td><td class="num"><span data-concept="b-h-skip-release-notes" data-rep="cell"></span></td><td class="num"><span data-concept="a-h-skip-release-notes" data-rep="cell"></span></td><td class="num"><span data-concept="b-t-skip-release-notes" data-rep="cell"></span></td><td class="num"><span data-concept="a-t-skip-release-notes" data-rep="cell"></span></td></tr>
+<tr><td class="mono"><span data-concept="skipname" data-rep="cell">skip-question</span></td><td class="num"><span data-concept="b-h-skip-question" data-rep="cell"></span></td><td class="num"><span data-concept="a-h-skip-question" data-rep="cell"></span></td><td class="num"><span data-concept="b-t-skip-question" data-rep="cell"></span></td><td class="num"><span data-concept="a-t-skip-question" data-rep="cell"></span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">trials that passed, of the two for each stimulus on each model</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "before",
+  "at": "2~as it stands",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "after",
+  "at": "3~again",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from judged · 2 models · 2 workers
+  WARN judged · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+judged
+
+claude-haiku-4.5
+  ERROR  cache · 1/2 graders · 9.7s
+   Grading error; verdict is invalid.
+   ✘ users-words  LLM judge failed: Model "claude-sonnet-5-5" is not available in Copilot. Available
+                  models: auto, claude-haiku-4.5, claude-haiku-5.5, claude-opus-5.5,
+                  claude-sonnet-5, claude-sonnet-5.5, gpt-5.3-codex, gpt-5.6-luna, gpt-5.6-sol,
+                  gpt-5.6-sol-fast, gpt-5.6-terra, gpt-6-luna, gpt-6-sol, gpt-6.1-sol,
+                  gpt-6.1-terra, grok-4.6, grok-4.7, mai-code-1.1-flash, mai-code-2-flash.
+
+gpt-5.6-terra
+  ERROR  cache · 1/2 graders · 9.6s
+   Grading error; verdict is invalid.
+   ✘ users-words  LLM judge failed: Model "claude-sonnet-5-5" is not available in Copilot. Available
+                  models: auto, claude-haiku-4.5, claude-haiku-5.5, claude-opus-5.5,
+                  claude-sonnet-5, claude-sonnet-5.5, gpt-5.3-codex, gpt-5.6-luna, gpt-5.6-sol,
+                  gpt-5.6-sol-fast, gpt-5.6-terra, gpt-6-luna, gpt-6-sol, gpt-6.1-sol,
+                  gpt-6.1-terra, grok-4.6, grok-4.7, mai-code-1.1-flash, mai-code-2-flash.
+
+────────────────────────────────────────────────────────
+
+Failures  2 failed
+  ERROR judged · cache [claude-haiku-4.5]  users-words · LLM judge failed: Model "claude-sonnet-5-5" is not available in Copilot. Available models: auto, claude-haiku-4.5, claude-haiku-5.5, claude-opus-5.5, claude-sonnet-5, claude-sonnet-5.5, gpt-5.3-codex, gpt-5.6-luna, gpt-5.6-sol, gpt-5.6-sol-fast, gpt-5.6-terra, gpt-6-luna, gpt-6-sol, gpt-6.1-sol, gpt-6.1-terra, grok-4.6, grok-4.7, mai-code-1.1-flash, mai-code-2-flash.
+  ERROR judged · cache [gpt-5.6-terra]  users-words · LLM judge failed: Model "claude-sonnet-5-5" is not available in Copilot. Available models: auto, claude-haiku-4.5, claude-haiku-5.5, claude-opus-5.5, claude-sonnet-5, claude-sonnet-5.5, gpt-5.3-codex, gpt-5.6-luna, gpt-5.6-sol, gpt-5.6-sol-fast, gpt-5.6-terra, gpt-6-luna, gpt-6-sol, gpt-6.1-sol, gpt-6.1-terra, grok-4.6, grok-4.7, mai-code-1.1-flash, mai-code-2-flash.
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra     0/1 evals passed
+
+  eval    claude-haiku-4.5  gpt-5.6-terra
+  judged  ✘ 0/1             ✘ 0/1        
+  judged: error: 1/1 trial grade(s) invalid
+  judged: error: 1/1 trial grade(s) invalid
+
+Saved  …/practice/results/lesson-20/2026-11-10T17-48-44-673Z/
+Run ID  c3a4c143-d259-4734-8bc9-6a91ee01c955

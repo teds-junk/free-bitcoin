@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Terra dropped the brackets</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.results{display:flex;flex-direction:column;gap:20px;width:100%}.results .card{gap:10px}.results .card > .code.dark{font-size:30px;line-height:1.4;padding:16px 28px}.results .card .who{font-size:30px}.stage{justify-content:flex-start;gap:18px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the script caught</div>
+  <h2 class="scene-title">Terra dropped the brackets</h2>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="ar-h" data-rep="card">
+        <div class="who"><span class="mono">claude-haiku-4.5</span> · the lines its <span class="mono">after-release</span> trial added</div>
+        <pre class="code dark" data-lang="text"><code><span data-concept="good" data-rep="code"><span>## [Unreleased]</span></span>
+<span>### Added</span>
+<span>- Add `notes add --from-clipboard` to create a note from clipboard contents (#58)</span></code></pre>
+      </div>
+      <div class="card" data-concept="ar-t" data-rep="card">
+        <div class="who"><span class="mono">gpt-5.6-terra</span> · the lines its <span class="mono">after-release</span> trial added</div>
+        <pre class="code dark" data-lang="text"><code><span data-concept="head" data-rep="code"><span>## Unreleased</span></span>
+<span>### Added</span>
+<span>- Add `notes add --from-clipboard` to create a note from clipboard contents (#58)</span></code></pre>
+      </div>
+  </div>
+  <p class="note">first run · one trial for each model · 2026-11-11T05-29-15-577Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "head",
+  "at": "1~without brackets",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "good",
+  "at": "1~with them",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

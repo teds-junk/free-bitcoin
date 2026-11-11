@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 14: Partial credit — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 14 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Partial credit</h1>
+    <div class="lesson-meta">14 min · Re-grade saved trials with a judge that scores 1 to 5 against a threshold, say which verdicts changed from the yes-or-no judge, and check the change against your own labels.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>Where does a judge get the criterion it applies, and how many criteria did yours have?
+        <details class="answer"><summary>Show answer</summary><p>From the <code>rubric</code> of the stimulus the <code>prompt</code> grader sits in. Yours had one criterion, so the judge's single verdict answers a single question.</p></details></li>
+      <li>What is a judge's TNR, and what does a low one mean?
+        <details class="answer"><summary>Show answer</summary><p>Of the trials you labelled no, the share the judge also failed. A low TNR means the judge lets through entries you would reject: it is more lenient than you.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You have a yes-or-no judge for "written for people who use the tool", measured against your own twelve labels.</p>
+    <p><strong>This lesson answers:</strong> How do I grade work that can be partly right, without letting a failure hide in an average?</p>
+  </div>
+
+  <p class="drop-cap">Look again at the six entries you labelled no in lesson 12. "Improve performance of <code>notes list --tag</code> with LRU cache for tag index" names the data structure outright. "Speed up <code>notes list --tag</code> on large folders by caching the tag index" leads with what the user notices and adds a hint of how. Both got the same no from you and from the judge. If you are deciding which entries to fix first, or whether an edit to the skill moved things in the right direction before it got them over the line, that difference matters, and a yes or no throws it away. This lesson gives the judge a scale, and shows the one way partial credit goes wrong: an average that lets a failure pass.</p>
+
+  <h2 id="score-or-yes-no" data-mode="think">When a score beats a yes or no</h2>
+
+  <p>Lesson 12 asked for yes or no, because a yes-or-no criterion has to be clear and a 3 against a 4 rarely is. That advice still holds for the question "did it pass?". A scale is worth adding when the work really can be partly right, and you want to know how far off a failure is: nearly there, or nowhere near. Wording is like that. An entry can be mostly for users with one word of implementation in it.</p>
+
+  <p>Other checks are not like that. An entry either cites pull request 66 or it does not; a security fix is either under Security or it is not. There is no "nearly" for these, and a skill that gets one of them wrong has failed, however good the rest is. Vally's own guidance draws the same line: "Thresholds are for genuinely graded work — judged quality, partial credit — not for pass/fail assertions like <code>file-exists</code>." Keep checks that must all hold out of any score that is averaged.</p>
+
+  <p>The sources this course leans on do not fully agree here. Husain and Shankar argue for yes-or-no judges throughout; Anthropic's guide to agent evals treats partial success as a range worth recording. They agree on the part that matters for this lesson: whatever the scale, you still decide pass or fail with a clear line, and you check that line against your own labels.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/concepts/scoring/#what-to-configure">Vally docs, Scoring</a>, for the quotation; <a href="https://hamel.dev/blog/posts/llm-judge/">Hamel Husain, Using LLM-as-a-Judge</a>; <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Anthropic, Demystifying evals for AI agents (2026-01-09)</a>.</div>
+
+  <h2 id="how-vally-decides" data-mode="works">How Vally turns grader results into a verdict</h2>
+
+  <p>Every grader gives a score between 0 and 1 as well as a pass or fail. A pass-or-fail grader, such as <code>diff-contains</code>, scores 1 when it passes and 0 when it fails. For each trial, Vally combines its graders' scores into one score. What decides the trial's verdict depends on one optional part of the eval file.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">The scoring block</div>
+    <p>An optional top-level <code>scoring:</code> section of an eval file. It applies to every stimulus in the file. It can hold <code>weights</code>, how much each grader type counts towards the trial's score, and a <code>threshold</code>, the score from 0 to 1 that a trial must reach to pass.</p>
+  </div>
+
+  <p><strong>With no scoring block</strong>, which is what every eval file in this course has had, every grader must pass. Vally still works out a score, the plain average of the graders' scores, and prints it, but the score does not decide anything. <code>vally lint</code> says so in its warning on <code>evals/wording.eval.yaml</code>:</p>
+
+<pre class="output"><code>⚠ warning [scoring-defaults-applied] Multiple graders
+  with no scoring config
+  Using defaults: equal weights, no threshold — the
+  verdict is binary, so any single failing grader fails
+  the stimulus.</code></pre>
+
+  <p>That is the one warning you have seen from <code>vally lint</code> since lesson 5.</p>
+
+  <p><strong>With weights and a threshold</strong>, the trial passes when its weighted score reaches the threshold, whatever any single grader said. The block sits at the end of the file, at the same level as <code>stimuli</code>:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/wording-scaled.eval.yaml (the end, with a scoring block)</div>
+<pre><code class="language-yaml"><span class="gap">73 lines hidden: the whole eval file, three stimuli</span>
+scoring:
+  weights:<span class="mark">1</span>
+    prompt: 0.5
+    diff-contains: 0.5
+  threshold: 0.6<span class="mark">2</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>Weights are keyed by grader type, not by grader name. Graders of the same type in one stimulus are averaged first, then the type's weight applies. Here the judge and the pull request check count equally. Vally's lint expects the weights to add up to 1.</li>
+      <li>The trial passes when 0.5 × the judge's score + 0.5 × the check's score is 0.6 or more. Sixty percent sounds like a fair bar. This lesson uses it to show what goes wrong, not as advice.</li>
+    </ol>
+  </div>
+
+  <p>Two rules follow from the arithmetic, and both can hide a failure.</p>
+
+  <ul>
+    <li><strong>A strong score on one grader can carry a failure on another.</strong> A trial whose judge scored 0.25 (the next section shows how a judge can score between 0 and 1) and whose pull request check passed has a weighted score of 0.625, which reaches 0.6, and passes. The judge's failure is still printed with a cross; it just no longer decides the verdict.</li>
+    <li><strong>A grader type left out of <code>weights</code> stops counting.</strong> Its weight is taken as 0. Weights of <code>diff-contains: 1</code> alone would make the judge a passenger: it would still be called, still cost a judge call, and its verdict would change nothing. The docs put it plainly: "Omitting a type silences it, so list every type you care about."</li>
+  </ul>
+
+  <p>A <code>threshold</code> with no <code>weights</code> uses the plain average of every grader.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">A stimulus has a judge that fails (score 0) and two diff graders that pass. The file's scoring block has no weights and a threshold of 0.6. What is the verdict?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">Fail, because one grader failed</button></li>
+      <li><button onclick="checkAnswer(this, true)">Pass, because the average is 0.67</button></li>
+      <li><button onclick="checkAnswer(this, false)">Fail, because the average is 0.5</button></li>
+      <li><button onclick="checkAnswer(this, false)">Pass, because the judge is ignored</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. With a threshold and no weights, all three graders count equally: (0 + 1 + 1) ÷ 3 is 0.67, which reaches 0.6. The judge's failure is outvoted.</div>
+    <div class="quiz-feedback incorrect">It passes. With a threshold set, a single failing grader no longer fails the trial. With no weights the three scores are averaged: (0 + 1 + 1) ÷ 3 is 0.67, which reaches 0.6. The judge is not ignored; it is outvoted.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/concepts/scoring/#weights">Vally docs, Scoring</a>; the rules for a missing type and for a threshold with no weights were checked in Vally 0.21.0's scoring code, and the lint warning is from our run on 2026-11-10.</div>
+
+  <h2 id="judge-on-a-scale" data-mode="works">A judge on a scale</h2>
+
+  <p>The <code>prompt</code> grader's <code>scoring</code> setting, which you set to <code>binary</code> in lesson 12, has two other values: <code>scale_1_5</code>, which is what a judge uses if you leave <code>scoring</code> out, and <code>scale_1_10</code>. This lesson uses <code>scale_1_5</code>. Do not confuse it with the scoring block above: this one is inside the judge's <code>config</code> and changes only how the judge answers.</p>
+
+  <p>With <code>scoring: scale_1_5</code>, the judge gives each rubric criterion a whole number from 1 to 5. Vally rescales it to the range 0 to 1, so that it can be combined with other graders' scores: 1 becomes 0, 5 becomes 1, and each step is a quarter. The judge passes when its rescaled score reaches its own <code>threshold</code>. Leave the threshold out and it is 0.5, which means a 3 passes.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="The judge's answer 1 to 5 maps to 0, 0.25, 0.5, 0.75 and 1. The default threshold of 0.5 falls at 3; our threshold of 0.75 falls at 4.">
+      <path d="M150 110 L550 110"/>
+      <path d="M150 98 L150 122 M250 98 L250 122 M350 98 L350 122 M450 98 L450 122 M550 98 L550 122"/>
+      <path d="M350 40 L350 66" style="stroke: var(--ink-soft); stroke-dasharray: 5 5"/>
+      <path d="M450 40 L450 66" style="stroke: var(--accent); stroke-width: 3"/>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="330" y="30" text-anchor="middle">default 0.5</text>
+        <text x="10" y="90">JUDGE</text>
+        <text x="10" y="160">SCORE</text>
+        <text x="350" y="210" text-anchor="middle">at or right of the line passes</text>
+      </g>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--accent); stroke: none">
+        <text x="485" y="30" text-anchor="middle">ours 0.75</text>
+      </g>
+      <g style="font-family: var(--mono); font-size: 22px; fill: currentColor; stroke: none">
+        <text x="150" y="90" text-anchor="middle">1</text>
+        <text x="250" y="90" text-anchor="middle">2</text>
+        <text x="350" y="90" text-anchor="middle">3</text>
+        <text x="450" y="90" text-anchor="middle">4</text>
+        <text x="550" y="90" text-anchor="middle">5</text>
+        <text x="150" y="160" text-anchor="middle">0</text>
+        <text x="250" y="160" text-anchor="middle">0.25</text>
+        <text x="350" y="160" text-anchor="middle">0.5</text>
+        <text x="450" y="160" text-anchor="middle">0.75</text>
+        <text x="550" y="160" text-anchor="middle">1</text>
+      </g>
+    </svg>
+    <figcaption>The judge answers 1 to 5; Vally rescales the answer to 0 to 1. With the default threshold a 3 passes. With 0.75, the judge must give at least a 4.</figcaption>
+  </figure>
+
+  <p>So there are two thresholds, with two jobs. The judge's own <code>threshold</code> decides the judge's tick or cross. The scoring block's <code>threshold</code> decides the trial. With no scoring block, the judge's tick or cross is what counts, because every grader must pass. With a scoring block, only the judge's score counts, and its own threshold changes nothing about the verdict.</p>
+
+  <p>One thing to know before you read the output. <code>vally grade</code> prints a reason and a tick or cross for the judge, and a <code>Score</code> line for the trial, but not the judge's own number. In our trials every pull request check passed and scored 1, so the Score is the average of 1 and the judge's score, and you can read the judge's answer straight off it:</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Score line</th><th>100%</th><th>87.5%</th><th>75%</th><th>62.5%</th><th>50%</th></tr></thead>
+    <tbody>
+      <tr><td>Judge's answer</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>If a trial's pull request check fails, its Score is half the judge's rescaled score, and the table does not apply.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/graders/prompt/">Vally docs, Grader: prompt</a>, for the scales, the rescaling and the default threshold. That the judge's own number is not printed is from our run on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="score-the-wording" data-mode="use">Score the wording</h2>
+
+  <p>You will make a copy of the lesson 12 eval file with the judge on a scale, re-grade the twelve saved trials, put each score beside the yes-or-no verdict and your label, and then add a scoring block to watch a failure pass. You work on a copy so that <code>evals/wording.eval.yaml</code>, which the next lesson uses, stays as it is.</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">evals/wording-scaled.eval.yaml (the first stimulus)</div>
+<pre><code class="language-yaml">name: wording-scaled
+<span class="gap">13 lines hidden: defaults, agent environment, stimuli:</span>
+  - name: parser
+<span class="gap">8 lines hidden: the request and the rubric</span>
+    graders:
+      - type: prompt
+        config:
+          scoring: scale_1_5
+          threshold: 0.75
+          prompt: Begin your reason by quoting the new entry.
+<span class="gap">44 lines hidden: the check, then cache and dates</span></code></pre>
+  </div>
+
+  <section class="checkpoint">
+    <h3>The same twelve entries, scored 1 to 5</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: make a copy of the judge's eval file to change. This creates one file.</span>
+        Open a terminal in <code>practice</code>.
+<pre><code class="language-bash">cp evals/wording.eval.yaml \
+  evals/wording-scaled.eval.yaml</code></pre></li>
+
+      <li><span class="goal">Goal: put the judge on a scale. This edits the copy.</span>
+        In <code>evals/wording-scaled.eval.yaml</code>, change the first line to <code>name: wording-scaled</code>, so that its results are not mistaken for lesson 12's. Then, in each of the three stimuli, replace <code>scoring: binary</code> with the <code>scoring</code> and <code>threshold</code> lines shown above. The <code>prompt</code> line is already there.</li>
+
+      <li><span class="goal">Goal: catch mistakes before spending anything.</span>
+<pre><code class="language-bash">vally lint -e evals/wording-scaled.eval.yaml</code></pre>
+        <p class="expect">You should see: the <code>scoring-defaults-applied</code> warning and no errors.</p></li>
+
+      <li><span class="goal">Goal: score the twelve saved trials. This starts no agent and spends twelve judge calls.</span>
+        Move to your lesson 12 run folder; ours is named below.
+<pre><code class="language-bash">cd results/lesson-12/2026-11-10T14-55-47-259Z</code></pre>
+<pre><code class="language-bash">vally grade \
+  -e ../../../evals/wording-scaled.eval.yaml \
+  --run-dir . --verbose &lt; results.jsonl</code></pre>
+<pre class="output"><code>━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+<span class="gap">2 lines hidden: the judge's reason, the check</span>
+Score: 62.5% | FAILED</code></pre>
+        <p class="expect">You should see: twelve blocks, each ending in a Score line. With no scoring block, a block passes only when the judge's line has a tick.</p></li>
+
+      <li><span class="goal">Goal: put each score beside the yes-or-no verdict and your label.</span>
+        In <code>notes/wording-labels.md</code>, add a column headed "1 to 5". The blocks do not name the model or the trial, so match by the entry: each judge's reason quotes it. Find the row with that entry, read the block's Score line, turn it into the judge's answer with the table above, and write it in that row. Two of our entries were word for word the same, both from haiku on dates; they share a label, so put one score in each of the two rows, in either order. If a reason quotes no entry, match the other block for the same stimulus first: the row left over is this one.
+        <details class="answer"><summary>Show our scores</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Entry (shortened)</th><th>1 to 5</th><th>Yes or no judge</th><th>Ours</th></tr></thead>
+            <tbody>
+              <tr><td>…by using a streaming JSON parser</td><td>2</td><td>no</td><td>no</td></tr>
+              <tr><td>…streaming parser in importer.js</td><td>2</td><td>no</td><td>no</td></tr>
+              <tr><td>Prevent … large JSON files</td><td>5</td><td>yes</td><td>yes</td></tr>
+              <tr><td>Prevent … large files</td><td>5</td><td>yes</td><td>yes</td></tr>
+              <tr><td>…with LRU caching on large folders</td><td>2</td><td>no</td><td>no</td></tr>
+              <tr><td>…with LRU cache for tag index</td><td>2</td><td>no</td><td>no</td></tr>
+              <tr><td>Speed up … on large folders by caching the tag index</td><td><strong>4, pass</strong></td><td>no</td><td>no</td></tr>
+              <tr><td>Speed up … for large folders by caching the tag index</td><td>3</td><td>no</td><td>no</td></tr>
+              <tr><td>Fix date parser … (the first of two)</td><td>4</td><td>yes</td><td>yes</td></tr>
+              <tr><td>Fix date parser … (the second)</td><td>4</td><td>yes</td><td>yes</td></tr>
+              <tr><td>Parse dates … and days</td><td>5</td><td>yes</td><td>yes</td></tr>
+              <tr><td>Parse dates … and days correctly</td><td>5</td><td>yes</td><td>yes</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </details></li>
+
+      <li><span class="goal">Goal: see a failure hide in an average. This edits the copy.</span>
+        Return to <code>practice</code> with <code>cd ../../..</code>. Add the scoring block shown in the second section to the end of <code>evals/wording-scaled.eval.yaml</code>, not indented, then lint again.
+<pre><code class="language-bash">vally lint -e evals/wording-scaled.eval.yaml</code></pre>
+        <p class="expect">You should see: <code>evals/wording-scaled.eval.yaml is valid</code>. The warning has gone, because the file now says how to combine its graders.</p></li>
+
+      <li><span class="goal">Goal: re-grade with the weights. This spends twelve more judge calls.</span>
+        Move to the run folder again and run the same <code>vally grade</code> command as in step 4.
+<pre class="output"><code>━━━ cache ━━━
+✅ cache (1/2 graders passed, 1 failed)
+<span class="gap">2 lines hidden: the judge's ✗, the check</span>
+Score: 62.5% | PASSED (threshold: 60.0%)</code></pre>
+        <p class="expect">You should see: each Score line now ends with the threshold, and all twelve blocks pass. Four look like the one above, a tick for the trial and a cross from the judge: haiku's four entries that say how the change was coded. In our run the judge gave each a 2, as in step 4. A 2 rescales to 0.25; with the check's full 1 the weighted score is 0.625, which reaches 0.6. Only a 1 from the judge, 0.5 in all, would fail a trial now.</p></li>
+
+      <li><span class="goal">Goal: put the file back, and say what changed. This edits two files.</span>
+        Return to <code>practice</code> with <code>cd ../../..</code>. Delete the scoring block from <code>evals/wording-scaled.eval.yaml</code>. Then add one sentence to <code>notes/wording-labels.md</code>: which verdicts changed between the yes-or-no judge and the 1-to-5 judge, and whether your labels agree.
+        <details class="answer"><summary>Show our sentence</summary><p>"One verdict changed: terra's cache entry 'on large folders by caching the tag index' scored 4 and passed, where the yes-or-no judge and our label said no (its twin 'for large folders' scored 3 and failed); against our 12 labels the 1-to-5 judge has TPR 6 of 6 and TNR 5 of 6."</p></details></li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-scores-showed" data-mode="think">What the scores showed</h2>
+
+  <p>The scale did separate "nearly" from "far off". The four entries from haiku that said how the change was coded, "LRU caching", "LRU cache for tag index", "streaming JSON parser" and "streaming parser in importer.js", all got 2. The two terra entries that lead with what users notice and end "by caching the tag index" got a 4 and a 3. That is the entry we hesitated over in lesson 12, and the judge hesitated too. If we were choosing what to fix in the skill, the 2s say where to start.</p>
+
+  <p>It also changed a verdict, and not for the better. With the judge's threshold of 0.75, terra's "on large folders" cache entry passed, where we and the yes-or-no judge had failed it: TNR fell from 6 of 6 to 5 of 6. The default threshold of 0.5 would let every 3 through as well, and its twin got a 3. A threshold is a decision about where "good enough" starts, and the only way to know whether it sits where you would put it is the same check as in lesson 13: compare its verdicts with your labels.</p>
+
+  <p>Two more things showed up when we judged the same twelve entries again. Across our three runs, each grading the trials twice, terra's two cache entries got a 4 eight times and a 3 four times. Each 4 is a pass and each 3 a fail, so the verdict on the same entry flipped from one grading to the next. Scores near the threshold are where a judge's run-to-run variation turns into a different verdict. The haiku entries that said how the change was coded got a 2 in every grading. And the scale invited the judge to mark things the rubric did not ask about: date entries got a 4, not a 5, for being "a little generic", "slightly generic" or "slightly terse", or for lacking "a concrete example date". A one-criterion rubric keeps a yes-or-no judge on its question more easily than it keeps a 1-to-5 judge there.</p>
+
+  <p>Then the scoring block. These are the judge's reasons for haiku's four entries in step 7 of our run, the trials that passed with a cross.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Judge</th><th>Trial</th><th>The judge's reason, from our run</th></tr></thead>
+    <tbody>
+      <tr><td>✗</td><td>✅ 62.5%</td><td>[…] "Improve performance of `notes list --tag` with LRU caching on large folders (#66)". […] It leaks the implementation detail "LRU caching", which the rubric forbids.</td></tr>
+      <tr><td>✗</td><td>✅ 62.5%</td><td>[…] "Improve performance of `notes list --tag` with LRU cache for tag index (#66)". […] The wording leaks the implementation (LRU cache, tag index) into a user-facing changelog, so it fails the criterion in part.</td></tr>
+      <tr><td>✗</td><td>✅ 62.5%</td><td>[…] "Fix out-of-memory errors during large imports by using a streaming JSON parser (#49)". It conveys the user-visible fix but leaks the implementation approach, so it only partly meets the criterion.</td></tr>
+      <tr><td>✗</td><td>✅ 62.5%</td><td>[…] The second half, "by using a streaming parser in importer.js", describes how it was coded and names an internal file. The criterion explicitly excludes that, so the entry only partly meets it.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>The judge failed each of them, in plain words, and each passed as a trial, because the pull request check scored a full 1 and the average carried it. With half the weight on a check that nearly always passes, a threshold of 0.6 asks the judge only to avoid a 1. Every one of the twelve trials passed, so nothing in the run's summary would tell you the wording rule was broken four times; you would have to read the cross inside each block. That is how a failure hides in an average, and why Vally's advice is to keep thresholds for judged quality and leave pass-or-fail checks out of weighting. For the rest of this course the yes-or-no judge decides the verdict, and the 1-to-5 judge is a tool to reach for when you want to know how far off a failure is.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/concepts/scoring/">Vally docs, Scoring</a>, with <a href="https://microsoft.github.io/vally/reference/graders/prompt/">Grader: prompt</a></p>
+    <p>The Scoring page explains in one place how Vally reaches a verdict for a trial, a stimulus and a whole eval. Read the sections on thresholds, weights and "what to configure"; then the prompt grader page's account of its scales.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, say what decides a trial's verdict with no scoring block, and with weights and a threshold.
+        <details class="answer"><summary>Show model answer</summary><p>With no scoring block, every grader must pass; the printed score decides nothing. With weights and a threshold, each grader type's average score is multiplied by its weight, and the trial passes when the weighted score reaches the threshold, even if some grader failed.</p></details></li>
+      <li>Suppose the scoring block in step 6 had said <code>weights:</code> with only <code>diff-contains: 1</code>, and <code>threshold: 0.75</code>. Using our scores, how many of the twelve trials would pass, and how many judge calls would the re-grade cost?
+        <details class="answer"><summary>Show model answer</summary><p>All twelve would pass, because every entry cites its pull request and the judge's type is left out of the weights, so it counts for nothing. The re-grade would still cost twelve judge calls: the judge runs and prints its crosses, and they change no verdict. We worked this out from Vally's rule rather than running it.</p></details></li>
+      <li>A teammate weights a judge at 0.8 and a "cites the pull request" check at 0.2, with a threshold of 0.8, so that the judge dominates. A trial gets a 5 from the judge and has no pull request number. Does it pass, and what would you change?
+        <details class="answer"><summary>Show model answer</summary><p>It passes: 0.8 × 1 + 0.2 × 0 is exactly 0.8. A missing number is a failure, not a lower grade. Keep the judge's scale if you want it, but take the check out of the averaging: leave the file with no scoring block, so that the check and the judge's threshold must both hold.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="14" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> re-grade saved trials with a judge scoring 1 to 5 against a threshold, and say which verdicts changed from the yes-or-no judge and whether your labels agree.</p>
+    <p><strong>Up next:</strong> <a href="./0015-is-the-change-real.html">Is the change real</a>. Scores and counts both move after an edit. After an edit, 7 of 10 becomes 9 of 10. Is that real?</p>
+    <a class="next-lesson" href="./0015-is-the-change-real.html">Next lesson: Is the change real <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

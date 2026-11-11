@@ -1,0 +1,22 @@
+name: quick
+
+defaults:
+  timeout: 5s
+
+agent_environment:
+  skills:
+    - ../../skills/changelog-entry
+  files:
+    - src: ../fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+
+stimuli:
+  - name: typo-fix
+    prompt: |
+      I fixed the typo in the help text for `notes add`
+      (it said "tittle"). Put that in the changelog.
+    graders:
+      - type: diff-contains
+        name: adds-an-entry
+        config:
+          value: "notes add"

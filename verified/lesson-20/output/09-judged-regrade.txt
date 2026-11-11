@@ -1,0 +1,15 @@
+warning: Multiple graders with no scoring config
+
+━━━ cache ━━━
+✅ cache (2/2 graders passed)
+  ✓ [users-words] The entry, "Improve performance of `notes list --tag` on large note folders (#66)", is user-focused and leaves out the implementation (no LRU cache or index mention). It sits under a new "Changed" heading in the Unreleased section.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ cache ━━━
+✅ cache (2/2 graders passed)
+  ✓ [users-words] The new entry reads "Speed up `notes list --tag` in folders with many notes (#66)". It is user-focused and leaves out implementation details such as the LRU cache. It sits under a Changed heading in Unreleased.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 100.0% | PASSED

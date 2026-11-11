@@ -1,0 +1,1003 @@
+1
+00:00:00,400 --> 00:00:04,513
+Everything we've built works when we
+remember to run it, in the right order,
+
+2
+00:00:04,513 --> 00:00:05,650
+with the right flags.
+
+3
+00:00:06,150 --> 00:00:10,425
+That isn't a routine, and it won't survive
+a busy week or a new teammate.
+
+4
+00:00:10,925 --> 00:00:15,216
+Meanwhile the skill will be edited again,
+and the models under it will change
+
+5
+00:00:15,216 --> 00:00:16,275
+without telling us.
+
+6
+00:00:16,775 --> 00:00:21,120
+Here, you'll make the right check the easy
+one: one short command after every edit, a
+
+7
+00:00:21,120 --> 00:00:24,750
+longer one before sharing, and one page
+that says what the team agreed.
+
+8
+00:00:25,967 --> 00:00:28,642
+Let's start with what each check costs.
+
+9
+00:00:29,142 --> 00:00:33,717
+We now have five ways to check the skill,
+and they differ enormously in cost.
+
+10
+00:00:34,217 --> 00:00:39,142
+Lint, the oracle and a re-grade start no
+agent, so for code graders they're free.
+
+11
+00:00:39,642 --> 00:00:44,062
+The other two are new here: a quick run of
+the stimuli that code can check, and a
+
+12
+00:00:44,062 --> 00:00:45,317
+full run of everything.
+
+13
+00:00:45,817 --> 00:00:50,253
+On two models, the quick one spends ten
+agent runs, and the full one spends
+
+14
+00:00:50,253 --> 00:00:50,667
+thirty.
+
+15
+00:00:51,867 --> 00:00:56,567
+The rule is to use the cheapest check that
+can answer the question we actually have.
+
+16
+00:00:57,067 --> 00:01:00,017
+After editing an eval file, that's lint.
+
+17
+00:01:00,517 --> 00:01:04,848
+After changing a grader, it's the oracle,
+which tries a correct answer and an
+
+18
+00:01:04,848 --> 00:01:05,692
+untouched file.
+
+19
+00:01:06,192 --> 00:01:10,542
+After changing a pattern, a budget or a
+rubric, a re-grade says what the new
+
+20
+00:01:10,542 --> 00:01:12,717
+version makes of trials already saved.
+
+21
+00:01:13,217 --> 00:01:17,742
+A script grader can't be re-graded,
+because the workspace it reads is gone.
+
+22
+00:01:18,242 --> 00:01:21,467
+So a change to a script goes back to the
+oracle.
+
+23
+00:01:21,967 --> 00:01:26,465
+After every edit to the skill, the quick
+run asks whether anything code can check
+
+24
+00:01:26,465 --> 00:01:28,242
+has broken, or gone over budget.
+
+25
+00:01:28,742 --> 00:01:33,425
+Finally, before sharing the skill, or when
+a model changes, the full run asks whether
+
+26
+00:01:33,425 --> 00:01:34,692
+everything still holds.
+
+27
+00:01:35,900 --> 00:01:40,600
+Three more checks sit outside that order,
+because each answers a one-off question.
+
+28
+00:01:41,100 --> 00:01:44,655
+After a large rewrite, the
+with-and-without experiment says whether
+
+29
+00:01:44,655 --> 00:01:46,300
+the skill still beats no skill.
+
+30
+00:01:46,800 --> 00:01:51,284
+To learn whether one edit really helped,
+we run a before-and-after experiment, then
+
+31
+00:01:51,284 --> 00:01:54,525
+vally compare, which spends judge calls
+and starts no agent.
+
+32
+00:01:55,025 --> 00:01:59,862
+Finally, cost per passing trial is what to
+compare before moving to a different model
+
+33
+00:01:59,862 --> 00:02:01,000
+or reasoning effort.
+
+34
+00:02:02,200 --> 00:02:05,375
+For a team, though, the commands are the
+easy part.
+
+35
+00:02:05,875 --> 00:02:10,427
+What drifts is agreement: what deserves a
+grader, where grading files are kept, how
+
+36
+00:02:10,427 --> 00:02:12,950
+a result is reported, and what a run may
+cost.
+
+37
+00:02:13,450 --> 00:02:16,875
+So we'll write those down on one page,
+while they're fresh.
+
+38
+00:02:17,375 --> 00:02:21,728
+People can disagree with something written
+down, and that's how the agreement gets
+
+39
+00:02:21,728 --> 00:02:22,100
+better.
+
+40
+00:02:23,300 --> 00:02:27,500
+That's the plan; here's what Vally gives
+us to build it, starting with tags.
+
+41
+00:02:28,000 --> 00:02:32,703
+When we say tag, we mean a label on a
+stimulus: a name and a value, on a line
+
+42
+00:02:32,703 --> 00:02:33,375
+named tags.
+
+43
+00:02:33,875 --> 00:02:38,580
+Here the name is tier and the value is
+quick; both words are ours, and any words
+
+44
+00:02:38,580 --> 00:02:39,050
+will do.
+
+45
+00:02:39,550 --> 00:02:44,650
+All five stimuli in this file get the same
+line, because all five are graded by code.
+
+46
+00:02:45,867 --> 00:02:48,917
+Next, the suite: a named group of stimuli.
+
+47
+00:02:49,417 --> 00:02:54,067
+It's a list of eval files, optionally
+narrowed to the stimuli with a given tag.
+
+48
+00:02:54,567 --> 00:02:59,606
+Suites are defined in a file named dot
+vally dot yaml, in the folder we run Vally
+
+49
+00:02:59,606 --> 00:02:59,917
+from.
+
+50
+00:03:00,417 --> 00:03:04,796
+This one defines two; the first is named
+quick, which is what we'll type on the
+
+51
+00:03:04,796 --> 00:03:05,517
+command line.
+
+52
+00:03:06,017 --> 00:03:10,363
+The quick suite draws on one eval file,
+and its filter is matched against each
+
+53
+00:03:10,363 --> 00:03:13,317
+stimulus's tags, so it keeps the five we
+just tagged.
+
+54
+00:03:13,817 --> 00:03:18,879
+The second, full, lists four eval files
+with no filter, so every stimulus in them
+
+55
+00:03:18,879 --> 00:03:19,192
+runs.
+
+56
+00:03:19,692 --> 00:03:24,029
+Those four hold the single requests, the
+conversation, the loading test, and the
+
+57
+00:03:24,029 --> 00:03:24,842
+judged wording.
+
+58
+00:03:26,067 --> 00:03:30,946
+To run a suite, vally eval takes dash dash
+suite and the suite's name, in place of
+
+59
+00:03:30,946 --> 00:03:32,017
+dash e and a file.
+
+60
+00:03:32,517 --> 00:03:35,817
+Everything else about the command works as
+before.
+
+61
+00:03:36,317 --> 00:03:41,192
+One thing to know: a suite only names
+stimuli, and adds no graders of its own.
+
+62
+00:03:42,400 --> 00:03:46,752
+The five quick stimuli are the ones that
+already have budgets, so the quick suite
+
+63
+00:03:46,752 --> 00:03:47,450
+carries them.
+
+64
+00:03:47,950 --> 00:03:52,679
+Every trial is checked against a ceiling
+on its tokens, on its turns, and on its
+
+65
+00:03:52,679 --> 00:03:52,975
+time.
+
+66
+00:03:55,475 --> 00:03:59,875
+The agent is also stopped after a minute,
+and whatever it had done by then is
+
+67
+00:03:59,875 --> 00:04:00,275
+graded.
+
+68
+00:04:00,775 --> 00:04:05,282
+When a trial goes over a budget, its
+stimulus fails, exactly as it would for a
+
+69
+00:04:05,282 --> 00:04:05,975
+wrong entry.
+
+70
+00:04:06,475 --> 00:04:10,500
+That's what makes the quick suite a cost
+check as well as a quality check.
+
+71
+00:04:11,700 --> 00:04:16,625
+The last piece is the exit code, which is
+what scripts and automated checks act on.
+
+72
+00:04:17,125 --> 00:04:22,130
+Unless told otherwise, vally eval exits
+with zero even when stimuli fail, because
+
+73
+00:04:22,130 --> 00:04:23,675
+the run itself completed.
+
+74
+00:04:24,175 --> 00:04:28,670
+Adding dash dash require pass changes
+that: any failing stimulus makes the exit
+
+75
+00:04:28,670 --> 00:04:31,800
+code one, whichever grader failed it,
+budgets included.
+
+76
+00:04:32,300 --> 00:04:36,325
+When a trial ends in error, the exit code
+is one either way.
+
+77
+00:04:36,825 --> 00:04:39,525
+Vally grade accepts the same option.
+
+78
+00:04:40,733 --> 00:04:45,024
+One kind of failure gets past every
+grader: an edit that makes the entries a
+
+79
+00:04:45,024 --> 00:04:47,733
+little worse, while every pattern still
+matches.
+
+80
+00:04:48,233 --> 00:04:50,783
+That's what the pairwise judge is for.
+
+81
+00:04:51,283 --> 00:04:55,858
+Vally compare gives it two runs of the
+same stimuli, a baseline and a change, and
+
+82
+00:04:55,858 --> 00:04:57,608
+it scores each pair of answers.
+
+83
+00:04:58,108 --> 00:05:02,449
+With dash dash fail on regression, the
+command exits with one when the change
+
+84
+00:05:02,449 --> 00:05:03,633
+scored clearly worse.
+
+85
+00:05:04,133 --> 00:05:08,383
+Clearly worse means that the whole range
+around its score is below zero.
+
+86
+00:05:08,883 --> 00:05:12,833
+Earlier, we tested it by treating the
+older skill as the change.
+
+87
+00:05:13,333 --> 00:05:17,911
+When we ran it, the range reached just
+above zero, so the command exited with
+
+88
+00:05:17,911 --> 00:05:18,208
+zero.
+
+89
+00:05:18,708 --> 00:05:23,542
+In an earlier run of the same comparison,
+the whole range was below zero, and it
+
+90
+00:05:23,542 --> 00:05:24,508
+exited with one.
+
+91
+00:05:25,008 --> 00:05:29,988
+It needs a before-and-after experiment and
+about eighteen judge calls, so it belongs
+
+92
+00:05:29,988 --> 00:05:32,833
+before we rely on an edit, not after every
+edit.
+
+93
+00:05:33,333 --> 00:05:38,333
+It also gates on the judged score alone; a
+rise in tokens is the budgets' job.
+
+94
+00:05:39,533 --> 00:05:42,833
+That's how the pieces work; now let's put
+them to work.
+
+95
+00:05:43,333 --> 00:05:47,842
+The tags and the suites file are in place
+in our practice folder, exactly as we just
+
+96
+00:05:47,842 --> 00:05:48,808
+went through them.
+
+97
+00:05:49,308 --> 00:05:53,805
+Here's a question first: suppose we ran
+the quick suite without require pass, and
+
+98
+00:05:53,805 --> 00:05:55,858
+one trial went over its token budget.
+
+99
+00:05:56,358 --> 00:06:00,333
+Nothing else fails, and nothing errors:
+what would the exit code be?
+
+100
+00:06:03,333 --> 00:06:07,411
+It would be zero: the budget fails that
+stimulus, but without the option, a
+
+101
+00:06:07,411 --> 00:06:09,858
+failing verdict doesn't change the exit
+code.
+
+102
+00:06:10,358 --> 00:06:14,283
+So anything automated has to add the
+option, and we will too.
+
+103
+00:06:15,500 --> 00:06:19,050
+First, we lint the eval file, since we've
+just edited it.
+
+104
+00:06:22,300 --> 00:06:26,475
+There's one warning, the usual one about
+scoring defaults, and no errors.
+
+105
+00:06:28,975 --> 00:06:33,330
+Now the quick suite, on both models, two
+workers at a time, with require pass so
+
+106
+00:06:33,330 --> 00:06:34,800
+that a failure is an error.
+
+107
+00:06:35,300 --> 00:06:39,725
+Its results go to a folder of their own,
+and it spends ten agent runs.
+
+108
+00:06:40,225 --> 00:06:44,825
+The table at the end counts the stimuli
+that passed, out of five, for each model.
+
+109
+00:06:47,133 --> 00:06:51,983
+About a minute later, every stimulus has
+passed on both models, budgets included.
+
+110
+00:06:55,483 --> 00:06:57,683
+So what was its exit code?
+
+111
+00:06:58,800 --> 00:07:00,800
+Zero: nothing failed.
+
+112
+00:07:04,000 --> 00:07:08,215
+A passing run can't show the option at
+work, so let's see a wrong entry fail
+
+113
+00:07:08,215 --> 00:07:10,100
+loudly, without spending anything.
+
+114
+00:07:10,600 --> 00:07:15,053
+The run we'll use is the first one we
+graded, before the skill had its rules, so
+
+115
+00:07:15,053 --> 00:07:16,500
+it has plenty of failures.
+
+116
+00:07:17,000 --> 00:07:21,401
+None of its graders is a script, and a
+script grader is the one kind that can't
+
+117
+00:07:21,401 --> 00:07:22,125
+be re-graded.
+
+118
+00:07:22,625 --> 00:07:25,325
+We change into that run's folder.
+
+119
+00:07:28,167 --> 00:07:32,492
+Then we re-grade it with today's eval
+file, and with require pass.
+
+120
+00:07:39,200 --> 00:07:43,445
+These are the failing blocks from that
+run, each now with the budgets among its
+
+121
+00:07:43,445 --> 00:07:43,875
+graders.
+
+122
+00:07:48,375 --> 00:07:52,720
+Every budget passed in all eighteen
+trials, three stimuli three times on two
+
+123
+00:07:52,720 --> 00:07:55,350
+models; only the graders of the result
+failed.
+
+124
+00:07:57,850 --> 00:08:00,400
+So what's the exit code this time?
+
+125
+00:08:01,480 --> 00:08:04,705
+It's one: a failing verdict is now an
+error.
+
+126
+00:08:07,933 --> 00:08:12,471
+Next, a trial that's over budget, which
+none of ours is, so we make one for a
+
+127
+00:08:12,471 --> 00:08:12,883
+moment.
+
+128
+00:08:13,383 --> 00:08:17,606
+In the typo fix stimulus, we lower the
+token budget from two hundred fifteen
+
+129
+00:08:17,606 --> 00:08:21,383
+thousand to seventy thousand, which is
+below what those trials used.
+
+130
+00:08:22,600 --> 00:08:26,400
+We run the same re-grade again, and then
+print the exit code.
+
+131
+00:08:35,593 --> 00:08:37,168
+It's one again.
+
+132
+00:08:44,400 --> 00:08:48,650
+That output is longer than one screen, so
+here's the part that changed.
+
+133
+00:08:49,150 --> 00:08:54,283
+These typo fix trials passed every grader
+a moment ago; now they fail, on the budget
+
+134
+00:08:54,283 --> 00:08:54,650
+alone.
+
+135
+00:08:55,150 --> 00:08:59,600
+Seventy-four thousand tokens is over a
+maximum of seventy thousand.
+
+136
+00:09:00,100 --> 00:09:03,250
+The score still says ninety-eight point
+eight percent.
+
+137
+00:09:03,750 --> 00:09:08,100
+That's because going slightly over a
+budget costs only a little of the score.
+
+138
+00:09:08,600 --> 00:09:13,279
+With no scoring block, though, the score
+decides nothing: every grader has to pass,
+
+139
+00:09:13,279 --> 00:09:14,125
+and one didn't.
+
+140
+00:09:14,625 --> 00:09:19,275
+So a trial that did the work and cost too
+much is a failing verdict like any other.
+
+141
+00:09:19,775 --> 00:09:23,725
+With that seen, the budget goes back to
+two hundred fifteen thousand.
+
+142
+00:09:24,933 --> 00:09:29,697
+Now everything, once: the full suite, with
+the same options, into its own results
+
+143
+00:09:29,697 --> 00:09:30,108
+folder.
+
+144
+00:09:30,608 --> 00:09:33,983
+It spends thirty agent runs and six judge
+calls.
+
+145
+00:09:34,483 --> 00:09:38,483
+The table at the end has a row for each of
+the four eval files.
+
+146
+00:09:41,613 --> 00:09:46,663
+Several minutes later, every stimulus has
+passed on both models, in all four files.
+
+147
+00:09:52,163 --> 00:09:54,213
+Let's see what it reported.
+
+148
+00:09:55,340 --> 00:09:58,990
+Zero again: nothing failed, budgets and
+judge included.
+
+149
+00:10:02,200 --> 00:10:06,816
+That was our second run of the full suite;
+the first, a few minutes before it, ended
+
+150
+00:10:06,816 --> 00:10:07,475
+differently.
+
+151
+00:10:07,975 --> 00:10:12,500
+Here's the first run's table, with the
+three stimuli Vally listed above it.
+
+152
+00:10:13,000 --> 00:10:15,400
+They're two different kinds of trouble.
+
+153
+00:10:15,900 --> 00:10:19,975
+On haiku, two trials ended in error,
+because their sessions dropped.
+
+154
+00:10:20,475 --> 00:10:25,014
+As before, an error isn't a verdict: the
+trial didn't complete, so it says nothing
+
+155
+00:10:25,014 --> 00:10:25,900
+about the skill.
+
+156
+00:10:26,400 --> 00:10:29,775
+So we ran the suite again, and that's the
+run we kept.
+
+157
+00:10:30,275 --> 00:10:34,730
+The other is a real fail: on terra, a
+question that shouldn't load the skill did
+
+158
+00:10:34,730 --> 00:10:35,175
+load it.
+
+159
+00:10:35,675 --> 00:10:39,050
+The loading grader that forbids that is
+what caught it.
+
+160
+00:10:39,550 --> 00:10:44,275
+Either problem alone makes the command
+exit with one, and that first run did.
+
+161
+00:10:45,500 --> 00:10:48,975
+One thing is left: the page that says what
+we've agreed.
+
+162
+00:10:49,475 --> 00:10:54,650
+Ours is a file named conventions, with ten
+headings and a sentence or two under each.
+
+163
+00:10:55,150 --> 00:10:59,314
+It opens with what earns a grader, code
+before judge, where files are kept, and
+
+164
+00:10:59,314 --> 00:11:01,950
+what we check before trusting a grader or
+a judge.
+
+165
+00:11:02,450 --> 00:11:07,200
+Then come what we run and when, how we
+report a result, and what a run may cost.
+
+166
+00:11:07,700 --> 00:11:12,221
+The last two are what to do when a run
+goes wrong, and which models we used, on
+
+167
+00:11:12,221 --> 00:11:12,850
+which date.
+
+168
+00:11:13,350 --> 00:11:17,812
+That last one matters because models and
+their prices change: a result means little
+
+169
+00:11:17,812 --> 00:11:20,500
+without knowing which model produced it,
+and when.
+
+170
+00:11:21,700 --> 00:11:23,900
+So where does the skill stand?
+
+171
+00:11:24,400 --> 00:11:28,690
+At the start, it was a first draft that
+one model answered by making up a pull
+
+172
+00:11:28,690 --> 00:11:31,000
+request number, behind a tick that hid it.
+
+173
+00:11:31,500 --> 00:11:36,000
+With our first graders, one pair of
+stimulus and model passed, out of six.
+
+174
+00:11:36,500 --> 00:11:40,805
+Now the suites cover a conversation, a
+loading test with near-miss requests, a
+
+175
+00:11:40,805 --> 00:11:45,000
+judged quality that no pattern can see,
+and budgets on every quick stimulus.
+
+176
+00:11:45,500 --> 00:11:49,350
+In our last run, every stimulus in them
+passed on both models.
+
+177
+00:11:49,850 --> 00:11:54,029
+Every rule in the skill is there because a
+trial showed it was needed, and every
+
+178
+00:11:54,029 --> 00:11:56,275
+grader is there because a failure was
+seen.
+
+179
+00:11:57,500 --> 00:11:59,775
+Now, what does the routine cost?
+
+180
+00:12:00,275 --> 00:12:04,977
+In our run, the quick suite's ten trials
+cost about twenty-four AIU, which is about
+
+181
+00:12:04,977 --> 00:12:06,450
+twenty-four cents an edit.
+
+182
+00:12:06,950 --> 00:12:12,137
+The full suite's thirty trials cost about
+sixty-seven AIU, with its six judge calls
+
+183
+00:12:12,137 --> 00:12:12,575
+on top.
+
+184
+00:12:13,075 --> 00:12:17,433
+None of the quick trials came near the
+token budget: the largest used ninety-one
+
+185
+00:12:17,433 --> 00:12:20,375
+thousand tokens, against two hundred
+fifteen thousand.
+
+186
+00:12:21,600 --> 00:12:24,875
+Those figures are for the two models we've
+used throughout.
+
+187
+00:12:25,375 --> 00:12:29,806
+Earlier, in the cost experiment, the newer
+haiku model at low effort passed all
+
+188
+00:12:29,806 --> 00:12:34,125
+fifteen of its trials on these same
+stimuli, at about a fifth of an AIU each.
+
+189
+00:12:34,625 --> 00:12:39,425
+On that one variant, a quick suite would
+cost about one AIU an edit: a cent.
+
+190
+00:12:39,925 --> 00:12:44,244
+Our conventions say how to make that move:
+compare cost per passing trial, re-test
+
+191
+00:12:44,244 --> 00:12:47,825
+the budgets on its saved trials, and run
+the full suite on it first.
+
+192
+00:12:49,033 --> 00:12:53,483
+One caution goes with that last table:
+it's one trial per stimulus.
+
+193
+00:12:53,983 --> 00:12:58,229
+In our two runs of the full suite, the
+same loading question failed on terra the
+
+194
+00:12:58,229 --> 00:13:00,033
+first time, and passed the second.
+
+195
+00:13:00,533 --> 00:13:04,985
+A single passing trial shows that a
+stimulus can pass; it doesn't show that it
+
+196
+00:13:04,985 --> 00:13:06,183
+will pass every time.
+
+197
+00:13:06,683 --> 00:13:09,833
+The suites are how we find out when that
+changes.
+
+198
+00:13:11,033 --> 00:13:15,308
+Before you go on: what are the five
+checks, from cheapest to most expensive?
+
+199
+00:13:18,308 --> 00:13:20,983
+Lint, after editing an eval file.
+
+200
+00:13:21,483 --> 00:13:24,133
+The oracle, after changing a grader.
+
+201
+00:13:24,633 --> 00:13:29,208
+Re-grading a saved run, after changing a
+pattern, a budget or a rubric.
+
+202
+00:13:29,708 --> 00:13:32,733
+The quick suite, after every edit to the
+skill.
+
+203
+00:13:33,233 --> 00:13:37,433
+Finally, the full suite, before sharing,
+and whenever a model changes.
+
+204
+00:13:38,633 --> 00:13:41,233
+That completes the first part of the
+course.
+
+205
+00:13:41,733 --> 00:13:46,169
+You can now run a quick suite after every
+edit and a full suite before sharing, with
+
+206
+00:13:46,169 --> 00:13:50,077
+commands that fail loudly on a failing
+verdict, an over-budget trial, or a
+
+207
+00:13:50,077 --> 00:13:50,658
+regression.
+
+208
+00:13:51,158 --> 00:13:55,283
+You also have a one-page conventions file
+to hand to a teammate.
+
+209
+00:13:55,783 --> 00:14:00,188
+In the second part, the team behind our
+made-up tool has put the skill inside its
+
+210
+00:14:00,188 --> 00:14:01,058
+release tooling.
+
+211
+00:14:01,558 --> 00:14:05,258
+Does it still hold when an app, not a
+person, starts the agent?
+
+212
+00:14:05,758 --> 00:14:07,608
+That's the next lesson.
+
+213
+00:14:08,108 --> 00:14:12,514
+The exercises on the lesson page are worth
+doing first, and the workflow guide there
+
+214
+00:14:12,514 --> 00:14:16,133
+shows how a service can run the quick
+suite on every proposed change.

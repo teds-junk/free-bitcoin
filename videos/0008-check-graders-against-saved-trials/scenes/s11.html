@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Six trials of one stimulus</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.lists{display:flex;flex-direction:column;width:100%}.lists .card > .code.dark{font-size:31px;line-height:1.5;padding:20px 28px}.lists .card .who{font-size:30px}.stage{gap:22px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Catch a grader that cannot fail</div>
+  <h2 class="scene-title">Six trials of one stimulus</h2>
+  <div class="stage">
+<div class="lists">
+    <div class="card" data-concept="six" data-rep="card">
+        <div class="who">the re-grade · the six <span class="mono">typo-fix</span> blocks, each one’s verdict and the grader it names</div>
+        <pre class="code dark" data-lang="text"><code><span data-concept="ok" data-rep="code"><span>✅ typo-fix (2/2 graders passed)</span></span>
+<span data-concept="ok" data-rep="code"><span>✅ typo-fix (2/2 graders passed)</span></span>
+<span data-concept="ok" data-rep="code"><span>✅ typo-fix (2/2 graders passed)</span></span>
+<span>❌ typo-fix (1/2 graders passed, 1 failed)</span>
+<span>  ✗ [</span><span data-concept="nmn" data-rep="code"><span>no-made-up-number</span></span><span>] Pattern /(?m)^\+.*\(#\d+\)/ found in workspace diff</span>
+<span>❌ typo-fix (1/2 graders passed, 1 failed)</span>
+<span>  ✗ [</span><span data-concept="aae" data-rep="code"><span>adds-an-entry</span></span><span>] Pattern 'notes add' not found in workspace diff</span>
+<span>❌ typo-fix (1/2 graders passed, 1 failed)</span>
+<span>  ✗ [</span><span data-concept="nmn" data-rep="code"><span>no-made-up-number</span></span><span>] Pattern /(?m)^\+.*\(#\d+\)/ found in workspace diff</span></code></pre>
+      </div>
+  </div>
+  <p class="note">from our run · 2026-11-11T05-21-37-779Z · the blocks do not name the model</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "ok",
+  "at": "1~Three passed",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "nmn",
+  "at": "2~no made-up number",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "aae",
+  "at": "3~adds an entry",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

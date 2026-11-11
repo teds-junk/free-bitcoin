@@ -1,0 +1,5 @@
+0:00 Evaluate the model you ship
+1:28 Bring your own key
+4:20 A variant on a local model
+5:49 Run a variant on your provider
+9:24 What changed

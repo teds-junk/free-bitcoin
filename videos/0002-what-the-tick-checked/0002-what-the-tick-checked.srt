@@ -1,0 +1,759 @@
+1
+00:00:00,400 --> 00:00:04,700
+Two models got the same request, and wrote
+two different changelog entries.
+
+2
+00:00:05,200 --> 00:00:09,825
+One entry cites a pull request that
+doesn't exist, and both got a green tick.
+
+3
+00:00:10,325 --> 00:00:14,220
+Here, you'll find out what that tick
+checked, and where Vally wrote down what
+
+4
+00:00:14,220 --> 00:00:14,675
+happened.
+
+5
+00:00:15,900 --> 00:00:20,783
+Let's start with the file that told Vally
+what to do: the eval file we ran on both
+
+6
+00:00:20,783 --> 00:00:21,200
+models.
+
+7
+00:00:21,700 --> 00:00:26,530
+It opens with the eval's name, which Vally
+uses as a folder name when it saves
+
+8
+00:00:26,530 --> 00:00:27,025
+results.
+
+9
+00:00:27,525 --> 00:00:31,918
+Under defaults are settings for the whole
+file, and this one gives the agent three
+
+10
+00:00:31,918 --> 00:00:33,525
+minutes before Vally stops it.
+
+11
+00:00:34,025 --> 00:00:37,850
+Next comes the agent environment: what the
+agent starts with.
+
+12
+00:00:38,350 --> 00:00:42,668
+Everything listed here is copied into the
+workspace, the fresh scratch folder the
+
+13
+00:00:42,668 --> 00:00:44,800
+agent works in, before the agent begins.
+
+14
+00:00:45,300 --> 00:00:49,900
+There's one skill folder to install, given
+as a path relative to this file.
+
+15
+00:00:50,400 --> 00:00:54,660
+And there's one file to copy in: the
+starting changelog, and the name it gets
+
+16
+00:00:54,660 --> 00:00:55,600
+in the workspace.
+
+17
+00:00:56,800 --> 00:01:00,275
+Then comes a list called stimuli: the
+things to try.
+
+18
+00:01:00,775 --> 00:01:05,681
+One entry in it is a stimulus: a request,
+together with the graders that check the
+
+19
+00:01:05,681 --> 00:01:06,100
+result.
+
+20
+00:01:06,600 --> 00:01:10,275
+This file has a single stimulus, named
+typo fix.
+
+21
+00:01:10,775 --> 00:01:14,950
+Its prompt is the request, word for word
+as the agent receives it.
+
+22
+00:01:15,450 --> 00:01:17,800
+Under the prompt are the graders.
+
+23
+00:01:18,300 --> 00:01:21,050
+A grader is what we've been calling the
+check.
+
+24
+00:01:21,550 --> 00:01:26,058
+Vally runs it after the agent has stopped,
+and it reports pass or fail, with a line
+
+25
+00:01:26,058 --> 00:01:27,850
+of evidence saying what it found.
+
+26
+00:01:28,350 --> 00:01:31,450
+The type picks one of Vally's built-in
+graders.
+
+27
+00:01:31,950 --> 00:01:34,450
+This one is called file contains.
+
+28
+00:01:34,950 --> 00:01:39,030
+It opens one file in the finished
+workspace, and passes if that file
+
+29
+00:01:39,030 --> 00:01:40,650
+contains the text in value.
+
+30
+00:01:41,150 --> 00:01:45,225
+So the whole check is: does the changelog
+contain the words notes add?
+
+31
+00:01:45,725 --> 00:01:49,250
+The grader's name is ours, and it's what
+the results show.
+
+32
+00:01:50,467 --> 00:01:54,292
+One more command belongs with the eval
+file: vally lint.
+
+33
+00:01:54,792 --> 00:01:59,442
+It reports mistakes in an eval file, such
+as a misspelt key or a missing file,
+
+34
+00:01:59,442 --> 00:02:00,992
+without starting an agent.
+
+35
+00:02:01,492 --> 00:02:06,567
+Lint takes dash e and the file's path, the
+same as vally eval, and it spends nothing.
+
+36
+00:02:07,767 --> 00:02:11,692
+That's the file that went in; now let's
+see what a run leaves behind.
+
+37
+00:02:12,192 --> 00:02:17,257
+First, one more of Vally's words: a trial
+is one attempt at one stimulus by one
+
+38
+00:02:17,257 --> 00:02:17,642
+model.
+
+39
+00:02:18,142 --> 00:02:22,467
+Our command had one stimulus and two
+models, so it made two trials.
+
+40
+00:02:22,967 --> 00:02:27,743
+From here on, a run is one vally eval
+command and everything it saves, and a
+
+41
+00:02:27,743 --> 00:02:29,692
+trial is one attempt inside it.
+
+42
+00:02:30,900 --> 00:02:35,882
+Each run writes one folder, named with the
+time it started, and this is everything in
+
+43
+00:02:35,882 --> 00:02:36,175
+ours.
+
+44
+00:02:36,675 --> 00:02:41,775
+At the top, eval results dot M D is the
+report: tables for people to read.
+
+45
+00:02:42,275 --> 00:02:47,700
+Results dot jsonl holds the same results
+for programs, one record on each line.
+
+46
+00:02:48,200 --> 00:02:52,900
+The third file is timing data for tracing
+tools, and this course doesn't use it.
+
+47
+00:02:53,400 --> 00:02:57,739
+Below those are nested folders that lead
+to each trial: the eval's name, then the
+
+48
+00:02:57,739 --> 00:03:01,275
+stimulus, then the model, then a trial
+number that starts at zero.
+
+49
+00:03:01,775 --> 00:03:04,550
+Each trial folder holds three files.
+
+50
+00:03:05,050 --> 00:03:09,398
+Workspace dot patch is the one you've
+seen: the lines the agent added and
+
+51
+00:03:09,398 --> 00:03:09,875
+removed.
+
+52
+00:03:10,375 --> 00:03:15,549
+Events dot jsonl is the agent's own log of
+the session, with every message and every
+
+53
+00:03:15,549 --> 00:03:16,350
+tool it used.
+
+54
+00:03:16,850 --> 00:03:21,177
+And metadata dot json holds a few facts
+about the trial: which model, when it
+
+55
+00:03:21,177 --> 00:03:23,650
+started and ended, and whether it
+completed.
+
+56
+00:03:24,867 --> 00:03:28,017
+Here's the report, with one table for each
+model.
+
+57
+00:03:28,517 --> 00:03:32,242
+The graders column lists each grader by
+the name we gave it.
+
+58
+00:03:32,742 --> 00:03:37,442
+Pass rate is the trials that passed out of
+the trials that ran: here, one of one.
+
+59
+00:03:37,942 --> 00:03:43,118
+Tool calls is how many times the agent
+used a tool, such as opening or editing a
+
+60
+00:03:43,118 --> 00:03:43,442
+file.
+
+61
+00:03:43,942 --> 00:03:48,759
+And the verdict is the result: a trial
+passes only if every one of its graders
+
+62
+00:03:48,759 --> 00:03:49,192
+passes.
+
+63
+00:03:49,692 --> 00:03:52,417
+The tokens column, we'll come to shortly.
+
+64
+00:03:53,633 --> 00:03:58,308
+Results dot jsonl holds the detail behind
+each row of that table.
+
+65
+00:03:58,808 --> 00:04:03,583
+Each record is one very long line, so
+here's one trial's record spread out.
+
+66
+00:04:04,083 --> 00:04:07,883
+The type says what kind of record this is:
+one trial's result.
+
+67
+00:04:08,383 --> 00:04:12,815
+Status says whether the agent finished:
+it's about the trial completing, not about
+
+68
+00:04:12,815 --> 00:04:14,058
+the answer being right.
+
+69
+00:04:15,267 --> 00:04:19,192
+Further down is grade result, the part
+that explains the tick.
+
+70
+00:04:19,692 --> 00:04:22,567
+Passed is true: that's the trial's
+verdict.
+
+71
+00:04:23,067 --> 00:04:27,142
+Details has one entry for each grader, and
+this trial had one.
+
+72
+00:04:27,642 --> 00:04:32,378
+Here's that grader's evidence, in its own
+words: it found the words notes add in the
+
+73
+00:04:32,378 --> 00:04:32,942
+changelog.
+
+74
+00:04:33,442 --> 00:04:37,984
+The record ends with the trajectory, which
+is Vally's name for the full record of
+
+75
+00:04:37,984 --> 00:04:39,667
+what the agent did in a trial.
+
+76
+00:04:40,867 --> 00:04:44,742
+Inside the trajectory is a record of what
+the trial used.
+
+77
+00:04:45,242 --> 00:04:49,829
+Models take in and write text in pieces
+called tokens, each a word or part of a
+
+78
+00:04:49,829 --> 00:04:52,442
+word, and model services charge by the
+token.
+
+79
+00:04:52,942 --> 00:04:55,717
+Every trial saves its token usage.
+
+80
+00:04:56,217 --> 00:05:00,861
+Input tokens are everything the model was
+given: the request, the skill, the files
+
+81
+00:05:00,861 --> 00:05:03,467
+the agent opened, and the conversation so
+far.
+
+82
+00:05:03,967 --> 00:05:07,967
+Output tokens are everything it wrote, and
+there are far fewer of them.
+
+83
+00:05:08,467 --> 00:05:12,845
+The call count explains why input is so
+much larger: the agent called the model
+
+84
+00:05:12,845 --> 00:05:16,392
+six times, and each call takes in the
+conversation so far again.
+
+85
+00:05:16,892 --> 00:05:20,885
+Cache read tokens are the part of the
+input the service had already processed
+
+86
+00:05:20,885 --> 00:05:23,842
+earlier in the session, which costs less
+the second time.
+
+87
+00:05:24,342 --> 00:05:27,417
+And total tokens is input plus output.
+
+88
+00:05:28,633 --> 00:05:33,608
+The token usage ends with what the trial
+cost, as GitHub Copilot reported it.
+
+89
+00:05:34,108 --> 00:05:39,583
+Its unit is the nano-AIU: a billionth of
+an AIU, which is the unit Copilot reports
+
+90
+00:05:39,583 --> 00:05:40,183
+usage in.
+
+91
+00:05:40,683 --> 00:05:45,308
+One AIU is one GitHub AI Credit, the unit
+Copilot bills in.
+
+92
+00:05:45,808 --> 00:05:48,583
+And one AI Credit is one cent.
+
+93
+00:05:49,083 --> 00:05:53,616
+So this trial's three point three six
+billion nano-AIU come to about three
+
+94
+00:05:53,616 --> 00:05:53,983
+cents.
+
+95
+00:05:54,483 --> 00:05:59,032
+Copilot counts usage against your plan's
+monthly allowance first, so a trial may
+
+96
+00:05:59,032 --> 00:06:01,533
+cost you nothing extra until that's used
+up.
+
+97
+00:06:02,733 --> 00:06:07,283
+That total is the number in the report's
+tokens column, on this trial's row.
+
+98
+00:06:07,783 --> 00:06:12,306
+When a stimulus has several trials, the
+column shows their median, the middle
+
+99
+00:06:12,306 --> 00:06:12,658
+value.
+
+100
+00:06:13,158 --> 00:06:17,508
+We'll build on these numbers later, to
+work out what a passing trial costs.
+
+101
+00:06:18,733 --> 00:06:21,133
+So why did both models pass?
+
+102
+00:06:21,633 --> 00:06:23,983
+Let's put the two halves together.
+
+103
+00:06:24,483 --> 00:06:29,265
+The eval file's only grader asks one
+question: does the changelog contain the
+
+104
+00:06:29,265 --> 00:06:30,258
+words notes add?
+
+105
+00:06:30,758 --> 00:06:34,883
+And the evidence line says what it found:
+those words, in the changelog.
+
+106
+00:06:35,383 --> 00:06:39,658
+Both models wrote an entry that mentions
+notes add, so both passed.
+
+107
+00:06:40,158 --> 00:06:43,408
+Nothing looked at the made-up pull request
+forty-two.
+
+108
+00:06:44,633 --> 00:06:48,258
+Here's the thing to hold on to about any
+eval result.
+
+109
+00:06:48,758 --> 00:06:52,708
+Graders only raise an objection to what
+you told them to look for.
+
+110
+00:06:53,208 --> 00:06:57,579
+A pass means none of your graders
+objected; it doesn't mean the result is
+
+111
+00:06:57,579 --> 00:06:58,058
+correct.
+
+112
+00:06:58,558 --> 00:07:02,258
+So a tick tells you only as much as the
+graders behind it.
+
+113
+00:07:02,758 --> 00:07:07,082
+And so far there's one grader, written
+before anyone had looked at what the
+
+114
+00:07:07,082 --> 00:07:07,658
+models do.
+
+115
+00:07:08,867 --> 00:07:13,117
+It's tempting to add a grader for made-up
+pull request numbers straight away.
+
+116
+00:07:13,617 --> 00:07:15,817
+But we've seen two trials.
+
+117
+00:07:16,317 --> 00:07:20,542
+We don't yet know whether that model
+always does this, or what else goes wrong
+
+118
+00:07:20,542 --> 00:07:21,517
+on other requests.
+
+119
+00:07:22,017 --> 00:07:25,417
+So the graders can wait until we've looked
+at more runs.
+
+120
+00:07:26,633 --> 00:07:30,458
+That's the idea; now let's find it in our
+own results folder.
+
+121
+00:07:30,958 --> 00:07:33,833
+If you tried it yourself, here's what
+you'd see.
+
+122
+00:07:34,333 --> 00:07:36,608
+Nothing here starts an agent.
+
+123
+00:07:37,833 --> 00:07:40,258
+First, we lint the eval file.
+
+124
+00:07:43,620 --> 00:07:46,470
+A tick: the file has no mistakes in it.
+
+125
+00:07:47,970 --> 00:07:51,220
+Next, let's find the folder our run was
+saved in.
+
+126
+00:07:53,013 --> 00:07:56,188
+There's one, named with the time the run
+started.
+
+127
+00:07:59,393 --> 00:08:02,843
+We change into it, and list what the run
+left behind.
+
+128
+00:08:03,640 --> 00:08:09,065
+The report, results dot jsonl, the timing
+data, and a folder named after the eval.
+
+129
+00:08:11,565 --> 00:08:13,715
+Now down to one trial.
+
+130
+00:08:15,767 --> 00:08:20,678
+We change into the eval's folder, then the
+stimulus, and list the first model's trial
+
+131
+00:08:20,678 --> 00:08:20,967
+zero.
+
+132
+00:08:22,827 --> 00:08:26,527
+Three files: the agent's events, the
+metadata, and the patch.
+
+133
+00:08:29,733 --> 00:08:32,608
+Here's the metadata file from that folder.
+
+134
+00:08:33,108 --> 00:08:36,283
+Model says which model the trial ran on.
+
+135
+00:08:36,783 --> 00:08:39,958
+And status says success: the agent
+finished.
+
+136
+00:08:40,458 --> 00:08:43,683
+The rest is identifiers, times, and paths.
+
+137
+00:08:44,900 --> 00:08:47,800
+Now let's check that we can explain the
+tick.
+
+138
+00:08:48,300 --> 00:08:51,675
+Which file did the grader open, and what
+did it look for?
+
+139
+00:08:54,175 --> 00:08:58,559
+It opened the changelog in the finished
+workspace, and looked for the words notes
+
+140
+00:08:58,559 --> 00:08:58,775
+add.
+
+141
+00:08:59,275 --> 00:09:03,119
+What if a model had put its entry under
+the released one point two section
+
+142
+00:09:03,119 --> 00:09:05,300
+instead: would this grader have passed it?
+
+143
+00:09:07,800 --> 00:09:12,126
+Yes: the entry would still contain those
+words, and the grader looks at nothing
+
+144
+00:09:12,126 --> 00:09:12,400
+else.
+
+145
+00:09:12,900 --> 00:09:16,050
+And what if a model had changed nothing at
+all?
+
+146
+00:09:18,550 --> 00:09:22,651
+Then the trial fails: the starting
+changelog doesn't contain notes add, so
+
+147
+00:09:22,651 --> 00:09:25,200
+the grader reports that the text wasn't
+found.
+
+148
+00:09:26,400 --> 00:09:30,300
+One last question: which model used more
+tokens in our run?
+
+149
+00:09:32,800 --> 00:09:37,650
+The report's tokens column has the answer:
+haiku, by about a thousand tokens.
+
+150
+00:09:38,150 --> 00:09:40,250
+Your own run will differ.
+
+151
+00:09:41,467 --> 00:09:45,681
+Before you go on: for any trial, where
+would you find its request, its changes,
+
+152
+00:09:45,681 --> 00:09:47,442
+its verdict, and its token count?
+
+153
+00:09:50,442 --> 00:09:54,367
+Its request is the prompt of a stimulus,
+in the eval file.
+
+154
+00:09:54,867 --> 00:09:57,892
+Its changes are in its workspace dot
+patch.
+
+155
+00:09:58,392 --> 00:10:03,429
+Its verdict is in the report, and the
+grader's evidence behind it is in results
+
+156
+00:10:03,429 --> 00:10:04,067
+dot jsonl.
+
+157
+00:10:04,567 --> 00:10:09,433
+And the token count is in the report's
+tokens column, with the detail in results
+
+158
+00:10:09,433 --> 00:10:10,042
+dot jsonl.
+
+159
+00:10:11,267 --> 00:10:14,167
+You can now trace a tick back to its
+evidence.
+
+160
+00:10:14,667 --> 00:10:16,892
+But each model ran once.
+
+161
+00:10:17,392 --> 00:10:19,817
+Would it do the same thing next time?
+
+162
+00:10:20,317 --> 00:10:22,167
+That's the next lesson.
+
+163
+00:10:22,667 --> 00:10:26,242
+The exercises on the lesson page are worth
+doing first.

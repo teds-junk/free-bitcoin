@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>When a tool fails</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.pair{align-items:center}.quote p{font-size:36px;line-height:1.36}.card > .code.dark{font-size:29px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">When a tool fails</h1>
+  <div class="stage">
+<div class="cols pair">
+    <div class="quote" data-concept="ask" data-rep="quote"><span class="who">The app asks</span><p>“Run node tools/list-merged.mjs to list the changes merged since the last release, then write the Unreleased changelog entries for them.”</p></div>
+    <div class="card" data-concept="answer" data-rep="card">
+        <div class="who">The script answers</div>
+        <pre class="code dark" data-lang="text"><code><span>error: tracker did not answer (timeout)</span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "ask",
+  "at": "1~asked to fetch",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "answer",
+  "at": "2~that script fails",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

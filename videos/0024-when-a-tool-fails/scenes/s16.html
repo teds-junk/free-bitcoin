@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What will each model do?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.counts{font-size:44px}.counts th{font-size:30px}.counts th.mono{font-family:var(--font-code);font-size:32px}.counts td{padding-top:24px;padding-bottom:24px;height:60px}.counts td.mono{font-family:var(--font-code);font-size:36px}.counts th:last-child,.counts td:last-child{padding-right:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Make the tool fail</div>
+  <h2 class="scene-title">What will each model do?</h2>
+  <div class="stage">
+<table class="data-table full counts">
+    <thead><tr><th>trials passed</th><th class="mono num">claude-haiku-4.5</th><th class="mono num">gpt-5.6-terra</th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="rows" data-rep="cell">tries-the-tool</span></td><td class="num"></td><td class="num"></td></tr>
+<tr><td class="mono"><span data-concept="rows" data-rep="cell">writes-nothing</span></td><td class="num"></td><td class="num"></td></tr>
+<tr><td class="mono"><span data-concept="rows" data-rep="cell">stops-retrying</span></td><td class="num"></td><td class="num"></td></tr>
+<tr><td class="mono"><span data-concept="rows" data-rep="cell">says-why</span></td><td class="num"></td><td class="num"></td></tr>
+    </tbody>
+  </table>
+  <p class="note">three trials of <span class="mono">tracker-down</span> on each model · one row for each grader</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "rows",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

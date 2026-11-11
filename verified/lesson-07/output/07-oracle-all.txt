@@ -1,0 +1,18 @@
+warning: Multiple graders with no scoring config
+✅ typo-fix [oracle] (2/2 graders passed)
+  ✓ [adds-an-entry] Pattern 'notes add' found in workspace diff
+  ✓ [no-made-up-number] Pattern /(?m)^\+.*\(#\d+\)/ not found in workspace diff
+Score: 100.0% | PASSED
+
+✅ security [oracle] (1/1 graders passed)
+  ✓ [under-security] Pattern /(?m)^\+### Security/ found in workspace diff
+Score: 100.0% | PASSED
+
+✅ two-changes [oracle] (1/1 graders passed)
+  ✓ [two-entries-in-place] every entry found in Unreleased
+Score: 100.0% | PASSED
+
+✅ after-release [oracle] (1/1 graders passed)
+  ✓ [entry-in-new-unreleased] every entry found in Unreleased
+Score: 100.0% | PASSED
+

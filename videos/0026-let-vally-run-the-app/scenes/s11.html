@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>No simulation, no run</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.refused{font-size:34px;line-height:1.5}.callout{font-size:32px}.stage{gap:24px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What an executor returns</div>
+  <h2 class="scene-title">No simulation, no run</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark refused" data-lang="text"><code><span data-concept="err" data-rep="code"><span>ERROR</span></span><span>  </span><span data-concept="stim" data-rep="code"><span>tracker-down</span></span>
+<span> Executor 'release-app' </span><span data-concept="no" data-rep="code"><span>does not support tool-call</span></span>
+<span> </span><span data-concept="no" data-rep="code"><span>simulation</span></span><span>, but stimulus 'tracker-down' declares a</span>
+<span> 'simulation' block. Use a simulation-capable executor</span>
+<span> (e.g. 'copilot-sdk') or remove the simulation config.</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="no">ours declares nothing</p><p class="callout" data-anchor="stim">the stimulus with a simulation block</p></aside>
+  </div>
+  <p class="note">what Vally prints for that stimulus, through this executor</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "no",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "stim",
+  "at": "2~tracker down",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "err",
+  "at": "3~ends in error",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

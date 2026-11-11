@@ -1,0 +1,24 @@
+Labels for lesson 12/13, group D re-run, written 2026-11-10 before the judge was added or run.
+Criterion (lesson 12, step 3): does the entry say what changes for people who use the
+tool, without saying how it was coded? Run: results/lesson-12/2026-11-10T14-55-47-259Z.
+
+stimulus  model  trial  entry (PR number left off)                                                         ours  reason
+parser    haiku  0      Fix out-of-memory errors during large imports by using a streaming JSON parser        no    "by using a streaming JSON parser" is the method
+parser    haiku  1      Fix out-of-memory errors when importing large files by using a streaming parser in importer.js  no  names the parser and a source file
+parser    terra  0      Prevent out-of-memory errors when importing large JSON files                          yes   only the user-visible effect
+parser    terra  1      Prevent out-of-memory errors when importing large files                               yes   only the user-visible effect
+cache     haiku  0      Improve performance of `notes list --tag` with LRU caching on large folders           no    names LRU caching
+cache     haiku  1      Improve performance of `notes list --tag` with LRU cache for tag index                no    names LRU cache and the tag index
+cache     terra  0      Speed up `notes list --tag` on large folders by caching the tag index                 no    "by caching the tag index" says how; hesitated, decided no
+cache     terra  1      Speed up `notes list --tag` for large folders by caching the tag index                no    same wording as trial 0
+dates     haiku  0      Fix date parser to support single-digit months and days                               yes   "date parser" names the feature, not the regex/tokenizer; hesitated, decided yes
+dates     haiku  1      Fix date parser to support single-digit months and days                               yes   same as trial 0
+dates     terra  0      Parse dates with single-digit months and days                                         yes   only the user-visible effect
+dates     terra  1      Parse dates with single-digit months and days correctly                               yes   only the user-visible effect
+
+Ours: 6 yes, 6 no.
+
+After the judge ran (lesson 12 step 6), judge verdicts in the same order:
+no no yes yes no no no no yes yes yes yes  (6 yes, 6 no)
+Four boxes (judge/you): yes/yes 6, yes/no 0, no/yes 0, no/no 6.
+TPR 6/6 = 100%, TNR 6/6 = 100%, agreement 12/12 = 100%. No disagreements to examine.

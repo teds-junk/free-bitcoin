@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What happens to cost</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.card{width:fit-content}.card>.code.dark.cost{font-size:34px;line-height:1.7;padding:26px 34px}.callout{font-size:32px}.annotated{align-items:end}.stage{gap:34px}.wide1{width:100%;min-height:0;padding:28px 36px}.wide1 .title{font-size:40px}.wide1 .big{font:500 54px/1.2 var(--font-code);color:var(--ink)}.wide1 .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">From OpenTelemetry traces</div>
+  <h2 class="scene-title">What happens to cost</h2>
+  <div class="stage">
+<div class="annotated">
+    <div class="card"><div class="who"><span class="mono">app/traces-to-atif.mjs</span> · lines 49 and 50</div>
+    <pre class="code dark cost" data-lang="javascript"><code><span style="color:#8296A0;font-style:italic">// A billion nano-AIU is one AI Credit: $0.01.</span>
+<span data-concept="usd" data-rep="code"><span style="color:#B3C0BF">cost_usd</span></span><span style="color:#B3C0BF">: (</span><span data-concept="aiu" data-rep="code"><span style="color:#4EA5E6">a</span><span style="color:#B3C0BF">[</span><span style="color:#3CC0B3">"github.copilot.nano_aiu"</span><span style="color:#B3C0BF">]</span></span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">??</span><span style="color:#B3C0BF"> </span><span style="color:#EA6AA6">0</span><span style="color:#B3C0BF">) </span><span style="color:#A4BA1E">/</span><span style="color:#B3C0BF"> </span><span style="color:#EA6AA6">1e11</span><span style="color:#B3C0BF">,</span></code></pre></div>
+    <aside class="callouts"><p class="callout" data-anchor="usd">the trace’s nano-AIU, kept as dollars</p></aside>
+  </div>
+  <div class="semantic-block wide1" data-concept="empty" data-rep="block" data-role="attention">
+    <div class="title words">Vally’s cost</div><div class="big">empty</div>
+    <div class="label">it only counts AIU its own Copilot runs report</div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "aiu",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "usd",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "empty",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

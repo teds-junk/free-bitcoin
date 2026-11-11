@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Barely over, and failed</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.lists{display:flex;flex-direction:column;gap:26px;width:100%}.lists .card > .code.dark{font-size:31px;line-height:1.5;padding:20px 30px}.lists .card .who{font-size:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Set budgets from your runs</div>
+  <h2 class="scene-title">Barely over, and failed</h2>
+  <div class="stage">
+<div class="lists">
+    <div class="card" data-concept="ours" data-rep="card">
+        <div class="who">our <span class="mono">haiku-high</span> re-grade · the block that names a budget, as printed</div>
+        <pre class="code dark" data-lang="text"><code><span>❌ two-changes (2/4 graders passed, 2 failed)</span>
+<span>  </span><span data-concept="sg" data-rep="code"><span>✗ [two-entries-in-place] no CHANGELOG.md to check</span></span>
+<span>  </span><span data-concept="tb-two" data-rep="code"><span>✗ [token-budget max 107000] 108012 tokens exceeds max of 107000</span></span>
+<span>Score: 74.8% | FAILED</span></code></pre>
+      </div>
+    <div class="card" data-concept="earlier" data-rep="card">
+        <div class="who">an earlier run · a trial 28 tokens over</div>
+        <pre class="code dark" data-lang="text"><code><span>❌ typo-fix (4/5 graders passed, 1 failed)</span>
+<span>  ✗ [token-budget max 107000] 107028 tokens exceeds max of 107000</span>
+<span data-concept="e-score" data-rep="code"><span>Score: 100.0% | FAILED</span></span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "tb-two",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "sg",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "e-score",
+  "at": "3",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

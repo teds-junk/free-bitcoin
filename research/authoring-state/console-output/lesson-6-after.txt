@@ -1,0 +1,27 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 10 stimuli from changelog · 2 models · 2 workers
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+changelog
+
+claude-haiku-4.5
+  FAIL  two-changes · 0/1 graders · 13.6s
+   ✘ two-entries-in-place  Command 'node .vally-grading/check-entry.mjs Added=60 Fixed=60' failed:
+                           Expected exit code 0, got 1
+
+────────────────────────────────────────────────────────
+
+Failures  1 failed
+  ✘ changelog · two-changes [claude-haiku-4.5]  two-entries-in-place · Command 'node .vally-grading/check-entry.mjs Added=60 Fixed=60' failed: Expected exit code 0, got 1
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✘ 4/5             ✓ 5/5        
+
+Saved  practice/results/lesson-6-after/2026-11-10T08-27-25-275Z/
+Run ID  0a9bc949-a95d-4077-8adc-aa030549e02e

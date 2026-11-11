@@ -1,0 +1,898 @@
+1
+00:00:00,400 --> 00:00:04,952
+With a pattern, a grader can say that a
+patch contains an entry citing a pull
+
+2
+00:00:04,952 --> 00:00:05,425
+request.
+
+3
+00:00:05,925 --> 00:00:10,348
+It can't say that the entry sits under
+Fixed, inside Unreleased, and not inside a
+
+4
+00:00:10,348 --> 00:00:12,150
+version that has already shipped.
+
+5
+00:00:12,650 --> 00:00:17,171
+Checking position takes a few lines of
+code to read the file, and that makes the
+
+6
+00:00:17,171 --> 00:00:18,075
+grader a script.
+
+7
+00:00:18,575 --> 00:00:22,950
+But a script is a file, and the agent
+works in a folder full of files.
+
+8
+00:00:23,450 --> 00:00:27,955
+Here, you'll add a grading script that the
+agent never sees, and find out what it
+
+9
+00:00:27,955 --> 00:00:28,400
+catches.
+
+10
+00:00:29,600 --> 00:00:32,900
+Let's start with why the agent mustn't see
+the grader.
+
+11
+00:00:33,400 --> 00:00:37,050
+An agent can read and edit everything in
+its workspace.
+
+12
+00:00:37,550 --> 00:00:41,521
+If the grading script were there, the
+agent could read it, and learn exactly
+
+13
+00:00:41,521 --> 00:00:42,775
+what's being looked for.
+
+14
+00:00:43,275 --> 00:00:46,600
+Worse, it could edit the script so that it
+always passes.
+
+15
+00:00:47,100 --> 00:00:51,976
+Or, most likely, it could be distracted by
+a file it didn't expect, and start fixing
+
+16
+00:00:51,976 --> 00:00:52,150
+it.
+
+17
+00:00:53,367 --> 00:00:55,567
+This has happened in practice.
+
+18
+00:00:56,067 --> 00:01:00,767
+Benchmarks are public sets of tasks with
+graders, made for comparing agents.
+
+19
+00:01:01,267 --> 00:01:05,472
+In April twenty twenty-six, researchers at
+Berkeley took eight well-known benchmarks,
+
+20
+00:01:05,472 --> 00:01:09,530
+and scored between seventy-three and one
+hundred percent on them, with agents that
+
+21
+00:01:09,530 --> 00:01:10,767
+solved none of the tasks.
+
+22
+00:01:11,267 --> 00:01:15,424
+One way was reading answers that the
+graders had left where an agent could
+
+23
+00:01:15,424 --> 00:01:16,042
+reach them.
+
+24
+00:01:16,542 --> 00:01:21,323
+Two months later, the makers of the Cursor
+editor reported on one model's passing
+
+25
+00:01:21,323 --> 00:01:22,917
+runs on a coding benchmark.
+
+26
+00:01:23,417 --> 00:01:28,092
+In sixty-three percent of them, the agent
+had found the published fix and copied it.
+
+27
+00:01:29,300 --> 00:01:32,675
+Our changelog skill doesn't need a
+security review.
+
+28
+00:01:33,175 --> 00:01:35,325
+It needs two plain rules.
+
+29
+00:01:35,825 --> 00:01:40,134
+First, grading scripts and expected
+answers stay where the agent can't see
+
+30
+00:01:40,134 --> 00:01:40,425
+them.
+
+31
+00:01:40,925 --> 00:01:45,550
+Second, no grader depends on a file the
+agent could have altered to make it pass.
+
+32
+00:01:46,767 --> 00:01:50,442
+Those are the rules; here's what an agent
+is actually given.
+
+33
+00:01:50,942 --> 00:01:55,520
+In an eval file, the agent environment
+lists the skills and files copied into the
+
+34
+00:01:55,520 --> 00:01:57,442
+workspace before the agent starts.
+
+35
+00:01:57,942 --> 00:02:00,142
+Two details matter now.
+
+36
+00:02:00,642 --> 00:02:04,846
+Each skill is copied as a whole folder:
+everything inside it goes into the
+
+37
+00:02:04,846 --> 00:02:07,517
+workspace, and not only the SKILL dot M D
+file.
+
+38
+00:02:08,017 --> 00:02:12,517
+Each listed file arrives under the
+destination name on the line below it.
+
+39
+00:02:13,733 --> 00:02:16,008
+We can check this for ourselves.
+
+40
+00:02:16,508 --> 00:02:20,789
+Adding dash dash workspace and a folder
+name to vally eval tells Vally to keep
+
+41
+00:02:20,789 --> 00:02:24,959
+each trial's workspace in that folder,
+instead of deleting it when the trial
+
+42
+00:02:24,959 --> 00:02:25,233
+ends.
+
+43
+00:02:25,733 --> 00:02:30,099
+Inside the folder we name, there's a
+folder that Vally calls main, and inside
+
+44
+00:02:30,099 --> 00:02:32,083
+that, one folder for each stimulus.
+
+45
+00:02:32,583 --> 00:02:36,158
+Dash dash workspace works with one model
+at a time.
+
+46
+00:02:36,658 --> 00:02:41,043
+The kept path has no model name in it, so
+with several models, Vally stops before
+
+47
+00:02:41,043 --> 00:02:43,858
+running anything, and reports a workspace
+collision.
+
+48
+00:02:45,067 --> 00:02:49,998
+So anything stored inside a skill's folder
+is handed to the agent: eval files,
+
+49
+00:02:49,998 --> 00:02:51,642
+graders, expected answers.
+
+50
+00:02:52,142 --> 00:02:56,817
+So the evals folder sits beside the skills
+folder, and never inside a skill.
+
+51
+00:02:58,033 --> 00:03:00,458
+So where can a grading script go?
+
+52
+00:03:00,958 --> 00:03:05,608
+Vally has a second environment for exactly
+this, named the grading environment.
+
+53
+00:03:06,108 --> 00:03:10,328
+It lists files that Vally adds after the
+agent has stopped, to a copy of the
+
+54
+00:03:10,328 --> 00:03:11,383
+finished workspace.
+
+55
+00:03:11,883 --> 00:03:16,158
+Only graders run in that copy, and it's
+thrown away when grading ends.
+
+56
+00:03:16,658 --> 00:03:21,290
+So the script joins the files once the
+agent has finished, in a folder the agent
+
+57
+00:03:21,290 --> 00:03:22,158
+never works in.
+
+58
+00:03:23,367 --> 00:03:27,492
+Here's a stimulus that uses one, in our
+changelog eval file.
+
+59
+00:03:27,992 --> 00:03:32,592
+Its grading environment is written like
+the files part of the agent environment.
+
+60
+00:03:33,092 --> 00:03:37,943
+This source line names our script, in a
+grading folder under evals, which no agent
+
+61
+00:03:37,943 --> 00:03:39,067
+environment copies.
+
+62
+00:03:39,567 --> 00:03:44,201
+Its destination is a folder in the grading
+copy whose name starts with a dot, which
+
+63
+00:03:44,201 --> 00:03:46,267
+keeps it away from the agent's files.
+
+64
+00:03:46,767 --> 00:03:49,867
+Then comes the grader, and its type is
+program.
+
+65
+00:03:50,367 --> 00:03:55,092
+It runs one program inside the grading
+copy, and takes the verdict from what that
+
+66
+00:03:55,092 --> 00:03:55,967
+program prints.
+
+67
+00:03:56,467 --> 00:04:00,563
+Here the program is node, and its
+arguments are the script to run, and then
+
+68
+00:04:00,563 --> 00:04:01,492
+what to look for.
+
+69
+00:04:02,700 --> 00:04:07,597
+From here on, a program grader that runs a
+script is a script grader, and this is our
+
+70
+00:04:07,597 --> 00:04:08,000
+script.
+
+71
+00:04:08,500 --> 00:04:11,725
+It's plain JavaScript, with nothing to
+install.
+
+72
+00:04:12,225 --> 00:04:16,373
+Its opening comment says what it checks:
+each argument is a category and a pull
+
+73
+00:04:16,373 --> 00:04:20,678
+request number, and the Unreleased section
+must have an entry under that category,
+
+74
+00:04:20,678 --> 00:04:21,675
+citing that number.
+
+75
+00:04:22,175 --> 00:04:24,825
+Its last lines say how it reports.
+
+76
+00:04:25,325 --> 00:04:30,152
+It prints the result as one line of JSON
+with five fields, and Vally needs all of
+
+77
+00:04:30,152 --> 00:04:30,450
+them.
+
+78
+00:04:30,950 --> 00:04:34,800
+Its name and kind say which check this is,
+and that code made it.
+
+79
+00:04:35,300 --> 00:04:39,625
+Passed is the verdict, and score is one
+for a pass, and zero for a fail.
+
+80
+00:04:40,125 --> 00:04:44,394
+Evidence is a sentence saying what the
+script found, and Vally saves it in the
+
+81
+00:04:44,394 --> 00:04:46,200
+results as the grader's evidence.
+
+82
+00:04:46,700 --> 00:04:51,187
+Finally, the script exits with code zero
+whether the entry is there or not, because
+
+83
+00:04:51,187 --> 00:04:53,025
+the verdict is in what it printed.
+
+84
+00:04:53,525 --> 00:04:57,425
+Any other exit code would mean that the
+script itself had broken.
+
+85
+00:04:58,633 --> 00:05:01,258
+Two new stimuli use the script.
+
+86
+00:05:01,758 --> 00:05:06,508
+In the first, named two-changes, one pull
+request adds a flag and fixes a bug.
+
+87
+00:05:07,008 --> 00:05:11,347
+Its arguments, Added equals sixty and
+Fixed equals sixty, mean that Unreleased
+
+88
+00:05:11,347 --> 00:05:15,908
+must have an entry under Added citing pull
+request sixty, and another under Fixed.
+
+89
+00:05:16,408 --> 00:05:20,682
+An entry in a released version doesn't
+count, and the heading must be written
+
+90
+00:05:20,682 --> 00:05:22,958
+exactly as Unreleased in square brackets.
+
+91
+00:05:23,458 --> 00:05:28,252
+Our second stimulus, named after-release,
+starts from a changelog with no Unreleased
+
+92
+00:05:28,252 --> 00:05:28,708
+section.
+
+93
+00:05:29,208 --> 00:05:33,883
+It asks the script for one entry, under
+Added, citing pull request fifty-eight.
+
+94
+00:05:35,100 --> 00:05:38,000
+Two safeguards are worth knowing in
+advance.
+
+95
+00:05:38,500 --> 00:05:42,802
+Vally lint refuses a grading file whose
+source the agent could see, such as a
+
+96
+00:05:42,802 --> 00:05:44,925
+script stored inside the skill folder.
+
+97
+00:05:45,425 --> 00:05:49,707
+If a script prints a result with a field
+missing, Vally fails the trial, and says
+
+98
+00:05:49,707 --> 00:05:52,350
+that the grader's output did not match the
+schema.
+
+99
+00:05:52,850 --> 00:05:56,225
+That's a mistake in the script, and not in
+the agent's work.
+
+100
+00:05:57,433 --> 00:06:01,901
+Vally has a second grader that runs a
+script, named run command, which passes
+
+101
+00:06:01,901 --> 00:06:03,758
+when the script exits with zero.
+
+102
+00:06:04,258 --> 00:06:08,434
+That grader is simpler to write, and it
+tells you less: when it fails, the
+
+103
+00:06:08,434 --> 00:06:10,183
+evidence is only the exit code.
+
+104
+00:06:10,683 --> 00:06:13,683
+We use program, so that the results say
+why.
+
+105
+00:06:14,900 --> 00:06:17,425
+That's how it works; now let's use it.
+
+106
+00:06:17,925 --> 00:06:22,325
+First, we'll keep one workspace and list
+it, to see what an agent is given.
+
+107
+00:06:22,825 --> 00:06:27,404
+Then we'll add the two stimuli that use
+the script, and run all five stimuli on
+
+108
+00:06:27,404 --> 00:06:28,100
+both models.
+
+109
+00:06:28,600 --> 00:06:33,000
+Whatever the script fails, we'll answer
+with a rule in the skill, and run again.
+
+110
+00:06:33,500 --> 00:06:37,075
+Which files would you expect to find in
+the kept workspace?
+
+111
+00:06:39,575 --> 00:06:42,450
+If you tried it yourself, here's what
+you'd see.
+
+112
+00:06:43,667 --> 00:06:48,573
+Here's the run that keeps a workspace: the
+one-request eval file, on one model, with
+
+113
+00:06:48,573 --> 00:06:49,742
+dash dash workspace.
+
+114
+00:06:50,242 --> 00:06:52,617
+It spends one agent run.
+
+115
+00:07:00,847 --> 00:07:05,817
+Moments later, the stimulus is a pass, on
+a single summary line, because there's one
+
+116
+00:07:05,817 --> 00:07:06,172
+model.
+
+117
+00:07:08,672 --> 00:07:11,747
+Now we list every file under the kept
+folder.
+
+118
+00:07:13,433 --> 00:07:18,060
+There's the skill folder with its one
+file, and the changelog, as the agent left
+
+119
+00:07:18,060 --> 00:07:18,233
+it.
+
+120
+00:07:20,733 --> 00:07:25,208
+That's everything the agent had, and
+nothing from the evals folder is in it.
+
+121
+00:07:28,433 --> 00:07:32,693
+Next, we paste the two stimuli onto the
+end of the changelog eval file; the
+
+122
+00:07:32,693 --> 00:07:35,533
+starter folder has them ready, in a
+snippets file.
+
+123
+00:07:36,033 --> 00:07:40,396
+That makes five stimuli: three with
+pattern graders, and two graded by the
+
+124
+00:07:40,396 --> 00:07:40,808
+script.
+
+125
+00:07:42,033 --> 00:07:46,558
+Lint comes first, because it's free, and
+catches mistakes before we spend anything.
+
+126
+00:07:49,760 --> 00:07:54,885
+It gives the one warning this eval file
+already had, about scoring, and no errors.
+
+127
+00:07:57,385 --> 00:08:01,735
+Now the run: all five stimuli, once on
+each model, with two workers.
+
+128
+00:08:02,235 --> 00:08:04,685
+That spends ten agent runs.
+
+129
+00:08:05,185 --> 00:08:09,668
+With one trial per stimulus, each failure
+is listed with the grader that failed, and
+
+130
+00:08:09,668 --> 00:08:12,710
+a script grader's line carries the
+script's own sentence.
+
+131
+00:08:15,000 --> 00:08:19,058
+About a minute later, the after-release
+stimulus has failed on terra, and the
+
+132
+00:08:19,058 --> 00:08:22,800
+evidence is the script's own: no
+Unreleased heading in square brackets.
+
+133
+00:08:27,300 --> 00:08:31,625
+Meanwhile, haiku passed all five, so its
+new heading had the brackets.
+
+134
+00:08:34,125 --> 00:08:38,500
+At the bottom, the table counts the
+stimuli each model passed, out of five.
+
+135
+00:08:42,700 --> 00:08:46,929
+That evidence says what the script didn't
+find; the trial's patch shows what the
+
+136
+00:08:46,929 --> 00:08:48,250
+agent wrote in its place.
+
+137
+00:08:50,700 --> 00:08:54,425
+We change into the run's folder, and then
+into the eval's.
+
+138
+00:08:55,773 --> 00:08:58,798
+Here's terra's patch for the after-release
+stimulus.
+
+139
+00:09:04,913 --> 00:09:09,253
+Its new heading says Unreleased without
+the brackets, so the script found no
+
+140
+00:09:09,253 --> 00:09:10,338
+Unreleased section.
+
+141
+00:09:17,567 --> 00:09:21,417
+That's a question the skill left open, so
+we answer it in the skill.
+
+142
+00:09:21,917 --> 00:09:26,087
+One more rule goes at the end: if the
+changelog has no Unreleased section, add
+
+143
+00:09:26,087 --> 00:09:30,310
+one above the newest version, with its
+heading written exactly, square brackets
+
+144
+00:09:30,310 --> 00:09:30,792
+included.
+
+145
+00:09:32,000 --> 00:09:35,825
+Then the same five stimuli run again,
+saved to a new folder.
+
+146
+00:09:36,325 --> 00:09:38,825
+That's another ten agent runs.
+
+147
+00:09:47,387 --> 00:09:52,162
+This time, both models passed all five, so
+terra's new heading has its brackets.
+
+148
+00:09:55,662 --> 00:09:59,712
+With nothing failing, there are no
+failures to list above the summary.
+
+149
+00:10:03,933 --> 00:10:05,983
+So what did the script catch?
+
+150
+00:10:06,483 --> 00:10:10,627
+In the first run, terra wrote the new
+heading without brackets, and haiku wrote
+
+151
+00:10:10,627 --> 00:10:11,308
+it with them.
+
+152
+00:10:11,808 --> 00:10:16,173
+With one trial for each model, that shows
+the failure can happen, and not which
+
+153
+00:10:16,173 --> 00:10:17,333
+model is prone to it.
+
+154
+00:10:17,833 --> 00:10:21,933
+Once the rule was in the skill, both
+models wrote the heading correctly.
+
+155
+00:10:23,133 --> 00:10:27,742
+In our two runs, the script passed all
+four two-changes trials, and all four were
+
+156
+00:10:27,742 --> 00:10:28,083
+right.
+
+157
+00:10:28,583 --> 00:10:33,167
+An earlier run of these same stimuli went
+differently: the script passed both of its
+
+158
+00:10:33,167 --> 00:10:35,458
+two-changes trials, and haiku's was wrong.
+
+159
+00:10:35,958 --> 00:10:37,958
+Here's part of that patch.
+
+160
+00:10:38,458 --> 00:10:42,979
+That agent wrote its Fixed entry where the
+heading of version one point two had been,
+
+161
+00:10:42,979 --> 00:10:44,308
+and deleted that heading.
+
+162
+00:10:44,808 --> 00:10:49,262
+That version has been released, and its
+entries now sit under Unreleased, as if
+
+163
+00:10:49,262 --> 00:10:50,558
+they had never shipped.
+
+164
+00:10:54,767 --> 00:10:56,792
+Why did the script pass it?
+
+165
+00:10:57,292 --> 00:11:01,691
+It finds the Unreleased heading, and takes
+everything down to the next version
+
+166
+00:11:01,691 --> 00:11:02,142
+heading.
+
+167
+00:11:02,642 --> 00:11:06,858
+With that heading gone, the next version
+heading was further down, so the script
+
+168
+00:11:06,858 --> 00:11:08,967
+found every entry it wanted, and passed.
+
+169
+00:11:09,467 --> 00:11:13,794
+When a grader passes a wrong answer, it's
+worse than having none, because its tick
+
+170
+00:11:13,794 --> 00:11:15,167
+tells you to stop looking.
+
+171
+00:11:15,667 --> 00:11:19,862
+Our skill already says to leave released
+versions alone, so the gap is in the
+
+172
+00:11:19,862 --> 00:11:21,442
+grader, and not in the skill.
+
+173
+00:11:22,667 --> 00:11:25,392
+One more thing happened, and it's quieter.
+
+174
+00:11:25,892 --> 00:11:30,153
+In an earlier run, with the security rule
+already in the skill, haiku filed the
+
+175
+00:11:30,153 --> 00:11:32,742
+security fix under Fixed in one of three
+trials.
+
+176
+00:11:33,242 --> 00:11:37,937
+Across our runs with that rule, it has
+filed it under Security every time: five
+
+177
+00:11:37,937 --> 00:11:39,067
+trials out of five.
+
+178
+00:11:39,567 --> 00:11:42,067
+Nothing was changed to cause that.
+
+179
+00:11:42,567 --> 00:11:47,171
+It's the variation from run to run, and a
+reminder that a few trials are a glimpse,
+
+180
+00:11:47,171 --> 00:11:48,392
+and not a measurement.
+
+181
+00:11:49,600 --> 00:11:53,749
+Before you go on: what do the agent
+environment and the grading environment
+
+182
+00:11:53,749 --> 00:11:54,800
+each add, and when?
+
+183
+00:11:57,800 --> 00:12:02,113
+The agent environment copies skills and
+files into the workspace before the agent
+
+184
+00:12:02,113 --> 00:12:04,775
+starts, and the agent can read and edit
+all of it.
+
+185
+00:12:05,275 --> 00:12:09,644
+The grading environment adds files to a
+copy of the finished workspace, after the
+
+186
+00:12:09,644 --> 00:12:12,125
+agent has stopped, and only graders run
+there.
+
+187
+00:12:13,333 --> 00:12:17,556
+You can now see exactly what an agent is
+given, and add a grading script that
+
+188
+00:12:17,556 --> 00:12:20,408
+reaches the graders without ever reaching
+the agent.
+
+189
+00:12:20,908 --> 00:12:25,536
+But a hidden script now decides pass and
+fail, and only you can see whether it's
+
+190
+00:12:25,536 --> 00:12:25,883
+right.
+
+191
+00:12:26,383 --> 00:12:28,433
+How do you test a grader?
+
+192
+00:12:28,933 --> 00:12:30,783
+That's the next lesson.
+
+193
+00:12:31,283 --> 00:12:36,233
+The exercises on the lesson page are worth
+doing first; the third one closes the gap
+
+194
+00:12:36,233 --> 00:12:37,058
+we just found.

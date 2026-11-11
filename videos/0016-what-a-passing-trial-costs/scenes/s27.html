@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Why divide by the passes?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#cpp{width:100%;padding:36px 40px 44px;gap:24px}#cpp .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}#cpp .part{min-height:260px}#cpp .part .title{font-size:46px;line-height:1.2}#cpp .part .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">Why divide by the passes?</h2>
+  <div class="stage">
+<div class="semantic-block" id="cpp" data-role="structure">
+    <div class="title words">cost per passing trial</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title">Total cost</div><div class="label">every trial, failures included</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title">Trials that passed</div><div class="label">the useful results</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title">For each model</div><div class="label">measured, not carried over</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#cpp",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3~each model",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cheap tokens, costly passes</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.variants{font-size:38px}.variants th{font-size:28px}.variants td{padding-top:16px;padding-bottom:16px}.variants td.mono{font-family:var(--font-code)}.variants .unit{font-family:var(--font-body)}.terms .semantic-block{min-height:150px;justify-content:center}.terms .title{font-size:38px}.terms .label{font-size:30px}.stage{gap:28px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What changed</div>
+  <h2 class="scene-title">Cheap tokens, costly passes</h2>
+  <div class="stage">
+<table class="data-table full variants">
+    <thead><tr><th>Variant</th><th class="num">per passing trial</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">qwen-local <span class="unit">at the made-up price</span></td><td class="num"><span data-concept="cq" data-rep="cell">1.9¢</span></td></tr>
+      <tr><td class="mono">haiku-low</td><td class="num"><span data-concept="ch" data-rep="cell">0.2¢</span></td></tr>
+      <tr><td class="mono">terra-low</td><td class="num"><span data-concept="ct" data-rep="cell">2.8¢</span></td></tr>
+    </tbody>
+  </table>
+  <div class="cols wide terms">
+    <div class="semantic-block" data-concept="f1" data-rep="block" data-role="attention">
+      <div class="title words">3 of 5 trials failed</div><div class="label"></div>
+    </div>
+    <div class="semantic-block" data-concept="f2" data-rep="block" data-role="attention">
+      <div class="title words">nothing from cache</div><div class="label">every turn pays for the whole conversation</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "cq",
+  "at": "2~passing trial",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ch",
+  "at": "2~haiku",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ct",
+  "at": "3~terra",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "f1",
+  "at": "4~three of five",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "f2",
+  "at": "4~nothing from cache",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

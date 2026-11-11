@@ -1,0 +1,26 @@
+{
+ "type": "span",
+ "traceId": "25bb102fa514761214590d067dad51e9",
+ "spanId": "2054757a93a488f9",
+ "parentSpanId": "3cfd9bccad2a9822",
+ "name": "execute_tool view",
+ "attributes": {
+  "gen_ai.operation.name": "execute_tool",
+  "gen_ai.tool.name": "view",
+  "gen_ai.tool.call.id": "toolu_01GumEGmGxLzS6m98UdQoVpM",
+  "gen_ai.tool.call.arguments": "{\"path\":\"~/src/demo/practice/app-run/repo/release/merged.txt\"}",
+  "gen_ai.tool.call.result": "{\"content\":\"#74 feat: add --since <date> to notes list\\n#75 fix: notes …",
+  "gen_ai.conversation.id": "…",
+  "gen_ai.tool.type": "…",
+  "gen_ai.provider.name": "…",
+  "gen_ai.tool.description": "…",
+  "github.copilot.tool.parameters.file_path": "…"
+ },
+ "kind": "…",
+ "startTime": "…",
+ "endTime": "…",
+ "status": "…",
+ "events": "…",
+ "resource": "…",
+ "instrumentationScope": "…"
+}

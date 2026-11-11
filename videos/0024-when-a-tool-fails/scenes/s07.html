@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Everything else runs for real</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:38px}.data-table th{font-size:30px}.data-table td{padding-top:26px;padding-bottom:26px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Simulation</div>
+  <h2 class="scene-title">Everything else runs for real</h2>
+  <div class="stage">
+<table class="data-table full calls">
+    <thead><tr><th>The agent calls</th><th>What happens</th></tr></thead>
+    <tbody>
+<tr><td><span data-concept="r1" data-rep="cell">a shell command that matches a pattern</span></td><td><span data-concept="r1" data-rep="cell">doesn’t run: the simulated result comes back</span></td></tr>
+<tr><td><span data-concept="r2" data-rep="cell">a shell command that matches nothing</span></td><td><span data-concept="r2" data-rep="cell">runs for real, unless the override has a <span class="mono">default</span></span></td></tr>
+<tr><td><span data-concept="r3" data-rep="cell">any tool that isn’t named</span></td><td><span data-concept="r3" data-rep="cell">runs for real</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">Shell tools can be made to succeed or to fail · the agent’s other built-in tools only to fail · simulation needs Vally’s own executor</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "r2",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r3",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r2",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Two at a time</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.rows{display:flex;flex-direction:column;gap:26px;width:100%}.trow{display:flex;align-items:center;gap:36px;padding:14px 22px;border-radius:10px;width:fit-content}.boxes{display:flex;gap:14px}.box{display:flex;align-items:center;justify-content:center;width:76px;height:76px;border-radius:8px;border:3px solid var(--ink-muted);font:700 44px/1 var(--font-body);color:var(--ink)}.box.tick{color:var(--green-ink)}.box.cross{color:var(--red-ink)}.box.dash{color:var(--ink-muted)}.box.empty{border-color:var(--rule)}.trow .word{font:600 44px/1 var(--font-code);color:var(--ink);min-width:190px}.trow .mean{font:400 36px/1.3 var(--font-body);color:var(--ink-soft)}.trow .who{font:500 34px/1 var(--font-code);color:var(--ink);min-width:400px}.annotated .code.dark{font-size:44px;padding:30px 40px}.callout{font-size:36px}.box{width:64px;height:64px;font-size:38px}.boxes{gap:10px}.trow .who{min-width:230px;font-family:var(--font-body);font-size:36px}.rows{gap:14px}.stage{gap:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Why two workers</div>
+  <h2 class="scene-title">Two at a time</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark" data-lang="bash"><code><span data-concept="flag" data-rep="code"><span style="color:#4EA5E6">--workers</span><span style="color:#B3C0BF"> </span><span style="color:#EA6AA6">2</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="flag">agent sessions at once · default 5</p></aside>
+  </div>
+  <div class="rows">
+    <div class="trow" data-concept="five" data-rep="row">
+      <span class="who">5 workers</span><span class="boxes"><span class="box tick">✔</span><span class="box tick">✔</span><span class="box dash">–</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box dash">–</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box dash">–</span></span><span class="mean">3 of 10 ended in ERROR</span>
+    </div>
+    <div class="trow" data-concept="two" data-rep="row">
+      <span class="who">2 workers</span><span class="boxes"><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span></span><span class="mean">all 10 finished</span>
+    </div>
+  </div>
+  <p class="note">ERROR · <span class="mono" data-concept="msg" data-rep="note">Session disconnected while waiting for a response</span> · which three trials dropped is illustrative</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "flag",
+  "at": "2~workers",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "five",
+  "at": "4~five workers",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "msg",
+  "at": "4~message",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "two",
+  "at": "5",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "7"
+ }
+]
+</script>
+</body>
+</html>

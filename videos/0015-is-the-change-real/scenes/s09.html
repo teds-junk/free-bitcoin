@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three columns per stimulus</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.rep{font-size:48px}.rep th{font-size:36px;font-family:var(--font-code)}.rep td{padding-top:26px;padding-bottom:26px}.rep td.mono{font-family:var(--font-code)}.rep tr.what td{font:400 30px/1.3 var(--font-body);color:var(--ink-soft);border-bottom:0}.note .mono{font-family:var(--font-code)}.stage{gap:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the experiment prints</div>
+  <h2 class="scene-title">Three columns per stimulus</h2>
+  <div class="stage">
+<table class="data-table full rep">
+    <thead><tr><th>Stimulus</th><th class="num">Pass Rate</th><th class="num">pass@k</th><th class="num">pass^k</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">parser</td><td class="num"><span data-concept="rate" data-rep="cell">2/3</span></td><td class="num"><span data-concept="atk" data-rep="cell">100.0%</span></td><td class="num"><span data-concept="hatk" data-rep="cell">29.6%</span></td></tr>
+      <tr class="what"><td></td><td class="num">passed, out of finished</td><td class="num">did at least one of k pass?</td><td class="num">would k in a row all pass? &nbsp;(2/3)³</td></tr>
+    </tbody>
+  </table>
+  <p class="note">one row of <span class="mono">report.md</span>, in the experiment’s run folder · k = 3 trials · our run · 2026-11-11T07-53-29-176Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "rate",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "atk",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "hatk",
+  "at": "6",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

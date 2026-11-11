@@ -1,0 +1,256 @@
+[?25l[J⠋ Loading evaluations…[J[?25h⚠ No executor defined, defaulting to copilot-sdk
+[90mLoaded 3 stimuli from one-request · 3 models · 3 workers[0m
+[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 0 running · 3 queued · 00:00[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [90mqueued[0m      [90m0/1[0m [90m·[0m [90mqueued[0m      [90m0/1[0m [90m·[0m [90mqueued[0m    [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:00[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:00[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:00[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:00[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:00[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:00[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:00[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:00[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:00[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:01[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:01[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:01[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:01[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:01[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:01[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:01[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:01[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:01[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:01[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:02[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:02[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:02[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[?25l[2K[36m░░░░░░░░░░░░░░░░[0m  [1m0/3 completed[0m[90m · 3 running · 0 queued · 00:02[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m [0m[8A[J[0m[?25h
+[1mone-request[0m
+
+[90mgpt-5.6-terra[0m
+  [31mERROR[0m  typo-fix
+   [31mModel "gpt-5.6-terra" does not support reasoning_effort "list". Supported[0m
+   [31mreasoning efforts: none, low, medium, high, xhigh, max. Choose a supported[0m
+   [31meffort or unset reasoning_effort.[0m
+[?25l[2K[36m█████░░░░░░░░░░░[0m  [1m1/3 completed[0m[90m · 2 running · 0 queued · 00:02[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K    [36mgpt-5.6-terra[0m  [90mpending[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [36m1 running[0m   [90m0/1[0m [90m·[0m [90mfinalizing[0m[8A[J[0m[?25h
+[90mclaude-haiku-4.5[0m
+  [31mERROR[0m  typo-fix
+   [31mModel "claude-haiku-4.5" does not support reasoning effort configuration,[0m
+   [31mbut reasoning_effort "list" was requested. Choose a model that supports[0m
+   [31mreasoning effort or unset reasoning_effort.[0m
+[?25l[2K[36m███████████░░░░░[0m  [1m2/3 completed[0m[90m · 1 running · 0 queued · 00:02[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K    [36mclaude-haiku-4.5[0m  [90mpending[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K  [31m✘[0m [36mgpt-5.6-terra[0m  [90m0/1 evals passed[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [90m0/1[0m [90m·[0m [90mfinalizing[0m  [90m0/1[0m [90m·[0m [36m1 running[0m   [31m✘ 0/1[0m           [0m[8A[J[0m[?25h
+[90mclaude-haiku-5.5[0m
+  [31mERROR[0m  typo-fix
+   [31mModel "claude-haiku-5.5" does not support reasoning_effort "list".[0m
+   [31mSupported reasoning efforts: low, medium, high, xhigh, max. Choose a[0m
+   [31msupported effort or unset reasoning_effort.[0m
+[?25l[2K[36m████████████████[0m  [1m3/3 completed[0m[90m · 0 running · 0 queued · 00:02[0m
+[2K[90m─────────────────────────────────────────────────────────────────────────────[0m
+[2K[36mLive summary[0m
+[2K  [31m✘[0m [36mclaude-haiku-4.5[0m  [90m0/1 evals passed[0m
+[2K    [36mclaude-haiku-5.5[0m  [90mpending[0m
+[2K  [31m✘[0m [36mgpt-5.6-terra[0m  [90m0/1 evals passed[0m
+[2K
+[2K  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra   [0m
+[2K  [90mone-request[0m  [31m✘ 0/1[0m             [90m0/1[0m [90m·[0m [90mfinalizing[0m  [31m✘ 0/1[0m           [0m[8A[J[0m[?25h
+[90m────────────────────────────────────────────────────────[0m
+
+[1mFailures[0m  [31m3 failed[0m
+  [31mERROR[0m one-request[90m · [0mtypo-fix [90m[claude-haiku-4.5][0m  [90mModel "claude-haiku-4.5" does not support reasoning effort configuration, but reasoning_effort "list" was requested. Choose a model that supports reasoning effort or unset reasoning_effort.[0m
+  [31mERROR[0m one-request[90m · [0mtypo-fix [90m[claude-haiku-5.5][0m  [90mModel "claude-haiku-5.5" does not support reasoning_effort "list". Supported reasoning efforts: low, medium, high, xhigh, max. Choose a supported effort or unset reasoning_effort.[0m
+  [31mERROR[0m one-request[90m · [0mtypo-fix [90m[gpt-5.6-terra][0m  [90mModel "gpt-5.6-terra" does not support reasoning_effort "list". Supported reasoning efforts: none, low, medium, high, xhigh, max. Choose a supported effort or unset reasoning_effort.[0m
+
+[1mModel summary[0m
+  [31m✘[0m [36mclaude-haiku-4.5[0m  [90m0/1 evals passed[0m
+  [31m✘[0m [36mclaude-haiku-5.5[0m  [90m0/1 evals passed[0m
+  [31m✘[0m [36mgpt-5.6-terra[0m  [90m0/1 evals passed[0m
+
+  [90meval       [0m  [36mclaude-haiku-4.5[0m  [36mclaude-haiku-5.5[0m  [36mgpt-5.6-terra[0m
+  [90mone-request[0m  [31m✘ 0/1[0m             [31m✘ 0/1[0m             [31m✘ 0/1[0m        
+
+[1mSaved[0m  [90m/Users/Shared/demo/practice/results/lesson-16-efforts/2026-11-11T08-36-52-323Z/[0m
+[90mRun ID  bd5ff999-60f6-423b-a10d-c92b71b7c326[0m

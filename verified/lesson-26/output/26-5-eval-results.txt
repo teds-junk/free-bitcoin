@@ -1,0 +1,8 @@
+| Stimulus | Environment | Model | Graders | Pass Rate | Duration | Tokens | Turns | Tool Calls | Verdict |
+| since-last-release | (environment) | claude-haiku-4.5 | ❌ every-change-handled 0/1<br>✅ reads-the-list 1/1<br>✅ never-commits 1/1<br>✅ no-loop 1/1<br>❌ loads-the-skill 0/1 | 0/1 | 14.2s | 87,856 | 5 | <details><summary>6 calls</summary>view: 4, bash: 1, edit: 1</details> | ❌ [^s1-1] |
+[^s1-2]: Error: Executor 'release-app' does not support tool-call simulation, but stimulus 'tracker-down' declares a 'simulation' block. Use a simulation-capable executor (e.g. 'copilot-sdk') or remove the simulation config.
+> Model: claude-haiku-4.5 | Judge: claude-sonnet-5.5 | Executor: release-app
+| Stimulus | Environment | Skills | Model | Graders | Pass Rate | Duration | Tokens | Turns | Tool Calls | Verdict |
+| since-last-release | (environment) | `changelog-entry` | gpt-5.6-terra | ✅ every-change-handled 1/1<br>✅ reads-the-list 1/1<br>✅ never-commits 1/1<br>✅ no-loop 1/1<br>✅ loads-the-skill 1/1 | 1/1 | 14.0s | 70,256 | 5 | <details><summary>7 calls</summary>view: 3, sql: 2, skill: 1, apply_patch: 1</details> | ✅ |
+[^s2-1]: Error: Executor 'release-app' does not support tool-call simulation, but stimulus 'tracker-down' declares a 'simulation' block. Use a simulation-capable executor (e.g. 'copilot-sdk') or remove the simulation config.
+> Model: gpt-5.6-terra | Judge: claude-sonnet-5.5 | Executor: release-app

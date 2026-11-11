@@ -1,0 +1,406 @@
+# Let Vally run the app — narration script
+
+<!-- Generated from storyboard.json by lint-storyboard.js. Edit storyboard.json, not this file.
+     Free-form notes (sources, open questions) go between the notes markers and are kept. -->
+
+Source: /Users/ted/src/learn/vally/lessons/0026-let-vally-run-the-app.html  
+Voice: am_echo @ 1.2x
+
+<!-- notes -->
+Production notes (not narrated):
+- Every figure is from our own runs on 2026-11-11: results/lesson-26/2026-11-11T18-49-03-135Z (s16) and
+  results/lesson-26-experiment/2026-11-11T18-52-18-877Z (s21); the comparison rows are the series' own lesson
+  22 and 23 runs, and the app's one earlier run is the lesson 25 video's. The generator asserts each one.
+- s25 cites "an earlier run" (the course's verified run, saved as src/run/earlier-run.txt): 0 of 5 against 1 of 8.
+  Our run has 1 of 5 against 4 of 8, so the page's "the app behaves like Vally's runs of the skill" is stated
+  as "too few trials to tell", and the page's "the fix belongs in the skill or the model choice" is left out.
+- s28: in our run the app's trials cost about the same on haiku and more on terra, so the page's "cost slightly
+  less on both" and its earlier test on another request are not used; our run shows both directions itself.
+- The page shows the two joined span lines in its section 3; the video shows them after the run (s18).
+- Spend: 2 agent runs (s16) and 6 (s21), one take each. tracker-down ending in ERROR is the designed result.
+- The shipped stub's own text says "(lesson 26)" on line 70, which s05 shows verbatim.
+- Sources: Vally docs, Writing Custom Executors; Executor and ExecutorOptions in Vally 0.21.0's
+  executor/types.d.ts; W3C Trace Context; onGetTraceContext in the Copilot SDK 1.0.30's types.d.ts.
+<!-- /notes -->
+
+## The story
+
+**The question this video answers:** How do I give the app's own agent code Vally's trials, experiments and model comparisons?  
+**The viewer starts:** A professional programmer who knows JavaScript and the shell, and has followed the changelog-entry skill through the whole course so far. Knows skill, eval file, stimulus, grader, trial, trajectory, patch, workspace and the practice folder; vally eval with -e, --model, --workers and --output-dir; PASS, FAIL and ERROR; an experiment file with variants, vary, a baseline and overrides, vally experiment run and its dry run; the executor as the part of Vally that runs the agent, with copilot-sdk as the built-in one; .vally.yaml as the settings file that holds the suites; cost in AIU, the cost calculator and the range calculator. Knows the release eval: its since-last-release stimulus (a setup command writes the list of merged changes, pull requests 74, 75 and 76, where 76 is a refactor users can't see; graders every-change-handled, reads-the-list, never-commits, no-loop and loads-the-skill) and its tracker-down stimulus, which has a simulation block that makes a tool fail on purpose. Knows the release app: a short script built on the Copilot SDK, run by its own run script, which writes OpenTelemetry traces to a file as spans (invoke_agent, chat, execute_tool), and that Vally graded one run of it afterwards from those traces, leaving cost empty; on claude-haiku-4.5 that run failed two graders: no skill loaded, and an entry for the refactor. Has never written an executor plugin, and has not met registerExecutors, computeMetrics, the plugins section, a trace context, or an MCP server.
+
+1. **seam**: after this, the viewer can say why an eval through Vally's own executor can't show how the app's agent behaves, and what replacing the executor changes
+2. **what-it-returns**: after this, the viewer can read an executor plugin: what it exports, what execute is given and returns, and how the plugin is loaded and selected
+3. **join-traces**: after this, the viewer can say what a trace context is, and predict where the app's spans appear once it is passed on
+4. **run-it**: after this, the viewer can run the release eval through the app on two models, then as an experiment with three trials each
+5. **measure**: after this, the viewer can say, with counts, how the app compares with Vally's own executor, in behaviour and in cost per model call
+
+## s01 — Plug the app into Vally
+
+**Role:** hook · **Mode:** think · **Stage:** seam  
+**On screen:** Headline 'Let Vally run the app' in the display serif. Two blocks side by side for claude-haiku-4.5 on the since-last-release stimulus: left, Vally's own trials (how many passed, how many loaded the skill); right, the app's one earlier run (failed, no skill loaded, an entry for the refactor). The right block lights, then the left as its count is said, then neither.  
+**Renderer:** html (scenes/s01.html)
+
+> The release app ran once on haiku, and failed: no skill loaded, and an entry for the refactor.  _(depends on what the demo produced)_
+> Vally's own trials of that skill passed three of eight on haiku.  _(depends on what the demo produced)_
+> So is the app worse than those trials, or was one run unlucky, and does it cost the same?
+> One run can't say, and a run of the app that has already happened can't be repeated.
+> Here, you'll plug the app's own code into Vally, so it runs as many trials as we like, on any model, under the graders we already have.
+
+## s02 — The executor is the seam
+
+**Role:** body · **Mode:** think · **Stage:** seam  
+**On screen:** Headline 'One step runs the agent'. Six numbered blocks in two rows, no arrows: 1 Prepare the workspace, 2 Take the starting state, 3 Run the executor, 4 Save the patch, 5 Run the graders, 6 Repeat, then report. Blocks 1 and 2 light together, then 4 to 6, then block 3, which stays lit.  
+**Renderer:** html (scenes/s02.html)
+
+> Let's start with where an app could fit inside Vally.
+> Around every trial, Vally does the same work: it prepares the workspace, and afterwards saves the patch and runs the graders.
+> One step in the middle runs the agent, and that step is the executor.
+> The executor gets a stimulus and a workspace, and hands back a trajectory: the account of what the agent did.
+> That's the one part we're about to swap.
+
+## s03
+
+**Role:** body · **Mode:** think · **Stage:** seam  
+**On screen:** Headline 'Two sessions, two sets of settings'. Two blocks side by side: 'copilot-sdk · Vally's own executor · a Copilot SDK session, with Vally's settings' and 'release-app · an executor that calls the app · a Copilot SDK session, with the team's settings'. Left lights, then right, then right again at the end.  
+**Renderer:** html (scenes/s03.html)
+
+> Vally's own executor opens a Copilot SDK session, with settings that Vally chose.
+> The release app opens a session too, with settings the team chose.
+> Those choices are part of the feature being tested.
+> If the app's agent behaves differently, an eval through Vally's executor won't show it.
+> Once the executor is one that calls the app, every trial runs the code the team ships.
+
+## s04
+
+**Role:** body · **Mode:** think · **Stage:** seam  
+**On screen:** Headline 'Three views of one feature'. A table of three rows, 'Run it through' and 'What it answers': Vally's own executor · does the skill do its job, on any model, apart from the app?; the app, through an executor plugin · does the feature as shipped do its job? repeatable, so we can count; the app's real runs, graded afterwards · is it still doing its job in real use? Each row lights as it is named.  
+**Renderer:** html (scenes/s04.html)
+
+> That gives us three ways to look at the release feature, and each answers something the others can't.
+> Vally's own executor shows whether the skill does its job, on any model, apart from the app.
+> Running the app through an executor shows whether the feature, as shipped, does its job, and it's repeatable, so we can count.
+> Grading the app's real runs afterwards shows whether it's still doing its job in real use.
+
+## s05 — What an executor returns
+
+**Role:** body · **Mode:** works · **Stage:** what-it-returns · **Introduces:** vally-executor.mjs, vally-executor.mjs · as shipped, registerExecutors  
+**On screen:** Headline 'A plugin registers an executor'. File panel labelled 'app/vally-executor.mjs · as shipped' with a minimap, on the end of the file: the releaseApp object with its name, the execute stub that throws, shutdown, and the exported registerExecutors function. Callouts on the right: 'selected by this name', 'runs one trial', 'called at the end', 'what Vally looks for'. The panel scrolls once to bring the last lines into view.  
+**Renderer:** html (scenes/s05.html)
+
+> That's the idea; here's the file that expresses it.
+> An executor plugin is a JavaScript module, and the starter ships this one with everything written except one function.
+> Our executor is an object, and its name is release app.
+> Its execute function runs one trial, and it's the part still to write.
+> Shutdown is called at the end, and has nothing to clean up, because the app opens and closes its own session in each trial.
+> Vally looks for one exported function, register executors, and calls it with its registry: the list of executors it knows.
+> Ours adds this object to that list, so its name is what a command or an eval file can ask for, the way they ask for a model by name.
+
+## s06
+
+**Role:** body · **Mode:** works · **Stage:** what-it-returns  
+**On screen:** Headline 'Execute calls the app's own function'. File panel labelled 'app/vally-executor.mjs' with a minimap, on the written execute function: the call to writeEntries with repoDir, model, skillDirs, request, timeoutMs, telemetry and traceContext. Callouts: 'the app's own function', 'the prepared workspace', 'each skill's folder', 'traces go to the trial's folder', 'the trial's trace'. One line is lit at a time.  
+**Renderer:** html (scenes/s06.html)
+
+> Here's that function, written.
+> Vally hands it two things: the stimulus, and the options for this one trial.
+> The function passes them on to write entries, which is the app's own function: the one the app's run script called.
+> Where to work is the first option: the prepared workspace, after the setup commands ran.
+> Which model to run comes next, so one command can try any model.
+> Skills arrive as the path of each skill file, and the SDK wants folders, so each path is cut back to its folder.
+> The request is the stimulus's prompt, and the time limit is Vally's.
+> For traces, the app gets a file in the trial's results folder to write them to.
+> Last is the trial's trace context, which we'll come to.
+
+## s07
+
+**Role:** body · **Mode:** works · **Stage:** what-it-returns · **Introduces:** computeMetrics  
+**On screen:** Headline 'It hands back a trajectory'. The same panel, opening where the last scene ended and scrolling on through the return value: toTrajectoryEvents, the returned object with events, output and workDir, metrics from computeMetrics plus wallTimeMs, then the metadata. Callouts: 'the SDK's events, renamed', 'the agent's last reply', 'tokens, cost, tool calls, skills', 'ours to measure'.  
+**Renderer:** html (scenes/s07.html)
+
+> What comes back from the app is the agent's reply, and every session event the SDK reported.
+> One helper in the same file renames those events to Vally's.
+> Then the function returns a trajectory: the events, the reply as the trial's output, and the workspace.
+> Its metrics come from compute metrics, a function Vally exports that adds up a trajectory's events.
+> That way, a plugin's tokens, cost and tool calls are counted the way the built-in executor's are.
+> Compute metrics can't know how long the app took, so the wall time is ours to measure.
+> Last comes some metadata: the model, the skills that loaded, and the executor's name.
+
+## s08
+
+**Role:** body · **Mode:** works · **Stage:** what-it-returns  
+**On screen:** Headline 'SDK events become Vally's'. The same file in a panel, now on the renaming helper near the top: the tool.execution_start branch that adds a tool_call event, then, after a row of hidden lines, the skill.invoked branch that adds skill_activation and the assistant.usage branch that adds token_usage with its cost. The panel takes the full width, with no side notes: one line is lit at a time.  
+**Renderer:** html (scenes/s08.html)
+
+> That renaming helper is short, and three of its branches matter to our graders.
+> When the SDK reports a tool starting, the helper adds a tool call event: the kind our tool-calls graders check.
+> When a skill is opened, it adds a skill activation, the event that says a skill loaded.
+> Both the skill-invocation grader and the report's Skills column rely on that one.
+> After each model call, it adds a token usage event: how many tokens the call used, with its cost attached.
+> So cost is filled in for these trials, which it wasn't when we graded the app's run afterwards.
+
+## s09
+
+**Role:** body · **Mode:** works · **Stage:** what-it-returns · **Introduces:** .vally.yaml, plugins  
+**On screen:** Headline 'A plugins section loads it'. File panel labelled '.vally.yaml' on its first lines: the three new lines, plugins, executor and the plugin file's path, above the suites that were already there, with a row for the lines hidden below. One callout: 'loads the plugin file'.  
+**Renderer:** html (scenes/s09.html)
+
+> Vally loads the plugin from dot vally dot yaml, the settings file that holds our suites.
+> Three new lines at its top list the plugin file, under plugins, as an executor.
+
+## s10
+
+**Role:** body · **Mode:** works · **Stage:** what-it-returns  
+**On screen:** Headline 'Loading isn't selecting'. Dark box, left: three ways to name the executor, '--executor release-app' on a vally eval command, 'executor: release-app' under 'defaults:', and the same under 'overrides:'. Callouts on the right: 'for one run', 'for one eval file', 'for one experiment'. Each lights as it is said.  
+**Renderer:** html (scenes/s10.html)
+
+> Loading the file doesn't select the executor.
+> We choose it for one run with dash dash executor, for an eval file under defaults, or for an experiment under overrides.
+
+## s11
+
+**Role:** body · **Mode:** works · **Stage:** what-it-returns  
+**On screen:** Headline 'No simulation, no run'. Dark box, left: the ERROR line for tracker-down and Vally's message, as it prints: the executor does not support tool-call simulation, the stimulus declares a simulation block, use a simulation-capable executor such as copilot-sdk. Callouts: 'the stimulus with a simulation block', 'Vally's own executor supports it'.  
+**Renderer:** html (scenes/s11.html)
+
+> One more thing an executor does is declare what it supports.
+> Ours declares nothing, so it can't run a stimulus that has a simulation block.
+> And our release eval has one: tracker down, where a tool is made to fail on purpose.
+> Vally checks before starting the agent, so through this executor, that stimulus ends in error, with this message, and spends no agent run.
+> That error will show in every run that follows, and it's expected: it isn't a fault in the app.
+
+## s12 — Join the app's traces to Vally's
+
+**Role:** body · **Mode:** works · **Stage:** join-traces · **Introduces:** otel-spans.jsonl  
+**On screen:** Headline 'Two programs, two traces'. Dark box, left: two small trees of span names. Under 'Vally · otel-spans.jsonl': vally.trial, and inside it vally.attempt. Under 'the app · its own trace file': invoke_agent, and inside it chat and execute_tool. Callouts: 'one for each trial', 'one for each attempt', 'no parent: a trace of its own'.  
+**Renderer:** html (scenes/s12.html)
+
+> Both programs keep traces, and so far nothing has linked them.
+> Vally writes spans of its own for every trial, to a file in the run folder: one span for the trial, and inside it, one for each attempt.
+> Our app writes its spans to its own file, and the outermost, named invoke agent, covers one whole session.
+> When the app runs alone, that session span has no parent.
+> If both send their spans to one tracing tool, we'd want the app's spans inside the trial's.
+> Then a slow or expensive trial can be opened, and followed from Vally's step down to the model call.
+
+## s13
+
+**Role:** body · **Mode:** works · **Stage:** join-traces · **Introduces:** trace context  
+**On screen:** Headline 'A trace context joins them'. Dark box, left: the word traceparent and, under it, its four parts in order: version, trace ID, parent span ID, flags, joined by hyphens. Callouts beside two of the parts: 'which trace to join', 'which span to sit under'. A note: 'Source: W3C, Trace Context'.  
+**Renderer:** html (scenes/s13.html)
+
+> What links two programs' spans is a trace context.
+> It's the ID of a trace, and of the span that's open in it, passed from one program to the next.
+> With it, the second program's spans join the first one's trace, as children.
+> One web standard writes it as a short string named trace parent: a version, the trace ID, the parent span's ID, and some flags.
+
+## s14
+
+**Role:** body · **Mode:** works · **Stage:** join-traces · **Introduces:** release-assistant.mjs  
+**On screen:** Headline 'The app needed two lines'. File panel labelled 'app/release-assistant.mjs' on the start of writeEntries, where the client is created: the telemetry option, then the two lines that give the SDK a trace to join, onGetTraceContext returning the caller's trace context or nothing. The panel takes the full width, with no side notes; the two lines light together.  
+**Renderer:** html (scenes/s14.html)
+
+> Vally passes each trial's trace context to the executor, in its options, and our execute function hands it on to the app.
+> The Copilot SDK has a hook for exactly this: a function it calls to ask which trace to join, before it opens a session or sends a message.
+> So the app needed two lines: give the SDK whatever trace context the caller gave, or none.
+> When the app runs from its own script, there's none, and the session starts a trace of its own.
+> When it runs from our executor, the session span should carry the trial's trace ID, with Vally's attempt span as its parent.
+
+## s15 — Run the app as Vally's executor
+
+**Role:** practice · **Mode:** use · **Stage:** run-it  
+**On screen:** Headline 'How will the app compare?'. An empty table for since-last-release through the app: rows claude-haiku-4.5 and gpt-5.6-terra, columns 'Trials passed, of 4' and 'Trials that loaded the skill, of 4'. The column heads light in turn; the cells stay empty through the question and the pause.  
+**Renderer:** html (scenes/s15.html)
+
+> That's how the plugin works; now let's run it.
+> First, the release eval goes through the app once on each model.
+> Then an experiment runs it three more times on each: four trials a model in all.
+> In its one earlier run of the app, haiku failed, without loading the skill.  _(depends on what the demo produced)_
+> How many of four would you expect it to pass now, and would terra do any better?  _(2s to read after)_
+> If you tried it yourself, here's what you'd see.
+
+## s16
+
+**Role:** practice · **Mode:** use · **Stage:** run-it · **Introduces:** node, --check, vally eval, -e, --executor, --model, --workers, --output-dir, release.eval.yaml, lesson-26  
+**On screen:** Terminal in the practice folder; the prompt shows only the folder name. node --check app/vally-executor.mjs prints nothing. The screen is cleared out of sight. vally eval on the release eval file over four lines, with --executor release-app, both models, --workers 2 and --output-dir results/lesson-26; a jump cut; then the end of the output: the two tracker-down ERROR lines, the model summary, the table with a count out of two for each model, and the Saved line. Held until it has been read.  
+**Renderer:** terminal (tapes/s16.tape)
+
+> The execute function is now in the plugin file, and the three plugins lines are in the settings file.  _(finishes before typed:1)_
+> First, node dash dash check tells us whether the file is valid JavaScript, without starting anything.  _(finishes before typed:1)_
+> It prints nothing, which means no errors.  _(waits for enter:1+1; depends on what the demo produced)_
+> Now the release eval, with dash dash executor release app, on both models, two at a time.  _(finishes before typed:2)_
+> It spends two agent runs, because tracker down is refused before any agent starts.  _(finishes before enter:2)_
+> The table at the end counts stimuli, two for each model, and the refused one can't pass.  _(finishes before enter:2)_
+> Moments later, haiku has failed since last release, and terra has passed it.  _(3s to read after; waits for output:2; depends on what the demo produced)_
+> So the counts are none of two stimuli for haiku, and one of two for terra.  _(4s to read after; waits for output:2; depends on what the demo produced)_
+
+## s17
+
+**Role:** practice · **Mode:** use · **Stage:** run-it  
+**On screen:** Headline 'These trials ran the app'. A table from the run's report, one row per model for since-last-release: Executor, Skills, Tool calls. Both rows say release-app; haiku's Skills cell is empty and its tool calls are four views and an edit; terra's Skills cell is changelog-entry and its tool calls include skill. The Executor cells light, then haiku's row, then terra's.  
+**Renderer:** html (scenes/s17.html)
+
+> The report in the new results folder confirms what ran: under each table, the executor is release app.
+> Haiku's table has no Skills column at all, because no skill loaded, and its tool calls were four views and one edit.  _(depends on what the demo produced)_
+> Terra's lists the changelog entry skill, and a skill call among its tools.  _(2s to read after; depends on what the demo produced)_
+
+## s18
+
+**Role:** practice · **Mode:** use · **Stage:** run-it  
+**On screen:** Headline 'The app's span joined Vally's trace'. Two cards, one above the other, each a dark box with one span line cut to three fields. Top, 'otel-spans.jsonl · Vally's attempt span': traceId, spanId, name vally.attempt. Bottom, 'app-traces.jsonl, in the trial's folder · the app's session span': traceId, parentSpanId, name invoke_agent. The two trace IDs light together, then the attempt's spanId and the session's parentSpanId together.  
+**Renderer:** html (scenes/s18.html)
+
+> The app's traces for a trial are kept in that trial's results folder, and Vally's spans are in the run folder.
+> Here's one line from each, for haiku's trial, cut to three fields.
+> Both carry one trace ID, so the app's session joined Vally's trace.  _(depends on what the demo produced)_
+> Its parent is Vally's attempt span, so every model call and tool call beneath it follows.  _(2s to read after; depends on what the demo produced)_
+
+## s19
+
+**Role:** practice · **Mode:** use · **Stage:** run-it · **Introduces:** release-app.experiment.yaml  
+**On screen:** Headline 'One executor, two models'. File panel labelled 'evals/release-app.experiment.yaml' with a minimap. It opens at the top (the eval it runs, vary) and scrolls to the overrides and the two variants. Callouts: 'the variants differ only in the model', 'one executor for both', 'three trials each'.  
+**Renderer:** html (scenes/s19.html)
+
+> For more trials, we use an experiment file, the kind we've used to compare variants.
+> It names the release eval, and two variants, haiku and terra, which differ only in the model.
+> What's new is one line under the top-level overrides: executor, release app, set once for both variants.
+> Beside it, runs is three.
+
+## s20
+
+**Role:** practice · **Mode:** use · **Stage:** run-it · **Introduces:** vally experiment, vally experiment run, --dry-run  
+**On screen:** Terminal in the practice folder. vally experiment run on the new experiment file over two lines, with --dry-run, prints the plan: the experiment's name, the baseline, 'Plans: 2', and a block for each variant with its eval, file and model. Held until it has been read.  
+**Renderer:** terminal (tapes/s20.tape)
+
+> With dash dash dry run, Vally plans the experiment and starts nothing.  _(finishes before typed:1)_
+> It finds two plans, one for each variant, with haiku as the baseline.  _(4s to read after; waits for output:1; depends on what the demo produced)_
+
+## s21
+
+**Role:** practice · **Mode:** use · **Stage:** run-it · **Introduces:** lesson-26-experiment  
+**On screen:** Terminal in the practice folder. The same vally experiment run command over three lines, with --workers 2 and --output-dir results/lesson-26-experiment; a jump cut; then the end of the output: the experiment's summary line, the table with a column for each variant (stimuli, tokens, trial time), and where it was saved. Held until it has been read.  
+**Renderer:** terminal (tapes/s21.tape)
+
+> Now the real thing: three trials a model, through the app, two at a time.  _(finishes before typed:1)_
+> That's six agent runs, since tracker down is refused again, three times for each variant.  _(finishes before enter:1)_
+> About a minute later, the table gives terra one stimulus of two, and haiku none.  _(4s to read after; waits for output:1; depends on what the demo produced)_
+> Under that, terra used about a quarter fewer tokens than haiku.  _(3s to read after; waits for output:1; depends on what the demo produced)_
+
+## s22
+
+**Role:** practice · **Mode:** use · **Stage:** run-it  
+**On screen:** Headline 'What the table leaves out'. A table with a row for each variant's three since-last-release trials: Passed, Skill loaded, Entry for #76, Cost in AIU. Haiku's row lights, then terra's, then the Cost column.  
+**Renderer:** html (scenes/s22.html)
+
+> That table counts stimuli, so we count three more things from each variant's trials.
+> Haiku passed none of three, loaded the skill in one, and wrote an entry for the refactor, pull request seventy-six, every time.  _(depends on what the demo produced)_
+> Terra passed all three, loaded the skill in all three, and left the refactor out.  _(depends on what the demo produced)_
+> Adding up each trial's cost, haiku's three came to about six point seven AIU, and terra's to about ten point seven.  _(2s to read after; depends on what the demo produced)_
+
+## s23 — What the counts show
+
+**Role:** body · **Mode:** think · **Stage:** measure  
+**On screen:** Headline 'One eval, another executor'. Three blocks in a row: 'The eval file · ran unchanged: setup command, hidden test, tool-calls graders', 'Cost · filled in, from the runtime's own usage', 'Budgets, ranges, comparisons · these are ordinary trials'. Each fills as it is named.  
+**Renderer:** html (scenes/s23.html)
+
+> So what can we measure now?
+> The same eval file ran unchanged: its setup command, its hidden test and its tool-calls graders didn't depend on which executor ran.
+> Cost was filled in again, because the executor reports the runtime's own usage.
+> Budgets, ranges and comparisons all work on these trials, because they're ordinary trials.
+
+## s24
+
+**Role:** body · **Mode:** think · **Stage:** measure  
+**On screen:** Headline 'The app beside Vally's executor'. A table for since-last-release with four rows: haiku through the app, haiku through Vally's executor, terra through the app, terra through Vally's executor; columns Passed, Skill loaded, Tokens a model call, AIU a trial. The two app rows light, then the Passed column, then each of the last two columns as it is defined.  
+**Renderer:** html (scenes/s24.html)
+
+> Now the earlier question has counts.
+> Earlier, our runs of this stimulus went through Vally's own executor, eight trials a model, and the app has now run it four times on each.  _(depends on what the demo produced)_
+> Passed is each run's own verdict.
+> Tokens a model call is a row's trial tokens, divided by its model calls.
+> AIU a trial is a row's cost, divided by its trials.
+> Two things stand out: one is a weak sign, and one held in every trial.  _(2s to read after)_
+
+## s25
+
+**Role:** body · **Mode:** think · **Stage:** measure  
+**On screen:** Headline 'Too few trials to tell'. Two blocks side by side for claude-haiku-4.5, each a large count of trials that loaded the skill with its 95% range under it: through the app (its four trials and the one earlier run), and through Vally's executor. Under them, a line for an earlier run's two counts, and a note: '95% ranges, from the range calculator'. Left lights, then right, then the earlier run's line, then all rest.  
+**Renderer:** html (scenes/s25.html)
+
+> First, the weak sign: how the app behaves, beside Vally's own runs of the skill.
+> Terra loaded the skill and passed every time, either way.  _(depends on what the demo produced)_
+> Haiku is where they differ.  _(depends on what the demo produced)_
+> Through the app, it loaded the skill in one of five trials, counting its one earlier run.  _(depends on what the demo produced)_
+> Through Vally's executor, it loaded in four of eight.  _(depends on what the demo produced)_
+> As ranges, that's four to sixty-two percent, against twenty-two to seventy-eight, which overlap widely.  _(depends on what the demo produced)_
+> In an earlier run of ours, the two were closer: none of five, against one of eight.  _(depends on what the demo produced)_
+> So with this few trials, we can't yet say that the app makes haiku worse, but now we can run more, and find out.  _(depends on what the demo produced)_
+
+## s26
+
+**Role:** body · **Mode:** think · **Stage:** measure  
+**On screen:** Headline 'More tokens on every call'. A table, one row per model: the app's lowest trial and Vally's executor's highest trial, in tokens a model call, and how much more the app used a call on average, as a percentage. Haiku's row lights, then terra's, then the percentage column.  
+**Renderer:** html (scenes/s26.html)
+
+> Second, the one that held in every trial: the app costs more per model call.  _(depends on what the demo produced)_
+> The test is a strict one: even the app's lowest trial, against the highest through Vally's executor.
+> On haiku, the app's lowest used about seventeen thousand four hundred tokens a call, and the highest through Vally's executor about fifteen thousand three hundred.  _(depends on what the demo produced)_
+> On terra, it was about fourteen thousand, against twelve thousand five hundred.  _(depends on what the demo produced)_
+> On average, that's about sixteen percent more a call on haiku, and thirteen percent on terra.  _(2s to read after; depends on what the demo produced)_
+
+## s27
+
+**Role:** body · **Mode:** think · **Stage:** measure · **Introduces:** MCP server  
+**On screen:** Headline 'Five more tools, every request'. Two blocks side by side: 'release-app · GitHub's hosted MCP server is on · 5 more tools in every request' and 'copilot-sdk · that server is off'. Under them, the definition in a line: 'MCP server: a program that offers an agent extra tools, through the Model Context Protocol'. Left lights, then right.  
+**Renderer:** html (scenes/s27.html)
+
+> Why would one model need more tokens for each call through the app?
+> The app's traces show the reason: an MCP server.
+> That's a program that offers an agent extra tools, through a shared protocol.
+> Our app's sessions include GitHub's hosted one, which adds five GitHub tools to every request the model sees.  _(depends on what the demo produced)_
+> Vally's own executor turns that server off.
+
+## s28
+
+**Role:** body · **Mode:** think · **Stage:** measure  
+**On screen:** Headline 'Cost depends on the trial'. A table, one row per model: model calls a trial and AIU a trial, each for the app and for Vally's executor. The calls columns light, then the cost columns, then terra's row.  
+**Renderer:** html (scenes/s28.html)
+
+> More tokens a call doesn't have to mean a more expensive trial, because a trial's cost also depends on how many calls it makes.
+> On haiku, the app's trials made fewer calls: five and a quarter a trial, against five and three quarters through Vally's executor.  _(depends on what the demo produced)_
+> So they cost about the same: two point five four AIU a trial, against two point five eight.  _(depends on what the demo produced)_
+> On terra, the app's trials made slightly more calls, and cost more: about four AIU a trial, against three point two seven.  _(depends on what the demo produced)_
+> Each call through the app carries the same extra cost.
+> Whether a whole trial costs more depends on how many calls that trial makes.
+> An eval of the skill alone wouldn't have shown that overhead at all.
+
+## s29
+
+**Role:** body · **Mode:** think · **Stage:** measure  
+**On screen:** Headline 'The eval measures what ships'. The table of three views from earlier, unchanged. The middle row, the app through an executor plugin, is lit from the start and stays lit.  
+**Renderer:** html (scenes/s29.html)
+
+> Earlier, this table could only say what running the app through an executor might answer.
+> Now it has answered: on terra, the app did as well as the skill alone; on haiku, it's too early to say; and every call paid for five extra tools.  _(depends on what the demo produced)_
+> Neither could be counted from the app's real runs, and the second was invisible from inside Vally's own executor.
+> That's the reason to plug the app in: the eval now measures what the team ships.
+
+## s30
+
+**Role:** recap · **Stage:** measure  
+**On screen:** Headline 'What does a plugin provide?'. One block, 'an executor plugin', which opens after the question and a pause into three parts, each lit as it is said: 'registerExecutors · registers an executor by name', 'execute · gets the stimulus and the trial's options', 'a trajectory · events, the reply, metrics'.  
+**Renderer:** html (scenes/s30.html)
+
+> Before you go on: what does an executor plugin export, and what does its execute function give back?
+> It exports register executors, which registers an executor by name.  _(pause 2.5s first)_
+> Its execute function receives the stimulus and the trial's options, and runs the app.
+> It returns a trajectory: the events, the agent's reply, and the metrics.
+
+## s31
+
+**Role:** next · **Stage:** measure  
+**On screen:** 'The workflow guide' in the display serif under the eyebrow 'Next'. Below: 'The whole procedure, for a skill or for a feature in an app.' A note: 'Exercises are on the lesson page · Source: Vally docs, Writing Custom Executors'.  
+**Renderer:** slide (scenes/s31.html)
+
+> You can now run the app's own agent code under Vally's trials, experiments and model comparisons.
+> With that, the course is complete.
+> The workflow guide walks the whole procedure, for a skill or for a feature in an app.
+> The exercises on the lesson page are worth doing, too.

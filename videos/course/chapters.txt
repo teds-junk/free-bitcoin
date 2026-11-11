@@ -1,0 +1,28 @@
+0:00 Vally & Agent Evals
+0:57 It works for me
+9:35 What the tick checked
+19:24 The same request, five times
+26:28 Read the runs before writing graders
+36:00 Turn a failure into a grader
+44:46 Keep graders out of the agent's reach
+56:46 Test a grader without running an agent
+1:06:54 Check graders against saved trials
+1:15:57 Does the skill load when it should
+1:26:54 Is the agent better with the skill
+1:36:17 Follow-up requests
+1:44:58 A judge for what code cannot check
+1:56:40 Check the judge against your own labels
+2:05:27 Partial credit
+2:18:56 Is the change real
+2:29:31 What a passing trial costs
+2:41:25 A model from your own provider
+2:53:12 Put a ceiling on a trial
+3:05:36 Is it worse than before
+3:17:38 When a run goes wrong
+3:33:27 Keep it working
+3:46:45 Start the agent where the app would
+3:57:40 Check what the agent did
+4:09:25 When a tool fails
+4:19:56 Grade a run Vally did not start
+4:33:41 Let Vally run the app
+4:48:26 What you can now do

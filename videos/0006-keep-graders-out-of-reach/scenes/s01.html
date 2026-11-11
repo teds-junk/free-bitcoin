@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Keep graders out of reach</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.results{width:100%}.results .card > .code.dark{font-size:36px;line-height:1.4;padding:26px 36px}.results .card .who{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">Keep graders out of reach</h1>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="answer" data-rep="card">
+        <div class="who"><span class="mono">CHANGELOG.md</span> · a correct answer to one of our requests</div>
+        <pre class="code dark" data-lang="text"><code><span data-concept="unrel" data-rep="code"><span>## [Unreleased]</span></span>
+
+<span>### Added</span>
+<span>- Add `notes list --tag` to filter by tag (#41)</span>
+
+<span data-concept="fixed" data-rep="code"><span>### Fixed</span></span>
+<span>- Fix `notes list` repeating the final note from the prior page </span><span data-concept="pr" data-rep="code"><span>(#60)</span></span>
+
+<span data-concept="rel" data-rep="code"><span>## [1.2.0] - 2026-09-14</span></span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "pr",
+  "at": "0~citing",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "fixed",
+  "at": "1~under Fixed",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "unrel",
+  "at": "1~inside Unreleased",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "rel",
+  "at": "1~version",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,1061 @@
+1
+00:00:00,400 --> 00:00:04,529
+Now that our eval files have setup,
+budgets, judges and several models, more
+
+2
+00:00:04,529 --> 00:00:07,300
+can go wrong that has nothing to do with
+the skill.
+
+3
+00:00:07,800 --> 00:00:12,385
+When a run ends in ERROR, or comes out
+flaky, or fails when nobody expected it
+
+4
+00:00:12,385 --> 00:00:14,325
+to, running it again is tempting.
+
+5
+00:00:14,825 --> 00:00:19,413
+But a run costs agent runs and minutes,
+and it usually prints the same error
+
+6
+00:00:19,413 --> 00:00:19,775
+again.
+
+7
+00:00:20,275 --> 00:00:24,568
+Here, you'll take four broken eval files,
+find each fault from what the failed run
+
+8
+00:00:24,568 --> 00:00:27,500
+left behind, and prove each fix with the
+cheapest check.
+
+9
+00:00:28,700 --> 00:00:31,175
+Let's start with the order to look in.
+
+10
+00:00:31,675 --> 00:00:35,882
+Vally's debugging guide splits the work
+into four questions, and each has to be
+
+11
+00:00:35,882 --> 00:00:38,225
+answered before the next one means
+anything.
+
+12
+00:00:38,725 --> 00:00:42,725
+First: is the eval file valid, so that
+Vally accepts it at all?
+
+13
+00:00:43,225 --> 00:00:47,300
+Second: did it complete, so that every
+trial finished and was graded?
+
+14
+00:00:47,800 --> 00:00:51,825
+Third: why was the result unexpected, when
+the trial did finish?
+
+15
+00:00:52,325 --> 00:00:54,300
+Fourth: does the fix work?
+
+16
+00:00:54,800 --> 00:00:59,544
+Graders can't be wrong about a trial that
+didn't finish, and a trial can't finish if
+
+17
+00:00:59,544 --> 00:01:00,900
+the eval file is broken.
+
+18
+00:01:02,100 --> 00:01:06,326
+That order is also an order of cost: the
+first three are answered from what the
+
+19
+00:01:06,326 --> 00:01:09,000
+failed run already printed and saved, for
+nothing.
+
+20
+00:01:09,500 --> 00:01:13,725
+Only the fourth may need a new run, and
+that depends on what the fix changed.
+
+21
+00:01:14,933 --> 00:01:19,794
+Fixing a grader changes nothing the agent
+did, so the saved trials can be graded
+
+22
+00:01:19,794 --> 00:01:20,158
+again.
+
+23
+00:01:20,658 --> 00:01:25,358
+Fixing the setup, or a time limit, changes
+the run itself, so it needs a new run, and
+
+24
+00:01:25,358 --> 00:01:27,458
+often one model is enough to prove it.
+
+25
+00:01:28,667 --> 00:01:33,042
+Those are the questions; here's where each
+answer is kept, starting with the first.
+
+26
+00:01:33,542 --> 00:01:37,856
+Vally lint reads an eval file without
+starting anything, and reports unknown
+
+27
+00:01:37,856 --> 00:01:41,092
+field names, missing files, and values of
+the wrong kind.
+
+28
+00:01:41,592 --> 00:01:45,517
+Vally eval runs the same checks before it
+starts any agent.
+
+29
+00:01:46,017 --> 00:01:50,742
+What neither can see is what a value means
+to the program that will use it later.
+
+30
+00:01:51,967 --> 00:01:55,892
+One of our four files uses a field we
+haven't met: commands.
+
+31
+00:01:56,392 --> 00:02:00,661
+It's a list, under the agent environment,
+of shell commands that Vally runs in the
+
+32
+00:02:00,661 --> 00:02:03,942
+workspace, after copying the files and
+before the agent starts.
+
+33
+00:02:04,442 --> 00:02:07,742
+Each entry is one command, written as a
+string.
+
+34
+00:02:08,242 --> 00:02:12,442
+Whatever the commands create is part of
+the starting state, so it doesn't appear
+
+35
+00:02:12,442 --> 00:02:13,492
+in the trial's diff.
+
+36
+00:02:14,700 --> 00:02:17,675
+There's a trap here, and it's in YAML
+itself.
+
+37
+00:02:18,175 --> 00:02:22,985
+Inside a list item, a colon followed by a
+space turns the line into a key and a
+
+38
+00:02:22,985 --> 00:02:23,350
+value.
+
+39
+00:02:23,850 --> 00:02:28,450
+So this entry isn't a string: it's a small
+mapping, with echo note as its key.
+
+40
+00:02:28,950 --> 00:02:32,975
+Lint accepts it, because a list item is
+allowed to hold a mapping.
+
+41
+00:02:33,475 --> 00:02:37,764
+Whatever runs the command then gets a
+mapping where it expects a string, and
+
+42
+00:02:37,764 --> 00:02:39,175
+says so in its own words.
+
+43
+00:02:39,675 --> 00:02:42,950
+Putting the whole line in quotes makes it
+a string again.
+
+44
+00:02:44,167 --> 00:02:47,317
+Question two is whether each trial
+completed.
+
+45
+00:02:47,817 --> 00:02:52,461
+Each trial that didn't is reported as
+ERROR, with one line of explanation, and
+
+46
+00:02:52,461 --> 00:02:56,392
+the same text is saved in the trial's
+record in results dot jsonl.
+
+47
+00:02:56,892 --> 00:03:01,092
+The trial's own folder shows how far it
+got, by which files exist.
+
+48
+00:03:01,592 --> 00:03:06,461
+With only metadata dot json, no agent
+session started, so the failure came
+
+49
+00:03:06,461 --> 00:03:07,317
+during setup.
+
+50
+00:03:07,817 --> 00:03:12,259
+With a session log, events dot jsonl, but
+no patch, the agent started and was
+
+51
+00:03:12,259 --> 00:03:13,817
+stopped before it finished.
+
+52
+00:03:14,317 --> 00:03:18,519
+With both, the agent finished, and
+anything wrong is in the grading or in the
+
+53
+00:03:18,519 --> 00:03:18,792
+work.
+
+54
+00:03:20,000 --> 00:03:25,271
+That session log, events dot jsonl, is the
+agent's own raw record, one event per
+
+55
+00:03:25,271 --> 00:03:25,600
+line.
+
+56
+00:03:26,100 --> 00:03:30,524
+It matters here because, when a trial is
+stopped, it's the one place that shows how
+
+57
+00:03:30,524 --> 00:03:32,550
+far the agent got, and what that cost.
+
+58
+00:03:33,050 --> 00:03:36,650
+Here's how the log ends when a trial runs
+out of time.
+
+59
+00:03:37,150 --> 00:03:39,525
+This line is the skill loading.
+
+60
+00:03:40,025 --> 00:03:44,732
+This one's type is abort, and its reason
+says the stop came from outside the agent:
+
+61
+00:03:44,732 --> 00:03:46,150
+here, Vally's time limit.
+
+62
+00:03:46,650 --> 00:03:51,608
+This last one is a usage checkpoint: what
+the session had cost so far, about three
+
+63
+00:03:51,608 --> 00:03:51,850
+AIU.
+
+64
+00:03:52,350 --> 00:03:55,400
+So a trial that ends in ERROR isn't free.
+
+65
+00:03:56,600 --> 00:04:01,025
+Question three is for a trial that
+finished with a verdict we didn't expect.
+
+66
+00:04:01,525 --> 00:04:05,994
+We start with the grader's evidence, the
+line Vally prints after each failing
+
+67
+00:04:05,994 --> 00:04:06,400
+grader.
+
+68
+00:04:06,900 --> 00:04:11,036
+Then we go through the trial's patch
+ourselves, and decide who is wrong: the
+
+69
+00:04:11,036 --> 00:04:12,125
+agent or the grader.
+
+70
+00:04:12,625 --> 00:04:16,979
+One flag helps here, dash dash verbose:
+under each failing trial, it adds the
+
+71
+00:04:16,979 --> 00:04:20,825
+number of turns, tool calls and tokens,
+and the agent's final reply.
+
+72
+00:04:21,325 --> 00:04:26,098
+Trials stopped mid-session have no final
+reply, so verbose adds nothing to a
+
+73
+00:04:26,098 --> 00:04:26,600
+timeout.
+
+74
+00:04:27,800 --> 00:04:31,025
+Graders can also fail to reach a verdict
+at all.
+
+75
+00:04:31,525 --> 00:04:36,661
+An LLM judge is a call to another model,
+and that call can fail; Vally doesn't try
+
+76
+00:04:36,661 --> 00:04:37,225
+it again.
+
+77
+00:04:37,725 --> 00:04:42,388
+In the trial's record, the grader then has
+a status of error, which a grader that
+
+78
+00:04:42,388 --> 00:04:44,000
+simply said no doesn't have.
+
+79
+00:04:44,500 --> 00:04:48,250
+Its score is recorded as zero, although
+nothing was judged.
+
+80
+00:04:48,750 --> 00:04:51,850
+The reason is in its evidence, word for
+word.
+
+81
+00:04:52,350 --> 00:04:56,927
+In the run's output, the stimulus is
+reported as ERROR, with a line saying its
+
+82
+00:04:56,927 --> 00:04:58,100
+verdict isn't valid.
+
+83
+00:04:59,300 --> 00:05:03,462
+Question four is whether the fix works,
+and vally grade, which re-grades the
+
+84
+00:05:03,462 --> 00:05:06,200
+trials a run saved, is usually the
+cheapest proof.
+
+85
+00:05:06,700 --> 00:05:10,953
+Diff graders work from the saved diffs,
+and trajectory graders from the saved
+
+86
+00:05:10,953 --> 00:05:13,825
+trajectories, so re-grading with them
+costs nothing.
+
+87
+00:05:14,325 --> 00:05:19,075
+Re-grading with a judge costs one judge
+call per trial, and no agent runs.
+
+88
+00:05:19,575 --> 00:05:23,856
+File and script graders need the
+workspace, which a saved run doesn't keep,
+
+89
+00:05:23,856 --> 00:05:26,025
+so with them a re-grade ends in ERROR.
+
+90
+00:05:26,525 --> 00:05:30,947
+Changes to anything before or during the
+agent's session, such as the setup, the
+
+91
+00:05:30,947 --> 00:05:33,600
+time limit or the skill, only show in a
+new run.
+
+92
+00:05:34,800 --> 00:05:38,250
+That's where the answers are kept; now
+let's put them to work.
+
+93
+00:05:38,750 --> 00:05:42,875
+Our starter folder has four eval files,
+each with one fault.
+
+94
+00:05:43,375 --> 00:05:47,525
+For each one, we run it once, answer the
+four questions from what the run left, fix
+
+95
+00:05:47,525 --> 00:05:49,825
+it, and prove the fix with the cheapest
+check.
+
+96
+00:05:50,325 --> 00:05:53,400
+Each file's first run goes wrong on
+purpose.
+
+97
+00:05:53,900 --> 00:05:57,450
+Which of the four fixes would you expect
+to need a new run?
+
+98
+00:05:59,950 --> 00:06:02,825
+If you tried it yourself, here's what
+you'd see.
+
+99
+00:06:04,033 --> 00:06:08,008
+First, we copy the four broken files into
+our practice folder.
+
+100
+00:06:11,553 --> 00:06:14,378
+Question one: is the first file valid?
+
+101
+00:06:18,093 --> 00:06:19,943
+And lint says it is.
+
+102
+00:06:22,443 --> 00:06:24,668
+Question two: does it complete?
+
+103
+00:06:25,168 --> 00:06:29,818
+This starts one trial on each model, and
+here we expect both to end in ERROR.
+
+104
+00:06:34,080 --> 00:06:38,823
+Both did, for the same reason: a command
+had to be a string, and Vally was handed a
+
+105
+00:06:38,823 --> 00:06:39,280
+mapping.
+
+106
+00:06:49,500 --> 00:06:53,475
+Let's see how far those trials got,
+starting with what the run saved.
+
+107
+00:06:55,300 --> 00:06:59,475
+There's one folder, named with the time of
+the run, and we change into it.
+
+108
+00:07:01,960 --> 00:07:06,060
+Inside, each trial has a folder of its
+own; this one is haiku's.
+
+109
+00:07:09,407 --> 00:07:14,707
+It holds metadata dot json and nothing
+else, so no agent session ever started.
+
+110
+00:07:18,207 --> 00:07:21,157
+So the fault is in the setup, not in the
+skill.
+
+111
+00:07:24,067 --> 00:07:27,517
+That brings us to question three: what did
+the setup do?
+
+112
+00:07:28,017 --> 00:07:30,742
+Here's the file, with its commands entry.
+
+113
+00:07:31,242 --> 00:07:36,082
+It's the trap we saw, a colon and a space
+after the word fix, and the same bad value
+
+114
+00:07:36,082 --> 00:07:38,042
+tripped Vally's report writer too.
+
+115
+00:07:39,267 --> 00:07:43,242
+Our fix is to put the whole command in
+quotes, so it's one string.
+
+116
+00:07:43,742 --> 00:07:48,168
+That changes the setup, which happens
+before the agent starts, so proving it
+
+117
+00:07:48,168 --> 00:07:48,867
+takes a run.
+
+118
+00:07:50,067 --> 00:07:54,917
+One model is enough to show that the setup
+works, so this spends one agent run.
+
+119
+00:08:05,367 --> 00:08:08,567
+About ten seconds later, the stimulus
+passes.
+
+120
+00:08:13,767 --> 00:08:18,009
+Our second file is called quick; it passes
+lint as well, so we go straight to
+
+121
+00:08:18,009 --> 00:08:19,717
+question two: does it complete?
+
+122
+00:08:20,217 --> 00:08:23,742
+With verbose added, we'll see whatever
+detail there is.
+
+123
+00:08:24,242 --> 00:08:28,892
+This file is set up to run out of time, so
+we expect ERROR on both models.
+
+124
+00:08:31,767 --> 00:08:35,838
+Both trials were stopped: the stimulus
+timed out after five thousand
+
+125
+00:08:35,838 --> 00:08:36,617
+milliseconds.
+
+126
+00:08:41,117 --> 00:08:46,117
+The verbose flag added nothing, because
+neither agent had a final reply to show.
+
+127
+00:08:49,333 --> 00:08:53,433
+Again we go into the folder this run
+saved, and look at one trial.
+
+128
+00:08:56,100 --> 00:09:00,313
+This time there's a session log, events
+dot jsonl, and no patch: the agent
+
+129
+00:09:00,313 --> 00:09:01,850
+started, and didn't finish.
+
+130
+00:09:06,067 --> 00:09:10,484
+Terra's session log ends the same way: the
+skill loads, then the abort, then the
+
+131
+00:09:10,484 --> 00:09:11,092
+checkpoint.
+
+132
+00:09:11,592 --> 00:09:15,995
+What's new is the bill: about three AIU
+for this trial, and about three quarters
+
+133
+00:09:15,995 --> 00:09:17,592
+of one for the other model's.
+
+134
+00:09:18,092 --> 00:09:21,267
+That was spent on two trials that produced
+nothing.
+
+135
+00:09:22,467 --> 00:09:25,367
+Question three: why did they run out of
+time?
+
+136
+00:09:25,867 --> 00:09:30,648
+Under defaults, the file sets a timeout of
+five seconds, and that's the hard limit on
+
+137
+00:09:30,648 --> 00:09:31,267
+each trial.
+
+138
+00:09:31,767 --> 00:09:36,072
+When we ran this same request earlier,
+with budgets, its two trials took about
+
+139
+00:09:36,072 --> 00:09:37,342
+eight and nine seconds.
+
+140
+00:09:37,842 --> 00:09:42,618
+So nothing is wrong with the skill or the
+agent: five seconds just isn't enough for
+
+141
+00:09:42,618 --> 00:09:43,367
+this request.
+
+142
+00:09:44,567 --> 00:09:48,542
+We change it to three minutes, the value
+in our other eval files.
+
+143
+00:09:49,042 --> 00:09:53,317
+This timeout is different from the max
+agent duration we used before.
+
+144
+00:09:53,817 --> 00:09:57,767
+That one stops only the agent, and still
+grades what it had done.
+
+145
+00:09:58,267 --> 00:10:02,717
+Nothing saved can show a trial finishing,
+so this fix needs a run too.
+
+146
+00:10:03,933 --> 00:10:06,958
+That's two agent runs, one for each model.
+
+147
+00:10:17,800 --> 00:10:21,025
+This time both trials finish, and both
+pass.
+
+148
+00:10:29,233 --> 00:10:33,969
+Our third file is called entry; it passes
+lint too, and we run it with verbose
+
+149
+00:10:33,969 --> 00:10:34,333
+again.
+
+150
+00:10:34,833 --> 00:10:37,608
+Here we expect both models to fail.
+
+151
+00:10:46,327 --> 00:10:50,681
+Both failed the same grader, adds an
+entry: its pattern wasn't found in the
+
+152
+00:10:50,681 --> 00:10:51,552
+workspace diff.
+
+153
+00:11:00,767 --> 00:11:04,367
+Further up, verbose printed each agent's
+final reply.
+
+154
+00:11:04,867 --> 00:11:08,917
+Haiku says it added the typo fix to the
+changelog, under Fixed.
+
+155
+00:11:09,417 --> 00:11:11,567
+Terra says much the same.
+
+156
+00:11:12,067 --> 00:11:16,267
+So either both agents are wrong about
+their own work, or the grader is.
+
+157
+00:11:17,467 --> 00:11:22,142
+The patch settles question three, so we go
+into this run's folder and print haiku's.
+
+158
+00:11:25,780 --> 00:11:30,680
+There's an added Fixed heading, and under
+it an added entry that mentions notes add.
+
+159
+00:11:35,180 --> 00:11:38,980
+That's a correct entry, so the grader is
+the one that's wrong.
+
+160
+00:11:41,900 --> 00:11:44,225
+Here's the grader, with its pattern.
+
+161
+00:11:44,725 --> 00:11:49,037
+It's missing the switch that makes a caret
+match at the start of every line, so this
+
+162
+00:11:49,037 --> 00:11:51,450
+caret matches only the very start of the
+patch.
+
+163
+00:11:51,950 --> 00:11:56,747
+For a diff contains grader, that means the
+pattern can never match, and the grader
+
+164
+00:11:56,747 --> 00:11:57,625
+can never pass.
+
+165
+00:11:58,833 --> 00:12:00,708
+We put the switch back.
+
+166
+00:12:01,208 --> 00:12:05,383
+This time the fix is in a grader, so the
+saved trials can prove it.
+
+167
+00:12:06,600 --> 00:12:11,105
+From the run's folder, vally grade applies
+the corrected grader to the two saved
+
+168
+00:12:11,105 --> 00:12:12,625
+trials, with no agent runs.
+
+169
+00:12:13,125 --> 00:12:17,782
+It takes the trials from results dot
+jsonl, and dash dash run dir points at the
+
+170
+00:12:17,782 --> 00:12:19,550
+folder that holds their diffs.
+
+171
+00:12:20,050 --> 00:12:23,200
+Both blocks now say one of one graders
+passed.
+
+172
+00:12:30,400 --> 00:12:34,863
+Our fourth file passes lint with one
+warning we know, and it has two graders: a
+
+173
+00:12:34,863 --> 00:12:36,050
+pattern, and a judge.
+
+174
+00:12:36,550 --> 00:12:40,650
+Here the agents are expected to finish,
+and the judge call to fail.
+
+175
+00:12:46,980 --> 00:12:51,930
+Both stimuli are reported as ERROR, and
+the reason is the judge: its call failed.
+
+176
+00:12:56,430 --> 00:13:00,660
+Much of what's on screen is the list of
+models our account does have, and under
+
+177
+00:13:00,660 --> 00:13:03,605
+the summary, each trial's grade is marked
+as not valid.
+
+178
+00:13:07,833 --> 00:13:11,333
+Let's go back to one block, for questions
+two and three.
+
+179
+00:13:11,833 --> 00:13:15,983
+It says one of two graders, so the pattern
+grader ran, and it passed.
+
+180
+00:13:16,483 --> 00:13:20,108
+That means the agents finished, and only
+the judge failed.
+
+181
+00:13:20,608 --> 00:13:25,458
+Its evidence gives the reason: the judge
+model's name isn't on the account's list.
+
+182
+00:13:25,958 --> 00:13:30,618
+One character differs, just before the
+last five: the eval file has a hyphen, and
+
+183
+00:13:30,618 --> 00:13:31,883
+the account has a dot.
+
+184
+00:13:33,100 --> 00:13:36,725
+Fixing it takes one character, in the
+judge model line.
+
+185
+00:13:37,225 --> 00:13:41,677
+Because this file also has a diff grader,
+the run saved the diffs, so both trials
+
+186
+00:13:41,677 --> 00:13:44,150
+can be judged again without running an
+agent.
+
+187
+00:13:45,367 --> 00:13:49,942
+So we re-grade from the run's folder, with
+verbose, to see the judge's reasons.
+
+188
+00:13:50,442 --> 00:13:52,742
+That costs two judge calls.
+
+189
+00:13:58,967 --> 00:14:03,238
+This time the judge reaches a verdict on
+both trials, and each of its reasons
+
+190
+00:14:03,238 --> 00:14:04,792
+begins by quoting the entry.
+
+191
+00:14:11,292 --> 00:14:15,583
+The judge passes one, and fails the other,
+whose entry mentions caching: a real
+
+192
+00:14:15,583 --> 00:14:18,517
+verdict about the work, which is what the
+fix was for.
+
+193
+00:14:23,733 --> 00:14:26,933
+So here are the four, with what proved
+each fix.
+
+194
+00:14:27,433 --> 00:14:31,522
+For the command taken as a mapping, and
+for the five-second timeout, the fix
+
+195
+00:14:31,522 --> 00:14:34,158
+changed the run itself, so each needed a
+new run.
+
+196
+00:14:34,658 --> 00:14:38,961
+For the pattern, and for the judge model's
+name, the fault was in the grading, so
+
+197
+00:14:38,961 --> 00:14:41,033
+re-grading the saved trials was enough.
+
+198
+00:14:41,533 --> 00:14:44,983
+All four took nine agent runs and two
+judge calls.
+
+199
+00:14:46,200 --> 00:14:48,675
+So what did those four have in common?
+
+200
+00:14:49,175 --> 00:14:51,750
+None of them was a fault in the skill.
+
+201
+00:14:52,250 --> 00:14:54,475
+Two of them looked like results.
+
+202
+00:14:54,975 --> 00:14:59,200
+Graders that can't pass report a failure
+that looks just like a real one.
+
+203
+00:14:59,700 --> 00:15:02,550
+Failed judge calls leave a score of zero.
+
+204
+00:15:03,050 --> 00:15:07,363
+That's why the order matters: we settle
+whether the eval is valid, and whether it
+
+205
+00:15:07,363 --> 00:15:10,025
+completed, before believing what any
+verdict says.
+
+206
+00:15:11,233 --> 00:15:15,579
+It's worth keeping these as a table: the
+symptom, where to look, and the cheapest
+
+207
+00:15:15,579 --> 00:15:16,383
+proof of a fix.
+
+208
+00:15:16,883 --> 00:15:19,508
+Two rows deserve a second look.
+
+209
+00:15:20,008 --> 00:15:24,118
+Timed-out trials still cost money, so
+running a timeout again without raising
+
+210
+00:15:24,118 --> 00:15:26,733
+the limit pays the same again for the same
+ERROR.
+
+211
+00:15:27,233 --> 00:15:29,983
+Judge calls that fail aren't tried again.
+
+212
+00:15:30,483 --> 00:15:34,689
+So if a judge fails because its service
+was down for a moment, the trials are
+
+213
+00:15:34,689 --> 00:15:37,583
+still on disk, and re-grading them is the
+second try.
+
+214
+00:15:38,800 --> 00:15:42,200
+Before you go on: what are the four
+questions, in order?
+
+215
+00:15:45,200 --> 00:15:49,175
+Is the eval valid: lint and the run's
+first lines answer that.
+
+216
+00:15:49,675 --> 00:15:53,050
+Did it complete: the ERROR lines and the
+trial's folder.
+
+217
+00:15:53,550 --> 00:15:58,086
+Why was the result unexpected: the
+grader's evidence, the verbose output, and
+
+218
+00:15:58,086 --> 00:15:58,675
+the patch.
+
+219
+00:15:59,175 --> 00:16:03,654
+Does the fix work: a re-grade of the saved
+trials, or one new run when the fix
+
+220
+00:16:03,654 --> 00:16:04,975
+changes the run itself.
+
+221
+00:16:06,200 --> 00:16:10,784
+You can now find out why a run went wrong
+from what it left behind, and prove a fix
+
+222
+00:16:10,784 --> 00:16:12,275
+with the fewest agent runs.
+
+223
+00:16:12,775 --> 00:16:15,400
+So we can measure, gate and debug.
+
+224
+00:16:15,900 --> 00:16:20,025
+What's left is to make it a routine that
+you and a teammate can repeat.
+
+225
+00:16:20,525 --> 00:16:22,375
+That's the next lesson.
+
+226
+00:16:22,875 --> 00:16:27,725
+On the lesson page there are exercises,
+and a longer table of symptoms to keep.

@@ -1,0 +1,321 @@
+{
+  "type": "comparison",
+  "baseline": "haiku-before",
+  "treatment": "haiku-after",
+  "summary": {
+    "trialCount": 9,
+    "erroredCount": 0,
+    "meanScore": 0.3333333333333333,
+    "ciLow": -0.08060633484173901,
+    "ciHigh": 0.7472730015084057,
+    "wins": 4,
+    "ties": 4,
+    "losses": 1,
+    "winRate": 0.4444444444444444,
+    "mcnemar": {
+      "baselineOnly": 0,
+      "treatmentOnly": 4,
+      "concordant": 5,
+      "pValue": 0.125,
+      "exact": true
+    },
+    "metricDeltas": [
+      {
+        "metric": "totalTokens",
+        "mean": -13685.222222222223,
+        "ciLow": -17685.635267515932,
+        "ciHigh": -9684.809176928513,
+        "stdDev": 5204.353484770653,
+        "highVariance": false
+      },
+      {
+        "metric": "turnCount",
+        "mean": -0.8888888888888888,
+        "ciLow": -1.145111111111111,
+        "ciHigh": -0.6326666666666666,
+        "stdDev": 0.33333333333333337,
+        "highVariance": false
+      },
+      {
+        "metric": "toolCallCount",
+        "mean": -0.8888888888888888,
+        "ciLow": -1.145111111111111,
+        "ciHigh": -0.6326666666666666,
+        "stdDev": 0.33333333333333337,
+        "highVariance": false
+      },
+      {
+        "metric": "wallTimeMs",
+        "mean": -628.2222222222222,
+        "ciLow": -1603.0061803071108,
+        "ciHigh": 346.5617358626665,
+        "stdDev": 1268.1491215328126,
+        "highVariance": true
+      },
+      {
+        "metric": "errorCount",
+        "mean": 0,
+        "ciLow": 0,
+        "ciHigh": 0,
+        "stdDev": 0,
+        "highVariance": false
+      }
+    ]
+  },
+  "stimuli": [
+    {
+      "stimulusName": "cache",
+      "trials": [
+        {
+          "trialIndex": 0,
+          "winner": "treatment",
+          "magnitude": "much-better",
+          "score": 1,
+          "evidence": "Response B's entry is user-focused and leaves out the implementation. Response A's entry includes \"LRU caching\", which is an implementation detail and fails the rubric.",
+          "criteria": [
+            {
+              "criterion": "Changelog entry says what changes for users and not how it was coded",
+              "winner": "tie",
+              "magnitude": "equal",
+              "score": 0,
+              "evidence": "Position-swap unverified: reverse judgment did not include this criterion. Defaulting to tie."
+            }
+          ],
+          "metricDeltas": {
+            "totalTokens": -15224,
+            "turnCount": -1,
+            "toolCallCount": -1,
+            "wallTimeMs": 1268,
+            "errorCount": 0
+          },
+          "baselinePassed": false,
+          "treatmentPassed": true,
+          "errored": false
+        },
+        {
+          "trialIndex": 1,
+          "winner": "treatment",
+          "magnitude": "much-better",
+          "score": 1,
+          "evidence": "Response B's entry is user-facing, while Response A's entry mentions the LRU cache.",
+          "criteria": [
+            {
+              "criterion": "The new changelog entry says what changes for people who use the tool, and does not say how it was coded.",
+              "winner": "treatment",
+              "magnitude": "much-better",
+              "score": 1,
+              "evidence": "Response B wrote \"Improve performance of `notes list --tag` on large note folders (#66)\". That describes the user-visible change and leaves out the implementation. Response A wrote \"...with LRU cache for tag index\", which describes how it was coded and fails the criterion."
+            }
+          ],
+          "metricDeltas": {
+            "totalTokens": -15606,
+            "turnCount": -1,
+            "toolCallCount": -1,
+            "wallTimeMs": -728,
+            "errorCount": 0
+          },
+          "baselinePassed": false,
+          "treatmentPassed": true,
+          "errored": false
+        },
+        {
+          "trialIndex": 2,
+          "winner": "treatment",
+          "magnitude": "much-better",
+          "score": 1,
+          "evidence": "Response B's entry describes only the user-facing benefit. Response A's entry names the LRU cache, which is an implementation detail and fails the rubric.",
+          "criteria": [
+            {
+              "criterion": "The new changelog entry says what changes for people who use the tool, and does not say how it was coded.",
+              "winner": "treatment",
+              "magnitude": "much-better",
+              "score": 1,
+              "evidence": "B wrote 'Improve performance of `notes list --tag` on large folders (#66)', which is user-facing with no implementation detail. A wrote '...with LRU cache on large folders', which leaks the implementation."
+            }
+          ],
+          "metricDeltas": {
+            "totalTokens": -15638,
+            "turnCount": -1,
+            "toolCallCount": -1,
+            "wallTimeMs": -2077,
+            "errorCount": 0
+          },
+          "baselinePassed": false,
+          "treatmentPassed": true,
+          "errored": false
+        }
+      ],
+      "meanScore": 1
+    },
+    {
+      "stimulusName": "dates",
+      "trials": [
+        {
+          "trialIndex": 0,
+          "winner": "baseline",
+          "magnitude": "slightly-worse",
+          "score": -0.4,
+          "evidence": "Both entries describe the user-visible fix and leave out the tokenizer and regex. A adds an example date (2026-1-5), which makes the change more concrete for users.",
+          "criteria": [
+            {
+              "criterion": "Entry says what changes for users, not how coded",
+              "winner": "tie",
+              "magnitude": "equal",
+              "score": 0,
+              "evidence": "Position-swap unverified: reverse judgment did not include this criterion. Defaulting to tie."
+            }
+          ],
+          "metricDeltas": {
+            "totalTokens": -15650,
+            "turnCount": -1,
+            "toolCallCount": -1,
+            "wallTimeMs": -1513,
+            "errorCount": 0
+          },
+          "baselinePassed": true,
+          "treatmentPassed": true,
+          "errored": false
+        },
+        {
+          "trialIndex": 1,
+          "winner": "tie",
+          "magnitude": "equal",
+          "score": 0,
+          "evidence": "Both runs wrote the same changelog entry, word for word. Neither mentions the tokenizer or the regex, and both describe the user-facing change. The only difference is the closing message, which doesn't affect the entry.",
+          "criteria": [
+            {
+              "criterion": "The new changelog entry says what changes for people who use the tool, and does not say how it was coded.",
+              "winner": "tie",
+              "magnitude": "equal",
+              "score": 0,
+              "evidence": "Both runs added the identical entry: 'Fix date parser to handle single-digit months and days (#67)'. It is user-facing and omits the implementation details."
+            }
+          ],
+          "metricDeltas": {
+            "totalTokens": 184,
+            "turnCount": 0,
+            "toolCallCount": 0,
+            "wallTimeMs": 1130,
+            "errorCount": 0
+          },
+          "baselinePassed": true,
+          "treatmentPassed": true,
+          "errored": false
+        },
+        {
+          "trialIndex": 2,
+          "winner": "tie",
+          "magnitude": "equal",
+          "score": 0,
+          "evidence": "Both agents added a near-identical Fixed entry under Unreleased. Neither mentions the tokenizer or regex. Both are acceptable.",
+          "criteria": [
+            {
+              "criterion": "User-facing entry, no implementation detail",
+              "winner": "tie",
+              "magnitude": "equal",
+              "score": 0,
+              "evidence": "Position-swap unverified: reverse judgment did not include this criterion. Defaulting to tie."
+            }
+          ],
+          "metricDeltas": {
+            "totalTokens": -15187,
+            "turnCount": -1,
+            "toolCallCount": -1,
+            "wallTimeMs": -2192,
+            "errorCount": 0
+          },
+          "baselinePassed": true,
+          "treatmentPassed": true,
+          "errored": false
+        }
+      ],
+      "meanScore": -0.13333333333333333
+    },
+    {
+      "stimulusName": "parser",
+      "trials": [
+        {
+          "trialIndex": 0,
+          "winner": "treatment",
+          "magnitude": "slightly-better",
+          "score": 0.4,
+          "evidence": "A's entry says \"by using streaming JSON parser\", which describes the implementation. B's entry is \"Fix out-of-memory error on large imports (#49)\", which stays on the user-visible change.",
+          "criteria": [
+            {
+              "criterion": "The new changelog entry says what changes for people who use the tool, and does not say how it was coded.",
+              "winner": "treatment",
+              "magnitude": "slightly-better",
+              "score": 0.4,
+              "evidence": "A's entry includes the implementation detail \"by using streaming JSON parser\", which breaks the criterion. B's entry only states that large imports no longer hit an out-of-memory error. B's entry text was taken from its final message, not from the file edit. [Magnitude reduced to \"slightly-better\": the position-swapped pass judged this \"slightly-better\", so the more confident \"much-better\" was downgraded.]"
+            }
+          ],
+          "metricDeltas": {
+            "totalTokens": -15484,
+            "turnCount": -1,
+            "toolCallCount": -1,
+            "wallTimeMs": -774,
+            "errorCount": 0
+          },
+          "baselinePassed": false,
+          "treatmentPassed": true,
+          "errored": false
+        },
+        {
+          "trialIndex": 1,
+          "winner": "tie",
+          "magnitude": "equal",
+          "score": 0,
+          "evidence": "The two changelog entries are nearly word-for-word the same. Both are user-focused and neither mentions the streaming parser. Run 1's chat summary mentions \"streaming parser\", but the changelog itself does not.",
+          "criteria": [
+            {
+              "criterion": "The new changelog entry says what changes for people who use the tool, and does not say how it was coded.",
+              "winner": "tie",
+              "magnitude": "equal",
+              "score": 0,
+              "evidence": "Run 1's entry reads \"Fix out-of-memory errors when importing large files (#49)\". Run 2's reads \"Fix out-of-memory error when importing large files (#49)\". Both say what changes for users and omit implementation details. Run 1's final message mentions the streaming parser, but that is outside the changelog file."
+            }
+          ],
+          "metricDeltas": {
+            "totalTokens": -15359,
+            "turnCount": -1,
+            "toolCallCount": -1,
+            "wallTimeMs": -976,
+            "errorCount": 0
+          },
+          "baselinePassed": true,
+          "treatmentPassed": true,
+          "errored": false
+        },
+        {
+          "trialIndex": 2,
+          "winner": "tie",
+          "magnitude": "equal",
+          "score": 0,
+          "evidence": "Both responses added essentially the same user-facing entry under Fixed: an out-of-memory fix for importing large files (#49). Neither entry mentions the streaming parser or importer.js. A's chat summary mentions the parser, but the changelog entry itself does not.",
+          "criteria": [
+            {
+              "criterion": "The new changelog entry says what changes for people who use the tool, and does not say how it was coded.",
+              "winner": "tie",
+              "magnitude": "equal",
+              "score": 0,
+              "evidence": "A's entry reads \"Fix out-of-memory errors when importing large files (#49)\". B's reads \"Fix out-of-memory error when importing large files (#49)\". Both describe the user-visible change and leave out the implementation."
+            }
+          ],
+          "metricDeltas": {
+            "totalTokens": -15203,
+            "turnCount": -1,
+            "toolCallCount": -1,
+            "wallTimeMs": 208,
+            "errorCount": 0
+          },
+          "baselinePassed": true,
+          "treatmentPassed": true,
+          "errored": false
+        }
+      ],
+      "meanScore": 0.13333333333333333
+    }
+  ],
+  "unmatchedBaseline": [],
+  "unmatchedTreatment": []
+}

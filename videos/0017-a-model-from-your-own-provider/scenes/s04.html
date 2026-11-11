@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The executor runs the agent</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.stage{gap:22px}.stage > .semantic-block{width:100%;padding-top:18px;padding-bottom:20px}.stage > .semantic-block .label{font-size:34px}.steps .semantic-block{min-height:0;padding-top:16px;padding-bottom:18px}.steps .title{font-size:34px}.steps .label{display:none}.terms .semantic-block{min-height:0;padding-top:18px;padding-bottom:20px}.terms .title{font-size:38px}.terms .label{font-size:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Bring your own key</div>
+  <h2 class="scene-title">The executor runs the agent</h2>
+  <div class="stage">
+<div class="semantic-block" data-concept="def" data-rep="block" data-role="structure">
+      <div class="title">executor</div><div class="label">The part of Vally that runs the agent for each trial.</div>
+    </div>
+  <div class="cols steps">
+    <div class="semantic-block" data-concept="st1" data-rep="block" data-role="transform">
+      <div class="step">1</div><div class="title words">starts a session</div><div class="label"></div>
+    </div>
+    <div class="semantic-block" data-concept="st2" data-rep="block" data-role="transform">
+      <div class="step">2</div><div class="title words">sends the stimulus</div><div class="label"></div>
+    </div>
+    <div class="semantic-block" data-concept="st3" data-rep="block" data-role="transform">
+      <div class="step">3</div><div class="title words">records what happened</div><div class="label"></div>
+    </div>
+  </div>
+  <div class="cols wide terms">
+    <div class="semantic-block" data-concept="sdk" data-rep="block" data-role="structure">
+      <div class="title">copilot-sdk</div><div class="label">the built-in executor: models through your Copilot account</div>
+    </div>
+    <div class="semantic-block" data-concept="byok" data-rep="block" data-role="attention">
+      <div class="title words">bring your own key</div><div class="label">the executor calls a provider you choose, with your credentials</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "def",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "st1",
+  "at": "2~starts",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "st2",
+  "at": "2~sends",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "st3",
+  "at": "2~records",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "sdk",
+  "at": "3~built-in",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "byok",
+  "at": "4",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

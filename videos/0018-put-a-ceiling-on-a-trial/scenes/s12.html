@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three limits, three behaviours</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.limits .semantic-block{min-height:300px}.limits .title{font-size:38px}.limits .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Limits that stop the agent</div>
+  <h2 class="scene-title">Three limits, three behaviours</h2>
+  <div class="stage">
+<div class="cols terms limits">
+    <div class="semantic-block" data-concept="mad" data-rep="block" data-role="success">
+      <div class="title">max_agent_duration</div><div class="label">stops the agent · grades its partial work</div>
+    </div>
+    <div class="semantic-block" data-concept="md" data-rep="block" data-role="failure">
+      <div class="title">max_duration</div><div class="label">a hard limit · the trial is stopped, and fails</div>
+    </div>
+    <div class="semantic-block" data-concept="mt" data-rep="block" data-role="attention">
+      <div class="title">max_turns</div><div class="label">the most turns · what happens at the limit is not documented</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "mad",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "md",
+  "at": "2",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "mt",
+  "at": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

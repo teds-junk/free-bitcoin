@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 4: Read the runs before writing graders — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 4 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Read the runs before writing graders</h1>
+    <div class="lesson-meta">12 min · Write a short list of the skill's failure modes, each with the trial that shows it.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What is the difference between a stimulus marked <code>FAIL</code> and one marked <code>ERROR</code>?
+        <details class="answer"><summary>Show answer</summary><p><code>FAIL</code> means every trial finished and none passed its graders. <code>ERROR</code> means at least one trial did not finish, so there was nothing to judge; run it again.</p></details></li>
+      <li>A trial passes all its graders. What does that tell you, and what does it not?
+        <details class="answer"><summary>Show answer</summary><p>It tells you none of the graders objected. It does not tell you the result is correct: a grader looks only at what it was told to look for.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You can count, over several trials, how often each model makes one mistake on one request.</p>
+    <p><strong>This lesson answers:</strong> What else goes wrong when the requests get messier?</p>
+  </div>
+
+  <p class="drop-cap">You know about one problem because you happened to look. The request you have been using is one of the tidier things a person might ask for. Real requests mention changes users will never see, bundle two changes together, describe a fix by how it was coded, or arrive just after a release. Before writing a single grader, you need to see what the skill does with those, and the only way to see is to read.</p>
+
+  <h2 id="read-first" data-mode="think">Why reading comes first</h2>
+
+  <p>The natural instinct is to sit down and list what a good changelog entry looks like, then write graders for the list. The trouble is that the list comes from your imagination, and the failures come from the models. In lesson 1 nobody would have thought to write "must not invent a pull request number" until a model did it.</p>
+
+  <p>Practitioners who do this for a living put it as a rule: "Write evaluators for errors you discover, not errors you imagine." Evaluators is their word for graders. The process they recommend is plain. Run realistic requests, read what came back, write a short note on each, and group the notes. They call it <strong>error analysis</strong>.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">Failure mode</div>
+    <p>A named way in which the skill's output goes wrong, seen in at least one real trial. "Records a change users cannot see" is a failure mode. "Trial 3 looked odd" is not yet one.</p>
+  </div>
+
+  <p>Reading also does something a list cannot: it makes you decide what you want. Is a security fix filed under "Fixed" wrong? You will not have an opinion until you see it, and once you do, that opinion is a rule the skill is missing. Researchers who studied this found that people's criteria shift as they read outputs, so criteria written beforehand are incomplete.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 150" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="Four steps in a row: run requests, read each patch, note what is wrong, group the notes into failure modes">
+      <rect x="6" y="20" width="136" height="56" rx="3"/>
+      <rect x="170" y="20" width="136" height="56" rx="3"/>
+      <rect x="334" y="20" width="136" height="56" rx="3"/>
+      <rect x="498" y="20" width="136" height="56" rx="3" style="stroke: var(--accent)"/>
+      <path d="M142 48 L168 48 M160 42 L168 48 L160 54"/>
+      <path d="M306 48 L332 48 M324 42 L332 48 L324 54"/>
+      <path d="M470 48 L496 48 M488 42 L496 48 L488 54"/>
+      <g style="font-family: var(--grotesk); font-size: 22px; fill: currentColor; stroke: none">
+        <text x="74" y="56" text-anchor="middle">Run</text>
+        <text x="238" y="56" text-anchor="middle">Read</text>
+        <text x="402" y="56" text-anchor="middle">Note</text>
+        <text x="566" y="56" text-anchor="middle">Group</text>
+      </g>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="74" y="110" text-anchor="middle">requests</text>
+        <text x="238" y="110" text-anchor="middle">each patch</text>
+        <text x="402" y="110" text-anchor="middle">what is off</text>
+        <text x="566" y="110" text-anchor="middle">into modes</text>
+      </g>
+    </svg>
+    <figcaption>Error analysis. Graders come after the last box, and only for failure modes you have seen.</figcaption>
+  </figure>
+
+  <p>How many runs are enough? The same practitioners suggest reading at least a hundred for a real product, and stopping when new ones stop showing you anything new. This lesson reads twelve. That is enough to find the main failure modes of a five-line skill, and too few to be sure you have found them all.</p>
+
+  <div class="source-citation">Sources: <a href="https://hamel.dev/blog/posts/evals-faq/">Husain and Shankar, AI Evals FAQ, reissued 2026-09-18</a>, which says "traces" where Vally says trajectories; <a href="https://arxiv.org/abs/2404.12272">Shankar et al., Who Validates the Validators?, 2024</a>, on criteria shifting as outputs are read.</div>
+
+  <h2 id="six-requests" data-mode="works">Six ordinary requests</h2>
+
+  <p>The starter folder has a second eval file with six stimuli. One eval file can hold as many as you like, and Vally runs each of them on each model.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/six-requests.eval.yaml</div>
+<pre><code class="language-yaml">name: six
+
+defaults:
+  timeout: 3m
+
+agent_environment:
+  skills:
+    - ../skills/changelog-entry
+
+stimuli:
+  - name: typo-fix<span class="mark">1</span>
+    prompt: |
+      I fixed the typo in the help text for `notes add`
+      (it said "tittle"). Put that in the changelog.
+    agent_environment:<span class="mark">2</span>
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+<span class="gap">43 lines hidden: four more stimuli</span>
+  - name: after-release<span class="mark">3</span>
+    prompt: |
+      PR 58 just landed: `notes add` now accepts
+      `--from-clipboard` to create a note from whatever
+      is on the clipboard. Add it to the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/just-released/CHANGELOG.md<span class="mark">4</span>
+          dest: CHANGELOG.md</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The request you already know, so this run can be compared with lesson 3.</li>
+      <li>A stimulus can have its own <code>agent_environment</code>. Here each stimulus names the changelog it starts from. The skill is listed once, at the top, for all of them.</li>
+      <li>There are no <code>graders</code> anywhere in this file. That is allowed.</li>
+      <li>This stimulus starts from a different changelog: one where version 1.3.0 has just been released, so there is no "Unreleased" section yet.</li>
+    </ol>
+  </div>
+
+  <p>The four hidden stimuli are a refactor (a tidying of the code that changes nothing for users), one pull request containing two changes, a security fix, and a fix described by how it was coded. Each one leaves the skill something to decide that it does not mention.</p>
+
+  <p>To judge the results you need one fact about the project. Its changelog follows a public format called Keep a Changelog. That format has six categories, in this order: Added, Changed, Deprecated, Removed, Fixed and Security. It writes the heading for unshipped changes as <code>## [Unreleased]</code>, with the square brackets. The skill mentions none of this.</p>
+
+  <p>Because the purpose of this run is to read, the command adds <code>--skip-grade</code>. With it, Vally runs the agents and saves everything as usual, and skips grading. This file has no graders, so the option changes nothing yet; it states the purpose, and it is what you would use on a file that has some. The summary still prints ticks. With <code>--skip-grade</code> a tick means only that the trial finished.</p>
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/cli/eval/">Vally docs, CLI: eval</a>; <a href="https://keepachangelog.com/en/1.1.0/">Keep a Changelog 1.1.0</a>. The meaning of the ticks is from our run on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="read-and-name" data-mode="use">Read and name</h2>
+
+  <p>You will run the six stimuli once on each of your two models, read all twelve patches, write one note per trial, and group the notes into failure modes.</p>
+
+  <div class="predict">
+    <p>Read the skill again in your head. Which of these do you expect it to handle badly: the refactor users cannot see, the two changes in one pull request, the security fix, the fix described in code terms, or the changelog with no "Unreleased" section?</p>
+    <details class="answer"><summary>Check your prediction</summary><p>Compare with your notes after the checkpoint. In our run the two-changes request, the one that looks hardest, was handled well by both models, and the plain-looking refactor was handled badly by both.</p></details>
+  </div>
+
+  <section class="checkpoint">
+    <h3>Twelve trials, read one by one</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: confirm the eval file has no mistakes. This starts no agent.</span>
+        Open a terminal in <code>practice</code>.
+<pre><code class="language-bash">vally lint -e evals/six-requests.eval.yaml</code></pre>
+<pre class="output"><code>✔ evals/six-requests.eval.yaml is valid</code></pre></li>
+
+      <li><span class="goal">Goal: run six stimuli on two models without grading. This spends twelve short agent runs and takes a minute or two.</span>
+<pre><code class="language-bash">vally eval -e evals/six-requests.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --skip-grade --workers 2 \
+  --output-dir results/lesson-4</code></pre>
+<pre class="output"><code>Model summary
+  ✓ claude-haiku-4.5  1/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval  claude-haiku-4.5  gpt-5.6-terra
+  six   ✓ 6/6             ✓ 6/6</code></pre>
+        <p class="expect">You should see: six of six for each model, meaning all twelve trials finished. Nothing was graded. If you see <code>ERROR</code>, run the command again.</p></li>
+
+      <li><span class="goal">Goal: find this run's folder.</span>
+<pre><code class="language-bash">ls results/lesson-4</code></pre>
+        <p class="expect">You should see: one folder named with a time. Use its name in the next step.</p></li>
+
+      <li><span class="goal">Goal: move to the saved trials.</span>
+<pre><code class="language-bash">cd results/lesson-4/2026-11-10T14-59-59-177Z/six
+ls</code></pre>
+<pre class="output"><code>after-release
+parser
+refactor
+security
+two-changes
+typo-fix</code></pre></li>
+
+      <li><span class="goal">Goal: make a place for your notes. This creates one file.</span>
+        In a text editor, create <code>notes/failures.md</code> inside <code>practice</code>. You will write one line per trial: the stimulus, the model, what the agent did, and anything you think is wrong.</li>
+
+      <li><span class="goal">Goal: read the first trial and write its note.</span>
+<pre><code class="language-bash">cat refactor/claude-haiku-4.5/0/workspace.patch</code></pre>
+        <p class="expect">You should see: a patch. Read the <code>+</code> lines and write your note. Ask yourself one question: would I be content to see this in my project's changelog?</p></li>
+
+      <li><span class="goal">Goal: read the other eleven.</span>
+        Repeat for each stimulus folder and each model. If a patch is empty, open <code>results.jsonl</code>, which is one folder up from here, and search for <code>"output"</code> to find the agent's reply, as in lesson 3.</li>
+
+      <li><span class="goal">Goal: turn twelve notes into a short list.</span>
+        Group the notes that describe the same kind of problem, and give each group a name of a few plain words. Add the names to the top of <code>notes/failures.md</code>, each with one trial that shows it. Then compare with ours, where "haiku" and "terra" are short for our two models.
+        <details class="answer"><summary>Show our notes and failure modes</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Stimulus</th><th>Model</th><th>What the agent did</th></tr></thead>
+            <tbody>
+              <tr><td>typo-fix</td><td>haiku</td><td>Entry under Fixed, no pull request number. Fine.</td></tr>
+              <tr><td>typo-fix</td><td>terra</td><td>Entry under Fixed ending <code>(#42)</code>, a number nobody gave it.</td></tr>
+              <tr><td>refactor</td><td>both</td><td>Added an entry under Changed for a change users cannot see.</td></tr>
+              <tr><td>two-changes</td><td>both</td><td>Two entries, under Added and Fixed, both citing #60. Fine.</td></tr>
+              <tr><td>security</td><td>both</td><td>Entry under Fixed.</td></tr>
+              <tr><td>parser</td><td>haiku</td><td>Entry ends "by using streaming parser".</td></tr>
+              <tr><td>parser</td><td>terra</td><td>Entry says only what users notice. Fine.</td></tr>
+              <tr><td>after-release</td><td>haiku</td><td>New heading <code>## [Unreleased]</code>. Fine.</td></tr>
+              <tr><td>after-release</td><td>terra</td><td>New heading <code>## Unreleased</code>; the file's headings have brackets.</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Failure modes, with the trial that shows each:</p>
+          <ol>
+            <li><strong>No rule for a missing pull request number.</strong> The model invents one. Typo-fix, terra, and lesson 3.</li>
+            <li><strong>Records a change users cannot see.</strong> Refactor, both models.</li>
+            <li><strong>Files a security fix under Fixed.</strong> Security, both models. The changelog format this project follows has a separate Security category.</li>
+            <li><strong>Describes how the fix was coded.</strong> Parser, haiku.</li>
+            <li><strong>New Unreleased heading does not match the file.</strong> After-release, terra.</li>
+          </ol>
+        </details></li>
+
+      <li><span class="goal">Goal: return to the practice folder.</span>
+<pre><code class="language-bash">cd ../../../..</code></pre></li>
+    </ol>
+  </section>
+
+  <h2 id="where-the-failures-come-from" data-mode="think">Where the failures come from</h2>
+
+  <p>Look at where our five failure modes come from. In every one, the skill left a question open: what to do without a pull request number, which changes count, which categories exist, what "written for people who use the tool" rules out, what a new heading looks like. The models did not disobey the skill. They each filled a gap, and they filled it differently. That is good news, because gaps in a skill are yours to close.</p>
+
+  <p>Your list will not match ours exactly, and some entries on it will be matters of taste. Deciding which ones you care about is part of the work. The project's format settles two of ours: a security fix has its own category, and the heading has square brackets.</p>
+
+  <div class="primary-source">
+    <p><a href="https://hamel.dev/blog/posts/evals-faq/">AI Evals FAQ, Hamel Husain and Shreya Shankar, reissued 2026-09-18</a></p>
+    <p>Read the questions on error analysis: how to read outputs, how to note what is wrong, and when to stop. It is the fullest account of the process this lesson walks through once.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, explain why graders written before reading any runs are likely to miss the failures that matter.
+        <details class="answer"><summary>Show model answer</summary><p>Such graders check for failures you imagined, and the real failures come from what the models do with gaps in the skill, which you cannot predict. Reading also changes what you consider wrong, so criteria written beforehand are incomplete.</p></details></li>
+      <li>Pick one failure mode from your list and write the sentence you would add to the skill to close that gap. Do not edit the skill yet: lesson 5 measures first.
+        <details class="answer"><summary>Show model answer</summary><p>For "records a change users cannot see", one possibility: "If a change makes no difference to people who use the tool, such as a refactor, add nothing and say so." A good rule names the case and says what to do.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="4" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> write a short list of the skill's failure modes, each with the trial that shows it.</p>
+    <p><strong>Up next:</strong> <a href="./0005-turn-a-failure-into-a-grader.html">Turn a failure into a grader</a>. You found the failures by reading. After every edit to the skill you would have to read them all again. Can code do the reading?</p>
+    <a class="next-lesson" href="./0005-turn-a-failure-into-a-grader.html">Next lesson: Turn a failure into a grader <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

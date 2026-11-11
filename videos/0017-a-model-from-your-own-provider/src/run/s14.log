@@ -1,0 +1,6 @@
+ollama version is 0.18.1
+NAME                  ID              SIZE      MODIFIED
+gpt-oss:20b           17052f91a42e    13 GB     7 months ago
+qwen3.5:0.8b          f3817196d142    1.0 GB    7 months ago
+qwen3.5:9b            6488c96fa5fa    6.6 GB    7 months ago
+phi4-reasoning:14b    47e2630ccbcd    11 GB     7 months ago

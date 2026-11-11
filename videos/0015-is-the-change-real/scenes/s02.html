@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A count is an estimate</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.ranges{display:grid;grid-template-columns:max-content 1fr max-content;gap:14px 28px;align-items:center;width:100%}.ranges .rl{font:500 34px/1.2 var(--font-code);color:var(--ink);white-space:nowrap}.ranges .rt{font:400 32px/1.2 var(--font-body);color:var(--ink-soft);white-space:nowrap}.ranges .track{position:relative;height:46px;background:var(--paper-muted);border-radius:var(--radius)}.ranges .fill{position:absolute;top:0;bottom:0;border-radius:var(--radius)}.ranges .fill.before{background:var(--focus-blue)}.ranges .fill.after{background:var(--focus-yellow)}.ranges .at{position:absolute;top:7px;bottom:7px;width:6px;margin-left:-3px;border-radius:3px;background:var(--ink)}.ranges .axis{grid-column:2;display:flex;justify-content:space-between;font:400 26px/1 var(--font-body);color:var(--ink-muted)}.ranges .group{grid-column:1 / -1;font:600 28px/1.2 var(--font-body);color:var(--ink-soft);margin-top:10px}.est{align-items:center;grid-auto-columns:auto;grid-template-columns:520px 1fr}.est .semantic-block{min-height:300px;justify-content:center}.est .title{font-size:104px;line-height:1.1}.est .label{font-size:34px}.right{display:flex;flex-direction:column;gap:40px}.lead{font-size:36px;margin:0}.ranges .rl{font-family:var(--font-body);font-weight:400;font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What a small sample can show</div>
+  <h2 class="scene-title">A count is an estimate</h2>
+  <div class="stage">
+<div class="cols wide est">
+    <div class="semantic-block" data-concept="count" data-rep="block" data-role="structure">
+      <div class="title">7 of 10</div><div class="label">70% of these trials passed</div>
+    </div>
+    <div class="right">
+      <div class="ranges">
+      <div class="rl"><span data-concept="rng" data-rep="cell">the true pass rate</span></div>
+      <div class="track"><div class="fill before" style="left:39.7%;width:49.5%"></div><div class="at" style="left:70.0%"></div></div>
+      <div class="rt">40% to 89%</div>
+      <div class="axis"><span>0%</span><span>50%</span><span>100%</span></div>
+    </div>
+      <p class="lead"><span data-concept="prob" data-rep="note">“Probably”: ranges worked out this way hold the true rate about 95 times in 100.</span></p>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "count",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "rng",
+  "at": "4~a range",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "prob",
+  "at": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

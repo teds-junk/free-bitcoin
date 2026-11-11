@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>An added line with a number</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.pieces{min-width:860px;font-size:42px;line-height:1.55}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Graders that read the diff</div>
+  <h2 class="scene-title">An added line with a number</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark pieces" data-lang="text"><code><span>pattern: </span><span data-concept="whole" data-rep="code"><span>'(?m)^\+.*\(#\d+\)'</span></span>
+
+<span>  </span><span data-concept="m" data-rep="code"><span>(?m)</span></span>
+<span>  </span><span data-concept="plus" data-rep="code"><span>^\+</span></span>
+<span>  </span><span data-concept="any" data-rep="code"><span>.*</span></span>
+<span>  </span><span data-concept="num" data-rep="code"><span>\(#\d+\)</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="m">^ matches at the start of every line</p><p class="callout" data-anchor="plus">a line that starts with +</p><p class="callout" data-anchor="any">anything</p><p class="callout" data-anchor="num">a hash and digits, in brackets</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "plus",
+  "at": "1~caret",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "m",
+  "at": "2~switch",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "any",
+  "at": "3~anything",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "num",
+  "at": "3~hash",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "whole",
+  "at": "4",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What are the three habits?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#habits{width:100%;padding:36px 40px 44px;gap:24px}#habits .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}#habits .part{min-height:300px}#habits .part .title{font-size:46px;line-height:1.2}#habits .part .label{font-size:30px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">What are the three habits?</h2>
+  <div class="stage">
+<div class="semantic-block" id="habits" data-role="structure">
+    <div class="title words">a judge whose verdicts we can use</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title words">One question per judge</div><div class="label">so a no has one cause</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title words">Yes or no</div><div class="label">a clear criterion, not a score</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title words">Our own answers first</div><div class="label">each answer is a label</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#habits",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

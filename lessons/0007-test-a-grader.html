@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 7: Test a grader without running an agent — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 7 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Test a grader without running an agent</h1>
+    <div class="lesson-meta">15 min · Keep a golden patch for a stimulus, and use <code>vally oracle</code> to show that its graders pass a correct answer and fail an untouched file.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What does the grading environment add, and when?
+        <details class="answer"><summary>Show answer</summary><p>Files for graders only, added to a copy of the finished workspace after the agent has stopped. The agent never sees them.</p></details></li>
+      <li>In a patch, how do you tell a line the agent added from one that was already there?
+        <details class="answer"><summary>Show answer</summary><p>An added line begins with <code>+</code>. A line that was already there begins with a space.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You have five stimuli with graders, two of them graded by a script the agent cannot see, and those graders now decide whether your skill is improving.</p>
+    <p><strong>This lesson answers:</strong> How do I know a grader passes correct work and fails missing work?</p>
+  </div>
+
+  <p class="drop-cap">Every decision you make about the skill from here on rests on the graders. If one of them is wrong, you will "fix" things that were fine or, worse, believe a failure is gone when the grader simply cannot see it. A grader is a small program, and programs have bugs. So before trusting one, test it. The pleasant surprise of this lesson is that testing a grader needs no agent at all, costs nothing, and takes seconds.</p>
+
+  <h2 id="two-ways-wrong" data-mode="think">Two ways a grader can be wrong</h2>
+
+  <p>A grader gives one of two answers, so it can be wrong in two ways.</p>
+
+  <ul>
+    <li><strong>It fails correct work.</strong> The agent did the right thing and the grader objects anyway, perhaps because it insists on one exact wording. You then chase a problem that is not there.</li>
+    <li><strong>It passes work that was not done.</strong> The grader is so loose, or so broken, that it is satisfied by anything, including nothing. You then stop looking at a problem that is still there.</li>
+  </ul>
+
+  <p>To test for each, you need the matching example. For the first, a result you know is correct: if the grader fails it, the grader is wrong. For the second, a result you know is empty, the starting files with nothing done: if the grader passes that, it is not checking the work.</p>
+
+  <p>You have used a rough form of the second test already. In lesson 5 you ran new graders against the skill before editing it and watched each one fail. This lesson makes both tests exact, and repeatable.</p>
+
+  <h2 id="golden-patch" data-mode="works">A golden patch</h2>
+
+  <div class="callout definition">
+    <div class="callout-title">Golden patch</div>
+    <p>A patch you keep, which records exactly the changes a correct answer would make to the starting files. "Golden" is the usual word for a reference answer that is known to be good.</p>
+  </div>
+
+  <p>You have been reading patches since lesson 1, and you already own several correct ones: every trial whose <code>workspace.patch</code> you read and judged right. A golden patch is one of those, copied to a place where you keep it. This is ours for the <code>typo-fix</code> stimulus. It is the patch from a trial in lesson 6, unchanged.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/golden/typo-fix.patch</div>
+<pre><code class="language-diff">diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 616c9f6..3923438 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,6 +7,9 @@ All notable changes to notes-cli.
+ ### Added
+ - Add `notes list --tag` to filter by tag (#41)
+
+<span class="hl">+### Fixed<span class="mark">1</span></span>
+<span class="hl">+- Fix typo in help text for `notes add`<span class="mark">2</span></span>
+<span class="hl">+</span>
+ ## [1.2.0] - 2026-09-14
+
+ ### Added</code></pre>
+    </div>
+    <ol class="notes">
+      <li>A new Fixed category under Unreleased, in the right place.</li>
+      <li>One entry that mentions the command and cites no pull request, because the request gave none. This is what a correct answer looks like for this stimulus.</li>
+    </ol>
+  </div>
+
+  <p>The eval file names the golden patch inside the stimulus it belongs to.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/changelog.eval.yaml (the first stimulus)</div>
+<pre><code class="language-yaml">  - name: typo-fix
+<span class="gap">7 lines hidden: the prompt and the starting changelog</span>
+    golden_patch:<span class="mark">1</span>
+      path: golden/typo-fix.patch<span class="mark">2</span>
+    graders:
+<span class="gap">8 lines hidden: the two graders from lesson 5</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>The key is <code>golden_patch</code>. It sits beside <code>graders</code>, inside the stimulus.</li>
+      <li>The path is relative to the eval file, and must be in the eval file's folder or below it.</li>
+    </ol>
+  </div>
+
+  <p>Not every stimulus can have one. For <code>refactor</code> the correct answer is to change nothing, and there is no patch for "nothing".</p>
+
+  <div class="source-citation">Source: <a href="https://microsoft.github.io/vally/reference/eval-spec/">Vally docs, Eval Spec reference</a>. That a trial's saved <code>workspace.patch</code> can be used as it is comes from our run on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="what-oracle-does" data-mode="works">What vally oracle does</h2>
+
+  <p><code>vally oracle</code> runs your graders against a known answer, with no agent involved. In testing, an oracle is a source of answers known to be right. The command takes <code>-e</code> and the eval file, as <code>vally eval</code> does, and works in one of two ways.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="Two columns. With the golden patch: a fresh workspace, the golden patch is applied, graders run, all should pass. Without it: a fresh workspace, nothing is applied, graders run, all should fail.">
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="150" y="24" text-anchor="middle">WITH THE GOLDEN PATCH</text>
+        <text x="490" y="24" text-anchor="middle">WITHOUT IT</text>
+      </g>
+      <rect x="30" y="42" width="240" height="44" rx="3"/>
+      <rect x="30" y="110" width="240" height="44" rx="3" style="stroke: var(--accent); stroke-width: 2"/>
+      <rect x="30" y="178" width="240" height="44" rx="3"/>
+      <rect x="370" y="42" width="240" height="44" rx="3"/>
+      <rect x="370" y="110" width="240" height="44" rx="3" style="stroke-dasharray: 6 5"/>
+      <rect x="370" y="178" width="240" height="44" rx="3"/>
+      <path d="M150 86 L150 108 M144 100 L150 108 L156 100"/>
+      <path d="M150 154 L150 176 M144 168 L150 176 L156 168"/>
+      <path d="M490 86 L490 108 M484 100 L490 108 L496 100"/>
+      <path d="M490 154 L490 176 M484 168 L490 176 L496 168"/>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: currentColor; stroke: none">
+        <text x="150" y="71" text-anchor="middle">Fresh workspace</text>
+        <text x="150" y="139" text-anchor="middle">Apply golden patch</text>
+        <text x="150" y="207" text-anchor="middle">Run the graders</text>
+        <text x="490" y="71" text-anchor="middle">Fresh workspace</text>
+        <text x="490" y="139" text-anchor="middle">Apply nothing</text>
+        <text x="490" y="207" text-anchor="middle">Run the graders</text>
+      </g>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--accent); stroke: none">
+        <text x="150" y="264" text-anchor="middle">every grader should pass</text>
+        <text x="490" y="264" text-anchor="middle">every grader should fail</text>
+      </g>
+    </svg>
+    <figcaption>The oracle stands in for the agent. On the left it plays an agent that got everything right. On the right it plays an agent that did nothing.</figcaption>
+  </figure>
+
+  <p>Plain <code>vally oracle</code> does the left column. It builds the workspace exactly as for a real trial, applies the golden patch where an agent would have worked, and runs the graders. Applying a patch means making the changes it records: its <code>+</code> lines are added to the file. A grader that fails here is failing a correct answer.</p>
+
+  <p>Adding <code>--no-golden-input</code> does the right column: the same workspace with nothing applied. Vally's name for this untouched state is the baseline.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">Baseline</div>
+    <p>What you compare a result against. For the oracle, the baseline is the workspace with nothing done to it.</p>
+  </div>
+
+  <p>On the baseline, a grader ought to fail, and the oracle reports that as good news: <code>failed as expected</code>. There are two other things it can say.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>The oracle says</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>failed as expected</code></td><td>The grader failed the untouched workspace. It depends on the work being done. Good.</td></tr>
+      <tr><td><code>N/A</code></td><td>The grader checks that something is absent, such as <code>diff-not-contains</code> or <code>diff-empty</code>. An untouched workspace passes it honestly, so this test cannot tell you anything about it.</td></tr>
+      <tr><td><code>trivially passing</code></td><td>The grader passed the untouched workspace and is not an absence check. It does not depend on the work at all. The oracle prints <code>baseline PROBLEM</code> and exits with an error.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Two more options are used in the checkpoint. <code>--stimulus</code> and a name limits the oracle to one stimulus. <code>--verbose</code> prints each grader's evidence. Without <code>--stimulus</code>, the oracle covers every stimulus that has a golden patch.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">You run <code>vally oracle --no-golden-input</code>. A <code>diff-not-contains</code> grader passes on the untouched workspace. What does the oracle do?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">Reports failed as expected, exit code zero</button></li>
+      <li><button onclick="checkAnswer(this, true)">Marks it not applicable, exit code zero</button></li>
+      <li><button onclick="checkAnswer(this, false)">Flags it trivially passing, exit code one</button></li>
+      <li><button onclick="checkAnswer(this, false)">Reports a grader error, exit code one</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. A grader that checks for absence is bound to pass when nothing was done, so the oracle marks it N/A. It has not been tested.</div>
+    <div class="quiz-feedback incorrect">It marks it not applicable and exits with zero. A grader that checks something is absent will always pass an untouched workspace, so the oracle cannot test it this way and says N/A.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/cli/oracle/">Vally docs, CLI: oracle</a>; the wording of each report is from our runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="prove-your-graders" data-mode="use">Prove your graders</h2>
+
+  <p>You will keep one correct trial as a golden patch, run the oracle both ways on that stimulus, watch it catch a deliberately useless grader, and then do the same for the other stimuli. No step starts an agent.</p>
+
+  <section class="checkpoint">
+    <h3>Both tests, on every grader</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: find the second run from lesson 6.</span>
+        Open a terminal in <code>practice</code>.
+<pre><code class="language-bash">ls results/lesson-6-after</code></pre>
+        <p class="expect">You should see: one folder named with a time. Use its name in the next step.</p></li>
+
+      <li><span class="goal">Goal: read a trial and decide whether it is correct.</span>
+<pre><code class="language-bash">cd results/lesson-6-after/2026-11-10T15-01-51-246Z
+cd changelog
+cat typo-fix/claude-haiku-4.5/0/workspace.patch</code></pre>
+        <p class="expect">You should see: a patch that adds one entry about the typo, with no pull request number. If this trial is not correct in your run, read the other model's and use that one below.</p></li>
+
+      <li><span class="goal">Goal: keep that patch as the golden patch. This creates a folder and one file.</span>
+<pre><code class="language-bash">mkdir ../../../../evals/golden
+cp typo-fix/claude-haiku-4.5/0/workspace.patch \
+  ../../../../evals/golden/typo-fix.patch</code></pre>
+        <p class="expect">You should see: nothing printed. The four <code>../</code> climb from this folder back up to <code>practice</code>.</p></li>
+
+      <li><span class="goal">Goal: return to the practice folder.</span>
+<pre><code class="language-bash">cd ../../../..</code></pre></li>
+
+      <li><span class="goal">Goal: name the golden patch in the eval file. This edits one file.</span>
+        In <code>evals/changelog.eval.yaml</code>, inside the <code>typo-fix</code> stimulus, add these two lines just above <code>graders:</code>.
+<pre><code class="language-yaml">    golden_patch:
+      path: golden/typo-fix.patch</code></pre></li>
+
+      <li><span class="goal">Goal: check that the graders pass a correct answer.</span>
+<pre><code class="language-bash">vally oracle -e evals/changelog.eval.yaml \
+  --stimulus typo-fix --verbose</code></pre>
+<pre class="output"><code>✅ typo-fix [oracle] (2/2 graders passed)</code></pre>
+        <p class="expect">You should see: that line, then one line per grader with a tick and its evidence, then <code>PASSED</code>. The word <code>[oracle]</code> marks a run with the golden patch applied.</p></li>
+
+      <li><span class="goal">Goal: check that the graders fail an untouched file.</span>
+<pre><code class="language-bash">vally oracle -e evals/changelog.eval.yaml \
+  --stimulus typo-fix --no-golden-input --verbose</code></pre>
+        <p class="expect">You should see: <code>adds-an-entry</code> marked <code>failed as expected</code>, <code>no-made-up-number</code> marked <code>N/A</code>, and a last line that begins <code>baseline OK</code>.</p></li>
+
+      <li><span class="goal">Goal: watch the oracle catch a grader that checks nothing.</span>
+        In the eval file, add this grader at the top of the <code>typo-fix</code> graders. The starting changelog already contains the word, so it can never fail.
+<pre><code class="language-yaml">      - type: file-contains
+        name: mentions-unreleased
+        config:
+          path: CHANGELOG.md
+          value: "Unreleased"</code></pre>
+        Run the command from step 7 again.
+        <p class="expect">You should see: <code>mentions-unreleased</code> marked <code>passed without the golden solution (trivially passing)</code>, and a last line that begins <code>baseline PROBLEM</code>. Then delete those five lines from the eval file.</p></li>
+
+      <li><span class="goal">Goal: give the other stimuli golden patches.</span>
+        Repeat steps 2 to 5 for <code>security</code>, <code>two-changes</code> and <code>after-release</code>, leaving out the <code>mkdir</code> line, since the folder now exists. Each time, choose a trial whose patch you have read and judge correct, not one that merely passed: in our run, one <code>two-changes</code> trial passed and was wrong, as lesson 6 showed. Save the patches as <code>security.patch</code>, <code>two-changes.patch</code> and <code>after-release.patch</code>, and add the two <code>golden_patch</code> lines to each stimulus with its own file name. Leave <code>refactor</code> without one.</li>
+
+      <li><span class="goal">Goal: run both tests on everything.</span>
+<pre><code class="language-bash">vally oracle -e evals/changelog.eval.yaml --verbose</code></pre>
+<pre><code class="language-bash">vally oracle -e evals/changelog.eval.yaml \
+  --no-golden-input --verbose</code></pre>
+        <p class="expect">You should see: four stimuli <code>PASSED</code> from the first command, and five ending <code>baseline OK</code> from the second.</p>
+        <details class="answer"><summary>Show our results, grader by grader</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Grader</th><th>With the golden patch</th><th>Without it</th></tr></thead>
+            <tbody>
+              <tr><td>adds-an-entry</td><td>passed</td><td>failed as expected</td></tr>
+              <tr><td>no-made-up-number</td><td>passed</td><td>N/A</td></tr>
+              <tr><td>adds-nothing</td><td>not run: no golden patch</td><td>N/A</td></tr>
+              <tr><td>under-security</td><td>passed</td><td>failed as expected</td></tr>
+              <tr><td>two-entries-in-place</td><td>passed</td><td>failed as expected</td></tr>
+              <tr><td>entry-in-new-unreleased</td><td>passed</td><td>failed as expected</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </details></li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-oracle-did-not-test" data-mode="think">What the oracle did not test</h2>
+
+  <p>Look at our table and ask which graders have now been tested in both directions. Four have: they pass a correct answer and fail an empty one. Two have not. <code>no-made-up-number</code> and <code>adds-nothing</code> are both checks that something is absent, and "N/A" is the oracle saying honestly that an untouched file cannot test them. Nothing so far has shown that <code>no-made-up-number</code> would object to a made-up number.</p>
+
+  <p>There is a second limit. The oracle tested each grader against one correct answer, the one you chose. A different correct answer, worded another way, has not been tried.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/reference/cli/oracle/">CLI: oracle, Vally docs</a></p>
+    <p>Read the section on the baseline. It lists every kind of grader the oracle treats as N/A, which tells you in advance which of your graders it cannot vouch for.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, describe the two tests the oracle runs and what a healthy grader does in each.
+        <details class="answer"><summary>Show model answer</summary><p>With the golden patch applied, the oracle plays an agent that got everything right; a healthy grader passes. With <code>--no-golden-input</code> it plays an agent that did nothing; a healthy grader fails, reported as "failed as expected". A grader that checks for absence is reported N/A in the second test.</p></details></li>
+      <li>You edit the script grader and want to know whether you broke it. Which commands do you run, and what does it cost?
+        <details class="answer"><summary>Show model answer</summary><p><code>vally oracle -e evals/changelog.eval.yaml --verbose</code>, then the same with <code>--no-golden-input</code>. Every script-graded stimulus should pass the first and fail the second. It starts no agent, so it costs nothing and takes seconds.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="7" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> keep a golden patch for a stimulus, and use <code>vally oracle</code> to show that its graders pass a correct answer and fail an untouched file.</p>
+    <p><strong>Up next:</strong> <a href="./0008-check-graders-against-saved-trials.html">Check graders against saved trials</a>. The oracle could not test the graders that check for absence, and it tried only one correct answer each. But you have dozens of real answers saved, good and bad. Can the graders be run on those?</p>
+    <a class="next-lesson" href="./0008-check-graders-against-saved-trials.html">Next lesson: Check graders against saved trials <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

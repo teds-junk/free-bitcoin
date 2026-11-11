@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "no-pr-number",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::mai-code-1.1-flash::no-pr-number::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "mai-code-1.1-flash",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:38:57.132Z",
+  "status": "success",
+  "trajectoryId": "ca9c9ae7-dbea-4d24-8a6b-f83649849008",
+  "executorSessionId": "91d24378-1527-486e-be1a-3c51880c5074",
+  "completedAt": "2026-11-10T07:39:21.836Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/no-pr-number/mai-code-1.1-flash/0/events.jsonl"
+}

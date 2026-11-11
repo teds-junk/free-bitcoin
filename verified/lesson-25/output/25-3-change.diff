@@ -1,0 +1,17 @@
+diff -ruN before/CHANGELOG.md repo/CHANGELOG.md
+--- before/CHANGELOG.md	2026-11-10 09:46:29
++++ repo/CHANGELOG.md	2026-11-10 09:46:40
+@@ -6,6 +6,13 @@
+ 
+ ### Added
+ - Add `notes list --tag` to filter by tag (#41)
++- Add `--since <date>` option to notes list (#74)
++
++### Fixed
++- Fix notes search missing titles with accents (#75)
++
++### Changed
++- Move config loading out of cli.js (#76)
+ 
+ ## [1.2.0] - 2026-09-14
+ 

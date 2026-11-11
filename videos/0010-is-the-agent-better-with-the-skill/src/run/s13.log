@@ -1,0 +1,32 @@
+Experiment: with-and-without
+Baseline:   haiku-no-skill
+Plans:      4
+
+── haiku-no-skill (baseline) ──
+  Eval:        changelog
+  File:        changelog.eval.yaml
+  Model:       claude-haiku-4.5
+  Config hash: f0c42e58243a1465
+  Eval hash:   4870f2caf2c19f3f
+
+── haiku-with-skill ──
+  Eval:        changelog
+  File:        changelog.eval.yaml
+  Model:       claude-haiku-4.5
+  Config hash: 1ddd970e92ed17d9
+  Eval hash:   4870f2caf2c19f3f
+
+── terra-no-skill ──
+  Eval:        changelog
+  File:        changelog.eval.yaml
+  Model:       gpt-5.6-terra
+  Config hash: 0ade280994ffc427
+  Eval hash:   4870f2caf2c19f3f
+
+── terra-with-skill ──
+  Eval:        changelog
+  File:        changelog.eval.yaml
+  Model:       gpt-5.6-terra
+  Config hash: bb94bdec53646696
+  Eval hash:   4870f2caf2c19f3f
+

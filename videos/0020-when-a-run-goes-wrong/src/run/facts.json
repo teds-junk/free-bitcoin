@@ -1,0 +1,28 @@
+{
+  "_about": "Facts the narration states that no console log holds, from this video's own recordings (build-src/collect-run.py).",
+  "aiu": {
+    "claude-haiku-4.5": 0.74,
+    "gpt-5.6-terra": 2.95
+  },
+  "events_tail_model": "gpt-5.6-terra",
+  "trial_files": {
+    "merged-list": [
+      "metadata.json"
+    ],
+    "quick": [
+      "events.jsonl",
+      "metadata.json"
+    ]
+  },
+  "duration_ms": {
+    "merged-list": [
+      5,
+      8
+    ]
+  },
+  "earlier_typo_fix_s": {
+    "claude-haiku-4.5": 9.3,
+    "gpt-5.6-terra": 7.7
+  },
+  "_earlier_typo_fix_s": "durationMs of the two typo-fix trials in the lesson 18 video's run, results/lesson-18/2026-11-11T14-39-05-705Z/results.jsonl (9259 and 7684 ms). Set by hand."
+}

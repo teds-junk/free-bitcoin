@@ -1,0 +1,1412 @@
+⠋ Loading evaluations…
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from quick · 2 models · 2 workers
+
+░░░░░░░░░░░░░░░░  0/2 completed · 0 running · 2 queued · 00:00
+
+
+
+
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · queued      0/1 · queued    
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+⠙ quick · typo-fix  [claude-haiku-4.5]  running  00:00
+
+⠙ quick · typo-fix  [gpt-5.6-terra]     running  00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+⠹ quick · typo-fix  [claude-haiku-4.5]  running  00:00
+
+⠹ quick · typo-fix  [gpt-5.6-terra]     running  00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+⠸ quick · typo-fix  [claude-haiku-4.5]  running  00:00
+
+⠸ quick · typo-fix  [gpt-5.6-terra]     running  00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+⠼ quick · typo-fix  [claude-haiku-4.5]  running  00:00
+
+⠼ quick · typo-fix  [gpt-5.6-terra]     running  00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+⠴ quick · typo-fix  [claude-haiku-4.5]  running  00:00
+
+⠴ quick · typo-fix  [gpt-5.6-terra]     running  00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+⠦ quick · typo-fix  [claude-haiku-4.5]  running  00:00
+
+⠦ quick · typo-fix  [gpt-5.6-terra]     running  00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+⠧ quick · typo-fix  [claude-haiku-4.5]  running  00:00
+
+⠧ quick · typo-fix  [gpt-5.6-terra]     running  00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+⠇ quick · typo-fix  [claude-haiku-4.5]  running  00:00
+
+⠇ quick · typo-fix  [gpt-5.6-terra]     running  00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+⠏ quick · typo-fix  [claude-haiku-4.5]  running  00:00
+
+⠏ quick · typo-fix  [gpt-5.6-terra]     running  00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+⠋ quick · typo-fix  [claude-haiku-4.5]  running  00:01
+
+⠋ quick · typo-fix  [gpt-5.6-terra]     running  00:01
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+⠙ quick · typo-fix  [claude-haiku-4.5]  running  00:01
+
+⠙ quick · typo-fix  [gpt-5.6-terra]     running  00:01
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+⠹ quick · typo-fix  [claude-haiku-4.5]  running  00:01
+
+⠹ quick · typo-fix  [gpt-5.6-terra]     running  00:01
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+⠸ quick · typo-fix  [claude-haiku-4.5]  running  00:01
+
+⠸ quick · typo-fix  [gpt-5.6-terra]     running  00:01
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+⠼ quick · typo-fix  [claude-haiku-4.5]  running  00:01
+
+⠼ quick · typo-fix  [gpt-5.6-terra]     running  00:01
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+⠴ quick · typo-fix  [claude-haiku-4.5]  running  00:01
+
+⠴ quick · typo-fix  [gpt-5.6-terra]     running  00:01
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+⠦ quick · typo-fix  [claude-haiku-4.5]  running  00:01
+
+⠦ quick · typo-fix  [gpt-5.6-terra]     running  00:01
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+⠧ quick · typo-fix  [claude-haiku-4.5]  running  00:01
+
+⠧ quick · typo-fix  [gpt-5.6-terra]     running  00:01
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+⠇ quick · typo-fix  [claude-haiku-4.5]  running  00:01
+
+⠇ quick · typo-fix  [gpt-5.6-terra]     running  00:01
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+⠏ quick · typo-fix  [claude-haiku-4.5]  running  00:01
+
+⠏ quick · typo-fix  [gpt-5.6-terra]     running  00:01
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+⠋ quick · typo-fix  [claude-haiku-4.5]  running  00:02
+
+⠋ quick · typo-fix  [gpt-5.6-terra]     running  00:02
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+⠙ quick · typo-fix  [claude-haiku-4.5]  running  00:02
+
+⠙ quick · typo-fix  [gpt-5.6-terra]     running  00:02
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+⠹ quick · typo-fix  [claude-haiku-4.5]  running  00:02
+
+⠹ quick · typo-fix  [gpt-5.6-terra]     running  00:02
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+⠸ quick · typo-fix  [claude-haiku-4.5]  running  00:02
+
+⠸ quick · typo-fix  [gpt-5.6-terra]     running  00:02
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+⠼ quick · typo-fix  [claude-haiku-4.5]  running  00:02
+
+⠼ quick · typo-fix  [gpt-5.6-terra]     running  00:02
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+⠴ quick · typo-fix  [claude-haiku-4.5]  running  00:02
+
+⠴ quick · typo-fix  [gpt-5.6-terra]     running  00:02
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+⠦ quick · typo-fix  [claude-haiku-4.5]  running  00:02
+
+⠦ quick · typo-fix  [gpt-5.6-terra]     running  00:02
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+⠧ quick · typo-fix  [claude-haiku-4.5]  running  00:02
+
+⠧ quick · typo-fix  [gpt-5.6-terra]     running  00:02
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+⠇ quick · typo-fix  [claude-haiku-4.5]  running  00:02
+
+⠇ quick · typo-fix  [gpt-5.6-terra]     running  00:02
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+⠏ quick · typo-fix  [claude-haiku-4.5]  running  00:02
+
+⠏ quick · typo-fix  [gpt-5.6-terra]     running  00:02
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+⠋ quick · typo-fix  [claude-haiku-4.5]  running  00:03
+
+⠋ quick · typo-fix  [gpt-5.6-terra]     running  00:03
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+⠙ quick · typo-fix  [claude-haiku-4.5]  running  00:03
+
+⠙ quick · typo-fix  [gpt-5.6-terra]     running  00:03
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+⠹ quick · typo-fix  [claude-haiku-4.5]  running  00:03
+
+⠹ quick · typo-fix  [gpt-5.6-terra]     running  00:03
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+⠸ quick · typo-fix  [claude-haiku-4.5]  running  00:03
+
+⠸ quick · typo-fix  [gpt-5.6-terra]     running  00:03
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+⠼ quick · typo-fix  [claude-haiku-4.5]  running  00:03
+
+⠼ quick · typo-fix  [gpt-5.6-terra]     running  00:03
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+⠴ quick · typo-fix  [claude-haiku-4.5]  running  00:03
+
+⠴ quick · typo-fix  [gpt-5.6-terra]     running  00:03
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+⠦ quick · typo-fix  [claude-haiku-4.5]  running  00:03
+
+⠦ quick · typo-fix  [gpt-5.6-terra]     running  00:03
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+⠧ quick · typo-fix  [claude-haiku-4.5]  running  00:03
+
+⠧ quick · typo-fix  [gpt-5.6-terra]     running  00:03
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+⠇ quick · typo-fix  [claude-haiku-4.5]  running  00:03
+
+⠇ quick · typo-fix  [gpt-5.6-terra]     running  00:03
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+⠏ quick · typo-fix  [claude-haiku-4.5]  running  00:03
+
+⠏ quick · typo-fix  [gpt-5.6-terra]     running  00:03
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+⠋ quick · typo-fix  [claude-haiku-4.5]  running  00:04
+
+⠋ quick · typo-fix  [gpt-5.6-terra]     running  00:04
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+⠙ quick · typo-fix  [claude-haiku-4.5]  running  00:04
+
+⠙ quick · typo-fix  [gpt-5.6-terra]     running  00:04
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+⠹ quick · typo-fix  [claude-haiku-4.5]  running  00:04
+
+⠹ quick · typo-fix  [gpt-5.6-terra]     running  00:04
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+⠸ quick · typo-fix  [claude-haiku-4.5]  running  00:04
+
+⠸ quick · typo-fix  [gpt-5.6-terra]     running  00:04
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+⠼ quick · typo-fix  [claude-haiku-4.5]  running  00:04
+
+⠼ quick · typo-fix  [gpt-5.6-terra]     running  00:04
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+⠴ quick · typo-fix  [claude-haiku-4.5]  running  00:04
+
+⠴ quick · typo-fix  [gpt-5.6-terra]     running  00:04
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+⠦ quick · typo-fix  [claude-haiku-4.5]  running  00:04
+
+⠦ quick · typo-fix  [gpt-5.6-terra]     running  00:04
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+⠧ quick · typo-fix  [claude-haiku-4.5]  running  00:04
+
+⠧ quick · typo-fix  [gpt-5.6-terra]     running  00:04
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+⠇ quick · typo-fix  [claude-haiku-4.5]  running  00:04
+
+⠇ quick · typo-fix  [gpt-5.6-terra]     running  00:04
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+⠏ quick · typo-fix  [claude-haiku-4.5]  running  00:04
+
+⠏ quick · typo-fix  [gpt-5.6-terra]     running  00:04
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+⠋ quick · typo-fix  [claude-haiku-4.5]  running  00:05
+
+⠋ quick · typo-fix  [gpt-5.6-terra]     running  00:05
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+⠙ quick · typo-fix  [claude-haiku-4.5]  running  00:05
+
+⠙ quick · typo-fix  [gpt-5.6-terra]     running  00:05
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+⠹ quick · typo-fix  [claude-haiku-4.5]  running  00:05
+
+⠹ quick · typo-fix  [gpt-5.6-terra]     running  00:05
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+⠸ quick · typo-fix  [claude-haiku-4.5]  running  00:05
+
+⠸ quick · typo-fix  [gpt-5.6-terra]     running  00:05
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+⠼ quick · typo-fix  [claude-haiku-4.5]  running  00:05
+
+⠼ quick · typo-fix  [gpt-5.6-terra]     running  00:05
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+⠴ quick · typo-fix  [claude-haiku-4.5]  running  00:05
+
+⠴ quick · typo-fix  [gpt-5.6-terra]     running  00:05
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+⠦ quick · typo-fix  [claude-haiku-4.5]  running  00:05
+
+⠦ quick · typo-fix  [gpt-5.6-terra]     running  00:05
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+⠧ quick · typo-fix  [claude-haiku-4.5]  running  00:05
+
+⠧ quick · typo-fix  [gpt-5.6-terra]     running  00:05
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+⠇ quick · typo-fix  [claude-haiku-4.5]  running  00:05
+
+⠇ quick · typo-fix  [gpt-5.6-terra]     running  00:05
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · 1 running 
+
+
+quick
+
+gpt-5.6-terra
+  ERROR  typo-fix
+   Stimulus 'typo-fix' timed out after 5000 ms during turn 1 of 1
+
+████████░░░░░░░░  1/2 completed · 1 running · 0 queued · 00:05
+
+⠏ quick · typo-fix  [claude-haiku-4.5]  running  00:05
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   0/1 · finalizing
+
+████████░░░░░░░░  1/2 completed · 1 running · 0 queued · 00:06
+
+⠋ quick · typo-fix  [claude-haiku-4.5]  running  00:06
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   ✘ 0/1           
+
+████████░░░░░░░░  1/2 completed · 1 running · 0 queued · 00:06
+
+⠙ quick · typo-fix  [claude-haiku-4.5]  running  00:06
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   ✘ 0/1           
+
+████████░░░░░░░░  1/2 completed · 1 running · 0 queued · 00:06
+
+⠹ quick · typo-fix  [claude-haiku-4.5]  running  00:06
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · 1 running   ✘ 0/1           
+
+
+claude-haiku-4.5
+  ERROR  typo-fix
+   Stimulus 'typo-fix' timed out after 5000 ms during turn 1 of 1
+
+████████████████  2/2 completed · 0 running · 0 queued · 00:06
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  0/1 · finalizing  ✘ 0/1           
+
+████████████████  2/2 completed · 0 running · 0 queued · 00:06
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+  ✘ claude-haiku-4.5  0/1 evals passed
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  ✘ 0/1             ✘ 0/1           
+
+████████████████  2/2 completed · 0 running · 0 queued · 00:06
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+  ✘ claude-haiku-4.5  0/1 evals passed
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  ✘ 0/1             ✘ 0/1           
+
+████████████████  2/2 completed · 0 running · 0 queued · 00:06
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+  ✘ claude-haiku-4.5  0/1 evals passed
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  ✘ 0/1             ✘ 0/1           
+
+████████████████  2/2 completed · 0 running · 0 queued · 00:06
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+  ✘ claude-haiku-4.5  0/1 evals passed
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  ✘ 0/1             ✘ 0/1           
+
+████████████████  2/2 completed · 0 running · 0 queued · 00:06
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+  ✘ claude-haiku-4.5  0/1 evals passed
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  ✘ 0/1             ✘ 0/1           
+
+████████████████  2/2 completed · 0 running · 0 queued · 00:06
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+  ✘ claude-haiku-4.5  0/1 evals passed
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  ✘ 0/1             ✘ 0/1           
+
+████████████████  2/2 completed · 0 running · 0 queued · 00:07
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+  ✘ claude-haiku-4.5  0/1 evals passed
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval   claude-haiku-4.5  gpt-5.6-terra   
+
+  quick  ✘ 0/1             ✘ 0/1           
+
+
+────────────────────────────────────────────────────────
+
+Failures  2 failed
+  ERROR quick · typo-fix [claude-haiku-4.5]  Stimulus 'typo-fix' timed out after 5000 ms during turn 1 of 1
+  ERROR quick · typo-fix [gpt-5.6-terra]  Stimulus 'typo-fix' timed out after 5000 ms during turn 1 of 1
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+  eval   claude-haiku-4.5  gpt-5.6-terra
+  quick  ✘ 0/1             ✘ 0/1        
+
+Saved  ~/src/demo/practice/results/lesson-20/2026-11-11T15-41-20-539Z/
+Run ID  e24a5bcd-ee73-4800-a634-41533184002b

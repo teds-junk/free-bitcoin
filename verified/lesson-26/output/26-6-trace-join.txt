@@ -1,0 +1,3 @@
+app-traces.jsonl invoke_agent: traceId 110de22ffe6e04abd766a6703dfc2229 spanId f8804dbf9e647a07 parentSpanId a590909e3a627344
+otel-spans.jsonl vally.attempt spanId a590909e3a627344 parentSpanId bc0be74bbae49e22
+otel-spans.jsonl vally.trial spanId bc0be74bbae49e22 parentSpanId (none)

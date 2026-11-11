@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>When a run goes wrong</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.terms .semantic-block{min-height:260px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">When a run goes wrong</h1>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="e" data-rep="block" data-role="attention">
+      <div class="title">ERROR</div><div class="label">no result that could be graded</div>
+    </div>
+    <div class="semantic-block" data-concept="fl" data-rep="block" data-role="attention">
+      <div class="title">FLAKY</div><div class="label">some trials passed, some failed</div>
+    </div>
+    <div class="semantic-block" data-concept="fa" data-rep="block" data-role="attention">
+      <div class="title">a surprising FAIL</div><div class="label">a verdict nobody expected</div>
+    </div>
+  </div>
+  <p class="lead">Nearly every answer is already on disk.</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "e",
+  "at": "1~ERROR",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "fl",
+  "at": "1~flaky",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "fa",
+  "at": "1~fails",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

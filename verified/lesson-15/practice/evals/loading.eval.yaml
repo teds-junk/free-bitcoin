@@ -1,0 +1,70 @@
+name: loading
+
+defaults:
+  timeout: 3m
+
+agent_environment:
+  skills:
+    - ../skills/changelog-entry
+    - ../skills/commit-message
+    - ../skills/release-notes
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+
+stimuli:
+  - name: load-plain
+    prompt: |
+      PR 70 adds a `notes rename` command. Update the
+      changelog.
+    graders:
+      - type: skill-invocation
+        config:
+          required: [changelog-entry]
+
+  - name: load-no-keyword
+    prompt: |
+      I just merged PR 71, which makes `notes search`
+      about twice as fast. Can you note that down where
+      we track what's going into the next release?
+    graders:
+      - type: skill-invocation
+        config:
+          required: [changelog-entry]
+
+  - name: load-indirect
+    prompt: |
+      PR 72 fixes the crash when a note is empty. Make
+      sure users will be able to see that it's fixed
+      when we ship.
+    graders:
+      - type: skill-invocation
+        config:
+          required: [changelog-entry]
+
+  - name: skip-commit
+    prompt: |
+      Write a commit message for my change. It renames
+      the `--tag` flag of `notes list` to `--label`.
+    graders:
+      - type: skill-invocation
+        config:
+          disallowed: [changelog-entry]
+
+  - name: skip-release-notes
+    prompt: |
+      We're announcing 1.2.0 today. Draft the release
+      notes from the changelog.
+    graders:
+      - type: skill-invocation
+        config:
+          disallowed: [changelog-entry]
+
+  - name: skip-question
+    prompt: |
+      What changed in version 1.2.0? Look at the
+      changelog and tell me.
+    graders:
+      - type: skill-invocation
+        config:
+          disallowed: [changelog-entry]

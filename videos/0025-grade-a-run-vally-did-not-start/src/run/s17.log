@@ -1,0 +1,8 @@
+Done! I've added all three changes from `release/merged.txt` to the Unreleased section of CHANGELOG.md:
+
+- **#74** (feat): Added as "Add `notes list --since <date>`" under Added
+- **#75** (fix): Added as "Fix notes search missing titles with accents" under Fixed  
+- **#76** (refactor): Added as "Move config loading out of cli.js" under Changed
+
+The entries follow the existing changelog format and are organized by type (Added, Fixed, Changed).
+Wrote app-run/traces.jsonl and app-run/change.diff

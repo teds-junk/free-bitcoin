@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Safe to run, not free.</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.facts{font-size:40px}.facts td{padding-top:30px;padding-bottom:30px}.facts td:first-child{width:300px;font-weight:600}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What one Vally run does</div>
+  <h2 class="scene-title">Safe to run, not free.</h2>
+  <div class="stage">
+<table class="data-table full facts">
+    <tbody>
+      <tr><td><span data-concept="writes" data-rep="row">Writes</span></td><td>only inside <span class="inline-code">results/lesson-1</span></td></tr>
+      <tr><td><span data-concept="spends" data-rep="row">Spends</span></td><td>one short agent session for each model, from your Copilot plan</td></tr>
+      <tr><td><span class="inline-code" data-concept="error" data-rep="row">ERROR</span></td><td>the run didn’t finish, usually a dropped connection, so run it again</td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "writes",
+  "at": "0",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "spends",
+  "at": "0~session",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "error",
+  "at": "1",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

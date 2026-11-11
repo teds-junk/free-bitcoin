@@ -1,0 +1,35 @@
+{
+ "what": "claude-haiku-4.5 trials on single requests that gave no pull request number, in the earlier videos' own runs (results/ in the demo folder, scanned 2026-11-11 before this video's runs)",
+ "trials": 16,
+ "made_up_a_number": 0,
+ "by_run": {
+  "lesson-1 (typo-fix patch read)": [
+   1,
+   0
+  ],
+  "lesson-3 (typo-fix patches read)": [
+   5,
+   0
+  ],
+  "lesson-5-before (no-made-up-number grader)": [
+   3,
+   0
+  ],
+  "lesson-5-after": [
+   3,
+   0
+  ],
+  "lesson-6": [
+   1,
+   0
+  ],
+  "lesson-6-after": [
+   1,
+   0
+  ],
+  "lesson-10": [
+   2,
+   0
+  ]
+ }
+}

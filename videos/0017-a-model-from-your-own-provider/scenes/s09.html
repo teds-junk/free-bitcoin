@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three new paths to vary</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">A variant on a local model</div>
+  <h2 class="scene-title">Three new paths to vary</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:exp · regenerate with: node file-panel.js --file src/state/cost.experiment.yaml --label evals/cost.experiment.yaml --id exp --width 44 --rows 9 --show 5-13,33-44 --expect 9=/defaults/executor --expect 35=qwen-local --mark 6=vary --mark 9=pexec --mark 10=ptime --mark 11=pruns --mark 35=qname --mark 38=timeout --mark 39=runs --mark '44=url:baseUrl: http://localhost:11434/v1' --into scenes/s09.html -->
+<div class="file-panel" id="exp" data-file="evals/cost.experiment.yaml" data-lines="44" data-rows="9" style="--rows:9;--cols:44;--ln:2">
+<div class="code-file">evals/cost.experiment.yaml<span class="file-meta">44 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="yaml"><code>
+<span class="file-row file-skip" data-hidden="1-4"><span class="ln">⋮</span><span class="elide">4 lines hidden · 1–4</span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span data-concept="vary" data-rep="code"><span style="color:#4EA5E6">vary</span><span style="color:#B3C0BF">:</span></span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span><span style="color:#B3C0BF">  - </span><span style="color:#3CC0B3">/defaults/model</span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span><span style="color:#B3C0BF">  - </span><span style="color:#3CC0B3">/defaults/reasoning_effort</span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span><span style="color:#B3C0BF">  </span><span data-concept="pexec" data-rep="code"><span style="color:#B3C0BF">- </span><span style="color:#3CC0B3">/defaults/executor</span></span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span><span style="color:#B3C0BF">  </span><span data-concept="ptime" data-rep="code"><span style="color:#B3C0BF">- </span><span style="color:#3CC0B3">/defaults/timeout</span></span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span><span style="color:#B3C0BF">  </span><span data-concept="pruns" data-rep="code"><span style="color:#B3C0BF">- </span><span style="color:#3CC0B3">/defaults/runs</span></span></span>
+<span class="file-row" data-line="12"><span class="ln">12</span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span style="color:#4EA5E6">baseline</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">haiku-low</span></span>
+<span class="file-row file-skip" data-hidden="14-32"><span class="ln">⋮</span><span class="elide">19 lines hidden · 14–32</span></span>
+<span class="file-row" data-line="33"><span class="ln">33</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">gpt-5.6-terra</span></span>
+<span class="file-row" data-line="34"><span class="ln">34</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">reasoning_effort</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">high</span></span>
+<span class="file-row" data-line="35"><span class="ln">35</span><span style="color:#B3C0BF">  </span><span data-concept="qname" data-rep="code"><span style="color:#4EA5E6">qwen-local</span><span style="color:#B3C0BF">:</span></span></span>
+<span class="file-row" data-line="36"><span class="ln">36</span><span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">overrides</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="37"><span class="ln">37</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">qwen3.5:9b</span></span>
+<span class="file-row" data-line="38"><span class="ln">38</span><span style="color:#B3C0BF">      </span><span data-concept="timeout" data-rep="code"><span style="color:#4EA5E6">timeout</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">9m</span></span></span>
+<span class="file-row" data-line="39"><span class="ln">39</span><span style="color:#B3C0BF">      </span><span data-concept="runs" data-rep="code"><span style="color:#4EA5E6">runs</span><span style="color:#B3C0BF">: </span><span style="color:#EA6AA6">1</span></span></span>
+<span class="file-row" data-line="40"><span class="ln">40</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">executor</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="41"><span class="ln">41</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">copilot-sdk</span></span>
+<span class="file-row" data-line="42"><span class="ln">42</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="43"><span class="ln">43</span><span style="color:#B3C0BF">          </span><span style="color:#4EA5E6">provider</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="44"><span class="ln">44</span><span style="color:#B3C0BF">            </span><span data-concept="url" data-rep="code"><span style="color:#4EA5E6">baseUrl</span><span style="color:#B3C0BF">:</span></span><span style="color:#B3C0BF"> </span></span>
+<span class="file-row" data-line="44" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:16ch"></i><span data-concept="url" data-rep="code"><span style="color:#3CC0B3">http://localhost:11434/v1</span></span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="44" style="height:308px" aria-hidden="true"><b class="file-map-view" style="top:28px;height:56px"></b><svg width="120" height="308" viewBox="0 0 120 308" shape-rendering="crispEdges"><rect x="0" y="0" width="9.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="10" y="0" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="15" y="0" width="9.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="14" width="11.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="12.5" y="14" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="5" y="21" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="10" y="21" width="46.9" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="35" width="9.4" height="4" fill="#4EA5E6"/><rect x="10" y="35" width="1.9" height="4" fill="#B3C0BF"/><rect x="5" y="42" width="1.9" height="4" fill="#B3C0BF"/><rect x="10" y="42" width="36.9" height="4" fill="#3CC0B3"/><rect x="5" y="49" width="1.9" height="4" fill="#B3C0BF"/><rect x="10" y="49" width="64.4" height="4" fill="#3CC0B3"/><rect x="5" y="56" width="1.9" height="4" fill="#B3C0BF"/><rect x="10" y="56" width="44.4" height="4" fill="#3CC0B3"/><rect x="5" y="63" width="1.9" height="4" fill="#B3C0BF"/><rect x="10" y="63" width="41.9" height="4" fill="#3CC0B3"/><rect x="5" y="70" width="1.9" height="4" fill="#B3C0BF"/><rect x="10" y="70" width="34.4" height="4" fill="#3CC0B3"/><rect x="0" y="84" width="19.4" height="4" fill="#4EA5E6"/><rect x="20" y="84" width="1.9" height="4" fill="#B3C0BF"/><rect x="25" y="84" width="21.9" height="4" fill="#3CC0B3"/><rect x="0" y="98" width="21.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="22.5" y="98" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="5" y="105" width="9.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="15" y="105" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="20" y="105" width="1.9" height="4" fill="#EA6AA6" opacity=".38"/><rect x="0" y="119" width="19.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="20" y="119" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="5" y="126" width="21.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="27.5" y="126" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="10" y="133" width="21.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="32.5" y="133" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="15" y="140" width="11.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="27.5" y="140" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="32.5" y="140" width="39.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="15" y="147" width="39.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="55" y="147" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="60" y="147" width="6.9" height="4" fill="#3CC0B3" opacity=".38"/><rect x="5" y="154" width="24.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="30" y="154" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="10" y="161" width="21.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="32.5" y="161" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="15" y="168" width="11.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="27.5" y="168" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="32.5" y="168" width="39.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="15" y="175" width="39.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="55" y="175" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="60" y="175" width="9.4" height="4" fill="#3CC0B3" opacity=".38"/><rect x="5" y="182" width="21.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="27.5" y="182" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="10" y="189" width="21.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="32.5" y="189" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="15" y="196" width="11.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="27.5" y="196" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="32.5" y="196" width="31.9" height="4" fill="#3CC0B3" opacity=".38"/><rect x="15" y="203" width="39.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="55" y="203" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="60" y="203" width="6.9" height="4" fill="#3CC0B3" opacity=".38"/><rect x="5" y="210" width="24.4" height="4" fill="#4EA5E6" opacity=".38"/><rect x="30" y="210" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="10" y="217" width="21.9" height="4" fill="#4EA5E6" opacity=".38"/><rect x="32.5" y="217" width="1.9" height="4" fill="#B3C0BF" opacity=".38"/><rect x="15" y="224" width="11.9" height="4" fill="#4EA5E6"/><rect x="27.5" y="224" width="1.9" height="4" fill="#B3C0BF"/><rect x="32.5" y="224" width="31.9" height="4" fill="#3CC0B3"/><rect x="15" y="231" width="39.4" height="4" fill="#4EA5E6"/><rect x="55" y="231" width="1.9" height="4" fill="#B3C0BF"/><rect x="60" y="231" width="9.4" height="4" fill="#3CC0B3"/><rect x="5" y="238" width="24.4" height="4" fill="#4EA5E6"/><rect x="30" y="238" width="1.9" height="4" fill="#B3C0BF"/><rect x="10" y="245" width="21.9" height="4" fill="#4EA5E6"/><rect x="32.5" y="245" width="1.9" height="4" fill="#B3C0BF"/><rect x="15" y="252" width="11.9" height="4" fill="#4EA5E6"/><rect x="27.5" y="252" width="1.9" height="4" fill="#B3C0BF"/><rect x="32.5" y="252" width="24.4" height="4" fill="#3CC0B3"/><rect x="15" y="259" width="16.9" height="4" fill="#4EA5E6"/><rect x="32.5" y="259" width="1.9" height="4" fill="#B3C0BF"/><rect x="37.5" y="259" width="4.4" height="4" fill="#3CC0B3"/><rect x="15" y="266" width="9.4" height="4" fill="#4EA5E6"/><rect x="25" y="266" width="1.9" height="4" fill="#B3C0BF"/><rect x="30" y="266" width="1.9" height="4" fill="#EA6AA6"/><rect x="15" y="273" width="19.4" height="4" fill="#4EA5E6"/><rect x="35" y="273" width="1.9" height="4" fill="#B3C0BF"/><rect x="20" y="280" width="9.4" height="4" fill="#4EA5E6"/><rect x="30" y="280" width="1.9" height="4" fill="#B3C0BF"/><rect x="35" y="280" width="26.9" height="4" fill="#3CC0B3"/><rect x="20" y="287" width="14.4" height="4" fill="#4EA5E6"/><rect x="35" y="287" width="1.9" height="4" fill="#B3C0BF"/><rect x="25" y="294" width="19.4" height="4" fill="#4EA5E6"/><rect x="45" y="294" width="1.9" height="4" fill="#B3C0BF"/><rect x="30" y="301" width="16.9" height="4" fill="#4EA5E6"/><rect x="47.5" y="301" width="1.9" height="4" fill="#B3C0BF"/><rect x="52.5" y="301" width="61.9" height="4" fill="#3CC0B3"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:exp -->
+    <aside class="callouts"><p class="callout" data-anchor="pexec">the executor</p><p class="callout" data-anchor="ptime">the time limit</p><p class="callout" data-anchor="pruns">the number of trials</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "vary",
+  "at": "3~vary list",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "pexec",
+  "at": "4~executor",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ptime",
+  "at": "4~time limit",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "pruns",
+  "at": "4~number of trials",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "pexec",
+  "at": "5~executor path",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

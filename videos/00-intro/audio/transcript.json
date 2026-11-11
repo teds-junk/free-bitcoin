@@ -1,0 +1,164 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/00-intro",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "a90a7da8f94b56f3",
+      "text": "You wrote a skill for a coding agent, and it works when you try it.",
+      "tts_text": "You wrote a skill for a coding agent, and it works when you try it.",
+      "heard": "You wrote a skill for a coding agent, and it works when you try it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "22bdce54fb29175c",
+      "text": "But you can't tell whether it works on another model, on the fifth run, or after your next edit, or what each run costs.",
+      "tts_text": "But you can't tell whether it works on another model, on the fifth run, or after your next edit, or what each run costs.",
+      "heard": "But you can't tell whether it works on another model, on the fifth run, or after your next edit, or what each run costs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "ca3a7aeffc5a851b",
+      "text": "This course is for anyone who writes skills, or builds an agent into an app, and wants evidence in place of a hunch.",
+      "tts_text": "This course is for anyone who writes skills, or builds an agent into an app, and wants evidence in place of a hunch.",
+      "heard": "This course is for anyone who writes skills or builds an agent into an app and wants evidence in place of a hunch.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "861daf4a52686ced",
+      "text": "We take one short skill, which writes changelog entries, and measure it with Vally.",
+      "tts_text": "We take one short skill, which writes changelog entries, and measure it with Valley.",
+      "heard": "You take one short skill, which writes changelog entries and measure it with valley.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "We",
+          "heard": "You",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "56b89ff170c992d0",
+      "text": "First we measure the skill, and read what the agent really did.",
+      "tts_text": "First we measure the skill, and read what the agent really did.",
+      "heard": "First, we measure the skill and read what the agent really did.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "23d883ebaab298fd",
+      "text": "Then we build graders we can trust, and ask whether the skill earns its place.",
+      "tts_text": "Then we build graders we can trust, and ask whether the skill earns its place.",
+      "heard": "Then we build graders we can trust and ask whether the skill earns its place.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 3,
+      "file": "audio/s02_03.wav",
+      "clip_sha": "557b06a6344154f7",
+      "text": "We add a judge for what code can't check, and learn what a result does and doesn't support.",
+      "tts_text": "We add a judge for what code can't check, and learn what a result does and doesn't support.",
+      "heard": "We add a judge for what code can't check and learn what a result does and doesn't support.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 4,
+      "file": "audio/s02_04.wav",
+      "clip_sha": "6684eea9f1a3f994",
+      "text": "We work out what a passing trial costs, and turn the checks into a routine.",
+      "tts_text": "We work out what a passing trial costs, and turn the checks into a routine.",
+      "heard": "We work out what a passing trial costs and turn the checks into a routine.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 5,
+      "file": "audio/s02_05.wav",
+      "clip_sha": "581e541931365c03",
+      "text": "Finally, we evaluate the same skill inside an app.",
+      "tts_text": "Finally, we evaluate the same skill inside an app.",
+      "heard": "Finally, we evaluate the same skill inside an app.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "719012a7c37ed5cd",
+      "text": "By the end, you can change the skill, or the model under it, and say with evidence whether it got better, and what it costs.",
+      "tts_text": "By the end, you can change the skill, or the model under it, and say with evidence whether it got better, and what it costs.",
+      "heard": "By the end you can change the skill or the model under it and say with evidence whether it got better and what it costs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "ae9a598c40367f1d",
+      "text": "Let's begin.",
+      "tts_text": "Let's begin.",
+      "heard": "Let's begin.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "We",
+      "sentences": 1,
+      "heard": [
+        "You"
+      ],
+      "of": 6,
+      "share": 0.17
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 11,
+    "mismatched": 1,
+    "transcribed": 11,
+    "reused": 0,
+    "seconds_per_sentence": 0.279
+  }
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Exit one on a regression</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:40px}.data-table th{font-size:30px}.data-table td{padding-top:20px;padding-bottom:20px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:32px}.data-table th:last-child,.data-table td:last-child{padding-right:16px}.annotated .code.dark.gate{min-width:900px;font-size:36px;padding:22px 32px}.callout{font-size:32px}.gate{font-size:36px}.gate td{padding-top:14px;padding-bottom:14px}.stage{gap:22px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What compare reports</div>
+  <h2 class="scene-title">Exit one on a regression</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark gate" data-lang="bash"><code><span style="color:#4EA5E6">vally</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">compare</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">…</span><span style="color:#B3C0BF"> </span><span data-concept="flag" data-rep="code"><span style="color:#F0733F">--fail-on-regression</span></span>
+<span data-concept="echo" data-rep="code"><span style="color:#4EA5E6">echo</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">$?</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="flag">fail when the treatment is worse</p><p class="callout" data-anchor="echo">the last command’s exit code</p></aside>
+  </div>
+  <table class="data-table full gate">
+    <thead><tr><th class="num">mean score, with its range</th><th>below zero?</th><th class="num">exit code</th></tr></thead>
+    <tbody>
+<tr><td class="num"><span data-concept="g-up" data-rep="cell">+0.53 [+0.17, +0.89]</span></td><td>no</td><td class="num"><span data-concept="g-up" data-rep="cell">0</span></td></tr>
+<tr><td class="num"><span data-concept="g-mid" data-rep="cell">−0.20 [−0.55, +0.15]</span></td><td>the mean is, the range is not</td><td class="num"><span data-concept="g-mid" data-rep="cell">0</span></td></tr>
+<tr><td class="num"><span data-concept="g-down" data-rep="cell">−0.49 [−0.90, −0.07]</span></td><td>the whole range</td><td class="num"><span data-concept="g-down" data-rep="cell">1</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">rows 1 and 3: earlier runs · row 2: an illustration</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "flag",
+  "at": "0~dash dash",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "g-down",
+  "at": "1",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "g-mid",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ },
+ {
+  "type": "focus",
+  "target": "echo",
+  "at": "6",
+  "color": "cyan"
+ }
+]
+</script>
+</body>
+</html>

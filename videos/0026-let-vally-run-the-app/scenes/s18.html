@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The app’s span joined Vally’s trace</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.stack{display:flex;flex-direction:column;gap:22px;width:100%}.stack .card{width:100%}.stack .card > .code.dark{font-size:32px;line-height:1.45;padding:18px 30px}.stage{gap:20px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Write and run the executor</div>
+  <h2 class="scene-title">The app’s span joined Vally’s trace</h2>
+  <div class="stage">
+<div class="stack">
+    <div class="card" data-concept="va" data-rep="card">
+        <div class="who"><span class="mono">otel-spans.jsonl</span> · Vally’s attempt span · one line, cut to three fields</div>
+        <pre class="code dark" data-lang="text"><code><span>"traceId": "</span><span data-concept="tid" data-rep="code"><span>72f0ba8864680fb23a88e2587af7ae48</span></span><span>"</span>
+<span>"spanId": "</span><span data-concept="aid" data-rep="code"><span>e97b2552a9027a75</span></span><span>"</span>
+<span>"name": "vally.attempt"</span></code></pre>
+      </div>
+    <div class="card" data-concept="ap" data-rep="card">
+        <div class="who"><span class="mono">app-traces.jsonl</span>, in the trial’s folder · the app’s session span · one line, cut</div>
+        <pre class="code dark" data-lang="text"><code><span>"traceId": "</span><span data-concept="tid" data-rep="code"><span>72f0ba8864680fb23a88e2587af7ae48</span></span><span>"</span>
+<span>"parentSpanId": "</span><span data-concept="aid" data-rep="code"><span>e97b2552a9027a75</span></span><span>"</span>
+<span>"name": "invoke_agent"</span></code></pre>
+      </div>
+  </div>
+  <p class="note"><span class="mono">claude-haiku-4.5</span> · our run · 2026-11-11T18-49-03-135Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "tid",
+  "at": "2~one trace ID",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "aid",
+  "at": "3~parent",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

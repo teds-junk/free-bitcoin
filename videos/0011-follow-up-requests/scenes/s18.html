@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One invented, one leaked</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.asks .quote{font-size:31px;padding:20px 28px 22px}.stage{gap:34px}.card > .code.dark{font-size:29px;flex:none;line-height:1.9;padding:22px 28px}.card .who{font-size:30px}.callout{font-size:30px}.callouts{margin-top:44px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the conversation showed</div>
+  <h2 class="scene-title">One invented, one leaked</h2>
+  <div class="stage">
+<div class="cols asks">
+    <div class="quote" data-concept="second" data-rep="quote"><span class="who">Turn 1 · the second request</span><p>One more, <span data-concept="q65" data-rep="quote">PR 65</span>: I renamed some internal helper functions. Add that too.</p></div>
+    <div class="quote" data-concept="third" data-rep="quote"><span class="who">Turn 2 · the third request</span><p>I also fixed the exit code of <span class="mono">notes export</span> when the disk is full. Record that as well.</p></div>
+  </div>
+  <div class="annotated">
+    <div class="card" data-concept="added" data-rep="card">
+        <div class="who">What turn 2 added · <span class="mono">claude-haiku-4.5</span></div>
+        <pre class="code dark" data-lang="diff"><code><span style="color:#A4BA1E">+- Fix exit code of `notes export` when the disk is full </span><span data-concept="n66" data-rep="code"><span style="color:#A4BA1E">(#66)</span></span>
+<span style="color:#A4BA1E">+- Fix exit code of `notes export` when the disk is full </span><span data-concept="n65" data-rep="code"><span style="color:#A4BA1E">(#65)</span></span></code></pre>
+      </div>
+    <aside class="callouts"><p class="callout" data-anchor="n66">our run: a number nobody gave</p><p class="callout" data-anchor="n65">an earlier run: the second request’s number</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "n66",
+  "at": "1~line",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "n65",
+  "at": "3~earlier run",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "q65",
+  "channel": "source",
+  "at": "4~belongs",
+  "until": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

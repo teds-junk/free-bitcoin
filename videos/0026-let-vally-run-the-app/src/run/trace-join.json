@@ -1,0 +1,15 @@
+{
+ "_about": "Two span lines from the s16 run, cut to their ids (collect-run.py).",
+ "attempt": {
+  "traceId": "72f0ba8864680fb23a88e2587af7ae48",
+  "spanId": "e97b2552a9027a75",
+  "parentSpanId": "f976cc41cfe4220a",
+  "name": "vally.attempt"
+ },
+ "session": {
+  "traceId": "72f0ba8864680fb23a88e2587af7ae48",
+  "spanId": "afb287bc179d44cf",
+  "parentSpanId": "e97b2552a9027a75",
+  "name": "invoke_agent"
+ }
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What decides the verdict?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#verdict{width:100%;padding:36px 40px 44px;gap:24px}#verdict .parts{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;width:100%}#verdict .part{min-height:260px}#verdict .part .title{font-size:46px;line-height:1.2}#verdict .part .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">What decides the verdict?</h2>
+  <div class="stage">
+<div class="semantic-block" id="verdict" data-role="structure">
+    <div class="title words">a trial’s verdict</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title">no scoring block</div><div class="label">every grader must pass</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title">weights and a threshold</div><div class="label">the weighted score must reach the threshold</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#verdict",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

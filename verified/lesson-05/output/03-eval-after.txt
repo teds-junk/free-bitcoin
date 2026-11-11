@@ -1,0 +1,29 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 6 stimuli from changelog · 2 models · 2 workers
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+⚠  Running with 3 trial(s). For statistically significant results, use --runs 5 or higher.
+
+changelog
+
+claude-haiku-4.5
+  FLAKY  security  2 passed · 1 failed
+   ✘ under-security  2 passed · 1 failed · Pattern /(?m)^\+### Security/ not found in workspace diff
+                                           trial 3
+
+────────────────────────────────────────────────────────
+
+Failures  1 failed
+  ✘ changelog · security [claude-haiku-4.5]
+      ✘ under-security  Pattern /(?m)^\+### Security/ not found in workspace diff · trial 3
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✘ 2/3             ✓ 3/3        
+
+Saved  results/lesson-5-after/2026-11-10T14-57-45-550Z/
+Run ID  86f0d4f2-78a2-4dc7-8ead-55f41364379b

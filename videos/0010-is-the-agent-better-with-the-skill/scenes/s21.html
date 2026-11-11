@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What it changes in tokens</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.toks{font-size:60px}.toks th{font-size:32px}.toks td{padding-top:40px;padding-bottom:40px}.toks td.mono{font-family:var(--font-code);font-size:38px}.toks th:last-child,.toks td:last-child{padding-right:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the comparison showed</div>
+  <h2 class="scene-title">What it changes in tokens</h2>
+  <div class="stage">
+<table class="data-table full toks">
+    <thead><tr><th></th><th class="num">tokens, no skill</th><th class="num"><span data-concept="withcol" data-rep="head">tokens, with the skill</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono">claude-haiku-4.5</td><td class="num"><span data-concept="h-tok" data-rep="cell">374.6k</span></td><td class="num"><span data-concept="h-tok" data-rep="cell">329.7k</span></td></tr>
+<tr><td class="mono">gpt-5.6-terra</td><td class="num"><span data-concept="t-tok" data-rep="cell">289.6k</span></td><td class="num"><span data-concept="t-tok" data-rep="cell">281.6k</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">from our run · each figure is the total over five trials, one per stimulus</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "withcol",
+  "at": "2~fewer",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "h-tok",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "t-tok",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

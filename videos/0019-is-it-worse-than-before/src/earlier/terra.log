@@ -1,0 +1,19 @@
+Baseline: terra-before (8 trajectory(s))
+Treatment(s): terra-after (9)
+Judge model: claude-sonnet-5.5
+
+terra-after vs terra-before (baseline)
+  Win rate: 13%  1 win / 7 ties / 0 losses over 8 trials
+  Mean score: +0.05 [95% CI -0.07, +0.17] (+ = treatment better)
+  Grader pass/fail (McNemar): +1/-0 pass-fail flips, p=1.000 (exact, not significant)
+  Metric deltas (treatment − baseline):
+    tokens         +11132 [+665, +21599] ⚠ high variance
+    turns          +0.9 [+0.0, +1.7] ⚠ high variance
+    tool calls     +1.6 [+0.0, +3.2] ⚠ high variance
+    wall time (ms) +1361 [-324, +3046] ⚠ high variance
+    errors         +0.0 [+0.0, +0.0]
+  ⚠ 1 treatment trajectory(s) had no baseline match
+
+
+Wrote 1 comparison record(s) to terra-compare.jsonl
+exit=0

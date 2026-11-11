@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What a judged trial prints</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.out{font-size:32px;line-height:1.45;padding:24px 30px}.callout{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">How the judge decides</div>
+  <h2 class="scene-title">What a judged trial prints</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark out" data-lang="text"><code><span data-concept="hd" data-rep="code"><span>━━━ cache ━━━</span></span>
+<span data-concept="sum" data-rep="code"><span>❌ cache (1/2 graders passed, 1 failed)</span></span>
+<span>  </span><span data-concept="jl" data-rep="code"><span>✗ [prompt "Begin your reason b…"]</span></span>
+<span>    The new entry reads "Improve performance of `notes</span>
+<span>    list --tag` with LRU cache for tag index (#66)". It</span>
+<span>    leaks implementation detail (LRU cache, tag index)</span>
+<span>    into a changelog meant for users, so it fails the</span>
+<span>    criterion.</span>
+<span>  </span><span data-concept="cl" data-rep="code"><span>✓ [cites-66]</span></span><span> Pattern /(?m)^\+.*\(#66\)/ found in</span>
+<span>    workspace diff</span>
+
+<span data-concept="sc" data-rep="code"><span>Score: 50.0% | FAILED</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="hd">the stimulus</p><p class="callout" data-anchor="jl">the judge: a cross, then its reason</p><p class="callout" data-anchor="cl">the pattern grader</p><p class="callout" data-anchor="sc">every grader must pass</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "hd",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "jl",
+  "at": "2~prompt",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "cl",
+  "at": "4",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "sc",
+  "at": "5",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

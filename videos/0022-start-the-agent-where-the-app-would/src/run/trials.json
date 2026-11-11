@@ -1,0 +1,82 @@
+[
+ {
+  "model": "claude-haiku-4.5",
+  "trial": 0,
+  "status": "success",
+  "passed": false,
+  "loaded": false,
+  "reply": "Done! I've added the three changes from `release/merged.txt` to the **Unreleased** section of `CHANGELOG.md`:\n\n- **#74** (feat): Added to \"Added\" section - `--since <date>` option for `notes list`\n- **#75** (fix): Added to \"Fixed\" section - accent handling in notes search\n- **#76** (refactor): Added to \"Changed\" section - config loading refactor\n\nEach entry follows the existing changelog format with a brief description and PR reference."
+ },
+ {
+  "model": "claude-haiku-4.5",
+  "trial": 1,
+  "status": "success",
+  "passed": false,
+  "loaded": false,
+  "reply": "Perfect! I've added all three changes from `release/merged.txt` to the Unreleased section of CHANGELOG.md:\n\n\u2705 **#74** (feat: add --since) \u2192 Added section  \n\u2705 **#75** (fix: notes search missed titles with accents) \u2192 Fixed section  \n\u2705 **#76** (refactor: move config loading) \u2192 Changed section\n\nThe entries are organized by type (Added, Fixed, Changed) and include the PR numbers for reference."
+ },
+ {
+  "model": "claude-haiku-4.5",
+  "trial": 2,
+  "status": "success",
+  "passed": true,
+  "loaded": true,
+  "reply": "Done! I've added unreleased changelog entries for the three merged changes:\n- **#74** (feat): Added entry for `--since <date>` option to notes list\n- **#75** (fix): Added entry for fix of accented titles in search\n- **#76** (refactor): Skipped\u2014internal refactor has no user-facing impact\n\nThe CHANGELOG.md now documents all user-visible changes in the Unreleased section."
+ },
+ {
+  "model": "claude-haiku-4.5",
+  "trial": 3,
+  "status": "success",
+  "passed": true,
+  "loaded": true,
+  "reply": "Perfect! I've added the three changelog entries to the Unreleased section:\n\n1. **#74** (feat: add --since <date> to notes list) \u2192 Added as \"Add `--since <date>` option to `notes list` to filter by date\"\n2. **#75** (fix: notes search missed titles with accents) \u2192 Fixed as \"Fix notes search missing titles with accents\"\n3. **#76** (refactor: move config loading out of cli.js) \u2192 Not included, as refactors don't affect end users and per the skill guidelines, no changelog entry is needed for internal refactoring changes.\n\nThe Unreleased section now includes all user-facing changes from the merged PRs."
+ },
+ {
+  "model": "claude-haiku-4.5",
+  "trial": 4,
+  "status": "success",
+  "passed": false,
+  "loaded": true,
+  "reply": "Done! I've added three changelog entries under Unreleased:\n\n- **#74 (Added)**: `--since <date>` option for `notes list`\n- **#75 (Fixed)**: Notes search now finds titles with accents\n- **#76 (Changed)**: Config loading refactored out of CLI module\n\nEach entry describes the user-facing impact and references its PR number."
+ },
+ {
+  "model": "gpt-5.6-terra",
+  "trial": 0,
+  "status": "success",
+  "passed": true,
+  "loaded": true,
+  "reply": "Updated **Unreleased** with entries for #74 and #75. Omitted #76 because it is an internal refactor with no user-visible change."
+ },
+ {
+  "model": "gpt-5.6-terra",
+  "trial": 1,
+  "status": "success",
+  "passed": true,
+  "loaded": true,
+  "reply": "Updated **Unreleased** with the user-facing additions from #74 and #75. Omitted #76 because it is an internal refactor with no user-visible change."
+ },
+ {
+  "model": "gpt-5.6-terra",
+  "trial": 2,
+  "status": "success",
+  "passed": true,
+  "loaded": true,
+  "reply": "Updated `CHANGELOG.md` with Unreleased entries for #74 and #75. Omitted #76 because it is an internal refactor with no user-visible change."
+ },
+ {
+  "model": "gpt-5.6-terra",
+  "trial": 3,
+  "status": "success",
+  "passed": true,
+  "loaded": true,
+  "reply": "Updated **Unreleased** with entries for #74 and #75. Omitted #76 because it is an internal refactor with no user-visible change."
+ },
+ {
+  "model": "gpt-5.6-terra",
+  "trial": 4,
+  "status": "success",
+  "passed": true,
+  "loaded": true,
+  "reply": "Updated `CHANGELOG.md` under **Unreleased** for #74 and #75. Omitted #76 because it is an internal refactor with no user-facing change."
+ }
+]

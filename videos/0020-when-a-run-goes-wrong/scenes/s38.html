@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What are the four questions?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#qs{width:100%;padding:36px 40px 44px;gap:24px}#qs .parts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%}#qs .part{min-height:300px}#qs .part .title{font-size:44px;line-height:1.2}#qs .part .label{font-size:30px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">What are the four questions?</h2>
+  <div class="stage">
+<div class="semantic-block" id="qs" data-role="structure">
+    <div class="title words">when a run goes wrong</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="step">1</div><div class="title words">Is it valid?</div><div class="label">lint, the run’s first lines</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="step">2</div><div class="title words">Did it complete?</div><div class="label">ERROR lines, the trial folder</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="step">3</div><div class="title words">Why unexpected?</div><div class="label">evidence, --verbose, the patch</div></div><div class="part" data-concept="p4" data-rep="part">
+      <div class="step">4</div><div class="title words">Does the fix work?</div><div class="label">vally grade, or one new run</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#qs",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p4",
+  "at": "4",
+  "color": "orange"
+ }
+]
+</script>
+</body>
+</html>

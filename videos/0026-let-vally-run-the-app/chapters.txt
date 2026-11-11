@@ -1,0 +1,6 @@
+0:00 Plug the app into Vally
+0:30 The executor is the seam
+1:47 What an executor returns
+5:27 Join the app's traces to Vally's
+7:02 Run the app as Vally's executor
+10:52 What the counts show

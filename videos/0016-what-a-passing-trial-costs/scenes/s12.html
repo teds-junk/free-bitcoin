@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Set beside the model</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.defs{font-size:40px;line-height:1.6;padding:26px 36px;min-width:820px}.callout{font-size:32px}.stage{gap:28px}.stage > .semantic-block{width:100%}.stage > .semantic-block .label{font-size:36px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Reasoning effort as a variant</div>
+  <h2 class="scene-title">Set beside the model</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark defs" data-lang="yaml"><code><span style="color:#4EA5E6">defaults</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  </span><span data-concept="model" data-rep="code"><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">claude-haiku-5.5</span></span>
+<span style="color:#B3C0BF">  </span><span data-concept="effort" data-rep="code"><span style="color:#4EA5E6">reasoning_effort</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">low</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="model">the model</p><p class="callout" data-anchor="effort">how much it reasons</p></aside>
+  </div>
+  <div class="semantic-block" data-concept="accepted" data-rep="block" data-role="attention">
+      <div class="title words">Accepted values depend on the model</div><div class="label">Vally checks before any session starts</div>
+    </div>
+  <p class="note">an eval file’s defaults</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "effort",
+  "at": "0~defaults",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "model",
+  "at": "0~varies the model",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "accepted",
+  "at": "1",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

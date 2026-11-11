@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Where the skill helps</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.grid{font-size:44px}.grid th{font-size:30px}.grid td{padding-top:14px;padding-bottom:14px}.grid td.mono{font-family:var(--font-code);font-size:36px}.grid .tick{color:var(--green-ink);font-weight:700}.grid .cross{color:var(--red-ink);font-weight:700}.grid th:last-child,.grid td:last-child{padding-right:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the comparison showed</div>
+  <h2 class="scene-title">Where the skill helps</h2>
+  <div class="stage">
+<table class="data-table full grid">
+    <thead><tr><th>stimulus</th><th class="num"><span data-concept="h-no" data-rep="head">haiku · no skill</span></th><th class="num"><span data-concept="h-with" data-rep="head">haiku · skill</span></th><th class="num"><span data-concept="h-no" data-rep="head">terra · no skill</span></th><th class="num"><span data-concept="h-with" data-rep="head">terra · skill</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="r-same" data-rep="head">typo-fix</span></td><td class="num"><span class="tick">✔</span></td><td class="num"><span class="tick">✔</span></td><td class="num"><span class="tick">✔</span></td><td class="num"><span class="tick">✔</span></td></tr>
+<tr><td class="mono"><span data-concept="r-help" data-rep="head">refactor</span></td><td class="num"><span class="cross">✘</span></td><td class="num"><span class="tick">✔</span></td><td class="num"><span class="cross">✘</span></td><td class="num"><span class="tick">✔</span></td></tr>
+<tr><td class="mono"><span data-concept="r-help" data-rep="head">security</span></td><td class="num"><span class="cross">✘</span></td><td class="num"><span class="tick">✔</span></td><td class="num"><span class="cross">✘</span></td><td class="num"><span class="tick">✔</span></td></tr>
+<tr><td class="mono"><span data-concept="r-same" data-rep="head">two-changes</span></td><td class="num"><span class="tick">✔</span></td><td class="num"><span class="tick">✔</span></td><td class="num"><span class="tick">✔</span></td><td class="num"><span class="tick">✔</span></td></tr>
+<tr><td class="mono"><span data-concept="r-mixed" data-rep="head">after-release</span></td><td class="num"><span data-concept="cell0" data-rep="cell"><span class="cross">✘</span></span></td><td class="num"><span class="tick">✔</span></td><td class="num"><span class="tick">✔</span></td><td class="num"><span class="tick">✔</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">from our run · one trial per cell</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "h-with",
+  "at": "1~five of five",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "h-no",
+  "at": "1~two of five",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r-help",
+  "at": "2~refactor",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "r-same",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "r-mixed",
+  "at": "4",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,1522 @@
+/* teach-me: Math-Notebook Textbook Stylesheet */
+/* Aesthetic: ink on graph paper — navy serif prose, blue accent, letterspaced labels */
+
+/* ── Tokens ──────────────────────────────────────────────── */
+
+:root {
+  --serif: 'Spectral', 'Georgia', 'Times New Roman', serif;
+  --grotesk: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, 'Consolas', monospace;
+  --cell: 28px;
+
+  /* Light theme (default) */
+  --ground: #FFFFFF;
+  --grid: #DCE4F2;
+  --grid-strong: #C9D6EE;
+  --ink: #13213C;
+  --ink-soft: #54607A;
+  --accent: #1B3FA0;
+  --accent-solid: #1B3FA0;
+  --paper-edge: #EEF2FA;
+  --code-bg: #13213C;
+  --code-ink: #D7E0F4;
+  --code-hint: #8FA0C4;
+  /* Syntax tokens, for the dark code card (dark in both themes) */
+  --code-kw: #C9A7FF;
+  --code-str: #A5E0B0;
+  --code-num: #F4C27F;
+  --code-key: #8CC8FF;
+  --code-fn: #7FDBCA;
+  --code-var: #F7A8C4;
+  --code-add: #8FE0BA;
+  --code-del: #F5A9B4;
+  --green: #1F8A5F;
+  --red: #D6435B;
+  --green-bg: #E8F5EE;
+  --green-ink: #14513A;
+  --red-bg: #FBEAED;
+  --red-ink: #8C2333;
+  --caution: #8A6500;
+  --sheet-shadow: 0 1px 2px rgba(19, 33, 60, 0.06), 0 10px 30px rgba(19, 33, 60, 0.06);
+  color-scheme: light;
+}
+
+/* ── Dark theme ──────────────────────────────────────────── */
+/* Same notebook, inked in reverse. Explicit choice wins; otherwise
+   follow the OS preference. Never hard-code colors in lesson content —
+   both themes are driven entirely by the tokens below. */
+
+:root[data-theme="dark"] {
+  --ground: #0D1626;
+  --grid: #1B2A45;
+  --grid-strong: #28395C;
+  --ink: #DDE5F4;
+  --ink-soft: #95A3C0;
+  --accent: #87A6F2;
+  --accent-solid: #2E51B8;
+  --paper-edge: #16233A;
+  --code-bg: #060C17;
+  --code-ink: #D7E0F4;
+  --code-hint: #6E80A8;
+  --code-kw: #C9A7FF;
+  --code-str: #A5E0B0;
+  --code-num: #F4C27F;
+  --code-key: #8CC8FF;
+  --code-fn: #7FDBCA;
+  --code-var: #F7A8C4;
+  --code-add: #8FE0BA;
+  --code-del: #F5A9B4;
+  --green: #4FBF8B;
+  --red: #F0808F;
+  --green-bg: #122E24;
+  --green-ink: #8FE0BA;
+  --red-bg: #33161C;
+  --red-ink: #F5A9B4;
+  --caution: #A8841C;
+  --sheet-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0D1626;
+    --grid: #1B2A45;
+    --grid-strong: #28395C;
+    --ink: #DDE5F4;
+    --ink-soft: #95A3C0;
+    --accent: #87A6F2;
+    --accent-solid: #2E51B8;
+    --paper-edge: #16233A;
+    --code-bg: #060C17;
+    --code-ink: #D7E0F4;
+    --code-hint: #6E80A8;
+    --code-kw: #C9A7FF;
+    --code-str: #A5E0B0;
+    --code-num: #F4C27F;
+    --code-key: #8CC8FF;
+    --code-fn: #7FDBCA;
+    --code-var: #F7A8C4;
+    --code-add: #8FE0BA;
+    --code-del: #F5A9B4;
+    --green: #4FBF8B;
+    --red: #F0808F;
+    --green-bg: #122E24;
+    --green-ink: #8FE0BA;
+    --red-bg: #33161C;
+    --red-ink: #F5A9B4;
+  --caution: #A8841C;
+    --sheet-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 30px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+}
+
+/* ── Reset & Base ────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;
+  background-color: var(--ground);
+  /* Graph-paper ground */
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* The body is the sheet — white paper floating on the grid */
+body {
+  font-family: var(--serif);
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--ground);
+  max-width: 760px;
+  margin: 2.5rem auto;
+  padding: 4rem 4.5rem 3.5rem;
+  border: 1px solid var(--grid-strong);
+  box-shadow: var(--sheet-shadow);
+  counter-reset: section figure definition example exercise sidenote;
+}
+
+/* ── Theme Toggle (fixed, upper-left — scrolls with the reader) ── */
+
+.theme-toggle {
+  position: fixed;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.7rem;
+  background: var(--ground);
+  border: 1px solid var(--grid-strong);
+  border-radius: 3px;
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(19, 33, 60, 0.08);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+  font-size: 0.8rem;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--accent);
+  /* Fixed box so the Light/Dark and Home labels start at the same x. */
+  display: inline-block;
+  width: 1em;
+  text-align: center;
+}
+
+/* The toggle and the Home button stack in the corner: same width, and their
+   icons and labels line up. */
+.theme-toggle {
+  box-sizing: border-box;
+  width: 5.6rem;
+  justify-content: flex-start;
+  /* Line height 1 so a fallback-font icon (the house) cannot make one taller. */
+  line-height: 1;
+}
+
+/* Home button (added by lesson.js on every page but the course home):
+   the toggle's look, one step below it. */
+.home-button {
+  top: 3.6rem;
+  text-decoration: none;
+}
+
+/* ── Label voice (the aesthetic's signature) ─────────────── */
+
+.label,
+.lesson-number,
+.lesson-meta,
+.callout-title,
+h4 {
+  font-family: var(--grotesk);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+/* ── Typography ──────────────────────────────────────────── */
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  color: var(--ink);
+  line-height: 1.25;
+  margin-top: 2.75rem;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-top: 0;
+}
+
+/* Emphasis inside a heading is for a word being defined or contrasted.
+   Headings are upright by default so that emphasis stays visible. */
+h1 em, h2 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+h2 {
+  font-size: 1.7rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 0.75rem;
+  color: var(--ink);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Numbered sections: every top-level h2 gets an accent mark "01", "02", … */
+body > h2, .course-map-home > h2, .video-section > h2 { counter-increment: section; }
+
+body > h2::before, .course-map-home > h2::before, .video-section > h2::before {
+  content: counter(section, decimal-leading-zero);
+  font-family: var(--grotesk);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-right: 0.9em;
+  vertical-align: 0.45em;
+}
+
+/* Section mode: <h2 data-mode="think|works|use"> names the kind of section
+   on its own line above the heading, after the section number, so the
+   reader always knows whether they are being told how to think about a
+   thing, how it works, or how to use it. */
+body > h2[data-mode]::before {
+  display: block;
+  margin: 0 0 0.55rem;
+  vertical-align: baseline;
+  text-transform: uppercase;
+}
+body > h2[data-mode="think"]::before {
+  content: counter(section, decimal-leading-zero) "  ·  How to think about it";
+}
+body > h2[data-mode="works"]::before {
+  content: counter(section, decimal-leading-zero) "  ·  How it works";
+}
+body > h2[data-mode="use"]::before {
+  content: counter(section, decimal-leading-zero) "  ·  How to use it";
+}
+
+/* Justified, hyphenated body text */
+p {
+  margin-bottom: 1.1rem;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+/* Drop cap for the opening paragraph (class applied by the lesson author) */
+p.drop-cap::first-letter {
+  float: left;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 3.5rem;
+  line-height: 0.85;
+  padding: 0.06em 0.14em 0 0;
+  color: var(--accent);
+}
+
+/* ── Links ───────────────────────────────────────────────── */
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+a:hover { color: var(--ink); }
+
+/* ── Lists ───────────────────────────────────────────────── */
+
+ul, ol {
+  margin-bottom: 1.1rem;
+  padding-left: 1.6rem;
+}
+
+li { margin-bottom: 0.4rem; }
+
+li::marker { color: var(--accent); }
+
+/* ── Blockquotes ─────────────────────────────────────────── */
+
+blockquote {
+  margin: 1.75rem 2rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+blockquote p { text-align: left; }
+blockquote p:last-child { margin-bottom: 0; }
+
+blockquote cite {
+  display: block;
+  margin-top: 0.4rem;
+  font-style: normal;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+blockquote cite::before { content: "— "; }
+
+/* Code is never hyphenated: a command broken as "col-umn" is a wrong command. */
+code, pre, kbd { hyphens: none; -webkit-hyphens: none; }
+
+/* ── Sidenotes (margin notes) ────────────────────────────── */
+
+/* Sidenotes ride in a solid tinted box, like figures — same shade off the
+   sheet, hairline border, never the graph-paper grid.
+   Markup: an empty <span class="sidenote-ref"></span> at the point in the
+   text, then <span class="sidenote">…</span> after that paragraph. The mark
+   numbers itself and the note shows the same number, so write neither. */
+.sidenote {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  background: var(--paper-edge);
+  border: 1px solid var(--grid-strong);
+  border-radius: 3px;
+  margin: 0.75rem 0 1rem 2rem;
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+}
+
+.sidenote::before {
+  content: counter(sidenote) ". ";
+  color: var(--accent);
+}
+
+.sidenote-ref {
+  counter-increment: sidenote;
+  font-size: 0.7em;
+  vertical-align: super;
+  color: var(--accent);
+}
+.sidenote-ref::after { content: counter(sidenote); }
+
+@media (min-width: 1180px) {
+  .sidenote {
+    float: right;
+    clear: right;
+    width: 210px;
+    margin: 0.35rem -250px 1rem 0;
+  }
+}
+
+/* ── Numbered Boxes: Definition / Example / Callout ──────── */
+
+.callout {
+  background: var(--paper-edge);
+  border: 1px solid var(--grid-strong);
+  border-left: 3px solid var(--accent);
+  padding: 1.1rem 1.4rem;
+  margin: 1.75rem 0;
+}
+
+.callout p { text-align: left; }
+.callout p:last-child { margin-bottom: 0; }
+
+.callout-title {
+  font-size: 0.7rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.callout.definition { counter-increment: definition; }
+.callout.definition .callout-title::before {
+  content: "Definition " counter(definition) "  ·  ";
+}
+
+.callout.example { counter-increment: example; }
+.callout.example .callout-title::before {
+  content: "Example " counter(example) "  ·  ";
+}
+
+.callout.tip { border-left-color: var(--green); }
+.callout.tip .callout-title { color: var(--green); }
+
+.callout.warning { border-left-color: var(--red); }
+.callout.warning .callout-title { color: var(--red); }
+
+/* ── Code ────────────────────────────────────────────────── */
+
+code {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  background: var(--paper-edge);
+  color: var(--ink);
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+}
+
+/* Dark navy code blocks — the twotimespi terminal card */
+pre {
+  background: var(--code-bg);
+  border-radius: 6px;
+  padding: 1.3rem 1.4rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+pre code {
+  background: none;
+  color: var(--code-ink);
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.8rem;
+}
+
+/* Syntax colours. lesson.js loads highlight.js for <code class="language-…">
+   and wraps tokens in hljs-* spans. Without it the code stays plain. */
+pre code .hljs-keyword,
+pre code .hljs-literal,
+pre code .hljs-type,
+pre code .hljs-selector-tag { color: var(--code-kw); }
+pre code .hljs-string,
+pre code .hljs-regexp,
+pre code .hljs-symbol { color: var(--code-str); }
+pre code .hljs-number { color: var(--code-num); }
+pre code .hljs-attr,
+pre code .hljs-attribute,
+pre code .hljs-property { color: var(--code-key); }
+pre code .hljs-title,
+pre code .hljs-section { color: var(--code-fn); }
+pre code .hljs-variable,
+pre code .hljs-template-variable,
+pre code .hljs-subst,
+pre code .hljs-params { color: var(--code-var); }
+pre code .hljs-comment,
+pre code .hljs-meta,
+pre code .hljs-bullet,
+pre code .hljs-punctuation { color: var(--code-hint); }
+pre code .hljs-addition { color: var(--code-add); }
+pre code .hljs-deletion { color: var(--code-del); }
+pre code .hljs-section { font-weight: 600; }
+/* Markdown */
+pre code .hljs-code { color: var(--code-str); }
+pre code .hljs-link { color: var(--code-key); }
+pre code .hljs-quote { color: var(--code-hint); font-style: italic; }
+pre code .hljs-strong { font-weight: 600; }
+pre code .hljs-emphasis { font-style: italic; }
+
+/* ── Tables ──────────────────────────────────────────────── */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+
+thead { border-bottom: 1px solid var(--ink); }
+
+th {
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  color: var(--ink);
+}
+
+td { padding: 0.55rem 0.75rem; }
+
+tbody tr:nth-child(even) { background: var(--paper-edge); }
+
+/* ── Figures (auto-numbered, on a plain panel) ───────────── */
+
+/* Figures sit on a plain panel one shade off the sheet — no grid, so the
+   image or diagram is the only thing with texture. */
+figure {
+  margin: 2rem 0;
+  text-align: center;
+  counter-increment: figure;
+  border: 1px solid var(--grid-strong);
+  padding: 1.25rem 1.25rem 1rem;
+  background: var(--paper-edge);
+}
+
+figure img,
+figure svg {
+  max-width: 100%;
+  height: auto;
+}
+
+figcaption {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin-top: 0.9rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+figcaption::before {
+  content: "Fig. " counter(figure);
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-right: 0.75em;
+}
+
+/* ── Mermaid Diagrams ────────────────────────────────────── */
+
+.mermaid {
+  margin: 0;
+  text-align: center;
+}
+
+/* ── Chapter Opening (Lesson Header) ─────────────────────── */
+
+.lesson-header {
+  margin-bottom: 3rem;
+}
+
+.lesson-number {
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+}
+
+.lesson-header h1 { margin-top: 0; }
+
+.lesson-meta {
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  margin-top: 0.9rem;
+}
+
+.lesson-header::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  margin-top: 1.75rem;
+  border-top: 2px solid var(--accent);
+}
+
+/* ── Section Break ───────────────────────────────────────── */
+
+hr {
+  border: none;
+  margin: 2.75rem auto;
+  width: 4rem;
+  border-top: 1px solid var(--accent);
+}
+
+/* ── Source Citation ─────────────────────────────────────── */
+
+.source-citation {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  border-left: 2px solid var(--grid-strong);
+  padding-left: 0.75rem;
+  margin: 1rem 0;
+  text-align: left;
+}
+
+/* ── Exercises (end-of-chapter) ──────────────────────────── */
+
+.exercises {
+  margin-top: 3rem;
+  border-top: 2px solid var(--ink);
+  padding-top: 1.25rem;
+}
+
+.exercises > h2 {
+  font-family: var(--grotesk);
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.exercises ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+.exercises ol > li {
+  counter-increment: exercise;
+  margin-bottom: 1.25rem;
+  padding-left: 4rem;
+  position: relative;
+}
+
+.exercises ol > li::before {
+  content: "Ex. " counter(exercise);
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+/* ── Quiz / Interactive Elements ─────────────────────────── */
+
+.quiz {
+  font-family: var(--grotesk);
+  background: var(--paper-edge);
+  border: 1px solid var(--grid-strong);
+  border-left: 3px solid var(--accent);
+  padding: 1.4rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.quiz::before {
+  content: "Check Your Understanding";
+  display: block;
+  font-weight: 500;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.quiz-question {
+  font-family: var(--serif);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.quiz-options {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.quiz-options li { margin-bottom: 0.5rem; }
+
+.quiz-options button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.7rem 1rem;
+  background: var(--ground);
+  border: 1px solid var(--grid-strong);
+  border-radius: 3px;
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.quiz-options button:hover {
+  background: var(--paper-edge);
+  border-color: var(--accent);
+}
+
+.quiz-options button.correct {
+  background: var(--green-bg);
+  border-color: var(--green);
+  color: var(--green-ink);
+}
+
+.quiz-options button.incorrect {
+  background: var(--red-bg);
+  border-color: var(--red);
+  color: var(--red-ink);
+}
+
+.quiz-feedback {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 3px;
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  display: none;
+}
+
+.quiz-feedback.visible { display: block; }
+
+.quiz-feedback.correct { background: var(--green-bg); color: var(--green-ink); }
+.quiz-feedback.incorrect { background: var(--red-bg); color: var(--red-ink); }
+
+/* ── What's Next Footer ──────────────────────────────────── */
+
+.next-steps {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--grid-strong);
+}
+
+.next-steps h2 {
+  font-family: var(--grotesk);
+  font-style: normal;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: 0;
+}
+
+.next-steps p { text-align: left; }
+
+/* Link to the next page in the course; white on --accent-solid works in both themes. */
+.next-steps .next-lesson {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 6px;
+  background: var(--accent-solid);
+  color: #fff;
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+.next-steps .next-lesson:hover { color: #fff; filter: brightness(1.15); }
+.next-steps .next-lesson:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.next-steps .continue-prompt {
+  background: var(--code-bg);
+  color: var(--code-ink);
+  border-radius: 6px;
+  padding: 1rem 8rem 1rem 1.25rem;
+  margin-top: 1rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  user-select: all;
+  cursor: pointer;
+  position: relative;
+}
+
+.next-steps .continue-prompt::after {
+  content: 'click to select';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--code-hint);
+  font-family: var(--grotesk);
+}
+
+/* ── Print Styles ────────────────────────────────────────── */
+
+@media print {
+  /* Print is always light — a lesson read in dark mode still prints as
+     ink on white paper. Reset the tokens regardless of the active theme. */
+  /* :root:root outranks the prefers-color-scheme dark block above */
+  :root:root,
+  :root:root[data-theme="dark"],
+  :root:root[data-theme="light"] {
+    --ground: #FFFFFF;
+    --grid: #DCE4F2;
+    --grid-strong: #999999;
+    --ink: #000000;
+    --ink-soft: #666666;
+    --accent: #1B3FA0;
+    --accent-solid: #1B3FA0;
+    --paper-edge: #F5F5F5;
+    --code-bg: #F5F5F5;
+    --code-ink: #000000;
+    --code-hint: #666666;
+    --code-kw: #6B2FB3;
+    --code-str: #1B6B35;
+    --code-num: #8A5200;
+    --code-key: #1B3FA0;
+    --code-fn: #0F6B66;
+    --code-var: #A0285A;
+    --code-add: #1F6B3A;
+    --code-del: #A8283C;
+    --green: #1F8A5F;
+    --red: #D6435B;
+    --green-bg: #F5F5F5;
+    --green-ink: #000000;
+    --red-bg: #F5F5F5;
+    --red-ink: #000000;
+    --sheet-shadow: none;
+    color-scheme: light;
+  }
+
+  html { background: white; }
+
+  .theme-toggle { display: none; }
+
+  body {
+    background: white;
+    color: black;
+    padding: 0;
+    margin: 0;
+    max-width: none;
+    border: none;
+    box-shadow: none;
+    font-size: 11.5pt;
+  }
+
+  a { color: black; text-decoration: none; }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  a[href^="#"]::after,
+  a[href^="javascript"]::after { content: ""; }
+
+  .callout, .quiz {
+    background: #f5f5f5;
+    border-color: #999;
+  }
+
+  figure { background: white; }
+
+  pre {
+    background: #f5f5f5;
+    border: 1px solid #ccc;
+  }
+
+  pre code { color: black; }
+
+  .sidenote { border-color: #999; }
+
+  .next-steps .continue-prompt {
+    background: #f5f5f5;
+    color: black;
+  }
+
+  .next-steps .continue-prompt::after { display: none; }
+
+  h1, h2, h3, figure, .callout, .quiz, .exercises li {
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3 { page-break-after: avoid; }
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+@media (max-width: 820px) {
+  html { font-size: 17px; }
+
+  body {
+    margin: 0;
+    padding: 2.5rem 1.5rem;
+    border: none;
+    box-shadow: none;
+    max-width: none;
+  }
+
+  p { text-align: left; hyphens: none; }
+
+  /* A table wider than a phone scrolls inside its own box instead of
+     pushing the whole page sideways. */
+  table { display: block; overflow-x: auto; }
+
+  h1 { font-size: 2rem; }
+
+  .exercises ol > li {
+    padding-left: 0;
+    padding-top: 1.4rem;
+  }
+
+  /* Icon-only toggle on narrow screens, tucked into the corner */
+  .theme-toggle {
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.4rem 0.5rem;
+    width: auto;
+  }
+  /* Beside the toggle, not below it: below would cover the page's first line. */
+  .home-button { top: 0.5rem; left: 2.6rem; }
+
+  .theme-toggle-label { display: none; }
+}
+
+/* ══ Components ══════════════════════════════════════════════
+   Reusable lesson parts. Tokens only: never hard-code a color
+   except white text on --accent-solid, which is dark in both themes. */
+
+/* ── Answer reveal (retrieval practice) ──────────────────────
+   <details class="answer"><summary>Show answer</summary><p>…</p></details> */
+details.answer {
+  margin: 0.6rem 0 0;
+  border: 1px dashed var(--grid-strong);
+  border-radius: 3px;
+  padding: 0.45rem 0.8rem;
+  background: var(--ground);
+}
+details.answer > summary {
+  cursor: pointer;
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+details.answer[open] > summary { margin-bottom: 0.5rem; }
+details.answer p { text-align: left; }
+
+/* ── Warm-up: retrieval of earlier lessons ───────────────────
+   <div class="warmup"><p>…</p><ol><li>…<details class="answer">…</details></li></ol></div> */
+.warmup {
+  border: 1px solid var(--grid-strong);
+  background: var(--paper-edge);
+  padding: 1rem 1.3rem;
+  margin: 0 0 2.25rem;
+}
+.warmup::before {
+  content: "Warm-up · from earlier lessons";
+  display: block;
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.warmup ol { margin-bottom: 0; }
+.warmup p { text-align: left; }
+
+/* ── Where this lesson sits in the course ────────────────────
+   <div class="lesson-question"><p><strong>So far:</strong> …</p>
+   <p><strong>This lesson answers:</strong> …</p></div> */
+.lesson-question {
+  border-left: 3px solid var(--accent);
+  padding: 0.2rem 0 0.2rem 1.2rem;
+  margin: 0 0 2.25rem;
+}
+.lesson-question p { text-align: left; margin-bottom: 0.4rem; }
+.lesson-question p:last-child { margin-bottom: 0; }
+
+/* ── Predict, then check ─────────────────────────────────────
+   <div class="predict"><p>What do you expect …?</p><details class="answer">…</details></div> */
+.predict {
+  border: 1px solid var(--grid-strong);
+  border-left: 3px solid var(--accent);
+  background: var(--paper-edge);
+  padding: 1rem 1.3rem;
+  margin: 1.75rem 0;
+}
+.predict::before {
+  content: "Predict first";
+  display: block;
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.predict p { text-align: left; }
+
+/* ── Hands-on checkpoint ─────────────────────────────────────
+   <section class="checkpoint"><h3>Title</h3>
+     <ol class="steps"><li><span class="goal">Goal: …</span><pre><code>…</code></pre>
+       <p class="expect">You should see: …</p></li></ol></section> */
+.checkpoint {
+  border: 2px solid var(--accent);
+  padding: 1.2rem 1.4rem 0.6rem;
+  margin: 2.25rem 0;
+  background: var(--ground);
+}
+.checkpoint::before {
+  content: "Hands-on checkpoint";
+  display: inline-block;
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #FFFFFF;
+  background: var(--accent-solid);
+  padding: 0.2rem 0.55rem;
+  margin-bottom: 0.6rem;
+}
+.checkpoint h3 { margin-top: 0.2rem; }
+.checkpoint p { text-align: left; }
+ol.steps { counter-reset: step; list-style: none; padding-left: 0; }
+ol.steps > li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 2.2rem;
+  margin-bottom: 0.9rem;
+}
+ol.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--grotesk);
+  font-size: 0.72rem;
+  line-height: 1.45rem;
+  text-align: center;
+}
+/* What a step is for, stated before its command */
+.goal {
+  display: block;
+  color: var(--ink-soft);
+  margin-bottom: 0.3rem;
+}
+/* What the reader should see after the command, copied from a real run */
+.expect {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ── File excerpt: show the file before querying it ──────────
+   <div class="file-excerpt"><div class="file-name">notes/todo.txt</div>
+   <pre><code>…<span class="gap">14 lines hidden</span>…</code></pre></div> */
+.file-excerpt { margin: 1.5rem 0; }
+.file-excerpt pre { margin: 0; border-top-left-radius: 0; }
+.file-name {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--code-ink);
+  background: var(--code-bg);
+  padding: 0.3rem 0.8rem 0.2rem;
+  border-radius: 6px 6px 0 0;
+}
+/* Lines left out of an excerpt are always marked, never silently dropped */
+pre .gap {
+  /* inline-block, not block: the line break after it in the <pre> then ends
+     the marker's own line instead of adding an empty one */
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  color: var(--code-hint);
+  font-family: var(--grotesk);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-top: 1px dashed var(--code-hint);
+  border-bottom: 1px dashed var(--code-hint);
+  padding: 0.15rem 0;
+  margin: 0.3rem 0;
+}
+
+/* ── Where a block is typed ─────────────────────────────────
+   <pre data-where="terminal"> or <pre data-where="sqlite3">
+   When a lesson uses a program with its own prompt, every command block says
+   where it is typed, so the reader never types SQL into the shell. */
+pre[data-where]::before {
+  content: "Type in: " attr(data-where);
+  display: block;
+  font-family: var(--grotesk);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--code-hint);
+  margin-bottom: 0.6rem;
+}
+
+/* ── Output: what a command printed ─────────────────────────
+   <pre class="output"><code>…</code></pre>
+   Lighter than a command block, so the reader can tell at a glance which
+   blocks they type and which they only read. */
+pre.output {
+  background: var(--paper-edge);
+  border: 1px solid var(--grid-strong);
+  border-left: 3px solid var(--ink-soft);
+  border-radius: 0 6px 6px 0;
+}
+pre.output code { color: var(--ink); }
+
+/* ── Annotated code ──────────────────────────────────────────
+   Stacked by default: the code at full width, its numbered notes after it.
+   <div class="annotated"><pre><code>line<span class="mark">1</span></code></pre>
+     <ol class="notes"><li>…</li></ol></div>
+   Add class "side" only when the code is narrow enough to sit beside its
+   notes without scrolling (see LESSON-STYLE.md for the limit). */
+.annotated { margin: 1.5rem 0; }
+.annotated pre { margin: 0 0 0.8rem; }
+.annotated .notes {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  padding-left: 1.6rem;
+}
+.annotated .notes li { margin-bottom: 0.45rem; }
+.annotated .notes li::marker {
+  font-family: var(--grotesk);
+  font-size: 0.72rem;
+}
+@media (min-width: 821px) {
+  .annotated.side {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 1.1rem;
+    align-items: start;
+  }
+  .annotated.side pre { margin: 0; }
+  .annotated.side .notes { font-size: 0.82rem; }
+}
+/* Numbered marker inside code, matching a note */
+pre .mark {
+  display: inline-block;
+  min-width: 1.1rem;
+  padding: 0 0.25rem;
+  margin-left: 0.4rem;
+  border-radius: 8px;
+  background: var(--accent-solid);
+  color: #FFFFFF;
+  font-family: var(--grotesk);
+  font-size: 0.62rem;
+  text-align: center;
+  line-height: 1.1rem;
+}
+/* Line highlights and comments in code */
+pre .hl { background: rgba(135, 166, 242, 0.18); display: inline-block; width: 100%; }
+pre .bad { background: rgba(240, 128, 143, 0.20); display: inline-block; width: 100%; }
+pre .cm { color: var(--code-hint); }
+
+/* ── Sorter: classify each item (behaviour in lesson.js) ─────
+   <div class="sorter" data-categories="A|B"><p>…</p>
+     <div class="sort-item" data-answer="A" data-why="…">Item</div></div> */
+.sorter {
+  border: 1px solid var(--grid-strong);
+  border-left: 3px solid var(--accent);
+  background: var(--paper-edge);
+  padding: 1.1rem 1.3rem;
+  margin: 2rem 0;
+}
+.sorter::before {
+  content: "Sort it";
+  display: block;
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.sorter > p { text-align: left; }
+.sort-item {
+  background: var(--ground);
+  border: 1px solid var(--grid-strong);
+  border-radius: 3px;
+  padding: 0.7rem 0.9rem;
+  margin: 0.6rem 0;
+  font-size: 0.92rem;
+}
+.sort-buttons { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.55rem; }
+.sort-buttons button {
+  font-family: var(--grotesk);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--grid-strong);
+  border-radius: 3px;
+  background: var(--paper-edge);
+  color: var(--ink);
+  cursor: pointer;
+}
+.sort-buttons button:hover:not(:disabled) { border-color: var(--accent); }
+.sort-buttons button:disabled { cursor: default; opacity: 0.75; }
+.sort-buttons button.correct { background: var(--green-bg); border-color: var(--green); color: var(--green-ink); opacity: 1; }
+.sort-buttons button.incorrect { background: var(--red-bg); border-color: var(--red); color: var(--red-ink); opacity: 1; }
+.sort-feedback { margin-top: 0.5rem; font-size: 0.85rem; padding: 0.45rem 0.7rem; border-radius: 3px; }
+.sort-feedback.correct { background: var(--green-bg); color: var(--green-ink); }
+.sort-feedback.incorrect { background: var(--red-bg); color: var(--red-ink); }
+.sort-score {
+  margin-top: 0.7rem;
+  font-family: var(--grotesk);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+}
+
+/* ── Primary source ──────────────────────────────────────────
+   <div class="primary-source"><p><a href="…">Title, author</a></p><p>Why, and which part.</p></div> */
+.primary-source {
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--grid-strong);
+  padding: 0.9rem 0;
+  margin: 2.25rem 0;
+}
+.primary-source::before {
+  content: "Primary source";
+  display: block;
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.primary-source p { text-align: left; margin-bottom: 0.3rem; }
+
+/* ── Video slot ──────────────────────────────────────────────
+   The slot ships hidden. lesson.js looks for the video at the conventional
+   path and shows the slot only when the file loads, so embedding a video
+   needs no edit to the page.
+   <div class="lesson-video" hidden><video controls preload="metadata"></video>
+     <p class="lesson-video-caption">…</p></div> */
+.lesson-video {
+  margin: 0 0 2.5rem;
+  border: 1px solid var(--grid-strong);
+  background: var(--paper-edge);
+  padding: 0.75rem;
+}
+.lesson-video[hidden] { display: none; }
+.lesson-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: var(--code-bg);
+}
+.lesson-video-caption {
+  font-family: var(--grotesk);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin: 0.6rem 0 0;
+  text-align: left;
+}
+ul.lesson-video-caption { list-style: none; padding-left: 0; }
+
+/* ── Course map (rendered by lesson.js from course.js) ───────
+   <nav class="course-map" data-current="3" data-root="../"></nav> */
+.course-map {
+  margin: 2.5rem 0 0;
+  border-top: 1px solid var(--grid-strong);
+  padding-top: 1rem;
+  font-size: 0.85rem;
+}
+.course-map summary {
+  cursor: pointer;
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+}
+.course-map .course-part { margin-top: 0.9rem; }
+.course-map .course-part-title {
+  font-family: var(--grotesk);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.course-map ol, .course-map ul { margin: 0; padding-left: 1.8rem; }
+.course-map li { margin-bottom: 0.3rem; }
+.course-map .course-win { display: block; color: var(--ink-soft); font-size: 0.8rem; }
+.course-map li.done::marker { color: var(--green); }
+.course-map li.current a { font-weight: 600; color: var(--ink); text-decoration: none; }
+.course-map li.current a::after {
+  content: "  ← you are here";
+  font-weight: 400;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+}
+
+/* Course home: the map is the main content, so it reads at body size. */
+.course-map.course-map-home {
+  border-top: none;
+  padding-top: 0;
+  font-size: 1.05rem;
+}
+.course-map-home .course-part { margin-top: 1.6rem; }
+.course-map-home .course-part-title { font-size: 0.8rem; margin-bottom: 0.5rem; }
+.course-map-home ol, .course-map-home ul { padding-left: 2.2rem; }
+.course-map-home li { margin-bottom: 0.7rem; }
+.course-map-home .course-win { font-size: 0.92rem; margin-top: 0.1rem; }
+
+/* ── AI-generated disclaimer (course home) ───────────────────
+   Sits on the grid above the sheet, not inside it. The body is the sheet,
+   so the note is positioned into the extra top margin made for it. */
+body:has(> .ai-disclaimer) { margin-top: 5.75rem; }
+.ai-disclaimer {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(900px, calc(100vw - 18rem));
+  margin: 0;
+  padding: calc(0.5rem + 2px) calc(0.9rem + 2px);
+  /* A drawn dashed border: CSS "dashed" cannot set dash length or gap.
+     14px dashes, 10px gaps, 2px thick. */
+  background:
+    linear-gradient(90deg, var(--caution) 14px, transparent 0) top left / 24px 2px repeat-x,
+    linear-gradient(90deg, var(--caution) 14px, transparent 0) bottom left / 24px 2px repeat-x,
+    linear-gradient(180deg, var(--caution) 14px, transparent 0) top left / 2px 24px repeat-y,
+    linear-gradient(180deg, var(--caution) 14px, transparent 0) top right / 2px 24px repeat-y,
+    var(--ground);
+  border-radius: 3px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  text-align: left;
+}
+.ai-disclaimer-title {
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  margin-right: 0.35rem;
+}
+.ai-disclaimer a { color: inherit; }
+@media (max-width: 820px) {
+  /* No sheet on phones: the note simply leads the page. */
+  body:has(> .ai-disclaimer) { margin-top: 0; }
+  .ai-disclaimer {
+    position: static;
+    transform: none;
+    width: auto;
+    margin: 0 0 1.5rem;
+  }
+}
+
+/* Reference sheets: set apart from the lesson sequence as a reusable shelf. */
+.course-map-home .course-refs {
+  margin-top: 2.5rem;
+  background: var(--paper-edge);
+  border: 1px solid var(--grid-strong);
+  border-top: 3px solid var(--accent);
+  padding: 1.2rem 1.4rem 1rem;
+}
+.course-map-home .course-refs .course-part-title { font-size: 0.8rem; }
+.course-refs-note {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  text-align: left;
+  margin: 0 0 0.9rem;
+}
+.course-map-home .course-refs ul { list-style: none; padding-left: 0; }
+.course-map-home .course-refs li { margin-bottom: 0.45rem; }
+.course-downloads-title {
+  font-family: var(--grotesk);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+  margin: 1rem 0 0.4rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--grid-strong);
+}
+.course-map-home .course-downloads-title { font-size: 0.72rem; }
+.course-download-size {
+  font-family: var(--grotesk);
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  margin-left: 0.35rem;
+}
+@media (max-width: 600px) {
+  .course-map-home .course-refs { padding: 1rem; }
+}
+
+/* ── Whole-course video section (course home) ────────────────
+   <section class="video-section" hidden><h2>…</h2><p class="video-note">…</p>
+     <div class="lesson-video" hidden>…</div></section> */
+.video-section { margin-top: 3rem; }
+.video-section[hidden] { display: none; }
+.video-note {
+  border-left: 3px solid var(--accent);
+  padding: 0.2rem 0 0.2rem 1rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  text-align: left;
+}
+
+/* ── Workflow guide ──────────────────────────────────────────
+   A nested, labelled procedure for coming back to months later.
+   <ol class="workflow"><li id="A"><span class="wf-label">A</span><strong>Stage</strong>
+     <ol><li id="A1"><span class="wf-label">A1</span>Step.
+       <span class="wf-done">Done when: …</span>
+       <span class="wf-goto">If …, <a href="#B2">GOTO B2</a>.</span>
+       <a class="wf-src" href="../lessons/0002-….html">Lesson 2</a></li></ol></li></ol> */
+ol.workflow, ol.workflow ol { list-style: none; padding-left: 0; margin: 0; }
+ol.workflow > li {
+  margin: 1.6rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--grid-strong);
+}
+ol.workflow > li > strong { font-size: 1.15rem; font-weight: 500; }
+ol.workflow ol { margin-top: 0.6rem; }
+ol.workflow ol > li {
+  position: relative;
+  padding: 0.35rem 0.5rem 0.35rem 3.2rem;
+  margin: 0;
+  border-radius: 3px;
+}
+ol.workflow ol ol > li { margin-left: 1.4rem; }
+.wf-label {
+  font-family: var(--grotesk);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+ol.workflow > li > .wf-label { margin-right: 0.8rem; }
+ol.workflow ol > li > .wf-label { position: absolute; left: 0.4rem; top: 0.55rem; }
+.wf-done, .wf-goto { display: block; font-size: 0.88rem; }
+.wf-done { color: var(--ink-soft); }
+.wf-goto a { font-family: var(--grotesk); font-size: 0.72rem; letter-spacing: 0.08em; }
+.wf-src {
+  font-family: var(--grotesk);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+/* The step a GOTO lands on is highlighted so the jump is easy to follow */
+ol.workflow li:target { background: var(--paper-edge); outline: 1px solid var(--accent); }
+
+/* ── Reference sheet density helpers ─────────────────────────
+   <div class="ref-grid"><div class="ref-card"><h3>…</h3><p>…</p></div></div>
+   <div class="table-wrap"><table>…</table></div> */
+.ref-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+.ref-card {
+  border: 1px solid var(--grid-strong);
+  background: var(--paper-edge);
+  padding: 0.8rem 1rem;
+  font-size: 0.85rem;
+  break-inside: avoid;
+}
+.ref-card h3 { margin-top: 0; font-size: 1rem; }
+.ref-card p { text-align: left; }
+.table-wrap { overflow-x: auto; }
+
+@media print {
+  .sort-buttons, .course-map, .lesson-video, .video-section { display: none; }
+  details.answer, .checkpoint { border-color: #999; }
+  .checkpoint::before { background: #666; }
+  ol.workflow > li, ol.workflow ol > li { break-inside: avoid; }
+  .wf-goto a::after { content: none; }
+}

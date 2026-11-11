@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Both tests, every grader</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.both{font-size:32px}.both th{font-size:30px}.both td{padding-top:13px;padding-bottom:13px}.both td.mono{font-family:var(--font-code);font-size:30px}.stage{justify-content:flex-start}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Prove the graders</div>
+  <h2 class="scene-title">Both tests, every grader</h2>
+  <div class="stage">
+<table class="data-table full both">
+    <thead><tr><th>Stimulus</th><th>Grader</th><th><span data-concept="c-with" data-rep="head">With the golden patch</span></th><th><span data-concept="c-without" data-rep="head">Without it</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono stim">typo-fix</td><td class="mono"><span data-concept="both" data-rep="cell">adds-an-entry</span></td><td><span data-concept="notrun" data-rep="cell"></span></td><td><span data-concept="other" data-rep="cell"></span></td></tr>
+<tr><td class="mono stim"></td><td class="mono"><span data-concept="untested" data-rep="cell">no-made-up-number</span></td><td><span data-concept="notrun" data-rep="cell"></span></td><td><span data-concept="other" data-rep="cell"></span></td></tr>
+<tr><td class="mono stim">refactor</td><td class="mono"><span data-concept="untested" data-rep="cell">adds-nothing</span></td><td><span data-concept="notrun" data-rep="cell"></span></td><td><span data-concept="other" data-rep="cell"></span></td></tr>
+<tr><td class="mono stim">security</td><td class="mono"><span data-concept="both" data-rep="cell">under-security</span></td><td><span data-concept="notrun" data-rep="cell"></span></td><td><span data-concept="other" data-rep="cell"></span></td></tr>
+<tr><td class="mono stim">two-changes</td><td class="mono"><span data-concept="both" data-rep="cell">two-entries-in-place</span></td><td><span data-concept="notrun" data-rep="cell"></span></td><td><span data-concept="other" data-rep="cell"></span></td></tr>
+<tr><td class="mono stim">after-release</td><td class="mono"><span data-concept="both" data-rep="cell">entry-in-new-unreleased</span></td><td><span data-concept="notrun" data-rep="cell"></span></td><td><span data-concept="other" data-rep="cell"></span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "c-with",
+  "at": "1~golden patch",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "c-without",
+  "at": "4~untouched",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

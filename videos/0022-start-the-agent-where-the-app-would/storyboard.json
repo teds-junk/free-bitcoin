@@ -1,0 +1,598 @@
+{
+  "schema": 2,
+  "title": "Start the agent where the app would",
+  "slug": "0022-start-the-agent-where-the-app-would",
+  "kind": "lesson",
+  "source": "/Users/ted/src/learn/vally/lessons/0022-start-the-agent-where-the-app-would.html",
+  "created": "2026-11-11",
+  "pacing": {
+    "lead_in": 0.4,
+    "gap": 0.5,
+    "tail": 0.8
+  },
+  "narrative": {
+    "question": "Inside the release tool, the agent does not start from a person's request: the tool first lists what was merged since the last release, then asks for the entries. How do I set that up for a stimulus?",
+    "viewer_starts": "A professional programmer who knows the shell, YAML, Node and git, and has watched the changelog-entry skill measured and improved on two models (claude-haiku-4.5 and gpt-5.6-terra) in the practice folder. Knows skill, agent, eval, eval file, stimulus, grader, trial, workspace and patch; the agent environment (the skill and the files copied into the workspace before the agent starts) and the grading environment (files added to a copy of the finished workspace after the agent stops, so the agent never has them); the program grader, which runs a staged script that prints its verdict as a line of JSON; exit codes; diff graders, which read the patch; vally lint, vally eval with -e, --model, --runs, --workers and --output-dir, and vally grade, which re-grades saved trials but cannot re-run a script grader; the results folder with a workspace.patch per trial and a report whose Skills column shows which skill a trial loaded; the words PASS, FLAKY, FAIL and ERROR. Knows the skill's rules, including that a refactor gets no entry, and has met the commands: key once, briefly, as shell commands an eval file runs before the agent starts. Every stimulus so far was a person's request for one change. Has not seen the release tool, the run-command grader, or the env and git fields.",
+    "arc": [
+      {
+        "stage": "app-situation",
+        "viewer_can": "say what the two halves of a stimulus are when an app starts the agent, and where each one comes from"
+      },
+      {
+        "stage": "setup-before-start",
+        "viewer_can": "predict what is in the workspace when the agent starts, and what the patch will hold, from an eval file's commands"
+      },
+      {
+        "stage": "hidden-test",
+        "viewer_can": "read a run-command grader and its staged script, and say what makes it pass"
+      },
+      {
+        "stage": "run-and-grade",
+        "viewer_can": "run the app's situation on two models and read what a failing and a passing trial changed"
+      },
+      {
+        "stage": "what-it-showed",
+        "viewer_can": "set up a stimulus the way the release tool does, with its own setup command, grade it with a hidden test, and say what that test cannot see"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "role": "hook",
+      "mode": "think",
+      "stage": "app-situation",
+      "chapter": "An app starts the agent",
+      "renderer": "html",
+      "visual": "scenes/s01.html",
+      "on_screen": "Headline 'Where the app starts' in the display serif. Two cards side by side, no arrows. Left, 'A person asks': the typo-fix request in the person's own words. Right, 'The release tool asks': its one-sentence prompt, and under it the three-line merged list in a dark box. The left card lights, then the right one.",
+      "introduces": [],
+      "narration": [
+        "So far, every request came from a person, describing one change in their own words.",
+        "Now the team that owns this changelog has built our skill into their release tooling.",
+        "Before each release, a small tool lists the pull requests merged since the last one, saves the list as a file, and asks an agent to write the changelog entries for all of them.",
+        "Nobody types a request, and nobody checks the entries before they ship.",
+        "Here, you'll set up a stimulus that starts the agent exactly where that tool does, and grade what it writes with a test the agent never sees."
+      ]
+    },
+    {
+      "id": "s02",
+      "role": "body",
+      "mode": "think",
+      "stage": "app-situation",
+      "renderer": "html",
+      "visual": "scenes/s02.html",
+      "on_screen": "Headline 'Two halves, both from the app'. Two blocks side by side: 'The prompt · what the app sends: short, always the same, written by a developer' and 'The workspace · what the app has prepared when it calls the agent'. Each lights as it is named.",
+      "introduces": [],
+      "narration": [
+        "Let's start with what a stimulus is, when the thing under test is a feature of an app.",
+        "It has two halves, and both come from the app.",
+        "One half is the prompt: whatever the app sends, which is usually short, always the same, and written by a developer.",
+        "The other is the workspace: whatever the app has prepared by the time it calls the agent.",
+        "If a stimulus rewords the prompt more kindly, or tidies the workspace, it measures a situation the app never creates."
+      ]
+    },
+    {
+      "id": "s03",
+      "role": "body",
+      "mode": "think",
+      "stage": "app-situation",
+      "renderer": "html",
+      "visual": "scenes/s03.html",
+      "on_screen": "Headline 'Run the app’s own setup'. Two blocks side by side under a lead line 'The team changes the list’s format next month': 'An eval that runs their tool · sees the new format' and 'A hand-written copy of the list · keeps passing, tells you nothing'. The first lights, then the second.",
+      "introduces": [],
+      "narration": [
+        "So we copy the prompt from the app's code, word for word.",
+        "For the workspace, we run the app's own setup steps, instead of writing their output by hand.",
+        "Next month, the team might change the format of that list.",
+        "But an eval that runs their tool sees the new format straight away.",
+        "An eval with a hand-written copy of the old list keeps passing, and tells you nothing."
+      ]
+    },
+    {
+      "id": "s04",
+      "role": "body",
+      "mode": "think",
+      "stage": "app-situation",
+      "renderer": "html",
+      "visual": "scenes/s04.html",
+      "on_screen": "Headline 'One sentence, one command'. Dark box, left: the release tool's prompt over two lines, then its setup command, 'node tools/list-merged.mjs > release/merged.txt'. Callouts on the right: 'what the app sends', 'what the app prepares'. A note: the source, Anthropic, Demystifying evals for AI agents (2026).",
+      "introduces": [],
+      "narration": [
+        "Our release tool's prompt is one sentence: it asks for the Unreleased entries, for every change listed in a file named merged, in the release folder.",
+        "Its setup is one command, which writes that file.",
+        "Those two things are what we're going to reproduce."
+      ]
+    },
+    {
+      "id": "s05",
+      "role": "body",
+      "mode": "works",
+      "stage": "setup-before-start",
+      "chapter": "Set up before the agent starts",
+      "renderer": "html",
+      "visual": "scenes/s05.html",
+      "on_screen": "Headline 'The tool that writes the list'. File panel labelled 'tools/list-merged.mjs' (lines 5 to 11, the four comment lines above shown as a hidden row). Notes on the right: beside the feat and fix lines 'users notice: an entry each'; beside the refactor line 'code only: no entry'. The feat and fix lines light together, then the refactor line.",
+      "introduces": [
+        "tools/list-merged.mjs",
+        "list-merged.mjs",
+        "node"
+      ],
+      "narration": [
+        "That's the idea; here's how an eval file reproduces it, starting with the tool.",
+        "First, the release tool's opening job is done by a short Node script named list merged.",
+        "In the real one, the list comes from the team's issue tracker; ours prints a fixed list, so every trial starts the same way.",
+        "Each line holds a pull request number and a type, as in the team's commit messages.",
+        "Feat means a new feature, and fix means a bug fix: users notice both, so both need an entry.",
+        "Refactor means only the code changed, and for that, our skill says to add nothing.",
+        "Earlier, a refactor request said outright that nothing changes for users; this list says only refactor, and the agent has to decide."
+      ]
+    },
+    {
+      "id": "s06",
+      "role": "body",
+      "mode": "works",
+      "stage": "setup-before-start",
+      "renderer": "html",
+      "visual": "scenes/s06.html",
+      "on_screen": "Headline 'Commands run before the agent'. Three numbered blocks in a row, no arrows: '1 Stage · the files and the skill', '2 Run commands · in the workspace, in order', '3 Agent works · on the app’s prompt'. Under blocks 1 and 2 a ruled span labelled 'the starting state'; under block 3 a span labelled 'in the patch'. Block 2 lights, then the first span's label, then the second.",
+      "introduces": [
+        "commands:"
+      ],
+      "narration": [
+        "An eval file can run a command like that one, with a key we've met once before: commands.",
+        "Inside an agent environment, commands is a list of shell commands.",
+        "Vally runs them in the workspace, in order, after it has copied in the files and the skill, and before the agent starts.",
+        "Each command gets sixty seconds, unless the file sets a longer limit.",
+        "That order matters for grading.",
+        "Whatever a command creates is part of the starting state, exactly like a staged file: the agent can open it, and it doesn't appear in the patch.",
+        "Only what the agent changes does."
+      ]
+    },
+    {
+      "id": "s07",
+      "role": "body",
+      "mode": "works",
+      "stage": "setup-before-start",
+      "renderer": "html",
+      "visual": "scenes/s07.html",
+      "on_screen": "Headline 'The app’s situation, as a stimulus'. File panel labelled 'evals/release.eval.yaml', the width of the stage, with a minimap, opening at lines 6 to 13 (the skill, the changelog and the staged tool), then scrolling to lines 15 to 23 (the stimulus, its prompt, its two commands). The staged tool lights, then the prompt, then the commands key, then the two quoted commands.",
+      "introduces": [
+        "evals/release.eval.yaml",
+        "release.eval.yaml",
+        "release/merged.txt"
+      ],
+      "narration": [
+        "Here's the eval file for the release tool.",
+        "Our skill is installed as before, and the tool is staged into the workspace, like the changelog.",
+        "There's one stimulus, and its prompt is the app's sentence, word for word.",
+        "Under it, the stimulus has an agent environment of its own, with two commands.",
+        "One makes the release folder; the other runs the tool, and saves what it prints as the merged file.",
+        "Each command is in quotes, because an unquoted command with a colon and a space in it would be taken for YAML structure, and lint wouldn't catch it."
+      ]
+    },
+    {
+      "id": "s08",
+      "role": "body",
+      "mode": "works",
+      "stage": "setup-before-start",
+      "renderer": "html",
+      "visual": "scenes/s08.html",
+      "on_screen": "Headline 'Two more ways to prepare'. A block on top: 'env: · environment variables for the agent’s process · values can show up in saved trials'. Below, a dark box with the git shape from the docs (git: type: worktree, ref: v2.1.0, source: ../my-repo) and notes 'check out a commit, tag or branch', 'from a repository on your machine'. A note: 'The shape is from Vally’s Eval Spec reference · not run here'. The env block lights, then the git box.",
+      "introduces": [
+        "env:",
+        "git:"
+      ],
+      "narration": [
+        "Two more fields can prepare the start, and this eval needs neither.",
+        "One sets environment variables on the agent's process, for an app that passes its settings that way; their values can show up in saved trials, so it's no place for secrets.",
+        "The other, git, builds the workspace from a repository instead of copied files, which is how a real release tool would get at the history.",
+        "Ours has no repository, so we leave git as the documentation shows it."
+      ]
+    },
+    {
+      "id": "s09",
+      "role": "body",
+      "mode": "works",
+      "stage": "hidden-test",
+      "chapter": "A hidden test",
+      "renderer": "html",
+      "visual": "scenes/s09.html",
+      "on_screen": "Headline 'The answer depends on the list'. Dark box, left: the three lines of release/merged.txt. Callouts on the right, level with each line: 'one line, citing #74', 'one line, citing #75', 'no line'. Each lights in turn.",
+      "introduces": [],
+      "narration": [
+        "So the agent starts where the app would; now, what should a grader check?",
+        "For each feature and each fix on the list, the changelog needs exactly one line, citing its pull request.",
+        "For the refactor, it needs none.",
+        "What's correct depends on the list, so the check has to open the merged file as well as the changelog.",
+        "No pattern on the diff can do that; it takes a script."
+      ]
+    },
+    {
+      "id": "s10",
+      "role": "body",
+      "mode": "works",
+      "stage": "hidden-test",
+      "renderer": "html",
+      "visual": "scenes/s10.html",
+      "on_screen": "Headline 'Exit code zero is a pass'. Two blocks side by side: 'program · the script prints its verdict as a line of JSON' and 'run-command · passes when the command exits with code 0'. Under them a line: 'any test you already have: a test suite, a linter, a script'. The first block lights, then the second.",
+      "introduces": [
+        "run-command"
+      ],
+      "narration": [
+        "We've run a grading script before, with the program grader, which expects the script to print a line of JSON.",
+        "The run command grader is simpler; despite its name, it has nothing to do with the setup commands we just saw.",
+        "It runs a shell command in the graded copy of the workspace, and passes when the command's exit code is zero.",
+        "It can also check what the command prints, but the exit code is the heart of it.",
+        "So any test you already have works unchanged: a test suite, a linter, or a script like ours."
+      ]
+    },
+    {
+      "id": "s11",
+      "role": "body",
+      "mode": "works",
+      "stage": "hidden-test",
+      "renderer": "html",
+      "visual": "scenes/s11.html",
+      "on_screen": "Headline 'Staged for grading only'. File panel labelled 'evals/release.eval.yaml', the width of the stage, with a minimap, scrolled to lines 24 to 32. The grading_environment lines light, then the grader's name, then the command it runs.",
+      "introduces": [
+        "evals/grading/check-release.mjs",
+        "check-release.mjs"
+      ],
+      "narration": [
+        "Here's the rest of the stimulus.",
+        "Its grading environment stages our script, so the agent never has it: Vally's documentation calls these grader-only files, and a test run this way is a hidden test.",
+        "Then comes the grader, named every change handled, which runs the script with node."
+      ]
+    },
+    {
+      "id": "s12",
+      "role": "body",
+      "mode": "works",
+      "stage": "hidden-test",
+      "renderer": "html",
+      "visual": "scenes/s12.html",
+      "on_screen": "Headline 'What the hidden test checks'. File panel labelled 'evals/grading/check-release.mjs', the width of the stage, with a minimap, opening on the top of the file, then scrolling to lines 4 to 10, to the loop (12 to 23), and to the last lines (21 to 29). In turn these light: the two files it opens, the Unreleased lines, the number and type, the lines that cite the pull request, the refactor check, the exactly-one-line check, the second-pull-request check, and the exit with code 1.",
+      "introduces": [],
+      "narration": [
+        "Now the script itself, which is short.",
+        "It opens two files: the changelog, and the merged list, which is still there because it was part of the starting state.",
+        "It keeps the lines of the Unreleased section.",
+        "Then, for each change on the list, it takes the number and the type, and finds the lines that cite that pull request.",
+        "For a refactor, there must be none.",
+        "A feature or a fix must be cited on exactly one line, and that line must not cite a second pull request.",
+        "Between them, those checks catch a skipped change, an entry for the refactor, and two changes merged into one entry.",
+        "On any failure, the script exits with code one, and that exit code is the verdict."
+      ]
+    },
+    {
+      "id": "s13",
+      "role": "body",
+      "mode": "works",
+      "stage": "hidden-test",
+      "renderer": "html",
+      "visual": "scenes/s13.html",
+      "on_screen": "Headline 'This one can’t be re-graded'. Two blocks side by side: 'Reads the patch or the trajectory · can be re-graded from saved trials' and 'Needs the finished workspace · cannot: Vally doesn’t keep it'. The second lights, then the first.",
+      "introduces": [],
+      "narration": [
+        "One limit is worth knowing: a hidden test needs the finished workspace, which Vally doesn't keep.",
+        "So, like a program grader, it can't be re-graded from saved trials; graders that only need the patch or the trajectory can."
+      ]
+    },
+    {
+      "id": "s14",
+      "role": "practice",
+      "mode": "use",
+      "stage": "run-and-grade",
+      "chapter": "Run it on two models",
+      "renderer": "html",
+      "visual": "scenes/s14.html",
+      "on_screen": "Headline 'What will each model write?'. An empty table: rows '#74 feat', '#75 fix', '#76 refactor'; columns claude-haiku-4.5 and gpt-5.6-terra, headed 'trials with an entry'. The rows light as the three kinds are named; the cells stay empty.",
+      "introduces": [],
+      "narration": [
+        "That's the setup and the test; now let's run them.",
+        "First, we run the release tool by hand, to see the list.",
+        "Then we lint the eval file, and run it five times on each model.",
+        "After that, we open a patch from each model.",
+        {
+          "text": "Three changes are on the list, and one of them is a refactor: what would you expect each model to write?",
+          "read": 2
+        },
+        "If you tried it yourself, here's what you'd see."
+      ]
+    },
+    {
+      "id": "s15",
+      "role": "practice",
+      "mode": "use",
+      "stage": "run-and-grade",
+      "renderer": "terminal",
+      "visual": "tapes/s15.tape",
+      "on_screen": "Terminal in the practice folder; the prompt shows only the folder name. node tools/list-merged.mjs prints the three merged changes. Then vally lint -e evals/release.eval.yaml prints that the file is valid. Held until it has been read.",
+      "introduces": [
+        "vally lint",
+        "-e"
+      ],
+      "shows": [
+        "node",
+        "vally lint"
+      ],
+      "narration": [
+        {
+          "text": "We're in the practice folder, and this is the release tool, run by hand.",
+          "before": "typed:1"
+        },
+        {
+          "text": "Three changes come back: a feature, a fix, and a refactor.",
+          "wait_for": "output:1",
+          "read": 3
+        },
+        {
+          "text": "Both new files are in place, the hidden test and the eval file, so we lint before spending anything.",
+          "before": "typed:2"
+        },
+        {
+          "text": "Lint finds nothing wrong.",
+          "wait_for": "output:2",
+          "read": 2
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "role": "practice",
+      "mode": "use",
+      "stage": "run-and-grade",
+      "renderer": "terminal",
+      "visual": "tapes/s16.tape",
+      "on_screen": "Terminal, continuing in the practice folder. The vally eval command over four lines, with --runs 5 --workers 2 and --output-dir results/lesson-22; a jump cut; then the end of the output: the grader that failed with its evidence, the model summary, the table with one cell per model, and the Saved line shown as ~/src/demo. Held until it has been read.",
+      "introduces": [
+        "vally eval",
+        "--model",
+        "--runs",
+        "--workers",
+        "--output-dir",
+        "lesson-22"
+      ],
+      "shows": [
+        "vally eval"
+      ],
+      "narration": [
+        {
+          "text": "Now the app's situation, on both models: five trials each, two at a time.",
+          "before": "typed:1"
+        },
+        {
+          "text": "That's ten agent runs.",
+          "before": "enter:1"
+        },
+        {
+          "text": "The table at the end counts stimuli, not trials: this file has one stimulus, and it passes only if all five trials do.",
+          "before": "enter:1"
+        },
+        {
+          "text": "About a minute later, that table shows a cross for haiku, and a tick for terra.",
+          "wait_for": "output:1",
+          "read": 3,
+          "outcome": true
+        },
+        {
+          "text": "Just above it is the grader that failed, every change handled, with its evidence: the command exited with code one in three of haiku's five trials.",
+          "wait_for": "output:1",
+          "read": 5,
+          "outcome": true
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "role": "practice",
+      "mode": "use",
+      "stage": "run-and-grade",
+      "renderer": "terminal",
+      "visual": "tapes/s17.tape",
+      "on_screen": "Terminal in the practice folder. ls results/lesson-22 shows one run folder; cd into it (Tab completes its name), then into release/since-last-release. The screen is cleared out of sight. cat claude-haiku-4.5/1/workspace.patch prints a patch that changes only CHANGELOG.md, adding an entry for #74, then '### Fixed' with #75, then '### Changed' with #76. Held until it has been read.",
+      "introduces": [
+        "workspace.patch",
+        "ls",
+        "cd",
+        "cat",
+        "2026",
+        "since-last-release"
+      ],
+      "shows": [
+        "ls",
+        "cd",
+        "cat"
+      ],
+      "narration": [
+        {
+          "text": "The run is saved in a folder named for the time it started.",
+          "before": "typed:1"
+        },
+        {
+          "text": "We change into it, and then into the folder for our one stimulus.",
+          "wait_for": "output:1"
+        },
+        {
+          "text": "Let's open one of haiku's failing trials first: trial two, which is folder one, because the folders count from zero.",
+          "before": "typed:4",
+          "outcome": true
+        },
+        {
+          "text": "Only the changelog is in the patch: the merged file isn't, because the setup command made it before the agent started.",
+          "wait_for": "output:4",
+          "read": 4,
+          "outcome": true
+        },
+        {
+          "text": "There are entries for the feature and the fix, and a third, under Changed, for the refactor.",
+          "wait_for": "output:4",
+          "read": 4,
+          "outcome": true
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "role": "practice",
+      "mode": "use",
+      "stage": "run-and-grade",
+      "renderer": "terminal",
+      "visual": "tapes/s18.tape",
+      "on_screen": "Terminal, in the same stimulus folder. cat gpt-5.6-terra/0/workspace.patch prints a patch with two added entries, for #74 and #75, and nothing for #76. Held until it has been read.",
+      "introduces": [],
+      "shows": [
+        "cat"
+      ],
+      "narration": [
+        {
+          "text": "For comparison, here's a trial from terra, which passed.",
+          "before": "typed:1",
+          "outcome": true
+        },
+        {
+          "text": "It has two entries, for the feature and the fix, and nothing for the refactor.",
+          "wait_for": "output:1",
+          "read": 8,
+          "outcome": true
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-it-showed",
+      "chapter": "What it showed",
+      "renderer": "html",
+      "visual": "scenes/s19.html",
+      "on_screen": "Headline 'One kind of failure'. The table from before, now filled from our run: for each of '#74 feat', '#75 fix', '#76 refactor', the number of each model's five trials that wrote an entry. The feat and fix rows light, then haiku's refactor cell, then terra's. A note names the run.",
+      "introduces": [],
+      "narration": [
+        "So what did the hidden test show?",
+        {
+          "text": "When we ran it, neither model skipped a change, and neither merged two into one entry.",
+          "outcome": true
+        },
+        {
+          "text": "Every failure was the same kind: haiku wrote an entry for the refactor in three of its five trials.",
+          "outcome": true
+        },
+        {
+          "text": "In the patch we opened, that entry sits under Changed and names a source file; our skill forbids both.",
+          "outcome": true
+        },
+        {
+          "text": "Terra left the refactor out every time, and said why in its reply.",
+          "outcome": true
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-it-showed",
+      "renderer": "html",
+      "visual": "scenes/s20.html",
+      "on_screen": "Headline 'Did it load the skill?'. A table from our run: one row for each of claude-haiku-4.5's five trials and one for gpt-5.6-terra's five together; columns 'loaded the skill' and 'entry for the refactor', each yes or no. Terra's row lights, then haiku's two trials without the skill, then the two that loaded it and left the refactor out, then the one that loaded it and recorded the refactor. A note names the run.",
+      "introduces": [],
+      "narration": [
+        "The run's records add one more piece of evidence: which trials loaded our skill.",
+        {
+          "text": "Terra loaded it in all five trials, and haiku in three.",
+          "outcome": true
+        },
+        {
+          "text": "Haiku's two trials without the skill both recorded the refactor; of the three with it, two left the refactor out, and one recorded it anyway.",
+          "outcome": true
+        },
+        "Our hidden test couldn't have told us that: it sees only the finished changelog, not whether the agent opened the list, or used the skill on the way."
+      ]
+    },
+    {
+      "id": "s21",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-it-showed",
+      "renderer": "html",
+      "visual": "scenes/s21.html",
+      "on_screen": "Headline 'The app’s wording matters'. Two quote cards side by side: 'A person’s request, earlier' with the earlier refactor request; and 'The release tool’s input' with its one-sentence prompt and, under it, the list's line '#76 refactor: move config loading out of cli.js'. The tool's card lights, then the person's.",
+      "introduces": [],
+      "narration": [
+        "So what does this run support?",
+        "The app's input is shorter than a person's: its prompt is one fixed sentence, and its list says only refactor, where a person had said that nothing changes for users.",
+        {
+          "text": "With that input, haiku skipped the skill in two of its five trials, and recorded the refactor in both.",
+          "outcome": true
+        },
+        {
+          "text": "Loading isn't the whole story, since one trial loaded the skill and recorded the refactor anyway.",
+          "outcome": true
+        },
+        {
+          "text": "Five trials on each model, in one run, can't prove a cause, but they suggest that the app's wording matters as much as the skill's.",
+          "outcome": true
+        },
+        "That's the kind of difference an app brings in without anyone noticing."
+      ]
+    },
+    {
+      "id": "s22",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-it-showed",
+      "renderer": "html",
+      "visual": "scenes/s22.html",
+      "on_screen": "Headline 'A pass isn’t proof'. Dark box, left: the list's line for #74, then terra's entries for it from our run, each distinct wording once. Notes on the right: beside the list line 'no word on which date'; beside each wording, how many of the five trials wrote it.",
+      "introduces": [],
+      "narration": [
+        "Passing the test isn't the same as being right, either.",
+        {
+          "text": "Terra's entries for the feature each say what the new flag filters by, and they don't all say the same thing.",
+          "outcome": true
+        },
+        "The list doesn't say; the flag might just as well filter by the date a note was changed.",
+        "None of our graders checks for details the list doesn't support, and in an app, nobody sees the entry before it ships."
+      ]
+    },
+    {
+      "id": "s23",
+      "role": "recap",
+      "stage": "what-it-showed",
+      "renderer": "html",
+      "visual": "scenes/s23.html",
+      "on_screen": "Headline 'What can a diff grader see?'. One block, 'one trial, in order', which opens after the question and a pause into four parts: 'Stage · files and skill: the starting state', 'Run commands · what they make: the starting state', 'Agent works · what it changes: in the patch', 'Graders run · the hidden test is added here'. The third part lights with the answer, then the second, then the fourth.",
+      "introduces": [],
+      "narration": [
+        "Before you go on: if a setup command creates one file, and the agent creates another, which of them can a diff grader see?",
+        {
+          "text": "Only the agent's.",
+          "pause": 2.5
+        },
+        "Commands run before the agent starts, so what they create is part of the starting state, like a staged file.",
+        "And a test that needs both files can still run, hidden, because the grading environment adds it after the agent has stopped."
+      ]
+    },
+    {
+      "id": "s24",
+      "role": "next",
+      "stage": "what-it-showed",
+      "renderer": "slide",
+      "visual": "scenes/s24.html",
+      "on_screen": "'Next: Check what the agent did' in the display serif. Below, the hand-off question: 'Did it read the list, touch other files, try to commit or push?' A note: 'Exercises are on the lesson page · Source: Vally docs, Writing Eval Specs, “Grader-only files”'.",
+      "introduces": [],
+      "narration": [
+        "You can now set up a stimulus the way an app would, with its own setup command, and grade the result with a hidden test.",
+        "So the entries can be checked.",
+        "But in the app, how the agent got there matters too: did it open the list, did it touch files it shouldn't, did it try to commit or push?",
+        "That's the next lesson.",
+        "The exercises on the lesson page are worth doing first."
+      ]
+    }
+  ],
+  "lesson_number": 22,
+  "poster": "s01",
+  "people": []
+}

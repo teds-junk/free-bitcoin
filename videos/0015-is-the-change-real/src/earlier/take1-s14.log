@@ -1,0 +1,76 @@
+Running experiment 'before-and-after'
+Loaded 12 stimuli from wording · 2 models · 2 workers
+
+haiku-after · claude-haiku-4.5
+  FLAKY  cache  2 passed · 1 failed
+   ✘ prompt "Begin your reason b…"  2 passed · 1 failed · 1 critique
+     ✓ trial 1   passed
+     ✓ trial 2   passed
+     ✘ trial 3   The new entry reads "- Improve performance of `notes list
+                 --tag` with caching (#66)". It leaks an implementation detail
+                 ("with caching") and is vague about the user benefit, so it
+                 does not meet the criterion.
+
+haiku-before · claude-haiku-4.5
+  FAIL  cache  0/3
+   ✘ prompt "Begin your reason b…"  0 passed · 3 failed · 3 critiques
+     ✘ trial 1   The new entry is: "Improve performance of `notes list --tag`
+                 with LRU cache on tag index (#66)". It states the
+                 user-visible benefit, faster `notes list --tag`. It also
+                 names the implementation, "LRU cache on tag index", so it
+                 fails the criterion.
+     ✘ trial 2   The new entry is "Improve performance of `notes list --tag`
+                 with LRU cache on tag index (#66)". It leaks implementation
+                 detail (LRU cache on tag index), so it fails the criterion.
+     ✘ trial 3   The new entry is "Improve performance of `notes list --tag`
+                 with LRU cache for tag index (#66)". It leaks the
+                 implementation (LRU cache, tag index) and does not say the
+                 user-visible benefit, such as no rescanning and faster
+                 results on large folders. It fails the criterion.
+
+haiku-before · claude-haiku-4.5
+  FAIL  parser  0/3
+   ✘ prompt "Begin your reason b…"  0 passed · 3 failed · 3 critiques
+     ✘ trial 1   The new entry reads "Fix out-of-memory errors on large
+                 imports by using streaming parser (#49)". It gives the
+                 user-facing benefit, but it also names the implementation
+                 ("streaming parser"), so it fails the criterion.
+     ✘ trial 2   The entry quoted in the agent's output is "Fix out-of-memory
+                 errors on large imports by using streaming parser instead of
+                 JSON.parse (#49)". It states the user-visible fix. It also
+                 leaks implementation detail by naming JSON.parse and the
+                 streaming parser, so it fails the criterion.
+     ✘ trial 3   The entry is "Fix out-of-memory error on large imports by
+                 using streaming parser in importer.js (#49)". It states the
+                 user-visible fix but also includes implementation detail (the
+                 streaming parser and the importer.js filename), so it fails
+                 the criterion.
+
+terra-before · gpt-5.6-terra
+  ERROR  cache  1 passed · 1 failed · 1 error
+   trial 3 · Session disconnected while waiting for a response
+   ✘ prompt "Begin your reason b…"  1 passed · 1 failed · 1 critique
+     ✘ trial 1   Entry: "Speed up `notes list --tag` for large folders by
+                 caching tag indexes (#66)". It correctly states the user
+                 benefit, but it also includes the implementation mechanism
+                 ("by caching tag indexes"). The criterion requires no mention
+                 of how it was coded, so this fails.
+     ✓ trial 2   passed
+
+────────────────────────────────────────────────────────
+
+Experiment
+  before-and-after
+  varying /environment/skills, /defaults/model · baseline haiku-before
+
+  → terra-after beat baseline — 3/3 vs 1/3 stimuli.
+
+  eval        haiku-before (baseline)  haiku-after  terra-before  terra-after
+  wording     ✘ 1/3                    ✘ 2/3        ✘ 2/3         ✓ 3/3
+  ──────────  ───────────────────────  ───────────  ────────────  ───────────
+  stimuli     1/3                      2/3          2/3           3/3
+  tokens      787.5k                   679.0k       531.1k        553.3k
+  trial time  3m24s                    3m17s        3m10s         3m29s
+
+Run ID: 23471864-5f72-4b47-a5a8-c42f66f0b8c9
+Output: ~/src/demo/practice/results/lesson-15/2026-11-11T07-36-56-350Z

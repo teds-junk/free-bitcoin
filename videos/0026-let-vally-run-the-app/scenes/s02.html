@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One step runs the agent</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;width:100%}.grid6 .semantic-block{min-height:232px;padding-top:18px;padding-bottom:20px}.grid6 .step{font-size:52px}.grid6 .title{font-size:40px}.grid6 .label{font-size:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">The executor is the seam</div>
+  <h2 class="scene-title">One step runs the agent</h2>
+  <div class="stage">
+<div class="grid6">
+    <div class="semantic-block" data-concept="before" data-rep="block" data-role="structure">
+      <div class="step">1</div><div class="title words">Prepare the workspace</div><div class="label">files, setup commands</div>
+    </div><div class="semantic-block" data-concept="before" data-rep="block" data-role="structure">
+      <div class="step">2</div><div class="title words">Take the starting state</div><div class="label">before the agent</div>
+    </div><div class="semantic-block" data-concept="exec" data-rep="block" data-role="attention">
+      <div class="step">3</div><div class="title words">Run the executor</div><div class="label">stimulus in, trajectory out</div>
+    </div><div class="semantic-block" data-concept="after" data-rep="block" data-role="structure">
+      <div class="step">4</div><div class="title words">Save the patch</div><div class="label">what changed</div>
+    </div><div class="semantic-block" data-concept="after" data-rep="block" data-role="structure">
+      <div class="step">5</div><div class="title words">Run the graders</div><div class="label">a verdict</div>
+    </div><div class="semantic-block" data-concept="after" data-rep="block" data-role="structure">
+      <div class="step">6</div><div class="title words">Repeat, then report</div><div class="label">every trial and model</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "before",
+  "at": "1~prepares",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "after",
+  "at": "1~afterwards",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "exec",
+  "at": "2",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

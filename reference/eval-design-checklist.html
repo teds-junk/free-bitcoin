@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eval design checklist — Vally &amp; Agent Evals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Reference · Vally &amp; Agent Evals</div>
+    <h1>Eval design checklist</h1>
+    <div class="lesson-meta">Verified 2026-11-10 · Vally 0.21.0</div>
+  </div>
+
+  <p>Questions to ask of an eval before you trust what it tells you. Each links to the lesson that explains it.</p>
+
+  <h2 id="before-graders">Before writing any grader</h2>
+  <ul>
+    <li>Have I run realistic requests on more than one model and read what came back? <a href="../lessons/0004-read-the-runs-first.html#read-first">Lesson 4</a></li>
+    <li>Do the requests include messy ones, not only the tidy case? <a href="../lessons/0004-read-the-runs-first.html#six-requests">Lesson 4</a></li>
+    <li>Is each failure I plan to grade one I have seen in a real trial? <a href="../lessons/0004-read-the-runs-first.html#read-first">Lesson 4</a></li>
+    <li>Have I run each stimulus several times, so I know how often it fails? <a href="../lessons/0003-the-same-request-five-times.html#one-sample">Lesson 3</a></li>
+  </ul>
+
+  <h2 id="each-grader">For each grader</h2>
+  <ul>
+    <li>Does it grade the result, not the route? <a href="../lessons/0005-turn-a-failure-into-a-grader.html#worth-having">Lesson 5</a></li>
+    <li>Does it check one failure mode, and is it named after it? <a href="../lessons/0005-turn-a-failure-into-a-grader.html#worth-having">Lesson 5</a></li>
+    <li>Have I seen it fail on a trial I know is bad? <a href="../lessons/0008-check-graders-against-saved-trials.html#saved-trials-are-tests">Lesson 8</a></li>
+    <li>Does it pass a correct answer and fail an untouched file? <a href="../lessons/0007-test-a-grader.html#what-oracle-does">Lesson 7</a></li>
+    <li>If it checks that something is absent, has it failed a saved bad trial? <a href="../lessons/0008-check-graders-against-saved-trials.html#saved-trials-are-tests">Lesson 8</a></li>
+    <li>If a pattern matches added lines, does it begin with (?m)? <a href="../lessons/0008-check-graders-against-saved-trials.html#catch-it">Lesson 8</a></li>
+    <li>If the eval file has a <code>scoring</code> block, are checks that must all hold left out of the weighted score? <a href="../lessons/0014-partial-credit.html#score-or-yes-no">Lesson 14</a></li>
+  </ul>
+
+  <h2 id="environment">What the agent can see</h2>
+  <ul>
+    <li>Are the eval files outside every skill folder? <a href="../lessons/0006-keep-graders-out-of-reach.html#what-goes-in">Lesson 6</a></li>
+    <li>Do grading scripts and expected answers reach graders only through the grading environment? <a href="../lessons/0006-keep-graders-out-of-reach.html#grading-only">Lesson 6</a></li>
+    <li>Have I looked inside a kept workspace to confirm? <a href="../lessons/0006-keep-graders-out-of-reach.html#look-then-hide">Lesson 6</a></li>
+  </ul>
+
+  <h2 id="the-skill">Whether the skill is doing the work</h2>
+  <ul>
+    <li>Does it load for requests that do not use its obvious keyword? <a href="../lessons/0009-does-the-skill-load.html#description-decides">Lesson 9</a></li>
+    <li>Does it stay out of near-miss requests, with neighbouring skills installed? <a href="../lessons/0009-does-the-skill-load.html#description-decides">Lesson 9</a></li>
+    <li>Is the result better with the skill than with none, on each model? <a href="../lessons/0010-is-the-agent-better-with-the-skill.html#beat-no-skill">Lesson 10</a></li>
+    <li>Does any stimulus pass without the skill and fail with it? <a href="../lessons/0010-is-the-agent-better-with-the-skill.html#beat-no-skill">Lesson 10</a></li>
+    <li>Do its rules hold on the second and third request of a conversation? <a href="../lessons/0011-follow-up-requests.html#what-changes">Lesson 11</a></li>
+    <li>Does it still load on a new model, or through a new provider? Our local model never loaded it. <a href="../lessons/0017-a-model-from-your-own-provider.html#what-changed">Lesson 17</a></li>
+  </ul>
+
+  <h2 id="judges">If there is a judge</h2>
+  <ul>
+    <li>Could code have decided this instead? <a href="../lessons/0012-a-judge-for-what-code-cannot-check.html#when-a-judge">Lesson 12</a></li>
+    <li>Is there one criterion, answerable yes or no? <a href="../lessons/0012-a-judge-for-what-code-cannot-check.html#when-a-judge">Lesson 12</a></li>
+    <li>Did I write my own verdicts before the judge ran? <a href="../lessons/0012-a-judge-for-what-code-cannot-check.html#write-the-judge">Lesson 12</a></li>
+    <li>Do I know its TPR and TNR, and on how many labels? <a href="../lessons/0013-check-the-judge.html#tpr-and-tnr">Lesson 13</a></li>
+    <li>Have the rubric, the judge model and the kind of request stayed the same since I measured it? <a href="../lessons/0013-check-the-judge.html#label-compare-decide">Lesson 13</a></li>
+    <li>If it scores on a scale, have I checked its threshold against my labels? <a href="../lessons/0014-partial-credit.html#what-the-scores-showed">Lesson 14</a></li>
+  </ul>
+
+  <h2 id="cost">Cost and budgets</h2>
+  <ul>
+    <li>Am I comparing cost per passing trial, not cost per trial? <a href="../lessons/0016-what-a-passing-trial-costs.html#cost-per-pass">Lesson 16</a></li>
+    <li>Have I added the judge calls, which Vally's cost leaves out? <a href="../lessons/0016-what-a-passing-trial-costs.html#where-cost-is-recorded">Lesson 16</a></li>
+    <li>Am I evaluating the model through the endpoint the app uses, and pricing its tokens at my own rates? <a href="../lessons/0017-a-model-from-your-own-provider.html#model-you-ship">Lesson 17</a></li>
+    <li>Are the budgets set from measured trials, and tested on saved trials in a free re-grade before I trust them? <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#set-budgets">Lesson 18</a></li>
+    <li>Does each budget sit beside a check that the work was done? <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#budget-is-a-grader">Lesson 18</a></li>
+    <li>Am I treating a token budget as a cost budget? It catches a loop, not an expensive model. <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#what-the-limits-caught">Lesson 18</a></li>
+    <li>Have I re-tested the budgets since the model, the effort or the skill last changed? <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#what-the-limits-caught">Lesson 18</a></li>
+    <li>Do the quick stimuli carry the budgets, so the quick suite checks cost as well as quality? <a href="../lessons/0021-keep-it-working.html#tags-suites-exit-codes">Lesson 21</a></li>
+  </ul>
+
+  <h2 id="app">If the skill runs inside an app</h2>
+  <ul>
+    <li>Is the prompt copied word for word from the app? <a href="../lessons/0022-start-the-agent-where-the-app-would.html#app-situation">Lesson 22</a></li>
+    <li>Does the workspace come from running the app's own setup step, not a hand-written copy of its output? <a href="../lessons/0022-start-the-agent-where-the-app-would.html#app-situation">Lesson 22</a></li>
+    <li>Is every <code>commands:</code> entry quoted? <a href="../lessons/0022-start-the-agent-where-the-app-would.html#setup-commands">Lesson 22</a></li>
+    <li>Does the app depend on a step being taken, or never taken? Grade the route only then. <a href="../lessons/0023-check-what-the-agent-did.html#when-to-grade-the-path">Lesson 23</a></li>
+    <li>Is each required step as loose as the requirement, not one tool's way of meeting it? <a href="../lessons/0023-check-what-the-agent-did.html#tool-calls-grader">Lesson 23</a></li>
+    <li>Has each forbidding grader failed a saved trial at least once? <a href="../lessons/0023-check-what-the-agent-did.html#require-forbid-regrade">Lesson 23</a></li>
+    <li>If the trajectory came from outside Vally, does each grader read a field the file records? <a href="../lessons/0025-grade-a-run-vally-did-not-start.html#what-carried-over">Lesson 25</a></li>
+  </ul>
+
+  <h2 id="failing-tools">If a tool fails on purpose</h2>
+  <ul>
+    <li>Have I written down what good behaviour looks like on a bad day? <a href="../lessons/0024-when-a-tool-fails.html#test-the-bad-day">Lesson 24</a></li>
+    <li>Is the answer out of the workspace? Simulation replaces calls, not knowledge. <a href="../lessons/0024-when-a-tool-fails.html#bad-day-results">Lesson 24</a></li>
+    <li>Does a grader confirm the agent actually met the failure? <a href="../lessons/0024-when-a-tool-fails.html#simulation">Lesson 24</a></li>
+    <li>If a tool must never really run, does its override have a <code>default</code>? <a href="../lessons/0024-when-a-tool-fails.html#simulation">Lesson 24</a></li>
+  </ul>
+
+  <h2 id="results">Before acting on a result</h2>
+  <ul>
+    <li>What do the graders behind this tick look for? <a href="../lessons/0002-what-the-tick-checked.html#why-both-passed">Lesson 2</a></li>
+    <li>Is anything marked ERROR that I am reading as a failure? <a href="../lessons/0003-the-same-request-five-times.html#trials-and-outcomes">Lesson 3</a></li>
+    <li>For a surprising result, is the eval valid and did it complete, before I ask why? <a href="../lessons/0020-when-a-run-goes-wrong.html#four-questions">Lesson 20</a></li>
+    <li>Am I comparing the same stimuli, graders and models? <a href="../lessons/0015-is-the-change-real.html#small-samples">Lesson 15</a></li>
+    <li>Do the ranges around the two counts overlap? <a href="../lessons/0015-is-the-change-real.html#small-samples">Lesson 15</a></li>
+    <li>Am I reporting counts, per model, with cost per passing trial? <a href="../lessons/0015-is-the-change-real.html#small-samples">Lesson 15</a>, <a href="../lessons/0021-keep-it-working.html#two-suites-and-conventions">Lesson 21</a></li>
+    <li>Before relying on an edit, has <code>vally compare --fail-on-regression</code> passed, and have I read its token line? <a href="../lessons/0019-is-it-worse-than-before.html#what-it-supports">Lesson 19</a></li>
+    <li>Does our conventions page say what a run may cost and what to do when one goes wrong? <a href="../lessons/0021-keep-it-working.html#two-suites-and-conventions">Lesson 21</a></li>
+  </ul>
+
+  <nav class="course-map" data-current="0" data-root="../"></nav>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

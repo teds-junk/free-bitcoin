@@ -1,0 +1,1812 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/0018-put-a-ceiling-on-a-trial",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "eb77e2c30ffc6671",
+      "text": "Every grader we've written so far asks whether the work is right.",
+      "tts_text": "Every grader we've written so far asks whether the work is right.",
+      "heard": "Every grader we've written so far asks whether the work is right.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "26df73013e6fa8db",
+      "text": "None of them asks what it took.",
+      "tts_text": "None of them asks what it took.",
+      "heard": "None of them asks what it took.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "e2e95dd9704be8b6",
+      "text": "If a trial writes the right entry after reading the same file forty times, it passes them all, and we pay for every call.",
+      "tts_text": "If a trial writes the right entry after reading the same file forty times, it passes them all, and we pay for every call.",
+      "heard": "If a trial writes the right entry after reading the same file 40 times, it passes them all, and we pay for every call.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "e1de360f8a7b56ec",
+      "text": "One trial that loops can cost ten times the usual, and a run every night multiplies whatever slips through.",
+      "tts_text": "One trial that loops can cost ten times the usual, and a run every night multiplies whatever slips through.",
+      "heard": "One trial that loops can cost 10 times the usual, and a run every night multiplies whatever slips through.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s01",
+      "i": 4,
+      "file": "audio/s01_04.wav",
+      "clip_sha": "47eaa930dad21b2e",
+      "text": "In this lesson, you'll put limits on what a trial may use, and test each limit on trials you've already saved.",
+      "tts_text": "In this lesson, you'll put limits on what a trial may use, and test each limit on trials you've already saved.",
+      "heard": "In this lesson, you'll put limits on what a trial may use, and test each limit on trials you've already saved.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "9a814aec9d0d5e27",
+      "text": "Let's start with what a budget is.",
+      "tts_text": "Let's start with what a budget is.",
+      "heard": "Let's start with what a budget is.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "2cfb8066e2684e52",
+      "text": "By a budget, we mean a limit on what one trial may use: tokens, time, turns, or tool calls.",
+      "tts_text": "By a budget, we mean a limit on what one trial may use: tokens, time, turns, or tool calls.",
+      "heard": "I budget we mean a limit on what one trial may use, tokens, time turns, or tool calls.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "By a",
+          "heard": "I",
+          "similarity": 0.5
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "9d1b9ed10efd3744",
+      "text": "Written as a grader, it fails any trial that goes over.",
+      "tts_text": "Written as a grader, it fails any trial that goes over.",
+      "heard": "Written as a grader, it fails any trial that goes over.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "fbeebac33bd51b2f",
+      "text": "It catches two kinds of trouble.",
+      "tts_text": "It catches two kinds of trouble.",
+      "heard": "It catches two kinds of trouble.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "9a7ee293e5294792",
+      "text": "One is a trial that loops: a single run gone wrong.",
+      "tts_text": "One is a trial that loops: a single run gone wrong.",
+      "heard": "One is a trial that loops, a single run gone wrong.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 2,
+      "file": "audio/s03_02.wav",
+      "clip_sha": "32c55a5510c03378",
+      "text": "The second is a cost regression: an edit to the skill after which every trial takes more tokens, or more time.",
+      "tts_text": "The second is a cost regression: an edit to the skill after which every trial takes more tokens, or more time.",
+      "heard": "The second is a cost regression, an edit to the skill after which every trial takes more tokens or more time.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 3,
+      "file": "audio/s03_03.wav",
+      "clip_sha": "9cf7c730410325db",
+      "text": "No grader of the result would notice that.",
+      "tts_text": "No grader of the result would notice that.",
+      "heard": "No greater of the result would notice that.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s04",
+      "i": 0,
+      "file": "audio/s04_00.wav",
+      "clip_sha": "acdacff8e0c28fb8",
+      "text": "Guessed budgets tend to be wrong in one of the two ways a grader can be wrong.",
+      "tts_text": "Guessed budgets tend to be wrong in one of the two ways a grader can be wrong.",
+      "heard": "Guest budgets tend to be wrong in one of the two ways a greater can be wrong.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s04",
+      "i": 1,
+      "file": "audio/s04_01.wav",
+      "clip_sha": "c3129fc0f448de40",
+      "text": "Too low, and it fails good work.",
+      "tts_text": "Too low, and it fails good work.",
+      "heard": "Too low and it fails good work.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 2,
+      "file": "audio/s04_02.wav",
+      "clip_sha": "f0eebc4bbea87321",
+      "text": "Too high, and it can never fail.",
+      "tts_text": "Too high, and it can never fail.",
+      "heard": "Too high and it can never fail.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 3,
+      "file": "audio/s04_03.wav",
+      "clip_sha": "11a8e689f585899a",
+      "text": "So we set it from trials we've measured, and a saved run is a free test of whatever we choose.",
+      "tts_text": "So we set it from trials we've measured, and a saved run is a free test of whatever we choose.",
+      "heard": "So we set it from trials we've measured, and a saved run is a free test of whatever we choose.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 0,
+      "file": "audio/s05_00.wav",
+      "clip_sha": "e5daf8cb63b45a60",
+      "text": "One more thing: a budget stays beside a check that the work was done.",
+      "tts_text": "One more thing: a budget stays beside a check that the work was done.",
+      "heard": "One more thing, a budget stays beside a check that the work was done.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 1,
+      "file": "audio/s05_01.wav",
+      "clip_sha": "8584a4ccc63f50e2",
+      "text": "Giving up after one turn keeps a trial well inside every budget.",
+      "tts_text": "Giving up after one turn keeps a trial well inside every budget.",
+      "heard": "Giving up after one turn keeps a trial well inside every budget.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 2,
+      "file": "audio/s05_02.wav",
+      "clip_sha": "df53766f063dae45",
+      "text": "So the budget says not too much, and only the other graders say it was right.",
+      "tts_text": "So the budget says not too much, and only the other graders say it was right.",
+      "heard": "So the budget says not too much and only the other graders say it was right.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 0,
+      "file": "audio/s06_00.wav",
+      "clip_sha": "f5bebb9db92b44fc",
+      "text": "That's the idea; here are the graders that express it.",
+      "tts_text": "That's the idea; here are the graders that express it.",
+      "heard": "That's the idea, here are the graders that express it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 1,
+      "file": "audio/s06_01.wav",
+      "clip_sha": "80d82daadcbc4e55",
+      "text": "Every trial record ends with a metrics block, and four built-in graders each compare one of its numbers with a max.",
+      "tts_text": "Every trial record ends with a metrics block, and four built-in graders each compare one of its numbers with a max.",
+      "heard": "Every trial record ends with a metrics block and four built-in graders each compare one of its numbers with a max.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 2,
+      "file": "audio/s06_02.wav",
+      "clip_sha": "cac5a6957bb0e489",
+      "text": "Token budget counts input and output tokens together.",
+      "tts_text": "Token budget counts input and output tokens together.",
+      "heard": "Token budget counts input and output tokens together.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 3,
+      "file": "audio/s06_03.wav",
+      "clip_sha": "adc5adc39dd46eb1",
+      "text": "Turn count counts the model's replies.",
+      "tts_text": "Turn count counts the model's replies.",
+      "heard": "Turn count counts the model's replies.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 4,
+      "file": "audio/s06_04.wav",
+      "clip_sha": "6cadfb52df19be68",
+      "text": "Wall time is the agent's working time, by the clock.",
+      "tts_text": "Wall time is the agent's working time, by the clock.",
+      "heard": "Wall time is the agent's working time by the clock.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 5,
+      "file": "audio/s06_05.wav",
+      "clip_sha": "7b931ed9606f7e98",
+      "text": "Fourth, tool call count counts the tool calls a trial makes.",
+      "tts_text": "Fourth, tool call count counts the tool calls a trial makes.",
+      "heard": "Fourth tool call count counts the tool calls a trial makes.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 0,
+      "file": "audio/s07_00.wav",
+      "clip_sha": "dfe899ffd68b939c",
+      "text": "That word, turn, needs some care, because it has had another meaning.",
+      "tts_text": "That word, turn, needs some care, because it has had another meaning.",
+      "heard": "That word turn needs some care because it has had another meaning.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 1,
+      "file": "audio/s07_01.wav",
+      "clip_sha": "3b907f86d74ea9e7",
+      "text": "In a conversation, a turn was one request; here, it's one reply from the model inside a single trial.",
+      "tts_text": "In a conversation, a turn was one request; here, it's one reply from the model inside a single trial.",
+      "heard": "In a conversation, a turn was one request. Here, it's one reply from the model inside a single trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 2,
+      "file": "audio/s07_02.wav",
+      "clip_sha": "6cd29833ab93d9c4",
+      "text": "Even with one request, a trial takes several replies, and turn count counts the replies.",
+      "tts_text": "Even with one request, a trial takes several replies, and turn count counts the replies.",
+      "heard": "Even with one request, a trial takes several replies and turn count counts the replies.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 0,
+      "file": "audio/s08_00.wav",
+      "clip_sha": "d4780d12265efe53",
+      "text": "Here's how they look in the eval file, at the end of one stimulus's graders.",
+      "tts_text": "Here's how they look in the [eval](/ˌivˈæl/) file, at the end of one stimulus's graders.",
+      "heard": "Here's how they look in the EVAL file at the end of one stimulus's graders.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 1,
+      "file": "audio/s08_01.wav",
+      "clip_sha": "e25d64c96a660fbf",
+      "text": "Each takes one setting, max, and passes when the trial's number is at or under it.",
+      "tts_text": "Each takes one setting, max, and passes when the trial's number is at or under it.",
+      "heard": "Each takes one setting, max, and passes when the trial's number is at or under it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 2,
+      "file": "audio/s08_02.wav",
+      "clip_sha": "4cf9b694e6f9d576",
+      "text": "Times are written with their unit.",
+      "tts_text": "Times are written with their unit.",
+      "heard": "Times are written with their unit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 3,
+      "file": "audio/s08_03.wav",
+      "clip_sha": "db8985b647cf0b95",
+      "text": "None of the three has a name, and that's on purpose.",
+      "tts_text": "None of the three has a name, and that's on purpose.",
+      "heard": "None of the three has a name, and that's on purpose.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 4,
+      "file": "audio/s08_04.wav",
+      "clip_sha": "a9882332acf2d683",
+      "text": "Grader names must be unique across the whole file, and these three go under all five stimuli.",
+      "tts_text": "Grader names must be unique across the whole file, and these three go under all five stimuli.",
+      "heard": "Greater names must be unique across the whole file, and these three go under all five stimuli.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 5,
+      "file": "audio/s08_05.wav",
+      "clip_sha": "2c21f6f004dcb8cf",
+      "text": "Left unnamed, each one gets a name from its type and its limit.",
+      "tts_text": "Left unnamed, each one gets a name from its type and its limit.",
+      "heard": "Left unnamed, each one gets a name from its type and its limit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 0,
+      "file": "audio/s09_00.wav",
+      "clip_sha": "896ea672d2c9b890",
+      "text": "These graders work only from what the trial record keeps.",
+      "tts_text": "These graders work only from what the trial record keeps.",
+      "heard": "These graders work only from what the trial record keeps.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 1,
+      "file": "audio/s09_01.wav",
+      "clip_sha": "8af5bd11891bd66f",
+      "text": "So a re-grade with vally grade judges them exactly as a real run would, unlike a script grader, which needs the workspace.",
+      "tts_text": "So a re-grade with valley grade judges them exactly as a real run would, unlike a script grader, which needs the workspace.",
+      "heard": "So a regrade with valley grade judges them exactly as a real run wood, unlike a script grader which needs the workspace.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s09",
+      "i": 2,
+      "file": "audio/s09_02.wav",
+      "clip_sha": "10a4a1035d42f6e2",
+      "text": "That makes a budget cheap to test, with no agent run.",
+      "tts_text": "That makes a budget cheap to test, with no agent run.",
+      "heard": "That makes a budget cheap to test with no agent run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 0,
+      "file": "audio/s10_00.wav",
+      "clip_sha": "18dfc4e428d74a0f",
+      "text": "What happens just over the line?",
+      "tts_text": "What happens just over the line?",
+      "heard": "What happens just over the line?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 1,
+      "file": "audio/s10_01.wav",
+      "clip_sha": "97d005ec0b9979b1",
+      "text": "Once a trial is over the max, the grader's score drops only as far as the trial went over, so a trial that is barely over still scores almost one.",
+      "tts_text": "Once a trial is over the max, the grader's score drops only as far as the trial went over, so a trial that is barely over still scores almost one.",
+      "heard": "Once a trial is over the max, the grader's score drops only as far as the trial went over, so a trial that is barely over still scores almost one.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 2,
+      "file": "audio/s10_02.wav",
+      "clip_sha": "3324a75aa507d397",
+      "text": "Its verdict doesn't soften: the grader fails, and since every grader must pass, the trial fails.",
+      "tts_text": "Its verdict doesn't soften: the grader fails, and since every grader must pass, the trial fails.",
+      "heard": "It's verdict doesn't soften, the greater fails and since every greater must pass, the trial fails.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s11",
+      "i": 0,
+      "file": "audio/s11_00.wav",
+      "clip_sha": "6786814f2702f603",
+      "text": "Budget graders judge a trial after it has finished, when the tokens are already spent.",
+      "tts_text": "Budget graders judge a trial after it has finished, when the tokens are already spent.",
+      "heard": "Budget graders judge a trial after it has finished when the tokens are already spent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 1,
+      "file": "audio/s11_01.wav",
+      "clip_sha": "8cda1e07f4b029c5",
+      "text": "To stop an agent while it's working, a stimulus takes a constraints block.",
+      "tts_text": "To stop an agent while it's working, a stimulus takes a constraints block.",
+      "heard": "To stop an agent while it's working, a stimulus takes a constraints block.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 2,
+      "file": "audio/s11_02.wav",
+      "clip_sha": "e9ae22f9f162624c",
+      "text": "It sits under one stimulus; there's no version for the whole file, so each stimulus gets its own.",
+      "tts_text": "It sits under one stimulus; there's no version for the whole file, so each stimulus gets its own.",
+      "heard": "It sits under one stimulus, there's no version for the whole file, so each stimulus gets its own.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 3,
+      "file": "audio/s11_03.wav",
+      "clip_sha": "fd9daa762fdb6a52",
+      "text": "Max agent duration is how long the agent may work.",
+      "tts_text": "Max agent duration is how long the agent may work.",
+      "heard": "Max Agent duration is how long the agent may work.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 4,
+      "file": "audio/s11_04.wav",
+      "clip_sha": "24fde9238d977510",
+      "text": "At that limit, Vally stops it, and then grades whatever it had done by then, like any finished trial.",
+      "tts_text": "At that limit, Valley stops it, and then grades whatever it had done by then, like any finished trial.",
+      "heard": "At that limit, Valley stops it, and then grades whatever it had done by then, like any finished trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 5,
+      "file": "audio/s11_05.wav",
+      "clip_sha": "f44944cfd8072afa",
+      "text": "In the trial record, the end reason then says agent timeout.",
+      "tts_text": "In the trial record, the end reason then says agent timeout.",
+      "heard": "In the trial record, the end reason then says agent timeout.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 0,
+      "file": "audio/s12_00.wav",
+      "clip_sha": "df75c05fd72a011d",
+      "text": "Three limits can go in that block.",
+      "tts_text": "Three limits can go in that block.",
+      "heard": "Three limits can go in that block.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 1,
+      "file": "audio/s12_01.wav",
+      "clip_sha": "2cf09d2d540987fd",
+      "text": "Max agent duration stops the agent and grades its partial work, which suits an unfinished attempt that is still worth grading.",
+      "tts_text": "Max agent duration stops the agent and grades its partial work, which suits an unfinished attempt that is still worth grading.",
+      "heard": "Max Agent duration stops the agent and grades its partial work, which suits an unfinished attempt that is still worth grading.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 2,
+      "file": "audio/s12_02.wav",
+      "clip_sha": "6e70040ba2560c8c",
+      "text": "Max duration is a hard limit: a trial that reaches it is stopped, and counted as a failure.",
+      "tts_text": "Max duration is a hard limit: a trial that reaches it is stopped, and counted as a failure.",
+      "heard": "Max duration is a hard limit, a trial that reaches it is stopped and counted as a failure.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 3,
+      "file": "audio/s12_03.wav",
+      "clip_sha": "64c3f71839018b54",
+      "text": "It does for one stimulus what the timeout in the file's defaults does for all of them.",
+      "tts_text": "It does for one stimulus what the timeout in the file's defaults does for all of them.",
+      "heard": "It does for one stimulus, with the timeout in the files defaults does for all of them.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "what",
+          "heard": "with",
+          "similarity": 0.33
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 4,
+      "file": "audio/s12_04.wav",
+      "clip_sha": "1f432bfe9312f1ee",
+      "text": "If a stimulus sets both, the agent's limit has to be the shorter one; otherwise the hard limit ends the trial first.",
+      "tts_text": "If a stimulus sets both, the agent's limit has to be the shorter one; otherwise the hard limit ends the trial first.",
+      "heard": "If a stimulus sets both, the agent's limit has to be the shorter one, otherwise the hard limit ends the trial first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 5,
+      "file": "audio/s12_05.wav",
+      "clip_sha": "4df80c361280e849",
+      "text": "Max turns is documented as the most turns a trial may take.",
+      "tts_text": "Max turns is documented as the most turns a trial may take.",
+      "heard": "Max turns is documented as the most turns a trial may take.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 6,
+      "file": "audio/s12_06.wav",
+      "clip_sha": "9bdcc227f147e4cc",
+      "text": "The docs don't say what happens at that limit, so we count turns with the turn count grader instead.",
+      "tts_text": "The docs don't say what happens at that limit, so we count turns with the turn count grader instead.",
+      "heard": "Docs don't say what happens at that limit, so we count turns with a turn count greater instead.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "The",
+          "heard": "",
+          "similarity": 0.0
+        },
+        {
+          "kind": "different",
+          "expected": "the",
+          "heard": "a",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s13",
+      "i": 0,
+      "file": "audio/s13_00.wav",
+      "clip_sha": "68ba8137cc90e0f9",
+      "text": "That's how they work; now let's set some.",
+      "tts_text": "That's how they work; now let's set some.",
+      "heard": "That's how they work, now let's set some.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 1,
+      "file": "audio/s13_01.wav",
+      "clip_sha": "2df3862c5444a758",
+      "text": "First, we find out what a typical trial used in the cost experiment we already ran.",
+      "tts_text": "First, we find out what a typical trial used in the cost experiment we already ran.",
+      "heard": "First, we find out what a typical trial used in the cost experiment we already ran.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 2,
+      "file": "audio/s13_02.wav",
+      "clip_sha": "c3348a90e126cc59",
+      "text": "Then we set budgets just above that, lint the file, and test them on that experiment's saved trials with vally grade, which starts no agent.",
+      "tts_text": "Then we set budgets just above that, lint the file, and test them on that experiment's saved trials with valley grade, which starts no agent.",
+      "heard": "And we set budgets just above that, lent the file, and test them on that experiment save trials with Valley Grade, which starts no agent.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Then",
+          "heard": "And",
+          "similarity": 0.33
+        },
+        {
+          "kind": "different",
+          "expected": "lint",
+          "heard": "lent",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s13",
+      "i": 3,
+      "file": "audio/s13_03.wav",
+      "clip_sha": "ad851f8c8c8d843e",
+      "text": "After that we adjust them, add a time limit, and run the five stimuli once, with vally eval.",
+      "tts_text": "After that we adjust them, add a time limit, and run the five stimuli once, with valley [eval](/ˌivˈæl/).",
+      "heard": "After that we adjust them, add a time limit and run the five stimuli once with valley eval.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 4,
+      "file": "audio/s13_04.wav",
+      "clip_sha": "04fc0a65fea6911a",
+      "text": "With budgets just above the typical trial, how many good trials would you expect them to fail?",
+      "tts_text": "With budgets just above the typical trial, how many good trials would you expect them to fail?",
+      "heard": "With budgets just above the typical trial, how many good trials would you expect them to fail?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 5,
+      "file": "audio/s13_05.wav",
+      "clip_sha": "b749f7ec6a23fa0f",
+      "text": "If you tried it yourself, here's what you'd see.",
+      "tts_text": "If you tried it yourself, here's what you'd see.",
+      "heard": "If you tried it yourself, here's what you'd see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 0,
+      "file": "audio/s14_00.wav",
+      "clip_sha": "839ef65bd4b95834",
+      "text": "The experiment's report has a table for each variant, with the median tokens, turns and duration of every stimulus.",
+      "tts_text": "The experiment's report has a table for each variant, with the median tokens, turns and duration of every stimulus.",
+      "heard": "The experiment's report has a table for each variant, with the median tokens, turns and duration of every stimulus.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 1,
+      "file": "audio/s14_01.wav",
+      "clip_sha": "2b4395fdf9a1e31e",
+      "text": "Across all four variants, we take the largest value in each of those three columns.",
+      "tts_text": "Across all four variants, we take the largest value in each of those three columns.",
+      "heard": "Cross all four variants, we take the largest value in each of those three columns.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s14",
+      "i": 2,
+      "file": "audio/s14_02.wav",
+      "clip_sha": "ff184cab4f2f77ae",
+      "text": "In our run, that's a little over one hundred six thousand tokens, five turns, and about thirteen seconds.",
+      "tts_text": "In our run, that's a little over one hundred six thousand tokens, five turns, and about thirteen seconds.",
+      "heard": "In our run, that's a little over 106,000 tokens, 5 turns, and about 13 seconds.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s15",
+      "i": 0,
+      "file": "audio/s15_00.wav",
+      "clip_sha": "79ba8f1523825db3",
+      "text": "We add the three budget graders to the end of every stimulus's graders, with those numbers rounded up a little.",
+      "tts_text": "We add the three budget graders to the end of every stimulus's graders, with those numbers rounded up a little.",
+      "heard": "We add the three budget graders to the end of every stimulus's graders, with those numbers rounded up a little.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 1,
+      "file": "audio/s15_01.wav",
+      "clip_sha": "691e5fc21e77dc1d",
+      "text": "Ours are one hundred seven thousand tokens, five turns, and thirteen seconds.",
+      "tts_text": "Ours are one hundred seven thousand tokens, five turns, and thirteen seconds.",
+      "heard": "Hours are 107,000 tokens, 5 turns, and 13 seconds.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s16",
+      "i": 0,
+      "file": "audio/s16_00.wav",
+      "clip_sha": "eea974e8c7ecb740",
+      "text": "First, we lint the file, which costs nothing.",
+      "tts_text": "First, we lint the file, which costs nothing.",
+      "heard": "First, we lent the file, which costs nothing.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "lint",
+          "heard": "lent",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 1,
+      "file": "audio/s16_01.wav",
+      "clip_sha": "6fb24c551496ccee",
+      "text": "No errors, and one warning we've met: with several graders and no scoring block, every grader must pass, which is what we want here.",
+      "tts_text": "No errors, and one warning we've met: with several graders and no scoring block, every grader must pass, which is what we want here.",
+      "heard": "No errors in one warning we've met, with several graders and no scoring block, every grader must pass, which is what we want here.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "and",
+          "heard": "in",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 2,
+      "file": "audio/s16_02.wav",
+      "clip_sha": "c9dbc97525144bcf",
+      "text": "Now the free test: we change into the cost experiment's run folder, and then into one variant, haiku high.",
+      "tts_text": "Now the free test: we change into the cost experiment's run folder, and then into one variant, haiku high.",
+      "heard": "Now the free test, we change into the cost experiments run folder and then into one variant, Hiku High.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 3,
+      "file": "audio/s16_03.wav",
+      "clip_sha": "739232ad6f9cdc1f",
+      "text": "This is the re-grade we've used before: the eval file is four folders up, the run dir is this folder, and the saved results are the input.",
+      "tts_text": "This is the re-grade we've used before: the [eval](/ˌivˈæl/) file is four folders up, the run dur is this folder, and the saved results are the input.",
+      "heard": "This is the regrade we've used before. The EVAL file is four folders up. The RUNDER is this folder, and the saved results are the input.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "run dir",
+          "heard": "RUNDER",
+          "similarity": 0.47
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 4,
+      "file": "audio/s16_04.wav",
+      "clip_sha": "30635303a9f3c99b",
+      "text": "Script graders can't be re-graded, so two of the stimuli will show a failing line whatever happens.",
+      "tts_text": "Script graders can't be re-graded, so two of the stimuli will show a failing line whatever happens.",
+      "heard": "Script graders can't be regraded, so two of the stimuli will show a failing line whatever happens.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 5,
+      "file": "audio/s16_05.wav",
+      "clip_sha": "b49e5dc326189d23",
+      "text": "What we're looking for is a failing line that names a budget.",
+      "tts_text": "What we're looking for is a failing line that names a budget.",
+      "heard": "What we're looking for is a failing line that names a budget.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 6,
+      "file": "audio/s16_06.wav",
+      "clip_sha": "ce71d34008535de6",
+      "text": "Fifteen blocks come back, more than fits on a screen, and one of them, further up, names the token budget.",
+      "tts_text": "Fifteen blocks come back, more than fits on a screen, and one of them, further up, names the token budget.",
+      "heard": "15 blocks come back, more than fits on a screen, and one of them further up names the token budget.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 0,
+      "file": "audio/s17_00.wav",
+      "clip_sha": "5b6af23f79588d28",
+      "text": "Here's that block, as the re-grade printed it.",
+      "tts_text": "Here's that block, as the re-grade printed it.",
+      "heard": "Here's that block as the regrade printed it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 1,
+      "file": "audio/s17_01.wav",
+      "clip_sha": "7a46008732e86cd2",
+      "text": "One two changes trial went over the token budget, by about one percent.",
+      "tts_text": "One two changes trial went over the token budget, by about one percent.",
+      "heard": "1-2 changes trial went over the token budget by about 1%.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s17",
+      "i": 2,
+      "file": "audio/s17_02.wav",
+      "clip_sha": "9176fff43b65289c",
+      "text": "Its other failing line is the script grader, which a re-grade can't run.",
+      "tts_text": "Its other failing line is the script grader, which a re-grade can't run.",
+      "heard": "Its other failing line is the script greater, which a regrade can't run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 3,
+      "file": "audio/s17_03.wav",
+      "clip_sha": "148d5c3b69d64ee2",
+      "text": "In an earlier run, a trial went twenty-eight tokens over, still printed a score of one hundred percent, and failed all the same.",
+      "tts_text": "In an earlier run, a trial went twenty-eight tokens over, still printed a score of one hundred percent, and failed all the same.",
+      "heard": "In an earlier run, a trial went 28 tokens over, still printed a score of 100% and failed all the same.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s18",
+      "i": 0,
+      "file": "audio/s18_00.wav",
+      "clip_sha": "36e4069ef62dad83",
+      "text": "Now the same test on the other model's variant, terra high.",
+      "tts_text": "Now the same test on the other model's variant, terra high.",
+      "heard": "Now the same test on the other model's variant, Terahai.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 1,
+      "file": "audio/s18_01.wav",
+      "clip_sha": "dd4feaa10ce33131",
+      "text": "It's the same command, on that variant's saved trials.",
+      "tts_text": "It's the same command, on that variant's saved trials.",
+      "heard": "It's the same command on that variant save trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 2,
+      "file": "audio/s18_02.wav",
+      "clip_sha": "cd5ba75ed1bb80df",
+      "text": "This time it's the turn count budget: two trials each took one turn more than the max of five.",
+      "tts_text": "This time it's the turn count budget: two trials each took one turn more than the max of five.",
+      "heard": "This time it's the turn count budget. Two trials each took one turn more than the max of five.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 3,
+      "file": "audio/s18_03.wav",
+      "clip_sha": "b4fb1b8ec21a0b81",
+      "text": "No trial went over the wall time budget.",
+      "tts_text": "No trial went over the wall time budget.",
+      "heard": "No trial went over the wall time budget.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 0,
+      "file": "audio/s19_00.wav",
+      "clip_sha": "e7842e446e5ff630",
+      "text": "So which is wrong: the budgets, or the trials?",
+      "tts_text": "So which is wrong: the budgets, or the trials?",
+      "heard": "So which is wrong, the budgets or the trials?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 1,
+      "file": "audio/s19_01.wav",
+      "clip_sha": "34342bbb56dee3e5",
+      "text": "For each trial a budget failed, we ask whether it did the work, and whether it looped.",
+      "tts_text": "For each trial a budget failed, we ask whether it did the work, and whether it looped.",
+      "heard": "For each trial a budget failed, we ask whether it did the work and whether it looped.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 2,
+      "file": "audio/s19_02.wav",
+      "clip_sha": "0b43d8a40058d5a3",
+      "text": "All three of these trials passed when the experiment ran, and none of them looped.",
+      "tts_text": "All three of these trials passed when the experiment ran, and none of them looped.",
+      "heard": "All three of these trials passed when the experiment ran and none of them looped.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 3,
+      "file": "audio/s19_03.wav",
+      "clip_sha": "5852a97daf3e7f62",
+      "text": "The token failure was about one percent over, and the two turn failures took one turn more than usual.",
+      "tts_text": "The token failure was about one percent over, and the two turn failures took one turn more than usual.",
+      "heard": "The token failure was about 1% over, and the two-turn failures took one turn more than usual.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s19",
+      "i": 4,
+      "file": "audio/s19_04.wav",
+      "clip_sha": "027a87e8e27a3873",
+      "text": "So the budgets were wrong, not the trials: set just above typical, they failed three good trials of the thirty we re-graded.",
+      "tts_text": "So the budgets were wrong, not the trials: set just above typical, they failed three good trials of the thirty we re-graded.",
+      "heard": "So the budgets were wrong, not the trials. Set just above typical, they failed three good trials of the 30 we regraded.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 0,
+      "file": "audio/s20_00.wav",
+      "clip_sha": "c7e623a82a87bd2a",
+      "text": "Good trials vary from one to the next, and a budget has to leave room for that, so we raise each one to about twice the largest typical value.",
+      "tts_text": "Good trials vary from one to the next, and a budget has to leave room for that, so we raise each one to about twice the largest typical value.",
+      "heard": "Good trials vary from one to the next, and a budget has to leave room for that, so we raise each one to about twice the largest typical value.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 1,
+      "file": "audio/s20_01.wav",
+      "clip_sha": "d5c2cd895e9ba9a9",
+      "text": "Ours become two hundred fifteen thousand tokens, ten turns, and thirty seconds.",
+      "tts_text": "Ours become two hundred fifteen thousand tokens, ten turns, and thirty seconds.",
+      "heard": "Hours become 215,000 tokens, 10 turns, and 30 seconds.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s21",
+      "i": 0,
+      "file": "audio/s21_00.wav",
+      "clip_sha": "95835d863d21f5b9",
+      "text": "Then the same re-grade again, here in terra high.",
+      "tts_text": "Then the same re-grade again, here in terra high.",
+      "heard": "Then the same regrade again, here in Terahai.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s21",
+      "i": 1,
+      "file": "audio/s21_01.wav",
+      "clip_sha": "b6a8a921b6f02270",
+      "text": "Only the script graders fail now, as they did before; no block names a budget.",
+      "tts_text": "Only the script graders fail now, as they did before; no block names a budget.",
+      "heard": "Only the script graders fail now, as they did before, no block names a budget.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 2,
+      "file": "audio/s21_02.wav",
+      "clip_sha": "f3dbcd670037ce38",
+      "text": "Once more in haiku high.",
+      "tts_text": "Once more in haiku high.",
+      "heard": "Once more in Haiku High.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 3,
+      "file": "audio/s21_03.wav",
+      "clip_sha": "cc53e85854fb98ea",
+      "text": "It's the same there.",
+      "tts_text": "It's the same there.",
+      "heard": "It's the same there.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 4,
+      "file": "audio/s21_04.wav",
+      "clip_sha": "0b23eb1ef9951b2b",
+      "text": "That's the free testing done, so we go back to the practice folder.",
+      "tts_text": "That's the free testing done, so we go back to the practice folder.",
+      "heard": "That's the free testing done, so we go back to the practice folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 0,
+      "file": "audio/s22_00.wav",
+      "clip_sha": "c49e19f4fa256f1d",
+      "text": "With the first budgets, three trials failed a budget; with the wider ones, every budget passes every trial.",
+      "tts_text": "With the first budgets, three trials failed a budget; with the wider ones, every budget passes every trial.",
+      "heard": "But the first budget's three trials failed a budget, with the wider ones, every budget passes every trial.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "With",
+          "heard": "But",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 1,
+      "file": "audio/s22_01.wav",
+      "clip_sha": "f32455383337ce50",
+      "text": "No agent ran to find that out.",
+      "tts_text": "No agent ran to find that out.",
+      "heard": "No agent ran to find that out.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 0,
+      "file": "audio/s23_00.wav",
+      "clip_sha": "66f205b0faa6ac71",
+      "text": "Last, the time limit: the constraints block from earlier is now under each of the five stimuli, with a max agent duration of one minute.",
+      "tts_text": "Last, the time limit: the constraints block from earlier is now under each of the five stimuli, with a max agent duration of one minute.",
+      "heard": "Last the time limit, the constraints block from earlier is now under each of the five stimuli with a max agent duration of one minute.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 1,
+      "file": "audio/s23_01.wav",
+      "clip_sha": "2096efe908cce999",
+      "text": "Lint has no errors.",
+      "tts_text": "Lint has no errors.",
+      "heard": "Lindt has no errors.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s23",
+      "i": 2,
+      "file": "audio/s23_02.wav",
+      "clip_sha": "3b9a6f2d9241728e",
+      "text": "Now one run of the five stimuli on both models, with the budgets and the limit in place.",
+      "tts_text": "Now one run of the five stimuli on both models, with the budgets and the limit in place.",
+      "heard": "Now one run of the five stimuli on both models with the budgets and the limit in place.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 3,
+      "file": "audio/s23_03.wav",
+      "clip_sha": "24dcdb4c89f6cdf1",
+      "text": "It spends ten short agent runs.",
+      "tts_text": "It spends ten short agent runs.",
+      "heard": "It spends 10 short agent runs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s23",
+      "i": 4,
+      "file": "audio/s23_04.wav",
+      "clip_sha": "ec65e067956ba515",
+      "text": "What we're hoping for is five of five under each model.",
+      "tts_text": "What we're hoping for is five of five under each model.",
+      "heard": "What we're hoping for is 5 of 5 under each model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s23",
+      "i": 5,
+      "file": "audio/s23_05.wav",
+      "clip_sha": "2c8be74b52fdd033",
+      "text": "About a minute later, that's what both models show: every trial passed, budgets included.",
+      "tts_text": "About a minute later, that's what both models show: every trial passed, budgets included.",
+      "heard": "About a minute later, that's what both models show, every trial passed, budgets included.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 0,
+      "file": "audio/s24_00.wav",
+      "clip_sha": "8aa8d892d6d7efc3",
+      "text": "In that run, the largest trial used about seventy-six thousand tokens and five turns, and the slowest took twelve and a half seconds.",
+      "tts_text": "In that run, the largest trial used about seventy-six thousand tokens and five turns, and the slowest took twelve and a half seconds.",
+      "heard": "Nat Run the largest trial used about 76,000 tokens and five turns and the slowest took 12 and a half seconds.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "In that",
+          "heard": "Nat",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s24",
+      "i": 1,
+      "file": "audio/s24_01.wav",
+      "clip_sha": "de89a75566588f6b",
+      "text": "So every trial stayed well inside the budgets, and the one-minute limit never came into it.",
+      "tts_text": "So every trial stayed well inside the budgets, and the one-minute limit never came into it.",
+      "heard": "So every trial stayed well inside the budgets, and the one-minute limit never came into it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 0,
+      "file": "audio/s25_00.wav",
+      "clip_sha": "e0bc5dad46db71ca",
+      "text": "So what did the limits catch?",
+      "tts_text": "So what did the limits catch?",
+      "heard": "So what did the limits catch?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 1,
+      "file": "audio/s25_01.wav",
+      "clip_sha": "f25d4ce6df56044f",
+      "text": "Our first budgets, set just above the typical trial, failed three good trials of thirty.",
+      "tts_text": "Our first budgets, set just above the typical trial, failed three good trials of thirty.",
+      "heard": "Our first budget set just above the typical trial, failed three good trials of 30.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s25",
+      "i": 2,
+      "file": "audio/s25_02.wav",
+      "clip_sha": "8bd97ef854941433",
+      "text": "That's a grader failing correct work, and the saved trials caught it before any agent ran.",
+      "tts_text": "That's a grader failing correct work, and the saved trials caught it before any agent ran.",
+      "heard": "That's a greater failing correct work, and the save trials caught it before any agent ran.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s25",
+      "i": 3,
+      "file": "audio/s25_03.wav",
+      "clip_sha": "76607dfa5648e25a",
+      "text": "It happened because a typical trial is a middle value: half of all trials are above it.",
+      "tts_text": "It happened because a typical trial is a middle value: half of all trials are above it.",
+      "heard": "It happened because a typical trial is a middle value, half of all trials are above it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 4,
+      "file": "audio/s25_04.wav",
+      "clip_sha": "9df4496092500911",
+      "text": "Terra took four, five or six turns for the same request.",
+      "tts_text": "Terra took four, five or six turns for the same request.",
+      "heard": "Tara took four five or six turns for the same request.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Terra",
+          "heard": "Tara",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 5,
+      "file": "audio/s25_05.wav",
+      "clip_sha": "bf601ee131475ba8",
+      "text": "So a budget at the median fails normal variation.",
+      "tts_text": "So a budget at the median fails normal variation.",
+      "heard": "So a budget at the median fails normal variation.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 0,
+      "file": "audio/s26_00.wav",
+      "clip_sha": "8bae2fa4eee01662",
+      "text": "Budgets are for the trial that runs away, at several times the usual cost, so they need room above normal.",
+      "tts_text": "Budgets are for the trial that runs away, at several times the usual cost, so they need room above normal.",
+      "heard": "Budgets are for the trial that runs away at several times the usual cost, so they need room above normal.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 1,
+      "file": "audio/s26_01.wav",
+      "clip_sha": "38749680dfc0e7a0",
+      "text": "Twice the largest typical trial still fails a loop that costs ten times as much.",
+      "tts_text": "Twice the largest typical trial still fails a loop that costs ten times as much.",
+      "heard": "Twice the largest typical trial still fails a loop that costs 10 times as much.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s26",
+      "i": 2,
+      "file": "audio/s26_02.wav",
+      "clip_sha": "aa43dc6008a70c9d",
+      "text": "It passes a trial that took one turn more than usual.",
+      "tts_text": "It passes a trial that took one turn more than usual.",
+      "heard": "It passes a trial that took one turn more than usual.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 3,
+      "file": "audio/s26_03.wav",
+      "clip_sha": "703ab43bb222071e",
+      "text": "Whenever the model, the effort or the skill changes, the budgets get tested again, the same free way.",
+      "tts_text": "Whenever the model, the effort or the skill changes, the budgets get tested again, the same free way.",
+      "heard": "Whenever the model, the effort, or the skill changes, the budgets get tested again the same free way.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 0,
+      "file": "audio/s27_00.wav",
+      "clip_sha": "a489aba3e11e7402",
+      "text": "It's worth seeing what a token budget doesn't do.",
+      "tts_text": "It's worth seeing what a token budget doesn't do.",
+      "heard": "It's worth seeing what a token budget doesn't do.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 1,
+      "file": "audio/s27_01.wav",
+      "clip_sha": "149c1ba7e76f638f",
+      "text": "One budget holds for every model the eval runs on, and the models differ.",
+      "tts_text": "One budget holds for every model the [eval](/ˌivˈæl/) runs on, and the models differ.",
+      "heard": "One budget holds for every model the EVAL runs on, and the models differ.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 2,
+      "file": "audio/s27_02.wav",
+      "clip_sha": "9b2d230320aa26e9",
+      "text": "In our runs, a typical trial used about a hundred and five thousand tokens on haiku five point five, seventy-five thousand on haiku four point five, and sixty-one thousand on terra.",
+      "tts_text": "In our runs, a typical trial used about a hundred and five thousand tokens on haiku five point five, seventy-five thousand on haiku four point five, and sixty-one thousand on terra.",
+      "heard": "Now runs a typical trial used about 105,000 tokens on Hiku 5.5, 75,000 on Hiku 4.5, and 61,000 on Terra.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "In our",
+          "heard": "Now",
+          "similarity": 0.57
+        }
+      ],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s27",
+      "i": 3,
+      "file": "audio/s27_03.wav",
+      "clip_sha": "2401eebc46c7da08",
+      "text": "So a budget set for the hungriest model is loose for the others.",
+      "tts_text": "So a budget set for the hungriest model is loose for the others.",
+      "heard": "So a budget set for the hungriest model is loose for the others.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 4,
+      "file": "audio/s27_04.wav",
+      "clip_sha": "95165cb1a29729c2",
+      "text": "Tokens aren't price, either, because a token costs a different amount on each model: in the cost experiment, terra used the fewest tokens and cost the most.",
+      "tts_text": "Tokens aren't price, either, because a token costs a different amount on each model: in the cost experiment, terra used the fewest tokens and cost the most.",
+      "heard": "Tokens aren't price either because a token costs a different amount on each model. In the cost experiment, Terra used the fewest tokens and cost the most.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 5,
+      "file": "audio/s27_05.wav",
+      "clip_sha": "e25962f2bcbe065f",
+      "text": "Token budgets catch a trial that loops; choosing a cheaper model is what cost per passing trial is for.",
+      "tts_text": "Token budgets catch a trial that loops; choosing a cheaper model is what cost per passing trial is for.",
+      "heard": "Token budgets catch a trial that loops, choosing a cheaper model, is what cost per passing trial is for.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 0,
+      "file": "audio/s28_00.wav",
+      "clip_sha": "582ab87d71a824b7",
+      "text": "Our time limit did nothing in that run, which is what a limit should do on a good day.",
+      "tts_text": "Our time limit did nothing in that run, which is what a limit should do on a good day.",
+      "heard": "Our time limit did nothing in that run, which is what a limit should do on a good day.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 1,
+      "file": "audio/s28_01.wav",
+      "clip_sha": "d403a45c670ee493",
+      "text": "It's there for the day an agent stalls.",
+      "tts_text": "It's there for the day an agent stalls.",
+      "heard": "It's there for the day and agent stalls.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "an",
+          "heard": "and",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 2,
+      "file": "audio/s28_02.wav",
+      "clip_sha": "9a836f40a3b17811",
+      "text": "Then a nightly run loses one minute on that trial, where the file's timeout would lose three, and it still grades what was written.",
+      "tts_text": "Then a nightly run loses one minute on that trial, where the file's timeout would lose three, and it still grades what was written.",
+      "heard": "Then a nightly run loses one minute on that trial, where the file's timeout would lose three, and it still grades what was written.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s29",
+      "i": 0,
+      "file": "audio/s29_00.wav",
+      "clip_sha": "3443db51706722fe",
+      "text": "Before you go on: how does a budget grader differ from a limit under constraints?",
+      "tts_text": "Before you go on: how does a budget grader differ from a limit under constraints?",
+      "heard": "Before you go on, how does a budget grader differ from a limit under constraints?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s29",
+      "i": 1,
+      "file": "audio/s29_01.wav",
+      "clip_sha": "cc67363a27d86bfc",
+      "text": "Budget graders judge the finished trial, and fail it if a number is over the max; by then, the cost is spent.",
+      "tts_text": "Budget graders judge the finished trial, and fail it if a number is over the max; by then, the cost is spent.",
+      "heard": "Budget graders judge the finished trial and fail it if a number is over the max. By then the cost is spent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s29",
+      "i": 2,
+      "file": "audio/s29_02.wav",
+      "clip_sha": "db439707c65ed586",
+      "text": "Limits act while the agent is working: max agent duration stops it and grades what it produced, and max duration stops it and fails the trial.",
+      "tts_text": "Limits act while the agent is working: max agent duration stops it and grades what it produced, and max duration stops it and fails the trial.",
+      "heard": "Limits act while the agent is working. Max agent duration stops it and grades what it produced, and Max duration stops it and fails the trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s30",
+      "i": 0,
+      "file": "audio/s30_00.wav",
+      "clip_sha": "7ba0e9774da99822",
+      "text": "You can now add budget graders and an agent time limit, and test each budget on saved trials in a free re-grade.",
+      "tts_text": "You can now add budget graders and an agent time limit, and test each budget on saved trials in a free re-grade.",
+      "heard": "You can now add budget graders and an agent time limit and test each budget on save trials in a free regrade.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s30",
+      "i": 1,
+      "file": "audio/s30_01.wav",
+      "clip_sha": "f4f145e367dae0f7",
+      "text": "Budgets now sit beside the other graders on every trial.",
+      "tts_text": "Budgets now sit beside the other graders on every trial.",
+      "heard": "Budgets now sit beside the other graders on every trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s30",
+      "i": 2,
+      "file": "audio/s30_02.wav",
+      "clip_sha": "373795ded59e2a52",
+      "text": "Before relying on an edit, you'd want a check that says no worse than before, in quality and in cost.",
+      "tts_text": "Before relying on an edit, you'd want a check that says no worse than before, in quality and in cost.",
+      "heard": "Before relying on an edit, you want a check that says no worse than before, in quality and in cost.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s30",
+      "i": 3,
+      "file": "audio/s30_03.wav",
+      "clip_sha": "44aa4a90d2fbaa6a",
+      "text": "Can Vally decide that?",
+      "tts_text": "Can Valley decide that?",
+      "heard": "Can Valley decide that?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s30",
+      "i": 4,
+      "file": "audio/s30_04.wav",
+      "clip_sha": "c0fa80d6856b024e",
+      "text": "That's the next lesson.",
+      "tts_text": "That's the next lesson.",
+      "heard": "That's the next lesson.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s30",
+      "i": 5,
+      "file": "audio/s30_05.wav",
+      "clip_sha": "27d9bef028570df3",
+      "text": "For practice, the exercises on the lesson page are worth doing first.",
+      "tts_text": "For practice, the exercises on the lesson page are worth doing first.",
+      "heard": "For practice, the exercises on the lesson page are worth doing first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "dir",
+      "sentences": 1,
+      "heard": [
+        "RUNDER"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "lint",
+      "sentences": 2,
+      "heard": [
+        "lent"
+      ],
+      "of": 3,
+      "share": 0.67
+    },
+    {
+      "word": "haiku",
+      "sentences": 1,
+      "heard": [
+        "Hiku"
+      ],
+      "of": 3,
+      "share": 0.33
+    },
+    {
+      "word": "our",
+      "sentences": 1,
+      "heard": [
+        "Now"
+      ],
+      "of": 4,
+      "share": 0.25
+    },
+    {
+      "word": "By",
+      "sentences": 1,
+      "heard": [
+        "I"
+      ],
+      "of": 5,
+      "share": 0.2
+    },
+    {
+      "word": "Terra",
+      "sentences": 1,
+      "heard": [
+        "Tara"
+      ],
+      "of": 5,
+      "share": 0.2
+    },
+    {
+      "word": "Then",
+      "sentences": 1,
+      "heard": [
+        "And"
+      ],
+      "of": 7,
+      "share": 0.14
+    },
+    {
+      "word": "an",
+      "sentences": 1,
+      "heard": [
+        "and"
+      ],
+      "of": 7,
+      "share": 0.14
+    },
+    {
+      "word": "In",
+      "sentences": 2,
+      "heard": [
+        "Nat",
+        "Now"
+      ],
+      "of": 20,
+      "share": 0.1
+    },
+    {
+      "word": "run",
+      "sentences": 1,
+      "heard": [
+        "RUNDER"
+      ],
+      "of": 15,
+      "share": 0.07
+    },
+    {
+      "word": "With",
+      "sentences": 1,
+      "heard": [
+        "But"
+      ],
+      "of": 17,
+      "share": 0.06
+    },
+    {
+      "word": "what",
+      "sentences": 1,
+      "heard": [
+        "with"
+      ],
+      "of": 20,
+      "share": 0.05
+    },
+    {
+      "word": "that",
+      "sentences": 1,
+      "heard": [
+        "Nat"
+      ],
+      "of": 38,
+      "share": 0.03
+    },
+    {
+      "word": "The",
+      "sentences": 2,
+      "heard": [
+        "a"
+      ],
+      "of": 89,
+      "share": 0.02
+    },
+    {
+      "word": "a",
+      "sentences": 1,
+      "heard": [
+        "I"
+      ],
+      "of": 59,
+      "share": 0.02
+    },
+    {
+      "word": "and",
+      "sentences": 1,
+      "heard": [
+        "in"
+      ],
+      "of": 45,
+      "share": 0.02
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 129,
+    "mismatched": 13,
+    "transcribed": 129,
+    "reused": 0,
+    "seconds_per_sentence": 0.119
+  }
+}

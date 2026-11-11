@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What will each model write?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.counts{font-size:46px}.counts th{font-size:30px}.counts th.mono{font-family:var(--font-code);font-size:32px}.counts td{padding-top:32px;padding-bottom:32px;height:60px}.counts td.mono{font-family:var(--font-code);font-size:38px}.counts th:last-child,.counts td:last-child{padding-right:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Run it on two models</div>
+  <h2 class="scene-title">What will each model write?</h2>
+  <div class="stage">
+<table class="data-table full counts">
+    <thead><tr><th>trials with an entry for it</th><th class="mono num">claude-haiku-4.5</th><th class="mono num">gpt-5.6-terra</th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="r74" data-rep="row">#74 feat</span></td><td class="num"></td><td class="num"></td></tr>
+<tr><td class="mono"><span data-concept="r75" data-rep="row">#75 fix</span></td><td class="num"></td><td class="num"></td></tr>
+<tr><td class="mono"><span data-concept="r76" data-rep="row">#76 refactor</span></td><td class="num"></td><td class="num"></td></tr>
+    </tbody>
+  </table>
+  <p class="note">five trials on each model · the list has three changes</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "r76",
+  "at": "4~refactor",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

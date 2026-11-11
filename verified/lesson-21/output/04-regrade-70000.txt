@@ -1,0 +1,111 @@
+warning: Multiple graders with no scoring config
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ typo-fix ━━━
+❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [token-budget max 70000] 74052 tokens exceeds max of 70000
+
+Score: 98.8% | FAILED
+
+━━━ typo-fix ━━━
+❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [token-budget max 70000] 74161 tokens exceeds max of 70000
+
+Score: 98.8% | FAILED
+
+━━━ typo-fix ━━━
+❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [token-budget max 70000] 74202 tokens exceeds max of 70000
+
+Score: 98.8% | FAILED
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ typo-fix ━━━
+❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [no-made-up-number] Pattern /(?m)^\+.*\(#\d+\)/ found in workspace diff
+
+Score: 80.0% | FAILED
+
+━━━ typo-fix ━━━
+❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [adds-an-entry] Pattern 'notes add' not found in workspace diff
+
+Score: 80.0% | FAILED
+
+━━━ typo-fix ━━━
+❌ typo-fix (3/5 graders passed, 2 failed)
+  ✗ [no-made-up-number] Pattern /(?m)^\+.*\(#\d+\)/ found in workspace diff
+  ✗ [token-budget max 70000] 85433 tokens exceeds max of 70000
+
+Score: 75.6% | FAILED
+exit 1

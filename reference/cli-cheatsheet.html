@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Command cheat sheet — Vally &amp; Agent Evals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Reference · Vally &amp; Agent Evals</div>
+    <h1>Command cheat sheet</h1>
+    <div class="lesson-meta">Verified 2026-11-10 · Vally 0.21.0</div>
+  </div>
+
+  <p>Every command the course used, cheapest first. Typed in the practice folder unless it says otherwise. Put your own model names and run folders in place of ours.</p>
+
+  <h2 id="free">Commands that start no agent</h2>
+
+  <p>Check an eval file for mistakes. <a href="../lessons/0002-what-the-tick-checked.html#eval-file">Lesson 2</a></p>
+<pre><code class="language-bash">vally lint -e evals/changelog.eval.yaml</code></pre>
+
+  <p>Run the graders on a correct answer, then on an untouched workspace. <a href="../lessons/0007-test-a-grader.html#what-oracle-does">Lesson 7</a></p>
+<pre><code class="language-bash">vally oracle -e evals/changelog.eval.yaml --verbose</code></pre>
+<pre><code class="language-bash">vally oracle -e evals/changelog.eval.yaml \
+  --no-golden-input --verbose</code></pre>
+  <p>Add <code>--stimulus</code> and a name to limit either to one stimulus.</p>
+
+  <p>Re-run the eval file's graders on a saved run. Typed in the run's folder. A judge grader spends one judge call per trial. <a href="../lessons/0008-check-graders-against-saved-trials.html#re-grading">Lesson 8</a></p>
+<pre><code class="language-bash">vally grade -e ../../../evals/changelog.eval.yaml \
+  --run-dir . --verbose &lt; results.jsonl</code></pre>
+  <p>Inside one variant's folder of an experiment, the eval file is one level further up: <code>-e ../../../../evals/changelog.eval.yaml</code>. <a href="../lessons/0018-put-a-ceiling-on-a-trial.html#set-budgets">Lesson 18</a></p>
+
+  <p>The same, so that a failing verdict exits with 1. Meaningful only when every grader in the file can be re-graded. <a href="../lessons/0021-keep-it-working.html#two-suites-and-conventions">Lesson 21</a></p>
+<pre><code class="language-bash">vally grade -e ../../../evals/changelog.eval.yaml \
+  --run-dir . --require-pass &lt; results.jsonl</code></pre>
+
+  <p>Grade a run Vally did not start: an ATIF file on standard input, the changed folder and its diff. <a href="../lessons/0025-grade-a-run-vally-did-not-start.html#run-convert-grade">Lesson 25</a></p>
+<pre><code class="language-bash">vally grade -e evals/release.eval.yaml \
+  --stimulus since-last-release \
+  --workspace app-run/repo \
+  --diff-file app-run/change.diff \
+  --verbose &lt; app-run/trajectory.json</code></pre>
+
+  <p>Judge two sets of saved trials side by side, and exit with 1 on a regression. Typed in an experiment's folder; each pair spends two judge calls. <a href="../lessons/0019-is-it-worse-than-before.html#compare-before-and-after">Lesson 19</a></p>
+<pre><code class="language-bash">vally compare \
+  --baseline terra-before \
+  --treatment terra-after \
+  --judge-model claude-sonnet-5.5 \
+  --fail-on-regression \
+  --output terra-compare.jsonl</code></pre>
+
+  <p>Print the last command's exit code. Run it straight after the command you want to check. <a href="../lessons/0019-is-it-worse-than-before.html#what-compare-reports">Lesson 19</a></p>
+<pre><code class="language-bash">echo $?</code></pre>
+
+  <p>Turn a saved run's shell calls into a <code>simulation</code> block to edit. Read its outputs before sharing them. <a href="../lessons/0024-when-a-tool-fails.html#recording">Lesson 24</a></p>
+<pre><code class="language-bash">vally simulate record \
+  results/lesson-22/2026-11-10T16-30-11-507Z</code></pre>
+
+  <p>Print an experiment's plan. <a href="../lessons/0010-is-the-agent-better-with-the-skill.html#experiment-file">Lesson 10</a></p>
+<pre><code class="language-bash">vally experiment run \
+  evals/with-and-without.experiment.yaml --dry-run</code></pre>
+
+  <p>List your account's models, by asking for one that does not exist. <a href="../lessons/0001-it-works-for-me.html#one-run">Lesson 1</a></p>
+<pre><code class="language-bash">vally eval -e evals/one-request.eval.yaml \
+  --model list-my-models \
+  --output-dir results/models</code></pre>
+
+  <p>List the reasoning efforts each model accepts, by asking for one that does not exist. Every trial stops before it starts. <a href="../lessons/0016-what-a-passing-trial-costs.html#price-the-variants">Lesson 16</a></p>
+<pre><code class="language-bash">vally eval -e evals/one-request.eval.yaml \
+  --model \
+  claude-haiku-4.5,claude-haiku-5.5,gpt-5.6-terra \
+  --reasoning-effort list \
+  --output-dir results/lesson-16-efforts</code></pre>
+
+  <h2 id="runs">Commands that run agents</h2>
+
+  <p>Run an eval file on two models, three trials each. <a href="../lessons/0003-the-same-request-five-times.html#trials-and-outcomes">Lesson 3</a></p>
+<pre><code class="language-bash">vally eval -e evals/changelog.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 3 --workers 2 \
+  --output-dir results/lesson-5-before</code></pre>
+
+  <p>Run without grading, to read what comes back. <a href="../lessons/0004-read-the-runs-first.html#six-requests">Lesson 4</a></p>
+<pre><code class="language-bash">vally eval -e evals/six-requests.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --skip-grade --workers 2 \
+  --output-dir results/lesson-4</code></pre>
+
+  <p>Keep the workspace of each trial. One model only. <a href="../lessons/0006-keep-graders-out-of-reach.html#what-goes-in">Lesson 6</a></p>
+<pre><code class="language-bash">vally eval -e evals/one-request.eval.yaml \
+  --model claude-haiku-4.5 \
+  --workspace kept \
+  --output-dir results/lesson-6-look</code></pre>
+
+  <p>Show each failing trial's turns, tools, tokens and final reply. <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></p>
+<pre><code class="language-bash">vally eval -e evals/broken/entry.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --output-dir results/lesson-20 \
+  --verbose</code></pre>
+
+  <p>Run only the stimuli with a tag. <a href="../lessons/0024-when-a-tool-fails.html#make-the-tool-fail">Lesson 24</a></p>
+<pre><code class="language-bash">vally eval -e evals/release.eval.yaml \
+  --tag case=tool-fails \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 3 --workers 2 \
+  --output-dir results/lesson-24</code></pre>
+
+  <p>Run a suite, and exit with an error if anything fails. <a href="../lessons/0021-keep-it-working.html#tags-suites-exit-codes">Lesson 21</a></p>
+<pre><code class="language-bash">vally eval --suite quick \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --require-pass \
+  --output-dir results/lesson-21-quick</code></pre>
+
+  <p>Run the trials through an executor loaded as a plugin in <code>.vally.yaml</code>. <a href="../lessons/0026-let-vally-run-the-app.html#write-and-run">Lesson 26</a></p>
+<pre><code class="language-bash">vally eval -e evals/release.eval.yaml \
+  --executor release-app \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --output-dir results/lesson-26</code></pre>
+
+  <p>Run every variant of an experiment. The models are named in the file. <a href="../lessons/0010-is-the-agent-better-with-the-skill.html#experiment-file">Lesson 10</a></p>
+<pre><code class="language-bash">vally experiment run \
+  evals/with-and-without.experiment.yaml \
+  --workers 2 --output-dir results/lesson-10</code></pre>
+
+  <p>Run one variant only, here on a local model that serves one request at a time. <a href="../lessons/0017-a-model-from-your-own-provider.html#run-provider">Lesson 17</a></p>
+<pre><code class="language-bash">vally experiment run \
+  evals/cost.experiment.yaml \
+  --variant qwen-local \
+  --workers 1 --output-dir results/lesson-17</code></pre>
+
+  <h2 id="other-commands">Other commands the course used</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Command</th><th>What it does</th><th>Taught in</th></tr></thead>
+    <tbody>
+      <tr><td><code>ollama pull qwen3.5:9b</code></td><td>Downloads the local model, about 6.6 GB</td><td><a href="../lessons/0017-a-model-from-your-own-provider.html#run-provider">Lesson 17</a></td></tr>
+      <tr><td><code>npm install --prefix app</code></td><td>Installs the release app's libraries into <code>app/node_modules</code>. Starts no agent</td><td><a href="../lessons/0025-grade-a-run-vally-did-not-start.html#run-convert-grade">Lesson 25</a></td></tr>
+      <tr><td><code>sh app/run.sh claude-haiku-4.5</code></td><td>Runs the release app once, outside Vally: one agent run</td><td><a href="../lessons/0025-grade-a-run-vally-did-not-start.html#run-convert-grade">Lesson 25</a></td></tr>
+      <tr><td><code>node --check app/vally-executor.mjs</code></td><td>Checks a JavaScript file is valid without running it</td><td><a href="../lessons/0026-let-vally-run-the-app.html#write-and-run">Lesson 26</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="options">Options</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Option</th><th>Effect</th></tr></thead>
+    <tbody>
+      <tr><td><code>-e</code></td><td>The eval file to use</td></tr>
+      <tr><td><code>--model</code></td><td>One model, or several separated by commas</td></tr>
+      <tr><td><code>--runs</code></td><td>Trials per stimulus, per model</td></tr>
+      <tr><td><code>--workers</code></td><td>Agent sessions at once. Default 5; the course used 2, and 1 for a local model</td></tr>
+      <tr><td><code>--output-dir</code></td><td>Where to save. A folder named with the time is created inside</td></tr>
+      <tr><td><code>--skip-grade</code></td><td>Run the agents, grade nothing</td></tr>
+      <tr><td><code>--workspace</code></td><td>For <code>vally eval</code>: keep each trial's workspace in this folder. For <code>vally grade</code>: the changed folder to grade</td></tr>
+      <tr><td><code>--suite</code></td><td>Run a suite from <code>.vally.yaml</code> in place of <code>-e</code></td></tr>
+      <tr><td><code>--tag</code></td><td>Run only stimuli with this tag, as <code>key=value</code></td></tr>
+      <tr><td><code>--require-pass</code></td><td>Exit with 1 if any stimulus fails. <code>vally eval</code> and <code>vally grade</code></td></tr>
+      <tr><td><code>--reasoning-effort</code></td><td>The agent model's reasoning effort. An unknown value lists the accepted ones</td></tr>
+      <tr><td><code>--executor</code></td><td>The executor to run trials with, by name</td></tr>
+      <tr><td><code>--verbose</code></td><td>On <code>vally grade</code> and <code>vally oracle</code>: every grader's evidence. On <code>vally eval</code>: turns, tools, tokens and final reply of each failing trial</td></tr>
+      <tr><td><code>--stimulus</code></td><td>For <code>vally oracle</code>, and <code>vally grade</code> with an ATIF file: whose graders to use</td></tr>
+      <tr><td><code>--no-golden-input</code></td><td>For <code>vally oracle</code>: apply nothing</td></tr>
+      <tr><td><code>--run-dir</code></td><td>For <code>vally grade</code>: where the saved diffs are</td></tr>
+      <tr><td><code>--diff-file</code></td><td>For <code>vally grade</code>: the diff for diff graders, for a run Vally did not start</td></tr>
+      <tr><td><code>--dry-run</code></td><td>For <code>vally experiment run</code>: print the plan only</td></tr>
+      <tr><td><code>--variant</code></td><td>For <code>vally experiment run</code>: run one named variant</td></tr>
+      <tr><td><code>--baseline</code>, <code>--treatment</code></td><td>For <code>vally compare</code>: the version compared against, and the version changed. A run folder or a <code>results.jsonl</code> each</td></tr>
+      <tr><td><code>--judge-model</code></td><td>For <code>vally compare</code>: the judge. Not read from the eval file</td></tr>
+      <tr><td><code>--fail-on-regression</code></td><td>For <code>vally compare</code>: exit with 1 when the treatment is significantly worse</td></tr>
+      <tr><td><code>--output</code></td><td>For <code>vally compare</code>: a file for one JSON line per comparison</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="outcomes">What the words and numbers mean</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>You see</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><code>PASS</code>, <code>FLAKY</code>, <code>FAIL</code></td><td>Every trial passed; some did; none did</td></tr>
+      <tr><td><code>ERROR</code></td><td>A trial did not finish, or a grader could not reach a verdict. Not a verdict. Re-run, or leave it out and say so</td></tr>
+      <tr><td>Exit code 0 from <code>vally eval</code> or <code>vally grade</code></td><td>The run completed. Without <code>--require-pass</code>, stimuli may still have failed</td></tr>
+      <tr><td>Exit code 1 from <code>vally eval</code> or <code>vally grade</code></td><td>An <code>ERROR</code>, a refused eval file, or a failure with <code>--require-pass</code></td></tr>
+      <tr><td>Exit code 1 from <code>vally compare</code></td><td>Some pairs could not be judged, or, with <code>--fail-on-regression</code>, the mean score and its whole range are below zero</td></tr>
+      <tr><td>"trial 1" in the terminal</td><td>The trial in folder <code>0</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>See <a href="../lessons/0021-keep-it-working.html#tags-suites-exit-codes">Lesson 21</a> and <a href="../lessons/0019-is-it-worse-than-before.html#what-compare-reports">Lesson 19</a>.</p>
+
+  <h2 id="things-that-bite">Things that caught us</h2>
+  <ul>
+    <li><code>--workspace</code> with several models stops with <code>workspace-collision</code>.</li>
+    <li>Five workers dropped three of ten sessions. Two workers still drops one now and then. With a local model, two workers made each trial wait for the other until both timed out.</li>
+    <li>An experiment takes no <code>--model</code>, <code>--runs</code> or <code>--timeout</code>; each variant sets its own, with the path in <code>vary</code>.</li>
+    <li>A re-grade fails every script grader (<code>program</code> or <code>run-command</code>), because the workspace is gone. So a re-grade with <code>--require-pass</code> of a file with a script grader exits 1 even when every trial passed.</li>
+    <li><code>vally compare --fail-on-regression</code> gates on the judged score alone. Tokens rose for one model in our run, with a range wholly above zero, and it exited 0. Use budget graders for cost.</li>
+    <li>Without <code>--judge-model</code>, <code>vally compare</code> uses Vally's default judge, which may be a model you are testing.</li>
+    <li><code>vally experiment run --compare</code> reports and does not gate; run <code>vally compare</code> afterwards for the step that can fail. (From the docs; not run by us.)</li>
+  </ul>
+
+  <nav class="course-map" data-current="0" data-root="../"></nav>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

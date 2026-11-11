@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Only the endpoint can tell</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.stage{gap:36px}.card{width:100%}.card > .code.dark{font-size:38px;padding:24px 32px}.card .who{font-size:30px}.terms .semantic-block{min-height:200px}.terms .title{font-size:40px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Evaluate the model you ship</div>
+  <h2 class="scene-title">Only the endpoint can tell</h2>
+  <div class="stage">
+<div class="card" data-concept="seen" data-rep="card">
+        <div class="who">another local model on our computer, <span class="mono">gpt-oss:20b</span> · what its server answered</div>
+        <pre class="code dark" data-lang="text"><code><span data-concept="err" data-rep="code"><span>400 invalid tool call arguments</span></span></code></pre>
+      </div>
+  <div class="cols terms">
+    <div class="semantic-block" data-concept="ep" data-rep="block" data-role="structure">
+      <div class="title words">The endpoint</div><div class="label">the one the app calls</div>
+    </div>
+    <div class="semantic-block" data-concept="mname" data-rep="block" data-role="structure">
+      <div class="title words">The model name</div><div class="label">the one the app sends</div>
+    </div>
+    <div class="semantic-block" data-concept="same" data-rep="block" data-role="attention">
+      <div class="title words">Everything else</div><div class="label">the same stimuli, graders and skill</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "err",
+  "at": "1~refused",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "ep",
+  "at": "4~endpoint",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "mname",
+  "at": "4~model name",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "same",
+  "at": "4~keep",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

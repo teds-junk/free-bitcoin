@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluating a skill inside an app — Vally &amp; Agent Evals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Reference · Vally &amp; Agent Evals</div>
+    <h1>Evaluating a skill inside an app</h1>
+    <div class="lesson-meta">Verified 2026-11-10 · Vally 0.21.0 · Copilot SDK 1.0.30</div>
+  </div>
+
+  <p>How to put an app's agent under the graders you already have: start the agent where the app would, check the steps the app depends on, make a tool fail, grade the app's own runs, and let Vally run the app. The examples are the course's release app, in <code>practice-starter/app/</code>.</p>
+
+  <h2 id="three-ways">Three ways to look at the feature</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Way</th><th>Answers</th><th>Gives up</th><th>Lesson</th></tr></thead>
+    <tbody>
+      <tr><td>Vally's own executor, <code>copilot-sdk</code></td><td>Does the skill do its job, on any model, apart from the app?</td><td>The app's own settings</td><td><a href="../lessons/0022-start-the-agent-where-the-app-would.html#app-situation">22</a>–<a href="../lessons/0024-when-a-tool-fails.html#test-the-bad-day">24</a></td></tr>
+      <tr><td>The app as an executor plugin, inside Vally</td><td>Does the feature, as shipped, do its job? Repeatable, so you can count and compare models.</td><td>Real inputs: Vally gives it the stimulus</td><td><a href="../lessons/0026-let-vally-run-the-app.html#the-seam">26</a></td></tr>
+      <tr><td>Grading the app's real runs after the fact</td><td>Is it still doing its job in real use?</td><td>Repetition: each run happens once, on one model</td><td><a href="../lessons/0025-grade-a-run-vally-did-not-start.html#inside-or-after">25</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Most teams want both of the last two: trials inside Vally to decide whether a change is safe, and grading of real runs to see whether that still holds.</p>
+
+  <h2 id="setup">Start the agent where the app would</h2>
+  <p>The stimulus is the app's situation: the files the app's checkout has, and what the app's own setup step produces. <code>commands:</code> runs in the workspace after the files are copied and before the agent starts. What they create is part of the starting state, not the diff. Quote every entry: an unquoted <code>: </code> makes a mapping (<a href="troubleshooting.html#commands-mapping">troubleshooting</a>). Each command has 60 seconds unless <code>commandTimeout</code> says otherwise. <a href="../lessons/0022-start-the-agent-where-the-app-would.html#setup-commands">Lesson 22</a></p>
+<pre><code class="language-yaml">stimuli:
+  - name: since-last-release
+    prompt: &gt;-
+      Write the Unreleased changelog entries for every
+      change listed in release/merged.txt.
+    agent_environment:
+      commands:
+        - "mkdir -p release"
+        - "node tools/list-merged.mjs &gt; release/merged.txt"</code></pre>
+  <p><code>git:</code> builds the workspace from a repository instead (<code>type: worktree</code> with a <code>ref</code> and <code>source</code>, or <code>type: clone</code>). We did not run it.</p>
+  <p>A hidden test: a <code>run-command</code> grader passes when its command exits 0 (or <code>expected_exit_code</code>); <code>stdout_contains</code> and <code>stdout_matches</code> add checks; 30 seconds by default. Stage the test through <code>grading_environment</code> so the agent never sees it. <a href="../lessons/0022-start-the-agent-where-the-app-would.html#hidden-test">Lesson 22</a></p>
+<pre><code class="language-yaml">    grading_environment:
+      files:
+        - src: grading/check-release.mjs
+          dest: .vally-grading/check-release.mjs
+    graders:
+      - type: run-command
+        name: every-change-handled
+        config:
+          command: node .vally-grading/check-release.mjs</code></pre>
+
+  <h2 id="path">Check the steps the app depends on</h2>
+  <p>Grade the outcome by default. Grade the route only for a step the app relies on (required), one with effects outside the workspace (forbidden), or a route that is too long. Keep a route grader as loose as the requirement: match "read the list", not one tool. <a href="../lessons/0023-check-what-the-agent-did.html#tool-calls-grader">Lesson 23</a></p>
+<pre><code class="language-yaml">      - type: tool-calls
+        name: reads-the-list
+        config:
+          required:
+            - name: ^(view|bash)$
+              pattern: release/merged\.txt
+      - type: tool-calls
+        name: never-commits
+        config:
+          disallowed:
+            - name: ^bash$
+              command: git (commit|push)
+      - type: max-repeat
+        name: no-loop
+        config:
+          max: 3
+      - type: skill-invocation
+        name: loads-the-skill
+        config:
+          required: [changelog-entry]</code></pre>
+  <p>A <code>tool-calls</code> entry takes <code>name</code> (a pattern for the tool), and <code>command</code>, <code>path</code> or <code>pattern</code> for its arguments. These graders read the trajectory, so they re-grade a saved run for free. <a href="../lessons/0023-check-what-the-agent-did.html#catching-loops">Lesson 23, loops</a></p>
+
+  <h2 id="simulation">Make a tool fail</h2>
+  <p>Decide what good behaviour is on a bad day (write nothing, say why, stop after a retry or two), then fail the tool on purpose and make that the only thing tested. Take the answer out of the workspace too, or the stimulus tests whether the agent finds another way to it. <a href="../lessons/0024-when-a-tool-fails.html#simulation">Lesson 24</a></p>
+<pre><code class="language-yaml">- name: tracker-down
+  tags: { case: tool-fails }
+  simulation:
+    tool_overrides:
+      shell:
+        patterns:
+          - match: list-merged
+            output: "error: tracker did not answer (timeout)"
+            is_error: true</code></pre>
+  <p>Grade it with <code>diff-empty</code> (writes nothing), <code>loop-outcome</code> with <code>should_loop: false</code> and <code>max_acceptable_retries</code>, a <code>tool-calls</code> requirement that it tried, and a judge for the reply. Run only these stimuli with <code>--tag case=tool-fails</code>. <code>vally simulate record</code> builds overrides from a saved run. Only executors that support simulation can run the block; <code>copilot-sdk</code> does.</p>
+
+  <h2 id="after-the-fact">Grade a run Vally did not start</h2>
+  <p><code>vally grade</code> reads an ATIF file (Agent Trajectory Interchange Format) on standard input. <code>schema_version</code> must start with <code>ATIF-</code>. Each kind of grader needs one input: <a href="../lessons/0025-grade-a-run-vally-did-not-start.html#atif">Lesson 25</a></p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Graders</th><th>Need</th><th>Given by</th></tr></thead>
+    <tbody>
+      <tr><td><code>tool-calls</code>, <code>skill-invocation</code>, budgets</td><td>the trajectory</td><td>the ATIF file, on standard input</td></tr>
+      <tr><td><code>diff-contains</code> and the other diff graders</td><td>the change as a diff</td><td><code>--diff-file</code></td></tr>
+      <tr><td><code>run-command</code>, <code>program</code>, file graders</td><td>the changed files</td><td><code>--workspace</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+<pre><code class="language-bash">npm install --prefix app
+sh app/run.sh claude-haiku-4.5
+node app/traces-to-atif.mjs app-run/traces.jsonl \
+  &gt; app-run/trajectory.json
+vally grade -e evals/release.eval.yaml \
+  --stimulus since-last-release \
+  --workspace app-run/repo \
+  --diff-file app-run/change.diff \
+  --verbose &lt; app-run/trajectory.json</code></pre>
+  <p>Three gaps: Vally's <code>cost</code> stays empty (the steps' <code>cost_usd</code> is kept but not added up); wall time is 0; a skill counts as loaded only if the trajectory shows a call to the <code>skill</code> tool.</p>
+
+  <h3 id="span-to-atif">From OpenTelemetry spans to ATIF</h3>
+  <p>The app's SDK writes spans with <code>telemetry: { exporterType: "file", filePath, captureContent: true }</code>. Without <code>captureContent</code>, spans hold names and counts only. The converter, <code>app/traces-to-atif.mjs</code>, sorts spans by start time and maps them like this. <a href="../lessons/0025-grade-a-run-vally-did-not-start.html#traces">Lesson 25</a></p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Span or attribute</th><th>ATIF field</th></tr></thead>
+    <tbody>
+      <tr><td>a span with <code>gen_<wbr>ai.<wbr>operation.<wbr>name</code> <code>chat</code></td><td>a new step, <code>source: "agent"</code></td></tr>
+      <tr><td><code>gen_<wbr>ai.<wbr>request.<wbr>model</code></td><td><code>model_name</code></td></tr>
+      <tr><td><code>gen_<wbr>ai.<wbr>output.<wbr>messages</code> (text parts)</td><td><code>message</code></td></tr>
+      <tr><td><code>gen_<wbr>ai.<wbr>usage.<wbr>input_<wbr>tokens</code></td><td><code>metrics.<wbr>prompt_<wbr>tokens</code></td></tr>
+      <tr><td><code>gen_<wbr>ai.<wbr>usage.<wbr>output_<wbr>tokens</code></td><td><code>metrics.<wbr>completion_<wbr>tokens</code></td></tr>
+      <tr><td><code>gen_<wbr>ai.<wbr>usage.<wbr>cache_<wbr>read.<wbr>input_<wbr>tokens</code></td><td><code>metrics.<wbr>cached_<wbr>tokens</code></td></tr>
+      <tr><td><code>github.<wbr>copilot.<wbr>nano_<wbr>aiu</code> ÷ 1e11</td><td><code>metrics.<wbr>cost_<wbr>usd</code></td></tr>
+      <tr><td>a span with <code>gen_<wbr>ai.<wbr>operation.<wbr>name</code> <code>execute_tool</code></td><td>an entry in the previous step's <code>tool_calls</code> and <code>observation.<wbr>results</code></td></tr>
+      <tr><td><code>gen_<wbr>ai.<wbr>tool.<wbr>call.<wbr>id</code></td><td><code>tool_call_id</code>, and <code>source_call_id</code> of its result</td></tr>
+      <tr><td><code>gen_<wbr>ai.<wbr>tool.<wbr>name</code></td><td><code>function_name</code></td></tr>
+      <tr><td><code>gen_<wbr>ai.<wbr>tool.<wbr>call.<wbr>arguments</code></td><td><code>arguments</code>, parsed as JSON; plain text (<code>apply_patch</code>) kept under <code>input</code></td></tr>
+      <tr><td><code>gen_<wbr>ai.<wbr>tool.<wbr>call.<wbr>result</code></td><td>the result's <code>content</code></td></tr>
+      <tr><td><code>gen_<wbr>ai.<wbr>conversation.<wbr>id</code></td><td><code>session_id</code></td></tr>
+      <tr><td>every other span</td><td>skipped</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>A billion nano-AIU is one AIU, one GitHub AI Credit, $0.01 (checked 2026-11-10). The GenAI conventions are marked "Development" and now live at <a href="https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md">open-telemetry/semantic-conventions-genai</a>.</p>
+
+  <div class="callout warning">
+    <div class="callout-title">Trace files hold private values</div>
+    <p>With content captured, a trace holds the whole prompt, every file the agent read, full paths on your machine, and <code>enduser.pseudo.id</code>, which identifies your account. Clean them before attaching or committing them.</p>
+  </div>
+
+  <h2 id="executor">Let Vally run the app</h2>
+  <p>An executor plugin is a JavaScript module that exports <code>registerExecutors</code>. Each executor has a <code>name</code>, an <code>execute</code> function that runs one trial and returns a trajectory, and <code>shutdown</code>. Vally still prepares the workspace, runs <code>commands:</code>, saves the patch and grades. <a href="../lessons/0026-let-vally-run-the-app.html#executor-contract">Lesson 26</a></p>
+<pre><code class="language-javascript">import { randomUUID } from "node:crypto";
+import { computeMetrics } from "@microsoft/vally";
+
+const releaseApp = {
+  name: "release-app",
+  async execute(stimulus, options) {
+    const startedAt = new Date();
+    const { reply, events } = await writeEntries({
+      repoDir: options.workDir,
+      model: options.model,
+<span class="gap">7 lines hidden: skills, request, time limit, traces</span>
+    });
+    const completedAt = new Date();
+    const trajectoryEvents = toTrajectoryEvents(events);
+    return {
+      id: randomUUID(),
+      stimulus,
+      events: trajectoryEvents,
+      output: reply,
+      workDir: options.workDir,
+      metrics: {
+        ...computeMetrics(trajectoryEvents),
+        wallTimeMs: completedAt - startedAt,
+      },
+      metadata: { model: options.model,
+        executor: "release-app", /* … */ },
+    };
+  },
+  async shutdown() {},
+};
+
+export function registerExecutors(registry) {
+  registry.register(releaseApp);
+}</code></pre>
+  <p><code>writeEntries</code> is the app's own function, and <code>toTrajectoryEvents</code> is the mapping below; the full <code>execute</code>, imports and metadata are in lesson 26 and <code>practice-starter/app/vally-executor.mjs</code>. <code>computeMetrics</code> adds up tokens, cost, tool calls by name, skills loaded and turns, as the built-in executor does. The options it uses:</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Option</th><th>What it holds</th></tr></thead>
+    <tbody>
+      <tr><td><code>workDir</code></td><td>the prepared workspace, after <code>commands:</code> ran</td></tr>
+      <tr><td><code>model</code></td><td>the model for this trial</td></tr>
+      <tr><td><code>skills</code></td><td>the staged skills; each <code>path</code> is a <code>SKILL.md</code>, so take its folder</td></tr>
+      <tr><td><code>timeout</code></td><td>the time limit, in milliseconds</td></tr>
+      <tr><td><code>traceContext</code></td><td><code>traceparent</code> and <code>tracestate</code> of the trial's trace</td></tr>
+      <tr><td><code>sessionLog</code></td><td><code>executorArtifactsDir</code> is kept in the trial's results folder</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3 id="sdk-to-trajectory">From Copilot SDK events to trajectory events</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>SDK event</th><th>Trajectory event and its data</th></tr></thead>
+    <tbody>
+      <tr><td><code>assistant.<wbr>turn_<wbr>start</code></td><td><code>turn_start</code> (<code>turnId</code>)</td></tr>
+      <tr><td><code>assistant.<wbr>turn_<wbr>end</code></td><td><code>turn_end</code> (<code>turnId</code>)</td></tr>
+      <tr><td><code>tool.<wbr>execution_<wbr>start</code></td><td><code>tool_call</code> (<code>toolName</code>, <code>toolCallId</code>, <code>arguments</code>): what <code>tool-calls</code> graders read</td></tr>
+      <tr><td><code>tool.<wbr>execution_<wbr>complete</code></td><td><code>tool_result</code> (<code>toolName</code>, <code>toolCallId</code>, <code>success</code>, <code>result</code>)</td></tr>
+      <tr><td><code>assistant.<wbr>message</code></td><td><code>assistant_<wbr>message</code> (<code>content</code>)</td></tr>
+      <tr><td><code>skill.invoked</code></td><td><code>skill_<wbr>activation</code> (<code>name</code>, <code>path</code>): what <code>skill-invocation</code> and the Skills column read</td></tr>
+      <tr><td><code>assistant.<wbr>usage</code></td><td><code>token_usage</code> (model, input, output, cache read and write tokens), with <code>copilotUsage.<wbr>totalNanoAiu</code> as a <code>nano-aiu</code> cost, so <code>cost</code> is filled in</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Load the plugin in <code>.vally.yaml</code>, then select it per run with <code>--executor release-app</code>, per eval file with <code>defaults.executor</code>, or per experiment with <code>executor</code> under <code>overrides</code>.</p>
+<pre><code class="language-yaml">plugins:
+  executor:
+    - ./app/vally-executor.mjs</code></pre>
+<pre><code class="language-bash">vally eval -e evals/release.eval.yaml \
+  --executor release-app \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --output-dir results/lesson-26</code></pre>
+  <p>Ours declares no simulation support, so a stimulus with a <code>simulation</code> block ends in <code>ERROR</code> before any agent starts (<a href="troubleshooting.html#no-simulation-support">troubleshooting</a>).</p>
+
+  <h3 id="trace-context">Joining the app's traces to Vally's</h3>
+  <p>Vally writes a <code>vally.trial</code> span and a <code>vally.attempt</code> span per attempt to <code>otel-spans.jsonl</code> in the run folder. Hand <code>options.traceContext</code> to the SDK and the app's <code>invoke_agent</code> span becomes a child of the attempt span, in the same trace. <a href="../lessons/0026-let-vally-run-the-app.html#trace-context">Lesson 26</a></p>
+<pre><code class="language-javascript">const client = new CopilotClient({
+  telemetry: options.telemetry,
+  onGetTraceContext: () =&gt; options.traceContext ?? {},
+});</code></pre>
+  <p>Check: the session span in <code>executor-artifacts/app-traces.jsonl</code> has the trial's <code>traceId</code>, and its <code>parentSpanId</code> is the <code>vally.attempt</code> span's <code>spanId</code>. Without a trace context (the app run from <code>run.sh</code>), <code>invoke_agent</code> is the root of its own trace.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/trajectory-format/">Vally docs, Trajectory Format</a>; <a href="https://microsoft.github.io/vally/guides/writing-custom-executors/">Writing Custom Executors</a>; <a href="https://microsoft.github.io/vally/reference/eval-spec/#simulation">Eval Spec, Simulation</a>; <a href="https://www.w3.org/TR/trace-context/">W3C Trace Context</a>; Vally 0.21.0's <code>executor/types.d.ts</code> and the Copilot SDK 1.0.30's <code>types.d.ts</code>, read 2026-11-10. Mappings and behaviour from our runs that day.</div>
+
+  <nav class="course-map" data-current="0" data-root="../"></nav>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

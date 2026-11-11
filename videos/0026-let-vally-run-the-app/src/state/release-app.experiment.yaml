@@ -1,0 +1,20 @@
+name: release-app
+
+evals:
+  - release.eval.yaml
+
+vary: [/defaults/model]
+
+baseline: haiku
+
+overrides:
+  executor: release-app
+  runs: 3
+
+variants:
+  haiku:
+    overrides:
+      model: claude-haiku-4.5
+  terra:
+    overrides:
+      model: gpt-5.6-terra

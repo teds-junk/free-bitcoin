@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 12: A judge for what code cannot check — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 12 of 26 · Vally &amp; Agent Evals</div>
+    <h1>A judge for what code cannot check</h1>
+    <div class="lesson-meta">12 min · Write one yes-or-no LLM judge for a quality no pattern can decide, run it over saved trials, and read its reasons.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What does <code>vally grade</code> do, and what does it cost?
+        <details class="answer"><summary>Show answer</summary><p>It applies the eval file's current graders to trials already saved in a run folder. It starts no agent, so it spends no agent runs.</p></details></li>
+      <li>In a conversation stimulus, what does <code>turn: 1</code> on a grader mean?
+        <details class="answer"><summary>Show answer</summary><p>The grader sees only what the agent changed during the second request. Turns are numbered from 0.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> Every grader you have written is code: a pattern, an empty-diff check, a script, or a check of which skills loaded. Each checks something code can see.</p>
+    <p><strong>This lesson answers:</strong> How do I grade a quality that no pattern can decide?</p>
+  </div>
+
+  <p class="drop-cap">Since lesson 1 the skill has said entries should be "written for people who use the tool". In lesson 4 you saw a model ignore that: asked to record a fix that swapped in a streaming parser, it wrote an entry about the streaming parser. No grader has checked this since, because none can. "Mentions an implementation detail" is not a pattern. A user cares that big imports no longer crash; the words that give away the coding could be anything. Checking it takes something that can read. That something is another model, and this lesson shows how to use one without fooling yourself.</p>
+
+  <h2 id="when-a-judge" data-mode="think">When a judge is the right tool</h2>
+
+  <div class="callout definition">
+    <div class="callout-title">LLM judge</div>
+    <p>A grader that asks a language model to read what the agent did and decide whether it meets a criterion you wrote. LLM stands for large language model.</p>
+  </div>
+
+  <p>A judge can decide things code cannot. It is also slower than code, it costs a model call for every trial, and it can be wrong in ways a pattern never is: it may be swayed by confident wording, or read your criterion differently from you. So the first rule is to use one only for what code cannot decide. Everything you graded in lessons 5 to 11 should stay with code.</p>
+
+  <p>When you do need one, three habits make its verdicts usable.</p>
+
+  <p><strong>One question per judge.</strong> A judge asked whether an entry is "good" has to weigh several things at once, and you cannot tell which one tipped it. Ask about one quality.</p>
+
+  <p><strong>Yes or no.</strong> A score from 1 to 5 feels more informative and is harder to act on. Nobody, including the judge, can say what separates a 3 from a 4. A yes-or-no answer forces the criterion to be clear.</p>
+
+  <p><strong>Decide your own answers first.</strong> Before writing the criterion, read real examples and say yes or no to each yourself. If you hesitate, your criterion is not yet clear, and the judge will inherit the muddle. Each answer you write down is called a label, and your labels are what you will check the judge against in lesson 13.</p>
+
+  <div class="source-citation">Source: <a href="https://hamel.dev/blog/posts/llm-judge/">Hamel Husain, Using LLM-as-a-Judge</a>, on binary judgements and on writing your own verdicts before the judge's.</div>
+
+  <h2 id="how-the-judge-decides" data-mode="works">How Vally's judge decides</h2>
+
+  <p>Vally's judge is a grader of type <code>prompt</code>. The name is unlucky: it has nothing to do with the <code>prompt:</code> that holds a stimulus's request. It needs three things, in three places in the eval file.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/wording.eval.yaml (with a judge added)</div>
+<pre><code class="language-yaml">defaults:
+  timeout: 3m
+  judge_model: claude-sonnet-5.5<span class="mark">1</span>
+<span class="gap">9 lines hidden: the agent environment</span>
+  - name: parser
+<span class="gap">5 lines hidden: the request</span>
+    rubric:<span class="mark">2</span>
+      - The new changelog entry says what changes for people
+        who use the tool, and does not say how it was coded.
+    graders:
+      - type: prompt<span class="mark">3</span>
+        config:
+          scoring: binary<span class="mark">4</span>
+          prompt: Begin your reason by quoting the new entry.
+      - type: diff-contains
+<span class="gap">3 lines hidden: the grader for the pull request number</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>The model that does the judging. Name it: if you leave it out, Vally picks one, and its choice can change from one version of Vally to the next. Choose a model that is not one of the two you are testing, so that no model marks its own work.</li>
+      <li>The <strong>rubric</strong>: a list of criteria for this stimulus, in plain words. This one has a single criterion.</li>
+      <li>The judge. It reads the rubric of the stimulus it sits in.</li>
+      <li><code>scoring: binary</code> makes the answer yes or no. The line below it is an extra instruction to the judge; this one makes each reason start with the entry, so you can see what the judge was looking at.</li>
+    </ol>
+  </div>
+
+  <p>When the judge runs, Vally gives the judge model the request, the rubric, and files holding what the agent said and did in that trial. The judge reads them and returns a verdict and a reason. The verdict becomes the grader's pass or fail, and the reason becomes its evidence.</p>
+
+  <p>The judge returns one overall verdict for the stimulus. With one criterion in the rubric, that verdict is the answer to your one question. With several criteria it would be a blend, which is the second reason to keep to one.</p>
+
+  <p>Here are two of the judge's reasons from our run, as they appear in the output.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Verdict</th><th>The judge's reason</th></tr></thead>
+    <tbody>
+      <tr><td>✗</td><td>The new entry is "Fix out-of-memory errors when importing large files by using a streaming parser in importer.js (#49)". It gives the user-facing fix but also describes the implementation (streaming parser, importer.js), which violates the criterion.</td></tr>
+      <tr><td>✓</td><td>The new entry is "Parse dates with single-digit months and days (#67)". It sits under Fixed in Unreleased, is user-focused, and has no implementation details.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Because a judge is a grader, <code>vally grade</code> can run it over trials you have already saved. You can reword the rubric and judge the same trials again without paying for the agents twice. Each judged trial is one request to the judge model, charged to your Copilot plan as an agent run is. With <code>vally grade</code>, as with the oracle, <code>--verbose</code> prints every grader's evidence, which for a judge is its reason.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">Why does this lesson's rubric have one criterion and not three?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">Vally allows only one criterion per stimulus</button></li>
+      <li><button onclick="checkAnswer(this, false)">Three criteria would need three judge models</button></li>
+      <li><button onclick="checkAnswer(this, true)">One verdict then answers exactly one question</button></li>
+      <li><button onclick="checkAnswer(this, false)">A longer rubric cannot be scored as binary</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. The judge gives one overall verdict. With one criterion, a "no" tells you exactly what was wrong.</div>
+    <div class="quiz-feedback incorrect">One verdict then answers exactly one question. A rubric may list several criteria, but the judge returns one overall verdict, and with several criteria you could not tell which one caused a "no".</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/graders/prompt/">Vally docs, Grader: prompt</a>; <a href="https://microsoft.github.io/vally/reference/eval-spec/">Eval Spec reference</a>. The two reasons are from our run on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="write-the-judge" data-mode="use">Write the judge and re-grade</h2>
+
+  <p>You will run three requests that are worded in coding terms, read the twelve entries and write down your own yes or no for each, add the judge, and run it over the saved trials.</p>
+
+  <section class="checkpoint">
+    <h3>Your verdicts first, then the judge's</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: produce twelve entries to judge. This spends twelve short agent runs.</span>
+        Open a terminal in <code>practice</code>.
+<pre><code class="language-bash">vally eval -e evals/wording.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 2 --workers 2 \
+  --output-dir results/lesson-12</code></pre>
+        <p class="expect">You should see: a tick for both models. The only graders so far check that each entry cites its pull request.</p></li>
+
+      <li><span class="goal">Goal: move to the saved trials.</span>
+        List <code>results/lesson-12</code> for the run folder's name, then:
+<pre><code class="language-bash">cd results/lesson-12/2026-11-10T14-55-47-259Z
+cd wording
+ls</code></pre>
+<pre class="output"><code>cache
+dates
+parser</code></pre></li>
+
+      <li><span class="goal">Goal: decide for yourself, before any judge does. This creates one file.</span>
+        Read each of the twelve patches, starting with this one.
+<pre><code class="language-bash">cat parser/claude-haiku-4.5/0/workspace.patch</code></pre>
+        In a text editor, create <code>notes/wording-labels.md</code> in <code>practice</code>. For each trial write the entry and your answer, yes or no, to one question: does it say what changes for people who use the tool, without saying how it was coded? You do not need to know what a streaming parser or an LRU cache is. The question is only whether the entry mentions one.
+        <details class="answer"><summary>Show our twelve entries and labels</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Stimulus, model</th><th>Entry (pull request number left off)</th><th>Ours</th></tr></thead>
+            <tbody>
+              <tr><td>parser, haiku</td><td>Fix out-of-memory errors during large imports by using a streaming JSON parser</td><td>no</td></tr>
+              <tr><td>parser, haiku</td><td>Fix out-of-memory errors when importing large files by using a streaming parser in importer.js</td><td>no</td></tr>
+              <tr><td>parser, terra</td><td>Prevent out-of-memory errors when importing large JSON files</td><td>yes</td></tr>
+              <tr><td>parser, terra</td><td>Prevent out-of-memory errors when importing large files</td><td>yes</td></tr>
+              <tr><td>cache, haiku</td><td>Improve performance of `notes list --tag` with LRU caching on large folders</td><td>no</td></tr>
+              <tr><td>cache, haiku</td><td>Improve performance of `notes list --tag` with LRU cache for tag index</td><td>no</td></tr>
+              <tr><td>cache, terra</td><td>Speed up `notes list --tag` on large folders by caching the tag index</td><td>no</td></tr>
+              <tr><td>cache, terra</td><td>Speed up `notes list --tag` for large folders by caching the tag index</td><td>no</td></tr>
+              <tr><td>dates, haiku</td><td>Fix date parser to support single-digit months and days</td><td>yes</td></tr>
+              <tr><td>dates, haiku</td><td>Fix date parser to support single-digit months and days</td><td>yes</td></tr>
+              <tr><td>dates, terra</td><td>Parse dates with single-digit months and days</td><td>yes</td></tr>
+              <tr><td>dates, terra</td><td>Parse dates with single-digit months and days correctly</td><td>yes</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </details></li>
+
+      <li><span class="goal">Goal: add the judge. This edits one file.</span>
+        Return to <code>practice</code> with <code>cd ../../../..</code> and open <code>evals/wording.eval.yaml</code>. Add the <code>judge_model</code> line under <code>defaults</code>, choosing a model from your list that is not one of your two. Then, in each of the three stimuli, add the <code>rubric</code> lines and the <code>prompt</code> grader as shown above.</li>
+
+      <li><span class="goal">Goal: catch mistakes before spending anything.</span>
+<pre><code class="language-bash">vally lint -e evals/wording.eval.yaml</code></pre>
+        <p class="expect">You should see: the usual one warning and no errors.</p></li>
+
+      <li><span class="goal">Goal: run the judge over the twelve saved trials. This starts no agent and spends twelve calls to the judge model.</span>
+<pre><code class="language-bash">cd results/lesson-12/2026-11-10T14-55-47-259Z</code></pre>
+<pre><code class="language-bash">vally grade -e ../../../evals/wording.eval.yaml \
+  --run-dir . --verbose &lt; results.jsonl</code></pre>
+<pre class="output"><code>━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)</code></pre>
+        <p class="expect">You should see: twelve blocks, after a minute or two. In each, the line beginning <code>[prompt</code> is the judge: a tick or a cross, then its reason, usually starting with the entry it judged. In our run one reason of the twelve did not quote its entry.</p></li>
+
+      <li><span class="goal">Goal: record the judge's verdicts beside yours.</span>
+        For each block, find the matching entry in <code>notes/wording-labels.md</code> and write the judge's yes or no next to your own. Do not change your own answers. Then return to <code>practice</code> with <code>cd ../../..</code>.
+        <p class="expect">You should see: in our run the judge said yes to six entries and no to six.</p></li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-judge-found" data-mode="think">What the judge found</h2>
+
+  <p>You now have a grader for the oldest unchecked line in your skill, and it has already told you something. In our run four of the six "no" answers came from one model, which named the parser or the cache every time. The other named its method only in the cache entry. "Written for people who use the tool" is followed unevenly, and until now nothing could show that.</p>
+
+  <p>Resist acting on it just yet. Every grader before this one was code that you tested with the oracle and against saved trials. This one is a model's opinion. Its reasons read well, and a well-written reason is not evidence of a correct verdict.</p>
+
+  <div class="primary-source">
+    <p><a href="https://hamel.dev/blog/posts/llm-judge/">Using LLM-as-a-Judge, Hamel Husain</a></p>
+    <p>The best single account of building a judge you can rely on. Read the steps on writing your own pass or fail verdicts with reasons before building the judge.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, give the three habits that make a judge's verdicts usable.
+        <details class="answer"><summary>Show model answer</summary><p>Ask one question per judge. Make the answer yes or no. Decide your own answers on real examples before writing the criterion.</p></details></li>
+      <li>Was there an entry you hesitated over when labelling? Rewrite the rubric's criterion so that your hesitation is settled one way or the other, and judge the saved trials again.
+        <details class="answer"><summary>Show model answer</summary><p>In our labels the hard one was "by caching the tag index": it gives the benefit and a hint of the method. If you decide such hints are acceptable, the criterion might end "and does not name the code, library or data structure that was changed". Re-judging costs twelve judge calls and no agent runs.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="12" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> write one yes-or-no LLM judge for a quality no pattern can decide, run it over saved trials, and read its reasons.</p>
+    <p><strong>Up next:</strong> <a href="./0013-check-the-judge.html">Check the judge against your own labels</a>. The judge answered yes for some trials and no for others. It is a model. Is it right?</p>
+    <a class="next-lesson" href="./0013-check-the-judge.html">Next lesson: Check the judge against your own labels <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

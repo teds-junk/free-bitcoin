@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Check the judge</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.hook{display:flex;flex-direction:column;gap:30px;width:100%}.hook .card > .code.dark{font-size:29px;padding:24px 28px;flex:none}.hook .card .who{font-size:30px}.hook .semantic-block .label{font-size:30px;line-height:1.35}.hook .cols{grid-auto-columns:auto;grid-template-columns:3fr 2fr}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">Check the judge</h1>
+  <div class="stage">
+<div class="hook">
+    <div class="card" data-concept="entry" data-rep="card">
+        <div class="who">one of the twelve entries · <span class="mono">parser, haiku, 0</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span style="color:#B3C0BF">Fix out-of-memory errors on large imports by using streaming parser in importer.js</span></code></pre>
+      </div>
+    <div class="cols">
+      <div class="semantic-block" data-concept="judge-b" data-rep="block" data-role="attention">
+      <div class="title words">Judge: no</div><div class="label">The entry does state the user benefit, but it includes implementation details (streaming parser, importer.js). That violates the criterion.</div>
+    </div>
+      <div class="semantic-block" data-concept="ours-b" data-rep="block" data-role="structure">
+      <div class="title words">Ours: no</div><div class="label">written down before the judge ran</div>
+    </div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "judge-b",
+  "at": "0~reason",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "ours-b",
+  "at": "3~our own",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

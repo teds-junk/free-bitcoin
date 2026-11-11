@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 25: Grade a run Vally did not start — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 25 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Grade a run Vally did not start</h1>
+    <div class="lesson-meta">15 min · Run the release app's script yourself, convert its trace file to a trajectory, and grade the result with the eval file you already have.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>In lesson 8, what did <code>vally grade</code> take as input, and what did it not need?
+        <details class="answer"><summary>Show answer</summary><p>It took an eval file for its graders (<code>-e</code>) and saved trajectories on standard input (a run's <code>results.jsonl</code>), plus the run folder so diff graders could find the saved diffs. It started no agent, so re-grading was free.</p></details></li>
+      <li>What does a <code>tool-calls</code> grader read?
+        <details class="answer"><summary>Show answer</summary><p>The trajectory's tool calls: each call's tool name and, for shell calls, its command, matched by regular expression against the <code>required</code> and <code>disallowed</code> lists. It never looks at the workspace.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You can grade the release tool's request inside Vally: the app's setup step, a hidden test, and checks on the steps the agent took, including on a day when its tool fails.</p>
+    <p><strong>This lesson answers:</strong> The app ran the agent itself, from a few shell commands, and recorded what it did as traces. Can Vally grade that run?</p>
+  </div>
+
+  <p class="drop-cap">Everything so far has happened inside Vally: Vally prepared the workspace, started the agent, recorded the trajectory and graded it. The <code>notes-cli</code> team's release tool does not work that way. After a merge, a script prepares a checkout, and a small program, the release app, opens an agent session and sends its request. Nobody runs Vally. What the team has afterwards is the changed checkout and the app's own record of the session. If your graders can read that record, every real run of the app can be checked with the same eval file you have been building since lesson 22.</p>
+
+  <h2 id="inside-or-after" data-mode="think">Inside Vally or after the fact</h2>
+
+  <p>There are two ways to put an app's agent under your graders, and they answer different questions.</p>
+
+  <ul>
+    <li><strong>After the fact.</strong> The app runs as it always does, and you grade what it recorded. You see the real thing: the app's own settings, its real inputs, its real model. But each run happens once. You cannot ask for five more trials of the same situation, or the same situation on another model.</li>
+    <li><strong>Inside Vally.</strong> Vally starts the agent, so it can repeat a stimulus, vary the model and run experiments. But what it runs is a reproduction of the app, and a reproduction can differ from the app in ways that matter.</li>
+  </ul>
+
+  <p>Most teams want both: trials inside Vally to decide whether a change is safe, and grading of real runs afterwards to see whether what was decided still holds. This lesson does the second. Lesson 26 does the first with the app's own code.</p>
+
+  <h2 id="atif" data-mode="works">A trajectory from outside</h2>
+
+  <p><code>vally grade</code> has always read trajectories. In lesson 8 they came from Vally's own <code>results.jsonl</code>. It also reads a second, public format, which any program can write.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">ATIF</div>
+    <p>The Agent Trajectory Interchange Format: a JSON file describing one agent session as a list of <em>steps</em>. Each agent step holds what the model said, the tool calls it made, an <em>observation</em> holding what each call returned, and metrics such as tokens. Vally converts an ATIF file into its own trajectory before grading.</p>
+  </div>
+
+  <p>This is the start of the ATIF file our run produced in the checkpoint. It is short enough to read.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">app-run/trajectory.json</div>
+<pre><code class="language-json">{
+  "schema_version": "ATIF-v1.4",<span class="mark">1</span>
+  "session_id": "fe52ec76-bf9b-4283-87d4-eec23f55727e",
+  "agent": {
+    "name": "notes-cli-release-app",
+    "version": "1.0",
+    "model_name": "claude-haiku-4.5"
+  },
+  "steps": [
+    {
+      "step_id": 1,<span class="mark">2</span>
+      "source": "agent",
+      "model_name": "claude-haiku-4.5",
+      "message": "I'll help you write changelog entries…",
+      "tool_calls": [<span class="mark">3</span>
+        {
+          "tool_call_id": "toolu_014Vn5G6qq9k6cjEWUu2JY98",
+          "function_name": "view",
+          "arguments": {
+            "path": "…/app-run/repo"
+          }
+        }
+      ],
+      "observation": {<span class="mark">4</span>
+        "results": [
+          {
+            "source_call_id": "toolu_014Vn5G6qq9k6cjEWU…",
+            "content": "{\"content\":\"CHANGELOG.md…"
+          }
+        ]
+      },
+      "metrics": {<span class="mark">5</span>
+        "prompt_tokens": 16656,
+        "completion_tokens": 235,
+        "cost_usd": 0.0219925
+      }
+    },
+<span class="gap">89 lines hidden: steps 2 to 4, and the end</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>How Vally recognises the file. A version that does not start with <code>ATIF-</code> is rejected.</li>
+      <li>One step for each time the model answered. This one is the first.</li>
+      <li>The tool calls in this answer: here one, a look at the folder. A <code>tool-calls</code> grader reads the name (<code>view</code>) and the arguments. We replaced the start of the path, which named a folder on our machine, with "…". The read of <code>release/merged.txt</code> comes in step 2.</li>
+      <li>What each call returned, matched to its call by <code>source_call_id</code>: the folder's contents, cut short on this page.</li>
+      <li>This step's tokens and its price in dollars. 0.0220 dollars is 2.20 AIU. Later steps also have <code>cached_tokens</code>; this first call had nothing cached yet, so the field is left out.</li>
+    </ol>
+  </div>
+
+  <p>For a run Vally did not start, <code>vally grade</code> needs three things besides the eval file, one for each kind of grader:</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Graders</th><th>Need</th><th>Given by</th></tr></thead>
+    <tbody>
+      <tr><td><code>tool-calls</code>, <code>skill-invocation</code>, budgets</td><td>the trajectory</td><td>the ATIF file, on standard input</td></tr>
+      <tr><td><code>diff-contains</code> and the other diff graders</td><td>the change as a diff</td><td><code>--diff-file</code></td></tr>
+      <tr><td><code>run-command</code>, <code>program</code>, file graders</td><td>the changed files</td><td><code>--workspace</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>One more flag, <code>--stimulus</code>, names the stimulus whose graders apply, because an ATIF file does not say which stimulus it answers. Hidden test files under <code>grading_environment</code> are staged for the graders as they are in a normal run, so the hidden test from lesson 22 works too.</p>
+
+  <p>The graders see only what the file records. Three gaps matter here. Vally's <code>cost</code> stays empty for ATIF input: it understands only the Copilot runtime's own AIU, so the <code>cost_usd</code> in each step is kept in the file but not added up. The trial's wall time is recorded as 0, because the file has no start and end time for the session. And a skill counts as loaded only if the trajectory shows the agent calling its <code>skill</code> tool.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/trajectory-format/">Vally docs, Trajectory Format</a> (the ATIF import rules); <a href="https://microsoft.github.io/vally/reference/cli/grade/">Vally docs, CLI: grade</a>. The empty <code>cost</code>, the wall time of 0 and the skill count are from our runs on 2026-11-10 with Vally 0.21.0. We read them in the graded trial's record as JSON, which <code>vally grade</code> prints when given <code>--output jsonl</code>.</div>
+
+  <h2 id="traces" data-mode="works">From OpenTelemetry traces</h2>
+
+  <p>The release app does not write ATIF. Like most programs built on an agent library, it writes traces.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">OpenTelemetry</div>
+    <p>An open standard and toolkit for recording what a program does as it runs, so that any tool can read the record. Its records of work done are <em>traces</em>.</p>
+  </div>
+
+  <div class="callout definition">
+    <div class="callout-title">Span</div>
+    <p>One unit of work inside a trace, such as one call to a model or one tool call, with a start time, an end time and <em>attributes</em>: named values describing the work. Every span carries the ID of its trace and its own ID; a span started inside another records that one as its parent. A span with no parent is the root of its trace.</p>
+  </div>
+
+  <div class="callout definition">
+    <div class="callout-title">GenAI semantic conventions</div>
+    <p>OpenTelemetry's agreed names for spans and attributes that describe AI work: a <code>chat</code> span for a model call, an <code>execute_tool</code> span for a tool call, an <code>invoke_agent</code> span for a whole agent session, and attributes such as <code>gen_ai.usage.input_tokens</code>. Because the names are shared, a converter written for one library's traces mostly works for another's. The conventions are still marked "Development", so names can change.</p>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://opentelemetry.io/docs/concepts/signals/traces/">OpenTelemetry, Traces</a> ("A span represents a unit of work or operation"); <a href="https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md">OpenTelemetry, Semantic conventions for GenAI spans</a>, Status: Development (the page at opentelemetry.io now points there). Both read 2026-11-10.</div>
+
+  <p>The release app is shipped in <code>app/</code>. It is built on the GitHub Copilot SDK, the same library Vally's own executor uses to run an agent. The SDK takes a <code>telemetry</code> setting and writes every span as one line of JSON to a file. This is the app's command-line entry point, all of it:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">app/run.mjs</div>
+<pre><code class="language-javascript">// Run the release assistant once, with tracing to a file:
+//   node app/run.mjs &lt;repo&gt; &lt;skills&gt; &lt;model&gt; &lt;traces file&gt;
+import path from "node:path";
+import { writeEntries } from "./release-assistant.mjs";<span class="mark">1</span>
+
+const [repo, skills, model, traces] = process.argv.slice(2);
+const { reply } = await writeEntries({
+  repoDir: path.resolve(repo),
+  skillDirs: [path.resolve(skills)],
+  model,
+  timeoutMs: 180000,
+  telemetry: {<span class="mark">2</span>
+    exporterType: "file",
+    filePath: path.resolve(traces),
+    captureContent: true,<span class="mark">3</span>
+  },
+});
+console.log(reply);</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The app itself, <code>app/release-assistant.mjs</code>: forty lines that start an agent session in the checkout, with the team's skill, send the request "Write the Unreleased changelog entries for every change listed in release/merged.txt." and wait for the reply. The same request as the stimulus in your eval file.</li>
+      <li>Write spans to a file, as JSON lines.</li>
+      <li>Include message text, tool arguments and tool results in the spans. Without it the spans hold names and counts only, and no grader could check what a tool call did.</li>
+    </ol>
+  </div>
+
+  <p>Here are two spans from our trace file, reformatted with one attribute per line. The first is a model call.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">app-run/traces.jsonl (one line, reformatted)</div>
+<pre><code class="language-json">{"type": "span",
+ "traceId": "2fff548f53e941160f1da3b177a09ab5",<span class="mark">1</span>
+ "spanId": "605d649cdb026f22",
+ "parentSpanId": "01971f886d2b3131",<span class="mark">2</span>
+ "name": "chat claude-haiku-4.5",
+ "attributes": {
+  "gen_ai.operation.name": "chat",<span class="mark">3</span>
+  "gen_ai.request.model": "claude-haiku-4.5",
+  "gen_ai.conversation.id": "fe52ec76-bf9b-4283-…",
+  "gen_ai.usage.input_tokens": 16656,<span class="mark">4</span>
+  "gen_ai.usage.output_tokens": 235,
+  "github.copilot.nano_aiu": 2199250000,<span class="mark">5</span>
+  "gen_ai.output.messages": "[{\"role\":\"assistant\",…",
+<span class="gap">15 attributes hidden: IDs, prompt, tools</span>
+ },
+<span class="gap">7 fields hidden: kind, times, status, source</span>
+}</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The trace this span belongs to: every span from this session shares it.</li>
+      <li>Its parent, the session's <code>invoke_agent</code> span. In this trace that span has no parent of its own: it is the root. Lesson 26 changes that.</li>
+      <li>The kind of work, in the conventions' names. The converter looks for <code>chat</code>.</li>
+      <li>Tokens, under the conventions' names. Later model calls also carry a count of cached input tokens, which becomes <code>cached_tokens</code>.</li>
+      <li>The price in nano-AIU, under a name of GitHub's own: 2,199,250,000 is 2.20 AIU, the same as <code>cost_usd</code> in step 1 above.</li>
+    </ol>
+  </div>
+
+  <p>The second is the tool call that read the merged list.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">app-run/traces.jsonl (another line, reformatted)</div>
+<pre><code class="language-json">{"type": "span",
+ "traceId": "2fff548f53e941160f1da3b177a09ab5",
+ "spanId": "fe2b28fb26e9ed44",
+ "parentSpanId": "01971f886d2b3131",
+ "name": "execute_tool view",
+ "attributes": {
+  "gen_ai.operation.name": "execute_tool",<span class="mark">1</span>
+  "gen_ai.tool.name": "view",
+  "gen_ai.tool.call.id": "toolu_01FJH3F2Mvzpo4apnKVwHa1e",<span class="mark">2</span>
+  "gen_ai.tool.call.arguments":
+   "{\"path\":\"…/app-run/repo/release/merged.txt\"}",
+  "gen_ai.tool.call.result":<span class="mark">3</span>
+   "{\"content\":\"#74 feat: add --since &lt;date&gt; …",
+<span class="gap">5 attributes hidden: IDs, description, path</span>
+ },
+<span class="gap">7 fields hidden, as above</span>
+}</code></pre>
+    </div>
+    <ol class="notes">
+      <li>A tool call, and which tool.</li>
+      <li>The same ID the model gave the call, which the ATIF file uses to pair the call with its result.</li>
+      <li>What the tool returned, recorded because of <code>captureContent</code>.</li>
+    </ol>
+  </div>
+
+  <p>Vally writes spans of its own (the <code>otel-spans.jsonl</code> file in every run folder), but it does not read traces in. So the starter ships a converter, <code>app/traces-to-atif.mjs</code>, about seventy lines. It sorts the spans by start time, then walks through them:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">app/traces-to-atif.mjs</div>
+<pre><code class="language-javascript"><span class="gap">31 lines hidden: read and sort the spans</span>
+for (const span of spans) {
+  const a = span.attributes;
+  session = a["gen_ai.conversation.id"] ?? session;
+  if (a["gen_ai.operation.name"] === "chat") {<span class="mark">1</span>
+    model = a["gen_ai.request.model"];
+    steps.push({
+      step_id: steps.length + 1,
+      source: "agent",
+      model_name: model,
+      message: textOf(a["gen_ai.output.messages"]),
+      tool_calls: [],
+      observation: { results: [] },
+      metrics: {<span class="mark">2</span>
+        prompt_tokens: a["gen_ai.usage.input_tokens"],
+        completion_tokens: a["gen_ai.usage.output_tokens"],
+        cached_tokens:
+          a["gen_ai.usage.cache_read.input_tokens"],
+        // A billion nano-AIU is one AI Credit: $0.01.
+        cost_usd: (a["github.copilot.nano_aiu"] ?? 0) / 1e11,
+      },
+    });
+  } else if (a["gen_ai.operation.name"] === "execute_tool"
+      &amp;&amp; steps.length &gt; 0) {<span class="mark">3</span>
+    const step = steps[steps.length - 1];
+    const id = a["gen_ai.tool.call.id"];
+    step.tool_calls.push({
+      tool_call_id: id,
+      function_name: a["gen_ai.tool.name"],<span class="mark">4</span>
+      arguments: argumentsOf(a["gen_ai.tool.call.arguments"]),
+    });
+    step.observation.results.push({
+      source_call_id: id,
+      content: a["gen_ai.tool.call.result"] ?? "",
+    });
+  }
+}
+<span class="gap">8 lines hidden: print the ATIF file</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>Each model call becomes a new step. Every other span (the session's setup, permission checks, timings) is skipped.</li>
+      <li>The span's token attributes, renamed to ATIF's names.</li>
+      <li>A tool call belongs to the model call just before it, because the model asked for it there.</li>
+      <li>The tool name, and on the next line its arguments. <code>argumentsOf</code> parses them as JSON. One tool, <code>apply_patch</code>, which <code>gpt-5.6-terra</code> uses to edit files, records its arguments as plain text, so the helper keeps that text under <code>input</code>. Our first version did not, and failed on terra's trace.</li>
+    </ol>
+  </div>
+
+  <div class="callout warning">
+    <div class="callout-title">Trace files hold private values</div>
+    <p>A trace written with content captured holds the whole prompt, every file the agent read, full paths on your machine, and an attribute <code>enduser.pseudo.id</code> that identifies your account. Do not attach raw traces to an issue or commit them. Everything on this page was cleaned first.</p>
+  </div>
+
+  <h2 id="run-script" data-mode="works">The script the release tooling runs</h2>
+
+  <p>The last piece is the script the release tooling runs, <code>app/run.sh</code>. It does by hand what your eval file's <code>agent_environment</code> and <code>commands:</code> do inside Vally, then runs the app and records the change. It uses no git, so the change is a plain diff between a copy of the folder from before and the folder after.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">app/run.sh</div>
+<pre><code class="language-bash"><span class="gap">9 lines hidden: usage notes, as in the text</span>
+set -e<span class="mark">1</span>
+rm -rf app-run
+mkdir -p app-run/repo/release app-run/repo/tools
+mkdir -p app-run/skills
+
+# The checkout: the same files the eval file stages.
+cp evals/fixtures/notes-cli/CHANGELOG.md app-run/repo/<span class="mark">2</span>
+cp tools/list-merged.mjs app-run/repo/tools/
+cp -R skills/changelog-entry app-run/skills/
+
+# The release tooling's own setup step.
+cd app-run/repo
+node tools/list-merged.mjs &gt; release/merged.txt<span class="mark">3</span>
+cd ../..
+cp -R app-run/repo app-run/before<span class="mark">4</span>
+
+# The app itself: one agent session, traced to a file.
+node app/run.mjs app-run/repo app-run/skills "$1" \<span class="mark">5</span>
+  app-run/traces.jsonl
+
+# What changed. diff exits 1 when it finds a difference.
+cd app-run
+diff -ruN before repo &gt; change.diff || true<span class="mark">6</span>
+echo "Wrote app-run/traces.jsonl and app-run/change.diff"</code></pre>
+    </div>
+    <ol class="notes">
+      <li>Stop at the first command that fails. Each run first deletes the previous <code>app-run/</code>.</li>
+      <li>The checkout gets the fixture changelog and the tool, as your eval file stages them; the skill goes in a folder of its own beside it.</li>
+      <li>The same setup command as your eval file's <code>commands:</code> step.</li>
+      <li>A copy of the starting state, taken after setup. Like Vally's baseline, it makes <code>release/merged.txt</code> part of the start, not of the change.</li>
+      <li><code>"$1"</code> is the model you give the script.</li>
+      <li>Compare the two folders. <code>-r</code> goes into subfolders, <code>-u</code> writes the usual diff format, and <code>-N</code> shows new files as added.</li>
+    </ol>
+  </div>
+
+  <h2 id="run-convert-grade" data-mode="use">Run the app, convert, grade</h2>
+
+  <p>You will run the app once, look at both of its records, convert the traces, grade the result, and then set it beside the trials Vally ran for the same stimulus in lesson 23.</p>
+
+  <section class="checkpoint">
+    <h3>Grade the app's own run</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: install the app's two libraries. This downloads about 140 packages from npm into app/node_modules, and starts no agent.</span>
+        Open a terminal in <code>practice</code>. The starter's <code>app/</code> folder came with your copy in lesson 1; <code>package.json</code> in it pins <code>@github/copilot-sdk</code> 1.0.30 and <code>@microsoft/vally</code> 0.21.0. <code>npm</code>, Node's package installer, came with the Node you checked in lesson 1; <code>npm --version</code> shows it is there.
+<pre><code class="language-bash">npm install --prefix app</code></pre>
+        <p class="expect">You should see: <code>added 142 packages</code> and <code>found 0 vulnerabilities</code>.</p></li>
+
+      <li><span class="goal">Goal: run the release app once, outside Vally. This spends one agent run, about 2 to 4 AIU.</span>
+<pre><code class="language-bash">sh app/run.sh claude-haiku-4.5</code></pre>
+        <p class="expect">You should see: the agent's reply, then <code>Wrote app-run/traces.jsonl and app-run/change.diff</code>. Ours began "Done! I've added the three merged changes to the Unreleased section of CHANGELOG.md".</p></li>
+
+      <li><span class="goal">Goal: see what the app changed.</span>
+        Open <code>app-run/change.diff</code>.
+        <p class="expect">You should see: a diff of <code>CHANGELOG.md</code> only, with a line per entry the agent added. Ours added <code>(#74)</code> under Added, <code>(#75)</code> under Fixed, and also <code>Move config loading out of cli.js (#76)</code> under a new Changed heading: an entry for the refactor, which the skill says to leave out.</p></li>
+
+      <li><span class="goal">Goal: find the agent's work among the spans.</span>
+        Open <code>app-run/traces.jsonl</code> in your editor. Each line is one span or one measurement. Use the editor's find (Ctrl+F, or Cmd+F on a Mac) to search for <code>"name":"execute_tool</code>.
+        <p class="expect">You should see: one match per tool call. Ours had 140 lines and four tool calls, among dozens of <code>session.timing</code> spans. Find the call whose <code>gen_ai.tool.call.arguments</code> mentions <code>merged.txt</code>, and look for a call to the <code>skill</code> tool. Ours had none.</p></li>
+
+      <li><span class="goal">Goal: turn the traces into an ATIF file. This writes app-run/trajectory.json.</span>
+<pre><code class="language-bash">node app/traces-to-atif.mjs app-run/traces.jsonl \
+  &gt; app-run/trajectory.json</code></pre>
+        Open <code>app-run/trajectory.json</code> and count the steps.
+        <p class="expect">You should see: the shape shown in section 2. Ours had four steps: three with tool calls, and a last one holding only the reply. Yours may have more or fewer.</p></li>
+
+      <li><span class="goal">Goal: grade the app's run with your eval file. This starts no agent.</span>
+<pre><code class="language-bash">vally grade -e evals/release.eval.yaml \
+  --stimulus since-last-release \
+  --workspace app-run/repo \
+  --diff-file app-run/change.diff \
+  --verbose &lt; app-run/trajectory.json</code></pre>
+        <p class="expect">You should see: one line per grader. Ours, with lines cut at the page edge:</p>
+<pre class="output"><code>warning: Multiple graders with no scoring config
+❌ since-last-release (3/5 graders passed, 2 f…
+  ✗ [every-change-handled] Command 'node .vall…
+  ✓ [reads-the-list] All required tools were c…
+                     No disallowed tools were …
+  ✓ [never-commits] All required tools were ca…
+                    No disallowed tools were c…
+  ✓ [no-loop] No action repeated more than 3 t…
+  ✗ [loads-the-skill] The following required s…
+                      No disallowed skills wer…
+
+Score: 60.0% | FAILED</code></pre>
+        <p>In full, the first line ends "2 failed)", the hidden test "failed: Expected exit code 0, got 1" (the refactor's entry), and <code>loads-the-skill</code> says "The following required skills were not called: changelog-entry".</p></li>
+
+      <li><span class="goal">Goal: put the app's run beside Vally's own trials of the same stimulus.</span>
+        Open <code>eval-results.md</code> in your lesson 23 run, under <code>results/lesson-23</code>, and find the <code>since-last-release</code> row for <code>claude-haiku-4.5</code>. Compare its grader counts and Tokens column with the app's run: the grade above, and the tokens in <code>app-run/trajectory.json</code>: add up <code>prompt_tokens</code> and <code>completion_tokens</code> over every step. Leave <code>cached_tokens</code> out; it is the share of <code>prompt_tokens</code> that was cached, not extra tokens.
+        <details class="answer"><summary>Show our comparison</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>claude-haiku-4.5</th><th>The app, graded afterwards</th><th>Vally's lesson 23 run</th></tr></thead>
+            <tbody>
+              <tr><td>Trials</td><td>1</td><td>3</td></tr>
+              <tr><td><code>every-change-handled</code></td><td>failed</td><td>0 of 3</td></tr>
+              <tr><td><code>loads-the-skill</code></td><td>failed</td><td>1 of 3</td></tr>
+              <tr><td>The other three graders</td><td>passed</td><td>3 of 3 each</td></tr>
+              <tr><td>Tokens</td><td>69,526</td><td>104,909 (median)</td></tr>
+              <tr><td>Cost</td><td>3.24 AIU, from <code>cost_usd</code></td><td>2.28 AIU for the median trial, from <code>cost</code></td></tr>
+            </tbody>
+          </table>
+          </div>
+        </details></li>
+    </ol>
+  </section>
+
+  <div class="predict">
+    <p>The app's run and Vally's trials failed the same two graders. Before reading on: does that tell you the app is no worse than Vally's own runs of the skill?</p>
+    <details class="answer"><summary>Check your prediction</summary><p>Not yet. It tells you the graders work on the app's run and give the same kind of verdict. One run against three is far too few to compare the two, as lesson 15 showed.</p></details>
+  </div>
+
+  <h2 id="what-carried-over" data-mode="think">What carried over</h2>
+
+  <p>Every grader you wrote inside Vally worked on a run Vally never saw. The hidden test ran in a copy of the app's checkout and caught the refactor's entry. The <code>tool-calls</code> graders found the <code>view</code> of <code>merged.txt</code> and no <code>git commit</code>, because the traces recorded every tool call with its arguments. <code>max-repeat</code> counted repeated calls from the same record, and <code>skill-invocation</code> saw that no <code>skill</code> call was made. Those graders answer "did this run do the job, the way the app needs?", and that question has the same answer however the run was started.</p>
+
+  <p>Some things did not carry over, and each one traces back to what the file records. <code>cost</code> was empty, so a cost comparison has to add up <code>cost_usd</code> itself. The wall time was 0, so a <code>wall-time</code> grader would pass anything. Skill loading counted only because the agent's <code>skill</code> call is an ordinary tool call in the trace; an app that loaded skills some other way would show none. Before trusting a grader on converted runs, ask whether the field it reads came across. And the <code>tracker-down</code> stimulus has nothing to grade here: its tool fails only because Vally makes it fail, and the app's real runs never had that bad day on purpose.</p>
+
+  <p>The comparison raised a question the graders cannot answer. On haiku, the app's run failed the way Vally's own trials mostly did. Is the app as good as Vally's runs, worse, or better? With one run of the app there is no way to say, and that is the limit of grading afterwards: each real run happens once, on whatever model the app used. Lesson 26 gives the app's own code Vally's trials.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">You add a <code>wall-time</code> grader with a 60-second limit and re-grade the converted run. What happens?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">It fails, because the time is missing</button></li>
+      <li><button onclick="checkAnswer(this, true)">It passes, whatever the run took</button></li>
+      <li><button onclick="checkAnswer(this, false)">It reads the time from the spans</button></li>
+      <li><button onclick="checkAnswer(this, false)">Vally refuses to grade the file</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. The converted run records a wall time of 0, and 0 is under any limit. A grader that cannot fail is the problem lesson 8 warned about; leave time limits to runs Vally starts, or add the session's times to the converter.</div>
+    <div class="quiz-feedback incorrect">It passes, whatever the run took. The converted run records a wall time of 0, because our ATIF file holds no session start and end, and 0 is under any limit. A grader that cannot fail is the problem lesson 8 warned about.</div>
+  </div>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/reference/trajectory-format/">Trajectory Format, Vally docs</a></p>
+    <p>The fields every trajectory has, and the section on importing ATIF: how observations are matched to calls and what Vally assumes when a result has no status. Read it before writing a converter for another app's records.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, name the three inputs <code>vally grade</code> needs for a run it did not start, besides the eval file, and which graders need each.
+        <details class="answer"><summary>Show model answer</summary><p>The trajectory as an ATIF file on standard input, for graders of the path such as <code>tool-calls</code>; a diff file (<code>--diff-file</code>) for the diff graders; and the changed folder (<code>--workspace</code>) for <code>run-command</code>, <code>program</code> and file graders. <code>--stimulus</code> names whose graders to use.</p></details></li>
+      <li>Run the app on your second model with <code>sh app/run.sh gpt-5.6-terra</code>, then convert and grade as before. Did it load the skill? (This spends one agent run.)
+        <details class="answer"><summary>Show our result</summary><p>Yes. In our run terra called <code>skill</code> first, read the list and the changelog, and edited with <code>apply_patch</code>: the first call returned nothing, so it sent the same patch again. It left the refactor out (its reply: "Omitted #76 because it is an internal refactor with no user-visible change."), and passed 5 of 5, for 6.29 AIU; its first model call alone cost 3.34. Its <code>apply_patch</code> calls record their arguments as plain text, which is why the converter has <code>argumentsOf</code>.</p></details></li>
+      <li>The release team wants every real run of the app graded. Which graders from your eval file would you run on every run, and which would you leave to trials inside Vally?
+        <details class="answer"><summary>Show model answer</summary><p>Every grader that reads only what the app records: the diff grader, the hidden test, and the <code>tool-calls</code> checks that the list was read and nothing was committed or pushed. Leave out anything that depends on fields the traces lack, such as wall time, unless the converter is extended to supply them, and anything that needs a stimulus Vally sets up, such as a tool failing on purpose.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="25" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> run the release app's script yourself, convert its trace file to a trajectory, and grade the result with the eval file you already have.</p>
+    <p><strong>Up next:</strong> <a href="./0026-let-vally-run-the-app.html">Let Vally run the app</a>. Grading afterwards gives one sample per run, on whatever model the app used. To get trials, experiments and models, Vally has to start the app itself.</p>
+    <a class="next-lesson" href="./0026-let-vally-run-the-app.html">Next lesson: Let Vally run the app <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "security-fix",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::mai-code-1.1-flash::security-fix::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "mai-code-1.1-flash",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:39:21.842Z",
+  "status": "success",
+  "trajectoryId": "d8aeac64-b81a-42de-a989-b4aaef1bc165",
+  "executorSessionId": "fcdc43de-6d55-4649-bb60-283015a07225",
+  "completedAt": "2026-11-10T07:39:38.647Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/security-fix/mai-code-1.1-flash/0/events.jsonl"
+}

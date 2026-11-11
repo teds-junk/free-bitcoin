@@ -1,0 +1,90 @@
+Running experiment 'before-and-after'
+Loaded 12 stimuli from wording · 2 models · 2 workers
+
+haiku-after · claude-haiku-4.5
+  FLAKY  cache  2 passed · 1 failed
+   ✘ prompt "Begin your reason b…"  2 passed · 1 failed · 1 critique
+     ✓ trial 1   passed
+     ✓ trial 2   passed
+     ✘ trial 3   The entry is \"Improve performance of `notes list --tag` by
+                 caching tag index (#66)\". It states the speedup but also
+                 leaks implementation detail (caching the tag index), which
+                 the rubric disallows.
+
+haiku-before · claude-haiku-4.5
+  FAIL  cache  0/3
+   ✘ prompt "Begin your reason b…"  0 passed · 3 failed · 3 critiques
+     ✘ trial 1   The entry is "Speed up `notes list --tag` with LRU cache on
+                 tag index (#66)". It leaks implementation detail ("LRU cache
+                 on tag index"), so it fails the criterion.
+     ✘ trial 2   The entry is \"Improve performance of `notes list --tag` with
+                 LRU caching to avoid rescanning files (#66)\". It leaks
+                 implementation detail through \"LRU caching\", so it fails
+                 the criterion.
+     ✘ trial 3   The entry quoted was "Improve `notes list --tag` performance
+                 with LRU cache on tag index (#66)". It leaks implementation
+                 detail (LRU cache, tag index) and is vague about the user
+                 benefit, so it fails the criterion.
+
+haiku-before · claude-haiku-4.5
+  FAIL  parser  0/3
+   ✘ prompt "Begin your reason b…"  0 passed · 3 failed · 3 critiques
+     ✘ trial 1   The new entry is "Fix out-of-memory error on large imports by
+                 using streaming JSON parser (#49)". It is placed correctly
+                 under Fixed in Unreleased, and it cites the PR. It still
+                 names the implementation (streaming JSON parser), so it fails
+                 the criterion.
+     ✘ trial 2   The entry is "Fix out-of-memory errors on large imports by
+                 using a streaming parser (#49)". It states the user-facing
+                 fix but also names the implementation, so it fails the
+                 criterion.
+     ✘ trial 3   The entry is "Fix out-of-memory error on large imports by
+                 using a streaming parser (#49)". It correctly names the
+                 user-visible fix, but it also includes the implementation
+                 detail "using a streaming parser". That violates the
+                 criterion.
+
+terra-after · gpt-5.6-terra
+  ERROR  dates  2 passed · 1 error
+   trial 3 · Session disconnected while waiting for a response
+   ✓ passed   prompt "Begin your reason b…" · cites-67
+
+terra-after · gpt-5.6-terra
+  ERROR  parser  2 passed · 1 error
+   trial 3 · Session disconnected while waiting for a response
+   ✓ passed   prompt "Begin your reason b…" · cites-49
+
+terra-before · gpt-5.6-terra
+  FAIL  cache  0/3
+   ✘ prompt "Begin your reason b…"  0 passed · 3 failed · 3 critiques
+     ✘ trial 1   The new entry is "Speed up `notes list --tag` in large
+                 folders with a cached tag index (#66)". It states the user
+                 benefit but also includes the implementation detail "with a
+                 cached tag index", so it fails the criterion.
+     ✘ trial 2   The entry is "Speed up `notes list --tag` for large folders
+                 by caching the tag index (#66)". It gets the user-visible
+                 benefit right, but "by caching the tag index" leaks how it
+                 was built, so it fails the criterion.
+     ✘ trial 3   The new entry is \"Speed up repeated `notes list --tag`
+                 commands on large note folders with tag-index caching
+                 (#66)\". It correctly describes the user-visible speedup. It
+                 also names the implementation (\"tag-index caching\"), so it
+                 fails the requirement not to say how it was coded.
+
+────────────────────────────────────────────────────────
+
+Experiment
+  before-and-after
+  varying /environment/skills, /defaults/model · baseline haiku-before
+
+  → haiku-after beat baseline — 2/3 vs 1/3 stimuli.
+
+  eval        haiku-before (baseline)  haiku-after  terra-before  terra-after
+  wording     ✘ 1/3                    ✘ 2/3        ✘ 2/3         ✘ 1/3
+  ──────────  ───────────────────────  ───────────  ────────────  ───────────
+  stimuli     1/3                      2/3          2/3           1/3
+  tokens      757.9k                   679.7k       514.7k        417.0k
+  trial time  3m43s                    3m38s        3m30s         2m55s
+
+Run ID: 2894d6fc-d2c4-4202-a86e-3d3f13030915
+Output: ~/src/demo/practice/results/lesson-15/2026-11-11T07-45-16-299Z

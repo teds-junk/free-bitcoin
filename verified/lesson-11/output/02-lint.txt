@@ -1,0 +1,6 @@
+Eval: evals/conversation.eval.yaml
+⚠ warning [scoring-defaults-applied] Multiple graders with no scoring config
+  at scoring
+  Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+  1 warning(s)

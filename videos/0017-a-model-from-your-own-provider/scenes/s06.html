@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>No field for a key</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.out{font-size:28px;line-height:1.4;padding:16px 26px;min-width:1160px}.callout{font-size:30px}.stage{gap:20px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Bring your own key</div>
+  <h2 class="scene-title">No field for a key</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark out" data-lang="text"><code><span>✘ error [executor-config-invalid]</span>
+<span>  defaults.executor.config.provider has </span><span data-concept="nokey" data-rep="code"><span>unknown field 'apiKey'</span></span>
+<span>  (allowed: type, baseUrl, wireApi, transport, apiKeyEnv,</span>
+<span>  bearerTokenEnv, azure, headers, modelId, wireModel,</span>
+<span>  maxPromptTokens, maxOutputTokens)</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="nokey">lint, with a key in the file</p></aside>
+  </div>
+  <div class="annotated">
+    <pre class="code dark out" data-lang="text"><code><span>ERROR  hello</span>
+<span> defaults.executor.config.provider.apiKeyEnv references</span>
+<span> environment variable "MY_PROVIDER_KEY", </span><span data-concept="unset" data-rep="code"><span>but it is not set</span></span><span>.</span>
+<span> Export MY_PROVIDER_KEY with your provider credential before</span>
+<span> running.</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="unset">a run, with the variable not set</p></aside>
+  </div>
+  <p class="note">Our own probes of the block above, with Vally 0.21.0</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "nokey",
+  "at": "1~no field",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "unset",
+  "at": "3~isn't set",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

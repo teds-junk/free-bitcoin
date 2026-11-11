@@ -1,0 +1,5 @@
+0:00 An app starts the agent
+1:42 Set up before the agent starts
+4:04 A hidden test
+6:15 Run it on two models
+8:50 What it showed

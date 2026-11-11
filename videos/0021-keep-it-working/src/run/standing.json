@@ -1,0 +1,15 @@
+{
+ "_about": "Figures from EARLIER videos' own runs that s21 and s24 quote.",
+ "first_graders": {
+  "pairs_passed": 1,
+  "pairs": 6,
+  "source": "REAL: the lesson 5 video's before run 2026-11-11T05-21-37-779Z (haiku passed typo-fix in all three trials; no other stimulus-and-model pair passed every trial)"
+ },
+ "conversation_after_fix": {
+  "passed": 6,
+  "trials": 6,
+  "haiku_passed": 3,
+  "haiku_trials": 3,
+  "source": "REAL: the lesson 11 video's after run 2026-11-11T06-39-12-770Z (videos/0011-follow-up-requests/src/run/after.trials.json): three trials on each model, all six passed"
+ }
+}

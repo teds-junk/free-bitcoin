@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Would this grader pass it?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.pair{align-items:stretch}.cases{display:flex;flex-direction:column;gap:28px;justify-content:center}.cases .semantic-block{min-height:150px;justify-content:center}.cases .label{display:none}.card > .code.dark{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Find it in the files</div>
+  <h2 class="scene-title">Would this grader pass it?</h2>
+  <div class="stage">
+<div class="cols pair">
+    <div class="card" data-concept="g" data-rep="card">
+        <div class="who">The only grader</div>
+        <pre class="code dark" data-lang="yaml"><code><span style="color:#4EA5E6">graders</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">file-contains</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">mentions-the-command</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">path</span><span style="color:#B3C0BF">: </span><span data-concept="path" data-rep="code"><span style="color:#3CC0B3">CHANGELOG.md</span></span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">value</span><span style="color:#B3C0BF">: </span><span data-concept="value" data-rep="code"><span style="color:#3CC0B3">"notes add"</span></span></code></pre>
+      </div>
+    <div class="cases">
+      <div class="semantic-block" data-concept="case2" data-rep="block" data-role="structure">
+      <div class="title words">The entry, under the released 1.2.0 section</div><div class="label"></div>
+    </div>
+      <div class="semantic-block" data-concept="case3" data-rep="block" data-role="structure">
+      <div class="title words">Nothing changed at all</div><div class="label"></div>
+    </div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "path",
+  "at": "2~changelog",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "value",
+  "at": "2~notes add",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "case2",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "case2",
+  "at": "4",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "case3",
+  "at": "5",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "case3",
+  "at": "6",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

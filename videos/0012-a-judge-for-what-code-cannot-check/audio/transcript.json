@@ -1,0 +1,1748 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/0012-a-judge-for-what-code-cannot-check",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "27955d6bbcd774e4",
+      "text": "Our skill says each entry should be written for people who use the tool.",
+      "tts_text": "Our skill says each entry should be written for people who use the tool.",
+      "heard": "Our skill says each entry should be written for people who use the tool.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "d9ff7f44a00c9d56",
+      "text": "Yet when the fix was a switch to a streaming parser, one model's entry told users about the streaming parser.",
+      "tts_text": "Yet when the fix was a switch to a streaming parser, one model's entry told users about the streaming parser.",
+      "heard": "Yet when the fix was a switch to a streaming parser, one model's entry told users about the streaming parser.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "7b9f3803438a7893",
+      "text": "None of our graders checks for that, because no pattern can.",
+      "tts_text": "None of our graders checks for that, because no pattern can.",
+      "heard": "None of our graders checks for that because no pattern can.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "1ac7b127b30f3e4b",
+      "text": "In this lesson, you'll write a grader that asks another model one yes-or-no question, run it over saved trials, and read its reasons.",
+      "tts_text": "In this lesson, you'll write a grader that asks another model one yes-or-no question, run it over saved trials, and read its reasons.",
+      "heard": "In this lesson, you'll write a grader that asks another model one yes or no question, run it over Save Trials, and read its reasons.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "15d43519c77650b1",
+      "text": "Let's start with why code can't check this.",
+      "tts_text": "Let's start with why code can't check this.",
+      "heard": "Let's start with why code can't check this.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "6709dd1ea9be4fe2",
+      "text": "Every grader so far is code: a pattern, an empty-diff check, a script, or a check of which skills loaded.",
+      "tts_text": "Every grader so far is code: a pattern, an empty-diff check, a script, or a check of which skills loaded.",
+      "heard": "Every grader so far as code, a pattern an empty diff check, a script, or a check of which skills loaded.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "is",
+          "heard": "as",
+          "similarity": 0.5
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "9cca349d254bfa7c",
+      "text": "Each one checks something code can see.",
+      "tts_text": "Each one checks something code can see.",
+      "heard": "Each one checks something code can see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 3,
+      "file": "audio/s02_03.wav",
+      "clip_sha": "e7a1601838600b7d",
+      "text": "Whether an entry says how a fix was coded isn't something a pattern can match, because the giveaway words could be anything.",
+      "tts_text": "Whether an entry says how a fix was coded isn't something a pattern can match, because the giveaway words could be anything.",
+      "heard": "Whether an entry says how a fix was coded isn't something a pattern can match because the giveaway words could be anything.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 4,
+      "file": "audio/s02_04.wav",
+      "clip_sha": "d9fc7641a128dd08",
+      "text": "Here they're streaming parser, when all a user cares about is that big imports no longer crash.",
+      "tts_text": "Here they're streaming parser, when all a user cares about is that big imports no longer crash.",
+      "heard": "Hear their streaming parser when all a user cares about is that big imports no longer crash.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s02",
+      "i": 5,
+      "file": "audio/s02_05.wav",
+      "clip_sha": "a6b774206ded2297",
+      "text": "Checking that takes something that can read, and that something is another model.",
+      "tts_text": "Checking that takes something that can read, and that something is another model.",
+      "heard": "Checking that takes something that can read and that something is another model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "08e9fa04be34e43d",
+      "text": "That kind of grader is called an LLM judge, where LLM stands for large language model.",
+      "tts_text": "That kind of grader is called an LLM judge, where LLM stands for large language model.",
+      "heard": "That kind of grader is called an LLM judge, where LLM stands for Large Language Model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "22edebad8190dd76",
+      "text": "It asks a language model to read what the agent did, and decide whether it meets a criterion you wrote.",
+      "tts_text": "It asks a language model to read what the agent did, and decide whether it meets a criterion you wrote.",
+      "heard": "It asks a language model to read what the agent did and decide whether it meets a criterion you wrote.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 2,
+      "file": "audio/s03_02.wav",
+      "clip_sha": "1793d3300011cd4c",
+      "text": "Such a judge can decide things code can't, but it has costs.",
+      "tts_text": "Such a judge can decide things code can't, but it has costs.",
+      "heard": "Such a judge can decide things code can't, but it has costs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 3,
+      "file": "audio/s03_03.wav",
+      "clip_sha": "73cfb25465b505a8",
+      "text": "It's slower than code, and every trial it judges costs a call to a model.",
+      "tts_text": "It's slower than code, and every trial it judges costs a call to a model.",
+      "heard": "Slower than code, and every trial it judges costs a call to a model.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "It's",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 4,
+      "file": "audio/s03_04.wav",
+      "clip_sha": "26ba1e3bf47d6bdf",
+      "text": "It can also be wrong in ways a pattern can't: swayed by confident wording, or reading your criterion differently from you.",
+      "tts_text": "It can also be wrong in ways a pattern can't: swayed by confident wording, or reading your criterion differently from you.",
+      "heard": "can also be wrong in ways a pattern can't, swayed by confident wording or reading your criterion differently from you.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "It",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 5,
+      "file": "audio/s03_05.wav",
+      "clip_sha": "7352e741584d8183",
+      "text": "So we use a judge only for what code can't decide, and everything graded so far stays with code.",
+      "tts_text": "So we use a judge only for what code can't decide, and everything graded so far stays with code.",
+      "heard": "So we use a judge only for what code can't decide, and everything graded so far stays with code.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 0,
+      "file": "audio/s04_00.wav",
+      "clip_sha": "f9ff13ecf45d316d",
+      "text": "When a judge is needed, three habits make its verdicts usable.",
+      "tts_text": "When a judge is needed, three habits make its verdicts usable.",
+      "heard": "When a judge is needed, three habits make its verdicts usable.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 1,
+      "file": "audio/s04_01.wav",
+      "clip_sha": "a7c9b418eb594549",
+      "text": "First, one question per judge.",
+      "tts_text": "First, one question per judge.",
+      "heard": "First, one question per judge.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 2,
+      "file": "audio/s04_02.wav",
+      "clip_sha": "f8c11b253e7db9e8",
+      "text": "Asked whether an entry is good, a judge weighs several things at once, and you can't tell which one tipped it.",
+      "tts_text": "Asked whether an entry is good, a judge weighs several things at once, and you can't tell which one tipped it.",
+      "heard": "Ask whether an entry is good, a judge weighs several things at once, and you can't tell which one tipped it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s04",
+      "i": 3,
+      "file": "audio/s04_03.wav",
+      "clip_sha": "f2ce999cab396336",
+      "text": "Second, the answer is yes or no.",
+      "tts_text": "Second, the answer is yes or no.",
+      "heard": "Second, the answer is yes or no.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 4,
+      "file": "audio/s04_04.wav",
+      "clip_sha": "0d65a4815fa00a1d",
+      "text": "With a score from one to five, it's hard for anyone, the judge included, to say what separates a three from a four.",
+      "tts_text": "With a score from one to five, it's hard for anyone, the judge included, to say what separates a three from a four.",
+      "heard": "With a score from 1 to 5, it's hard for anyone, the judge included, to say what separates a 3 from a 4.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s04",
+      "i": 5,
+      "file": "audio/s04_05.wav",
+      "clip_sha": "e1ef8e763ee93a89",
+      "text": "Yes or no forces the criterion to be clear.",
+      "tts_text": "Yes or no forces the criterion to be clear.",
+      "heard": "Yes or no forces the criterion to be clear.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04b",
+      "i": 0,
+      "file": "audio/s04b_00.wav",
+      "clip_sha": "18daadb396588db1",
+      "text": "Third, we decide our own answers first.",
+      "tts_text": "Third, we decide our own answers first.",
+      "heard": "Third, we decide our own answers first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04b",
+      "i": 1,
+      "file": "audio/s04b_01.wav",
+      "clip_sha": "14d395bdebabd8c3",
+      "text": "Before writing the criterion, we go through real examples, and say yes or no to each.",
+      "tts_text": "Before writing the criterion, we go through real examples, and say yes or no to each.",
+      "heard": "Before writing the criterion, we go through real examples and say yes or no to each.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04b",
+      "i": 2,
+      "file": "audio/s04b_02.wav",
+      "clip_sha": "38bb020a2adc69a3",
+      "text": "If we hesitate over one, the criterion isn't clear yet, and the judge would inherit the muddle.",
+      "tts_text": "If we hesitate over one, the criterion isn't clear yet, and the judge would inherit the muddle.",
+      "heard": "If we hesitate over one, the criterion isn't clear yet, and the judge would inherit the muddle.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04b",
+      "i": 3,
+      "file": "audio/s04b_03.wav",
+      "clip_sha": "12669049f4df1f83",
+      "text": "Each answer we write down is called a label, and our labels are what the judge gets checked against.",
+      "tts_text": "Each answer we write down is called a label, and our labels are what the judge gets checked against.",
+      "heard": "Each answer we write down is called a label, and our labels are what the judge gets checked against.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 0,
+      "file": "audio/s05_00.wav",
+      "clip_sha": "055d171e4c06ec5b",
+      "text": "That's when to use one; here's how Vally's judge is written.",
+      "tts_text": "That's when to use one; here's how Valley's judge is written.",
+      "heard": "That's when to use one, here's how Valley's judge is written.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 1,
+      "file": "audio/s05_01.wav",
+      "clip_sha": "df1689d513204131",
+      "text": "This eval file ships in the practice folder, and we're looking at it with a judge already added.",
+      "tts_text": "This [eval](/ˌivˈæl/) file ships in the practice folder, and we're looking at it with a judge already added.",
+      "heard": "This EVAL files ships in the practice folder, and we're looking at it with a judge already added.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s05",
+      "i": 2,
+      "file": "audio/s05_02.wav",
+      "clip_sha": "e9b9215b5897233e",
+      "text": "It takes three additions, in three places.",
+      "tts_text": "It takes three additions, in three places.",
+      "heard": "It takes three additions in three places.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 3,
+      "file": "audio/s05_03.wav",
+      "clip_sha": "d019ea191196150b",
+      "text": "First, under defaults, judge model names the model that does the judging.",
+      "tts_text": "First, under defaults, judge model names the model that does the judging.",
+      "heard": "First, under defaults, Judge Model names the model that does the judging.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 4,
+      "file": "audio/s05_04.wav",
+      "clip_sha": "ce9ddf8916e8976b",
+      "text": "Without that line Vally picks one, and its choice can change from one version of Vally to the next.",
+      "tts_text": "Without that line Valley picks one, and its choice can change from one version of Valley to the next.",
+      "heard": "Without that line valley picks one and its choice can change from one version of valley to the next.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 5,
+      "file": "audio/s05_05.wav",
+      "clip_sha": "97d51eefbb4bc5a1",
+      "text": "We name a model that isn't one of the two being tested, so that no model marks its own work.",
+      "tts_text": "We name a model that isn't one of the two being tested, so that no model marks its own work.",
+      "heard": "We name a model that isn't one of the two being tested, so that no model marks its own work.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 0,
+      "file": "audio/s06_00.wav",
+      "clip_sha": "0e38d239a566ca05",
+      "text": "Each stimulus in this file is a request worded in coding terms, like this one about a streaming parser.",
+      "tts_text": "Each stimulus in this file is a request worded in coding terms, like this one about a streaming parser.",
+      "heard": "Each stimulus in this file is a request worded encoding terms, like this one about a streaming parser.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "in coding",
+          "heard": "encoding",
+          "similarity": 0.71
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 1,
+      "file": "audio/s06_01.wav",
+      "clip_sha": "bd915270587926bb",
+      "text": "The second addition is the rubric: a list of criteria for this stimulus, in plain words.",
+      "tts_text": "The second addition is the rubric: a list of criteria for this stimulus, in plain words.",
+      "heard": "The second edition is the rubric, a list of criteria for this stimulus in plain words.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 2,
+      "file": "audio/s06_02.wav",
+      "clip_sha": "9669f7c007ceba8f",
+      "text": "Ours has a single criterion.",
+      "tts_text": "Ours has a single criterion.",
+      "heard": "Hours has a single criterion.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 3,
+      "file": "audio/s06_03.wav",
+      "clip_sha": "aafeddd3c6c67c3e",
+      "text": "It asks that the new entry says what changes for people who use the tool, and doesn't say how it was coded.",
+      "tts_text": "It asks that the new entry says what changes for people who use the tool, and doesn't say how it was coded.",
+      "heard": "It asks that the new entry says what changes for people who use the tool and doesn't say how it was coded.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 0,
+      "file": "audio/s07_00.wav",
+      "clip_sha": "858396f71da5c3d2",
+      "text": "The third addition is the judge itself: a grader of type prompt.",
+      "tts_text": "The third addition is the judge itself: a grader of type prompt.",
+      "heard": "The third edition is the judge itself, a greater of type prompt.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s07",
+      "i": 1,
+      "file": "audio/s07_01.wav",
+      "clip_sha": "e1cd06821971a5e5",
+      "text": "Its name is unlucky, because it's unrelated to the prompt field that holds each request.",
+      "tts_text": "Its name is unlucky, because it's unrelated to the prompt field that holds each request.",
+      "heard": "Its name is unlucky because it's unrelated to the prompt field that holds each request.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 2,
+      "file": "audio/s07_02.wav",
+      "clip_sha": "3b09c6ede342259f",
+      "text": "This grader reads the rubric of the stimulus it sits in.",
+      "tts_text": "This grader reads the rubric of the stimulus it sits in.",
+      "heard": "This grader reads the rubric of the stimulus it sits in.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 3,
+      "file": "audio/s07_03.wav",
+      "clip_sha": "40cbd0041ce63293",
+      "text": "Scoring binary makes its answer yes or no.",
+      "tts_text": "Scoring binary makes its answer yes or no.",
+      "heard": "Scoring binary makes its answer yes or no.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 4,
+      "file": "audio/s07_04.wav",
+      "clip_sha": "3d31e5144997c332",
+      "text": "On the next line is an extra instruction, telling the judge to start each reason by quoting the entry.",
+      "tts_text": "On the next line is an extra instruction, telling the judge to start each reason by quoting the entry.",
+      "heard": "On the next line is an extra instruction, telling the judge to start each reason by quoting the entry.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 5,
+      "file": "audio/s07_05.wav",
+      "clip_sha": "cc9797762f38e834",
+      "text": "That way, each reason shows what the judge was looking at.",
+      "tts_text": "That way, each reason shows what the judge was looking at.",
+      "heard": "That way, each reason shows what the judge was looking at.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 6,
+      "file": "audio/s07_06.wav",
+      "clip_sha": "89af9417e21f5c36",
+      "text": "Below it is the grader that was there already, a pattern that checks the entry cites its pull request.",
+      "tts_text": "Below it is the grader that was there already, a pattern that checks the entry cites its pull request.",
+      "heard": "Below it is the grader that was there already, a pattern that checks the entry sites its pull request.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 0,
+      "file": "audio/s08_00.wav",
+      "clip_sha": "eb8c51c5fc784dcc",
+      "text": "When the judge runs, Vally gives the judge model three things: the request, the rubric, and files holding what the agent said and did in that trial.",
+      "tts_text": "When the judge runs, Valley gives the judge model three things: the request, the rubric, and files holding what the agent said and did in that trial.",
+      "heard": "When the judge runs, Valley gives the judge model three things, the request, the rubric, and files holding what the agent said and did in that trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 1,
+      "file": "audio/s08_01.wav",
+      "clip_sha": "e1719a7e90a59626",
+      "text": "The judge reads them, and returns a verdict and a reason.",
+      "tts_text": "The judge reads them, and returns a verdict and a reason.",
+      "heard": "The judge reads them and returns a verdict and a reason.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 2,
+      "file": "audio/s08_02.wav",
+      "clip_sha": "e923ec3c900ea19a",
+      "text": "Its verdict becomes the grader's pass or fail, and its reason becomes the grader's evidence.",
+      "tts_text": "Its verdict becomes the grader's pass or fail, and its reason becomes the grader's evidence.",
+      "heard": "Its verdict becomes the greater's pass or fail, and its reason becomes the greater's evidence.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s08",
+      "i": 3,
+      "file": "audio/s08_03.wav",
+      "clip_sha": "6be45d094909c9fb",
+      "text": "Each trial gets one overall verdict, however many criteria the rubric lists.",
+      "tts_text": "Each trial gets one overall verdict, however many criteria the rubric lists.",
+      "heard": "Each trial gets one overall verdict, however many criteria the rubric lists.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 4,
+      "file": "audio/s08_04.wav",
+      "clip_sha": "29e0a11ac7f96e38",
+      "text": "With one criterion, that verdict answers our one question.",
+      "tts_text": "With one criterion, that verdict answers our one question.",
+      "heard": "With one criterion, that verdict answers our one question.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 5,
+      "file": "audio/s08_05.wav",
+      "clip_sha": "6e67cd2a193849e6",
+      "text": "With several, it would be a blend, which is another reason to ask about one thing.",
+      "tts_text": "With several, it would be a blend, which is another reason to ask about one thing.",
+      "heard": "With several it would be a blend, which is another reason to ask about one thing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 0,
+      "file": "audio/s09_00.wav",
+      "clip_sha": "f55230d5530bdc71",
+      "text": "Here's what one judged trial prints, taken from our run.",
+      "tts_text": "Here's what one judged trial prints, taken from our run.",
+      "heard": "Here's what one judged trial prints taken from our run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 1,
+      "file": "audio/s09_01.wav",
+      "clip_sha": "df4e3f7aec76244b",
+      "text": "Each trial gets a block, headed by the name of its stimulus.",
+      "tts_text": "Each trial gets a block, headed by the name of its stimulus.",
+      "heard": "Each trial gets a block, headed by the name of its stimulus.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 2,
+      "file": "audio/s09_02.wav",
+      "clip_sha": "bdd9540d5972eafb",
+      "text": "Inside, the line that begins with prompt in square brackets is the judge: a tick or a cross, then its reason.",
+      "tts_text": "Inside, the line that begins with prompt in square brackets is the judge: a tick or a cross, then its reason.",
+      "heard": "Inside the line that begins with prompt in square brackets is the judge, a tick or a cross, then its reason.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 3,
+      "file": "audio/s09_03.wav",
+      "clip_sha": "75383b99e8bc95d9",
+      "text": "This reason starts by quoting the entry, and then objects that it leaks implementation detail.",
+      "tts_text": "This reason starts by quoting the entry, and then objects that it leaks implementation detail.",
+      "heard": "This reason starts by quoting the entry and then objects that it leaks implementation detail.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 4,
+      "file": "audio/s09_04.wav",
+      "clip_sha": "d9feafaea6ef2594",
+      "text": "Under it is the pattern grader, which passed.",
+      "tts_text": "Under it is the pattern grader, which passed.",
+      "heard": "Under it is the pattern greater which passed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s09",
+      "i": 5,
+      "file": "audio/s09_05.wav",
+      "clip_sha": "e0fc6293ac678f96",
+      "text": "Since every grader has to pass, this trial fails.",
+      "tts_text": "Since every grader has to pass, this trial fails.",
+      "heard": "Since every grader has to pass, this trial fails.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 0,
+      "file": "audio/s10_00.wav",
+      "clip_sha": "2b7a820371241817",
+      "text": "Because a judge is a grader, vally grade can run it over saved trials, without starting an agent.",
+      "tts_text": "Because a judge is a grader, valley grade can run it over saved trials, without starting an agent.",
+      "heard": "Because a judge is a greater, Valley Grade can run it over saved trials without starting an agent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 1,
+      "file": "audio/s10_01.wav",
+      "clip_sha": "a3df7e531cabd0d3",
+      "text": "We run it from inside the run's folder, so run dir is a dot, and the saved trials come in from results dot jsonl.",
+      "tts_text": "We run it from inside the run's folder, so run dur is a dot, and the saved trials come in from results dot jay-son-ell.",
+      "heard": "You run it from inside the runs folder, so rundir is a dot, and the save trials come in from results.jsonl.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "We",
+          "heard": "You",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s10",
+      "i": 2,
+      "file": "audio/s10_02.wav",
+      "clip_sha": "f43a706a027b5f3c",
+      "text": "As with the oracle, dash dash verbose prints every grader's evidence, which for a judge is its reason.",
+      "tts_text": "As with the oracle, dash dash verbose prints every grader's evidence, which for a judge is its reason.",
+      "heard": "As with the Oracle, dash dash for both prints every grader's evidence, which for a judge is its reason.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "verbose",
+          "heard": "for both",
+          "similarity": 0.5
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 3,
+      "file": "audio/s10_03.wav",
+      "clip_sha": "d763580d93451753",
+      "text": "So we can reword the rubric and judge the same trials again, without paying for the agents twice.",
+      "tts_text": "So we can reword the rubric and judge the same trials again, without paying for the agents twice.",
+      "heard": "so we can reword the rubric and judge the same trials again without paying for the agents twice.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 4,
+      "file": "audio/s10_04.wav",
+      "clip_sha": "d490c5c2d3d6cddf",
+      "text": "Each judged trial is one call to the judge model, charged to the Copilot plan the way an agent run is.",
+      "tts_text": "Each judged trial is one call to the judge model, charged to the Copilot plan the way an agent run is.",
+      "heard": "Each judge trial is one call to the judge model, charged to the copilot plan the way an agent run is.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s11",
+      "i": 0,
+      "file": "audio/s11_00.wav",
+      "clip_sha": "7fc2b33dafff0ca2",
+      "text": "That's how it works; now let's use it.",
+      "tts_text": "That's how it works; now let's use it.",
+      "heard": "That's how it works. Now let's use it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 1,
+      "file": "audio/s11_01.wav",
+      "clip_sha": "b45a5953f22ffae8",
+      "text": "As it ships, the eval file has three stimuli, each describing a merged change the way a programmer would.",
+      "tts_text": "As it ships, the [eval](/ˌivˈæl/) file has three stimuli, each describing a merged change the way a programmer would.",
+      "heard": "As it ships, the EVAL file has three stimuli, each describing a merged change the way a programmer would.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 2,
+      "file": "audio/s11_02.wav",
+      "clip_sha": "ec04d998f55fdf1d",
+      "text": "One swapped in a streaming parser, so that big imports stop running out of memory.",
+      "tts_text": "One swapped in a streaming parser, so that big imports stop running out of memory.",
+      "heard": "One swapped in a streaming parser so that big imports stop running out of memory.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 3,
+      "file": "audio/s11_03.wav",
+      "clip_sha": "515fbaea54ddfed4",
+      "text": "Another put a cache in front of the tag index, which makes one command much faster.",
+      "tts_text": "Another put a cache in front of the tag index, which makes one command much faster.",
+      "heard": "Another put a cache in front of the tag index, which makes one command much faster.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 4,
+      "file": "audio/s11_04.wav",
+      "clip_sha": "0b4dfc2556b3951c",
+      "text": "The last rewrote the date parser as a small tokenizer, so single-digit months and days work.",
+      "tts_text": "The last rewrote the date parser as a small tokenizer, so single-digit months and days work.",
+      "heard": "Last, we wrote the date parser as a small tokenizer, so single-digit months and days work.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "The",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s11",
+      "i": 5,
+      "file": "audio/s11_05.wav",
+      "clip_sha": "2691ce4a48822fde",
+      "text": "Each request runs twice on both models, which gives us twelve entries to judge.",
+      "tts_text": "Each request runs twice on both models, which gives us twelve entries to judge.",
+      "heard": "Each request runs twice on both models, which gives us 12 entries to judge.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s11",
+      "i": 6,
+      "file": "audio/s11_06.wav",
+      "clip_sha": "afe587f697256899",
+      "text": "Which model would you expect to name the code more often?",
+      "tts_text": "Which model would you expect to name the code more often?",
+      "heard": "Which model would you expect to name the code more often?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 7,
+      "file": "audio/s11_07.wav",
+      "clip_sha": "b749f7ec6a23fa0f",
+      "text": "If you tried it yourself, here's what you'd see.",
+      "tts_text": "If you tried it yourself, here's what you'd see.",
+      "heard": "If you tried it yourself, here's what you'd see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 0,
+      "file": "audio/s12_00.wav",
+      "clip_sha": "0de7c53218c4b97d",
+      "text": "Here's the run: vally eval on the wording file, with two trials of each stimulus on both models.",
+      "tts_text": "Here's the run: valley [eval](/ˌivˈæl/) on the wording file, with two trials of each stimulus on both models.",
+      "heard": "Here's the run, Valley EVAL on the wording file, with two trials of each stimulus on both models.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 1,
+      "file": "audio/s12_01.wav",
+      "clip_sha": "abdc7183eb57f00d",
+      "text": "It spends twelve short agent runs.",
+      "tts_text": "It spends twelve short agent runs.",
+      "heard": "It spends 12 short agent runs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s12",
+      "i": 2,
+      "file": "audio/s12_02.wav",
+      "clip_sha": "ad5b6e2de2360133",
+      "text": "So far, the file's only graders check that each entry cites its pull request.",
+      "tts_text": "So far, the file's only graders check that each entry cites its pull request.",
+      "heard": "So far the files only graders check that each entry cites its pull request.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 3,
+      "file": "audio/s12_03.wav",
+      "clip_sha": "b862012cb56f03f4",
+      "text": "About a minute later, there's a tick for each model.",
+      "tts_text": "About a minute later, there's a tick for each model.",
+      "heard": "About a minute later, there's a tick for each model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 4,
+      "file": "audio/s12_04.wav",
+      "clip_sha": "5d9f26358b1ae8d3",
+      "text": "Let's look in the results folder.",
+      "tts_text": "Let's look in the results folder.",
+      "heard": "Let's look in the results folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 5,
+      "file": "audio/s12_05.wav",
+      "clip_sha": "02853a24f4ad630f",
+      "text": "It holds one folder, named with the time of the run.",
+      "tts_text": "It holds one folder, named with the time of the run.",
+      "heard": "It holds one folder, named with the time of the run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 0,
+      "file": "audio/s13_00.wav",
+      "clip_sha": "84d0a8b4cc774390",
+      "text": "We change into it, then into the folder for the eval.",
+      "tts_text": "We change into it, then into the folder for the [eval](/ˌivˈæl/).",
+      "heard": "We change into it, then into the folder for the eval.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 1,
+      "file": "audio/s13_01.wav",
+      "clip_sha": "f812f45e0e630b9b",
+      "text": "Then we list what's there.",
+      "tts_text": "Then we list what's there.",
+      "heard": "Then we list what's there.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 2,
+      "file": "audio/s13_02.wav",
+      "clip_sha": "511df2904eb95177",
+      "text": "There's one folder per stimulus: cache, dates and parser.",
+      "tts_text": "There's one folder per stimulus: cache, dates and parser.",
+      "heard": "There's one folder per stimulus, cache, dates and parser.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 3,
+      "file": "audio/s13_03.wav",
+      "clip_sha": "3cdace56c826e206",
+      "text": "Each one holds a folder per model and trial, with that trial's patch, and here's the first.",
+      "tts_text": "Each one holds a folder per model and trial, with that trial's patch, and here's the first.",
+      "heard": "Each one holds a folder per model and trial, with that trials patch and here's the first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 4,
+      "file": "audio/s13_04.wav",
+      "clip_sha": "44b25706f4f45787",
+      "text": "Haiku's entry fixes the out-of-memory errors, and then says how: by using a streaming parser.",
+      "tts_text": "Haiku's entry fixes the out-of-memory errors, and then says how: by using a streaming parser.",
+      "heard": "Iku's entry fixes the out-of-memory errors and then says how by using a streaming parser.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Haiku's",
+          "heard": "Iku's",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 0,
+      "file": "audio/s14_00.wav",
+      "clip_sha": "e803c70109341d0e",
+      "text": "Reading all twelve patches that way gives us twelve entries, and we answer one question about each.",
+      "tts_text": "Reading all twelve patches that way gives us twelve entries, and we answer one question about each.",
+      "heard": "Reading all 12 patches that way gives us 12 entries, and we answer one question about each.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s14",
+      "i": 1,
+      "file": "audio/s14_01.wav",
+      "clip_sha": "d069fa637b5d26d8",
+      "text": "Does it say what changes for people who use the tool, without saying how it was coded?",
+      "tts_text": "Does it say what changes for people who use the tool, without saying how it was coded?",
+      "heard": "Does it say what changes for people who use the tool without saying how it was coded?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 2,
+      "file": "audio/s14_02.wav",
+      "clip_sha": "0a9b6e9dc15f84ae",
+      "text": "We don't need to know what a streaming parser is, only whether the entry mentions one.",
+      "tts_text": "We don't need to know what a streaming parser is, only whether the entry mentions one.",
+      "heard": "You don't need to know what a streaming parser is, only whether the entry mentions one.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "We",
+          "heard": "You",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 3,
+      "file": "audio/s14_03.wav",
+      "clip_sha": "754b2206f5ecaa66",
+      "text": "Haiku's first parser entry names the streaming parser, so we say no.",
+      "tts_text": "Haiku's first parser entry names the streaming parser, so we say no.",
+      "heard": "Iku's first parser entry names the streaming parser, so we say no.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Haiku's",
+          "heard": "Iku's",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 4,
+      "file": "audio/s14_04.wav",
+      "clip_sha": "4310d0a62c58bba6",
+      "text": "Its second, and both of terra's, only say that large imports no longer run out of memory, so those get a yes.",
+      "tts_text": "Its second, and both of terra's, only say that large imports no longer run out of memory, so those get a yes.",
+      "heard": "Second, and both of terrors, only say that large imports no longer run out of memory, so those get a yes.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "Its",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s15",
+      "i": 0,
+      "file": "audio/s15_00.wav",
+      "clip_sha": "4948a7505aff50e1",
+      "text": "On the cache request, haiku's two entries name the kind of cache outright, so again we say no.",
+      "tts_text": "On the cache request, haiku's two entries name the kind of cache outright, so again we say no.",
+      "heard": "On the cash request, Haiku's two entries name the kind of cash outright, so again we say no.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s15",
+      "i": 1,
+      "file": "audio/s15_01.wav",
+      "clip_sha": "6675360f14737ed3",
+      "text": "Terra's two are harder: they lead with the speed-up, and then add, by caching the tag index.",
+      "tts_text": "Terra's two are harder: they lead with the speed-up, and then add, by caching the tag index.",
+      "heard": "Terrace 2 are harder, they lead with the speed up, and then add by cashing the tag index.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s15",
+      "i": 2,
+      "file": "audio/s15_02.wav",
+      "clip_sha": "ccf10d2201fdc045",
+      "text": "That's the benefit plus a hint of the method, and we decided that a hint still counts as saying how.",
+      "tts_text": "That's the benefit plus a hint of the method, and we decided that a hint still counts as saying how.",
+      "heard": "That's the benefit plus a hint of the method, and we decided that a hint still counts as saying how.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 3,
+      "file": "audio/s15_03.wav",
+      "clip_sha": "1e1d184bc775b764",
+      "text": "Hesitating like that is worth noticing, because it marks an edge of the criterion that isn't settled.",
+      "tts_text": "Hesitating like that is worth noticing, because it marks an edge of the criterion that isn't settled.",
+      "heard": "hesitating like that is worth noticing because it marks an edge of the criterion that isn't settled.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 0,
+      "file": "audio/s16_00.wav",
+      "clip_sha": "76a0a46c9fa77462",
+      "text": "All four date entries say that single-digit months and days now work, and none mentions the tokenizer.",
+      "tts_text": "All four date entries say that single-digit months and days now work, and none mentions the tokenizer.",
+      "heard": "All four-date entries say that single-digit months and days now work, and none mentions the tokenizer.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s16",
+      "i": 1,
+      "file": "audio/s16_01.wav",
+      "clip_sha": "c21075288e337f18",
+      "text": "So those four get a yes.",
+      "tts_text": "So those four get a yes.",
+      "heard": "So those four get a yes.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 2,
+      "file": "audio/s16_02.wav",
+      "clip_sha": "fe4ba924b7269129",
+      "text": "That makes seven yes and five no.",
+      "tts_text": "That makes seven yes and five no.",
+      "heard": "That makes 7 yes and 5 no.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s16",
+      "i": 3,
+      "file": "audio/s16_03.wav",
+      "clip_sha": "2a13c46594e4e642",
+      "text": "We write the twelve answers in a notes file, and we won't change them once the judge has spoken.",
+      "tts_text": "We write the twelve answers in a notes file, and we won't change them once the judge has spoken.",
+      "heard": "We write the 12 answers in a notes file, and we won't change them once the judge has spoken.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 0,
+      "file": "audio/s17_00.wav",
+      "clip_sha": "312e2098cafb02b8",
+      "text": "Now the judge goes into the eval file, just as we walked through it.",
+      "tts_text": "Now the judge goes into the [eval](/ˌivˈæl/) file, just as we walked through it.",
+      "heard": "Now the judge goes into the eval file, just as we walk through it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 1,
+      "file": "audio/s17_01.wav",
+      "clip_sha": "d87f4745e1005643",
+      "text": "That's the judge model line under defaults.",
+      "tts_text": "That's the judge model line under defaults.",
+      "heard": "That's the judge model line under defaults.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 2,
+      "file": "audio/s17_02.wav",
+      "clip_sha": "97b51c4d0dd876e5",
+      "text": "Then, in each of the three stimuli, the same rubric and the same prompt grader.",
+      "tts_text": "Then, in each of the three stimuli, the same rubric and the same prompt grader.",
+      "heard": "Then in each of the three stimuli, the same rubric and the same prompt grader.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 0,
+      "file": "audio/s18_00.wav",
+      "clip_sha": "a0108fee2ffea257",
+      "text": "Back up in the practice folder, lint checks the edited file before anything is spent.",
+      "tts_text": "Back up in the practice folder, lint checks the edited file before anything is spent.",
+      "heard": "Back up in the practice folder, lint checks the edited file before anything is spent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 1,
+      "file": "audio/s18_01.wav",
+      "clip_sha": "38925e019a390aff",
+      "text": "It reports no errors, and the usual one warning.",
+      "tts_text": "It reports no errors, and the usual one warning.",
+      "heard": "It reports no errors and the usual one warning.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 2,
+      "file": "audio/s18_02.wav",
+      "clip_sha": "77f5dee801a6e913",
+      "text": "That warning says that with several graders and no scoring block, every grader has to pass.",
+      "tts_text": "That warning says that with several graders and no scoring block, every grader has to pass.",
+      "heard": "That warning says that with several graders and no scoring block, every grader has to pass.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 0,
+      "file": "audio/s19_00.wav",
+      "clip_sha": "e74f5c0ab8a9e1c1",
+      "text": "For the judging, we change back into the run's folder.",
+      "tts_text": "For the judging, we change back into the run's folder.",
+      "heard": "For the judging, we change back into the runs folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 1,
+      "file": "audio/s19_01.wav",
+      "clip_sha": "d164725a2a063a5e",
+      "text": "From here, vally grade runs the judge over the twelve saved trials.",
+      "tts_text": "From here, valley grade runs the judge over the twelve saved trials.",
+      "heard": "From here, Valley Grade runs the judge over the 12 saved trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s19",
+      "i": 2,
+      "file": "audio/s19_02.wav",
+      "clip_sha": "517c4a70869fd268",
+      "text": "It starts no agent, and spends twelve calls to the judge model.",
+      "tts_text": "It starts no agent, and spends twelve calls to the judge model.",
+      "heard": "It starts no agent and spends 12 calls to the judge model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s19",
+      "i": 3,
+      "file": "audio/s19_03.wav",
+      "clip_sha": "3fc7593d14dc793d",
+      "text": "A minute or two later, twelve blocks have scrolled past, one for each trial.",
+      "tts_text": "A minute or two later, twelve blocks have scrolled past, one for each trial.",
+      "heard": "A minute or two later, 12 blocks have scrolled past, one for each trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s19",
+      "i": 4,
+      "file": "audio/s19_04.wav",
+      "clip_sha": "cb0d9a0419709836",
+      "text": "Still on screen are the last two, each with its prompt line: here a tick, and then the judge's reason.",
+      "tts_text": "Still on screen are the last two, each with its prompt line: here a tick, and then the judge's reason.",
+      "heard": "Still on screen are the last two, each with its prompt line, hear a tick and then the judge's reason.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 0,
+      "file": "audio/s20_00.wav",
+      "clip_sha": "21ca54387a5159b4",
+      "text": "Here are two of the twelve reasons in full.",
+      "tts_text": "Here are two of the twelve reasons in full.",
+      "heard": "Here are two of the 12 reasons in full.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 1,
+      "file": "audio/s20_01.wav",
+      "clip_sha": "f6571d7f1251fd4f",
+      "text": "To this parser entry the judge said yes: it's user-focused, and doesn't describe the implementation.",
+      "tts_text": "To this parser entry the judge said yes: it's user-focused, and doesn't describe the implementation.",
+      "heard": "To this parser entry, the judge said yes. Its user focused and doesn't describe the implementation.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 2,
+      "file": "audio/s20_02.wav",
+      "clip_sha": "7690dc5f9acff0c2",
+      "text": "To this one it said no: the entry states the benefit, but includes implementation details.",
+      "tts_text": "To this one it said no: the entry states the benefit, but includes implementation details.",
+      "heard": "To this one it said no, the entry states the benefit but includes implementation details.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 3,
+      "file": "audio/s20_03.wav",
+      "clip_sha": "7721cd0f2fa1aaca",
+      "text": "Each reason was asked to start with its entry, so that a verdict can be matched to its trial.",
+      "tts_text": "Each reason was asked to start with its entry, so that a verdict can be matched to its trial.",
+      "heard": "Each reason was asked to start with its entry, so that a verdict can be matched to its trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 4,
+      "file": "audio/s20_04.wav",
+      "clip_sha": "6cfbdd33c00292cb",
+      "text": "Eleven of the twelve did; this second one didn't, and only its mention of the streaming parser tells us which entry it means.",
+      "tts_text": "Eleven of the twelve did; this second one didn't, and only its mention of the streaming parser tells us which entry it means.",
+      "heard": "11 of the 12 did, this second one didn't, and only its mention of the streaming parser tells us which entry it means.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s21",
+      "i": 0,
+      "file": "audio/s21_00.wav",
+      "clip_sha": "8f768a1b4122afc0",
+      "text": "We write each verdict beside our own answer, and leave our answers as they were.",
+      "tts_text": "We write each verdict beside our own answer, and leave our answers as they were.",
+      "heard": "We write each verdict beside our own answer and leave our answers as they were.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 1,
+      "file": "audio/s21_01.wav",
+      "clip_sha": "154b90915bfe5212",
+      "text": "Across the twelve entries, the judge said yes to eight and no to four.",
+      "tts_text": "Across the twelve entries, the judge said yes to eight and no to four.",
+      "heard": "Across the 12 entries, the judge said yes to 8 and no to 4.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s21",
+      "i": 2,
+      "file": "audio/s21_02.wav",
+      "clip_sha": "f6fe5f15099799b3",
+      "text": "Eleven of its verdicts match ours, and one doesn't.",
+      "tts_text": "Eleven of its verdicts match ours, and one doesn't.",
+      "heard": "11 of its verdicts match hours and one doesn't.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s22",
+      "i": 0,
+      "file": "audio/s22_00.wav",
+      "clip_sha": "0bf8ab5f3ab76480",
+      "text": "So what did the judge find?",
+      "tts_text": "So what did the judge find?",
+      "heard": "So what did the judge find?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 1,
+      "file": "audio/s22_01.wav",
+      "clip_sha": "bb45d710d7a53e70",
+      "text": "We now have a grader for a line of the skill that nothing checked before, and it has already told us something.",
+      "tts_text": "We now have a grader for a line of the skill that nothing checked before, and it has already told us something.",
+      "heard": "We now have a greater for a line of the skill that nothing checked before, and it has already told us something.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s22",
+      "i": 2,
+      "file": "audio/s22_02.wav",
+      "clip_sha": "d503e079c56248fe",
+      "text": "Haiku got a no for three of its six entries: it named the cache both times, and the streaming parser once.",
+      "tts_text": "Haiku got a no for three of its six entries: it named the cache both times, and the streaming parser once.",
+      "heard": "Iku got a no for three of its six entries. It named the cache both times and the streaming parser once.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Haiku",
+          "heard": "Iku",
+          "similarity": 0.57
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 3,
+      "file": "audio/s22_03.wav",
+      "clip_sha": "058feb569d83397e",
+      "text": "Terra got a no for one, a cache entry that adds, by caching the tag index.",
+      "tts_text": "Terra got a no for one, a cache entry that adds, by caching the tag index.",
+      "heard": "Terra got a no for one, a cash entry that adds, by caching the tag index.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s22",
+      "i": 4,
+      "file": "audio/s22_04.wav",
+      "clip_sha": "bfc932b8536e2804",
+      "text": "So the rule about writing for people who use the tool is followed unevenly, and until now nothing could show that.",
+      "tts_text": "So the rule about writing for people who use the tool is followed unevenly, and until now nothing could show that.",
+      "heard": "So the rule about writing for people who used the tool is followed unevenly, and until now nothing could show that.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s23",
+      "i": 0,
+      "file": "audio/s23_00.wav",
+      "clip_sha": "65fe3d213a794bfd",
+      "text": "It's tempting to act on that straight away.",
+      "tts_text": "It's tempting to act on that straight away.",
+      "heard": "It's tempting to act on that straight away.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 1,
+      "file": "audio/s23_01.wav",
+      "clip_sha": "c5baca4ab29f40c0",
+      "text": "But every grader before this one was code, which we tested with the oracle and against saved trials.",
+      "tts_text": "But every grader before this one was code, which we tested with the oracle and against saved trials.",
+      "heard": "But every grader before this one was code, which we tested with the Oracle and against saved trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 2,
+      "file": "audio/s23_02.wav",
+      "clip_sha": "b952647575360b9b",
+      "text": "This one is a model's opinion.",
+      "tts_text": "This one is a model's opinion.",
+      "heard": "This one is a model's opinion.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 3,
+      "file": "audio/s23_03.wav",
+      "clip_sha": "f61f21cbe488a79d",
+      "text": "In our run it said no to one cache entry, and yes to another that differs by a single word.",
+      "tts_text": "In our run it said no to one cache entry, and yes to another that differs by a single word.",
+      "heard": "In our run it said no to one cash entry, and yes to another that differs by a single word.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s23",
+      "i": 4,
+      "file": "audio/s23_04.wav",
+      "clip_sha": "6a353b272938c711",
+      "text": "Its reasons are well written, but good writing doesn't show that a verdict is correct.",
+      "tts_text": "Its reasons are well written, but good writing doesn't show that a verdict is correct.",
+      "heard": "Its reasons are well written, but good writing doesn't show that a verdict is correct.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 0,
+      "file": "audio/s24_00.wav",
+      "clip_sha": "24d02279d3dfd434",
+      "text": "Before you go on: what are the three habits that make a judge's verdicts usable?",
+      "tts_text": "Before you go on: what are the three habits that make a judge's verdicts usable?",
+      "heard": "Before you go on, what are the three habits that make a judge's verdicts usable?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 1,
+      "file": "audio/s24_01.wav",
+      "clip_sha": "b267504576612006",
+      "text": "One question per judge.",
+      "tts_text": "One question per judge.",
+      "heard": "One question per judge.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 2,
+      "file": "audio/s24_02.wav",
+      "clip_sha": "1284384f1a781add",
+      "text": "A yes-or-no answer.",
+      "tts_text": "A yes-or-no answer.",
+      "heard": "A yes or no answer.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s24",
+      "i": 3,
+      "file": "audio/s24_03.wav",
+      "clip_sha": "67bac055f1f48ad7",
+      "text": "Lastly, our own answers, decided on real examples before the judge gives its own.",
+      "tts_text": "Lastly, our own answers, decided on real examples before the judge gives its own.",
+      "heard": "Lastly, our own answers decided on real examples before the judge gives its own.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 0,
+      "file": "audio/s25_00.wav",
+      "clip_sha": "080d2b61d7dac862",
+      "text": "You can now write a yes-or-no judge, run it over saved trials, and read its reasons.",
+      "tts_text": "You can now write a yes-or-no judge, run it over saved trials, and read its reasons.",
+      "heard": "You can now write a yes or no judge, run it over save trials, and read its reasons.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s25",
+      "i": 1,
+      "file": "audio/s25_01.wav",
+      "clip_sha": "92411b71e4bf92c0",
+      "text": "The judge said yes to some entries, and no to others.",
+      "tts_text": "The judge said yes to some entries, and no to others.",
+      "heard": "The judge said yes to some entries and no to others.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 2,
+      "file": "audio/s25_02.wav",
+      "clip_sha": "2f1c9b80478a3f6c",
+      "text": "But the judge is a model.",
+      "tts_text": "But the judge is a model.",
+      "heard": "But the judge is a model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 3,
+      "file": "audio/s25_03.wav",
+      "clip_sha": "18b8ba9a9b9e0d57",
+      "text": "Is it right?",
+      "tts_text": "Is it right?",
+      "heard": "Is it right?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 4,
+      "file": "audio/s25_04.wav",
+      "clip_sha": "c0fa80d6856b024e",
+      "text": "That's the next lesson.",
+      "tts_text": "That's the next lesson.",
+      "heard": "That's the next lesson.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 5,
+      "file": "audio/s25_05.wav",
+      "clip_sha": "1ebfb40727709c44",
+      "text": "The exercises on the lesson page are worth doing first.",
+      "tts_text": "The exercises on the lesson page are worth doing first.",
+      "heard": "The exercises on the lesson page are worth doing first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "coding",
+      "sentences": 1,
+      "heard": [
+        "encoding"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "verbose",
+      "sentences": 1,
+      "heard": [
+        "for both"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "Haiku's",
+      "sentences": 3,
+      "heard": [
+        "Iku's",
+        "Iku"
+      ],
+      "of": 4,
+      "share": 0.75
+    },
+    {
+      "word": "We",
+      "sentences": 2,
+      "heard": [
+        "You"
+      ],
+      "of": 22,
+      "share": 0.09
+    },
+    {
+      "word": "in",
+      "sentences": 1,
+      "heard": [
+        "encoding"
+      ],
+      "of": 18,
+      "share": 0.06
+    },
+    {
+      "word": "It's",
+      "sentences": 2,
+      "heard": [],
+      "of": 41,
+      "share": 0.05
+    },
+    {
+      "word": "Its",
+      "sentences": 1,
+      "heard": [],
+      "of": 22,
+      "share": 0.05
+    },
+    {
+      "word": "is",
+      "sentences": 1,
+      "heard": [
+        "as"
+      ],
+      "of": 30,
+      "share": 0.03
+    },
+    {
+      "word": "The",
+      "sentences": 1,
+      "heard": [],
+      "of": 84,
+      "share": 0.01
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 131,
+    "mismatched": 12,
+    "transcribed": 131,
+    "reused": 0,
+    "seconds_per_sentence": 0.219
+  }
+}

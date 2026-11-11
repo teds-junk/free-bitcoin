@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One try is one observation.</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.grid{font-size:46px}.grid th{font-size:32px}.grid td{padding-top:26px;padding-bottom:26px}.grid td.num{color:var(--ink-muted)}.grid td.num [data-concept="first"]{color:var(--green-ink);font-weight:700}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A skill is advice</div>
+  <h2 class="scene-title">One try is one observation.</h2>
+  <div class="stage">
+<table class="data-table full grid">
+    <thead><tr><th></th><th class="num">run 1</th><th class="num">run 2</th><th class="num">run 3</th><th class="num">run 4</th><th class="num">run 5</th></tr></thead>
+    <tbody>
+      <tr><td>your model</td><td class="num"><span data-concept="first" data-rep="cell">✓</span></td><td class="num"><span data-concept="again" data-rep="cell">?</span></td><td class="num"><span data-concept="again" data-rep="cell">?</span></td><td class="num"><span data-concept="again" data-rep="cell">?</span></td><td class="num"><span data-concept="again" data-rep="cell">?</span></td></tr>
+      <tr><td>another model</td><td class="num"><span data-concept="others" data-rep="cell">?</span></td><td class="num"><span data-concept="others" data-rep="cell">?</span></td><td class="num"><span data-concept="others" data-rep="cell">?</span></td><td class="num"><span data-concept="others" data-rep="cell">?</span></td><td class="num"><span data-concept="others" data-rep="cell">?</span></td></tr>
+      <tr><td>a third model</td><td class="num"><span data-concept="others" data-rep="cell">?</span></td><td class="num"><span data-concept="others" data-rep="cell">?</span></td><td class="num"><span data-concept="others" data-rep="cell">?</span></td><td class="num"><span data-concept="others" data-rep="cell">?</span></td><td class="num"><span data-concept="others" data-rep="cell">?</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "first",
+  "at": "0~one model",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "others",
+  "at": "1~next model",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "again",
+  "at": "1~next request",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

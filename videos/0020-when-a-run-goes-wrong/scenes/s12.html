@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What a re-grade can read</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:36px}.data-table th{font-size:30px}.data-table td{padding-top:22px;padding-bottom:22px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Where each answer lives</div>
+  <h2 class="scene-title">What a re-grade can read</h2>
+  <div class="stage">
+<table class="data-table full">
+    <thead><tr><th>Grader</th><th>Reads</th><th>A re-grade costs</th></tr></thead>
+    <tbody>
+<tr><td><span data-concept="g1" data-rep="cell">diff graders</span></td><td><span data-concept="g1" data-rep="cell">the saved diffs</span></td><td><span data-concept="g1" data-rep="cell">nothing</span></td></tr><tr><td><span data-concept="g2" data-rep="cell">trajectory graders</span></td><td><span data-concept="g2" data-rep="cell">the saved trajectories</span></td><td><span data-concept="g2" data-rep="cell">nothing</span></td></tr><tr><td><span data-concept="g3" data-rep="cell">a judge</span></td><td><span data-concept="g3" data-rep="cell">the saved diffs</span></td><td><span data-concept="g3" data-rep="cell">one judge call per trial</span></td></tr><tr><td><span data-concept="g4" data-rep="cell">file and script graders</span></td><td><span data-concept="g4" data-rep="cell">the workspace, which a saved run doesn’t keep</span></td><td><span data-concept="g4" data-rep="cell">ERROR: it needs a new run</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note"><span data-concept="new" data-rep="cell">a change before or during the agent’s session shows only in a new run</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "g1",
+  "at": "1~Diff",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "g2",
+  "at": "1~trajectory",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "g3",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "g4",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "new",
+  "at": "4",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

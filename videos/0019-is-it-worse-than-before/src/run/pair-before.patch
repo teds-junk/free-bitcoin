@@ -1,0 +1,14 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 616c9f6..54eaced 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,6 +7,9 @@ All notable changes to notes-cli.
+ ### Added
+ - Add `notes list --tag` to filter by tag (#41)
+ 
++### Fixed
++- Fix date parser to handle single-digit months and days (e.g., 2026-1-5) (#67)
++
+ ## [1.2.0] - 2026-09-14
+ 
+ ### Added

@@ -1,0 +1,16 @@
+    "metrics": {
+      "tokenUsage": {
+        "inputTokens": 126278,
+        "outputTokens": 1380,
+        "totalTokens": 127658,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0,
+        "callCount": 10,
+        "byModel": {
+          "qwen3.5:9b": {
+            "inputTokens": 126278,
+            "outputTokens": 1380,
+            "callCount": 10
+          }
+        }
+      },

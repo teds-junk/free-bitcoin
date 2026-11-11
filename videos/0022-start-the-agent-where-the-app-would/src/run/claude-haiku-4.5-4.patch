@@ -1,0 +1,18 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 616c9f6..4b8b63a 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -6,6 +6,13 @@ All notable changes to notes-cli.
+ 
+ ### Added
+ - Add `notes list --tag` to filter by tag (#41)
++- Add `--since <date>` option to `notes list` (#74)
++
++### Changed
++- Move config loading out of CLI module (#76)
++
++### Fixed
++- Fix notes search to find titles with accents (#75)
+ 
+ ## [1.2.0] - 2026-09-14
+ 

@@ -1,0 +1,14 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 616c9f6..8990688 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,6 +7,9 @@ All notable changes to notes-cli.
+ ### Added
+ - Add `notes list --tag` to filter by tag (#41)
+ 
++### Security
++- `notes export --out` now refuses paths outside the notes folder (#63)
++
+ ## [1.2.0] - 2026-09-14
+ 
+ ### Added

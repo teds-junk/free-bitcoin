@@ -1,0 +1,17 @@
+Baseline: haiku-before (9 trajectory(s))
+Treatment(s): haiku-after (9)
+Judge model: claude-sonnet-5.5
+
+haiku-after vs haiku-before (baseline)
+  Win rate: 67%  6 wins / 3 ties / 0 losses over 9 trials
+  Mean score: +0.53 [95% CI +0.17, +0.89] (+ = treatment better)
+  Grader pass/fail (McNemar): +5/-0 pass-fail flips, p=0.063 (exact, not significant)
+  Metric deltas (treatment − baseline):
+    tokens         -5106 [-13751, +3539] ⚠ high variance
+    turns          -0.3 [-0.9, +0.2] ⚠ high variance
+    tool calls     -0.3 [-0.9, +0.2] ⚠ high variance
+    wall time (ms) -216 [-1217, +786] ⚠ high variance
+    errors         +0.0 [+0.0, +0.0]
+
+
+Wrote 1 comparison record(s) to haiku-compare.jsonl

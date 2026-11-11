@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>How it was coded</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.stage{gap:18px;justify-content:safe center}.quote{width:100%;padding-top:10px;padding-bottom:12px}.quote p{font-size:30px;line-height:1.34}.quote .who .mono{font-family:var(--font-code)}.code.dark.added{font-size:28px;line-height:1.36;padding:16px 28px;min-width:1150px}.callout{font-size:32px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Read and name</div>
+  <h2 class="scene-title">How it was coded</h2>
+  <div class="stage">
+<div class="quote" data-concept="req" data-rep="quote"><span class="who"><span class="mono">parser</span> · the request</span><p>“Merged PR 49. I swapped JSON.parse for a streaming parser in importer.js so we stop loading the whole file into memory. Big imports used to die with an out-of-memory error. Changelog it.”</p></div>
+  <div class="annotated">
+    <pre class="code dark added" data-lang="markdown"><code><span style="color:#B3C0BF">claude-haiku-4.5</span>
+<span style="color:#4EA5E6">  ### Fixed</span>
+<span>  - Fix out-of-memory errors on large imports</span>
+<span>      </span><span data-concept="h" data-rep="code"><span>by using streaming JSON parser</span></span><span> (#49)</span>
+
+<span style="color:#B3C0BF">gpt-5.6-terra</span>
+<span style="color:#4EA5E6">  ### Fixed</span>
+<span>  - </span><span data-concept="t" data-rep="code"><span>Prevent out-of-memory errors</span></span><span> when importing large JSON files</span>
+<span>      (#49)</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="h">how it was coded</p><p class="callout" data-anchor="t">what users notice: fine</p></aside>
+  </div>
+  <p class="note">what each model’s patch added · our run · 2026-11-11T05-17-14-012Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "h",
+  "at": "0~streaming",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "t",
+  "at": "1",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

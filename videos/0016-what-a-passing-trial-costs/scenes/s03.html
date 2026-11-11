@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The cheaper trial costs more</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.ab{font-size:44px}.ab th{font-size:30px}.ab td{padding-top:34px;padding-bottom:34px;font-family:var(--font-code)}.ab td.v{font-family:var(--font-body);font-weight:600}.stage{gap:26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Cost per passing trial</div>
+  <h2 class="scene-title">The cheaper trial costs more</h2>
+  <div class="stage">
+<table class="data-table full ab">
+    <thead><tr><th>Variant</th><th>A trial costs</th><th>Trials passed</th><th>Total</th><th>Per passing trial</th></tr></thead>
+    <tbody>
+      <tr><td class="v">A</td><td><span data-concept="a_cost" data-rep="cell">2 AIU</span></td><td><span data-concept="a_pass" data-rep="cell">5 of 10</span></td><td><span data-concept="a_tot" data-rep="cell">20 AIU</span></td><td><span data-concept="a_per" data-rep="cell">4 AIU</span></td></tr>
+      <tr><td class="v">B</td><td><span data-concept="b_cost" data-rep="cell">3 AIU</span></td><td><span data-concept="b_pass" data-rep="cell">10 of 10</span></td><td><span data-concept="b_tot" data-rep="cell">30 AIU</span></td><td><span data-concept="b_per" data-rep="cell">3 AIU</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">a made-up example · 1 AIU = 1 cent</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "a_cost",
+  "at": "0~two AIU",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "a_pass",
+  "at": "0~passes",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "b_cost",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "b_pass",
+  "at": "1~passes",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "a_tot",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "a_per",
+  "at": "2~four",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "b_tot",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "b_per",
+  "at": "3~three",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "a_cost",
+  "at": "4~cheaper",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "a_per",
+  "at": "4~expensive",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

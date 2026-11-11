@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Measure first, then set it</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:260px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A budget is a grader</div>
+  <h2 class="scene-title">Measure first, then set it</h2>
+  <div class="stage">
+<div class="cols terms">
+    <div class="semantic-block" data-concept="low" data-rep="block" data-role="failure">
+      <div class="title words">too low</div><div class="label">fails good work</div>
+    </div>
+    <div class="semantic-block" data-concept="high" data-rep="block" data-role="failure">
+      <div class="title words">too high</div><div class="label">can never fail</div>
+    </div>
+    <div class="semantic-block" data-concept="meas" data-rep="block" data-role="success">
+      <div class="title words">measured</div><div class="label">set from real trials · tested on a saved run</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "low",
+  "at": "1",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "high",
+  "at": "2",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "meas",
+  "at": "3",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

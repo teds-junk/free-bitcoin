@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>An earlier run found one</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.skl{font-size:32px}.skl th{font-size:28px;white-space:nowrap}.skl td{padding:12px 40px 12px 0}.skl td.mono{font-family:var(--font-code);font-size:30px;white-space:nowrap}.card .who{font-size:30px}.card > .code.dark{font-size:29px;padding:20px 28px;flex:none}.stage{gap:26px}.card{width:100%}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Test loading, then fix it</div>
+  <h2 class="scene-title">An earlier run found one</h2>
+  <div class="stage">
+<div class="card">
+      <div class="who">An earlier run, same one-line description · <span class="mono">eval-results.md</span>, <span class="mono">claude-haiku-4.5</span></div>
+      <table class="data-table full skl early">
+        <thead><tr><th>Stimulus</th><th>Skills</th><th class="num">Pass Rate</th></tr></thead>
+        <tbody>
+<tr><td class="mono">load-plain</td><td class="mono"><span data-concept="fine" data-rep="cell">changelog-entry (2×)</span></td><td class="num">2/2</td></tr>
+<tr><td class="mono">load-no-keyword</td><td class="mono"><span data-concept="miss" data-rep="cell">changelog-entry</span></td><td class="num">1/2</td></tr>
+<tr><td class="mono">load-indirect</td><td class="mono"><span data-concept="fine" data-rep="cell">changelog-entry (2×)</span></td><td class="num">2/2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card" data-concept="out" data-rep="card">
+        <div class="who">The same run’s console output</div>
+        <pre class="code dark" data-lang="text"><code><span>✘ loading · load-no-keyword [claude-haiku-4.5]</span>
+<span>    ✘ skill-invocation requires changelog-ent…</span>
+<span>      The following required skills </span><span data-concept="called" data-rep="code"><span>were not called</span></span><span>: changelog-entry · trial 1</span></code></pre>
+      </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "miss",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "called",
+  "at": "2~not called",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

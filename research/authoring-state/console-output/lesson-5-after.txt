@@ -1,0 +1,31 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 6 stimuli from changelog · 2 models · 2 workers
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+⚠  Running with 3 trial(s). For statistically significant results, use --runs 5 or higher.
+
+changelog
+
+claude-haiku-4.5
+  ERROR  security  0 passed · 2 failed · 1 error
+   trial 2 · Session disconnected while waiting for a response
+   ✘ under-security  0 passed · 2 failed · Pattern /(?m)^\+### Security/ not found in workspace diff
+                                           trials 1, 3
+
+────────────────────────────────────────────────────────
+
+Failures  1 failed
+  ERROR changelog · security [claude-haiku-4.5]
+      Session disconnected while waiting for a response
+      ✘ under-security  Pattern /(?m)^\+### Security/ not found in workspace diff · trials 1, 3
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✘ 2/3             ✓ 3/3        
+
+Saved  practice/results/lesson-5-after/2026-11-10T08-20-01-988Z/
+Run ID  5de1a7b7-eb49-4254-a769-c68113da3f09

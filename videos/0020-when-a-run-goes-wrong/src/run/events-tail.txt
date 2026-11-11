@@ -1,0 +1,7 @@
+{"type":"skill.invoked", …}
+{"type":"assistant.turn_end", …}
+{"type":"assistant.turn_start", …}
+{"type":"abort","data":{"reason":"user_initiated"}, …}
+{"type":"assistant.turn_end", …}
+{"type":"session.usage_checkpoint",
+ "data":{"totalNanoAiu":2954400000, …}, …}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What would the exit code be?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.lead{font-size:46px;align-self:flex-start;color:var(--ink)}#q{width:100%;padding:36px 40px 44px;gap:24px}#q > .title{font-size:44px}#q .parts{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;width:100%}#q .part{min-height:220px}#q .part .title{font-size:50px;line-height:1.2}#q .part .label{font-size:34px}.stage{gap:28px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Two suites and a conventions page</div>
+  <h2 class="scene-title">What would the exit code be?</h2>
+  <div class="stage">
+<p class="lead">one trial over its token budget · nothing else fails · nothing errors</p>
+  <div class="semantic-block" id="q" data-role="structure">
+    <div class="title words">the quick suite, without <span class="mono">--require-pass</span></div>
+    <div class="parts">
+      <div class="part" data-concept="p1" data-rep="part"><div class="title words">Exit code 0</div><div class="label">the run itself completed</div></div>
+      <div class="part" data-concept="p2" data-rep="part"><div class="title words">With <span class="mono">--require-pass</span>: 1</div><div class="label">a failing verdict becomes an error</div></div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#q",
+  "at": "4"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

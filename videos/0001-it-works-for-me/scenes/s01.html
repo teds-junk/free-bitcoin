@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>It works for me.</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.hook{display:grid;grid-template-columns:560px 1fr;gap:48px;align-items:stretch}.hook .quote{display:flex;flex-direction:column;justify-content:center}.results{display:flex;flex-direction:column;gap:36px;justify-content:space-between}.hook .card > .code.dark{font-size:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">It works for <em>me</em>.</h1>
+  <div class="stage">
+<div class="hook">
+    <div class="quote" data-concept="req" data-rep="quote"><span class="who">The request</span><p>“I fixed the typo in the help text for <span class="inline-code">notes add</span> (it said "tittle"). Put that in the changelog.”</p></div>
+    <div class="results">
+      <div class="card" data-concept="card-a" data-rep="card">
+        <div class="who">Your run, on <span class="mono">claude-haiku-4.5</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix typo in </span><span style="color:#3CC0B3">`notes add`</span><span> help text ("tittle" → "title")</span></code></pre>
+      </div>
+      <div class="card" data-concept="card-b" data-rep="card">
+        <div class="who">A teammate’s run, on <span class="mono">gpt-5.6-terra</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix the help text typo in </span><span style="color:#3CC0B3">`notes add`</span><span> </span><span data-concept="pr42" data-rep="code"><span>(#42)</span></span></code></pre>
+      </div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "req",
+  "at": "0~wrote a skill",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "card-a",
+  "at": "0~the agent",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "card-b",
+  "at": "1~another model",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "pr42",
+  "at": "1~something different",
+  "color": "yellow",
+  "channel": "diff",
+  "until": "2"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

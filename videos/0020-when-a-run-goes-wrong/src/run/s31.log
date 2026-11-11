@@ -1,0 +1,2050 @@
+⠋ Loading evaluations…
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from judged · 2 models · 2 workers
+
+░░░░░░░░░░░░░░░░  0/2 completed · 0 running · 2 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · queued      0/1 · queued    
+
+  WARN judged · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+░░░░░░░░░░░░░░░░  0/2 completed · 0 running · 2 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · queued      0/1 · queued    
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:00
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:01
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:02
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:03
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:04
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:05
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:06
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:06
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:06
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:06
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:06
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:06
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:06
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:06
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:06
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:06
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:07
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:07
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:07
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:07
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:07
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:07
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:07
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:07
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:07
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:07
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:08
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:08
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:08
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:08
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:08
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:08
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:08
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:08
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:08
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:08
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:09
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:09
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:09
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:09
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:09
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:09
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:09
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:09
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:09
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:10
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:10
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:10
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:10
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:10
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:10
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:10
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:10
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:10
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:10
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:11
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:11
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:11
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:11
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:11
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:11
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:11
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:11
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:11
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:11
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:12
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:12
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+░░░░░░░░░░░░░░░░  0/2 completed · 2 running · 0 queued · 00:12
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · 1 running 
+
+
+judged
+
+gpt-5.6-terra
+  ERROR  cache · 1/2 graders · 10.3s
+   Grading error; verdict is invalid.
+   ✘ users-words  LLM judge failed: Model "claude-sonnet-5-5" is not available in Copilot.
+                  Available models: auto, claude-haiku-4.5, claude-haiku-5.5, claude-opus-5.5,
+                  claude-sonnet-5, claude-sonnet-5.5, gemini-4-carbon, gpt-5.3-codex,
+                  gpt-5.6-luna, gpt-5.6-sol, gpt-5.6-sol-fast, gpt-5.6-terra, gpt-6-luna,
+                  gpt-6-sol, gpt-6.1-sol, gpt-6.1-terra, grok-4.6, grok-4.7, mai-code-1.1-flash,
+                  mai-code-2-flash.
+
+████████░░░░░░░░  1/2 completed · 1 running · 0 queued · 00:12
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · 1 running   0/1 · finalizing
+
+
+claude-haiku-4.5
+  ERROR  cache · 1/2 graders · 10.5s
+   Grading error; verdict is invalid.
+   ✘ users-words  LLM judge failed: Model "claude-sonnet-5-5" is not available in Copilot.
+                  Available models: auto, claude-haiku-4.5, claude-haiku-5.5, claude-opus-5.5,
+                  claude-sonnet-5, claude-sonnet-5.5, gemini-4-carbon, gpt-5.3-codex,
+                  gpt-5.6-luna, gpt-5.6-sol, gpt-5.6-sol-fast, gpt-5.6-terra, gpt-6-luna,
+                  gpt-6-sol, gpt-6.1-sol, gpt-6.1-terra, grok-4.6, grok-4.7, mai-code-1.1-flash,
+                  mai-code-2-flash.
+
+████████████████  2/2 completed · 0 running · 0 queued · 00:12
+
+────────────────────────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval    claude-haiku-4.5  gpt-5.6-terra   
+
+  judged  0/1 · finalizing  0/1 · finalizing
+
+
+────────────────────────────────────────────────────────
+
+Failures  2 failed
+  ERROR judged · cache [claude-haiku-4.5]  users-words · LLM judge failed: Model "claude-sonnet-5-5" is not available in Copilot. Available models: auto, claude-haiku-4.5, claude-haiku-5.5, claude-opus-5.5, claude-sonnet-5, claude-sonnet-5.5, gemini-4-carbon, gpt-5.3-codex, gpt-5.6-luna, gpt-5.6-sol, gpt-5.6-sol-fast, gpt-5.6-terra, gpt-6-luna, gpt-6-sol, gpt-6.1-sol, gpt-6.1-terra, grok-4.6, grok-4.7, mai-code-1.1-flash, mai-code-2-flash.
+  ERROR judged · cache [gpt-5.6-terra]  users-words · LLM judge failed: Model "claude-sonnet-5-5" is not available in Copilot. Available models: auto, claude-haiku-4.5, claude-haiku-5.5, claude-opus-5.5, claude-sonnet-5, claude-sonnet-5.5, gemini-4-carbon, gpt-5.3-codex, gpt-5.6-luna, gpt-5.6-sol, gpt-5.6-sol-fast, gpt-5.6-terra, gpt-6-luna, gpt-6-sol, gpt-6.1-sol, gpt-6.1-terra, grok-4.6, grok-4.7, mai-code-1.1-flash, mai-code-2-flash.
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+  eval    claude-haiku-4.5  gpt-5.6-terra
+  judged  ✘ 0/1             ✘ 0/1        
+  judged: error: 1/1 trial grade(s) invalid
+  judged: error: 1/1 trial grade(s) invalid
+
+Saved  ~/src/demo/practice/results/lesson-20/2026-11-11T15-49-28-019Z/
+Run ID  374989d3-b070-4359-a5ae-8a80dc0e360e

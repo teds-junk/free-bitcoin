@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One executor, two models</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Write and run the executor</div>
+  <h2 class="scene-title">One executor, two models</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:exp · regenerate with: node file-panel.js --file src/state/release-app.experiment.yaml --label evals/release-app.experiment.yaml --id exp --width 44 --rows 9 --expect 6=vary: --expect '11=executor: release-app' --expect '12=runs: 3' --mark 4=ev:release.eval.yaml --mark '6=vary:[/defaults/model]' --mark '11=exec:executor: release-app' --mark '12=runs:runs: 3' --into scenes/s19.html -->
+<div class="file-panel" id="exp" data-file="evals/release-app.experiment.yaml" data-lines="20" data-rows="9" style="--rows:9;--cols:44;--ln:2">
+<div class="code-file">evals/release-app.experiment.yaml<span class="file-meta">20 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="yaml"><code>
+<span class="file-row" data-line="1"><span class="ln">1</span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">release-app</span></span>
+<span class="file-row" data-line="2"><span class="ln">2</span></span>
+<span class="file-row" data-line="3"><span class="ln">3</span><span style="color:#4EA5E6">evals</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="4"><span class="ln">4</span><span style="color:#B3C0BF">  - </span><span data-concept="ev" data-rep="code"><span style="color:#3CC0B3">release.eval.yaml</span></span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span style="color:#4EA5E6">vary</span><span style="color:#B3C0BF">: </span><span data-concept="vary" data-rep="code"><span style="color:#B3C0BF">[</span><span style="color:#3CC0B3">/defaults/model</span><span style="color:#B3C0BF">]</span></span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span><span style="color:#4EA5E6">baseline</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">haiku</span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span><span style="color:#4EA5E6">overrides</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span><span style="color:#B3C0BF">  </span><span data-concept="exec" data-rep="code"><span style="color:#4EA5E6">executor</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">release-app</span></span></span>
+<span class="file-row" data-line="12"><span class="ln">12</span><span style="color:#B3C0BF">  </span><span data-concept="runs" data-rep="code"><span style="color:#4EA5E6">runs</span><span style="color:#B3C0BF">: </span><span style="color:#EA6AA6">3</span></span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span><span style="color:#4EA5E6">variants</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="15"><span class="ln">15</span><span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">haiku</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="16"><span class="ln">16</span><span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">overrides</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="17"><span class="ln">17</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">claude-haiku-4.5</span></span>
+<span class="file-row" data-line="18"><span class="ln">18</span><span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">terra</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="19"><span class="ln">19</span><span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">overrides</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="20"><span class="ln">20</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">gpt-5.6-terra</span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="20" style="height:140px" aria-hidden="true"><b class="file-map-view" style="top:0px;height:63px"></b><svg width="120" height="140" viewBox="0 0 120 140" shape-rendering="crispEdges"><rect x="0" y="0" width="9.4" height="4" fill="#4EA5E6"/><rect x="10" y="0" width="1.9" height="4" fill="#B3C0BF"/><rect x="15" y="0" width="26.9" height="4" fill="#3CC0B3"/><rect x="0" y="14" width="11.9" height="4" fill="#4EA5E6"/><rect x="12.5" y="14" width="1.9" height="4" fill="#B3C0BF"/><rect x="5" y="21" width="1.9" height="4" fill="#B3C0BF"/><rect x="10" y="21" width="41.9" height="4" fill="#3CC0B3"/><rect x="0" y="35" width="9.4" height="4" fill="#4EA5E6"/><rect x="10" y="35" width="1.9" height="4" fill="#B3C0BF"/><rect x="15" y="35" width="1.9" height="4" fill="#B3C0BF"/><rect x="17.5" y="35" width="36.9" height="4" fill="#3CC0B3"/><rect x="55" y="35" width="1.9" height="4" fill="#B3C0BF"/><rect x="0" y="49" width="19.4" height="4" fill="#4EA5E6"/><rect x="20" y="49" width="1.9" height="4" fill="#B3C0BF"/><rect x="25" y="49" width="11.9" height="4" fill="#3CC0B3"/><rect x="0" y="63" width="21.9" height="4" fill="#4EA5E6"/><rect x="22.5" y="63" width="1.9" height="4" fill="#B3C0BF"/><rect x="5" y="70" width="19.4" height="4" fill="#4EA5E6"/><rect x="25" y="70" width="1.9" height="4" fill="#B3C0BF"/><rect x="30" y="70" width="26.9" height="4" fill="#3CC0B3"/><rect x="5" y="77" width="9.4" height="4" fill="#4EA5E6"/><rect x="15" y="77" width="1.9" height="4" fill="#B3C0BF"/><rect x="20" y="77" width="1.9" height="4" fill="#EA6AA6"/><rect x="0" y="91" width="19.4" height="4" fill="#4EA5E6"/><rect x="20" y="91" width="1.9" height="4" fill="#B3C0BF"/><rect x="5" y="98" width="11.9" height="4" fill="#4EA5E6"/><rect x="17.5" y="98" width="1.9" height="4" fill="#B3C0BF"/><rect x="10" y="105" width="21.9" height="4" fill="#4EA5E6"/><rect x="32.5" y="105" width="1.9" height="4" fill="#B3C0BF"/><rect x="15" y="112" width="11.9" height="4" fill="#4EA5E6"/><rect x="27.5" y="112" width="1.9" height="4" fill="#B3C0BF"/><rect x="32.5" y="112" width="39.4" height="4" fill="#3CC0B3"/><rect x="5" y="119" width="11.9" height="4" fill="#4EA5E6"/><rect x="17.5" y="119" width="1.9" height="4" fill="#B3C0BF"/><rect x="10" y="126" width="21.9" height="4" fill="#4EA5E6"/><rect x="32.5" y="126" width="1.9" height="4" fill="#B3C0BF"/><rect x="15" y="133" width="11.9" height="4" fill="#4EA5E6"/><rect x="27.5" y="133" width="1.9" height="4" fill="#B3C0BF"/><rect x="32.5" y="133" width="31.9" height="4" fill="#3CC0B3"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:exp -->
+    <aside class="callouts"><p class="callout" data-anchor="vary">the variants differ only in the model</p><p class="callout" data-anchor="exec">one executor for both</p><p class="callout" data-anchor="runs">three trials each</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "ev",
+  "at": "1~release eval",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "vary",
+  "at": "1~differ",
+  "color": "blue"
+ },
+ {
+  "type": "scroll",
+  "target": "#exp",
+  "to": "10-18",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "exec",
+  "at": "2~executor",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "runs",
+  "at": "3",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

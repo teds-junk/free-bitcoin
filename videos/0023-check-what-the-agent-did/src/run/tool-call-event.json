@@ -1,0 +1,14 @@
+{
+  "type": "tool_call",
+  "timestamp": "2026-11-11T16:51:51.284Z",
+  "data": {
+    "toolName": "view",
+    "toolCallId": "toolu_01MDPkWZ2DvjtkqWBLy1fAUq",
+    "turnId": "1",
+    "arguments": {
+      "path": "<workspace>/release/merged.txt"
+    }
+  },
+  "turn": 0,
+  "endTimestamp": "2026-11-11T16:51:51.289Z"
+}

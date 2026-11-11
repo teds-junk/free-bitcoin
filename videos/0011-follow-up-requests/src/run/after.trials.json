@@ -1,0 +1,170 @@
+[
+ {
+  "model": "claude-haiku-4.5",
+  "trialIndex": 0,
+  "status": "success",
+  "passed": true,
+  "graders": [
+   {
+    "name": "first-adds-64",
+    "passed": true
+   },
+   {
+    "name": "second-adds-nothing",
+    "passed": true
+   },
+   {
+    "name": "third-adds-entry",
+    "passed": true
+   },
+   {
+    "name": "third-no-made-up-number",
+    "passed": true
+   },
+   {
+    "name": "first-entry-survives",
+    "passed": true
+   }
+  ]
+ },
+ {
+  "model": "claude-haiku-4.5",
+  "trialIndex": 1,
+  "status": "success",
+  "passed": true,
+  "graders": [
+   {
+    "name": "first-adds-64",
+    "passed": true
+   },
+   {
+    "name": "second-adds-nothing",
+    "passed": true
+   },
+   {
+    "name": "third-adds-entry",
+    "passed": true
+   },
+   {
+    "name": "third-no-made-up-number",
+    "passed": true
+   },
+   {
+    "name": "first-entry-survives",
+    "passed": true
+   }
+  ]
+ },
+ {
+  "model": "claude-haiku-4.5",
+  "trialIndex": 2,
+  "status": "success",
+  "passed": true,
+  "graders": [
+   {
+    "name": "first-adds-64",
+    "passed": true
+   },
+   {
+    "name": "second-adds-nothing",
+    "passed": true
+   },
+   {
+    "name": "third-adds-entry",
+    "passed": true
+   },
+   {
+    "name": "third-no-made-up-number",
+    "passed": true
+   },
+   {
+    "name": "first-entry-survives",
+    "passed": true
+   }
+  ]
+ },
+ {
+  "model": "gpt-5.6-terra",
+  "trialIndex": 0,
+  "status": "success",
+  "passed": true,
+  "graders": [
+   {
+    "name": "first-adds-64",
+    "passed": true
+   },
+   {
+    "name": "second-adds-nothing",
+    "passed": true
+   },
+   {
+    "name": "third-adds-entry",
+    "passed": true
+   },
+   {
+    "name": "third-no-made-up-number",
+    "passed": true
+   },
+   {
+    "name": "first-entry-survives",
+    "passed": true
+   }
+  ]
+ },
+ {
+  "model": "gpt-5.6-terra",
+  "trialIndex": 1,
+  "status": "success",
+  "passed": true,
+  "graders": [
+   {
+    "name": "first-adds-64",
+    "passed": true
+   },
+   {
+    "name": "second-adds-nothing",
+    "passed": true
+   },
+   {
+    "name": "third-adds-entry",
+    "passed": true
+   },
+   {
+    "name": "third-no-made-up-number",
+    "passed": true
+   },
+   {
+    "name": "first-entry-survives",
+    "passed": true
+   }
+  ]
+ },
+ {
+  "model": "gpt-5.6-terra",
+  "trialIndex": 2,
+  "status": "success",
+  "passed": true,
+  "graders": [
+   {
+    "name": "first-adds-64",
+    "passed": true
+   },
+   {
+    "name": "second-adds-nothing",
+    "passed": true
+   },
+   {
+    "name": "third-adds-entry",
+    "passed": true
+   },
+   {
+    "name": "third-no-made-up-number",
+    "passed": true
+   },
+   {
+    "name": "first-entry-survives",
+    "passed": true
+   }
+  ]
+ }
+]

@@ -1,0 +1,12 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 12 stimuli from six · 2 models · 2 workers
+
+Model summary
+  ✓ claude-haiku-4.5  1/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval  claude-haiku-4.5  gpt-5.6-terra
+  six   ✓ 6/6             ✓ 6/6        
+
+Saved  results/lesson-4/2026-11-10T14-59-59-177Z/
+Run ID  d1dee2d0-adb8-4c3b-bb67-85bfb65322dc

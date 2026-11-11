@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tested before they are trusted</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.steps .semantic-block{min-height:330px}.steps .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Set budgets from your runs</div>
+  <h2 class="scene-title">Tested before they are trusted</h2>
+  <div class="stage">
+<div class="cols steps">
+    <div class="semantic-block" data-concept="st1" data-rep="block" data-role="structure">
+      <div class="step">1</div><div class="title words">measure</div><div class="label">what a typical trial used</div>
+    </div>
+    <div class="semantic-block" data-concept="st2" data-rep="block" data-role="change">
+      <div class="step">2</div><div class="title words">set</div><div class="label">budgets just above it</div>
+    </div>
+    <div class="semantic-block" data-concept="st3" data-rep="block" data-role="attention">
+      <div class="step">3</div><div class="title words">test</div><div class="label">on saved trials · no agent</div>
+    </div>
+    <div class="semantic-block" data-concept="st4" data-rep="block" data-role="success">
+      <div class="step">4</div><div class="title words">adjust</div><div class="label">then a time limit, and one run</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "st1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "st2",
+  "at": "2",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "st3",
+  "at": "2~test",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "st4",
+  "at": "3",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

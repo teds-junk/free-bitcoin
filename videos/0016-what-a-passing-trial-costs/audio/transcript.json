@@ -1,0 +1,1789 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/0016-what-a-passing-trial-costs",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "0032db8581a5c83b",
+      "text": "Every comparison table so far has ended with a row of tokens, and it's tempting to read the variant with fewer tokens as the cheaper one.",
+      "tts_text": "Every comparison table so far has ended with a row of tokens, and it's tempting to read the variant with fewer tokens as the cheaper one.",
+      "heard": "Every comparison table so far has ended with a row of tokens, and it's tempting to read the variant with fewer tokens as the cheaper one.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "eb3b5023c45359a2",
+      "text": "In our run, a typical trial on terra used far fewer tokens than one on a newer haiku model.",
+      "tts_text": "In our run, a typical trial on terra used far fewer tokens than one on a newer haiku model.",
+      "heard": "Now run a typical trial on Terra used far fewer tokens than one on a newer haiku model.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "In our",
+          "heard": "Now",
+          "similarity": 0.57
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "5b1d7b3c4c0005e3",
+      "text": "But each model has its own price per token, and a cheap trial that fails has bought you nothing.",
+      "tts_text": "But each model has its own price per token, and a cheap trial that fails has bought you nothing.",
+      "heard": "But each model has its own price per token and a cheap trial that fails has bought you nothing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "63d71da1bd95add8",
+      "text": "In this lesson, you'll run two models at two settings, work out what each passing trial costs, and pick one.",
+      "tts_text": "In this lesson, you'll run two models at two settings, work out what each passing trial costs, and pick one.",
+      "heard": "In this lesson, you'll run two models at two settings, work out what each passing trial costs and pick one.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "7d7812ab9f8fb768",
+      "text": "Let's start with the figure itself.",
+      "tts_text": "Let's start with the figure itself.",
+      "heard": "Let's start with the figure itself.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "9676a808b18ea209",
+      "text": "Cost per passing trial is a variant's total cost, over all of its trials, divided by the number of trials that passed.",
+      "tts_text": "Cost per passing trial is a variant's total cost, over all of its trials, divided by the number of trials that passed.",
+      "heard": "Cost-per-passing trial is a variance total cost over all of its trials, divided by the number of trials that passed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "2dc4cf86d01f1767",
+      "text": "It's what one useful result costs you.",
+      "tts_text": "It's what one useful result costs you.",
+      "heard": "It's what one useful result costs you.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "81d536439a608abb",
+      "text": "Here's a made-up pair of variants, priced in AIU, which are cents: A costs two AIU a trial, and passes five of ten.",
+      "tts_text": "Here's a made-up pair of variants, priced in AIU, which are cents: A costs two AIU a trial, and passes five of ten.",
+      "heard": "Here's a made-up pair of variants, priced in AIU which are since, accosts two AIU atrial and passes five of ten.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "cents A costs",
+          "heard": "since accosts",
+          "similarity": 0.76
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "0c228bec88467893",
+      "text": "B costs three AIU a trial, and passes all ten.",
+      "tts_text": "B costs three AIU a trial, and passes all ten.",
+      "heard": "Because 3A.I.U. a trial and passes all 10.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "B costs three AIU",
+          "heard": "Because 3A.I.U",
+          "similarity": 0.69
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s03",
+      "i": 2,
+      "file": "audio/s03_02.wav",
+      "clip_sha": "cc8c7b76caed456f",
+      "text": "For A, that's twenty AIU for five passes: four AIU each.",
+      "tts_text": "For A, that's twenty AIU for five passes: four AIU each.",
+      "heard": "For A, that's 20AIU for five passes, four AIU each.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s03",
+      "i": 3,
+      "file": "audio/s03_03.wav",
+      "clip_sha": "e317ac98e8555f8d",
+      "text": "For B, thirty AIU buys ten passes: three AIU each.",
+      "tts_text": "For B, thirty AIU buys ten passes: three AIU each.",
+      "heard": "For B30AIU buys 10 passes, 3AIU each.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s03",
+      "i": 4,
+      "file": "audio/s03_04.wav",
+      "clip_sha": "3ed5a6a024a58c60",
+      "text": "So the variant with the cheaper trial gives the more expensive result.",
+      "tts_text": "So the variant with the cheaper trial gives the more expensive result.",
+      "heard": "So the variant with the cheaper trial gives the more expensive result.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 5,
+      "file": "audio/s03_05.wav",
+      "clip_sha": "31b3ac7214a63252",
+      "text": "Every failure is paid for, and then thrown away.",
+      "tts_text": "Every failure is paid for, and then thrown away.",
+      "heard": "Every failure is paid for and then thrown away.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 0,
+      "file": "audio/s04_00.wav",
+      "clip_sha": "42a2da455b5cbdef",
+      "text": "With several variants, we put each one's pass rate beside its cost.",
+      "tts_text": "With several variants, we put each one's pass rate beside its cost.",
+      "heard": "With several variants, we put each one's past rate beside its cost.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s04",
+      "i": 1,
+      "file": "audio/s04_01.wav",
+      "clip_sha": "8515f1906c7e9124",
+      "text": "Then we look for a variant that's beaten on both counts: some other variant costs less, and passes at least as often.",
+      "tts_text": "Then we look for a variant that's beaten on both counts: some other variant costs less, and passes at least as often.",
+      "heard": "Then we look for a variant that's beaten on both counts, some other variant costs less, and passes at least as often.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 2,
+      "file": "audio/s04_02.wav",
+      "clip_sha": "9995683654084c55",
+      "text": "Any variant beaten that way can be dropped.",
+      "tts_text": "Any variant beaten that way can be dropped.",
+      "heard": "Any variant beaten that way can be dropped.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 3,
+      "file": "audio/s04_03.wav",
+      "clip_sha": "be305745f9755c93",
+      "text": "Those left are real choices, a trade between paying more and passing more.",
+      "tts_text": "Those left are real choices, a trade between paying more and passing more.",
+      "heard": "Those left are real choices, a trade between paying more and passing more.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 4,
+      "file": "audio/s04_04.wav",
+      "clip_sha": "571e82a75793f543",
+      "text": "Which to pick depends on what a failure costs you.",
+      "tts_text": "Which to pick depends on what a failure costs you.",
+      "heard": "Which to pick depends on what a failure costs you.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 0,
+      "file": "audio/s05_00.wav",
+      "clip_sha": "877c781b536e505c",
+      "text": "This way of comparing comes from research on agent benchmarks, which argued that every evaluation should report cost beside accuracy.",
+      "tts_text": "This way of comparing comes from research on agent benchmarks, which argued that every evaluation should report cost beside accuracy.",
+      "heard": "This way of comparing comes from research on agent benchmarks, which argued that every evaluation should report cost beside accuracy.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 1,
+      "file": "audio/s05_01.wav",
+      "clip_sha": "edcd6ddacb4f2324",
+      "text": "Its authors had found simple agents matching the leaders of accuracy-only rankings, at a fraction of the cost.",
+      "tts_text": "Its authors had found simple agents matching the leaders of accuracy-only rankings, at a fraction of the cost.",
+      "heard": "Its authors had found simple agents matching the leaders of accuracy-only rankings at a fraction of the cost.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 0,
+      "file": "audio/s06_00.wav",
+      "clip_sha": "3152842df726bfb8",
+      "text": "That's the figure; now let's see where its two numbers are recorded.",
+      "tts_text": "That's the figure; now let's see where its two numbers are recorded.",
+      "heard": "That's the figure, now let's see where its two numbers are recorded.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 1,
+      "file": "audio/s06_01.wav",
+      "clip_sha": "2992f9b76cfa3172",
+      "text": "Every experiment saves a folder for each variant, and each folder holds its own results dot jsonl.",
+      "tts_text": "Every experiment saves a folder for each variant, and each folder holds its own results dot jay-son-ell.",
+      "heard": "Every experiment saves a folder for each variant, and each folder holds its own results.json.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 2,
+      "file": "audio/s06_02.wav",
+      "clip_sha": "9dcb041e9b4e6217",
+      "text": "Inside is one record per trial: the record we've met before, with the variant's name added.",
+      "tts_text": "Inside is one record per trial: the record we've met before, with the variant's name added.",
+      "heard": "Inside is one record per trial, the record we've met before, with the variance name added.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 0,
+      "file": "audio/s07_00.wav",
+      "clip_sha": "c261b3e6003198fa",
+      "text": "Here's one of them, spread over several lines.",
+      "tts_text": "Here's one of them, spread over several lines.",
+      "heard": "Here's one of them spread over several lines.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 1,
+      "file": "audio/s07_01.wav",
+      "clip_sha": "2171638b784d2d50",
+      "text": "Variant names the variant this trial belongs to.",
+      "tts_text": "Variant names the variant this trial belongs to.",
+      "heard": "Variant names the variant this trial belongs to.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 2,
+      "file": "audio/s07_02.wav",
+      "clip_sha": "c48e696c1f6c0375",
+      "text": "Status is success for a trial that finished, as before.",
+      "tts_text": "Status is success for a trial that finished, as before.",
+      "heard": "Status is success for a trial that finished as before.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 3,
+      "file": "audio/s07_03.wav",
+      "clip_sha": "b0351ceda569a6f4",
+      "text": "And passed, under grade result, is the verdict: passing trials say true here.",
+      "tts_text": "And passed, under grade result, is the verdict: passing trials say true here.",
+      "heard": "And past under grade result is the verdict, passing trials say true here.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 0,
+      "file": "audio/s08_00.wav",
+      "clip_sha": "8ced2da05e5b23dc",
+      "text": "Further down, the token usage ends with two blocks.",
+      "tts_text": "Further down, the token usage ends with two blocks.",
+      "heard": "Further down, the token usage ends with two blocks.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 1,
+      "file": "audio/s08_01.wav",
+      "clip_sha": "860afec403f83377",
+      "text": "By model splits the tokens between models, and an agent that called two models would list both.",
+      "tts_text": "By model splits the tokens between models, and an agent that called two models would list both.",
+      "heard": "I model splits the tokens between models and an agent that called two models would list both.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "By",
+          "heard": "I",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 2,
+      "file": "audio/s08_02.wav",
+      "clip_sha": "42df86b1ded80e14",
+      "text": "Then the cost, in nano-AIU as before.",
+      "tts_text": "Then the cost, in nano-AIU as before.",
+      "heard": "Then the cost in Nano, AIU, is before.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "as",
+          "heard": "is",
+          "similarity": 0.5
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 3,
+      "file": "audio/s08_03.wav",
+      "clip_sha": "53a16423f1ce56d5",
+      "text": "This trial's amount is about point two three AIU, under a quarter of a cent, for a hundred and five thousand tokens.",
+      "tts_text": "This trial's amount is about point two three AIU, under a quarter of a cent, for a hundred and five thousand tokens.",
+      "heard": "This trial's amount is about .23 AIU, under a quarter of a cent, for 105,000 tokens.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s08",
+      "i": 4,
+      "file": "audio/s08_04.wav",
+      "clip_sha": "07134b0a02753260",
+      "text": "That cost appears only when every model call in the trial reported Copilot as its provider.",
+      "tts_text": "That cost appears only when every model call in the trial reported Copilot as its provider.",
+      "heard": "That cost appears only when every model call in the trial reported copilot as its provider.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 0,
+      "file": "audio/s09_00.wav",
+      "clip_sha": "b4e2b49b47f6c26f",
+      "text": "Two things are missing from that figure.",
+      "tts_text": "Two things are missing from that figure.",
+      "heard": "Two things are missing from that figure.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 1,
+      "file": "audio/s09_01.wav",
+      "clip_sha": "4569924af47200c9",
+      "text": "Calls that an LLM judge makes to grade the trial aren't counted, so for an eval with a judge, the true cost is higher.",
+      "tts_text": "Calls that an LLM judge makes to grade the trial aren't counted, so for an [eval](/ˌivˈæl/) with a judge, the true cost is higher.",
+      "heard": "Calls that an LLM judge makes to grade the trial aren't counted, so for an EVAL with a judge, the true cost is higher.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 2,
+      "file": "audio/s09_02.wav",
+      "clip_sha": "92afe091c05bb84c",
+      "text": "Also, a trial that ended in ERROR before the agent finished may have no usage recorded at all.",
+      "tts_text": "Also, a trial that ended in ERROR before the agent finished may have no usage recorded at all.",
+      "heard": "Also, a trial that ended in error before the agent finished may have no usage recorded at all.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 0,
+      "file": "audio/s10_00.wav",
+      "clip_sha": "ea21da985c87afd1",
+      "text": "Vally itself prints no total cost for a variant.",
+      "tts_text": "Valley itself prints no total cost for a variant.",
+      "heard": "Valley itself prints no total cost for a variant.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 1,
+      "file": "audio/s10_01.wav",
+      "clip_sha": "e467ac0deee71741",
+      "text": "Each experiment's table gives total tokens, its report gives median tokens, and neither turns tokens into cost.",
+      "tts_text": "Each experiment's table gives total tokens, its report gives median tokens, and neither turns tokens into cost.",
+      "heard": "Each experiment's table gives total tokens, its report gives median tokens, and neither turns tokens into cost.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 2,
+      "file": "audio/s10_02.wav",
+      "clip_sha": "3e1d8395a97fa365",
+      "text": "So the course has a small calculator: a page that reads the results files you pick, in your browser.",
+      "tts_text": "So the course has a small calculator: a page that reads the results files you pick, in your browser.",
+      "heard": "So the course has a small calculator, a page that reads the results files you pick in your browser.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 3,
+      "file": "audio/s10_03.wav",
+      "clip_sha": "570c234030139bef",
+      "text": "For each variant, it adds up the cost of every trial, counts the trials that passed, and divides.",
+      "tts_text": "For each variant, it adds up the cost of every trial, counts the trials that passed, and divides.",
+      "heard": "For each variant it adds up the cost of every trial, counts the trials that passed, and divides.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 0,
+      "file": "audio/s11_00.wav",
+      "clip_sha": "8ba3d1591dd83f67",
+      "text": "Besides the model, we'll vary one more setting: reasoning effort.",
+      "tts_text": "Besides the model, we'll vary one more setting: reasoning effort.",
+      "heard": "Besides the model will vary one more setting, reasoning effort.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "we'll",
+          "heard": "will",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 1,
+      "file": "audio/s11_01.wav",
+      "clip_sha": "67200c937feb505e",
+      "text": "Some models can work through a problem in hidden reasoning, before they reply or call a tool.",
+      "tts_text": "Some models can work through a problem in hidden reasoning, before they reply or call a tool.",
+      "heard": "Some models can work through a problem in hidden reasoning before they reply or call a tool.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 2,
+      "file": "audio/s11_02.wav",
+      "clip_sha": "7a945783b386bf03",
+      "text": "Reasoning effort sets how much of that the agent's model does.",
+      "tts_text": "Reasoning effort sets how much of that the agent's model does.",
+      "heard": "Reasoning effort sets how much of that the agent's model does.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 3,
+      "file": "audio/s11_03.wav",
+      "clip_sha": "10f7e26eb52b9345",
+      "text": "More effort usually means more tokens and more time on each call, and sometimes better results.",
+      "tts_text": "More effort usually means more tokens and more time on each call, and sometimes better results.",
+      "heard": "More effort usually means more tokens and more time on each call, and sometimes better results.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 0,
+      "file": "audio/s12_00.wav",
+      "clip_sha": "1338e5e62d085104",
+      "text": "In an eval file, reasoning effort goes under defaults, beside the model, so an experiment can vary it exactly as it varies the model.",
+      "tts_text": "In an [eval](/ˌivˈæl/) file, reasoning effort goes under defaults, beside the model, so an experiment can vary it exactly as it varies the model.",
+      "heard": "In an eval file, reasoning effort goes under defaults beside the model, so an experiment can vary it exactly as it varies the model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 1,
+      "file": "audio/s12_01.wav",
+      "clip_sha": "227ff73c9d48415c",
+      "text": "Which values are accepted depends on the model.",
+      "tts_text": "Which values are accepted depends on the model.",
+      "heard": "which values are accepted depends on the model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 2,
+      "file": "audio/s12_02.wav",
+      "clip_sha": "4e5c98dbc33de16f",
+      "text": "Vally refuses a value the model doesn't accept before any session starts, and its message lists the values that model does accept.",
+      "tts_text": "Valley refuses a value the model doesn't accept before any session starts, and its message lists the values that model does accept.",
+      "heard": "Valley refuses a value, the model doesn't accept before any session starts, and its message lists the values that model does accept.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 3,
+      "file": "audio/s12_03.wav",
+      "clip_sha": "b9aa97ec5698e235",
+      "text": "So asking for a value that no model has is a free way to see each model's list, and that's how we'll begin.",
+      "tts_text": "So asking for a value that no model has is a free way to see each model's list, and that's how we'll begin.",
+      "heard": "So asking for a value that no model has is a free way to see each model's list, and that's how we'll begin.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 0,
+      "file": "audio/s13_00.wav",
+      "clip_sha": "bc60748d0407a30c",
+      "text": "Here's the experiment file we'll run.",
+      "tts_text": "Here's the experiment file we'll run.",
+      "heard": "Here's the experiment file will run.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "we'll",
+          "heard": "will",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 1,
+      "file": "audio/s13_01.wav",
+      "clip_sha": "c75dd34e05eedd5e",
+      "text": "It runs the changelog eval file: five stimuli from earlier, each graded by code, with no judge, so the recorded cost is the whole cost.",
+      "tts_text": "It runs the changelog [eval](/ˌivˈæl/) file: five stimuli from earlier, each graded by code, with no judge, so the recorded cost is the whole cost.",
+      "heard": "It runs the changelog EVAL file, five stimuli from earlier, each graded by code with no judge, so the recorded cost is the whole cost.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 2,
+      "file": "audio/s13_02.wav",
+      "clip_sha": "10522f120e9ee157",
+      "text": "Its variants may differ in the model and in reasoning effort, and in nothing else.",
+      "tts_text": "Its variants may differ in the model and in reasoning effort, and in nothing else.",
+      "heard": "Its variants may differ in the model and in reasoning effort and in nothing else.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 3,
+      "file": "audio/s13_03.wav",
+      "clip_sha": "dae30aec51840e12",
+      "text": "There are three trials of each stimulus, which makes fifteen trials per variant, and sixty in all.",
+      "tts_text": "There are three trials of each stimulus, which makes fifteen trials per variant, and sixty in all.",
+      "heard": "There are three trials of each stimulus, which makes 15 trials per variant and 60 in all.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s13",
+      "i": 4,
+      "file": "audio/s13_04.wav",
+      "clip_sha": "0499960dd86297ac",
+      "text": "Then come the four variants: two models, each at low effort and at high effort.",
+      "tts_text": "Then come the four variants: two models, each at low effort and at high effort.",
+      "heard": "Then come the four variants, two models, each at low effort and at high effort.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 5,
+      "file": "audio/s13_05.wav",
+      "clip_sha": "bc81ebca61170220",
+      "text": "For haiku, the file names haiku five point five, a newer model in the same family, because the haiku model we've used so far takes no effort setting, as the first step will show.",
+      "tts_text": "For haiku, the file names haiku five point five, a newer model in the same family, because the haiku model we've used so far takes no effort setting, as the first step will show.",
+      "heard": "For Hiku, the file name's Hiku 5.5, a newer model in the same family, because the Hiku model we've used so far takes no effort setting as the first step will show.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        },
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s14",
+      "i": 0,
+      "file": "audio/s14_00.wav",
+      "clip_sha": "60e155c7871977b4",
+      "text": "That's the file; now let's run it and price each variant.",
+      "tts_text": "That's the file; now let's run it and price each variant.",
+      "heard": "That's the file, now let's run it and price each variant.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 1,
+      "file": "audio/s14_01.wav",
+      "clip_sha": "bf1369c5daeed281",
+      "text": "We'll end with one sentence that names the variant we'd choose, and the numbers behind it.",
+      "tts_text": "We'll end with one sentence that names the variant we'd choose, and the numbers behind it.",
+      "heard": "We'll end with one sentence that names the variant we choose and the numbers behind it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s14",
+      "i": 2,
+      "file": "audio/s14_02.wav",
+      "clip_sha": "c353bb3a51f43d6c",
+      "text": "Which of the four would you expect to cost least for each passing trial?",
+      "tts_text": "Which of the four would you expect to cost least for each passing trial?",
+      "heard": "Which of the four would you expect to cost least for each passing trial?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 3,
+      "file": "audio/s14_03.wav",
+      "clip_sha": "b749f7ec6a23fa0f",
+      "text": "If you tried it yourself, here's what you'd see.",
+      "tts_text": "If you tried it yourself, here's what you'd see.",
+      "heard": "If you tried it yourself, here's what you'd see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 0,
+      "file": "audio/s15_00.wav",
+      "clip_sha": "54d90f38b1d250af",
+      "text": "First, the free check: we run the eval file with the one typo-fix request, from the start of the course, on three models.",
+      "tts_text": "First, the free check: we run the [eval](/ˌivˈæl/) file with the one typo-fix request, from the start of the course, on three models.",
+      "heard": "First, the free check. We run the eval file with the one type of X request from the start of the course on three models.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "typo-fix",
+          "heard": "type of X",
+          "similarity": 0.62
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 1,
+      "file": "audio/s15_01.wav",
+      "clip_sha": "781a8c2bd5395de0",
+      "text": "Dash dash reasoning effort sets the effort for every trial of a run, as dash dash model sets the model.",
+      "tts_text": "Dash dash reasoning effort sets the effort for every trial of a run, as dash dash model sets the model.",
+      "heard": "Dash-reasoning effort sets the effort for every trial of a run, as Dash-model sets the model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s15",
+      "i": 2,
+      "file": "audio/s15_02.wav",
+      "clip_sha": "e10e437136f64734",
+      "text": "We give it a value that no model accepts: here, the word list.",
+      "tts_text": "We give it a value that no model accepts: here, the word list.",
+      "heard": "We give it a value that no model accepts, here, the word list.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 3,
+      "file": "audio/s15_03.wav",
+      "clip_sha": "0387a51340ac7320",
+      "text": "Every trial should be rejected before it starts, so nothing is spent.",
+      "tts_text": "Every trial should be rejected before it starts, so nothing is spent.",
+      "heard": "Every trial should be rejected before it starts, so nothing is spent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 4,
+      "file": "audio/s15_04.wav",
+      "clip_sha": "0b07293c20381726",
+      "text": "Each trial ends in ERROR, as planned, and each error names the efforts that its model accepts.",
+      "tts_text": "Each trial ends in ERROR, as planned, and each error names the efforts that its model accepts.",
+      "heard": "Each trial ends in error as planned, and each error names the efforts that its model accepts.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 0,
+      "file": "audio/s16_00.wav",
+      "clip_sha": "307a9ee0b99e217d",
+      "text": "That output runs past one screen, so here's what it said, model by model.",
+      "tts_text": "That output runs past one screen, so here's what it said, model by model.",
+      "heard": "That output runs past one screen, so here's what it said, model by model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 1,
+      "file": "audio/s16_01.wav",
+      "clip_sha": "34c27b37e8b76432",
+      "text": "Haiku four point five, the model we've used so far, doesn't support reasoning effort at all.",
+      "tts_text": "Haiku four point five, the model we've used so far, doesn't support reasoning effort at all.",
+      "heard": "HIKO 4.5, the model we've used so far, doesn't support reasoning effort at all.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s16",
+      "i": 2,
+      "file": "audio/s16_02.wav",
+      "clip_sha": "3a52e9ea129222e2",
+      "text": "Haiku five point five accepts five values, from low to max.",
+      "tts_text": "Haiku five point five accepts five values, from low to max.",
+      "heard": "Iku 5.5 accepts five values from low to max.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s16",
+      "i": 3,
+      "file": "audio/s16_03.wav",
+      "clip_sha": "601aa3bb9209fa00",
+      "text": "Terra accepts the same five, and also a value named none.",
+      "tts_text": "Terra accepts the same five, and also a value named none.",
+      "heard": "Terra accepts the same 5, and also a value named None.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s16",
+      "i": 4,
+      "file": "audio/s16_04.wav",
+      "clip_sha": "e6f00c685aa7eba0",
+      "text": "Low and high are accepted by both, so those are our two efforts.",
+      "tts_text": "Low and high are accepted by both, so those are our two efforts.",
+      "heard": "Low and high are accepted by both, so those are our two efforts.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 0,
+      "file": "audio/s17_00.wav",
+      "clip_sha": "2bc9c3dbed3f180e",
+      "text": "Our experiment file is now in the evals folder.",
+      "tts_text": "Our experiment file is now in the [evals](/ˌivˈælz/) folder.",
+      "heard": "Our experiment file is now in the EVAL's folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 1,
+      "file": "audio/s17_01.wav",
+      "clip_sha": "b0f9909166da2cca",
+      "text": "Before spending anything, we check the plan with a dry run, which starts no agent.",
+      "tts_text": "Before spending anything, we check the plan with a dry run, which starts no agent.",
+      "heard": "Before spending anything, we check the plan with a dry run, which starts no agent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 2,
+      "file": "audio/s17_02.wav",
+      "clip_sha": "3244a25179cf6532",
+      "text": "It prints a block for each of the four variants, naming its model, and the last of them are on screen.",
+      "tts_text": "It prints a block for each of the four variants, naming its model, and the last of them are on screen.",
+      "heard": "It prints a block for each of the four variants, naming its model, and the last of them are on screen.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 0,
+      "file": "audio/s18_00.wav",
+      "clip_sha": "2eec268fbda66af1",
+      "text": "Now the real run: the same command without the dry run, with two workers, saved under results, lesson sixteen.",
+      "tts_text": "Now the real run: the same command without the dry run, with two workers, saved under results, lesson sixteen.",
+      "heard": "Now the real run, the same command without the dry run with two workers, saved under results lesson 16.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 1,
+      "file": "audio/s18_01.wav",
+      "clip_sha": "48a443886f831c29",
+      "text": "It spends sixty short agent runs.",
+      "tts_text": "It spends sixty short agent runs.",
+      "heard": "It spends 60 short agent runs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 2,
+      "file": "audio/s18_02.wav",
+      "clip_sha": "22d91ba47230c57b",
+      "text": "At the end, we're after the table, with its row of stimuli passed and its row of tokens.",
+      "tts_text": "At the end, we're after the table, with its row of stimuli passed and its row of tokens.",
+      "heard": "At the end we're after the table with its row of stimuli passed and its row of tokens.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 3,
+      "file": "audio/s18_03.wav",
+      "clip_sha": "31f8cd8b21a7465e",
+      "text": "Several minutes later, every variant shows five of five stimuli passed, so Vally says that no variant beat the baseline.",
+      "tts_text": "Several minutes later, every variant shows five of five stimuli passed, so Valley says that no variant beat the baseline.",
+      "heard": "Several minutes later, every variant shows five of five stimuli passed, so Valley says that no variant beat the baseline.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 4,
+      "file": "audio/s18_04.wav",
+      "clip_sha": "30c11c35fc952b24",
+      "text": "Under that is the row of total tokens, where the two terra variants are lowest, and nothing here mentions cost.",
+      "tts_text": "Under that is the row of total tokens, where the two terra variants are lowest, and nothing here mentions cost.",
+      "heard": "Under that is the row of total tokens, where the two tera variants are lowest and nothing here mentions cost.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 5,
+      "file": "audio/s18_05.wav",
+      "clip_sha": "d9dca54bb33fd2a7",
+      "text": "So let's look in the results folder.",
+      "tts_text": "So let's look in the results folder.",
+      "heard": "So let's look in the results folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 6,
+      "file": "audio/s18_06.wav",
+      "clip_sha": "791694e187898c27",
+      "text": "There's one folder, named with the time of the run, and it holds a folder for each variant.",
+      "tts_text": "There's one folder, named with the time of the run, and it holds a folder for each variant.",
+      "heard": "There's one folder named with the time of the run, and it holds a folder for each variant.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 0,
+      "file": "audio/s19_00.wav",
+      "clip_sha": "975ee7ac768fa77b",
+      "text": "We give those four results files to the cost calculator, which reads them in the browser and sends nothing anywhere.",
+      "tts_text": "We give those four results files to the cost calculator, which reads them in the browser and sends nothing anywhere.",
+      "heard": "We give those four results files to the cost calculator, which reads them in the browser and sends nothing anywhere.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 1,
+      "file": "audio/s19_01.wav",
+      "clip_sha": "247be0bea59dc26a",
+      "text": "It shows a card for each variant, with the trials, how many passed, how many ended in ERROR, the total cost, and the cost per passing trial.",
+      "tts_text": "It shows a card for each variant, with the trials, how many passed, how many ended in ERROR, the total cost, and the cost per passing trial.",
+      "heard": "Shows a card for each variant, with the trials, how many passed, how many ended in error, the total cost, and the cost-perpassing trial.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "It",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s19",
+      "i": 2,
+      "file": "audio/s19_02.wav",
+      "clip_sha": "87f254e4a1779205",
+      "text": "Underneath is the bill for the whole experiment: about ninety-one AIU, which is ninety-one cents.",
+      "tts_text": "Underneath is the bill for the whole experiment: about ninety-one AIU, which is ninety-one cents.",
+      "heard": "Underneath is the bill for the whole experiment, about 91 A.I.U., which is 91 cents.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s20",
+      "i": 0,
+      "file": "audio/s20_00.wav",
+      "clip_sha": "58ffb5e146cc07dd",
+      "text": "Here are the columns we need, side by side.",
+      "tts_text": "Here are the columns we need, side by side.",
+      "heard": "Here are the columns we need side by side.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 1,
+      "file": "audio/s20_01.wav",
+      "clip_sha": "db92ee1e0f91ef87",
+      "text": "All four variants passed fifteen of fifteen trials.",
+      "tts_text": "All four variants passed fifteen of fifteen trials.",
+      "heard": "All four variants passed 15 of 15 trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s20",
+      "i": 2,
+      "file": "audio/s20_02.wav",
+      "clip_sha": "5d4d1eec99263443",
+      "text": "Haiku at low effort cost about point two one AIU for each passing trial.",
+      "tts_text": "Haiku at low effort cost about point two one AIU for each passing trial.",
+      "heard": "Iku at low effort cost about .21 AIU for each passing trial.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Haiku",
+          "heard": "Iku",
+          "similarity": 0.57
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 3,
+      "file": "audio/s20_03.wav",
+      "clip_sha": "638b54a5025dfcdf",
+      "text": "Haiku at high effort passed no more often, and cost a little more.",
+      "tts_text": "Haiku at high effort passed no more often, and cost a little more.",
+      "heard": "I grew at high effort past no more often and cost a little more.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Haiku",
+          "heard": "I grew",
+          "similarity": 0.5
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 4,
+      "file": "audio/s20_04.wav",
+      "clip_sha": "58dd6e7fab72d671",
+      "text": "Both terra variants passed no more often, and cost thirteen to fourteen times as much.",
+      "tts_text": "Both terra variants passed no more often, and cost thirteen to fourteen times as much.",
+      "heard": "Both terra variants passed no more often and cost 13 to 14 times as much.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s20",
+      "i": 5,
+      "file": "audio/s20_05.wav",
+      "clip_sha": "85625eaef86e1d90",
+      "text": "So haiku low beats the other three on both counts.",
+      "tts_text": "So haiku low beats the other three on both counts.",
+      "heard": "So Haikulu beats the other three on both counts.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku low",
+          "heard": "Haikulu",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 6,
+      "file": "audio/s20_06.wav",
+      "clip_sha": "34d28d0fa91a5dfe",
+      "text": "That gives us our sentence: on these five stimuli, we'd run haiku at low effort, because it passed every trial at the lowest cost for each pass.",
+      "tts_text": "That gives us our sentence: on these five stimuli, we'd run haiku at low effort, because it passed every trial at the lowest cost for each pass.",
+      "heard": "That gives us our sentence. On these five stimuli, we'd run haiku at low effort because it passed every trial at the lowest cost for each pass.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 0,
+      "file": "audio/s21_00.wav",
+      "clip_sha": "158503abd6450fdd",
+      "text": "So what should we make of that table?",
+      "tts_text": "So what should we make of that table?",
+      "heard": "So what should we make of that table?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 1,
+      "file": "audio/s21_01.wav",
+      "clip_sha": "5c65c62bb726ff25",
+      "text": "Every trial passed, so here, cost per passing trial is simply cost per trial.",
+      "tts_text": "Every trial passed, so here, cost per passing trial is simply cost per trial.",
+      "heard": "Every trial passed so here, cost per passing trial is simply cost per trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 2,
+      "file": "audio/s21_02.wav",
+      "clip_sha": "2b1c004ede7cf14e",
+      "text": "Yet the variants that cost the most by far are the ones that used the fewest tokens: tokens measure work, not price.",
+      "tts_text": "Yet the variants that cost the most by far are the ones that used the fewest tokens: tokens measure work, not price.",
+      "heard": "At the variance that cost the most by far are the ones that use the fewest tokens, tokens measure work not price.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Yet",
+          "heard": "At",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s22",
+      "i": 0,
+      "file": "audio/s22_00.wav",
+      "clip_sha": "b9c9de10216fb00e",
+      "text": "What a token costs depends on the model, even between two versions of one family.",
+      "tts_text": "What a token costs depends on the model, even between two versions of one family.",
+      "heard": "But a token costs depends on the model, even between two versions of one family.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "What",
+          "heard": "But",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 1,
+      "file": "audio/s22_01.wav",
+      "clip_sha": "97c2defe67d25625",
+      "text": "Our very first haiku trial, on version four point five, cost about two point four AIU for every hundred thousand tokens.",
+      "tts_text": "Our very first haiku trial, on version four point five, cost about two point four AIU for every hundred thousand tokens.",
+      "heard": "Our very first haiku trial on version 4.5 cost about 2.4AiU for every 100,000 tokens.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s22",
+      "i": 2,
+      "file": "audio/s22_02.wav",
+      "clip_sha": "c612ffef2ac4eb98",
+      "text": "This run's haiku five point five record cost about point two two AIU for the same number of tokens.",
+      "tts_text": "This run's haiku five point five record cost about point two two AIU for the same number of tokens.",
+      "heard": "This runs Hiku 5.5 record cost about .22AIU for the same number of tokens.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s22",
+      "i": 3,
+      "file": "audio/s22_03.wav",
+      "clip_sha": "ed578e351deb5355",
+      "text": "On our account, that makes the newer model about eleven times cheaper per token.",
+      "tts_text": "On our account, that makes the newer model about eleven times cheaper per token.",
+      "heard": "On our account, that makes the newer model, about 11 times cheaper per token.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s22",
+      "i": 4,
+      "file": "audio/s22_04.wav",
+      "clip_sha": "c2b88271ac6d0a15",
+      "text": "So a cost measured on one model can't be carried over to another: change the model, and you measure again.",
+      "tts_text": "So a cost measured on one model can't be carried over to another: change the model, and you measure again.",
+      "heard": "So cost measured on one model can't be carried over to another, change the model, and you measure again.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "a",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 0,
+      "file": "audio/s23_00.wav",
+      "clip_sha": "fe428d99140f9f01",
+      "text": "Now the habit from before: how far can these counts be trusted?",
+      "tts_text": "Now the habit from before: how far can these counts be trusted?",
+      "heard": "Now the habit from before, how far can these counts be trusted?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 1,
+      "file": "audio/s23_01.wav",
+      "clip_sha": "1bb74c5d6e1e6be1",
+      "text": "Fifteen passes in fifteen trials gives a range of eighty to a hundred percent, and every variant has that same range.",
+      "tts_text": "Fifteen passes in fifteen trials gives a range of eighty to a hundred percent, and every variant has that same range.",
+      "heard": "15 passes in 15 trials, gives a range of 80 to 100 percent, and every variant has that same range.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s23",
+      "i": 2,
+      "file": "audio/s23_02.wav",
+      "clip_sha": "ce75be677f81d510",
+      "text": "So these trials can't tell the variants apart on pass rate, and here they don't need to: the case for haiku low rests on cost.",
+      "tts_text": "So these trials can't tell the variants apart on pass rate, and here they don't need to: the case for haiku low rests on cost.",
+      "heard": "So these trials can't tell the variants apart on pass rate and here they don't need to. The case for haiku low rests on cost.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 3,
+      "file": "audio/s23_03.wav",
+      "clip_sha": "be82cb4f92c2efe3",
+      "text": "Each model's most expensive trial cost between two and three times its cheapest, but the two bands are well apart: every haiku trial cost less than the cheapest terra trial.",
+      "tts_text": "Each model's most expensive trial cost between two and three times its cheapest, but the two bands are well apart: every haiku trial cost less than the cheapest terra trial.",
+      "heard": "Each model's most expensive trial cost between two and three times its cheapest, but the two bands are well apart. Every haiku trial costs less than the cheapest tera trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s23",
+      "i": 4,
+      "file": "audio/s23_04.wav",
+      "clip_sha": "87d4a324ad3f3ccc",
+      "text": "So the ranges make our sentence more careful: haiku low is as good, as far as these trials can tell, and far cheaper.",
+      "tts_text": "So the ranges make our sentence more careful: haiku low is as good, as far as these trials can tell, and far cheaper.",
+      "heard": "So the ranges make our sentence more careful. Haiku Lo is as good as far as these trials can tell and far cheaper.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s24",
+      "i": 0,
+      "file": "audio/s24_00.wav",
+      "clip_sha": "b2bb5147113c3575",
+      "text": "That statement is about these five requests only, the ones the skill now passes easily.",
+      "tts_text": "That statement is about these five requests only, the ones the skill now passes easily.",
+      "heard": "That statement is about these five requests only. The ones the skill now passes easily.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 1,
+      "file": "audio/s24_01.wav",
+      "clip_sha": "55f56af945757fcf",
+      "text": "But the wording requests, the ones graded by a judge, are where the models differed, and they'd need pricing the same way before changing the model for everything.",
+      "tts_text": "But the wording requests, the ones graded by a judge, are where the models differed, and they'd need pricing the same way before changing the model for everything.",
+      "heard": "But the wording requests, the ones graded by a judge, are where the models differed, and they'd need pricing the same way before changing the model for everything.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 2,
+      "file": "audio/s24_02.wav",
+      "clip_sha": "0c47ce01b5011b00",
+      "text": "Prices change, too, and your account's may differ from ours, so treat these numbers as a method you can repeat, not as facts about the models.",
+      "tts_text": "Prices change, too, and your account's may differ from ours, so treat these numbers as a method you can repeat, not as facts about the models.",
+      "heard": "Prices change too, and your accounts may differ from hours, so treat these numbers as a method you can repeat, not as facts about the models.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s25",
+      "i": 0,
+      "file": "audio/s25_00.wav",
+      "clip_sha": "cb7a43608a47cf24",
+      "text": "Let's put that in dollars, at one cent per AIU.",
+      "tts_text": "Let's put that in dollars, at one cent per AIU.",
+      "heard": "Let's put that in dollars at one cent per AIU.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 1,
+      "file": "audio/s25_01.wav",
+      "clip_sha": "9928e0932f31fd33",
+      "text": "This experiment's sixty trials came to ninety-one cents.",
+      "tts_text": "This experiment's sixty trials came to ninety-one cents.",
+      "heard": "This experiment's 60 trials came to 91 cents.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s25",
+      "i": 2,
+      "file": "audio/s25_02.wav",
+      "clip_sha": "956368b6caf07365",
+      "text": "One check after every edit, with these five stimuli on two models, is ten trials.",
+      "tts_text": "One check after every edit, with these five stimuli on two models, is ten trials.",
+      "heard": "One check after every edit with these 5 stimuli on two models is 10 trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s25",
+      "i": 3,
+      "file": "audio/s25_03.wav",
+      "clip_sha": "15176ab039b142f8",
+      "text": "On the two models from earlier in the course, where our trials have averaged about two point four AIU, that's twenty-four cents an edit, or four dollars eighty for twenty edits a month.",
+      "tts_text": "On the two models from earlier in the course, where our trials have averaged about two point four AIU, that's twenty-four cents an edit, or four dollars eighty for twenty edits a month.",
+      "heard": "On the two models from earlier in the course, where our trials have averaged about 2.4AiU, that's 24 cents an edit, or $4.80 for 20 edits a month.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "four dollars eighty",
+          "heard": "4.80",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s25",
+      "i": 4,
+      "file": "audio/s25_04.wav",
+      "clip_sha": "814fa79086af4cae",
+      "text": "On haiku low alone, the same five stimuli would cost about one AIU: a cent an edit.",
+      "tts_text": "On haiku low alone, the same five stimuli would cost about one AIU: a cent an edit.",
+      "heard": "On Hiku Low Alone, the same five stimuli would cost about one AIU, a sentin edit.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s25",
+      "i": 5,
+      "file": "audio/s25_05.wav",
+      "clip_sha": "1a0a927669e19c03",
+      "text": "A nightly run of every stimulus in the course, about thirty trials, comes to roughly twenty-one dollars over thirty nights at that earlier average, plus the judge calls that Vally doesn't count.",
+      "tts_text": "A nightly run of every stimulus in the course, about thirty trials, comes to roughly twenty-one dollars over thirty nights at that earlier average, plus the judge calls that Valley doesn't count.",
+      "heard": "Nightly run of every stimulus in the course, about 30 trials, comes to roughly $21 over 30 nights at that earlier average, plus the judge calls that Valley doesn't count.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "A",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s26",
+      "i": 0,
+      "file": "audio/s26_00.wav",
+      "clip_sha": "3e1c309ddae7201a",
+      "text": "For scale, verifying this whole course took about eleven dollars of agent runs, plus judge calls, which isn't large for one person.",
+      "tts_text": "For scale, verifying this whole course took about eleven dollars of agent runs, plus judge calls, which isn't large for one person.",
+      "heard": "For scale, verifying this whole course took about $11 of agent runs, plus judge calls, which isn't large for one person.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s26",
+      "i": 1,
+      "file": "audio/s26_01.wav",
+      "clip_sha": "0a2fb8852b44a917",
+      "text": "But it grows with the stimuli, the trials, the models, and how often you run, which is why the cheapest check that answers the question comes first.",
+      "tts_text": "But it grows with the stimuli, the trials, the models, and how often you run, which is why the cheapest check that answers the question comes first.",
+      "heard": "But it grows with the stimuli, the trials, the models, and how often you run, which is why the cheapest check that answers the question comes first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 2,
+      "file": "audio/s26_02.wav",
+      "clip_sha": "0b3bf2b9aa30f712",
+      "text": "Your plan's monthly allowance is spent first, so much of this may cost you nothing extra.",
+      "tts_text": "Your plan's monthly allowance is spent first, so much of this may cost you nothing extra.",
+      "heard": "Your plan's monthly allowance is spent first, so much of this may cost you nothing extra.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 0,
+      "file": "audio/s27_00.wav",
+      "clip_sha": "4e79a64b76c4ae0c",
+      "text": "Before you go on: what is cost per passing trial, and why does it divide by the passes?",
+      "tts_text": "Before you go on: what is cost per passing trial, and why does it divide by the passes?",
+      "heard": "Before you go on, what is cost per passing trial and why does it divide by the passes?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 1,
+      "file": "audio/s27_01.wav",
+      "clip_sha": "e3e6d5ff7b9805b6",
+      "text": "It's a variant's total cost, divided by the number of its trials that passed.",
+      "tts_text": "It's a variant's total cost, divided by the number of its trials that passed.",
+      "heard": "It's a variance total cost, divided by the number of its trials that passed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s27",
+      "i": 2,
+      "file": "audio/s27_02.wav",
+      "clip_sha": "e8e5cc3122565c24",
+      "text": "Dividing by the passes charges each useful result with the failures it took to get it.",
+      "tts_text": "Dividing by the passes charges each useful result with the failures it took to get it.",
+      "heard": "Dividing by the passes charges each useful result with the failures it took to get it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 3,
+      "file": "audio/s27_03.wav",
+      "clip_sha": "fc7f2c39b8bb5016",
+      "text": "So a cheap variant that often fails can be the more expensive one, and each model has to be measured for itself.",
+      "tts_text": "So a cheap variant that often fails can be the more expensive one, and each model has to be measured for itself.",
+      "heard": "So a cheap variant that often fails can be the more expensive one, and each model has to be measured for itself.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 0,
+      "file": "audio/s28_00.wav",
+      "clip_sha": "c3d783c36fbd230c",
+      "text": "You can now price the models your Copilot account offers, and state a choice with its evidence.",
+      "tts_text": "You can now price the models your Copilot account offers, and state a choice with its evidence.",
+      "heard": "You can now price the models your co-pilot account offers and state a choice with its evidence.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 1,
+      "file": "audio/s28_01.wav",
+      "clip_sha": "c824941527ae80ea",
+      "text": "But an app may call a model through a service of its own.",
+      "tts_text": "But an app may call a model through a service of its own.",
+      "heard": "but an app may call a model through a service of its own.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 2,
+      "file": "audio/s28_02.wav",
+      "clip_sha": "10cb49a7c5c03d28",
+      "text": "Can Vally run that model too, and what does a passing trial cost there?",
+      "tts_text": "Can Valley run that model too, and what does a passing trial cost there?",
+      "heard": "Can Valley run that model too, and what does a passing trial cost there?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 3,
+      "file": "audio/s28_03.wav",
+      "clip_sha": "c0fa80d6856b024e",
+      "text": "That's the next lesson.",
+      "tts_text": "That's the next lesson.",
+      "heard": "That's the next lesson.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 4,
+      "file": "audio/s28_04.wav",
+      "clip_sha": "27d9bef028570df3",
+      "text": "For practice, the exercises on the lesson page are worth doing first.",
+      "tts_text": "For practice, the exercises on the lesson page are worth doing first.",
+      "heard": "For practice, the exercises on the lesson page are worth doing first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "Yet",
+      "sentences": 1,
+      "heard": [
+        "At"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "typo-fix",
+      "sentences": 1,
+      "heard": [
+        "type of X"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "we'll",
+      "sentences": 2,
+      "heard": [
+        "will"
+      ],
+      "of": 4,
+      "share": 0.5
+    },
+    {
+      "word": "B",
+      "sentences": 1,
+      "heard": [
+        "Because 3A.I.U"
+      ],
+      "of": 2,
+      "share": 0.5
+    },
+    {
+      "word": "eighty",
+      "sentences": 1,
+      "heard": [
+        "4.80"
+      ],
+      "of": 2,
+      "share": 0.5
+    },
+    {
+      "word": "haiku",
+      "sentences": 6,
+      "heard": [
+        "Hiku",
+        "Iku",
+        "I grew",
+        "Haikulu"
+      ],
+      "of": 14,
+      "share": 0.43
+    },
+    {
+      "word": "costs",
+      "sentences": 2,
+      "heard": [
+        "since accosts",
+        "Because 3A.I.U"
+      ],
+      "of": 7,
+      "share": 0.29
+    },
+    {
+      "word": "cents",
+      "sentences": 1,
+      "heard": [
+        "since accosts"
+      ],
+      "of": 4,
+      "share": 0.25
+    },
+    {
+      "word": "dollars",
+      "sentences": 1,
+      "heard": [
+        "4.80"
+      ],
+      "of": 4,
+      "share": 0.25
+    },
+    {
+      "word": "three",
+      "sentences": 1,
+      "heard": [
+        "Because 3A.I.U"
+      ],
+      "of": 7,
+      "share": 0.14
+    },
+    {
+      "word": "our",
+      "sentences": 1,
+      "heard": [
+        "Now"
+      ],
+      "of": 8,
+      "share": 0.12
+    },
+    {
+      "word": "What",
+      "sentences": 1,
+      "heard": [
+        "But"
+      ],
+      "of": 9,
+      "share": 0.11
+    },
+    {
+      "word": "four",
+      "sentences": 1,
+      "heard": [
+        "4.80"
+      ],
+      "of": 9,
+      "share": 0.11
+    },
+    {
+      "word": "low",
+      "sentences": 1,
+      "heard": [
+        "Haikulu"
+      ],
+      "of": 9,
+      "share": 0.11
+    },
+    {
+      "word": "By",
+      "sentences": 1,
+      "heard": [
+        "I"
+      ],
+      "of": 11,
+      "share": 0.09
+    },
+    {
+      "word": "AIU",
+      "sentences": 1,
+      "heard": [
+        "Because 3A.I.U"
+      ],
+      "of": 13,
+      "share": 0.08
+    },
+    {
+      "word": "as",
+      "sentences": 1,
+      "heard": [
+        "is"
+      ],
+      "of": 12,
+      "share": 0.08
+    },
+    {
+      "word": "A",
+      "sentences": 3,
+      "heard": [
+        "since accosts"
+      ],
+      "of": 44,
+      "share": 0.07
+    },
+    {
+      "word": "In",
+      "sentences": 1,
+      "heard": [
+        "Now"
+      ],
+      "of": 21,
+      "share": 0.05
+    },
+    {
+      "word": "It",
+      "sentences": 1,
+      "heard": [],
+      "of": 20,
+      "share": 0.05
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 121,
+    "mismatched": 19,
+    "transcribed": 121,
+    "reused": 0,
+    "seconds_per_sentence": 0.125
+  }
+}

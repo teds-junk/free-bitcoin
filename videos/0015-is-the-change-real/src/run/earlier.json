@@ -1,0 +1,15 @@
+{
+  "_about": "Counts from the EARLIER videos' own runs that s11, s19 and s20 quote, each read from that video's src/run data on 2026-11-11 (not from the lesson pages). Each count is [passed, trials that finished].",
+  "judge_found_coding_details": true,
+  "judge_found_coding_details_source": "0012/src/run/trials.tsv: the judge said no to haiku's parser trial 0 and both of haiku's cache trials, each naming an implementation detail",
+  "conversation": {"model": "claude-haiku-4.5", "before": [2, 3], "after": [3, 3], "source": "0011/src/run/before.trials.json and after.trials.json: haiku 2 of 3 then 3 of 3; terra 3 of 3 both times"},
+  "loading": {"model": "gpt-5.6-terra", "before": [11, 11], "after": [11, 12], "source": "0009/src/run/counts.json: before, haiku 12 of 12 and terra 11 of 11 with one trial unfinished (ERROR); after, haiku 12 of 12 and terra 11 of 12 (one near-miss request loaded the skill)"},
+  "made_up_number_terra": {"before": [1, 3], "after": [3, 3], "source": "0005/src/run/before and after results.jsonl: the no-made-up-number grader on gpt-5.6-terra's typo-fix trials"},
+  "lesson3_terra_made_up": [5, 5],
+  "lesson3_source": "0003/src/run: all five gpt-5.6-terra patches end the entry with a made-up (#NN); none of haiku's five do",
+  "typo_fix_passed_in_every_later_run": true,
+  "typo_fix_source": "results/lesson-5-after (3 of 3), lesson-6, lesson-6-after, lesson-10 terra-with-skill: no-made-up-number passed on every gpt-5.6-terra typo-fix trial",
+  "no_skill_run_made_up_a_number": false,
+  "no_skill_source": "0010/src/run/terra-no-skill-typo-fix.patch and haiku-no-skill-typo-fix.patch: neither entry has a pull request number",
+  "judge_vs_labels": {"agreed": [11, 12], "tpr": [7, 7], "tnr": [4, 5], "source": "0013/src/run/decision.txt"}
+}

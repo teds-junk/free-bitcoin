@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The app writes traces</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.trace{display:flex;flex-direction:column;gap:12px;width:100%}.bar{position:relative;border-radius:10px;padding:14px 22px;font:500 32px/1.2 var(--font-code);color:var(--ink);white-space:nowrap;box-sizing:border-box}.bar.root{background:var(--tint-blue);width:100%}.bar.kid{background:var(--tint-cyan)}.bar .why{font:400 30px/1.2 var(--font-body);color:var(--ink-soft);margin-left:28px}.note.top{margin-bottom:-6px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">From OpenTelemetry traces</div>
+  <h2 class="scene-title">The app writes traces</h2>
+  <div class="stage">
+<p class="note top">one trace · every span carries its ID</p>
+  <div class="trace">
+    <div class="bar root" data-concept="root" data-rep="block">invoke_agent<span class="why">the root: no parent</span></div>
+    <div class="bar kid" style="margin-left:3%;width:17%" data-concept="kid0" data-rep="block">chat</div><div class="bar kid" style="margin-left:22%;width:18%" data-concept="kid1" data-rep="block">execute_tool</div><div class="bar kid" style="margin-left:42%;width:17%" data-concept="kid2" data-rep="block">chat</div><div class="bar kid" style="margin-left:61%;width:18%" data-concept="kid3" data-rep="block">execute_tool</div><div class="bar kid" style="margin-left:81%;width:17%" data-concept="kid4" data-rep="block">chat</div>
+  </div>
+  <p class="note">time runs left to right · each bar is one span</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "kid0",
+  "at": "3~a span",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "kid1",
+  "at": "3~tool call",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ },
+ {
+  "type": "focus",
+  "target": "root",
+  "at": "5",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+warning: Multiple graders with no scoring config
+✅ typo-fix [baseline (no golden inputs)] (1 failed as expected, 1 n/a)
+  ✓ [adds-an-entry] failed as expected — Pattern 'notes add' not found in workspace diff
+  ⊘ [no-made-up-number] N/A — pass allowed on the empty baseline — Pattern /(?m)^\+.*\(#\d+\)/ not found in workspace diff
+Score: 50.0% | baseline OK (graders correctly FAILED or had allowed baseline passes (N/A))
+

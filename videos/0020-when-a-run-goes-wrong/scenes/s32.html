@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Only the judge failed</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.annotated .code.dark.jb{font-size:30px;line-height:1.5;padding:22px 30px}.callout{font-size:32px}.stage{gap:22px}.annotated .code.dark.spell{font-size:64px;line-height:1.35;padding:22px 40px;min-width:860px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A judge call that fails</div>
+  <h2 class="scene-title">Only the judge failed</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark jb" data-lang="text"><code><span>ERROR  cache · </span><span data-concept="g" data-rep="code"><span>1/2 graders</span></span><span> · 10.5s</span>
+<span> </span><span data-concept="inv" data-rep="code"><span>Grading error; verdict is invalid.</span></span>
+<span> ✘ users-words  LLM judge failed: Model</span>
+<span>   </span><span data-concept="nm" data-rep="code"><span>"claude-sonnet-5-5"</span></span><span> is not available in Copilot.</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="g">the other grader ran, and passed</p><p class="callout" data-anchor="inv">no verdict from the judge</p><p class="callout" data-anchor="nm">not on the account’s list</p></aside>
+  </div>
+  <div class="annotated">
+    <pre class="code dark spell" data-lang="text"><code><span>claude-sonnet-5</span><span data-concept="bad" data-rep="code"><span>-</span></span><span>5</span>
+<span>claude-sonnet-5</span><span data-concept="good" data-rep="code"><span>.</span></span><span>5</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="bad">in the eval file</p><p class="callout" data-anchor="good">on the account’s list</p></aside>
+  </div>
+  <p class="note"><span class="mono">claude-haiku-4.5</span>’s block, without its list of models · from our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "g",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "inv",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "nm",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "bad",
+  "at": "4~hyphen",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "good",
+  "at": "4~dot",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

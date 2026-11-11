@@ -1,0 +1,109 @@
+name: changelog
+
+defaults:
+  timeout: 3m
+
+agent_environment:
+  skills:
+    - ../skills/changelog-entry
+
+stimuli:
+  - name: typo-fix
+    prompt: |
+      I fixed the typo in the help text for `notes add`
+      (it said "tittle"). Put that in the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    golden_patch:
+      path: golden/typo-fix.patch
+    graders:
+      - type: diff-contains
+        name: adds-an-entry
+        config:
+          value: "notes add"
+      - type: diff-not-contains
+        name: no-made-up-number
+        config:
+          pattern: '(?m)^\+.*\(#\d+\)'
+
+  - name: refactor
+    prompt: |
+      PR 61 is merged. It splits storage.js into three
+      smaller modules. Nothing changes for users, it's
+      purely a cleanup. Update the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    graders:
+      - type: diff-empty
+        name: adds-nothing
+
+  - name: security
+    prompt: |
+      PR 63 closes a hole: `notes export --out` let you
+      write outside the notes folder with a path like
+      ../../etc. It now refuses. Update the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    golden_patch:
+      path: golden/security.patch
+    graders:
+      - type: diff-contains
+        name: under-security
+        config:
+          pattern: '(?m)^\+### Security'
+
+  - name: two-changes
+    prompt: |
+      PR 60 is in. It adds a `--json` flag to
+      `notes list`, and while I was in there I fixed
+      the bug where page 2 repeated the last note of
+      page 1. Changelog please.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    grading_environment:
+      files:
+        - src: grading/check-entry.mjs
+          dest: .vally-grading/check-entry.mjs
+    golden_patch:
+      path: golden/two-changes.patch
+    graders:
+      - type: program
+        name: two-entries-in-place
+        config:
+          program: node
+          args:
+            - .vally-grading/check-entry.mjs
+            - Added=60
+            - Fixed=60
+
+  - name: after-release
+    prompt: |
+      PR 58 just landed: `notes add` now accepts
+      `--from-clipboard` to create a note from whatever
+      is on the clipboard. Add it to the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/just-released/CHANGELOG.md
+          dest: CHANGELOG.md
+    grading_environment:
+      files:
+        - src: grading/check-entry.mjs
+          dest: .vally-grading/check-entry.mjs
+    golden_patch:
+      path: golden/after-release.patch
+    graders:
+      - type: program
+        name: entry-in-new-unreleased
+        config:
+          program: node
+          args:
+            - .vally-grading/check-entry.mjs
+            - Added=58

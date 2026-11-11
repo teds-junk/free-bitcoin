@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml",
+  "variant": "main",
+  "stimulusName": "change-list-sort",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml::main::mai-code-1.1-flash::change-list-sort::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "mai-code-1.1-flash",
+  "trialIndex": 0,
+  "startedAt": "2026-11-10T07:36:14.960Z",
+  "status": "success",
+  "trajectoryId": "07040bd4-38a8-4c33-b613-8d8fb17204ee",
+  "executorSessionId": "88fd536f-377f-4435-97eb-ebf4cd1acb96",
+  "completedAt": "2026-11-10T07:36:28.441Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/pilot2/2026-11-10T07-35-23-904Z/changelog-entry/change-list-sort/mai-code-1.1-flash/0/events.jsonl"
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Check what the agent did</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.terms .semantic-block{min-height:260px}.terms .label{font-size:32px}.terms .title{font-size:42px;line-height:1.2}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">Check what the agent did</h1>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="file" data-rep="block" data-role="structure">
+      <div class="title words">The finished changelog</div><div class="label">all the hidden test sees</div>
+    </div>
+    <div class="semantic-block" data-concept="list" data-rep="block" data-role="attention">
+      <div class="title words">Did the entries come from the list?</div><div class="label"><span class="mono">release/merged.txt</span></div>
+    </div>
+    <div class="semantic-block" data-concept="commit" data-rep="block" data-role="failure">
+      <div class="title words">Did the agent commit or push?</div><div class="label">the release tool does that itself</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "file",
+  "at": "1~changelog",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "list",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "commit",
+  "at": "3",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "file",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

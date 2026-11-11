@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A judge call can fail</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.card{width:100%}.card .who{font-size:30px}.annotated .code.dark{font-size:30px;line-height:1.45;padding:24px 32px}.callout{font-size:32px}.stage{gap:20px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Where each answer lives</div>
+  <h2 class="scene-title">A judge call can fail</h2>
+  <div class="stage">
+<div class="card">
+    <div class="who"><span class="mono">results.jsonl</span> · one grader’s record, shortened</div>
+    <div class="annotated">
+      <pre class="code dark rec" data-lang="text"><code><span>{</span>
+<span>  "name": "users-words",</span>
+<span>  "status": </span><span data-concept="st" data-rep="code"><span>"error"</span></span><span>,</span>
+<span>  "kind": "llm",</span>
+<span>  "passed": false,</span>
+<span>  "score": </span><span data-concept="sc" data-rep="code"><span>0</span></span><span>,</span>
+<span>  "evidence": </span><span data-concept="ev" data-rep="code"><span>"LLM judge failed:</span></span>
+<span>    Model \"claude-sonnet-5-5\" is not available</span>
+<span>    in Copilot.</span>
+<span>    Available models: auto, …"</span>
+<span>}</span></code></pre>
+      <aside class="callouts"><p class="callout" data-anchor="st">no verdict was reached</p><p class="callout" data-anchor="sc">a placeholder, not a judgement</p><p class="callout" data-anchor="ev">the reason, word for word</p></aside>
+    </div>
+  </div>
+  <p class="note">from our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "st",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "sc",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ev",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

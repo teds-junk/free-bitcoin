@@ -1,0 +1,6 @@
+{
+ "_about": "Real, not a stand-in. Every trial with a recorded cost on claude-haiku-4.5 and gpt-5.6-terra in the runs the videos for lessons 1 to 15 saved under /Users/Shared/demo/practice/results (lesson-1, -3, -4, -5-before, -5-after, -6-look, -6, -6-after, -9-before, -9-after, -10, -11, -11-after, -12, -15), summed on 2026-11-11 before lesson 16's run. 4 terra trials had no cost recorded (ERROR) and are left out.",
+ "trials": 205,
+ "aiu": 487.71,
+ "by_model": {"claude-haiku-4.5": {"trials": 105, "aiu": 207.92}, "gpt-5.6-terra": {"trials": 100, "aiu": 279.79}}
+}

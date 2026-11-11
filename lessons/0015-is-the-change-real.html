@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 15: Is the change real — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 15 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Is the change real</h1>
+    <div class="lesson-meta">12 min · Compare a skill before and after an edit on the same stimuli, and state in one sentence what the result supports.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What is a variant, and what keeps a comparison between variants fair?
+        <details class="answer"><summary>Show answer</summary><p>One version of the set-up being compared: the same eval with one setting changed. Vally allows variants to differ only in the settings listed under <code>vary</code>, and reports drift otherwise.</p></details></li>
+      <li>What does a judge's TPR tell you?
+        <details class="answer"><summary>Show answer</summary><p>Of the trials you labelled yes, the share the judge also passed. A low TPR means the judge raises false alarms.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You have code graders you have tested and a judge you have measured, and you have edited the skill four times (in lessons 5, 6, 9 and 11) on the strength of small counts.</p>
+    <p><strong>This lesson answers:</strong> After I edit the skill, is a better count a real improvement or luck?</p>
+  </div>
+
+  <p class="drop-cap">Look back at how this course has talked about its own results. "One miss in two trials becoming none in two is a small sample." "Two failures in three becoming none in three is, once again, a small sample." Those caveats were honest, and they were also a debt. Lesson 3 showed that the same model with the same request gives different results from run to run. So when a count improves after an edit, some of that improvement may be chance. This lesson pays the debt: it gives you a way to say how much a count can be trusted, and uses it on one last edit to the skill.</p>
+
+  <h2 id="small-samples" data-mode="think">What a small sample can show</h2>
+
+  <p>When 7 of 10 trials pass, the 70% is an estimate. If you ran ten more trials you might get 5, or 9. What you really know is a range. The true pass rate, the one you would see over a very large number of trials, is probably somewhere between two values. "Probably" has a precise meaning here: ranges worked out this way contain the true rate about 95 times in 100. With ten trials the range is wide.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Count</th><th>Pass rate</th><th>Range the true rate is probably in</th></tr></thead>
+    <tbody>
+      <tr><td>7 of 10</td><td>70%</td><td>40% to 89%</td></tr>
+      <tr><td>9 of 10</td><td>90%</td><td>60% to 98%</td></tr>
+      <tr><td>70 of 100</td><td>70%</td><td>60% to 78%</td></tr>
+      <tr><td>90 of 100</td><td>90%</td><td>83% to 94%</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Now the question that ended lesson 14. After an edit, 7 of 10 becomes 9 of 10. The two ranges, 40 to 89 and 60 to 98, overlap almost completely. A skill whose true pass rate is 80% both before and after could easily produce those two counts. The result does not show a change. The same two rates over a hundred trials each give ranges that do not touch, and that would be evidence.</p>
+
+  <p>Three habits follow.</p>
+
+  <ul>
+    <li><strong>Compare like with like.</strong> Same stimuli, same graders, same model, both versions run in the same sitting. That is an experiment with two variants, as in lesson 10.</li>
+    <li><strong>Report counts, not just percentages.</strong> "100%" could be 3 of 3 or 300 of 300.</li>
+    <li><strong>When the ranges overlap, say "these trials cannot tell".</strong> It does not mean the edit did nothing. It means you do not know yet, and more trials are the way to find out.</li>
+  </ul>
+
+  <p>More trials narrow a range, but slowly: four times the trials for half the width. That is the real cost of certainty, and the reason to spend trials where a decision depends on them.</p>
+
+  <p>The calculator below does the arithmetic. It takes a count before and a count after, shows the range around each, and says whether they overlap. It starts with the example above.</p>
+
+  <div class="range-calc" data-before-pass="7" data-before-n="10" data-after-pass="9" data-after-n="10"></div>
+
+  <div class="source-citation">Sources: <a href="https://arxiv.org/abs/2411.00640">Evan Miller, Adding Error Bars to Evals, 2024</a>; <a href="https://arxiv.org/abs/2503.01747">Bowyer et al., 2025</a>, on why the common shortcut for these ranges fails at small counts. The ranges in the table are our own arithmetic, using the method that paper recommends, the Wilson interval at 95%.</div>
+
+  <h2 id="pass-columns" data-mode="works">What a before-and-after experiment prints and saves</h2>
+
+  <p>The comparison is an experiment, as in lesson 10. The starter has the file. Its variants differ from lesson 10's in one way: where that file had a skill or none, this one has the skill before the edit or after it.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/before-and-after.experiment.yaml</div>
+<pre><code class="language-yaml">name: before-and-after
+
+evals:
+  - wording.eval.yaml<span class="mark">1</span>
+
+vary: [/environment/skills, /defaults/model]
+
+baseline: haiku-before
+
+overrides:
+  runs: 3<span class="mark">2</span>
+
+variants:
+  haiku-before:
+    overrides:
+      model: claude-haiku-4.5
+    environment:
+      skills: [../skills/changelog-entry-before]<span class="mark">3</span>
+  haiku-after:
+    overrides:
+      model: claude-haiku-4.5
+    environment:
+      skills: [../skills/changelog-entry]<span class="mark">4</span>
+<span class="gap">10 lines hidden: the same two variants for gpt-5.6-terra</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>The eval from lesson 12: three requests worded in coding terms, graded by the judge.</li>
+      <li><code>overrides</code> at the top applies to every variant. <code>runs: 3</code> is the experiment's way of saying <code>--runs 3</code>: three trials of each stimulus.</li>
+      <li>A copy of the skill as it is before your edit. You make the copy in the checkpoint.</li>
+      <li>The skill itself, which you are about to edit.</li>
+    </ol>
+  </div>
+
+  <p>When the experiment runs, each stimulus that was not a clean pass gets a block, headed by its variant and model. With a judge, the block lists the judge's verdict for each trial. These are three of ours, shortened: one where no trial passed, one where two of three did, and one where a trial did not finish.</p>
+
+<pre class="output"><code>haiku-before · claude-haiku-4.5
+  FAIL  parser  0/3
+
+haiku-after · claude-haiku-4.5
+  FLAKY  cache  2 passed · 1 failed
+
+terra-before · gpt-5.6-terra
+  ERROR  cache  1 passed · 1 failed · 1 error</code></pre>
+
+  <p>A stimulus with no block passed all its trials. So you can count trials passed for each variant from these blocks.</p>
+
+  <p>The saved report, <code>report.md</code> in the experiment's run folder (lesson 10), gives the same counts another way. When a stimulus runs more than once, its row gains three columns. In their names, k is the number of trials. This is a real row from our run: one stimulus, three trials, two of which passed.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Stimulus</th><th>Pass Rate</th><th>pass@k</th><th>pass^k</th></tr></thead>
+    <tbody>
+      <tr><td>cache</td><td>2/3</td><td>100.0%</td><td>29.6%</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <ul>
+    <li><strong>Pass Rate</strong> is the count: trials that passed, out of trials that finished.</li>
+    <li><strong>pass@k</strong>, read "pass at k", asks whether at least one of the k trials passed. Here one did, so it shows 100%. It answers "can the agent do this at all?"</li>
+    <li><strong>pass^k</strong>, read "pass hat k", estimates the chance that k trials in a row would all pass. It is the pass rate multiplied by itself k times: two thirds, three times over, is 29.6%. It answers "can I count on this every time?"</li>
+  </ul>
+
+  <p>A stimulus that passes two times in three shows 100% under pass@k and under 30% under pass^k. For a skill that has to work every time, pass^k is the one that describes it.</p>
+
+  <p>Two practical notes. A stimulus with a trial that ended in <code>ERROR</code> shows dashes in these columns; its finished trials are counted in the terminal output only. And none of these columns gives a range. That is what the calculator in the previous section is for.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">Before an edit, 2 of 4 trials pass. After it, 4 of 4 pass. What does that result support?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">The edit doubled the pass rate</button></li>
+      <li><button onclick="checkAnswer(this, false)">The edit certainly made no difference</button></li>
+      <li><button onclick="checkAnswer(this, true)">Too few trials to tell yet</button></li>
+      <li><button onclick="checkAnswer(this, false)">The skill now always passes it</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. With four trials each, the two ranges overlap widely. The direction is encouraging, and it is not yet evidence. Try the numbers in the calculator.</div>
+    <div class="quiz-feedback incorrect">Too few trials to tell yet. With four trials each, the ranges around 2 of 4 and 4 of 4 overlap widely, so chance alone could produce this. Try the numbers in the calculator above.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/scoring-functions/">Vally docs, Scoring Functions</a>; the row and what the columns show are from our run on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="before-and-after" data-mode="use">Compare before and after</h2>
+
+  <p>Lesson 12 showed one model still writing coding details into entries. You will sharpen that rule, keep the old skill beside the new one, and run both on both models with the judge. This replaces the second line of the skill's list:</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">skills/changelog-entry/SKILL.md (the new second rule)</div>
+<pre><code class="language-markdown">- One line per change, written for people who use the tool:
+  say what they will notice. Do not say how it was coded.
+  Name no library, algorithm, data structure or source file.</code></pre>
+  </div>
+
+  <section class="checkpoint">
+    <h3>One edit, measured honestly</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: keep the skill as it is now, to compare against. This creates a folder.</span>
+        Open a terminal in <code>practice</code>.
+<pre><code class="language-bash">cp -R skills/changelog-entry \
+  skills/changelog-entry-before</code></pre></li>
+
+      <li><span class="goal">Goal: make the edit. This edits one file.</span>
+        In <code>skills/changelog-entry/SKILL.md</code>, replace the line that begins "One line per change" with the three lines shown above.</li>
+
+      <li><span class="goal">Goal: check the plan. This starts nothing.</span>
+        Open <code>evals/before-and-after.experiment.yaml</code>, the file shown above. Put your model names in it if they differ, then:
+<pre><code class="language-bash">vally experiment run \
+  evals/before-and-after.experiment.yaml --dry-run</code></pre>
+        <p class="expect">You should see: <code>Plans: 4</code>, and a block for each variant.</p></li>
+
+      <li><span class="goal">Goal: run both versions on both models, three trials each. This spends thirty-six agent runs and thirty-six judge calls, and takes several minutes.</span>
+<pre><code class="language-bash">vally experiment run \
+  evals/before-and-after.experiment.yaml \
+  --workers 2 --output-dir results/lesson-15</code></pre>
+        <p class="expect">You should see: a block for each stimulus that was not a clean pass, with the judge's reason for every failing trial, then the table of variants.</p></li>
+
+      <li><span class="goal">Goal: count trials, not stimuli.</span>
+        The table counts stimuli that passed in all three trials. For a range you need trials. For each variant, add up the trials that passed over its three stimuli, from the blocks above the table, leaving out any trial that ended in <code>ERROR</code>. A stimulus with no block passed all three.
+        <details class="answer"><summary>Show our counts</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Model</th><th>Before the edit</th><th>After the edit</th></tr></thead>
+            <tbody>
+              <tr><td>claude-haiku-4.5</td><td>3 of 9</td><td>8 of 9</td></tr>
+              <tr><td>gpt-5.6-terra</td><td>7 of 8, and 1 <code>ERROR</code></td><td>9 of 9</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </details></li>
+
+      <li><span class="goal">Goal: find the range around each count.</span>
+        For each model, type its before and after counts into the calculator above.
+        <p class="expect">You should see: for our first model, 12% to 65% before and 57% to 98% after, which overlap, just. For our second, 53% to 98% and 70% to 100%, which overlap too.</p></li>
+
+      <li><span class="goal">Goal: say what the result supports, and no more.</span>
+        Write one sentence per model.
+        <details class="answer"><summary>Show our two sentences</summary><p>"On claude-haiku-4.5 the new rule took the judge's passes from 3 of 9 to 8 of 9; the ranges overlap, just, so these trials cannot yet tell whether it is a real improvement." "On gpt-5.6-terra they went from 7 of 8 to 9 of 9; the ranges overlap, so these trials cannot tell whether the rule made any difference there."</p></details></li>
+    </ol>
+  </section>
+
+  <h2 id="earlier-fixes" data-mode="think">The earlier fixes, re-examined</h2>
+
+  <p>On one model the edit moved the count from 3 of 9 to 8 of 9: nothing passed on two of the three requests before, and only one trial failed after. Even so, the two ranges still touch, just. That is as large a move as nine trials can show without proving it, and a few more trials would very likely settle it. On the other model there was almost nothing left to fix, and so nothing the trials could show. Neither result is a failure of the edit. Both are honest statements of what eight or nine trials can and cannot tell you.</p>
+
+  <p>Now apply the same honesty backwards. In lesson 9, loading went from 1 of 2 to 2 of 2. In lesson 11, conversations went from 1 of 3 to 3 of 3. Put those in the calculator: the ranges overlap. Those runs did not prove their fixes worked. What made them reasonable was something else: in each case the patch showed what caused the failure, the rule addressed exactly that cause, and the result moved the right way. That is a sound reason to keep a rule. It is not the same as having measured it, and you should know which of the two you have.</p>
+
+  <p>Even our clearest early fix needs this care. In lesson 5, on <code>gpt-5.6-terra</code>, the <code>no-made-up-number</code> grader went from 1 of 3 to 3 of 3, and taken alone those ranges overlap widely. What makes that result strong is everything around it: five trials of five in lesson 3 with the same failure, the same stimulus passing in every later run, and lesson 10's run with no skill showing that the first draft caused it. Several small results that agree, a cause you can see in a patch, and a comparison with no skill are what a result you can defend looks like.</p>
+
+  <p>One more caution, from lesson 6. Every count in this lesson is only as good as the grader that produced it. There a script passed a trial that had deleted a released version's heading. A range around a count from that grader would have been a careful measurement of the wrong thing. Test the graders first, as in lessons 7 and 8; only then is a range worth working out.</p>
+
+  <p>One row of the experiment's table has not come up yet. Beneath the counts, as in lesson 10, are each variant's tokens, added up over all its trials. They are the agent's tokens; the judge's are not included. In our run: 724.9k before the edit and 679.0k after on <code>claude-haiku-4.5</code>, and 414.7k and 564.8k on <code>gpt-5.6-terra</code>, whose "before" variant had a trial end in <code>ERROR</code>, so its total covers less work. The two models differ from each other far more than the edit changed either of them. What that difference costs, for each trial that passes, is the next lesson's question.</p>
+
+  <div class="primary-source">
+    <p><a href="https://arxiv.org/abs/2411.00640">Adding Error Bars to Evals, Evan Miller, 2024</a></p>
+    <p>The standard short paper on treating eval results as estimates. Read the introduction and the recommendations. Its formulas assume more trials than you will usually have; the idea carries over even when the arithmetic does not.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, say what pass@k and pass^k each answer, and which to trust for a skill you rely on.
+        <details class="answer"><summary>Show model answer</summary><p>pass@k answers "did at least one of k trials pass?", which is about whether the agent can do the task at all. pass^k estimates the chance that k trials in a row all pass, which is about doing it every time. For a skill you rely on, pass^k is the one to trust.</p></details></li>
+      <li>For <code>gpt-5.6-terra</code>, which passed nearly everything before, how would you find out whether the new rule helps?
+        <details class="answer"><summary>Show model answer</summary><p>Run more trials of the same experiment, or add requests that model finds harder, since it passed nearly everything before. At a pass rate near 7 in 8 before, the calculator shows that even a perfect score afterwards needs about eighty trials per version before the ranges separate. Harder requests, on which the "before" skill fails more often, are the cheaper route.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="15" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> compare a skill before and after an edit on the same stimuli, and state in one sentence what the result supports.</p>
+    <p><strong>Up next:</strong> <a href="./0016-what-a-passing-trial-costs.html">What a passing trial costs</a>. You can tell whether an edit helped. The same table also printed tokens for each variant, and they differ by model. What does a passing trial cost?</p>
+    <a class="next-lesson" href="./0016-what-a-passing-trial-costs.html">Next lesson: What a passing trial costs <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+  <script src="../assets/range-calculator.js"></script>
+</body>
+</html>

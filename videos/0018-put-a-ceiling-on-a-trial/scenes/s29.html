@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Budget, or limit?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#kind{width:100%;padding:36px 40px 44px;gap:24px}#kind .parts{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;width:100%}#kind .part{min-height:280px}#kind .part .title{font-size:52px;line-height:1.2}#kind .part .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">Budget, or limit?</h2>
+  <div class="stage">
+<div class="semantic-block" id="kind" data-role="structure">
+    <div class="title words">a ceiling on a trial</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title words">a budget grader</div><div class="label">judges the finished trial · by then the cost is spent</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title words">a limit under constraints</div><div class="label">acts while the agent works · stops it</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#kind",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

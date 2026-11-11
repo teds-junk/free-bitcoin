@@ -1,0 +1,3 @@
+events.jsonl
+metadata.json
+workspace.patch

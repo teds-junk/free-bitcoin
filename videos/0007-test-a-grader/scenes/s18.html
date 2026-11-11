@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Grader by grader</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.both{font-size:32px}.both th{font-size:30px}.both td{padding-top:13px;padding-bottom:13px}.both td.mono{font-family:var(--font-code);font-size:30px}.stage{justify-content:flex-start}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Prove the graders</div>
+  <h2 class="scene-title">Grader by grader</h2>
+  <div class="stage">
+<table class="data-table full both">
+    <thead><tr><th>Stimulus</th><th>Grader</th><th><span data-concept="c-with" data-rep="head">With the golden patch</span></th><th><span data-concept="c-without" data-rep="head">Without it</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono stim">typo-fix</td><td class="mono"><span data-concept="both" data-rep="cell">adds-an-entry</span></td><td><span data-concept="passed" data-rep="cell">passed</span></td><td><span data-concept="fae" data-rep="cell">failed as expected</span></td></tr>
+<tr><td class="mono stim"></td><td class="mono"><span data-concept="untested" data-rep="cell">no-made-up-number</span></td><td><span data-concept="passed" data-rep="cell">passed</span></td><td><span data-concept="na" data-rep="cell">N/A</span></td></tr>
+<tr><td class="mono stim">refactor</td><td class="mono"><span data-concept="untested" data-rep="cell">adds-nothing</span></td><td><span data-concept="notrun" data-rep="cell">not run: no golden patch</span></td><td><span data-concept="na" data-rep="cell">N/A</span></td></tr>
+<tr><td class="mono stim">security</td><td class="mono"><span data-concept="both" data-rep="cell">under-security</span></td><td><span data-concept="passed" data-rep="cell">passed</span></td><td><span data-concept="fae" data-rep="cell">failed as expected</span></td></tr>
+<tr><td class="mono stim">two-changes</td><td class="mono"><span data-concept="both" data-rep="cell">two-entries-in-place</span></td><td><span data-concept="passed" data-rep="cell">passed</span></td><td><span data-concept="fae" data-rep="cell">failed as expected</span></td></tr>
+<tr><td class="mono stim">after-release</td><td class="mono"><span data-concept="both" data-rep="cell">entry-in-new-unreleased</span></td><td><span data-concept="passed" data-rep="cell">passed</span></td><td><span data-concept="fae" data-rep="cell">failed as expected</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "passed",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "fae",
+  "at": "2~failed as expected",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "na",
+  "at": "2~two are",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

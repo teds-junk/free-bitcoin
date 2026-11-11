@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Required: one call must match</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">The tool-calls grader</div>
+  <h2 class="scene-title">Required: one call must match</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:spec · regenerate with: node file-panel.js --id spec --file src/state/release.eval.yaml --label evals/release.eval.yaml --width 46 --rows 9 --show 28-52 --expect 34=reads-the-list --expect '44=git (commit|push)' --mark 30=test:every-change-handled --mark 34=g1:reads-the-list --mark 36=req --mark '37=nm:^(view|bash)$' --mark '38=pat:release/merged\.txt' --mark 40=g2:never-commits --mark 42=dis --mark '44=cmd:git (commit|push)' --mark 45=loop:max-repeat --mark 46=g3:no-loop --mark 48=max --mark 50=g4:loads-the-skill --mark '52=req4:[changelog-entry]' --into scenes/s07.html -->
+<div class="file-panel" id="spec" data-file="evals/release.eval.yaml" data-lines="52" data-rows="9" style="--rows:9;--cols:46;--ln:2">
+<div class="code-file">evals/release.eval.yaml<span class="file-meta">52 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="yaml"><code>
+<span class="file-row file-skip" data-hidden="1-27"><span class="ln">⋮</span><span class="elide">27 lines hidden · 1–27</span></span>
+<span class="file-row" data-line="28"><span class="ln">28</span><span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">graders</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="29"><span class="ln">29</span><span style="color:#B3C0BF">      - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">run-command</span></span>
+<span class="file-row" data-line="30"><span class="ln">30</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span data-concept="test" data-rep="code"><span style="color:#3CC0B3">every-change-handled</span></span></span>
+<span class="file-row" data-line="31"><span class="ln">31</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="32"><span class="ln">32</span><span style="color:#B3C0BF">          </span><span style="color:#4EA5E6">command</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">node </span></span>
+<span class="file-row" data-line="32" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:14ch"></i><span style="color:#3CC0B3">.vally-grading/check-release.mjs</span></span>
+<span class="file-row" data-line="33"><span class="ln">33</span><span style="color:#B3C0BF">      - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">tool-calls</span></span>
+<span class="file-row" data-line="34"><span class="ln">34</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span data-concept="g1" data-rep="code"><span style="color:#3CC0B3">reads-the-list</span></span></span>
+<span class="file-row" data-line="35"><span class="ln">35</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="36"><span class="ln">36</span><span style="color:#B3C0BF">          </span><span data-concept="req" data-rep="code"><span style="color:#4EA5E6">required</span><span style="color:#B3C0BF">:</span></span></span>
+<span class="file-row" data-line="37"><span class="ln">37</span><span style="color:#B3C0BF">            - </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span data-concept="nm" data-rep="code"><span style="color:#3CC0B3">^(view|bash)$</span></span></span>
+<span class="file-row" data-line="38"><span class="ln">38</span><span style="color:#B3C0BF">              </span><span style="color:#4EA5E6">pattern</span><span style="color:#B3C0BF">: </span><span data-concept="pat" data-rep="code"><span style="color:#3CC0B3">release/merged\.txt</span></span></span>
+<span class="file-row" data-line="39"><span class="ln">39</span><span style="color:#B3C0BF">      - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">tool-calls</span></span>
+<span class="file-row" data-line="40"><span class="ln">40</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span data-concept="g2" data-rep="code"><span style="color:#3CC0B3">never-commits</span></span></span>
+<span class="file-row" data-line="41"><span class="ln">41</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="42"><span class="ln">42</span><span style="color:#B3C0BF">          </span><span data-concept="dis" data-rep="code"><span style="color:#4EA5E6">disallowed</span><span style="color:#B3C0BF">:</span></span></span>
+<span class="file-row" data-line="43"><span class="ln">43</span><span style="color:#B3C0BF">            - </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">^bash$</span></span>
+<span class="file-row" data-line="44"><span class="ln">44</span><span style="color:#B3C0BF">              </span><span style="color:#4EA5E6">command</span><span style="color:#B3C0BF">: </span><span data-concept="cmd" data-rep="code"><span style="color:#3CC0B3">git (commit|push)</span></span></span>
+<span class="file-row" data-line="45"><span class="ln">45</span><span style="color:#B3C0BF">      - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span data-concept="loop" data-rep="code"><span style="color:#3CC0B3">max-repeat</span></span></span>
+<span class="file-row" data-line="46"><span class="ln">46</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span data-concept="g3" data-rep="code"><span style="color:#3CC0B3">no-loop</span></span></span>
+<span class="file-row" data-line="47"><span class="ln">47</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="48"><span class="ln">48</span><span style="color:#B3C0BF">          </span><span data-concept="max" data-rep="code"><span style="color:#4EA5E6">max</span><span style="color:#B3C0BF">: </span><span style="color:#EA6AA6">3</span></span></span>
+<span class="file-row" data-line="49"><span class="ln">49</span><span style="color:#B3C0BF">      - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">skill-invocation</span></span>
+<span class="file-row" data-line="50"><span class="ln">50</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span data-concept="g4" data-rep="code"><span style="color:#3CC0B3">loads-the-skill</span></span></span>
+<span class="file-row" data-line="51"><span class="ln">51</span><span style="color:#B3C0BF">        </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="52"><span class="ln">52</span><span style="color:#B3C0BF">          </span><span style="color:#4EA5E6">required</span><span style="color:#B3C0BF">: </span><span data-concept="req4" data-rep="code"><span style="color:#B3C0BF">[</span><span style="color:#3CC0B3">changelog-entry</span><span style="color:#B3C0BF">]</span></span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="52" style="height:364px" aria-hidden="true"><b class="file-map-view" style="top:189px;height:49px"></b><svg width="120" height="364" viewBox="0 0 120 364" shape-rendering="crispEdges"><rect x="0" y="0" width="7.54" height="4" fill="#4EA5E6" opacity=".38"/><rect x="8.14" y="0" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.2" y="0" width="13.64" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="14" width="15.67" height="4" fill="#4EA5E6" opacity=".38"/><rect x="16.27" y="14" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="4.07" y="21" width="13.64" height="4" fill="#4EA5E6" opacity=".38"/><rect x="18.31" y="21" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="22.37" y="21" width="3.47" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="35" width="33.98" height="4" fill="#4EA5E6" opacity=".38"/><rect x="34.58" y="35" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="4.07" y="42" width="11.6" height="4" fill="#4EA5E6" opacity=".38"/><rect x="16.27" y="42" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="8.14" y="49" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.2" y="49" width="50.25" height="4" fill="#3CC0B3" opacity=".38"/><rect x="4.07" y="56" width="9.57" height="4" fill="#4EA5E6" opacity=".38"/><rect x="14.24" y="56" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="8.14" y="63" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.2" y="63" width="5.5" height="4" fill="#4EA5E6" opacity=".38"/><rect x="18.31" y="63" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="22.37" y="63" width="62.45" height="4" fill="#3CC0B3" opacity=".38"/><rect x="12.2" y="70" width="7.54" height="4" fill="#4EA5E6" opacity=".38"/><rect x="20.34" y="70" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="24.41" y="70" width="23.81" height="4" fill="#3CC0B3" opacity=".38"/><rect x="8.14" y="77" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.2" y="77" width="5.5" height="4" fill="#4EA5E6" opacity=".38"/><rect x="18.31" y="77" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="22.37" y="77" width="48.21" height="4" fill="#3CC0B3" opacity=".38"/><rect x="12.2" y="84" width="7.54" height="4" fill="#4EA5E6" opacity=".38"/><rect x="20.34" y="84" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="24.41" y="84" width="42.11" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="98" width="13.64" height="4" fill="#4EA5E6" opacity=".38"/><rect x="14.24" y="98" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="4.07" y="105" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="8.14" y="105" width="7.54" height="4" fill="#4EA5E6" opacity=".38"/><rect x="16.27" y="105" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="20.34" y="105" width="36.01" height="4" fill="#3CC0B3" opacity=".38"/><rect x="8.14" y="112" width="11.6" height="4" fill="#4EA5E6" opacity=".38"/><rect x="20.34" y="112" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="24.41" y="112" width="1.5" height="4" fill="#A4BA1E" opacity=".38"/><rect x="26.44" y="112" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.2" y="119" width="9.57" height="4" fill="#3CC0B3" opacity=".38"/><rect x="24.41" y="119" width="5.5" height="4" fill="#3CC0B3" opacity=".38"/><rect x="32.54" y="119" width="19.74" height="4" fill="#3CC0B3" opacity=".38"/><rect x="54.92" y="119" width="17.71" height="4" fill="#3CC0B3" opacity=".38"/><rect x="75.25" y="119" width="13.64" height="4" fill="#3CC0B3" opacity=".38"/><rect x="91.53" y="119" width="5.5" height="4" fill="#3CC0B3" opacity=".38"/><rect x="99.66" y="119" width="9.57" height="4" fill="#3CC0B3" opacity=".38"/><rect x="12.2" y="126" width="11.6" height="4" fill="#3CC0B3" opacity=".38"/><rect x="26.44" y="126" width="11.6" height="4" fill="#3CC0B3" opacity=".38"/><rect x="40.68" y="126" width="3.47" height="4" fill="#3CC0B3" opacity=".38"/><rect x="46.78" y="126" width="38.04" height="4" fill="#3CC0B3" opacity=".38"/><rect x="8.14" y="133" width="33.98" height="4" fill="#4EA5E6" opacity=".38"/><rect x="42.71" y="133" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.2" y="140" width="15.67" height="4" fill="#4EA5E6" opacity=".38"/><rect x="28.47" y="140" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="16.27" y="147" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="20.34" y="147" width="11.6" height="4" fill="#3CC0B3" opacity=".38"/><rect x="34.58" y="147" width="3.47" height="4" fill="#3CC0B3" opacity=".38"/><rect x="40.68" y="147" width="15.67" height="4" fill="#3CC0B3" opacity=".38"/><rect x="16.27" y="154" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="20.34" y="154" width="9.57" height="4" fill="#3CC0B3" opacity=".38"/><rect x="32.54" y="154" width="42.11" height="4" fill="#3CC0B3" opacity=".38"/><rect x="77.29" y="154" width="1.5" height="4" fill="#3CC0B3" opacity=".38"/><rect x="81.36" y="154" width="38.04" height="4" fill="#3CC0B3" opacity=".38"/><rect x="8.14" y="161" width="38.04" height="4" fill="#4EA5E6" opacity=".38"/><rect x="46.78" y="161" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.2" y="168" width="9.57" height="4" fill="#4EA5E6" opacity=".38"/><rect x="22.37" y="168" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="16.27" y="175" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="20.34" y="175" width="5.5" height="4" fill="#4EA5E6" opacity=".38"/><rect x="26.44" y="175" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="30.51" y="175" width="50.25" height="4" fill="#3CC0B3" opacity=".38"/><rect x="20.34" y="182" width="7.54" height="4" fill="#4EA5E6" opacity=".38"/><rect x="28.47" y="182" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="32.54" y="182" width="64.48" height="4" fill="#3CC0B3" opacity=".38"/><rect x="8.14" y="189" width="13.64" height="4" fill="#4EA5E6"/><rect x="22.37" y="189" width="1.5" height="4" fill="#B3C0BF"/><rect x="12.2" y="196" width="1.5" height="4" fill="#B3C0BF"/><rect x="16.27" y="196" width="7.54" height="4" fill="#4EA5E6"/><rect x="24.41" y="196" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="196" width="21.77" height="4" fill="#3CC0B3"/><rect x="16.27" y="203" width="7.54" height="4" fill="#4EA5E6"/><rect x="24.41" y="203" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="203" width="40.08" height="4" fill="#3CC0B3"/><rect x="16.27" y="210" width="11.6" height="4" fill="#4EA5E6"/><rect x="28.47" y="210" width="1.5" height="4" fill="#B3C0BF"/><rect x="20.34" y="217" width="13.64" height="4" fill="#4EA5E6"/><rect x="34.58" y="217" width="1.5" height="4" fill="#B3C0BF"/><rect x="38.64" y="217" width="7.54" height="4" fill="#3CC0B3"/><rect x="48.81" y="217" width="64.48" height="4" fill="#3CC0B3"/><rect x="12.2" y="224" width="1.5" height="4" fill="#B3C0BF"/><rect x="16.27" y="224" width="7.54" height="4" fill="#4EA5E6"/><rect x="24.41" y="224" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="224" width="19.74" height="4" fill="#3CC0B3"/><rect x="16.27" y="231" width="7.54" height="4" fill="#4EA5E6"/><rect x="24.41" y="231" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="231" width="27.87" height="4" fill="#3CC0B3"/><rect x="16.27" y="238" width="11.6" height="4" fill="#4EA5E6"/><rect x="28.47" y="238" width="1.5" height="4" fill="#B3C0BF"/><rect x="20.34" y="245" width="15.67" height="4" fill="#4EA5E6"/><rect x="36.61" y="245" width="1.5" height="4" fill="#B3C0BF"/><rect x="24.41" y="252" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="252" width="7.54" height="4" fill="#4EA5E6"/><rect x="36.61" y="252" width="1.5" height="4" fill="#B3C0BF"/><rect x="40.68" y="252" width="25.84" height="4" fill="#3CC0B3"/><rect x="28.47" y="259" width="13.64" height="4" fill="#4EA5E6"/><rect x="42.71" y="259" width="1.5" height="4" fill="#B3C0BF"/><rect x="46.78" y="259" width="38.04" height="4" fill="#3CC0B3"/><rect x="12.2" y="266" width="1.5" height="4" fill="#B3C0BF"/><rect x="16.27" y="266" width="7.54" height="4" fill="#4EA5E6"/><rect x="24.41" y="266" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="266" width="19.74" height="4" fill="#3CC0B3"/><rect x="16.27" y="273" width="7.54" height="4" fill="#4EA5E6"/><rect x="24.41" y="273" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="273" width="25.84" height="4" fill="#3CC0B3"/><rect x="16.27" y="280" width="11.6" height="4" fill="#4EA5E6"/><rect x="28.47" y="280" width="1.5" height="4" fill="#B3C0BF"/><rect x="20.34" y="287" width="19.74" height="4" fill="#4EA5E6"/><rect x="40.68" y="287" width="1.5" height="4" fill="#B3C0BF"/><rect x="24.41" y="294" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="294" width="7.54" height="4" fill="#4EA5E6"/><rect x="36.61" y="294" width="1.5" height="4" fill="#B3C0BF"/><rect x="40.68" y="294" width="11.6" height="4" fill="#3CC0B3"/><rect x="28.47" y="301" width="13.64" height="4" fill="#4EA5E6"/><rect x="42.71" y="301" width="1.5" height="4" fill="#B3C0BF"/><rect x="46.78" y="301" width="5.5" height="4" fill="#3CC0B3"/><rect x="54.92" y="301" width="25.84" height="4" fill="#3CC0B3"/><rect x="12.2" y="308" width="1.5" height="4" fill="#B3C0BF"/><rect x="16.27" y="308" width="7.54" height="4" fill="#4EA5E6"/><rect x="24.41" y="308" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="308" width="19.74" height="4" fill="#3CC0B3"/><rect x="16.27" y="315" width="7.54" height="4" fill="#4EA5E6"/><rect x="24.41" y="315" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="315" width="13.64" height="4" fill="#3CC0B3"/><rect x="16.27" y="322" width="11.6" height="4" fill="#4EA5E6"/><rect x="28.47" y="322" width="1.5" height="4" fill="#B3C0BF"/><rect x="20.34" y="329" width="5.5" height="4" fill="#4EA5E6"/><rect x="26.44" y="329" width="1.5" height="4" fill="#B3C0BF"/><rect x="30.51" y="329" width="1.5" height="4" fill="#EA6AA6"/><rect x="12.2" y="336" width="1.5" height="4" fill="#B3C0BF"/><rect x="16.27" y="336" width="7.54" height="4" fill="#4EA5E6"/><rect x="24.41" y="336" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="336" width="31.94" height="4" fill="#3CC0B3"/><rect x="16.27" y="343" width="7.54" height="4" fill="#4EA5E6"/><rect x="24.41" y="343" width="1.5" height="4" fill="#B3C0BF"/><rect x="28.47" y="343" width="29.91" height="4" fill="#3CC0B3"/><rect x="16.27" y="350" width="11.6" height="4" fill="#4EA5E6"/><rect x="28.47" y="350" width="1.5" height="4" fill="#B3C0BF"/><rect x="20.34" y="357" width="15.67" height="4" fill="#4EA5E6"/><rect x="36.61" y="357" width="1.5" height="4" fill="#B3C0BF"/><rect x="40.68" y="357" width="1.5" height="4" fill="#B3C0BF"/><rect x="42.71" y="357" width="29.91" height="4" fill="#3CC0B3"/><rect x="73.22" y="357" width="1.5" height="4" fill="#B3C0BF"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:spec -->
+    <aside class="callouts"><p class="callout" data-anchor="nm">exactly view, or exactly bash</p><p class="callout" data-anchor="pat">its arguments mention the list</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "scroll",
+  "target": "#spec",
+  "to": "33-38",
+  "at": "t=0",
+  "duration": 0
+ },
+ {
+  "type": "focus",
+  "target": "g1",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "req",
+  "at": "3~required",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "nm",
+  "at": "5",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "pat",
+  "at": "6",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "nm",
+  "at": "7~view",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "pat",
+  "at": "7~mention",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

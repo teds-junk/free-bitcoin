@@ -1,0 +1,23 @@
+name: one-request
+
+defaults:
+  timeout: 3m
+
+agent_environment:
+  skills:
+    - ../skills/changelog-entry
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+
+stimuli:
+  - name: typo-fix
+    prompt: |
+      I fixed the typo in the help text for `notes add`
+      (it said "tittle"). Put that in the changelog.
+    graders:
+      - type: file-contains
+        name: mentions-the-command
+        config:
+          path: CHANGELOG.md
+          value: "notes add"

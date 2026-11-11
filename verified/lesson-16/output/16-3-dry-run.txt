@@ -1,0 +1,33 @@
+$ vally experiment run evals/cost.experiment.yaml --dry-run
+Experiment: cost
+Baseline:   haiku-low
+Plans:      4
+
+── haiku-low (baseline) ──
+  Eval:        changelog
+  File:        changelog.eval.yaml
+  Model:       claude-haiku-5.5
+  Config hash: 5f7be23ac85d43fe
+  Eval hash:   4870f2caf2c19f3f
+
+── haiku-high ──
+  Eval:        changelog
+  File:        changelog.eval.yaml
+  Model:       claude-haiku-5.5
+  Config hash: 8eb942e60e477d6c
+  Eval hash:   4870f2caf2c19f3f
+
+── terra-low ──
+  Eval:        changelog
+  File:        changelog.eval.yaml
+  Model:       gpt-5.6-terra
+  Config hash: 9e020fcb17e8a11c
+  Eval hash:   4870f2caf2c19f3f
+
+── terra-high ──
+  Eval:        changelog
+  File:        changelog.eval.yaml
+  Model:       gpt-5.6-terra
+  Config hash: d105adac8c71b9da
+  Eval hash:   4870f2caf2c19f3f
+

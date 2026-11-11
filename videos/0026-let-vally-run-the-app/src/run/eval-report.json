@@ -1,0 +1,17 @@
+{
+ "claude-haiku-4.5": {
+  "executor": "release-app",
+  "skills": [],
+  "has_skills_column": false,
+  "tool_calls": "view: 4, edit: 1"
+ },
+ "gpt-5.6-terra": {
+  "executor": "release-app",
+  "skills": [
+   "changelog-entry"
+  ],
+  "has_skills_column": true,
+  "tool_calls": "view: 3, skill: 1, apply_patch: 1"
+ },
+ "_about": "From eval-results.md of the s16 run (collect-run.py)."
+}

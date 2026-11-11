@@ -1,0 +1,24 @@
+name: merged-list
+
+defaults:
+  timeout: 3m
+
+agent_environment:
+  skills:
+    - ../../skills/changelog-entry
+  files:
+    - src: ../fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+  commands:
+    - 'echo "fix: notes add said tittle" > merged.txt'
+
+stimuli:
+  - name: from-the-list
+    prompt: |
+      merged.txt lists what was merged today. Put it in
+      the changelog.
+    graders:
+      - type: diff-contains
+        name: adds-an-entry
+        config:
+          value: "notes add"

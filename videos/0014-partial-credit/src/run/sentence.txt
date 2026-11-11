@@ -1,0 +1,1 @@
+One verdict changed: terra's cache entry 'on large folders by caching the tag index' scored 4 and passed, where the yes-or-no judge said no (its twin 'on large note folders' also scored 4 and passed, as it had with the yes-or-no judge); we labelled both no, so against our 12 labels the 1-to-5 judge has TPR 7 of 7 and TNR 3 of 5.

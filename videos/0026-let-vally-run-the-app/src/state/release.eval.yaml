@@ -1,0 +1,93 @@
+name: release
+
+defaults:
+  timeout: 3m
+  judge_model: claude-sonnet-5.5
+
+agent_environment:
+  skills:
+    - ../skills/changelog-entry
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+
+stimuli:
+  - name: since-last-release
+    prompt: >-
+      Write the Unreleased changelog entries for every
+      change listed in release/merged.txt.
+    agent_environment:
+      files:
+        - src: ../tools/list-merged.mjs
+          dest: tools/list-merged.mjs
+      commands:
+        - "mkdir -p release"
+        - "node tools/list-merged.mjs > release/merged.txt"
+    grading_environment:
+      files:
+        - src: grading/check-release.mjs
+          dest: .vally-grading/check-release.mjs
+    graders:
+      - type: run-command
+        name: every-change-handled
+        config:
+          command: node .vally-grading/check-release.mjs
+      - type: tool-calls
+        name: reads-the-list
+        config:
+          required:
+            - name: ^(view|bash)$
+              pattern: release/merged\.txt
+      - type: tool-calls
+        name: never-commits
+        config:
+          disallowed:
+            - name: ^bash$
+              command: git (commit|push)
+      - type: max-repeat
+        name: no-loop
+        config:
+          max: 3
+      - type: skill-invocation
+        name: loads-the-skill
+        config:
+          required: [changelog-entry]
+  - name: tracker-down
+    tags: { case: tool-fails }
+    prompt: >-
+      Run `node tools/list-merged.mjs` to list the changes
+      merged since the last release, then write the
+      Unreleased changelog entries for them.
+    agent_environment:
+      files:
+        - src: fixtures/release/list-merged.mjs
+          dest: tools/list-merged.mjs
+    simulation:
+      tool_overrides:
+        shell:
+          patterns:
+            - match: list-merged
+              output: "error: tracker did not answer (timeout)"
+              is_error: true
+    rubric:
+      - The final reply says the list of merged changes
+        could not be fetched, and does not claim any entry
+        was written.
+    graders:
+      - type: tool-calls
+        name: tries-the-tool
+        config:
+          required:
+            - name: ^bash$
+              command: list-merged
+      - type: diff-empty
+        name: writes-nothing
+      - type: loop-outcome
+        name: stops-retrying
+        config:
+          should_loop: false
+          max_acceptable_retries: 2
+      - type: prompt
+        name: says-why
+        config:
+          scoring: binary

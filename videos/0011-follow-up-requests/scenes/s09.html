@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Not every grader can be scoped</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scope{font-size:36px}.scope td{padding-top:34px;padding-bottom:34px}.scope td .mono{font-size:32px}.scope th{font-size:30px;white-space:nowrap}.scope th .mono{font-size:28px}.scope td:first-child{white-space:nowrap}.scope td:first-child .mono{font-size:29px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Turns and scoped graders</div>
+  <h2 class="scene-title">Not every grader can be scoped</h2>
+  <div class="stage">
+<table class="data-table full scope">
+    <thead><tr><th>grader</th><th>what it reads</th><th>can take <span class="mono">turn:</span></th></tr></thead>
+    <tbody>
+<tr><td><span class="mono">diff-contains</span>, <span class="mono">diff-not-contains</span>, <span class="mono">diff-empty</span></td><td>the patch of what the agent changed</td><td><span data-concept="diffs3" data-rep="cell">yes</span></td></tr>
+<tr><td><span class="mono">skill-invocation</span></td><td>the agent’s events</td><td><span data-concept="events" data-rep="cell">yes</span></td></tr>
+<tr><td>a script grader</td><td>the workspace at the very end</td><td><span data-concept="script" data-rep="cell">no</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "diffs3",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "events",
+  "at": "2",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "script",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

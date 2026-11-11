@@ -1,0 +1,17 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 616c9f6..17821eb 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -7,6 +7,12 @@ All notable changes to notes-cli.
+ ### Added
+ - Add `notes list --tag` to filter by tag (#41)
+ 
++### Changed
++- `notes delete` now asks for confirmation before deleting (#64)
++
++### Fixed
++- Fix exit code of `notes export` when the disk is full (#66)
++
+ ## [1.2.0] - 2026-09-14
+ 
+ ### Added

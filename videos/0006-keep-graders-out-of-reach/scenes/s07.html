@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Evals live beside the skill</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.tree{min-width:900px;font-size:40px;line-height:1.6}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the agent is given</div>
+  <h2 class="scene-title">Evals live beside the skill</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark tree" data-lang="text"><code><span>skills/</span>
+<span>  </span><span data-concept="skill" data-rep="code"><span>changelog-entry/</span></span>
+<span>    SKILL.md</span>
+<span data-concept="evals" data-rep="code"><span>evals/</span></span>
+<span>  changelog.eval.yaml</span>
+<span>  fixtures/</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="skill">copied whole into the workspace</p><p class="callout" data-anchor="evals">never copied whole</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "skill",
+  "at": "0~inside",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "evals",
+  "at": "1",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

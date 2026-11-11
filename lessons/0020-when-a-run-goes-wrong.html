@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 20: When a run goes wrong — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 20 of 26 · Vally &amp; Agent Evals</div>
+    <h1>When a run goes wrong</h1>
+    <div class="lesson-meta">20 min · Diagnose and fix an eval that never starts an agent, one that times out, a grader that fails good work and a judge call that fails, with the fewest agent runs.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>A stimulus ends in <code>ERROR</code>. Another ends in <code>FAIL</code>. What does each tell you about the skill?
+        <details class="answer"><summary>Show answer</summary><p><code>FAIL</code> is a verdict: the agent finished and a grader said no. <code>ERROR</code> is not a verdict: the trial did not produce a result that could be graded, so it says nothing about the skill either way.</p></details></li>
+      <li>What does <code>--workspace</code> keep, and when do you need it?
+        <details class="answer"><summary>Show answer</summary><p>Each trial's working folder, with the files the agent left, under the folder you name. You need it when a check reads files rather than the diff, because a saved run keeps the diff and not the workspace. It cannot be combined with several models, because the kept folders would collide.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You can measure the skill, price it, set budgets, and gate on a regression with <code>vally compare</code>.</p>
+    <p><strong>This lesson answers:</strong> When a run ends in ERROR, FLAKY or a surprising FAIL, how do I find out why without paying for more runs?</p>
+  </div>
+
+  <p class="drop-cap">The eval files now have setup, budgets, judges and several models, so more of them can go wrong in ways that have nothing to do with the skill. When a run goes wrong, running it again is tempting: it feels like doing something. But a run costs agent runs and minutes, and it usually prints the same error again. Nearly every answer you need is already on disk, in the console output and the run folder. This lesson gives you the order in which to look, and four broken eval files to practise on. Each fails for a real reason that we hit while writing it.</p>
+
+  <h2 id="four-questions" data-mode="think">Four questions, cheapest first</h2>
+
+  <p>Vally's Debugging Evals guide splits debugging into four steps. Each is a question, and each must be answered before the next one means anything. A grader cannot be wrong about a trial that never finished, and a trial cannot finish if the eval file is broken.</p>
+
+  <figure>
+    <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="The four debugging questions in order, each with where its answer usually lives">
+      <g stroke-width="2">
+        <rect x="70" y="10" width="520" height="76" rx="6"/>
+        <rect x="70" y="100" width="520" height="76" rx="6"/>
+        <rect x="70" y="190" width="520" height="76" rx="6"/>
+        <rect x="70" y="280" width="520" height="76" rx="6" style="stroke: var(--accent)"/>
+        <circle cx="34" cy="48" r="22"/>
+        <circle cx="34" cy="138" r="22"/>
+        <circle cx="34" cy="228" r="22"/>
+        <circle cx="34" cy="318" r="22" style="stroke: var(--accent)"/>
+      </g>
+      <g fill="currentColor" stroke="none" font-family="Spectral, Georgia, serif">
+        <text x="34" y="56" font-size="22" text-anchor="middle">1</text>
+        <text x="34" y="146" font-size="22" text-anchor="middle">2</text>
+        <text x="34" y="236" font-size="22" text-anchor="middle">3</text>
+        <text x="34" y="326" font-size="22" text-anchor="middle">4</text>
+        <text x="88" y="42" font-size="22">Is the eval valid?</text>
+        <text x="88" y="132" font-size="22">Did it complete?</text>
+        <text x="88" y="222" font-size="22">Why was the result unexpected?</text>
+        <text x="88" y="312" font-size="22">Does the fix work?</text>
+      </g>
+      <g stroke="none" font-size="20" font-family="Spectral, Georgia, serif" style="fill: var(--ink-soft)">
+        <text x="88" y="72">vally lint, the run's first lines · free</text>
+        <text x="88" y="162">ERROR lines, the trial folder · free</text>
+        <text x="88" y="252">evidence, --verbose, the patch · free</text>
+        <text x="88" y="342">vally grade, else one new run · cheapest</text>
+      </g>
+    </svg>
+    <figcaption>The four questions in the order the Debugging Evals guide gives them. The first three are answered from what the failed run already printed and saved. Only the fourth may need a new run, and often a re-grade will do instead.</figcaption>
+  </figure>
+
+  <ol>
+    <li><strong>Is the eval valid?</strong> Does Vally accept the file at all: known field names, files that exist, values of the right kind?</li>
+    <li><strong>Did it complete?</strong> Did each trial finish and get graded? An <code>ERROR</code> belongs here.</li>
+    <li><strong>Why was the result unexpected?</strong> The trial finished but the verdict surprised you: a <code>FAIL</code> you did not expect, or a FLAKY stimulus. Decide whether the agent or the grader is wrong.</li>
+    <li><strong>Does the fix work?</strong> Prove it with the cheapest check that can show it.</li>
+  </ol>
+
+  <p>The order is also an order of cost. The first three questions are answered by reading what the failed run left behind, which costs nothing. The fourth sometimes needs a new run, and the habit to build is to ask what a fix changed. A fix to a grader changes nothing the agent did, so the saved trials can be graded again. A fix to the setup or the time limit changes the run itself, so it needs a new run, and often one model is enough to prove it.</p>
+
+  <div class="callout">
+    <div class="callout-title">Key idea</div>
+    <p>Before running anything again, read what the failed run already saved. Re-run only when the fix changes something that happens before or during the agent's session, and then with as few trials as will show it.</p>
+  </div>
+
+  <div class="source-citation">Source: <a href="https://microsoft.github.io/vally/guides/debugging-evals/">Vally docs, Debugging Evals</a> (the four steps; fetched 2026-11-10 for Vally 0.21.0).</div>
+
+  <h2 id="where-answers-live" data-mode="works">Where each answer lives</h2>
+
+  <h3>Question 1: what lint checks, and what it cannot</h3>
+
+  <p><code>vally lint</code> (lesson 2) reads an eval file without starting anything. It reports field names it does not know, files that do not exist, and values whose kind the format forbids. <code>vally eval</code> runs the same checks before starting any agent. What neither can see is what a value means to the program that will use it later. Lint checks the shape of the file. It does not run each value to see whether it works.</p>
+
+  <p>One of this lesson's files uses a field the course meets properly in lesson 22. It is introduced here because a mistake in it is the clearest case of a file that lints clean and still cannot run.</p>
+
+  <div class="callout definition">
+    <div class="callout-title"><code>commands:</code></div>
+    <p>A list, under <code>agent_environment</code>, of shell commands Vally runs in the workspace after copying the files and before the agent starts. Each entry is one command, written as a string. What the commands create is part of the starting state, so it does not appear in the trial's diff.</p>
+  </div>
+
+<pre><code class="language-yaml">agent_environment:
+  commands:
+    - echo hello &gt; note.txt</code></pre>
+
+  <p>The trap is in YAML itself. Inside a list item, a colon followed by a space turns the line into a key and a value. <code>- echo note: hello</code> is not the string <code>echo note: hello</code>. It is a small mapping whose key is <code>echo note</code> and whose value is <code>hello</code>. Lint accepts it, because a list item may hold a mapping. The program that runs the command receives a mapping where it expects a string, and says so in its own words. Putting the whole line in quotes makes it a string again.</p>
+
+  <h3>Question 2: ERROR lines and the trial folder</h3>
+
+  <p>A trial that did not complete is reported as <code>ERROR</code> with one line of explanation, in the block for its stimulus and again under <code>Failures</code>. The same text is saved in the trial's record in <code>results.jsonl</code>, as <code>error</code>, beside <code>status</code> and <code>durationMs</code>, the trial's length in milliseconds.</p>
+
+  <p>The trial's own folder (lesson 2) tells you how far it got, by which files exist. These are from our runs:</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>The trial folder holds</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td><code>metadata.json</code> only</td><td>No agent session started. The failure came during setup.</td></tr>
+      <tr><td><code>events.jsonl</code>, no <code>workspace.patch</code></td><td>The agent started and was stopped before it finished.</td></tr>
+      <tr><td><code>events.jsonl</code> and <code>workspace.patch</code></td><td>The agent finished. Anything wrong is in the grading or the work.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>The session log, <code>events.jsonl</code>, is the agent's raw record, one event per line, in the runtime's own words. It is not the trajectory. Vally builds the trajectory from it, renames the events, and saves the trajectory in <code>results.jsonl</code>; that is where graders and lesson 9's <code>skill_activation</code> event live. The raw log matters here because, for a trial stopped mid-session, it holds the one record of what the trial cost (note 3 below). When a trial runs out of time, the log ends like this. The lines are shortened here to the fields that matter:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">…/quick/typo-fix/gpt-5.6-terra/0/events.jsonl (end)</div>
+<pre><code class="language-json">{"type":"skill.invoked", …}<span class="mark">1</span>
+{"type":"assistant.turn_end", …}
+{"type":"assistant.turn_start", …}
+{"type":"abort","data":{"reason":"user_initiated"}, …}<span class="mark">2</span>
+{"type":"assistant.turn_end", …}
+{"type":"session.usage_checkpoint",
+ "data":{"totalNanoAiu":1255180000, …}, …}<span class="mark">3</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>How far the agent got: it had loaded the skill and was starting its next step. <code>skill.invoked</code> is the runtime's name for a skill loading; the trajectory records the same moment as <code>skill_activation</code> (<a href="./0009-does-the-skill-load.html#how-loading-is-recorded">lesson 9</a>).</li>
+      <li>Vally stopped the session. "User initiated" means the stop came from outside the agent, here from Vally's time limit.</li>
+      <li>What the session cost before it was stopped: 1,255,180,000 nano-AIU, which is 1.26 AIU. A trial that ends in <code>ERROR</code> is not free, and this is the only place its cost is written: its record in <code>results.jsonl</code> has no <code>cost</code>.</li>
+    </ol>
+  </div>
+
+  <h3>Question 3: evidence, <code>--verbose</code> and the patch</h3>
+
+  <p>For a trial that finished, start with the grader's evidence: the line Vally prints after each failing grader, such as <code>Pattern … not found in workspace diff</code>. Then read the trial's <code>workspace.patch</code> yourself, as in lesson 4, and decide who is wrong: the agent or the grader.</p>
+
+  <div class="callout definition">
+    <div class="callout-title"><code>--verbose</code></div>
+    <p>A flag that asks a command for more detail. On <code>vally eval</code>, it adds, under each failing trial, the number of turns, tool calls and tokens, and the agent's final reply. On <code>vally grade</code> and <code>vally oracle</code>, it prints every grader's evidence or reason, including for graders that passed (lessons 7 and 12).</p>
+  </div>
+
+  <p>The docs add that in a run with several trials of each stimulus, <code>--verbose</code> shows the agent's reply only for failing trials. A passing trial's reply is in <code>results.jsonl</code>. A trial stopped mid-session has no final reply, so <code>--verbose</code> adds nothing to a timeout.</p>
+
+  <p>A grader can also fail to produce a verdict at all. A judge is a call to another model, and that call can fail. Vally does not retry it. The grader is recorded with <code>status</code> <code>error</code>, a score of 0, and the error as its evidence, and the stimulus is reported as <code>ERROR</code> with <code>Grading error; verdict is invalid.</code> This is the judge's entry from one of our trial records, with the account's list of models shortened:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results.jsonl (one grader in gradeResult.details)</div>
+<pre><code class="language-json">{
+  "name": "users-words",
+  "status": "error",<span class="mark">1</span>
+  "kind": "llm",
+  "passed": false,
+  "score": 0,<span class="mark">2</span>
+  "evidence": "LLM judge failed: Model
+    \"claude-sonnet-5-5\" is not available in
+    Copilot. Available models: auto, …",<span class="mark">3</span>
+<span class="gap">8 lines hidden: label, metadata, type, name</span>
+}</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The grader did not reach a verdict. A grader that ran and said no has no <code>status</code> field at all.</li>
+      <li>A grader that said no also scores 0, so the score alone cannot tell the two apart. Here the 0 is a placeholder, not a judgement of the trial.</li>
+      <li>The reason, word for word. It is wrapped here to fit the page; in the file it is one line. The hidden lines hold the label, the judge model and the same error again under <code>metadata</code>, and the grader's type and name.</li>
+    </ol>
+  </div>
+
+  <h3>Question 4: what a re-grade can and cannot read</h3>
+
+  <ul>
+    <li><strong><code>vally grade</code></strong> (lesson 8) runs the eval file's current graders on saved trials. Diff graders read the saved diffs and trajectory graders the saved trajectories, so a re-grade with them costs nothing. A judge re-grade costs one judge call per trial and no agent runs.</li>
+    <li><strong>File and script graders</strong> read the workspace, which a saved run does not keep. When we re-graded a saved run with a <code>file-contains</code> grader, every trial ended in <code>ERROR</code> with <code>Grader error: Directory '…' does not exist</code>. Only a new run with <code>--workspace</code> keeps a folder they can read.</li>
+    <li><strong>A new run</strong> is the only thing that shows a change to anything before or during the agent's session: the setup, the time limit, the skill. It costs one agent run per trial per model.</li>
+  </ul>
+
+  <div class="quiz">
+    <div class="quiz-question">A trial ends in ERROR after 9 ms, and its folder holds only <code>metadata.json</code>. What does that tell you first?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">The agent ran out of time</button></li>
+      <li><button onclick="checkAnswer(this, true)">No agent session ever started</button></li>
+      <li><button onclick="checkAnswer(this, false)">A grader rejected the answer</button></li>
+      <li><button onclick="checkAnswer(this, false)">The judge model was misnamed</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. With no <code>events.jsonl</code> there was no session. The cause is in the setup, so look at the error text and at the eval file's environment, not at the skill.</div>
+    <div class="quiz-feedback incorrect">No agent session ever started. A timeout or a grader needs a session first, and a session leaves an <code>events.jsonl</code>. With only <code>metadata.json</code>, the failure came during setup.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/guides/debugging-evals/">Vally docs, Debugging Evals</a> (<code>--verbose</code> on multi-trial runs; judge calls not retried); <a href="https://microsoft.github.io/vally/reference/cli/">Vally CLI reference</a>; the folder contents, log lines and record are from our runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="fix-four" data-mode="use">Fix four broken evals</h2>
+
+  <p>The starter has four eval files in <code>evals/broken/</code>, each with one fault. For each, run it once, answer the four questions from what the run left, fix it, and prove the fix with the cheapest check. In our run the four took nine agent runs and two judge calls. Your trials will differ from ours in wording and timing; the errors should match.</p>
+
+  <section class="checkpoint">
+    <h3>An eval that never starts an agent</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: get the four broken files. This creates a folder.</span>
+        Open a terminal in <code>practice</code>.
+<pre><code class="language-bash">cp -R ../practice-starter/evals/broken evals/broken</code></pre>
+        <p class="expect">You should see: <code>entry.eval.yaml</code>, <code>judged.eval.yaml</code>, <code>merged-list.eval.yaml</code> and <code>quick.eval.yaml</code> in <code>evals/broken</code>.</p></li>
+
+      <li><span class="goal">Goal: question 1, is the first file valid? This is free.</span>
+<pre><code class="language-bash">vally lint -e evals/broken/merged-list.eval.yaml</code></pre>
+        <p class="expect">You should see: <code>✔ evals/broken/merged-list.eval.yaml is valid</code>. In our run all four files passed lint. <code>judged.eval.yaml</code> also printed <code>⚠ warning [scoring-defaults-applied] Multiple graders with no scoring config</code>, the warning from lessons 5 and 14: it has several graders and no <code>scoring</code> block, so every grader must pass. It is not an error.</p></li>
+
+      <li><span class="goal">Goal: question 2, does it complete? This starts two trials. In our run neither reached an agent.</span>
+<pre><code class="language-bash">vally eval -e evals/broken/merged-list.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --output-dir results/lesson-20</code></pre>
+        <p class="expect">You should see: <code>ERROR from-the-list</code> for each model, with <code>The "command" argument must be of type string. Received an instance of Object</code>. Ours also printed <code>EvalMarkdownReporter threw: TypeError: text.replace is not a function</code> and a stack trace: the same bad value broke the report writer, so no <code>eval-results.md</code> was saved.</p></li>
+
+      <li><span class="goal">Goal: see how far the trials got. This is free.</span>
+<pre><code class="language-bash">ls results/lesson-20</code></pre>
+        <p class="expect">You should see: one folder named with the time of your run, such as ours, <code>2026-11-10T17-46-54-086Z</code>. Use your folder's name in place of ours below.</p>
+<pre><code class="language-bash">cd results/lesson-20/2026-11-10T17-46-54-086Z
+ls merged-list/from-the-list/claude-haiku-4.5/0</code></pre>
+        <p class="expect">You should see: <code>metadata.json</code> and nothing else. No session started. In <code>results.jsonl</code> the trial's <code>durationMs</code> was 9 for one model and 11 for the other in our run. Return to <code>practice</code> with <code>cd ../../..</code>.</p></li>
+
+      <li><span class="goal">Goal: question 3, find the cause.</span>
+        Open <code>evals/broken/merged-list.eval.yaml</code> and read its <code>commands:</code> entry. What did YAML make of it?
+        <details class="answer"><summary>Show the cause</summary><p>The entry is <code>- echo fix: notes add said tittle &gt; merged.txt</code>. The <code>: </code> after <code>fix</code> makes it a mapping with the key <code>echo fix</code>, so Vally was handed an object where it needed a command string. Lint passed it because a list item may be a mapping.</p></details></li>
+
+      <li><span class="goal">Goal: fix it. This edits one file.</span>
+        Replace the entry with this line, keeping its indentation, so the whole command is one quoted string:
+<pre><code class="language-yaml">- 'echo "fix: notes add said tittle" &gt; merged.txt'</code></pre></li>
+
+      <li><span class="goal">Goal: question 4, prove the fix. The fix changed the setup, so it needs a run. One model is enough: one agent run.</span>
+<pre><code class="language-bash">vally eval -e evals/broken/merged-list.eval.yaml \
+  --model claude-haiku-4.5 \
+  --workers 2 --output-dir results/lesson-20</code></pre>
+        <p class="expect">You should see: <code>Summary</code> and <code>PASS merged-list</code>. In our trial the agent read <code>merged.txt</code> and added <code>- Fix notes add said title</code> under a new <code>### Fixed</code>. The setup works now. The entry itself is the note with its spelling corrected, not an entry a user could act on, which the loose grader in this file does not catch: a different question from this lesson's, and the kind of thing lesson 12's judge is for.</p></li>
+    </ol>
+  </section>
+
+  <section class="checkpoint">
+    <h3>A trial that runs out of time</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: question 2 for the second file. This spends two agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/broken/quick.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --output-dir results/lesson-20 \
+  --verbose</code></pre>
+        <p class="expect">You should see: <code>ERROR typo-fix</code> for each model, with <code>Stimulus 'typo-fix' timed out after 5000 ms during turn 1 of 1</code>. In our run <code>--verbose</code> added nothing: neither agent had a final reply to show.</p></li>
+
+      <li><span class="goal">Goal: see how far a trial got. This is free.</span>
+        List <code>results/lesson-20</code> again and use the newest folder, ours <code>2026-11-10T17-47-33-542Z</code>.
+<pre><code class="language-bash">cd results/lesson-20/2026-11-10T17-47-33-542Z
+ls quick/typo-fix/claude-haiku-4.5/0</code></pre>
+        <p class="expect">You should see: <code>events.jsonl</code> and <code>metadata.json</code>, but no <code>workspace.patch</code>. The agent started and did not finish.</p></li>
+
+      <li><span class="goal">Goal: read how the session ended.</span>
+        Open <code>quick/typo-fix/gpt-5.6-terra/0/events.jsonl</code> and read its last five lines, as in the excerpt above.
+        <p class="expect">You should see: <code>skill.invoked</code> a few lines up, then <code>abort</code>, then <code>session.usage_checkpoint</code>. Ours recorded 1.26 AIU for this trial and 1.02 AIU for the other model's, spent on trials that produced nothing. In our run the other model's agent got one tool call further, so its last five lines stop short of <code>skill.invoked</code>. Return to <code>practice</code> with <code>cd ../../..</code>.</p></li>
+
+      <li><span class="goal">Goal: question 3, find the cause.</span>
+        Open <code>evals/broken/quick.eval.yaml</code>. Its <code>timeout</code>, under <code>defaults</code>, is the hard limit on each trial: a trial that reaches it is stopped and ends in <code>ERROR</code>. Compare it with how long this same request took in lesson 18, where our slowest trial of the five quick stimuli took 11.1 seconds.
+        <details class="answer"><summary>Show the cause</summary><p><code>timeout: 5s</code> stops each trial after five seconds, under half of what this request needs. Nothing is wrong with the skill or the agent.</p></details></li>
+
+      <li><span class="goal">Goal: fix it. This edits one file.</span>
+        Change the line to <code>timeout: 3m</code>, the value every other eval file in <code>evals/</code> has under <code>defaults</code>. This is not lesson 18's <code>max_agent_duration</code>, which sits under one stimulus's <code>constraints</code>, stops only the agent, and still grades what it had done.</li>
+
+      <li><span class="goal">Goal: question 4, prove the fix. Nothing saved can show a trial finishing, so this needs a run: two agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/broken/quick.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --output-dir results/lesson-20</code></pre>
+        <p class="expect">You should see: <code>✓ 1/1</code> for both models. Ours took 10.3 and 12.2 seconds.</p></li>
+    </ol>
+  </section>
+
+  <section class="checkpoint">
+    <h3>A grader that fails good work</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: run the third file, with the agent's replies shown. This spends two agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/broken/entry.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --output-dir results/lesson-20 \
+  --verbose</code></pre>
+        <p class="expect">You should see: <code>FAIL typo-fix</code> for both models, each with <code>✘ adds-an-entry Pattern /^\+.*notes add/ not found in workspace diff</code>. Under each, <code>--verbose</code> adds lines like these, from ours:</p>
+<pre class="output"><code>   5 turns · 4 tools · skill×1 · 75.4k tok
+   74.7k in · 691 out
+
+   agent output</code></pre>
+        <p class="expect">followed by the reply. Ours: <code>Done! Added the typo fix to the changelog under the "Fixed" category in the Unreleased section.</code></p></li>
+
+      <li><span class="goal">Goal: question 3, decide who is wrong. This is free.</span>
+        Use the newest folder, ours <code>2026-11-10T17-48-20-854Z</code>.
+<pre><code class="language-bash">cd results/lesson-20/2026-11-10T17-48-20-854Z</code></pre>
+        Open <code>entry/typo-fix/claude-haiku-4.5/0/workspace.patch</code>.
+        <p class="expect">You should see: an added line such as ours, <code>+- Fix typo in help text for `notes add`</code>, under an added <code>+### Fixed</code>. That is a correct entry, and it contains <code>notes add</code>. So the grader is wrong.</p></li>
+
+      <li><span class="goal">Goal: find the fault in the grader.</span>
+        Open <code>evals/broken/entry.eval.yaml</code> and read the pattern.
+        <details class="answer"><summary>Show the cause</summary><p><code>'^\+.*notes add'</code> has no <code>(?m)</code>. Without it, <code>^</code> matches only the very start of the patch, which is <code>diff --git</code>, so the pattern can never match. Lesson 8 met the same mistake in a <code>diff-not-contains</code> grader, where it meant the grader could never fail. In <code>diff-contains</code> it means the grader can never pass.</p></details></li>
+
+      <li><span class="goal">Goal: fix it. This edits one file.</span>
+        Change the pattern line to:
+<pre><code class="language-yaml">pattern: '(?m)^\+.*notes add'</code></pre></li>
+
+      <li><span class="goal">Goal: question 4, prove the fix on the saved trials. No agent runs.</span>
+        From the run folder:
+<pre><code class="language-bash">vally grade \
+  -e ../../../evals/broken/entry.eval.yaml \
+  --run-dir . &lt; results.jsonl</code></pre>
+        <p class="expect">You should see: two blocks, each <code>✅ typo-fix (1/1 graders passed)</code> and <code>Score: 100.0% | PASSED</code>. Return to <code>practice</code> with <code>cd ../../..</code>.</p></li>
+    </ol>
+  </section>
+
+  <section class="checkpoint">
+    <h3>A judge call that fails</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: run the fourth file. This spends two agent runs; the judge calls fail.</span>
+<pre><code class="language-bash">vally eval -e evals/broken/judged.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --output-dir results/lesson-20</code></pre>
+        <p class="expect">You should see: the <code>scoring-defaults-applied</code> warning (expected). Then <code>ERROR cache · 1/2 graders</code> for each model, with <code>Grading error; verdict is invalid.</code> and <code>✘ users-words LLM judge failed: Model "claude-sonnet-5-5" is not available in Copilot.</code>, followed by the account's model list.</p></li>
+
+      <li><span class="goal">Goal: questions 2 and 3, what did and did not complete?</span>
+        Read the block again.
+        <details class="answer"><summary>Show the cause</summary><p>The agents finished: the other grader, <code>cites-66</code>, ran and passed, and in our run both trial records have <code>status</code> <code>success</code>. Only the judge failed, because its name has a hyphen where the account's name, <code>claude-sonnet-5.5</code>, has a dot. Because the file has a diff grader, the run saved the diffs, so the trials can be judged again.</p></details></li>
+
+      <li><span class="goal">Goal: fix it. This edits one file.</span>
+        Change the line to <code>judge_model: claude-sonnet-5.5</code>, or to a judge model on your account's list.</li>
+
+      <li><span class="goal">Goal: question 4, judge the saved trials. Two judge calls, no agent runs.</span>
+        Use the newest folder, ours <code>2026-11-10T17-48-44-673Z</code>.
+<pre><code class="language-bash">cd results/lesson-20/2026-11-10T17-48-44-673Z
+vally grade \
+  -e ../../../evals/broken/judged.eval.yaml \
+  --run-dir . --verbose &lt; results.jsonl</code></pre>
+        <p class="expect">You should see: two blocks, each <code>✅ cache (2/2 graders passed)</code> with the judge's reason. One of ours: <code>It is user-focused and leaves out implementation details such as the LRU cache.</code> Return to <code>practice</code> with <code>cd ../../..</code>.</p></li>
+    </ol>
+  </section>
+
+  <h2 id="symptoms" data-mode="think">A symptom table to keep</h2>
+
+  <p>The four faults had something in common: none of them was about the skill, and none needed the agent to run again unless the fix changed the run itself. Two of them looked like results. A grader that cannot pass prints <code>FAIL</code> in the same place as a real failure, and a failed judge call prints a score of 0. That is why the order matters. Settle whether the eval is valid and whether it completed before you believe what any verdict says.</p>
+
+  <p>The table below collects what each symptom usually means. Rows marked "ours" come from runs in this course; rows marked "docs" come from the Debugging Evals guide and have not been met in our runs.</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Symptom</th><th>Where to look</th><th>Likely cause, and the cheapest proof of a fix</th></tr></thead>
+    <tbody>
+      <tr><td>Lints clean; every trial <code>ERROR</code> in milliseconds: <code>The "command" argument must be of type string. Received an instance of Object</code> (ours)</td><td>Trial folder holds only <code>metadata.json</code>; the <code>commands:</code> entries</td><td>A command containing <code>: </code> read as a mapping. Quote the line; one run on one model.</td></tr>
+      <tr><td>Run stops before any agent: <code>environment-resolution-failed</code>, "Conflicting files for destination" (ours)</td><td>The console</td><td>Two files staged to the same place. Give each its own destination. Lint does not catch it.</td></tr>
+      <tr><td><code>--model</code> name not found: the account's model list, exit code 1 (ours, lesson 1)</td><td>The console</td><td>A name your account does not have. Pick one from the list; no run was spent.</td></tr>
+      <tr><td><code>ERROR</code>: <code>Stimulus '…' timed out after N ms during turn 1 of 1</code> (ours)</td><td><code>events.jsonl</code> ends in <code>abort</code>; <code>durationMs</code> of passing trials</td><td>A limit below what the task needs, or an agent going round in circles. Raise the limit; a new run. The trial still cost money.</td></tr>
+      <tr><td><code>ERROR</code>: "Session disconnected while waiting for a response" (ours, lesson 3)</td><td>The console</td><td>Too many sessions at once. Use <code>--workers 2</code>; re-run, or leave the trial out and say so.</td></tr>
+      <tr><td><code>Session was not created with authentication</code> (docs)</td><td>The console</td><td>The agent's runtime is not signed in. Follow the Runtime Setup page.</td></tr>
+      <tr><td>Every trial <code>FAIL</code>s one grader, but the patch looks right (ours)</td><td>The evidence, then <code>workspace.patch</code></td><td>The grader is wrong, as with a pattern missing <code>(?m)</code>. Fix it; <code>vally grade</code>, free.</td></tr>
+      <tr><td><code>ERROR</code>: <code>Grading error; verdict is invalid.</code> with <code>LLM judge failed: …</code> (ours)</td><td>The grader's record: <code>status</code> <code>error</code>, <code>score</code> 0</td><td>The judge call failed and was not retried, here a misnamed model. Fix; <code>vally grade</code>, judge calls only.</td></tr>
+      <tr><td>In a re-grade, <code>Grader error: Directory '…' does not exist</code>, or a script grader failing every trial (ours)</td><td>The grader's type</td><td>File and script graders need the workspace, which is gone. Use a diff grader, or re-run with <code>--workspace</code>.</td></tr>
+      <tr><td>A re-grade says "No workspace diff is available" (ours)</td><td>The eval file the run used</td><td>It had no diff grader, so no diffs were saved. One new run with a diff grader.</td></tr>
+      <tr><td>FLAKY (docs, lesson 15)</td><td>Pass Rate, pass@k and pass^k</td><td>The agent varies. More trials before deciding anything, and a range.</td></tr>
+      <tr><td>Every grader passes but the stimulus fails (docs)</td><td>The <code>scoring</code> block</td><td>Weights or a threshold. Re-grade after changing them.</td></tr>
+      <tr><td>A judge's scores are low (docs)</td><td>Its reasons, with <code>--verbose</code></td><td>The rubric or the work. Change one thing at a time; re-grade.</td></tr>
+      <tr><td>Results differ on your machine and in CI (docs)</td><td>Model, environment and runtime settings of both</td><td>Something differs between the two set-ups. Compare them before the skill.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Two rows deserve a second look. A timed-out trial cost 1.02 and 1.26 AIU in our run, so re-running a timeout without raising the limit pays the same again for the same <code>ERROR</code>. And a failed judge call is not retried: if a judge failed because its service was briefly unavailable, the trials are still on disk and a re-grade is the retry.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/guides/debugging-evals/">Vally docs, Debugging Evals</a> (symptom table and the error table in step 2; fetched 2026-11-10); the rows marked "ours" are from this course's runs with Vally 0.21.0.</div>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/guides/debugging-evals/">Debugging Evals, Vally documentation</a></p>
+    <p>The four steps this lesson follows and the official symptom table. Read the four steps, then the section on judge failures. Its step 2 table shows the timeout error in different words from the one we saw, so match on the meaning, not the exact text.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, list the four questions in order, and for each say where its answer usually lives.
+        <details class="answer"><summary>Show model answer</summary><p>Is the eval valid: <code>vally lint</code> and the first lines of the run. Did it complete: the <code>ERROR</code> lines and the trial folder, including the end of <code>events.jsonl</code>. Why was the result unexpected: the grader's evidence, <code>--verbose</code>, and <code>workspace.patch</code>. Does the fix work: <code>vally grade</code> on the saved trials, or one new run when the fix changes the run itself.</p></details></li>
+      <li>A teammate's grader is <code>file-contains</code> with <code>value: "Notes add"</code>. Every trial fails it, and the patches show entries containing <code>notes add</code>. They fix the value. What is the cheapest proof, and why not <code>vally grade</code>?
+        <details class="answer"><summary>Show model answer</summary><p><code>file-contains</code> reads the final file in the workspace, and a saved run keeps only the diff, so a re-grade ends in <code>ERROR</code> with <code>Directory '…' does not exist</code>. Either change the check to a diff grader such as <code>diff-contains</code> with <code>value: "notes add"</code> and re-grade for free, or re-run one trial on one model.</p></details></li>
+      <li>One stimulus out of six ends in <code>ERROR</code> with "Session disconnected while waiting for a response", and the other five pass. Which question does this belong to, and what do you do?
+        <details class="answer"><summary>Show model answer</summary><p>Question 2: the trial did not complete, so it says nothing about the skill. Check the run used <code>--workers 2</code>, then re-run that one stimulus, or report five results and say that one trial did not finish.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="20" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> diagnose and fix an eval that never starts an agent, one that times out, a grader that fails good work and a judge call that fails, with the fewest agent runs.</p>
+    <p><strong>Up next:</strong> <a href="./0021-keep-it-working.html">Keep it working</a>. You can measure, gate and debug. Now make it a routine that you and a teammate repeat.</p>
+    <a class="next-lesson" href="./0021-keep-it-working.html">Next lesson: Keep it working <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

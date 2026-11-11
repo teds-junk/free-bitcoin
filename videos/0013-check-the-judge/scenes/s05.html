@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three changes undo it</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:240px}.terms .label{font-size:32px}.lead{font-size:40px;margin:0}.stage{gap:40px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A judge is measured</div>
+  <h2 class="scene-title">Three changes undo it</h2>
+  <div class="stage">
+<div class="cols terms">
+    <div class="semantic-block" data-concept="c1" data-rep="block" data-role="change">
+      <div class="title words">the rubric’s wording</div><div class="label">change it, and we label again</div>
+    </div>
+    <div class="semantic-block" data-concept="c2" data-rep="block" data-role="change">
+      <div class="title words">the judge model</div><div class="label">change it, and we label again</div>
+    </div>
+    <div class="semantic-block" data-concept="c3" data-rep="block" data-role="change">
+      <div class="title words">the kind of request</div><div class="label">change it, and we label again</div>
+    </div>
+  </div>
+  <p class="lead"><span data-concept="aside" data-rep="note">While a rubric is reworded, some labelled entries stay aside, unread.</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "c1",
+  "at": "1~rubric's wording",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "c2",
+  "at": "1~judge model",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "c3",
+  "at": "1~different kind",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "aside",
+  "at": "3~aside",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

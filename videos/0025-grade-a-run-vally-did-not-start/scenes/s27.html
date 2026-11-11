@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What does vally grade need?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#needs{width:100%;padding:36px 40px 44px;gap:24px}#needs .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}#needs .part{min-height:280px}#needs .part .title{font-size:50px;line-height:1.2}#needs .part .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">What does vally grade need?</h2>
+  <div class="stage">
+<div class="semantic-block" id="needs" data-role="structure">
+    <div class="title words">a run Vally didn’t start</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title words">the trajectory</div><div class="label">an ATIF file on standard input</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title words">the change</div><div class="label"><span class="mono">--diff-file</span></div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title words">the changed files</div><div class="label"><span class="mono">--workspace</span></div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#needs",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

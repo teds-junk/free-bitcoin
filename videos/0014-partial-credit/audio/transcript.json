@@ -1,0 +1,2028 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/0014-partial-credit",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "52a00b43ec3e7d4a",
+      "text": "Our judge said no to four of the twelve entries, and we said no to five.",
+      "tts_text": "Our judge said no to four of the twelve entries, and we said no to five.",
+      "heard": "Our judge said no to four of the twelve entries, and we said no to five.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "c807d25c95b02c16",
+      "text": "Here are two of them.",
+      "tts_text": "Here are two of them.",
+      "heard": "Here are two of them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "45bc5137f2a8eca4",
+      "text": "One says outright how the change was coded.",
+      "tts_text": "One says outright how the change was coded.",
+      "heard": "One says outright how the change was coded.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "ab4750fe5c44241c",
+      "text": "The other starts with what users notice, and only hints at how.",
+      "tts_text": "The other starts with what users notice, and only hints at how.",
+      "heard": "The other starts with what users notice and only hints at how.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 4,
+      "file": "audio/s01_04.wav",
+      "clip_sha": "183fbff5de261e1d",
+      "text": "Both got the same no, and a yes or no can't tell them apart.",
+      "tts_text": "Both got the same no, and a yes or no can't tell them apart.",
+      "heard": "Both got the same no, and a yes or no can't tell them apart.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 5,
+      "file": "audio/s01_05.wav",
+      "clip_sha": "7664704a8167df34",
+      "text": "In this lesson, you'll give the judge a scale, and see how an average can let a failure pass.",
+      "tts_text": "In this lesson, you'll give the judge a scale, and see how an average can let a failure pass.",
+      "heard": "In this lesson, you'll give the judge a scale and see how an average can let a failure pass.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "6c7d0d3b828ccaff",
+      "text": "Let's start with when a score is worth having.",
+      "tts_text": "Let's start with when a score is worth having.",
+      "heard": "Let's start with when a score is worth having.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "37ed718d38d8f3c8",
+      "text": "We asked the judge for a yes or no on purpose: a yes-or-no criterion has to be clear, and the difference between a three and a four rarely is.",
+      "tts_text": "We asked the judge for a yes or no on purpose: a yes-or-no criterion has to be clear, and the difference between a three and a four rarely is.",
+      "heard": "We ask the judge for a yes or no on purpose. A yes or no criterion has to be clear, and the difference between a 3 and a 4 rarely is.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "6f84d15508b51099",
+      "text": "That still holds for the question, did it pass?",
+      "tts_text": "That still holds for the question, did it pass?",
+      "heard": "That still holds for the question, did it pass?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 3,
+      "file": "audio/s02_03.wav",
+      "clip_sha": "4f61f2c6cd1cc0f3",
+      "text": "A scale is worth adding when the work really can be partly right, and you want to know how far off a failure is.",
+      "tts_text": "A scale is worth adding when the work really can be partly right, and you want to know how far off a failure is.",
+      "heard": "Scale is worth adding when the work really can be partly right, and you want to know how far off a failure is.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "A",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 4,
+      "file": "audio/s02_04.wav",
+      "clip_sha": "c27f6a0befbe80c8",
+      "text": "Wording is like that: an entry can be mostly for users, with one word of implementation in it.",
+      "tts_text": "Wording is like that: an entry can be mostly for users, with one word of implementation in it.",
+      "heard": "Wording is like that, an entry can be mostly for users, with one word of implementation in it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "0c3806c352c145b6",
+      "text": "Other checks aren't like that.",
+      "tts_text": "Other checks aren't like that.",
+      "heard": "Other checks aren't like that.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "332980b7a6fd7f5e",
+      "text": "An entry either cites its pull request or it doesn't, and a security fix is either under Security or it isn't.",
+      "tts_text": "An entry either cites its pull request or it doesn't, and a security fix is either under Security or it isn't.",
+      "heard": "An entry either cites its pull request or it doesn't, and a security fix is either under security or it isn't.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 2,
+      "file": "audio/s03_02.wav",
+      "clip_sha": "f84e9fa91487800a",
+      "text": "For these there's no nearly: a skill that gets one wrong has failed, however good everything else is.",
+      "tts_text": "For these there's no nearly: a skill that gets one wrong has failed, however good everything else is.",
+      "heard": "For these, there's no nearly a skill that gets one wrong has failed, however good everything else is.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 3,
+      "file": "audio/s03_03.wav",
+      "clip_sha": "51b1de5ba639ff47",
+      "text": "Vally's docs draw the same line: a threshold, meaning a pass mark on a score, is for work that's genuinely graded, not for pass-or-fail checks.",
+      "tts_text": "Valley's docs draw the same line: a threshold, meaning a pass mark on a score, is for work that's genuinely graded, not for pass-or-fail checks.",
+      "heard": "Valleys docks draw the same line. A threshold, meaning a pass mark on a score, is for work that's genuinely graded, not for pass or fail checks.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s03",
+      "i": 4,
+      "file": "audio/s03_04.wav",
+      "clip_sha": "938d32fd365e8f8f",
+      "text": "So we keep checks that must all hold out of any score that gets averaged.",
+      "tts_text": "So we keep checks that must all hold out of any score that gets averaged.",
+      "heard": "So we keep checks that must all hold out of any score that gets averaged.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 0,
+      "file": "audio/s04_00.wav",
+      "clip_sha": "8a8c8792126e2bc4",
+      "text": "The sources we rely on differ about scales.",
+      "tts_text": "The sources we rely on differ about scales.",
+      "heard": "The sources we rely on differ about scales.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 1,
+      "file": "audio/s04_01.wav",
+      "clip_sha": "bb15a143fcfa9062",
+      "text": "One argues for yes-or-no judges throughout, and another treats partial success as a range worth recording.",
+      "tts_text": "One argues for yes-or-no judges throughout, and another treats partial success as a range worth recording.",
+      "heard": "One argues for yes or no judges throughout, and another treats partial success as a range-worth recording.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s04",
+      "i": 2,
+      "file": "audio/s04_02.wav",
+      "clip_sha": "de0bc969689f0094",
+      "text": "They agree on the part that matters here: whatever the scale, you still decide pass or fail with a clear line, and you check that line against your own labels.",
+      "tts_text": "They agree on the part that matters here: whatever the scale, you still decide pass or fail with a clear line, and you check that line against your own labels.",
+      "heard": "They agree on the part that matters here. Whatever the scale, you still decide pass or fail with a clear line, and you check that line against your own labels.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 0,
+      "file": "audio/s05_00.wav",
+      "clip_sha": "a5707f96f8c054d8",
+      "text": "That's when a score helps; now, here's how Vally turns grader results into a verdict.",
+      "tts_text": "That's when a score helps; now, here's how Valley turns grader results into a verdict.",
+      "heard": "That's when a score helps. Now, here's how ValleyTurn's greater results into a verdict.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s05",
+      "i": 1,
+      "file": "audio/s05_01.wav",
+      "clip_sha": "0a7076b9ea7d82a0",
+      "text": "Every grader gives a score between zero and one, as well as a pass or a fail.",
+      "tts_text": "Every grader gives a score between zero and one, as well as a pass or a fail.",
+      "heard": "Every grader gives a score between 0 and 1, as well as a pass or a fail.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s05",
+      "i": 2,
+      "file": "audio/s05_02.wav",
+      "clip_sha": "5bc99a20a3af37af",
+      "text": "A pass-or-fail grader, such as diff contains, scores one when it passes and zero when it fails.",
+      "tts_text": "A pass-or-fail grader, such as diff contains, scores one when it passes and zero when it fails.",
+      "heard": "A pass or fail greater, such as diff contains, scores one when it passes and zero when it fails.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s05",
+      "i": 3,
+      "file": "audio/s05_03.wav",
+      "clip_sha": "ee109ad8496d9f2b",
+      "text": "For each trial, Vally combines its graders' scores into one score.",
+      "tts_text": "For each trial, Valley combines its graders' scores into one score.",
+      "heard": "For each trial, Valley combines its greater scores into one score.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "graders",
+          "heard": "greater",
+          "similarity": 0.77
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 4,
+      "file": "audio/s05_04.wav",
+      "clip_sha": "b961b28259016874",
+      "text": "What decides the trial's verdict depends on one optional part of the eval file, called the scoring block.",
+      "tts_text": "What decides the trial's verdict depends on one optional part of the [eval](/ˌivˈæl/) file, called the scoring block.",
+      "heard": "What decides the trial's verdict depends on one optional part of the EVAL file called the scoring block.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 0,
+      "file": "audio/s06_00.wav",
+      "clip_sha": "87efda25935f35a7",
+      "text": "With no scoring block, which is what every eval file so far has had, every grader must pass.",
+      "tts_text": "With no scoring block, which is what every [eval](/ˌivˈæl/) file so far has had, every grader must pass.",
+      "heard": "With no scoring block, which is what every eval file so far has had, every grader must pass.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 1,
+      "file": "audio/s06_01.wav",
+      "clip_sha": "9df1657e68d71868",
+      "text": "Vally still works out a score, the plain average of the graders' scores, and prints it, but that score decides nothing.",
+      "tts_text": "Valley still works out a score, the plain average of the graders' scores, and prints it, but that score decides nothing.",
+      "heard": "Valley still works out a score, the plain average of the graders scores and prints it, but that score decides nothing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 2,
+      "file": "audio/s06_02.wav",
+      "clip_sha": "689e428639e02cb7",
+      "text": "Lint's familiar warning is saying exactly that.",
+      "tts_text": "Lint's familiar warning is saying exactly that.",
+      "heard": "Lynch's familiar warning is saying exactly that.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Lint's",
+          "heard": "Lynch's",
+          "similarity": 0.55
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 0,
+      "file": "audio/s07_00.wav",
+      "clip_sha": "3de60897ea603377",
+      "text": "Here's the scoring block we'll add later, at the end of a copy of our judge's eval file, where it applies to every stimulus in the file.",
+      "tts_text": "Here's the scoring block we'll add later, at the end of a copy of our judge's [eval](/ˌivˈæl/) file, where it applies to every stimulus in the file.",
+      "heard": "Here's the scoring block we'll add later, at the end of a copy of our judges eval file, where it applies to every stimulus in the file.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 1,
+      "file": "audio/s07_01.wav",
+      "clip_sha": "2bf7fc311bc62c11",
+      "text": "Weights say how much each grader type counts towards the trial's score.",
+      "tts_text": "Weights say how much each grader type counts towards the trial's score.",
+      "heard": "Wait say how much each greater type counts towards the trial score.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s07",
+      "i": 2,
+      "file": "audio/s07_02.wav",
+      "clip_sha": "14f7625c4fd083ce",
+      "text": "They're keyed by the grader's type, not its name: prompt is the judge, and diff contains is the check that the entry cites its pull request.",
+      "tts_text": "They're keyed by the grader's type, not its name: prompt is the judge, and diff contains is the check that the entry cites its pull request.",
+      "heard": "They're keyed by the grader's type, not its name. Prompt is the judge, and Diff contains is the check that the entry cites its pull request.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 3,
+      "file": "audio/s07_03.wav",
+      "clip_sha": "32bc05b9e5cb5ece",
+      "text": "Here, the two count equally.",
+      "tts_text": "Here, the two count equally.",
+      "heard": "Here are the two count equally.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "extra",
+          "expected": "",
+          "heard": "are",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 4,
+      "file": "audio/s07_04.wav",
+      "clip_sha": "6e0a93ee6c9f0141",
+      "text": "The threshold is the score, from zero to one, that a trial must reach to pass.",
+      "tts_text": "The threshold is the score, from zero to one, that a trial must reach to pass.",
+      "heard": "The threshold is the score from 0 to 1 that a trial must reach to pass.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s07",
+      "i": 5,
+      "file": "audio/s07_05.wav",
+      "clip_sha": "f6bdbc689731aba6",
+      "text": "With this block, a trial passes when its weighted score reaches the threshold, whatever any single grader said.",
+      "tts_text": "With this block, a trial passes when its weighted score reaches the threshold, whatever any single grader said.",
+      "heard": "With this block, a trial passes when its weighted score reaches the threshold, whatever any single grader said.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 6,
+      "file": "audio/s07_06.wav",
+      "clip_sha": "8bea8192d543655a",
+      "text": "Sixty percent sounds like a fair bar; we're using it to show what goes wrong, not as advice.",
+      "tts_text": "Sixty percent sounds like a fair bar; we're using it to show what goes wrong, not as advice.",
+      "heard": "60% sounds like a fair bar. We're using it to show what goes wrong, not as advice.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 0,
+      "file": "audio/s08_00.wav",
+      "clip_sha": "5d740db6b806db36",
+      "text": "Two rules follow from the arithmetic, and each lets an average hide a failure.",
+      "tts_text": "Two rules follow from the arithmetic, and each lets an average hide a failure.",
+      "heard": "Two rules follow from the arithmetic, and each lets an average hide a failure.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 1,
+      "file": "audio/s08_01.wav",
+      "clip_sha": "2a1a06ad73182e31",
+      "text": "First, a strong score on one grader can carry a failure on another.",
+      "tts_text": "First, a strong score on one grader can carry a failure on another.",
+      "heard": "First, a strong score on one grader can carry a failure on another.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 2,
+      "file": "audio/s08_02.wav",
+      "clip_sha": "a8d851feb0edfb4f",
+      "text": "In this trial, the judge fails with a score of a quarter, and the pull request check passes with a score of one.",
+      "tts_text": "In this trial, the judge fails with a score of a quarter, and the pull request check passes with a score of one.",
+      "heard": "In this trial, the judge fails with a score of a quarter, and the pull request check passes with a score of 1.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 3,
+      "file": "audio/s08_03.wav",
+      "clip_sha": "302cb74b25b1164b",
+      "text": "The trial's score comes to zero point six two five, which reaches the threshold, so the trial passes.",
+      "tts_text": "The trial's score comes to zero point six two five, which reaches the threshold, so the trial passes.",
+      "heard": "The trials score comes to 0.625, which reaches the threshold, so the trial passes.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 4,
+      "file": "audio/s08_04.wav",
+      "clip_sha": "fed6934503e9bc5d",
+      "text": "The judge's failure is still printed with a cross; it just no longer decides the verdict.",
+      "tts_text": "The judge's failure is still printed with a cross; it just no longer decides the verdict.",
+      "heard": "The judge's failure is still printed with a cross, it just no longer decides the verdict.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 0,
+      "file": "audio/s09_00.wav",
+      "clip_sha": "bdb7a9a1e38a3b96",
+      "text": "Second, a grader type that's left out of the weights stops counting: its weight is taken as zero.",
+      "tts_text": "Second, a grader type that's left out of the weights stops counting: its weight is taken as zero.",
+      "heard": "Second, a greater type that's left out of the weight stops counting. Its weight is taken as zero.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s09",
+      "i": 1,
+      "file": "audio/s09_01.wav",
+      "clip_sha": "6a32914d0893eeeb",
+      "text": "With diff contains alone in the weights, the judge would still be called and paid for, and its verdict would change nothing.",
+      "tts_text": "With diff contains alone in the weights, the judge would still be called and paid for, and its verdict would change nothing.",
+      "heard": "With diff contains alone in the weights, the judge would still be called and paid for, and its verdict would change nothing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 2,
+      "file": "audio/s09_02.wav",
+      "clip_sha": "081ab7a18d4c4686",
+      "text": "The docs put it plainly: omitting a type silences it.",
+      "tts_text": "The docs put it plainly: omitting a type silences it.",
+      "heard": "The docs put it plainly, omitting a type silences it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 3,
+      "file": "audio/s09_03.wav",
+      "clip_sha": "e4dc82569b59b8c3",
+      "text": "A threshold with no weights at all takes the plain average of every grader.",
+      "tts_text": "A threshold with no weights at all takes the plain average of every grader.",
+      "heard": "A threshold with no weights at all takes the plain average of every grader.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 4,
+      "file": "audio/s09_04.wav",
+      "clip_sha": "4bdcc99790526676",
+      "text": "Here's a stimulus with three graders: a yes-or-no judge, and two checks.",
+      "tts_text": "Here's a stimulus with three graders: a yes-or-no judge, and two checks.",
+      "heard": "Here's a stimulus with three graders, a yes or no judge, and two checks.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s09",
+      "i": 5,
+      "file": "audio/s09_05.wav",
+      "clip_sha": "ba9e07e5f1e82ade",
+      "text": "The judge fails, which for a yes-or-no judge is a score of zero, and both checks pass.",
+      "tts_text": "The judge fails, which for a yes-or-no judge is a score of zero, and both checks pass.",
+      "heard": "The judge fails, which for yes or no judge is a score of zero, and both checks pass.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s09",
+      "i": 6,
+      "file": "audio/s09_06.wav",
+      "clip_sha": "20406ca139b167d9",
+      "text": "The average is zero point six seven, which reaches zero point six, so the judge is outvoted.",
+      "tts_text": "The average is zero point six seven, which reaches zero point six, so the judge is outvoted.",
+      "heard": "The average is 0.67, which reaches 0.6, so the judge is outvoted.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s10",
+      "i": 0,
+      "file": "audio/s10_00.wav",
+      "clip_sha": "843d8ca4834735c4",
+      "text": "That's the scoring block; next, here's a judge that can score between zero and one.",
+      "tts_text": "That's the scoring block; next, here's a judge that can score between zero and one.",
+      "heard": "That's the scoring block. Next, here's a judge that can score between 0 and 1.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s10",
+      "i": 1,
+      "file": "audio/s10_01.wav",
+      "clip_sha": "79dab52ca96a1a6e",
+      "text": "The judge is the prompt grader, and its config has a scoring setting, which so far we've set to binary: a yes or a no.",
+      "tts_text": "The judge is the prompt grader, and its config has a scoring setting, which so far we've set to binary: a yes or a no.",
+      "heard": "The judge is the prompt greater and its config has a scoring setting which so far we've set to binary, a yes or a no.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 2,
+      "file": "audio/s10_02.wav",
+      "clip_sha": "e7c4ad3c824e7cb7",
+      "text": "That setting has two other values: scale one to five, which is also what a judge does when the setting is left out, and scale one to ten.",
+      "tts_text": "That setting has two other values: scale one to five, which is also what a judge does when the setting is left out, and scale one to ten.",
+      "heard": "That setting has two other values, scale 1 to 5, which is also what a judge does when the setting is left out and scale 1 to 10.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s10",
+      "i": 3,
+      "file": "audio/s10_03.wav",
+      "clip_sha": "cda893a633931222",
+      "text": "We'll give ours scale one to five.",
+      "tts_text": "We'll give ours scale one to five.",
+      "heard": "We'll give our scale one to five.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 4,
+      "file": "audio/s10_04.wav",
+      "clip_sha": "32bf12082bcd9efb",
+      "text": "It's a different thing from the scoring block: this setting sits inside the judge's config, and changes only how the judge answers.",
+      "tts_text": "It's a different thing from the scoring block: this setting sits inside the judge's config, and changes only how the judge answers.",
+      "heard": "It's a different thing from the scoring block. This setting sits inside the judges config and changes only how the judge answers.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 5,
+      "file": "audio/s10_05.wav",
+      "clip_sha": "84d2691de457aa38",
+      "text": "Beside it goes a threshold of the judge's own.",
+      "tts_text": "Beside it goes a threshold of the judge's own.",
+      "heard": "Beside it goes a threshold of the judge's own.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 0,
+      "file": "audio/s11_00.wav",
+      "clip_sha": "c5c1ec09965c642d",
+      "text": "On this scale, the judge gives each rubric criterion a whole number from one to five.",
+      "tts_text": "On this scale, the judge gives each rubric criterion a whole number from one to five.",
+      "heard": "On this scale, the judge gives each rubric criterion a whole number from 1 to 5.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s11",
+      "i": 1,
+      "file": "audio/s11_01.wav",
+      "clip_sha": "61b2485a58d31e2c",
+      "text": "Vally rescales that number to the range zero to one, so it can be combined with other graders' scores.",
+      "tts_text": "Valley rescales that number to the range zero to one, so it can be combined with other graders' scores.",
+      "heard": "Bally rescales that number to the range 0 to 1, so it can be combined with other greater scores.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Vally",
+          "heard": "Bally",
+          "similarity": 0.5
+        },
+        {
+          "kind": "different",
+          "expected": "graders",
+          "heard": "greater",
+          "similarity": 0.77
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s11",
+      "i": 2,
+      "file": "audio/s11_02.wav",
+      "clip_sha": "dd6794340a6e6055",
+      "text": "A one becomes zero, a five becomes one, and each step is a quarter.",
+      "tts_text": "A one becomes zero, a five becomes one, and each step is a quarter.",
+      "heard": "1 becomes 0, a 5 becomes 1, and each step is a quarter.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "extra",
+          "expected": "",
+          "heard": "1 becomes 0",
+          "similarity": 0.0
+        },
+        {
+          "kind": "different",
+          "expected": "one",
+          "heard": "5",
+          "similarity": 0.0
+        },
+        {
+          "kind": "different",
+          "expected": "zero a five becomes one",
+          "heard": "1",
+          "similarity": 0.3
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 3,
+      "file": "audio/s11_03.wav",
+      "clip_sha": "095333d3055b2e59",
+      "text": "The judge passes when its rescaled score reaches its own threshold.",
+      "tts_text": "The judge passes when its rescaled score reaches its own threshold.",
+      "heard": "The judge passes when its rescaled score reaches its own threshold.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 4,
+      "file": "audio/s11_04.wav",
+      "clip_sha": "3902d182e9e83666",
+      "text": "Left out, that threshold is a half, which means a three passes.",
+      "tts_text": "Left out, that threshold is a half, which means a three passes.",
+      "heard": "Left out that threshold is a half, which means a three passes.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 5,
+      "file": "audio/s11_05.wav",
+      "clip_sha": "3a84c242fe3b636a",
+      "text": "Ours is zero point seven five, so the judge has to give at least a four.",
+      "tts_text": "Ours is zero point seven five, so the judge has to give at least a four.",
+      "heard": "Ours is 0.75, so the judge has to give at least a 4.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s12",
+      "i": 0,
+      "file": "audio/s12_00.wav",
+      "clip_sha": "5fa74e604225339f",
+      "text": "So there are two thresholds, and it matters which one decides.",
+      "tts_text": "So there are two thresholds, and it matters which one decides.",
+      "heard": "So there are two thresholds and it matters which one decides.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 1,
+      "file": "audio/s12_01.wav",
+      "clip_sha": "9c9ed781cab18a8f",
+      "text": "With no scoring block, the judge's own threshold decides: it sets the judge's tick or cross, and a cross fails the trial.",
+      "tts_text": "With no scoring block, the judge's own threshold decides: it sets the judge's tick or cross, and a cross fails the trial.",
+      "heard": "With no scoring block, the judge's own threshold decides. It sets the judge's tick or cross, and a cross fails the trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 2,
+      "file": "audio/s12_02.wav",
+      "clip_sha": "31dc6d9519353414",
+      "text": "With a scoring block, only the judge's score goes into the trial's score, and the judge's own threshold stops deciding the verdict.",
+      "tts_text": "With a scoring block, only the judge's score goes into the trial's score, and the judge's own threshold stops deciding the verdict.",
+      "heard": "With a scoring block, only the judge's score goes into the trial score, and the judge's own threshold stops deciding the verdict.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s13",
+      "i": 0,
+      "file": "audio/s13_00.wav",
+      "clip_sha": "3a7a30304bbc65ba",
+      "text": "There's one thing to know before the output appears.",
+      "tts_text": "There's one thing to know before the output appears.",
+      "heard": "There's one thing to know before the output appears.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 1,
+      "file": "audio/s13_01.wav",
+      "clip_sha": "bfa5da55767176a5",
+      "text": "Vally grade prints a reason and a tick or cross for the judge, and a score line for the trial, but not the judge's own number.",
+      "tts_text": "Valley grade prints a reason and a tick or cross for the judge, and a score line for the trial, but not the judge's own number.",
+      "heard": "Valley Grade prints a reason and a tick or cross for the judge and a score line for the trial, but not the judge's own number.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 2,
+      "file": "audio/s13_02.wav",
+      "clip_sha": "f063ae6bef61580f",
+      "text": "In our trials, every pull request check passes and scores one, so the trial's score is the average of one and the judge's score.",
+      "tts_text": "In our trials, every pull request check passes and scores one, so the trial's score is the average of one and the judge's score.",
+      "heard": "In our trials, every pull request check passes and scores one, so the trial score is the average of one and the judges score.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s13",
+      "i": 3,
+      "file": "audio/s13_03.wav",
+      "clip_sha": "b5ec69744c4846b1",
+      "text": "That means the judge's answer can be worked out from the score line: a hundred percent is a five, eighty-seven point five is a four, and so on down to fifty percent for a one.",
+      "tts_text": "That means the judge's answer can be worked out from the score line: a hundred percent is a five, eighty-seven point five is a four, and so on down to fifty percent for a one.",
+      "heard": "That means the judge's answer can be worked out from the score line. 100% is a 5, 87.5 is a 4, and so on down to 50% for a 1.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 5
+    },
+    {
+      "scene": "s13",
+      "i": 4,
+      "file": "audio/s13_04.wav",
+      "clip_sha": "e4574107e7879edf",
+      "text": "If a trial's check failed, this table wouldn't apply.",
+      "tts_text": "If a trial's check failed, this table wouldn't apply.",
+      "heard": "If a trials check failed, this table wouldn't apply.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 0,
+      "file": "audio/s14_00.wav",
+      "clip_sha": "22ae1d6dad56a20b",
+      "text": "That's how the scale works; now let's score our twelve entries with it.",
+      "tts_text": "That's how the scale works; now let's score our twelve entries with it.",
+      "heard": "That's how the scale works. Now let's score our 12 entries with it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s14",
+      "i": 1,
+      "file": "audio/s14_01.wav",
+      "clip_sha": "9b7f9b2f761a4708",
+      "text": "We'll copy the judge's eval file, put the judge on the scale, and re-grade the twelve saved trials.",
+      "tts_text": "We'll copy the judge's [eval](/ˌivˈæl/) file, put the judge on the scale, and re-grade the twelve saved trials.",
+      "heard": "We'll copy the judge's eval file, put the judge on the scale, and regrade the 12 save trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s14",
+      "i": 2,
+      "file": "audio/s14_02.wav",
+      "clip_sha": "98711288aace5c0d",
+      "text": "No agent starts; the cost is twelve judge calls.",
+      "tts_text": "No agent starts; the cost is twelve judge calls.",
+      "heard": "No agent starts, the cost is 12 judge calls.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s14",
+      "i": 3,
+      "file": "audio/s14_03.wav",
+      "clip_sha": "7be556b04eb7a7a3",
+      "text": "The yes-or-no judge agreed with eleven of our twelve labels.",
+      "tts_text": "The yes-or-no judge agreed with eleven of our twelve labels.",
+      "heard": "The yes or no judge agreed with 11 of our 12 labels.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s14",
+      "i": 4,
+      "file": "audio/s14_04.wav",
+      "clip_sha": "598bcacc0bfa3675",
+      "text": "Which of these verdicts would you expect to change, with a judge that has to give at least a four?",
+      "tts_text": "Which of these verdicts would you expect to change, with a judge that has to give at least a four?",
+      "heard": "Which of these verdicts would you expect to change, with a judge that has to give at least a four?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 5,
+      "file": "audio/s14_05.wav",
+      "clip_sha": "b749f7ec6a23fa0f",
+      "text": "If you tried it yourself, here's what you'd see.",
+      "tts_text": "If you tried it yourself, here's what you'd see.",
+      "heard": "If you tried it yourself, here's what you'd see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 0,
+      "file": "audio/s15_00.wav",
+      "clip_sha": "faa7935c9a9c01ee",
+      "text": "First, we copy the judge's eval file, so that the original stays as it is for later.",
+      "tts_text": "First, we copy the judge's [eval](/ˌivˈæl/) file, so that the original stays as it is for later.",
+      "heard": "First, we copy the judge's eval file so that the original stays as it is for later.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 1,
+      "file": "audio/s15_01.wav",
+      "clip_sha": "d9167bd2f5b78946",
+      "text": "In the copy, the name becomes wording scaled, and each of the three judges gets the two lines we looked at: the scale, and a threshold of zero point seven five.",
+      "tts_text": "In the copy, the name becomes wording scaled, and each of the three judges gets the two lines we looked at: the scale, and a threshold of zero point seven five.",
+      "heard": "In the copy, the name becomes wording scaled, and each of the three judges gets the two lines we looked at, the scale, and a threshold of 0.75.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s15",
+      "i": 2,
+      "file": "audio/s15_02.wav",
+      "clip_sha": "dad2289012b595bd",
+      "text": "Lint checks the copy before anything is spent.",
+      "tts_text": "Lint checks the copy before anything is spent.",
+      "heard": "Link checks the copy before anything is spent.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Lint",
+          "heard": "Link",
+          "similarity": 0.5
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 3,
+      "file": "audio/s15_03.wav",
+      "clip_sha": "55b33ba949574455",
+      "text": "It prints the familiar warning, and no errors.",
+      "tts_text": "It prints the familiar warning, and no errors.",
+      "heard": "It prints the familiar warning and no errors.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 0,
+      "file": "audio/s16_00.wav",
+      "clip_sha": "16545e7dd9eaf322",
+      "text": "The twelve saved trials are in their run folder, so we change into it.",
+      "tts_text": "The twelve saved trials are in their run folder, so we change into it.",
+      "heard": "The 12 save trials are in their run folder, so we change into it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s16",
+      "i": 1,
+      "file": "audio/s16_01.wav",
+      "clip_sha": "4af971847828ae0b",
+      "text": "Then we re-grade them with the copy, and the verbose flag asks for each grader's line.",
+      "tts_text": "Then we re-grade them with the copy, and the verbose flag asks for each grader's line.",
+      "heard": "Then we regrade them with a copy, and the verbose flag asks for each grader's line.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "the",
+          "heard": "a",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 2,
+      "file": "audio/s16_02.wav",
+      "clip_sha": "1241fd06c920be96",
+      "text": "Each block will end in a score line.",
+      "tts_text": "Each block will end in a score line.",
+      "heard": "Each block will end in a score line.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 3,
+      "file": "audio/s16_03.wav",
+      "clip_sha": "d49541846f938387",
+      "text": "A little later there are twelve blocks, one for each trial, and these are the last of them.",
+      "tts_text": "A little later there are twelve blocks, one for each trial, and these are the last of them.",
+      "heard": "A little later there are 12 blocks, one for each trial, and these are the last of them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 0,
+      "file": "audio/s17_00.wav",
+      "clip_sha": "4ca0f6795ea8b198",
+      "text": "Here's one of those blocks in full.",
+      "tts_text": "Here's one of those blocks in full.",
+      "heard": "Here's one of those blocks in full.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 1,
+      "file": "audio/s17_01.wav",
+      "clip_sha": "70ff6ee9859e70b8",
+      "text": "The judge's line has a cross, and its reason quotes the entry.",
+      "tts_text": "The judge's line has a cross, and its reason quotes the entry.",
+      "heard": "The judge's line has a cross, and its reason quotes the entry.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 2,
+      "file": "audio/s17_02.wav",
+      "clip_sha": "cc046c0f9ef43244",
+      "text": "The pull request check has a tick.",
+      "tts_text": "The pull request check has a tick.",
+      "heard": "The poll request check has a tick.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "pull",
+          "heard": "poll",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 3,
+      "file": "audio/s17_03.wav",
+      "clip_sha": "55399e65c380ca9d",
+      "text": "And the score line says sixty-two point five percent, which, in the table, is a judge's answer of two.",
+      "tts_text": "And the score line says sixty-two point five percent, which, in the table, is a judge's answer of two.",
+      "heard": "And the score line says 62.5%, which in the table is a judge's answer of two.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 4,
+      "file": "audio/s17_04.wav",
+      "clip_sha": "b9f256316c64b22f",
+      "text": "A two is below the judge's threshold, so the judge fails, and the trial fails with it.",
+      "tts_text": "A two is below the judge's threshold, so the judge fails, and the trial fails with it.",
+      "heard": "A two is below the judge's threshold, so the judge fails and the trial fails with it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 0,
+      "file": "audio/s18_00.wav",
+      "clip_sha": "80a268a91b3dce75",
+      "text": "The blocks don't name the model or the trial, so we match each one to its row by the entry its reason quotes.",
+      "tts_text": "The blocks don't name the model or the trial, so we match each one to its row by the entry its reason quotes.",
+      "heard": "Blocks don't name the model or the trial, so we match each one to its row by the entry its reason quotes.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "The",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 1,
+      "file": "audio/s18_01.wav",
+      "clip_sha": "856cc887c55e7a53",
+      "text": "Then each score goes beside the yes-or-no verdict and our label.",
+      "tts_text": "Then each score goes beside the yes-or-no verdict and our label.",
+      "heard": "Then each score goes beside the yes or no verdict and our label.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 2,
+      "file": "audio/s18_02.wav",
+      "clip_sha": "9a2438d93d27f7a4",
+      "text": "The three entries that say how the change was coded all got a two.",
+      "tts_text": "The three entries that say how the change was coded all got a two.",
+      "heard": "The three entries that say how the change was coded all got a 2.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 3,
+      "file": "audio/s18_03.wav",
+      "clip_sha": "5c54990160d0793b",
+      "text": "The entries we labelled yes got fours and fives.",
+      "tts_text": "The entries we labelled yes got fours and fives.",
+      "heard": "The entries we labeled yes got fours and fives.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 4,
+      "file": "audio/s18_04.wav",
+      "clip_sha": "f2a6d97c7b29c8b3",
+      "text": "The two entries that only hint at how both got a four.",
+      "tts_text": "The two entries that only hint at how both got a four.",
+      "heard": "The two entries that only hint at how both got a four.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 5,
+      "file": "audio/s18_05.wav",
+      "clip_sha": "61c77a92085da892",
+      "text": "At our threshold a four passes, so both now pass, and since the yes-or-no judge had failed one of them, one verdict has changed.",
+      "tts_text": "At our threshold a four passes, so both now pass, and since the yes-or-no judge had failed one of them, one verdict has changed.",
+      "heard": "At our threshold of four passes, so both now pass, and since the yes or no judge had failed one of them, one verdict has changed.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "a",
+          "heard": "of",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 6,
+      "file": "audio/s18_06.wav",
+      "clip_sha": "5325cad62a532803",
+      "text": "We had labelled both no.",
+      "tts_text": "We had labelled both no.",
+      "heard": "We had labeled both no.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s19",
+      "i": 0,
+      "file": "audio/s19_00.wav",
+      "clip_sha": "9168469ede825974",
+      "text": "Now for the average: we put the scoring block from before at the end of the copy, with half the weight on the judge, half on the check, and a threshold of zero point six.",
+      "tts_text": "Now for the average: we put the scoring block from before at the end of the copy, with half the weight on the judge, half on the check, and a threshold of zero point six.",
+      "heard": "Now for the average, we put the scoring block from before at the end of the copy, with half the weight on the judge, half on the check, and a threshold of 0.6.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s19",
+      "i": 1,
+      "file": "audio/s19_01.wav",
+      "clip_sha": "238613ff76e752cb",
+      "text": "Lint now says the file is valid, and the warning has gone, because the file says how to combine its graders.",
+      "tts_text": "Lint now says the file is valid, and the warning has gone, because the file says how to combine its graders.",
+      "heard": "lint now says the file is valid and the warning has gone because the file says how to combine its graders.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 2,
+      "file": "audio/s19_02.wav",
+      "clip_sha": "dec8e9582bf2d782",
+      "text": "Then it's the same re-grade, in the same run folder, for twelve more judge calls.",
+      "tts_text": "Then it's the same re-grade, in the same run folder, for twelve more judge calls.",
+      "heard": "Then it's the same regrade in the same run folder for 12 more judge calls.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s19",
+      "i": 3,
+      "file": "audio/s19_03.wav",
+      "clip_sha": "b61e715723c2c067",
+      "text": "This time, each score line ends with the threshold.",
+      "tts_text": "This time, each score line ends with the threshold.",
+      "heard": "This time each score line ends with the threshold.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 4,
+      "file": "audio/s19_04.wav",
+      "clip_sha": "c84d48c2a37ad505",
+      "text": "These last blocks have passed, and so has every block above them.",
+      "tts_text": "These last blocks have passed, and so has every block above them.",
+      "heard": "These last blocks have passed and so has every block above them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 0,
+      "file": "audio/s20_00.wav",
+      "clip_sha": "bb3b5bcad895c0bd",
+      "text": "Here's one of the twelve.",
+      "tts_text": "Here's one of the twelve.",
+      "heard": "Here's one of the 12.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 1,
+      "file": "audio/s20_01.wav",
+      "clip_sha": "26daa5d4bb145fca",
+      "text": "The judge's line still has a cross, and a reason that faults the entry.",
+      "tts_text": "The judge's line still has a cross, and a reason that faults the entry.",
+      "heard": "The judge's line still has a cross and a reason that faults the entry.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 2,
+      "file": "audio/s20_02.wav",
+      "clip_sha": "0e3f5846f1d6a7a1",
+      "text": "But the trial has a tick.",
+      "tts_text": "But the trial has a tick.",
+      "heard": "but the trial has a tick.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 3,
+      "file": "audio/s20_03.wav",
+      "clip_sha": "605d4b15efc66640",
+      "text": "The judge's two rescales to a quarter, the check adds a full one, and half of each comes to zero point six two five, which reaches the threshold.",
+      "tts_text": "The judge's two rescales to a quarter, the check adds a full one, and half of each comes to zero point six two five, which reaches the threshold.",
+      "heard": "Judges 2 rescales to a quarter, the check adds a full one, and half of each comes to 0.625, which reaches the threshold.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "The",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s20",
+      "i": 4,
+      "file": "audio/s20_04.wav",
+      "clip_sha": "9d5fba78e960f414",
+      "text": "Four of the twelve passed this way, with a cross from the judge inside.",
+      "tts_text": "Four of the twelve passed this way, with a cross from the judge inside.",
+      "heard": "Four of the twelve passed this way, with a cross from the judge inside.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 0,
+      "file": "audio/s21_00.wav",
+      "clip_sha": "7bae0ec3dadac93c",
+      "text": "Last, we take the scoring block out of the copy again.",
+      "tts_text": "Last, we take the scoring block out of the copy again.",
+      "heard": "Last, we take the scoring block out of the copy again.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 1,
+      "file": "audio/s21_01.wav",
+      "clip_sha": "c3c6e34e08ded537",
+      "text": "The scores go into our notes file as a new column.",
+      "tts_text": "The scores go into our notes file as a new column.",
+      "heard": "The scores go into our notes file as a new column.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 2,
+      "file": "audio/s21_02.wav",
+      "clip_sha": "556e9802eb952b77",
+      "text": "Under the table goes one sentence.",
+      "tts_text": "Under the table goes one sentence.",
+      "heard": "Under the table goes one sentence.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 3,
+      "file": "audio/s21_03.wav",
+      "clip_sha": "8489780968c2f126",
+      "text": "One verdict changed between the two judges.",
+      "tts_text": "One verdict changed between the two judges.",
+      "heard": "One verdict changed between the two judges.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 4,
+      "file": "audio/s21_04.wav",
+      "clip_sha": "fd2fcad7d330e2c7",
+      "text": "Against our twelve labels, the one-to-five judge has TPR seven of seven.",
+      "tts_text": "Against our twelve labels, the one-to-five judge has TPR seven of seven.",
+      "heard": "Against our 12 labels, the 1-5 judge has TPR-7 of 7.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s21",
+      "i": 5,
+      "file": "audio/s21_05.wav",
+      "clip_sha": "d4de28be8e742030",
+      "text": "Its TNR is three of five.",
+      "tts_text": "Its TNR is three of five.",
+      "heard": "Its TNR is 3 of 5.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s22",
+      "i": 0,
+      "file": "audio/s22_00.wav",
+      "clip_sha": "bba020f8a20ab335",
+      "text": "So what did the scores show?",
+      "tts_text": "So what did the scores show?",
+      "heard": "So what did the scores show?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 1,
+      "file": "audio/s22_01.wav",
+      "clip_sha": "7499d0243682aeb1",
+      "text": "For one thing, the scale did show which failures were close, and which were far off.",
+      "tts_text": "For one thing, the scale did show which failures were close, and which were far off.",
+      "heard": "For one thing the scale did show which failures were close and which were far off.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 2,
+      "file": "audio/s22_02.wav",
+      "clip_sha": "b1f3245d8e5b61b7",
+      "text": "These entries say how the change was coded.",
+      "tts_text": "These entries say how the change was coded.",
+      "heard": "These entries say how the change was coded.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 3,
+      "file": "audio/s22_03.wav",
+      "clip_sha": "44d620e828cd2ee0",
+      "text": "These start with what users notice.",
+      "tts_text": "These start with what users notice.",
+      "heard": "These start with what users notice.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 4,
+      "file": "audio/s22_04.wav",
+      "clip_sha": "170eb617fb5ba9b0",
+      "text": "If we were choosing what to fix in the skill, the entries that are far off say where to start.",
+      "tts_text": "If we were choosing what to fix in the skill, the entries that are far off say where to start.",
+      "heard": "If we were choosing what to fix in the skill, the entries that are far off say where to start.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 0,
+      "file": "audio/s23_00.wav",
+      "clip_sha": "ef57a51a3045a894",
+      "text": "The scale also changed a verdict, and not for the better.",
+      "tts_text": "The scale also changed a verdict, and not for the better.",
+      "heard": "The scale also changed a verdict and not for the better.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 1,
+      "file": "audio/s23_01.wav",
+      "clip_sha": "292db2370dadbfe1",
+      "text": "With the judge's threshold at zero point seven five, two entries passed that we had labelled no, so TNR fell from four of five to three of five.",
+      "tts_text": "With the judge's threshold at zero point seven five, two entries passed that we had labelled no, so TNR fell from four of five to three of five.",
+      "heard": "With the judge's threshold at 0.75, two entries passed that we had labeled no, so TNR fell from 4 of 5 to 3 of 5.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 6
+    },
+    {
+      "scene": "s23",
+      "i": 2,
+      "file": "audio/s23_02.wav",
+      "clip_sha": "b4405333c74ccc7c",
+      "text": "At the default threshold of a half, a three would pass as well; in this grading no entry got one, so the count is the same.",
+      "tts_text": "At the default threshold of a half, a three would pass as well; in this grading no entry got one, so the count is the same.",
+      "heard": "At the default threshold of a half, a three would pass as well, in this grading no entry got one, so the count is the same.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 3,
+      "file": "audio/s23_03.wav",
+      "clip_sha": "85ddbed6c7860e0f",
+      "text": "A threshold is a decision about where good enough starts.",
+      "tts_text": "A threshold is a decision about where good enough starts.",
+      "heard": "A threshold is a decision about where good enough starts.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 4,
+      "file": "audio/s23_04.wav",
+      "clip_sha": "b27b2fcd56e5e2cc",
+      "text": "The way to know whether it sits where you'd put it is the same check as before: compare its verdicts with your labels.",
+      "tts_text": "The way to know whether it sits where you'd put it is the same check as before: compare its verdicts with your labels.",
+      "heard": "The way to know whether it sits where you'd put it is the same check as before, compare its verdicts with your labels.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 0,
+      "file": "audio/s24_00.wav",
+      "clip_sha": "8c9b9504689f26ee",
+      "text": "We graded the same twelve entries twice: once without the scoring block, and once with it.",
+      "tts_text": "We graded the same twelve entries twice: once without the scoring block, and once with it.",
+      "heard": "We graded the same 12 entries twice, once without the scoring block, and once with it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s24",
+      "i": 1,
+      "file": "audio/s24_01.wav",
+      "clip_sha": "3110530a8e08ce40",
+      "text": "The judge's answer changed for one of them: a four the first time, and a three the second.",
+      "tts_text": "The judge's answer changed for one of them: a four the first time, and a three the second.",
+      "heard": "The judge's answer changed for one of them, a four the first time and a three the second.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 2,
+      "file": "audio/s24_02.wav",
+      "clip_sha": "6717c6c834e13126",
+      "text": "At the judge's own threshold, that's a pass and then a fail, for the same entry.",
+      "tts_text": "At the judge's own threshold, that's a pass and then a fail, for the same entry.",
+      "heard": "At the judge's own threshold, that's a pass and then a fail for the same entry.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 3,
+      "file": "audio/s24_03.wav",
+      "clip_sha": "788e8626963085ec",
+      "text": "A judge is a model, so its answer can vary from one grading to the next, and near the threshold that variation turns into a different verdict.",
+      "tts_text": "A judge is a model, so its answer can vary from one grading to the next, and near the threshold that variation turns into a different verdict.",
+      "heard": "Judge is a model, so its answer can vary from one grading to the next, and near the threshold that variation turns into a different verdict.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "A",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 4,
+      "file": "audio/s24_04.wav",
+      "clip_sha": "70b753bce7d82923",
+      "text": "The entries that got a two got a two both times.",
+      "tts_text": "The entries that got a two got a two both times.",
+      "heard": "The entries that got a 2 got a 2 both times.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s25",
+      "i": 0,
+      "file": "audio/s25_00.wav",
+      "clip_sha": "55e03e10d9db79a4",
+      "text": "The scale also invited the judge to mark things the rubric didn't ask about.",
+      "tts_text": "The scale also invited the judge to mark things the rubric didn't ask about.",
+      "heard": "Scale also invited the judge to mark things the rubric didn't ask about.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "The",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 1,
+      "file": "audio/s25_01.wav",
+      "clip_sha": "2990fbdadcece638",
+      "text": "This entry got a four, not a five, though we and the yes-or-no judge both said yes.",
+      "tts_text": "This entry got a four, not a five, though we and the yes-or-no judge both said yes.",
+      "heard": "This entry got a 4, not a 5, though we and the yes or no judge both said yes.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s25",
+      "i": 2,
+      "file": "audio/s25_02.wav",
+      "clip_sha": "f5113d7d45d1056d",
+      "text": "Its reason says the entry could be more concrete, with an example date, which our one criterion doesn't ask for.",
+      "tts_text": "Its reason says the entry could be more concrete, with an example date, which our one criterion doesn't ask for.",
+      "heard": "Its reason says the entry could be more concrete, with an example date, which our one criterion doesn't ask for.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 3,
+      "file": "audio/s25_03.wav",
+      "clip_sha": "ce3a33c3b0e9ab57",
+      "text": "A rubric with one criterion keeps a yes-or-no judge on its question.",
+      "tts_text": "A rubric with one criterion keeps a yes-or-no judge on its question.",
+      "heard": "Rubric with one criterion keeps a yes or no judge on its question.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "A",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s25",
+      "i": 4,
+      "file": "audio/s25_04.wav",
+      "clip_sha": "68070fb31dd264f7",
+      "text": "Given a scale, the same judge finds other things to mark.",
+      "tts_text": "Given a scale, the same judge finds other things to mark.",
+      "heard": "Given a scale, the same judge finds other things to mark.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 0,
+      "file": "audio/s26_00.wav",
+      "clip_sha": "3c14db632daa706b",
+      "text": "Then there's the scoring block.",
+      "tts_text": "Then there's the scoring block.",
+      "heard": "Then there's the scoring block.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 1,
+      "file": "audio/s26_01.wav",
+      "clip_sha": "09c06b07d469b742",
+      "text": "These are the trials that passed with a cross from the judge.",
+      "tts_text": "These are the trials that passed with a cross from the judge.",
+      "heard": "These are the trials that passed with a cross from the judge.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 2,
+      "file": "audio/s26_02.wav",
+      "clip_sha": "bfd1a995a2a6448f",
+      "text": "The judge failed each of them, in plain words, and each passed as a trial, because the check scored a full one, and the average carried it.",
+      "tts_text": "The judge failed each of them, in plain words, and each passed as a trial, because the check scored a full one, and the average carried it.",
+      "heard": "The judge failed each of them in plain words and each passed as a trial because the check scored a full one and the average carried it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 3,
+      "file": "audio/s26_03.wav",
+      "clip_sha": "93f3942ccbe6a6d5",
+      "text": "The check nearly always passes, and it carries half the weight.",
+      "tts_text": "The check nearly always passes, and it carries half the weight.",
+      "heard": "The check nearly always passes and it carries half the weight.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 4,
+      "file": "audio/s26_04.wav",
+      "clip_sha": "b37c87680d07427c",
+      "text": "So while the check passes, a trial fails at this threshold only if the judge answers one, the lowest mark.",
+      "tts_text": "So while the check passes, a trial fails at this threshold only if the judge answers one, the lowest mark.",
+      "heard": "So while the check passes, a trial fails at this threshold only if the judge answers one, the lowest mark.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 5,
+      "file": "audio/s26_05.wav",
+      "clip_sha": "ff2ca8fb5e26542c",
+      "text": "All twelve trials passed, so nothing in a summary would say that the judge had failed four of them.",
+      "tts_text": "All twelve trials passed, so nothing in a summary would say that the judge had failed four of them.",
+      "heard": "All 12 trials passed, so nothing in a summary would say that the judge had failed four of them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s26",
+      "i": 6,
+      "file": "audio/s26_06.wav",
+      "clip_sha": "3ed01163d6f2b7dc",
+      "text": "That's how a failure hides in an average.",
+      "tts_text": "That's how a failure hides in an average.",
+      "heard": "That's how a failure hides in an average.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 0,
+      "file": "audio/s27_00.wav",
+      "clip_sha": "7b5f2d30ede1436d",
+      "text": "So we follow Vally's advice: thresholds are for judged quality, and pass-or-fail checks stay out of the weighting.",
+      "tts_text": "So we follow Valley's advice: thresholds are for judged quality, and pass-or-fail checks stay out of the weighting.",
+      "heard": "Do we follow Valle's advice? Thresholds are for judged quality, and pass or fail checks stay out of the waiting.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "So",
+          "heard": "Do",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s27",
+      "i": 1,
+      "file": "audio/s27_01.wav",
+      "clip_sha": "d3e2f47f9b1929ee",
+      "text": "From here on, the yes-or-no judge decides the verdict.",
+      "tts_text": "From here on, the yes-or-no judge decides the verdict.",
+      "heard": "From here on, the yes or no judge decides the verdict.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s27",
+      "i": 2,
+      "file": "audio/s27_02.wav",
+      "clip_sha": "aa3f01e4f34f9a05",
+      "text": "The one-to-five judge is a tool to reach for when you want to know how far off a failure is.",
+      "tts_text": "The one-to-five judge is a tool to reach for when you want to know how far off a failure is.",
+      "heard": "The one to five judge is a tool to reach for when you want to know how far off a failure is.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s28",
+      "i": 0,
+      "file": "audio/s28_00.wav",
+      "clip_sha": "455e06394d6dbeab",
+      "text": "Before you go on: what decides a trial's verdict with no scoring block, and what decides it with weights and a threshold?",
+      "tts_text": "Before you go on: what decides a trial's verdict with no scoring block, and what decides it with weights and a threshold?",
+      "heard": "Before you go on, what decides a trial's verdict with no scoring block and what decides it with weights and a threshold?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 1,
+      "file": "audio/s28_01.wav",
+      "clip_sha": "50c5af45b1dc9cdc",
+      "text": "With no scoring block, every grader must pass, and the printed score decides nothing.",
+      "tts_text": "With no scoring block, every grader must pass, and the printed score decides nothing.",
+      "heard": "With no scoring block, every grader must pass and the printed score decides nothing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 2,
+      "file": "audio/s28_02.wav",
+      "clip_sha": "3b78704cd4b18a8b",
+      "text": "With weights and a threshold, each grader type's score counts by its weight, and the trial passes when the total reaches the threshold, even if a grader failed.",
+      "tts_text": "With weights and a threshold, each grader type's score counts by its weight, and the trial passes when the total reaches the threshold, even if a grader failed.",
+      "heard": "With weights in a threshold, each grader types score counts by its weight, and the trial passes when the total reaches the threshold, even if a grader failed.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "and",
+          "heard": "in",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s29",
+      "i": 0,
+      "file": "audio/s29_00.wav",
+      "clip_sha": "fc12acba257bf119",
+      "text": "You can now re-grade saved trials with a judge that scores one to five, and say which verdicts changed, and whether your labels agree.",
+      "tts_text": "You can now re-grade saved trials with a judge that scores one to five, and say which verdicts changed, and whether your labels agree.",
+      "heard": "You can now regrade save trials with a judge that scores 1-5 and say which verdicts changed and whether your labels agree.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s29",
+      "i": 1,
+      "file": "audio/s29_01.wav",
+      "clip_sha": "5ad5086c89135635",
+      "text": "Scores and counts both move after an edit.",
+      "tts_text": "Scores and counts both move after an edit.",
+      "heard": "Scores and counts both move after an edit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s29",
+      "i": 2,
+      "file": "audio/s29_02.wav",
+      "clip_sha": "3af5dd9c085fdb3e",
+      "text": "After an edit, seven of ten becomes nine of ten.",
+      "tts_text": "After an edit, seven of ten becomes nine of ten.",
+      "heard": "After an edit, 7 of 10 becomes 9 of 10.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 4
+    },
+    {
+      "scene": "s29",
+      "i": 3,
+      "file": "audio/s29_03.wav",
+      "clip_sha": "6885f3fa08f44c17",
+      "text": "Is that real?",
+      "tts_text": "Is that real?",
+      "heard": "Is that real?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s29",
+      "i": 4,
+      "file": "audio/s29_04.wav",
+      "clip_sha": "c0fa80d6856b024e",
+      "text": "That's the next lesson.",
+      "tts_text": "That's the next lesson.",
+      "heard": "That's the next lesson.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s29",
+      "i": 5,
+      "file": "audio/s29_05.wav",
+      "clip_sha": "27d9bef028570df3",
+      "text": "For practice, the exercises on the lesson page are worth doing first.",
+      "tts_text": "For practice, the exercises on the lesson page are worth doing first.",
+      "heard": "For practice, the exercises on the lesson page are worth doing first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "Lint's",
+      "sentences": 2,
+      "heard": [
+        "Lynch's",
+        "Link"
+      ],
+      "of": 3,
+      "share": 0.67
+    },
+    {
+      "word": "graders",
+      "sentences": 2,
+      "heard": [
+        "greater"
+      ],
+      "of": 5,
+      "share": 0.4
+    },
+    {
+      "word": "becomes",
+      "sentences": 1,
+      "heard": [
+        "1"
+      ],
+      "of": 3,
+      "share": 0.33
+    },
+    {
+      "word": "pull",
+      "sentences": 1,
+      "heard": [
+        "poll"
+      ],
+      "of": 5,
+      "share": 0.2
+    },
+    {
+      "word": "Vally",
+      "sentences": 1,
+      "heard": [
+        "Bally"
+      ],
+      "of": 7,
+      "share": 0.14
+    },
+    {
+      "word": "five",
+      "sentences": 1,
+      "heard": [
+        "1"
+      ],
+      "of": 15,
+      "share": 0.07
+    },
+    {
+      "word": "zero",
+      "sentences": 1,
+      "heard": [
+        "1"
+      ],
+      "of": 15,
+      "share": 0.07
+    },
+    {
+      "word": "A",
+      "sentences": 5,
+      "heard": [
+        "1",
+        "of"
+      ],
+      "of": 82,
+      "share": 0.06
+    },
+    {
+      "word": "one",
+      "sentences": 2,
+      "heard": [
+        "5",
+        "1"
+      ],
+      "of": 38,
+      "share": 0.05
+    },
+    {
+      "word": "So",
+      "sentences": 1,
+      "heard": [
+        "Do"
+      ],
+      "of": 23,
+      "share": 0.04
+    },
+    {
+      "word": "the",
+      "sentences": 4,
+      "heard": [
+        "a"
+      ],
+      "of": 125,
+      "share": 0.03
+    },
+    {
+      "word": "and",
+      "sentences": 1,
+      "heard": [
+        "in"
+      ],
+      "of": 60,
+      "share": 0.02
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 147,
+    "mismatched": 17,
+    "transcribed": 147,
+    "reused": 0,
+    "seconds_per_sentence": 0.286
+  }
+}

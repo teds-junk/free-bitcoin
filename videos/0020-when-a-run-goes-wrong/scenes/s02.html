@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Four questions, in order</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.qs .semantic-block{min-height:330px}.qs .title{font-size:44px;line-height:1.2}.qs .label{font-size:30px}.cols.qs{gap:28px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Four questions, cheapest first</div>
+  <h2 class="scene-title">Four questions, in order</h2>
+  <div class="stage">
+<div class="cols qs">
+    <div class="semantic-block" data-concept="q1" data-rep="block" data-role="structure">
+      <div class="step">1</div><div class="title words">Is the eval valid?</div><div class="label">does Vally accept the file?</div>
+    </div><div class="semantic-block" data-concept="q2" data-rep="block" data-role="transform">
+      <div class="step">2</div><div class="title words">Did it complete?</div><div class="label">did every trial finish and get graded?</div>
+    </div><div class="semantic-block" data-concept="q3" data-rep="block" data-role="attention">
+      <div class="step">3</div><div class="title words">Why was the result unexpected?</div><div class="label">the agent, or the grader?</div>
+    </div><div class="semantic-block" data-concept="q4" data-rep="block" data-role="change">
+      <div class="step">4</div><div class="title words">Does the fix work?</div><div class="label">prove it</div>
+    </div>
+  </div>
+  <p class="note">Source: Vally docs, Debugging Evals</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "q1",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "q2",
+  "at": "3",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "q3",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "q4",
+  "at": "5",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "6"
+ }
+]
+</script>
+</body>
+</html>

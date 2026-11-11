@@ -1,0 +1,24 @@
+{
+ "_about": "From the lesson 16 video's own run (videos/0016-what-a-passing-trial-costs/src/run/HANDOVER.md, run 2026-11-11T08-39-02-179Z): trials passed and finished, and AIU per passing trial. One AIU is one cent.",
+ "haiku-low": {
+  "passed": 15,
+  "trials": 15,
+  "aiu_per_passing_trial": 0.21
+ },
+ "haiku-high": {
+  "passed": 15,
+  "trials": 15,
+  "aiu_per_passing_trial": 0.24
+ },
+ "terra-low": {
+  "passed": 15,
+  "trials": 15,
+  "aiu_per_passing_trial": 2.76
+ },
+ "terra-high": {
+  "passed": 15,
+  "trials": 15,
+  "aiu_per_passing_trial": 2.83
+ },
+ "every_finished_trial_passed": true
+}

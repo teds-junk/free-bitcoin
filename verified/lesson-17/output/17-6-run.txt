@@ -1,0 +1,32 @@
+$ vally experiment run evals/cost.experiment.yaml --variant qwen-local --workers 1 --output-dir results/lesson-17
+Running experiment 'cost'
+
+Loaded 5 stimuli from changelog
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+changelog
+
+  FAIL  after-release · 0/1 graders · 115.8s
+   ✘ entry-in-new-unreleased  no '## [Unreleased]' heading
+
+  FAIL  refactor · 0/1 graders · 196.1s
+   ✘ adds-nothing  Workspace diff is not empty — the stimulus changed the workspace
+
+  FAIL  security · 0/1 graders · 116.0s
+   ✘ under-security  Pattern /(?m)^\+### Security/ not found in workspace diff
+
+────────────────────────────────────────────────────────
+
+Experiment  cost   varying /defaults/model, /defaults/reasoning_effort, /defaults/executor, /defaults/timeout, /defaults/runs · baseline haiku-low
+
+  → Comparison unavailable — baseline not run (no observed stimuli).
+
+  eval       qwen-local
+  changelog  ✘ 2/5     
+  ─────────  ──────────
+  stimuli    2/5       
+
+Run ID: 49975528-266c-416d-ac87-475345c05675
+Output: <practice>/results/lesson-17/2026-11-10T17-47-01-911Z

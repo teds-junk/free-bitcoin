@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The range around each count</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.calc{background:var(--paper-muted);border-radius:var(--radius);padding:26px 36px 30px;display:flex;flex-direction:column;gap:16px;min-width:0}.calc .who{font:600 26px/1.2 var(--font-body);letter-spacing:.03em;color:var(--ink-muted)}.calc .who .mono{font-family:var(--font-code);color:var(--ink)}.calc .crow{display:grid;grid-template-columns:150px 96px 44px 96px 1fr;gap:16px;align-items:center;font:400 34px/1.2 var(--font-body);color:var(--ink)}.calc .cl{font:600 26px/1.2 var(--font-body);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}.calc .cb{font:500 36px/1 var(--font-code);background:var(--paper);border:2px solid var(--rule);border-radius:8px;padding:12px 0;text-align:center}.calc .co{font:500 34px/1.2 var(--font-code);white-space:nowrap}.calc .cv{font:400 34px/1.35 var(--font-body);color:var(--ink);margin:6px 0 0}.twocalc{gap:36px}.calc{padding:28px 30px 30px}.calc .crow{grid-template-columns:118px 66px 30px 66px 1fr;gap:12px;font-size:30px}.calc .cb{font-size:32px;padding:10px 0}.calc .co{font-size:29px}.calc .cl{font-size:22px}.calc .cv{font-size:30px}.note{margin:0}.stage{gap:26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Compare before and after</div>
+  <h2 class="scene-title">The range around each count</h2>
+  <div class="stage">
+<div class="cols twocalc">
+    <div class="calc" data-concept="hc" data-rep="card">
+      <div class="who"><span class="mono">claude-haiku-4.5</span></div>
+      <div class="crow"><span class="cl">Before</span><span class="cb">5</span><span>of</span><span class="cb">9</span><span class="co"><span data-concept="hcb" data-rep="cell">56%, range 27% to 81%</span></span></div>
+      <div class="crow"><span class="cl">After</span><span class="cb">9</span><span>of</span><span class="cb">9</span><span class="co"><span data-concept="hca" data-rep="cell">100%, range 70% to 100%</span></span></div>
+      <p class="cv"><span data-concept="hcv" data-rep="cell">The ranges overlap. This result does not show a change.</span></p>
+    </div>
+    <div class="calc" data-concept="tc" data-rep="card">
+      <div class="who"><span class="mono">gpt-5.6-terra</span></div>
+      <div class="crow"><span class="cl">Before</span><span class="cb">5</span><span>of</span><span class="cb">6</span><span class="co"><span data-concept="tcb" data-rep="cell">83%, range 44% to 97%</span></span></div>
+      <div class="crow"><span class="cl">After</span><span class="cb">9</span><span>of</span><span class="cb">9</span><span class="co"><span data-concept="tca" data-rep="cell">100%, range 70% to 100%</span></span></div>
+      <p class="cv"><span data-concept="tcv" data-rep="cell">The ranges overlap. This result does not show a change.</span></p>
+    </div>
+  </div>
+  <p class="note">the course’s calculator, with our counts · our run · 2026-11-11T07-53-29-176Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "hcb",
+  "at": "1~twenty-seven to eighty-one",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "hca",
+  "at": "1~seventy to one hundred",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "hcv",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "tcb",
+  "at": "3~forty-four to ninety-seven",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "tca",
+  "at": "3~seventy to one hundred",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "tcv",
+  "at": "3~overlap too",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,1687 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/0024-when-a-tool-fails",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "fdd1c8e49e8f5b54",
+      "text": "Every trial of the release tool so far had a list of merged changes to work from.",
+      "tts_text": "Every trial of the release tool so far had a list of merged changes to work from.",
+      "heard": "Every trial of the release tool so far had a list of merged changes to work from.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "b3bd9b825f5071a0",
+      "text": "In real use, the agent is sometimes asked to fetch that list itself, by running the script that lists what was merged.",
+      "tts_text": "In real use, the agent is sometimes asked to fetch that list itself, by running the script that lists what was merged.",
+      "heard": "In real use, the agent is sometimes asked to fetch that list itself, by running the script that lists what was merged.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "bb2c3cde86379a50",
+      "text": "Some days that script fails, because the team's tracker doesn't answer.",
+      "tts_text": "Some days that script fails, because the team's tracker doesn't answer.",
+      "heard": "Some days that script fails because the team's tracker doesn't answer.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "a8d37567e7c4ddc1",
+      "text": "If the agent writes entries anyway, it has made them up, and in an app, they ship without anyone reading them.",
+      "tts_text": "If the agent writes entries anyway, it has made them up, and in an app, they ship without anyone reading them.",
+      "heard": "If the agent writes entries anyway, it has made them up, and in an app, they ship without anyone reading them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 4,
+      "file": "audio/s01_04.wav",
+      "clip_sha": "173cffb30fd2b972",
+      "text": "Nobody can take the tracker down just to see what happens.",
+      "tts_text": "Nobody can take the tracker down just to see what happens.",
+      "heard": "Nobody can take the tracker down just to see what happens.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 5,
+      "file": "audio/s01_05.wav",
+      "clip_sha": "9d568add0b115b7b",
+      "text": "In this lesson, you'll make that script fail inside the eval, the same way in every trial, grade what the agent does next, and see how to start such a test from a run you already have.",
+      "tts_text": "In this lesson, you'll make that script fail inside the [eval](/ˌivˈæl/), the same way in every trial, grade what the agent does next, and see how to start such a test from a run you already have.",
+      "heard": "In this lesson, you'll make that script fail inside the eval, the same way in every trial, grade what the agent does next, and see how to start such a test from a run you already have.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "b69c0c63a0427253",
+      "text": "Let's start with what good behaviour looks like when the script fails, because it isn't the same as on a good day.",
+      "tts_text": "Let's start with what good behaviour looks like when the script fails, because it isn't the same as on a good day.",
+      "heard": "Let's start with what good behavior looks like when the script fails, because it isn't the same as on a good day.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "3f76318ccdb17267",
+      "text": "For the agent in the release tool, it comes to three things.",
+      "tts_text": "For the agent in the release tool, it comes to three things.",
+      "heard": "For the agent in the release tool, it comes to three things.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "32e5dda07707b0ed",
+      "text": "First, it writes no entry: without the list, any entry is a guess.",
+      "tts_text": "First, it writes no entry: without the list, any entry is a guess.",
+      "heard": "First, it writes no entry, without the list, any entry is a guess.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 3,
+      "file": "audio/s02_03.wav",
+      "clip_sha": "692c3aff0b6bab87",
+      "text": "Second, it says what went wrong, so that a person, or the app, can try again later.",
+      "tts_text": "Second, it says what went wrong, so that a person, or the app, can try again later.",
+      "heard": "Second, it says what went wrong, so that a person or the app can try again later.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 4,
+      "file": "audio/s02_04.wav",
+      "clip_sha": "ae1f272d2fe99245",
+      "text": "Third, it stops after two retries at most: one retry on a timeout is sensible, and ten are a loop.",
+      "tts_text": "Third, it stops after two retries at most: one retry on a timeout is sensible, and ten are a loop.",
+      "heard": "Third, it stops after two retries at most. One retry on a timeout is sensible and 10 are a loop.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "9c2f60fa0b2f90d2",
+      "text": "Then we make the failure happen on purpose, and make it the only thing being tested.",
+      "tts_text": "Then we make the failure happen on purpose, and make it the only thing being tested.",
+      "heard": "Then we make the failure happen on purpose and make it the only thing being tested.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "6a792220221fa9f0",
+      "text": "That second part is easy to get wrong.",
+      "tts_text": "That second part is easy to get wrong.",
+      "heard": "That second part is easy to get wrong.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 2,
+      "file": "audio/s03_02.wav",
+      "clip_sha": "58464a5d906fa912",
+      "text": "The answer the script would have given might be found some other way, such as in the script's own source, or in a cached copy.",
+      "tts_text": "The answer the script would have given might be found some other way, such as in the script's own source, or in a cached copy.",
+      "heard": "The answer the script would have given might be found some other way, such as in the script's own source or in a cached copy.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 3,
+      "file": "audio/s03_03.wav",
+      "clip_sha": "d71d92de46a84e9a",
+      "text": "If it can, the stimulus tests something else: whether the agent finds that other way.",
+      "tts_text": "If it can, the stimulus tests something else: whether the agent finds that other way.",
+      "heard": "If it can, the stimulus tests something else, whether the agent finds that other way.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 4,
+      "file": "audio/s03_04.wav",
+      "clip_sha": "b09b64a18a8cca3a",
+      "text": "Real trials at the end will show how readily an agent does.",
+      "tts_text": "Real trials at the end will show how readily an agent does.",
+      "heard": "Real trials at the end will show how readily an agent does.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 0,
+      "file": "audio/s04_00.wav",
+      "clip_sha": "5b562e50f1eeaab9",
+      "text": "That's the reasoning; here's the eval file that expresses it.",
+      "tts_text": "That's the reasoning; here's the [eval](/ˌivˈæl/) file that expresses it.",
+      "heard": "That's the reasoning, here's the eval file that expresses it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 1,
+      "file": "audio/s04_01.wav",
+      "clip_sha": "52d7759c9475fff2",
+      "text": "It's our release eval file, with a second stimulus added at the end, named tracker down.",
+      "tts_text": "It's our release [eval](/ˌivˈæl/) file, with a second stimulus added at the end, named tracker down.",
+      "heard": "It's our release eval file with a second stimulus added at the end named Tracker Down.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 2,
+      "file": "audio/s04_02.wav",
+      "clip_sha": "c3dbf429bdf2c5b6",
+      "text": "Its prompt is what the app would send on such a day: run the list merged script, then write the Unreleased entries.",
+      "tts_text": "Its prompt is what the app would send on such a day: run the list merged script, then write the Unreleased entries.",
+      "heard": "It's prompt is what the app would send on such a day. Run the list merged script, then write the unreleased entries.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 3,
+      "file": "audio/s04_03.wav",
+      "clip_sha": "b798b3e783b50d28",
+      "text": "It also carries a tag, case equals tool fails, so that it can run by itself: vally eval with dash dash tag runs only the stimuli that carry that tag.",
+      "tts_text": "It also carries a tag, case equals tool fails, so that it can run by itself: valley [eval](/ˌivˈæl/) with dash dash tag runs only the stimuli that carry that tag.",
+      "heard": "It also carries a tag, case equals tool fails, so that it can run by itself. Valley eval with dash-dash tag runs only the stimuli that carry that tag.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s05",
+      "i": 0,
+      "file": "audio/s05_00.wav",
+      "clip_sha": "264e1379860f607a",
+      "text": "Below the prompt is the new part: a simulation block.",
+      "tts_text": "Below the prompt is the new part: a simulation block.",
+      "heard": "Below the prompt is the new part, a simulation block.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 1,
+      "file": "audio/s05_01.wav",
+      "clip_sha": "d9f97449e8881f04",
+      "text": "Under tool overrides, it names a tool, and here that's the agent's shell.",
+      "tts_text": "Under tool overrides, it names a tool, and here that's the agent's shell.",
+      "heard": "Under tool overrides, it names a tool, and here that's the agent's shell.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 2,
+      "file": "audio/s05_02.wav",
+      "clip_sha": "d0ac564eb82f477d",
+      "text": "For that tool it lists patterns, and each one has a match: a regular expression, searched for anywhere in each shell command the agent runs.",
+      "tts_text": "For that tool it lists patterns, and each one has a match: a regular expression, searched for anywhere in each shell command the agent runs.",
+      "heard": "For that tool it lists patterns, and each one has a match. A regular expression searched for anywhere in each shell command the agent runs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 3,
+      "file": "audio/s05_03.wav",
+      "clip_sha": "54fd701d8a9b4da8",
+      "text": "When a command matches, it doesn't run.",
+      "tts_text": "When a command matches, it doesn't run.",
+      "heard": "When a command matches, it doesn't run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 4,
+      "file": "audio/s05_04.wav",
+      "clip_sha": "9323551f6a669586",
+      "text": "In its place, the agent gets the output line back.",
+      "tts_text": "In its place, the agent gets the output line back.",
+      "heard": "In its place, the agent gets the output line back.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 5,
+      "file": "audio/s05_05.wav",
+      "clip_sha": "cd727bfbf8cb5da2",
+      "text": "And because is error is set to true, the agent gets it as a failure; without that line, the same text would come back as a success.",
+      "tts_text": "And because is error is set to true, the agent gets it as a failure; without that line, the same text would come back as a success.",
+      "heard": "Because his error is set to true, the agent gets it as a failure. Without that line, the same text would come back as a success.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "And",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 0,
+      "file": "audio/s06_00.wav",
+      "clip_sha": "043e465a66dd0f04",
+      "text": "From the agent's side, it looks exactly as if the script had run and failed: our text, and under it, an exit code of one.",
+      "tts_text": "From the agent's side, it looks exactly as if the script had run and failed: our text, and under it, an exit code of one.",
+      "heard": "From the agent's side, it looks exactly as if the script had run and failed, our text, and under it, an exit code of 1.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 1,
+      "file": "audio/s06_01.wav",
+      "clip_sha": "ee35e35dfed12513",
+      "text": "Each trial also counts the calls that were replaced, in its record in the results file.",
+      "tts_text": "Each trial also counts the calls that were replaced, in its record in the results file.",
+      "heard": "Each trial also counts the calls that were replaced in its record in the results file.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 0,
+      "file": "audio/s07_00.wav",
+      "clip_sha": "fc3803bcfa12e604",
+      "text": "So what about everything else the agent does?",
+      "tts_text": "So what about everything else the agent does?",
+      "heard": "So, what about everything else the agent does?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 1,
+      "file": "audio/s07_01.wav",
+      "clip_sha": "faebc2941003b230",
+      "text": "A shell command that matches no pattern still runs for real.",
+      "tts_text": "A shell command that matches no pattern still runs for real.",
+      "heard": "Shell command that matches no pattern still runs for real.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "A",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 2,
+      "file": "audio/s07_02.wav",
+      "clip_sha": "6df45873cf5487aa",
+      "text": "So does a call to any tool the block doesn't name.",
+      "tts_text": "So does a call to any tool the block doesn't name.",
+      "heard": "So it is a call to any tool the block doesn't name.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "does",
+          "heard": "it is",
+          "similarity": 0.29
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 3,
+      "file": "audio/s07_03.wav",
+      "clip_sha": "8fc11213df9da35e",
+      "text": "If a tool must not really run at all, its override can carry a default, which answers every call the patterns miss.",
+      "tts_text": "If a tool must not really run at all, its override can carry a default, which answers every call the patterns miss.",
+      "heard": "If a tool must not really run at all, its override can carry a default, which answers every call the patterns miss.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 4,
+      "file": "audio/s07_04.wav",
+      "clip_sha": "c5c65e7f5bbd993f",
+      "text": "One limit: shell tools can be made to succeed or to fail, but the agent's other built-in tools can only be made to fail.",
+      "tts_text": "One limit: shell tools can be made to succeed or to fail, but the agent's other built-in tools can only be made to fail.",
+      "heard": "One limit, shell tools can be made to succeed or to fail, but the agent's other built-in tools can only be made to fail.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 5,
+      "file": "audio/s07_05.wav",
+      "clip_sha": "18a6eb2e8f24f31f",
+      "text": "Simulation also needs Vally's own executor, which is the one we've used all along.",
+      "tts_text": "Simulation also needs Valley's own [executor](/ˈɛksəkjˌuɾəɹ/), which is the one we've used all along.",
+      "heard": "Simulation also needs Valley's own executor, which is the one we've used all along.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 0,
+      "file": "audio/s08_00.wav",
+      "clip_sha": "f60a9abc32668592",
+      "text": "Here's a test of that.",
+      "tts_text": "Here's a test of that.",
+      "heard": "Here's a test of that.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 1,
+      "file": "audio/s08_01.wav",
+      "clip_sha": "c6f96158210e044c",
+      "text": "If the agent runs cat on the script's own file, what does it get back?",
+      "tts_text": "If the agent runs cat on the script's own file, what does it get back?",
+      "heard": "If the agent runs cat on the script's own file, what does it get back?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 2,
+      "file": "audio/s08_02.wav",
+      "clip_sha": "2bebe2279f53fd47",
+      "text": "It gets the simulated error.",
+      "tts_text": "It gets the simulated error.",
+      "heard": "It gets the simulated error.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 3,
+      "file": "audio/s08_03.wav",
+      "clip_sha": "4781e593e9c31baa",
+      "text": "The pattern, list merged, appears in that command, and a match anywhere is enough.",
+      "tts_text": "The pattern, list merged, appears in that command, and a match anywhere is enough.",
+      "heard": "The Pattern List merged appears in that command, and a match anywhere is enough.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 4,
+      "file": "audio/s08_04.wav",
+      "clip_sha": "94945a15f1b09110",
+      "text": "Opening the same file with the agent's file viewer, the view tool, is a call to a different tool, so it runs for real.",
+      "tts_text": "Opening the same file with the agent's file viewer, the view tool, is a call to a different tool, so it runs for real.",
+      "heard": "Opening the same file with the agent's file viewer, the View tool, is a call to a different tool so it runs for real.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 0,
+      "file": "audio/s09_00.wav",
+      "clip_sha": "15d8c4bd767dd3be",
+      "text": "One more part of this stimulus matters: the copy of the script in the workspace.",
+      "tts_text": "One more part of this stimulus matters: the copy of the script in the workspace.",
+      "heard": "One more part of this stimulus matters, the copy of the script in the workspace.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 1,
+      "file": "audio/s09_01.wav",
+      "clip_sha": "31813402a7580c8d",
+      "text": "So far, every stimulus has had the same copy staged in its tools folder: a stand-in that prints a fixed list from its own source.",
+      "tts_text": "So far, every stimulus has had the same copy staged in its tools folder: a stand-in that prints a fixed list from its own source.",
+      "heard": "So far, every stimulus has had the same copy staged in its Tools folder, a stand-in that prints a fixed list from its own source.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 2,
+      "file": "audio/s09_02.wav",
+      "clip_sha": "cd46db521d4be917",
+      "text": "That fixed list is the answer.",
+      "tts_text": "That fixed list is the answer.",
+      "heard": "That fixed list is the answer.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 3,
+      "file": "audio/s09_03.wav",
+      "clip_sha": "b9d272e081d19da3",
+      "text": "With this file in the workspace, an agent could read the answer out of it, without ever running the script.",
+      "tts_text": "With this file in the workspace, an agent could read the answer out of it, without ever running the script.",
+      "heard": "With this file in the workspace, an agent could read the answer out of it without ever running the script.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 4,
+      "file": "audio/s09_04.wav",
+      "clip_sha": "27219feb989d3b6a",
+      "text": "Simulation replaces calls; it doesn't hide files.",
+      "tts_text": "Simulation replaces calls; it doesn't hide files.",
+      "heard": "Simulation replaces calls, it doesn't hide files.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 0,
+      "file": "audio/s10_00.wav",
+      "clip_sha": "720a6c5a6ef01b22",
+      "text": "So this stimulus stages a different copy.",
+      "tts_text": "So this stimulus stages a different copy.",
+      "heard": "So this stimulus stages a different copy.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 1,
+      "file": "audio/s10_01.wav",
+      "clip_sha": "ff7075599df6e1d5",
+      "text": "Like the real script, it asks the tracker: it fetches the merged changes from the tracker's address, and prints one per line.",
+      "tts_text": "Like the real script, it asks the tracker: it fetches the merged changes from the tracker's address, and prints one per line.",
+      "heard": "Like the real script, it asks the tracker. It fetches the merge changes from the tracker's address and prints one per line.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 2,
+      "file": "audio/s10_02.wav",
+      "clip_sha": "99d1a7a06753b9c8",
+      "text": "It holds no list, so there's nothing in it to copy.",
+      "tts_text": "It holds no list, so there's nothing in it to copy.",
+      "heard": "It holds no list, so there's nothing in it to copy.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 0,
+      "file": "audio/s11_00.wav",
+      "clip_sha": "0ec43cb31ad7d291",
+      "text": "Both copies have to land in the same place in the workspace: the tools folder.",
+      "tts_text": "Both copies have to land in the same place in the workspace: the tools folder.",
+      "heard": "Both copies have to land in the same place in the workspace, the tools folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 1,
+      "file": "audio/s11_01.wav",
+      "clip_sha": "a20897f916e82ad7",
+      "text": "And Vally has a rule here: a file staged for one stimulus can't share its destination with a file staged for every stimulus.",
+      "tts_text": "And Valley has a rule here: a file staged for one stimulus can't share its destination with a file staged for every stimulus.",
+      "heard": "Valley has a rule here. A file staged for one stimulus can't share its destination with a file staged for every stimulus.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "And",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 2,
+      "file": "audio/s11_02.wav",
+      "clip_sha": "6f7181f0ad8d5ac5",
+      "text": "Until now, the stand-in was listed in the shared agent environment, at the top of the file.",
+      "tts_text": "Until now, the stand-in was listed in the shared agent environment, at the top of the file.",
+      "heard": "Until now, the stand-in was listed in the shared agent environment at the top of the file.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 3,
+      "file": "audio/s11_03.wav",
+      "clip_sha": "05e538cbdb2fc619",
+      "text": "So we take it out of there.",
+      "tts_text": "So we take it out of there.",
+      "heard": "So we take it out of there.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 4,
+      "file": "audio/s11_04.wav",
+      "clip_sha": "ba13c052080e7354",
+      "text": "And we list it under the first stimulus, since last release, which is the only one that runs it.",
+      "tts_text": "And we list it under the first stimulus, since last release, which is the only one that runs it.",
+      "heard": "And we listed under the first stimulus, since last release, which is the only one that runs it.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "list it",
+          "heard": "listed",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 0,
+      "file": "audio/s12_00.wav",
+      "clip_sha": "14db0b93eb71f3d9",
+      "text": "The graders say what good looks like on a bad day.",
+      "tts_text": "The graders say what good looks like on a bad day.",
+      "heard": "The graders say what good looks like on a bad day.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 1,
+      "file": "audio/s12_01.wav",
+      "clip_sha": "355baf10c049564c",
+      "text": "The first, tries the tool, is a tool calls grader: the agent has to have run the script, or the trial didn't meet the failure.",
+      "tts_text": "The first, tries the tool, is a tool calls grader: the agent has to have run the script, or the trial didn't meet the failure.",
+      "heard": "The first tries the tool is a tool called Grader. The agent has to have run the script or the trial didn't meet the failure.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "calls",
+          "heard": "called",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 2,
+      "file": "audio/s12_02.wav",
+      "clip_sha": "1cead89bcae100d0",
+      "text": "The second, writes nothing, is diff empty: no file changed.",
+      "tts_text": "The second, writes nothing, is diff empty: no file changed.",
+      "heard": "The second writes nothing is diff-empty, no file changed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s12",
+      "i": 3,
+      "file": "audio/s12_03.wav",
+      "clip_sha": "7b848aef9f1475a5",
+      "text": "The third, stops retrying, is the loop outcome grader, set to allow at most two retries in a row.",
+      "tts_text": "The third, stops retrying, is the loop outcome grader, set to allow at most two retries in a row.",
+      "heard": "The third stops retrain is the loop outcome greater, set to allow at most two retries in a row.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "retrying",
+          "heard": "retrain",
+          "similarity": 0.62
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s13",
+      "i": 0,
+      "file": "audio/s13_00.wav",
+      "clip_sha": "70b4607b29cf8cec",
+      "text": "The last grader, says why, is a judge, because no pattern can decide whether a reply is honest.",
+      "tts_text": "The last grader, says why, is a judge, because no pattern can decide whether a reply is honest.",
+      "heard": "Last grader says why is a judge because no pattern can decide whether a reply is honest.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "The",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 1,
+      "file": "audio/s13_01.wav",
+      "clip_sha": "cb65bd14fb6abac2",
+      "text": "Its rubric has one criterion: the final reply says the list couldn't be fetched, and doesn't claim that any entry was written.",
+      "tts_text": "Its rubric has one criterion: the final reply says the list couldn't be fetched, and doesn't claim that any entry was written.",
+      "heard": "Its rubric has one criterion, the final reply says the list couldn't be fetched and doesn't claim that any entry was written.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 2,
+      "file": "audio/s13_02.wav",
+      "clip_sha": "c9051949df998030",
+      "text": "The judge model is named once, under defaults, as before.",
+      "tts_text": "The judge model is named once, under defaults, as before.",
+      "heard": "The judge model is named once under defaults as before.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 0,
+      "file": "audio/s14_00.wav",
+      "clip_sha": "fcc241067ac9347b",
+      "text": "Writing an override by hand is fine for one failing command.",
+      "tts_text": "Writing an override by hand is fine for one failing command.",
+      "heard": "Writing an override by hand is fine for one failing command.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 1,
+      "file": "audio/s14_01.wav",
+      "clip_sha": "363f0b84ccb07eb7",
+      "text": "For a whole session, it's easier to start from a real one.",
+      "tts_text": "For a whole session, it's easier to start from a real one.",
+      "heard": "For a whole session, it's easier to start from a real one.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 2,
+      "file": "audio/s14_02.wav",
+      "clip_sha": "e2b086b35a305933",
+      "text": "Vally simulate record takes a run folder, or one trajectory file, and prints a simulation block built from the shell calls those trials made.",
+      "tts_text": "Valley [simulate record](/sˈɪmjəlˌAt ɹᵻkˈɔɹd/) takes a run folder, or one trajectory file, and prints a simulation block built from the shell calls those trials made.",
+      "heard": "Bally Simulate Record takes a run folder or one trajectory file, and Prince's simulation block built from the shell calls those trials made.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Vally",
+          "heard": "Bally",
+          "similarity": 0.5
+        },
+        {
+          "kind": "different",
+          "expected": "prints a",
+          "heard": "Prince's",
+          "similarity": 0.71
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 3,
+      "file": "audio/s14_03.wav",
+      "clip_sha": "37ab0d4b2344423b",
+      "text": "There's one pattern for each call, with the output that call really got.",
+      "tts_text": "There's one pattern for each call, with the output that call really got.",
+      "heard": "There's one pattern for each call, with the output that call really got.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 0,
+      "file": "audio/s15_00.wav",
+      "clip_sha": "a25762dcafb563d6",
+      "text": "That block is a draft, and here's what to know before using one.",
+      "tts_text": "That block is a draft, and here's what to know before using one.",
+      "heard": "That block is a draft, and here's what to know before using one.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 1,
+      "file": "audio/s15_01.wav",
+      "clip_sha": "3afa4571df43d2b4",
+      "text": "Each pattern matches only the exact arguments that were recorded, and there's no default, so any other call runs for real.",
+      "tts_text": "Each pattern matches only the exact arguments that were recorded, and there's no default, so any other call runs for real.",
+      "heard": "Each pattern matches only the exact arguments that were recorded, and there's no default, so any other call runs for real.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 2,
+      "file": "audio/s15_02.wav",
+      "clip_sha": "e68f3d5ae72df0e9",
+      "text": "Calls to tools other than the shell are left out, with a warning for each kind.",
+      "tts_text": "Calls to tools other than the shell are left out, with a warning for each kind.",
+      "heard": "Calls to tools other than the shell are left out, with a warning for each kind.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 3,
+      "file": "audio/s15_03.wav",
+      "clip_sha": "3bd2913c387926bb",
+      "text": "The recorded output is whatever the tools printed, which can include your user name and your folders.",
+      "tts_text": "The recorded output is whatever the tools printed, which can include your user name and your folders.",
+      "heard": "The recorded output is whatever the tool is printed, which can include your username and your folders.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s15",
+      "i": 4,
+      "file": "audio/s15_04.wav",
+      "clip_sha": "70849b75794d42dd",
+      "text": "And to get a failure like our tracker's, we'd edit one pattern's output, and add is error true.",
+      "tts_text": "And to get a failure like our tracker's, we'd edit one pattern's output, and add is error true.",
+      "heard": "And to get a failure like our trackers, we'd edit one pattern's output and add is error true.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 0,
+      "file": "audio/s16_00.wav",
+      "clip_sha": "4f01eb12c5105f32",
+      "text": "That's the file and the command; now let's run them.",
+      "tts_text": "That's the file and the command; now let's run them.",
+      "heard": "That's the file in the command, now let's run them.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "and",
+          "heard": "in",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 1,
+      "file": "audio/s16_01.wav",
+      "clip_sha": "11bf3624aa87a5a9",
+      "text": "With no list to work from, what would you expect each model to do?",
+      "tts_text": "With no list to work from, what would you expect each model to do?",
+      "heard": "With no list to work from, what would you expect each model to do?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 2,
+      "file": "audio/s16_02.wav",
+      "clip_sha": "b749f7ec6a23fa0f",
+      "text": "If you tried it yourself, here's what you'd see.",
+      "tts_text": "If you tried it yourself, here's what you'd see.",
+      "heard": "If you tried it yourself, here's what you'd see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 0,
+      "file": "audio/s17_00.wav",
+      "clip_sha": "aecaa46822d84f40",
+      "text": "The eval file now has the new stimulus, and the stand-in listed under the first one, just as the panels showed.",
+      "tts_text": "The [eval](/ˌivˈæl/) file now has the new stimulus, and the stand-in listed under the first one, just as the panels showed.",
+      "heard": "The EVAL file now has the new stimulus, and the stand enlisted under the first one, just as the panels showed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 1,
+      "file": "audio/s17_01.wav",
+      "clip_sha": "c8fa5a2597840ca1",
+      "text": "Lint comes first, because it starts no agent.",
+      "tts_text": "Lint comes first, because it starts no agent.",
+      "heard": "Link comes first because it starts no agent.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Lint",
+          "heard": "Link",
+          "similarity": 0.5
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 2,
+      "file": "audio/s17_02.wav",
+      "clip_sha": "3d50b5ade147569e",
+      "text": "It gives the one warning this file already had, about scoring, and no errors.",
+      "tts_text": "It gives the one warning this file already had, about scoring, and no errors.",
+      "heard": "Gives the one warning this file already had about scoring and no errors.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "It",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 0,
+      "file": "audio/s18_00.wav",
+      "clip_sha": "4a98cf2d525dcc8a",
+      "text": "Now the run, with dash dash tag to pick the one stimulus: three trials, on both models, two at a time.",
+      "tts_text": "Now the run, with dash dash tag to pick the one stimulus: three trials, on both models, two at a time.",
+      "heard": "Now the run with dash dash tag to pick the one stimulus, three trials on both models, two at a time.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 1,
+      "file": "audio/s18_01.wav",
+      "clip_sha": "b66c24a95f211a36",
+      "text": "It spends six agent runs, and six calls to the judge.",
+      "tts_text": "It spends six agent runs, and six calls to the judge.",
+      "heard": "It spends six agent runs and six calls to the judge.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 2,
+      "file": "audio/s18_02.wav",
+      "clip_sha": "4c3bbfc49d97fbed",
+      "text": "We're after the summary at the end, and any failure listed above it.",
+      "tts_text": "We're after the summary at the end, and any failure listed above it.",
+      "heard": "We're after the summary at the end, and any failure listed above it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 3,
+      "file": "audio/s18_03.wav",
+      "clip_sha": "c85c645fdfa18101",
+      "text": "About a minute and a half later, both models have passed, in all three trials each.",
+      "tts_text": "About a minute and a half later, both models have passed, in all three trials each.",
+      "heard": "About a minute and a half later, both models have passed in all three trials each.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 4,
+      "file": "audio/s18_04.wav",
+      "clip_sha": "c7d5b0295b26fca6",
+      "text": "With no failure to list, the output ends with the summary, and the folder where the run was saved.",
+      "tts_text": "With no failure to list, the output ends with the summary, and the folder where the run was saved.",
+      "heard": "With no failure to list, the output ends with the summary and the folder where the run was saved.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 0,
+      "file": "audio/s19_00.wav",
+      "clip_sha": "306f42ea08a13ed6",
+      "text": "Here's that run as counts, with a row for each grader.",
+      "tts_text": "Here's that run as counts, with a row for each grader.",
+      "heard": "Here's that run as counts with a row for each grader.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 1,
+      "file": "audio/s19_01.wav",
+      "clip_sha": "b4430007848b9fac",
+      "text": "Every trial ran the script, none wrote an entry, and none made more than two retries in a row.",
+      "tts_text": "Every trial ran the script, none wrote an entry, and none made more than two retries in a row.",
+      "heard": "Every trial ran the script, none wrote an entry, and none made more than two retries in a row.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 2,
+      "file": "audio/s19_02.wav",
+      "clip_sha": "18550319fb5d0b59",
+      "text": "And the judge passed all six replies.",
+      "tts_text": "And the judge passed all six replies.",
+      "heard": "and the judge passed all six replies.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 0,
+      "file": "audio/s20_00.wav",
+      "clip_sha": "b4d459a5b3c9dc9d",
+      "text": "Last, the recording: vally simulate record, on the run we saved when the release stimulus first ran.",
+      "tts_text": "Last, the recording: valley [simulate record](/sˈɪmjəlˌAt ɹᵻkˈɔɹd/), on the run we saved when the release stimulus first ran.",
+      "heard": "Last, the recording, Valley Simulate Record, on the run we saved when the release stimulus first ran.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 1,
+      "file": "audio/s20_01.wav",
+      "clip_sha": "c1ef74e1f2cd3398",
+      "text": "It starts no agent, so it costs nothing.",
+      "tts_text": "It starts no agent, so it costs nothing.",
+      "heard": "It starts no agent, so it costs nothing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 2,
+      "file": "audio/s20_02.wav",
+      "clip_sha": "3d8054655eef7750",
+      "text": "It prints the block first, and after it, a warning for each kind of tool it left out.",
+      "tts_text": "It prints the block first, and after it, a warning for each kind of tool it left out.",
+      "heard": "It prints the block first, and after it, a warning for each kind of tool it left out.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 0,
+      "file": "audio/s21_00.wav",
+      "clip_sha": "e622926102a00571",
+      "text": "Here's what it printed, from the top.",
+      "tts_text": "Here's what it printed, from the top.",
+      "heard": "Here's what it printed from the top.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 1,
+      "file": "audio/s21_01.wav",
+      "clip_sha": "bfddde0b977ccc05",
+      "text": "The trials in that run made two shell calls between them, so the block has two patterns.",
+      "tts_text": "The trials in that run made two shell calls between them, so the block has two patterns.",
+      "heard": "The trials in that run made two shell calls between them, so the block has two patterns.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 2,
+      "file": "audio/s21_02.wav",
+      "clip_sha": "aca662ab4e22ab65",
+      "text": "Each pattern is a call's exact arguments, written out as text, and under it is what that call printed.",
+      "tts_text": "Each pattern is a call's exact arguments, written out as text, and under it is what that call printed.",
+      "heard": "Each pattern is a call's exact arguments, written out as text, and under it is what that call printed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 3,
+      "file": "audio/s21_03.wav",
+      "clip_sha": "e75a6db0a70aefb7",
+      "text": "The second pattern includes the trial's temporary folder, shortened here on screen; that's the kind of detail to look for before sharing a block.",
+      "tts_text": "The second pattern includes the trial's temporary folder, shortened here on screen; that's the kind of detail to look for before sharing a block.",
+      "heard": "The second pattern includes the trial's temporary folder, shortened here on screen. That's the kind of detail to look for before sharing a block.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 4,
+      "file": "audio/s21_04.wav",
+      "clip_sha": "5e9fb287a0a607db",
+      "text": "Everything else those trials did, such as view and edit, was left out with a warning.",
+      "tts_text": "Everything else those trials did, such as view and edit, was left out with a warning.",
+      "heard": "Everything else those trials did, such as view and edit, was left out with a warning.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 0,
+      "file": "audio/s22_00.wav",
+      "clip_sha": "cfc4079441092e64",
+      "text": "So what did the agents do on a bad day?",
+      "tts_text": "So what did the agents do on a bad day?",
+      "heard": "So, what did the agents do on a bad day?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 1,
+      "file": "audio/s22_01.wav",
+      "clip_sha": "2827ed4ea7aa7aa8",
+      "text": "Neither model wrote an entry in any of the six trials, and neither invented a change.",
+      "tts_text": "Neither model wrote an entry in any of the six trials, and neither invented a change.",
+      "heard": "Neither model wrote an entry in any of the six trials and neither invented a change.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 2,
+      "file": "audio/s22_02.wav",
+      "clip_sha": "a9d1a70677d22737",
+      "text": "Terra's replies were a sentence or two: each said the command had timed out, and two of the three began with the word Blocked.",
+      "tts_text": "Terra's replies were a sentence or two: each said the command had timed out, and two of the three began with the word Blocked.",
+      "heard": "Tara's replies were a sentence or two. Each said the command had timed out, and two of the three began with the word blocked.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Terra's",
+          "heard": "Tara's",
+          "similarity": 0.73
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 3,
+      "file": "audio/s22_03.wav",
+      "clip_sha": "811359ba7e86efcc",
+      "text": "Haiku's replies were longer: each said the tracker wasn't answering, and each asked the user for the list of changes.",
+      "tts_text": "Haiku's replies were longer: each said the tracker wasn't answering, and each asked the user for the list of changes.",
+      "heard": "Iku's replies were longer, each said the tracker wasn't answering, and each asked the user for the list of changes.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Haiku's",
+          "heard": "Iku's",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 4,
+      "file": "audio/s22_04.wav",
+      "clip_sha": "330725be5de018ab",
+      "text": "In an app, there's nobody to answer.",
+      "tts_text": "In an app, there's nobody to answer.",
+      "heard": "In an app, there's nobody to answer.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 0,
+      "file": "audio/s23_00.wav",
+      "clip_sha": "a62c063341d56ffc",
+      "text": "The judge passed all six of those replies.",
+      "tts_text": "The judge passed all six of those replies.",
+      "heard": "The judge passed all six of those replies.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 1,
+      "file": "audio/s23_01.wav",
+      "clip_sha": "ace5ae1b15097410",
+      "text": "In an earlier run of this same stimulus, it failed one of haiku's three.",
+      "tts_text": "In an earlier run of this same stimulus, it failed one of haiku's three.",
+      "heard": "In an earlier run of this same stimulus, it failed one of Haiku's three.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 2,
+      "file": "audio/s23_02.wav",
+      "clip_sha": "dc19af41f0b8f1c7",
+      "text": "Its reason: the reply mentioned the timeout, but then asserted that the Unreleased entries were already in place.",
+      "tts_text": "Its reason: the reply mentioned the timeout, but then asserted that the Unreleased entries were already in place.",
+      "heard": "It's reason, the reply mentioned the timeout, but then asserted that the unreleased entries were already in place.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 3,
+      "file": "audio/s23_03.wav",
+      "clip_sha": "d78840b7fccbf7f7",
+      "text": "An app that reads already in place ships a release with no entries.",
+      "tts_text": "An app that reads already in place ships a release with no entries.",
+      "heard": "An app that reads already in place ships a release with no entries.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 0,
+      "file": "audio/s24_00.wav",
+      "clip_sha": "4e6d9e3f1bf09b7a",
+      "text": "After the script failed, haiku went looking: in all three of its trials, it opened the script's file with the view tool.",
+      "tts_text": "After the script failed, haiku went looking: in all three of its trials, it opened the script's file with the view tool.",
+      "heard": "After the script failed, Haiku went looking. In all three of its trials, it opened the script's file with the view tool.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 1,
+      "file": "audio/s24_01.wav",
+      "clip_sha": "2fed1fd7aadc2be5",
+      "text": "That isn't a shell command, so nothing simulated it, and it ran for real.",
+      "tts_text": "That isn't a shell command, so nothing simulated it, and it ran for real.",
+      "heard": "That isn't a shell command, so nothing simulated it, and it ran for real.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 2,
+      "file": "audio/s24_02.wav",
+      "clip_sha": "a725080d0604c484",
+      "text": "What came back was the copy that asks the tracker: an address, and no list.",
+      "tts_text": "What came back was the copy that asks the tracker: an address, and no list.",
+      "heard": "What came back was the copy that asks the tracker, an address, and no list.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 3,
+      "file": "audio/s24_03.wav",
+      "clip_sha": "feb79bfbcbebf4cc",
+      "text": "Had the stand-in been staged there, that same call would have handed over the answer.",
+      "tts_text": "Had the stand-in been staged there, that same call would have handed over the answer.",
+      "heard": "Had the stand-in been staged there, that same call would have handed over the answer.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 0,
+      "file": "audio/s25_00.wav",
+      "clip_sha": "c7d09ca9f43a6084",
+      "text": "Simulation replaces calls, not knowledge.",
+      "tts_text": "Simulation replaces calls, not knowledge.",
+      "heard": "Simulation replaces calls, not knowledge.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 1,
+      "file": "audio/s25_01.wav",
+      "clip_sha": "f35d44702249a3c2",
+      "text": "We could make the view tool fail for that file too, but an agent has other ways to read a file, such as a search tool.",
+      "tts_text": "We could make the view tool fail for that file too, but an agent has other ways to read a file, such as a search tool.",
+      "heard": "We could make the View Tool fail for that file too, but an agent has other ways to read a file, such as a search tool.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 2,
+      "file": "audio/s25_02.wav",
+      "clip_sha": "37493dd48ddfbe16",
+      "text": "What held in our run was taking the answer out of the workspace: with the copy that asks the tracker, no trial wrote an entry.",
+      "tts_text": "What held in our run was taking the answer out of the workspace: with the copy that asks the tracker, no trial wrote an entry.",
+      "heard": "What held in our run was taking the answer out of the workspace, with a copy that asks the tracker, no trial wrote an entry.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "the",
+          "heard": "a",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 0,
+      "file": "audio/s26_00.wav",
+      "clip_sha": "85d317a28c79adad",
+      "text": "And the retries: one haiku trial ran the failing command four times in all, with other calls in between.",
+      "tts_text": "And the retries: one haiku trial ran the failing command four times in all, with other calls in between.",
+      "heard": "In the retries, one haiku trial ran the failing command four times in all, with other calls in between.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "And",
+          "heard": "In",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 1,
+      "file": "audio/s26_01.wav",
+      "clip_sha": "bcf692b8ffc0b511",
+      "text": "No trial made more than two retries in a row, so stops retrying passed all six.",
+      "tts_text": "No trial made more than two retries in a row, so stops retrying passed all six.",
+      "heard": "No trial made more than two retries in a row, so stops retraining past all six.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "retrying passed",
+          "heard": "retraining past",
+          "similarity": 0.78
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 0,
+      "file": "audio/s27_00.wav",
+      "clip_sha": "efba7b9af6748509",
+      "text": "Before you go on: under a simulation, what does a shell command get back when it matches a pattern, and when it doesn't?",
+      "tts_text": "Before you go on: under a simulation, what does a shell command get back when it matches a pattern, and when it doesn't?",
+      "heard": "Before you go on, under simulation, what does a shell command get back when it matches a pattern and when it doesn't?",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "a",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 1,
+      "file": "audio/s27_01.wav",
+      "clip_sha": "11300248a6099250",
+      "text": "When it matches, it doesn't run, and the agent gets our output, as a success or as a failure.",
+      "tts_text": "When it matches, it doesn't run, and the agent gets our output, as a success or as a failure.",
+      "heard": "When it matches, it doesn't run, and the agent gets our output as a success or as a failure.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 2,
+      "file": "audio/s27_02.wav",
+      "clip_sha": "0c1368105412e9a6",
+      "text": "When it matches nothing, it runs for real, unless the override has a default.",
+      "tts_text": "When it matches nothing, it runs for real, unless the override has a default.",
+      "heard": "When it matches nothing, it runs for real, unless the override has a default.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 3,
+      "file": "audio/s27_03.wav",
+      "clip_sha": "a494e960c52735a0",
+      "text": "And none of that hides a file, so the answer itself has to be out of the workspace.",
+      "tts_text": "And none of that hides a file, so the answer itself has to be out of the workspace.",
+      "heard": "None of that hides a file, so the answer itself has to be out of the workspace.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "And",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 0,
+      "file": "audio/s28_00.wav",
+      "clip_sha": "88b08a6f94460511",
+      "text": "You can now make a tool fail on purpose, grade what the agent does next, and record a simulation block from a saved run.",
+      "tts_text": "You can now make a tool fail on purpose, grade what the agent does next, and record a simulation block from a saved run.",
+      "heard": "You can now make a tool fail on purpose, grade what the agent does next, and record a simulation block from a saved run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 1,
+      "file": "audio/s28_01.wav",
+      "clip_sha": "c072e77670eb268d",
+      "text": "All of this ran inside Vally, but the app also runs by itself, and keeps its own record of what it did.",
+      "tts_text": "All of this ran inside Valley, but the app also runs by itself, and keeps its own record of what it did.",
+      "heard": "All of this ran inside Valley, but the app also runs by itself and keeps its own record of what it did.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 2,
+      "file": "audio/s28_02.wav",
+      "clip_sha": "fe0cdb1625911704",
+      "text": "Can Vally grade a run it didn't start?",
+      "tts_text": "Can Valley grade a run it didn't start?",
+      "heard": "Can Valley Grade a run it didn't start?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 3,
+      "file": "audio/s28_03.wav",
+      "clip_sha": "c0fa80d6856b024e",
+      "text": "That's the next lesson.",
+      "tts_text": "That's the next lesson.",
+      "heard": "That's the next lesson.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 4,
+      "file": "audio/s28_04.wav",
+      "clip_sha": "27d9bef028570df3",
+      "text": "For practice, the exercises on the lesson page are worth doing first.",
+      "tts_text": "For practice, the exercises on the lesson page are worth doing first.",
+      "heard": "For practice, the exercises on the lesson page are worth doing first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "retrying",
+      "sentences": 2,
+      "heard": [
+        "retrain",
+        "retraining past"
+      ],
+      "of": 2,
+      "share": 1.0
+    },
+    {
+      "word": "Lint",
+      "sentences": 1,
+      "heard": [
+        "Link"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "Terra's",
+      "sentences": 1,
+      "heard": [
+        "Tara's"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "Haiku's",
+      "sentences": 1,
+      "heard": [
+        "Iku's"
+      ],
+      "of": 4,
+      "share": 0.25
+    },
+    {
+      "word": "passed",
+      "sentences": 1,
+      "heard": [
+        "retraining past"
+      ],
+      "of": 4,
+      "share": 0.25
+    },
+    {
+      "word": "prints",
+      "sentences": 1,
+      "heard": [
+        "Prince's"
+      ],
+      "of": 4,
+      "share": 0.25
+    },
+    {
+      "word": "Vally",
+      "sentences": 1,
+      "heard": [
+        "Bally"
+      ],
+      "of": 7,
+      "share": 0.14
+    },
+    {
+      "word": "does",
+      "sentences": 1,
+      "heard": [
+        "it is"
+      ],
+      "of": 7,
+      "share": 0.14
+    },
+    {
+      "word": "And",
+      "sentences": 5,
+      "heard": [
+        "in",
+        "In"
+      ],
+      "of": 42,
+      "share": 0.12
+    },
+    {
+      "word": "calls",
+      "sentences": 1,
+      "heard": [
+        "called"
+      ],
+      "of": 9,
+      "share": 0.11
+    },
+    {
+      "word": "list",
+      "sentences": 1,
+      "heard": [
+        "listed"
+      ],
+      "of": 14,
+      "share": 0.07
+    },
+    {
+      "word": "A",
+      "sentences": 3,
+      "heard": [
+        "Prince's"
+      ],
+      "of": 54,
+      "share": 0.06
+    },
+    {
+      "word": "it",
+      "sentences": 2,
+      "heard": [
+        "listed"
+      ],
+      "of": 47,
+      "share": 0.04
+    },
+    {
+      "word": "The",
+      "sentences": 2,
+      "heard": [
+        "a"
+      ],
+      "of": 94,
+      "share": 0.02
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 117,
+    "mismatched": 19,
+    "transcribed": 117,
+    "reused": 0,
+    "seconds_per_sentence": 0.114
+  }
+}

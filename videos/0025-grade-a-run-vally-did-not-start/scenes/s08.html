@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Shared names for AI work</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.names{min-width:820px;font-size:42px;line-height:1.45}.callout{font-size:34px}.stage{gap:26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">From OpenTelemetry traces</div>
+  <h2 class="scene-title">Shared names for AI work</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark names" data-lang="text"><code><span data-concept="chat" data-rep="code"><span>chat</span></span>
+
+<span data-concept="tool" data-rep="code"><span>execute_tool</span></span>
+
+<span data-concept="agent" data-rep="code"><span>invoke_agent</span></span>
+
+<span data-concept="attr" data-rep="code"><span>gen_ai.usage.input_tokens</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="chat">a model call</p><p class="callout" data-anchor="tool">a tool call</p><p class="callout" data-anchor="agent">a whole agent session</p><p class="callout" data-anchor="attr">an attribute: input tokens</p></aside>
+  </div>
+  <p class="note">OpenTelemetry, semantic conventions for generative AI · status: Development</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "chat",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "tool",
+  "at": "2~execute",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "agent",
+  "at": "2~invoke",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "attr",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Run now, grade later</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.cmd{font-size:36px;line-height:1.6}.callout{font-size:32px}.stage{gap:34px}.stage > .semantic-block{width:100%}.stage > .semantic-block .label{font-size:36px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Six ordinary requests</div>
+  <h2 class="scene-title">Run now, grade later</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark cmd" data-lang="bash"><code><span style="color:#4EA5E6">vally</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">eval</span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">-e</span><span style="color:#B3C0BF"> </span><span data-concept="file" data-rep="code"><span style="color:#3CC0B3">evals/six-requests.eval.yaml</span></span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span style="color:#F0733F">--model</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">claude-haiku-4.5,gpt-5.6-terra</span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="skip" data-rep="code"><span style="color:#F0733F">--skip-grade</span></span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">--workers</span><span style="color:#B3C0BF"> </span><span style="color:#EA6AA6">2</span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span style="color:#F0733F">--output-dir</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">results/lesson-4</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="file">six stimuli</p><p class="callout" data-anchor="skip">run and save, grade nothing</p></aside>
+  </div>
+  <div class="semantic-block" data-concept="tick" data-rep="block" data-role="attention">
+      <div class="title words">✓ with <span class="mono">--skip-grade</span></div><div class="label">the trial finished · nothing was graded</div>
+    </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "skip",
+  "at": "0~skip grade",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "file",
+  "at": "2~this file",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "skip",
+  "at": "2~states",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "tick",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Exit codes make failure loud</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:38px}.data-table th{font-size:30px}.data-table td{padding-top:24px;padding-bottom:24px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:34px}.codes{font-size:42px}.codes td.num{font-size:46px}.codes td{padding-top:30px;padding-bottom:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Tags, suites and exit codes</div>
+  <h2 class="scene-title">Exit codes make failure loud</h2>
+  <div class="stage">
+<table class="data-table full codes">
+    <thead><tr><th>The run</th><th class="mono num">vally eval</th><th class="mono num">with --require-pass</th></tr></thead>
+    <tbody>
+      <tr><td>every stimulus passed</td><td class="num">0</td><td class="num">0</td></tr>
+      <tr><td>a stimulus failed, budgets included</td><td class="num"><span data-concept="d2" data-rep="cell">0</span></td><td class="num"><span data-concept="r2" data-rep="cell">1</span></td></tr>
+      <tr><td>a trial ended in ERROR</td><td class="num"><span data-concept="e" data-rep="cell">1</span></td><td class="num"><span data-concept="e" data-rep="cell">1</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">the exit code · <span class="mono">vally grade</span> takes the same option</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "d2",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "r2",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "e",
+  "at": "3",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

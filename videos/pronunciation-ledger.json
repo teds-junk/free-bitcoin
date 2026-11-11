@@ -1,0 +1,1444 @@
+{
+  "_about": "Pronunciations the user has approved by ear (\"approved\") and uses of two-pronunciation words judged in context (\"contexts\"), for every video in this folder. Written by pronunciation-review.js --import; tts.py --analyze leaves approved words out. Keys are lower-case words.",
+  "version": 1,
+  "words": {
+    "minutes": {
+      "word": "minutes",
+      "contexts": [
+        {
+          "sentence": "In the next fifteen minutes you'll run one request on two models, and find the difference in the files that get saved.",
+          "phonemes": "mˈɪnəts",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "It tells an agent how to add an entry to a changelog, and it's a plain first draft, the kind you write in five minutes.",
+          "phonemes": "mˈɪnəts",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "The command that does all this is vally eval, and in the next few minutes it takes three things.",
+          "phonemes": "mˈɪnəts",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ],
+      "approved": [
+        {
+          "phonemes": "mˈɪnəts",
+          "rendering": "minutes",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "uses": {
+      "word": "uses",
+      "contexts": [
+        {
+          "sentence": "An agent is a program that uses a language model to do a task with tools: it reads files, edits them, and runs commands.",
+          "phonemes": "jˈuzᵻz",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ],
+      "approved": [
+        {
+          "phonemes": "jˈuzᵻz",
+          "rendering": "uses",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "use": {
+      "word": "use",
+      "contexts": [
+        {
+          "sentence": "A changelog lists what changed in each version of a tool, for the people who use it.",
+          "phonemes": "jˈuz",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "One more thing you'll use in a moment: model names differ from account to account.",
+          "phonemes": "jˈuz",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "We'll use claude haiku four point five and G P T five point six terra.",
+          "phonemes": "jˈuz",
+          "by": "user",
+          "date": "2026-11-10"
+        },
+        {
+          "sentence": "Real use goes on: someone asks for a follow-up, or changes their mind.",
+          "phonemes": "jˈus",
+          "by": "user",
+          "date": "2026-11-10"
+        },
+        {
+          "sentence": "Its default is the interface that Open AI's own servers use, and many other servers copy that interface.",
+          "phonemes": "jˈuz",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ],
+      "approved": [
+        {
+          "phonemes": "jˈus",
+          "rendering": "use",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        },
+        {
+          "phonemes": "jˈuz",
+          "rendering": "use",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "read": {
+      "word": "Read",
+      "contexts": [
+        {
+          "sentence": "You can read exactly what an agent did to a file without opening the file.",
+          "phonemes": "ɹˈid",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "Read the lines that begin with a plus.",
+          "phonemes": "ɹˈid",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "Read it the way a model has to.",
+          "phonemes": "ɹˈid",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ],
+      "approved": [
+        {
+          "phonemes": "ɹˈid",
+          "rendering": "Read",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "record": {
+      "word": "record",
+      "contexts": [
+        {
+          "sentence": "To see more than that, you need a tool that runs the agent for you and keeps a record.",
+          "phonemes": "ɹˈɛkəɹd",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "Vally is a command-line tool that runs an agent in a controlled way and keeps a record of what it did.",
+          "phonemes": "ɹˈɛkəɹd",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "Step three, the record of what the agent changed, is a patch: a text file that records a change to other files as lines added and lines removed.",
+          "phonemes": "ɹˈɛkəɹd",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "Each trial's record is one line in results.jsonl.",
+          "phonemes": "ɹˈɛkəɹd",
+          "by": "user",
+          "date": "2026-11-10"
+        },
+        {
+          "sentence": "Third, when the agent stops, it saves a record of what the agent changed.",
+          "phonemes": "ɹˈɛkəɹd",
+          "by": "user",
+          "date": "2026-11-10"
+        },
+        {
+          "sentence": "Traces come from OpenTelemetry, an open standard for recording what a program does as it runs, so that any tool can read the record.",
+          "phonemes": "ɹˈɛkəɹd",
+          "by": "user",
+          "date": "2026-11-11"
+        },
+        {
+          "sentence": "You can now make a tool fail on purpose, grade what the agent does next, and record a simulation block from a saved run.",
+          "phonemes": "ɹəkˈɔɹd",
+          "by": "user",
+          "date": "2026-11-11"
+        }
+      ],
+      "approved": [
+        {
+          "phonemes": "ɹˈɛkəɹd",
+          "rendering": "record",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        },
+        {
+          "phonemes": "ɹəkˈɔɹd",
+          "rendering": "record",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "inside": {
+      "word": "inside",
+      "contexts": [
+        {
+          "sentence": "It writes only inside that results folder, but each run is one short session with the agent, and that spends requests from your Copilot plan.",
+          "phonemes": "ɪnsˈId",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "Inside that, the patch sits under the eval's name, then the request's name, then the model, then a run number that starts at zero.",
+          "phonemes": "ɪnsˈId",
+          "by": "agent",
+          "date": "2026-11-10",
+          "note": "judged from context"
+        },
+        {
+          "sentence": "What's inside the check, we'll open up later.",
+          "phonemes": "ɪnsˈId",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ],
+      "approved": [
+        {
+          "phonemes": "ɪnsˈId",
+          "rendering": "inside",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "records": {
+      "word": "records",
+      "contexts": [
+        {
+          "sentence": "Step three, the record of what the agent changed, is a patch: a text file that records a change to other files as lines added and lines removed.",
+          "phonemes": "ɹəkˈɔɹdz",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ],
+      "approved": [
+        {
+          "phonemes": "ɹəkˈɔɹdz",
+          "rendering": "records",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "contents": {
+      "word": "contents",
+      "contexts": [
+        {
+          "sentence": "Then show the contents of the skill file you'll be improving.",
+          "phonemes": "kˈɑntɛnts",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ],
+      "approved": [
+        {
+          "phonemes": "kˈɑntɛnts",
+          "rendering": "contents",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    ".jsonl": {
+      "word": ".jsonl",
+      "approved": [
+        {
+          "phonemes": "dˈɑt ʤˈAsɑn ˈɛl",
+          "rendering": ".jsonl",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "llm": {
+      "word": "LLM",
+      "approved": [
+        {
+          "phonemes": "ˌɛlˌɛlˈɛm",
+          "rendering": "LLM",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "llms": {
+      "word": "LLMs",
+      "approved": [
+        {
+          "phonemes": "ˌɛlˌɛlˈɛmz",
+          "rendering": "LLMs",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "changelog": {
+      "word": "changelog",
+      "approved": [
+        {
+          "phonemes": "ʧˈAnʤlɑɡ",
+          "rendering": "changelog",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "vally": {
+      "word": "Vally",
+      "approved": [
+        {
+          "phonemes": "vˈæli",
+          "rendering": "Valley",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0002-what-the-tick-checked",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "github": {
+      "word": "GitHub",
+      "approved": [
+        {
+          "phonemes": "ɡˌɪthˈʌb",
+          "rendering": "GitHub",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        },
+        {
+          "phonemes": "ɡˌɪthˈʌbz",
+          "rendering": "GitHub",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "output dir": {
+      "word": "output dir",
+      "approved": [
+        {
+          "phonemes": "ˈWtpˌʊt dˈɜɹ",
+          "rendering": "output dur",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "error": {
+      "word": "ERROR",
+      "approved": [
+        {
+          "phonemes": "ˈɛɹəɹ",
+          "rendering": "ERROR",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "skill": {
+      "word": "SKILL",
+      "approved": [
+        {
+          "phonemes": "skˈɪl",
+          "rendering": "SKILL",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "copilot": {
+      "word": "Copilot",
+      "approved": [
+        {
+          "phonemes": "kˈOpˌIlət",
+          "rendering": "Copilot",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "terra": {
+      "word": "terra",
+      "approved": [
+        {
+          "phonemes": "tˈɛɹə",
+          "rendering": "terra",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "eval": {
+      "word": "eval",
+      "approved": [
+        {
+          "phonemes": "ˌivˈæl",
+          "rendering": "eval",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo",
+          "note": "E-val like \"ee-VAL\"."
+        }
+      ]
+    },
+    "evals": {
+      "word": "evals",
+      "approved": [
+        {
+          "phonemes": "ˌivˈælz",
+          "rendering": "evals",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0001-it-works-for-me",
+          "voice": "am_echo",
+          "note": "E-valz like \"ee-VALZ\"."
+        }
+      ]
+    },
+    "copied": {
+      "word": "copied",
+      "approved": [
+        {
+          "phonemes": "kˈɑpid",
+          "rendering": "/kˈɑpid/",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0002-what-the-tick-checked",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "used": {
+      "word": "used",
+      "approved": [
+        {
+          "phonemes": "jˈuzd",
+          "rendering": "used",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0002-what-the-tick-checked",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "Inside the trajectory is a record of what the trial used.",
+          "phonemes": "jˈuzd",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "jsonl": {
+      "word": "jsonl",
+      "approved": [
+        {
+          "phonemes": "ʤˈAsˈʌnˌɛl",
+          "rendering": "jay-son-ell",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0002-what-the-tick-checked",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "cache read": {
+      "word": "Cache read",
+      "approved": [
+        {
+          "phonemes": "kˈæʃ ɹˈid",
+          "rendering": "Cache reed",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0002-what-the-tick-checked",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "json": {
+      "word": "json",
+      "approved": [
+        {
+          "phonemes": "ʤˈAsˌʌn",
+          "rendering": "jay-son",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0002-what-the-tick-checked",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "ai": {
+      "word": "AI",
+      "approved": [
+        {
+          "phonemes": "ˈAˌI",
+          "rendering": "AI",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0002-what-the-tick-checked",
+          "voice": "am_echo"
+        },
+        {
+          "phonemes": "ˈAˌIz",
+          "rendering": "AI",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "aiu": {
+      "word": "AIU",
+      "approved": [
+        {
+          "phonemes": "ˌAˌIjˈu",
+          "rendering": "AIU",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0002-what-the-tick-checked",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "minute": {
+      "word": "minute",
+      "contexts": [
+        {
+          "sentence": "About a minute later, there's a tick for each model: on both, the stimulus is a pass.",
+          "phonemes": "mˈɪnət",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ],
+      "approved": [
+        {
+          "phonemes": "mˈɪnət",
+          "rendering": "minute",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0003-the-same-request-five-times",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "n/a": {
+      "word": "N/A",
+      "approved": [
+        {
+          "phonemes": "nˌɑt ˈæpləkəbᵊl",
+          "rendering": "not applicable",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0007-test-a-grader",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "absent": {
+      "word": "absent",
+      "approved": [
+        {
+          "phonemes": "ˈæbsənt",
+          "rendering": "absent",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0007-test-a-grader",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "N/A is for a grader that checks something is absent, such as diff not contains, or diff empty.",
+          "phonemes": "ˈæbsənt",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "object": {
+      "word": "object",
+      "approved": [
+        {
+          "phonemes": "əbʤˈɛkt",
+          "rendering": "object",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0007-test-a-grader",
+          "voice": "am_echo"
+        },
+        {
+          "phonemes": "ˈɑbʤəkt",
+          "rendering": "object",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "Nothing so far has shown that the grader named no made up number would object when a number is invented.",
+          "phonemes": "əbʤˈɛkt",
+          "by": "user",
+          "date": "2026-11-10"
+        },
+        {
+          "sentence": "Our executor is an object, and its name is release app.",
+          "phonemes": "ˈɑbʤəkt",
+          "by": "user",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    "objects": {
+      "word": "objects",
+      "approved": [
+        {
+          "phonemes": "əbʤˈɛkts",
+          "rendering": "objects",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0007-test-a-grader",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "First, it can fail correct work: the agent did the right thing, and the grader objects anyway, perhaps because it insists on one exact wording.",
+          "phonemes": "əbʤˈɛkts",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "ok": {
+      "word": "OK",
+      "approved": [
+        {
+          "phonemes": "ˌOkˈA",
+          "rendering": "OK",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0007-test-a-grader",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "berkeley": {
+      "word": "Berkeley",
+      "approved": [
+        {
+          "phonemes": "bˈɜɹkli",
+          "rendering": "Berkeley",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0007-test-a-grader",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "javascript": {
+      "word": "JavaScript",
+      "approved": [
+        {
+          "phonemes": "ʤˈɑvəskɹˌɪpt",
+          "rendering": "JavaScript",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0007-test-a-grader",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "ollama": {
+      "word": "Ollama",
+      "approved": [
+        {
+          "phonemes": "ɑlˈɑmə",
+          "rendering": "Ollama",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "qwen": {
+      "word": "qwen",
+      "approved": [
+        {
+          "phonemes": "kwˈɛn",
+          "rendering": "kwen",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "config": {
+      "word": "config",
+      "approved": [
+        {
+          "phonemes": "kənfˈɪɡ",
+          "rendering": "config",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "md": {
+      "word": "md",
+      "approved": [
+        {
+          "phonemes": "ˌɛmdˈi",
+          "rendering": "md",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "tokenizer": {
+      "word": "tokenizer",
+      "approved": [
+        {
+          "phonemes": "tˈOkənˌIzəɹ",
+          "rendering": "tokenizer",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "overrides": {
+      "word": "overrides",
+      "approved": [
+        {
+          "phonemes": "ˈOvəɹɹˌIdz",
+          "rendering": "overrides",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "The first, haiku no skill, sets its model under overrides, and overrides replace the eval file's defaults.",
+          "phonemes": "ˈOvəɹɹˌIdz",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "arithmetic": {
+      "word": "arithmetic",
+      "approved": [
+        {
+          "phonemes": "əɹˈɪθmətˌɪk",
+          "rendering": "arithmetic",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "One caution before the arithmetic: a measurement like this holds for one rubric, one judge model, and one kind of request.",
+          "phonemes": "əɹˈɪθmətˌɪk",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "close": {
+      "word": "close",
+      "approved": [
+        {
+          "phonemes": "klˈOs",
+          "rendering": "close",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "For one thing, the scale did show which failures were close, and which were far off.",
+          "phonemes": "klˈOs",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "combines": {
+      "word": "combines",
+      "approved": [
+        {
+          "phonemes": "kəmbˈInz",
+          "rendering": "combines",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "For each trial, Vally combines its graders' scores into one score.",
+          "phonemes": "kəmbˈInz",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "estimate": {
+      "word": "estimate",
+      "approved": [
+        {
+          "phonemes": "ˈɛstəmət",
+          "rendering": "estimate",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "When seven of ten trials pass, seventy percent is an estimate.",
+          "phonemes": "ˈɛstəmət",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "imports": {
+      "word": "imports",
+      "approved": [
+        {
+          "phonemes": "ˈɪmpˌɔɹts",
+          "rendering": "imports",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "Here they're streaming parser, when all a user cares about is that big imports no longer crash.",
+          "phonemes": "ˈɪmpˌɔɹts",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "overall": {
+      "word": "overall",
+      "approved": [
+        {
+          "phonemes": "ˈOvəɹˌɔl",
+          "rendering": "overall",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "Each trial gets one overall verdict, however many criteria the rubric lists.",
+          "phonemes": "ˈOvəɹˌɔl",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "overlap": {
+      "word": "overlap",
+      "approved": [
+        {
+          "phonemes": "ˌOvəɹlˈæp",
+          "rendering": "overlap",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "Here are the two ranges, forty to eighty-nine, and sixty to ninety-eight, and they overlap almost completely.",
+          "phonemes": "ˌOvəɹlˈæp",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "produce": {
+      "word": "produce",
+      "approved": [
+        {
+          "phonemes": "pɹədˈus",
+          "rendering": "produce",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "If the skill's true pass rate were eighty percent both before and after, it could easily produce those two counts.",
+          "phonemes": "pɹədˈus",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "projects": {
+      "word": "projects",
+      "approved": [
+        {
+          "phonemes": "pɹˈɑʤˌɛkts",
+          "rendering": "projects",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "Real projects install dozens of skills, descriptions get edited, and neighbours get added.",
+          "phonemes": "pɹˈɑʤˌɛkts",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "refuse": {
+      "word": "refuse",
+      "approved": [
+        {
+          "phonemes": "ɹəfjˈuz",
+          "rendering": "refuse",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "If a variant differed in anything else, Vally would refuse to run, and report experiment drift.",
+          "phonemes": "ɹəfjˈuz",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "reject": {
+      "word": "reject",
+      "approved": [
+        {
+          "phonemes": "ɹəʤˈɛkt",
+          "rendering": "reject",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "It can say yes to an entry we'd reject: a failure slips through, and we believe the skill is better than it is.",
+          "phonemes": "ɹəʤˈɛkt",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "rewrite": {
+      "word": "rewrite",
+      "approved": [
+        {
+          "phonemes": "ɹˈiɹˌIt",
+          "rendering": "rewrite",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        },
+        {
+          "phonemes": "ɹiɹˈIt",
+          "rendering": "rewrite",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "Here's the rewrite, which replaces that one line.",
+          "phonemes": "ɹˈiɹˌIt",
+          "by": "user",
+          "date": "2026-11-10"
+        },
+        {
+          "sentence": "After that, we'll rewrite the description and run them again.",
+          "phonemes": "ɹiɹˈIt",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "separates": {
+      "word": "separates",
+      "approved": [
+        {
+          "phonemes": "sˈɛpəɹˌAts",
+          "rendering": "separates",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "With a score from one to five, it's hard for anyone, the judge included, to say what separates a three from a four.",
+          "phonemes": "sˈɛpəɹˌAts",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "subject": {
+      "word": "subject",
+      "approved": [
+        {
+          "phonemes": "sˈʌbʤɛkt",
+          "rendering": "subject",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "So here's a term: a near-miss request shares words or a subject with the skill's job, but isn't its job.",
+          "phonemes": "sˈʌbʤɛkt",
+          "by": "user",
+          "date": "2026-11-10"
+        }
+      ]
+    },
+    "api": {
+      "word": "API",
+      "approved": [
+        {
+          "phonemes": "ˌApˌiˈI",
+          "rendering": "API",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "executor": {
+      "word": "executor",
+      "approved": [
+        {
+          "phonemes": "ˈɛksəkjˌuTəɹ",
+          "rendering": "/ˈɛksəkjˌuɾəɹ/",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "sdk": {
+      "word": "SDK",
+      "approved": [
+        {
+          "phonemes": "ˌɛsdˌikˈA",
+          "rendering": "SDK",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "tnr": {
+      "word": "TNR",
+      "approved": [
+        {
+          "phonemes": "tˌiˌɛnˈɑɹ",
+          "rendering": "TNR",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "tpr": {
+      "word": "TPR",
+      "approved": [
+        {
+          "phonemes": "tˌipˌiˈɑɹ",
+          "rendering": "TPR",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "url": {
+      "word": "URL",
+      "approved": [
+        {
+          "phonemes": "jˌuˌɑɹˈɛl",
+          "rendering": "URL",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "env": {
+      "word": "env",
+      "approved": [
+        {
+          "phonemes": "ˈɛnv",
+          "rendering": "env",
+          "by": "user",
+          "date": "2026-11-10",
+          "video": "0017-a-model-from-your-own-provider",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "plugin": {
+      "word": "plugin",
+      "approved": [
+        {
+          "phonemes": "plˈʌɡɪn",
+          "rendering": "plugin",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "attributes": {
+      "word": "Attributes",
+      "approved": [
+        {
+          "phonemes": "ˈætɹəbjˌuts",
+          "rendering": "Attributes",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "Attributes have agreed names as well, such as the one for input tokens.",
+          "phonemes": "ˈætɹəbjˌuts",
+          "by": "user",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    "content": {
+      "word": "content",
+      "approved": [
+        {
+          "phonemes": "kˈɑntɛnt",
+          "rendering": "content",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "The arguments and the result are recorded because of capture content.",
+          "phonemes": "kˈɑntɛnt",
+          "by": "user",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    "convert": {
+      "word": "convert",
+      "approved": [
+        {
+          "phonemes": "kənvˈɜɹt",
+          "rendering": "convert",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "Next, we convert: the converter reads the trace file, and we send what it prints into a new file.",
+          "phonemes": "kənvˈɜɹt",
+          "by": "user",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    "interchange": {
+      "word": "Interchange",
+      "approved": [
+        {
+          "phonemes": "ˈɪntəɹʧˌAnʤ",
+          "rendering": "Interchange",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "It's called ATIF, the Agent Trajectory Interchange Format: a JSON file that describes one agent session as a list of steps.",
+          "phonemes": "ˈɪntəɹʧˌAnʤ",
+          "by": "user",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    "learned": {
+      "word": "learned",
+      "approved": [
+        {
+          "phonemes": "lˈɜɹnd",
+          "rendering": "learned",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "What we learned about the skill holds in the app, and the fix belongs in the skill or the choice of model, not in the app.",
+          "phonemes": "lˈɜɹnd",
+          "by": "user",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    "overhead": {
+      "word": "overhead",
+      "approved": [
+        {
+          "phonemes": "ˈOvəɹhˌɛd",
+          "rendering": "overhead",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "An eval of the skill alone wouldn't have shown that overhead at all.",
+          "phonemes": "ˈOvəɹhˌɛd",
+          "by": "user",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    "overrun": {
+      "word": "overrun",
+      "approved": [
+        {
+          "phonemes": "ˈOvəɹɹˌʌn",
+          "rendering": "overrun",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ],
+      "contexts": [
+        {
+          "sentence": "Its score still prints as one hundred percent, because so small an overrun barely moves it, and the trial failed all the same.",
+          "phonemes": "ˈOvəɹɹˌʌn",
+          "by": "user",
+          "date": "2026-11-11"
+        }
+      ]
+    },
+    "npm": {
+      "word": "npm",
+      "approved": [
+        {
+          "phonemes": "ˌɛnpˌiˈɛm",
+          "rendering": "npm",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "id": {
+      "word": "ID",
+      "approved": [
+        {
+          "phonemes": "ˌIdˈi",
+          "rendering": "ID",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "mcp": {
+      "word": "MCP",
+      "approved": [
+        {
+          "phonemes": "ˌɛmsˌipˈi",
+          "rendering": "MCP",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "opentelemetry": {
+      "word": "OpenTelemetry",
+      "approved": [
+        {
+          "phonemes": "ˌOpᵊntəlˈɛmətɹi",
+          "rendering": "OpenTelemetry",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo"
+        }
+      ]
+    },
+    "atif": {
+      "word": "ATIF",
+      "approved": [
+        {
+          "phonemes": "ˌAtˌiˌIˈɛf",
+          "rendering": "ATIF",
+          "by": "user",
+          "date": "2026-11-11",
+          "video": "0025-grade-a-run-vally-did-not-start",
+          "voice": "am_echo",
+          "note": "Ted chose 'A T I F' (letter by letter) in chat on 2026-11-11; the as-written reading spells it out."
+        }
+      ]
+    }
+  }
+}

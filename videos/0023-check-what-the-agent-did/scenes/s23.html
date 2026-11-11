@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The route each model took</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.route{font-size:46px}.route th{font-size:30px}.route td{padding-top:34px;padding-bottom:34px}.route td.mono{font-family:var(--font-code);font-size:36px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the path showed</div>
+  <h2 class="scene-title">The route each model took</h2>
+  <div class="stage">
+<table class="data-table full route">
+    <thead><tr><th></th><th class="num">Loaded the skill</th><th class="num">Wrote an entry for the refactor</th>
+      <th class="num">Passed every grader</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">claude-haiku-4.5</td><td class="num"><span data-concept="hl" data-rep="cell">4 of 8</span></td>
+        <td class="num"><span data-concept="hr" data-rep="cell">5 of 8</span></td><td class="num">3 of 8</td></tr>
+      <tr><td class="mono">gpt-5.6-terra</td><td class="num"><span data-concept="tl" data-rep="cell">8 of 8</span></td>
+        <td class="num">0 of 8</td><td class="num"><span data-concept="tp" data-rep="cell">8 of 8</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">8 trials of each model: 5 saved, 3 new · the refactor should get no entry</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "hl",
+  "at": "2~loaded",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "hr",
+  "at": "2~entry",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "tl",
+  "at": "3~loaded",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "tp",
+  "at": "3~passed",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "hl",
+  "at": "4~one of the four",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

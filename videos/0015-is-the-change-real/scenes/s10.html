@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Which column to trust</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:230px;justify-content:center}.terms .title{font-size:64px;line-height:1.15}.terms .label{font-size:36px}.lead{font-size:38px;margin:0}.note{margin:0}.stage{gap:22px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the experiment prints</div>
+  <h2 class="scene-title">Which column to trust</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="atk" data-rep="block" data-role="structure">
+      <div class="title">pass@k · 100%</div><div class="label">can the agent do this at all?</div>
+    </div>
+    <div class="semantic-block" data-concept="hatk" data-rep="block" data-role="attention">
+      <div class="title">pass^k · 29.6%</div><div class="label">can I count on it every time?</div>
+    </div>
+  </div>
+  <p class="note">a stimulus that passes 2 trials in 3</p>
+  <p class="lead"><span data-concept="err" data-rep="note">A trial that ends in ERROR: dashes in these columns.</span></p>
+  <p class="lead"><span data-concept="norange" data-rep="note">None of the columns gives a range.</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "hatk",
+  "at": "1~pass hat k",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "atk",
+  "at": "1~pass at k",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "err",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "norange",
+  "at": "3",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

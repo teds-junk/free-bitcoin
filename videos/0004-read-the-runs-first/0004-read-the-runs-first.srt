@@ -1,0 +1,699 @@
+1
+00:00:00,400 --> 00:00:04,800
+So far, we know about one problem with our
+skill, because we happened to look.
+
+2
+00:00:05,300 --> 00:00:09,925
+That was on one request, and it's one of
+the tidier things a person might ask for.
+
+3
+00:00:10,425 --> 00:00:15,261
+Real requests mention changes that users
+can't see, bundle two changes together, or
+
+4
+00:00:15,261 --> 00:00:17,300
+describe a fix by how it was coded.
+
+5
+00:00:17,800 --> 00:00:22,182
+Here, you'll run six ordinary requests on
+two models, read what each one did, and
+
+6
+00:00:22,182 --> 00:00:24,725
+come away with a short list of what goes
+wrong.
+
+7
+00:00:25,933 --> 00:00:29,483
+Let's start with why reading comes before
+writing graders.
+
+8
+00:00:29,983 --> 00:00:34,339
+It's natural to sit down and list what a
+good changelog entry looks like, then
+
+9
+00:00:34,339 --> 00:00:35,958
+write a grader for each item.
+
+10
+00:00:36,458 --> 00:00:40,933
+But that list comes from your imagination,
+and the failures come from the models.
+
+11
+00:00:41,433 --> 00:00:45,508
+You probably wouldn't have thought to
+check for a made-up pull request number
+
+12
+00:00:45,508 --> 00:00:46,883
+until a model made one up.
+
+13
+00:00:48,100 --> 00:00:52,683
+People who do this for a living put it as
+a rule: write evaluators for errors you
+
+14
+00:00:52,683 --> 00:00:54,550
+discover, not errors you imagine.
+
+15
+00:00:55,050 --> 00:00:58,000
+Evaluators is their word for graders.
+
+16
+00:00:58,500 --> 00:01:00,600
+Their process is plain.
+
+17
+00:01:01,100 --> 00:01:05,086
+You run realistic requests, go through
+what came back, write a short note on
+
+18
+00:01:05,086 --> 00:01:06,450
+each, and group the notes.
+
+19
+00:01:06,950 --> 00:01:09,200
+They call it error analysis.
+
+20
+00:01:09,700 --> 00:01:13,850
+Graders come after the last step, and only
+for failures you've seen.
+
+21
+00:01:15,067 --> 00:01:18,942
+Each group of notes gets a name, and that
+makes it a failure mode.
+
+22
+00:01:19,442 --> 00:01:23,923
+By failure mode, we mean a named way in
+which the skill's output goes wrong, seen
+
+23
+00:01:23,923 --> 00:01:25,417
+in at least one real trial.
+
+24
+00:01:25,917 --> 00:01:29,817
+Recording a change that users can't see is
+a failure mode.
+
+25
+00:01:30,317 --> 00:01:34,067
+Saying only that trial three looked odd is
+not one yet.
+
+26
+00:01:35,267 --> 00:01:39,592
+Reading does something else that a list
+can't: it makes you decide what you want.
+
+27
+00:01:40,092 --> 00:01:43,242
+Is a security fix filed under Fixed wrong?
+
+28
+00:01:43,742 --> 00:01:48,208
+You may not have an opinion until you see
+one, and once you do, that opinion is a
+
+29
+00:01:48,208 --> 00:01:49,642
+rule the skill is missing.
+
+30
+00:01:50,142 --> 00:01:54,170
+Researchers who studied this found that
+people's criteria shift while they're
+
+31
+00:01:54,170 --> 00:01:57,467
+reading outputs, so criteria written
+beforehand are incomplete.
+
+32
+00:01:58,667 --> 00:02:00,767
+How many runs are enough?
+
+33
+00:02:01,267 --> 00:02:05,630
+Those same practitioners suggest reading
+at least a hundred for a real product, and
+
+34
+00:02:05,630 --> 00:02:08,417
+stopping when new ones stop showing you
+anything new.
+
+35
+00:02:08,917 --> 00:02:10,917
+Here, we'll read twelve.
+
+36
+00:02:11,417 --> 00:02:15,835
+That's enough to find the main failure
+modes of a five-line skill, and too few to
+
+37
+00:02:15,835 --> 00:02:17,417
+be sure we've found them all.
+
+38
+00:02:18,633 --> 00:02:21,933
+That's the reasoning; here's the eval file
+we'll run.
+
+39
+00:02:22,433 --> 00:02:27,008
+It's a second eval file from the starter
+folder, and it holds six stimuli.
+
+40
+00:02:27,508 --> 00:02:32,248
+One eval file can hold as many as you
+like, and Vally runs each of them on each
+
+41
+00:02:32,248 --> 00:02:32,608
+model.
+
+42
+00:02:33,108 --> 00:02:37,805
+Stimulus one is the request we already
+know, so this run can be compared with the
+
+43
+00:02:37,805 --> 00:02:38,558
+earlier ones.
+
+44
+00:02:39,058 --> 00:02:43,098
+Each stimulus can have an agent
+environment of its own, and here, each one
+
+45
+00:02:43,098 --> 00:02:45,008
+names the changelog it starts from.
+
+46
+00:02:45,508 --> 00:02:48,858
+Our skill is listed once, at the top, for
+all of them.
+
+47
+00:02:49,358 --> 00:02:53,369
+Down at the end, the last stimulus starts
+from a different changelog: one where
+
+48
+00:02:53,369 --> 00:02:57,430
+version one point three has just been
+released, so there's no Unreleased section
+
+49
+00:02:57,430 --> 00:02:57,633
+yet.
+
+50
+00:02:58,133 --> 00:03:01,683
+Nowhere in this file is there a grader,
+and that's allowed.
+
+51
+00:03:02,900 --> 00:03:05,400
+Between those two sit four more.
+
+52
+00:03:05,900 --> 00:03:10,350
+First, a refactor: a tidying of the code
+that changes nothing for users.
+
+53
+00:03:10,850 --> 00:03:14,250
+Next, one pull request that contains two
+changes.
+
+54
+00:03:14,750 --> 00:03:16,750
+Then a security fix.
+
+55
+00:03:17,250 --> 00:03:20,275
+Last, a fix described by how it was coded.
+
+56
+00:03:20,775 --> 00:03:24,700
+Each one leaves the skill something to
+decide that it doesn't mention.
+
+57
+00:03:25,900 --> 00:03:29,625
+To judge the results, we need one fact
+about this changelog.
+
+58
+00:03:30,125 --> 00:03:33,400
+It follows a public format called Keep a
+Changelog.
+
+59
+00:03:33,900 --> 00:03:38,507
+That format has six categories, in this
+order: Added, Changed, Deprecated,
+
+60
+00:03:38,507 --> 00:03:40,250
+Removed, Fixed and Security.
+
+61
+00:03:40,750 --> 00:03:45,150
+It writes the heading for unshipped
+changes as Unreleased, inside square
+
+62
+00:03:45,150 --> 00:03:45,700
+brackets.
+
+63
+00:03:46,200 --> 00:03:48,700
+Our skill mentions none of this.
+
+64
+00:03:49,900 --> 00:03:54,691
+Because the purpose of this run is to
+read, the command adds one flag: dash dash
+
+65
+00:03:54,691 --> 00:03:55,350
+skip grade.
+
+66
+00:03:55,850 --> 00:04:00,775
+With it, Vally runs the agents and saves
+everything as usual, and skips grading.
+
+67
+00:04:01,275 --> 00:04:05,643
+This file has no graders, so here the flag
+changes nothing: it states the purpose,
+
+68
+00:04:05,643 --> 00:04:08,200
+and it's what you'd use on a file that has
+some.
+
+69
+00:04:08,700 --> 00:04:11,250
+Vally's summary still prints ticks.
+
+70
+00:04:11,750 --> 00:04:15,375
+With skip grade, a tick means only that
+the trial finished.
+
+71
+00:04:16,600 --> 00:04:20,125
+That's the file and the flag; now let's
+run it and read.
+
+72
+00:04:20,625 --> 00:04:25,476
+Each of the six stimuli runs once on each
+model, which gives us twelve patches to
+
+73
+00:04:25,476 --> 00:04:25,775
+read.
+
+74
+00:04:26,275 --> 00:04:30,900
+For every trial we'll write one note, and
+then group the notes into failure modes.
+
+75
+00:04:31,400 --> 00:04:34,025
+Here are the skill's four rules again.
+
+76
+00:04:34,525 --> 00:04:38,522
+Which of these would you expect it to
+handle badly: the refactor users can't
+
+77
+00:04:38,522 --> 00:04:42,730
+see, the two changes in one pull request,
+the security fix, the fix described in
+
+78
+00:04:42,730 --> 00:04:45,675
+code terms, or the changelog with no
+Unreleased section?
+
+79
+00:04:48,175 --> 00:04:51,050
+If you tried it yourself, here's what
+you'd see.
+
+80
+00:04:52,267 --> 00:04:56,592
+First, we check the eval file with vally
+lint, which starts no agent.
+
+81
+00:04:59,953 --> 00:05:02,378
+Lint says the file is valid.
+
+82
+00:05:02,878 --> 00:05:07,765
+Here's the run: six stimuli on two models,
+with no grading, and two workers as
+
+83
+00:05:07,765 --> 00:05:08,203
+before.
+
+84
+00:05:08,703 --> 00:05:11,403
+It spends twelve short agent runs.
+
+85
+00:05:11,903 --> 00:05:15,528
+In the summary, we're looking for six of
+six under each model.
+
+86
+00:05:20,287 --> 00:05:24,996
+About a minute later, both models show six
+of six: all twelve trials finished, and
+
+87
+00:05:24,996 --> 00:05:26,087
+nothing was graded.
+
+88
+00:05:29,587 --> 00:05:32,062
+So let's look in the results folder.
+
+89
+00:05:33,807 --> 00:05:36,932
+There's one folder, named with the time of
+the run.
+
+90
+00:05:39,833 --> 00:05:44,608
+We change into that folder, and then into
+the one for the eval, which is named six.
+
+91
+00:05:45,407 --> 00:05:48,282
+Inside is a folder for each stimulus.
+
+92
+00:05:50,782 --> 00:05:54,938
+Our notes go in a file of their own, named
+failures, with one line per trial: the
+
+93
+00:05:54,938 --> 00:05:58,632
+stimulus, the model, what the agent did,
+and anything we think is wrong.
+
+94
+00:05:59,132 --> 00:06:02,607
+Here's the first patch: the refactor, on
+the haiku model.
+
+95
+00:06:05,933 --> 00:06:10,683
+One question decides the note: would we be
+happy to see this in our own changelog?
+
+96
+00:06:15,183 --> 00:06:20,046
+This trial added an entry under Changed,
+for a change the request said users can't
+
+97
+00:06:20,046 --> 00:06:20,283
+see.
+
+98
+00:06:24,500 --> 00:06:27,600
+Terra's patch for the refactor does the
+same thing.
+
+99
+00:06:28,100 --> 00:06:32,450
+So that's one note for each model: it
+records a change users can't see.
+
+100
+00:06:36,667 --> 00:06:39,592
+Let's go through the other ten the same
+way.
+
+101
+00:06:40,092 --> 00:06:44,720
+On the request we already know, haiku's
+entry has no pull request number, and
+
+102
+00:06:44,720 --> 00:06:45,442
+that's fine.
+
+103
+00:06:45,942 --> 00:06:49,142
+Terra's ends with a number that nobody
+gave it.
+
+104
+00:06:52,367 --> 00:06:56,617
+Now the request that looked hardest: two
+changes in one pull request.
+
+105
+00:06:57,117 --> 00:07:01,822
+Both models split it into two entries, one
+under Added and one under Fixed, and both
+
+106
+00:07:01,822 --> 00:07:03,167
+cite pull request sixty.
+
+107
+00:07:03,667 --> 00:07:05,267
+Those are fine.
+
+108
+00:07:08,467 --> 00:07:11,817
+Both models filed the security fix under
+Fixed.
+
+109
+00:07:12,317 --> 00:07:17,092
+But the format has a Security category of
+its own, so each of these gets a note.
+
+110
+00:07:20,300 --> 00:07:25,046
+For the out-of-memory fix, haiku's entry
+ends by naming the streaming parser, which
+
+111
+00:07:25,046 --> 00:07:26,475
+is how the fix was coded.
+
+112
+00:07:26,975 --> 00:07:30,025
+Terra's entry says only what users notice.
+
+113
+00:07:33,233 --> 00:07:36,458
+Last, the changelog with no Unreleased
+section.
+
+114
+00:07:36,958 --> 00:07:39,733
+Both models added the heading themselves.
+
+115
+00:07:40,233 --> 00:07:44,717
+Here, haiku wrote it inside square
+brackets, like every other heading in that
+
+116
+00:07:44,717 --> 00:07:45,008
+file.
+
+117
+00:07:45,508 --> 00:07:47,608
+Terra left the brackets off.
+
+118
+00:07:50,833 --> 00:07:55,307
+Grouping the notes that describe the same
+kind of problem gives us a short list, at
+
+119
+00:07:55,307 --> 00:07:56,708
+the top of the notes file.
+
+120
+00:07:57,208 --> 00:08:00,933
+It has five failure modes, each with a
+trial that shows it.
+
+121
+00:08:01,433 --> 00:08:06,158
+One: there's no rule for a missing pull
+request number, so a model invents one.
+
+122
+00:08:06,658 --> 00:08:09,683
+Two: it records a change users can't see.
+
+123
+00:08:10,183 --> 00:08:13,208
+Three: it files a security fix under
+Fixed.
+
+124
+00:08:13,708 --> 00:08:16,633
+Four: it describes how the fix was coded.
+
+125
+00:08:17,133 --> 00:08:21,483
+Five: a new Unreleased heading doesn't
+match the other headings in the file.
+
+126
+00:08:23,983 --> 00:08:28,214
+Looking back at our run, the request that
+looked hardest was handled well by both
+
+127
+00:08:28,214 --> 00:08:31,608
+models, and the plain-looking refactor was
+handled badly by both.
+
+128
+00:08:32,833 --> 00:08:35,208
+So where do these five come from?
+
+129
+00:08:35,708 --> 00:08:38,708
+In every one, the skill left a question
+open.
+
+130
+00:08:39,208 --> 00:08:42,033
+What to do without a pull request number.
+
+131
+00:08:42,533 --> 00:08:46,233
+Which changes count, and what it means to
+write for the tool's users.
+
+132
+00:08:46,733 --> 00:08:50,333
+Which categories exist, and what a new
+heading looks like.
+
+133
+00:08:50,833 --> 00:08:53,383
+Neither model disobeyed the skill.
+
+134
+00:08:53,883 --> 00:08:57,058
+Each one filled a gap, and they filled it
+differently.
+
+135
+00:08:57,558 --> 00:09:01,433
+That's good news, because a gap in a skill
+is something we can fix.
+
+136
+00:09:02,633 --> 00:09:07,202
+Your list won't match ours exactly, and
+some entries on it will be matters of
+
+137
+00:09:07,202 --> 00:09:07,558
+taste.
+
+138
+00:09:08,058 --> 00:09:11,408
+Deciding which ones you care about is part
+of the work.
+
+139
+00:09:11,908 --> 00:09:16,269
+For two of ours, the project's format
+settles it: a security fix has its own
+
+140
+00:09:16,269 --> 00:09:18,908
+category, and the heading has square
+brackets.
+
+141
+00:09:22,133 --> 00:09:25,808
+Before you go on: what are the four steps
+of error analysis?
+
+142
+00:09:28,808 --> 00:09:31,483
+First, we run realistic requests.
+
+143
+00:09:31,983 --> 00:09:34,408
+Second, we go through what came back.
+
+144
+00:09:34,908 --> 00:09:37,808
+Third, we write a note on what's wrong
+with each.
+
+145
+00:09:38,308 --> 00:09:42,858
+Fourth, we group the notes into failure
+modes, and only then write graders.
+
+146
+00:09:44,067 --> 00:09:48,292
+You can now name what goes wrong with the
+skill, and point to a trial for each.
+
+147
+00:09:48,792 --> 00:09:53,027
+But you found those failures by reading,
+and after every edit to the skill, you'd
+
+148
+00:09:53,027 --> 00:09:54,492
+have to read them all again.
+
+149
+00:09:54,992 --> 00:09:57,092
+Can code do the reading?
+
+150
+00:09:57,592 --> 00:09:59,442
+That's the next lesson.
+
+151
+00:09:59,942 --> 00:10:04,092
+For practice, the exercises on the lesson
+page are worth doing first.

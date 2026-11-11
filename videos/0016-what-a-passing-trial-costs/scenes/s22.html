@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Each model has its own price</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.ppt{font-size:34px}.ppt th{font-size:28px}.ppt td{padding-top:30px;padding-bottom:30px;font-family:var(--font-code)}.ppt td.what{font-family:var(--font-body);font-size:30px}.lead{font-size:40px;margin:0}.stage{gap:28px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the table says</div>
+  <h2 class="scene-title">Each model has its own price</h2>
+  <div class="stage">
+<table class="data-table full ppt">
+    <thead><tr><th>Model</th><th>A trial of ours</th><th>Tokens</th><th>Cost</th><th>Per 100,000 tokens</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">claude-haiku-4.5</td><td class="what">the first one these videos ran</td><td>74,210</td><td>1.81 AIU</td><td><span data-concept="old" data-rep="cell">2.44 AIU</span></td></tr>
+      <tr><td class="mono">claude-haiku-5.5</td><td class="what">the record from this run</td><td>105,275</td><td>0.23 AIU</td><td><span data-concept="new" data-rep="cell">0.22 AIU</span></td></tr>
+    </tbody>
+  </table>
+  <p class="lead"><span data-concept="ratio" data-rep="note">On our account, the newer haiku was about 11 times cheaper per token.</span></p>
+  <p class="note">runs 2026-11-11T00-11-52-424Z and 2026-11-11T08-39-02-179Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "old",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "new",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ratio",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

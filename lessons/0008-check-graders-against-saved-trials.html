@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 8: Check graders against saved trials — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 8 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Check graders against saved trials</h1>
+    <div class="lesson-meta">12 min · Re-grade a saved run without starting an agent, and use it to show that a grader which passed the oracle could never fail.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What is a golden patch, and where can you get one?
+        <details class="answer"><summary>Show answer</summary><p>A patch you keep that records exactly the changes a correct answer would make. The easiest source is the saved <code>workspace.patch</code> of a trial you have read and judged correct.</p></details></li>
+      <li>The oracle reports a grader as N/A on the baseline. What does that mean?
+        <details class="answer"><summary>Show answer</summary><p>The grader checks that something is absent, so it passes an untouched workspace honestly. The oracle cannot test it that way, so nothing has yet shown that it works.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You have shown with the oracle that four of your graders pass a correct answer and fail an untouched file. Two graders that check for absence came back N/A.</p>
+    <p><strong>This lesson answers:</strong> The oracle cannot test a grader that checks for absence, and it tries one correct answer. Can I run my graders on the real trials I have already saved?</p>
+  </div>
+
+  <p class="drop-cap">The grader you have relied on most, <code>no-made-up-number</code>, is one of the two the oracle could not vouch for. An untouched changelog contains no made-up number, so it passes, and that proves nothing. What would prove something is a changelog where a model did make up a number. You have two: you paid for them in lesson 5 and they are sitting in a results folder. This lesson puts them to work, and shows a real mistake we made while writing this course, which only they could catch.</p>
+
+  <h2 id="saved-trials-are-tests" data-mode="think">Saved trials are tests for graders</h2>
+
+  <p>Every trial you have read is an example with a known answer. You know which ones are right and which are wrong, and why. That makes them the best material you have for testing graders, in two ways the oracle cannot manage.</p>
+
+  <p><strong>A trial you know is bad tests a grader that checks for absence.</strong> If <code>no-made-up-number</code> does not fail a trial where the model wrote <code>(#42)</code>, the grader is broken, whatever the oracle said. The rule is simple: every "must not" grader should have at least one saved trial that it fails.</p>
+
+  <p><strong>A trial you know is good, in different words, tests whether a grader is too strict.</strong> The oracle tried one correct answer per stimulus. Your saved runs hold several, each worded a little differently. A grader that fails one of them is objecting to wording, not to a fault.</p>
+
+  <p>When a grader and your own reading disagree, do not assume either is right. Open the evidence and the patch, and decide. You have already seen it go both ways. In lesson 5's first run, before the skill had any rule for a missing number, one trial asked for the number instead of making one up. That was a defensible answer, and the grader <code>adds-an-entry</code> failed it. In lesson 6 a script failed trials that looked fine at a glance, and the patches showed the script was right; in the same lesson it passed a trial that was wrong.</p>
+
+  <h2 id="re-grading" data-mode="works">Re-grading a saved run</h2>
+
+  <p><code>vally grade</code> runs graders over trials that are already saved. No agent starts, so it costs nothing. It needs three things:</p>
+
+  <ul>
+    <li><code>-e</code> and the eval file. The graders used are the ones in the file as it is now, matched to each saved trial by stimulus name. Change a grader, and the next re-grade uses the changed one.</li>
+    <li>The saved trials, fed in from the run's <code>results.jsonl</code>. The <code>&lt;</code> sign before a file name gives that file to the command as its input.</li>
+    <li><code>--run-dir</code> and the run's folder. Each trial's folder has a <code>workspace.patch</code> for you to read. When the eval file has a diff grader, meaning any of the three graders from lesson 5 that read the patch, the run also keeps a copy of every trial's diff in a folder named <code>diffs</code>. A re-grade reads those copies, and <code>--run-dir</code> tells it which run folder to look in.</li>
+  </ul>
+
+  <p>It prints one block per saved trial: the stimulus name, a tick or a cross, and each failing grader with its evidence. The blocks do not name the model.</p>
+
+  <p>There are two limits, and both matter.</p>
+
+  <div class="callout warning">
+    <div class="callout-title">What a re-grade can and cannot judge</div>
+    <p>A run keeps the copies in <code>diffs</code> only if its eval file had a diff grader at the time. Your runs from lesson 5 onward did. The runs from lessons 3 and 4 did not: their trial folders still have a <code>workspace.patch</code> for you to read, but there is nothing for a diff grader to re-grade.</p>
+    <p>A script grader needs the workspace, and the workspace is gone. In a re-grade, a script grader fails on every trial, including trials that really passed, and our script says why: <code>no CHANGELOG.md to check</code>. Ignore script graders in a re-grade. Test those with the oracle.</p>
+  </div>
+
+  <p>The checkpoint uses a real mistake to show what a re-grade can catch.</p>
+
+  <p>When we first wrote <code>no-made-up-number</code>, the pattern was this:</p>
+
+<pre class="output"><code>pattern: '^\+.*\(#\d+\)'</code></pre>
+
+  <p>It is the pattern from lesson 5 without the <code>(?m)</code> at the front, and it reads correctly: a line starting with a plus sign that contains a number in brackets. It is wrong. Without <code>(?m)</code>, the <code>^</code> means the very start of the whole patch, and a patch never starts with a plus sign. So the pattern can never be found, and a grader that passes when a pattern is not found will pass everything.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">You re-grade a saved run, and a script grader fails on every single trial. What is the most likely reason?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">The script has a new bug</button></li>
+      <li><button onclick="checkAnswer(this, false)">Every saved trial was really wrong</button></li>
+      <li><button onclick="checkAnswer(this, true)">The trial workspaces no longer exist</button></li>
+      <li><button onclick="checkAnswer(this, false)">The golden patches are now outdated</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. A script grader reads files in the workspace, and saved runs keep the diff, not the workspace. The failure says nothing about the trials.</div>
+    <div class="quiz-feedback incorrect">The trial workspaces no longer exist. A script grader reads files in the workspace; a saved run keeps only the diff. So in a re-grade it fails everywhere, and that result should be ignored.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/cli/grade/">Vally docs, CLI: grade</a>; both limits are from our runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="catch-it" data-mode="use">Catch a grader that cannot fail</h2>
+
+  <p>You will re-grade your "before" run from lesson 5, put the flawed pattern in, see the oracle accept it, see the saved trials expose it, and put the right one back.</p>
+
+  <section class="checkpoint">
+    <h3>The oracle says yes; the saved trials say no</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: find the run where you know failures happened.</span>
+        Open a terminal in <code>practice</code>.
+<pre><code class="language-bash">ls results/lesson-5-before</code></pre>
+        <p class="expect">You should see: one folder named with a time. Use its name in the next step.</p></li>
+
+      <li><span class="goal">Goal: move into that run's folder, so the paths stay short.</span>
+<pre><code class="language-bash">cd results/lesson-5-before/2026-11-10T14-55-35-995Z</code></pre></li>
+
+      <li><span class="goal">Goal: re-grade the saved trials with your graders as they are. This starts no agent.</span>
+<pre><code class="language-bash">vally grade -e ../../../evals/changelog.eval.yaml \
+  --run-dir . &lt; results.jsonl</code></pre>
+<pre class="output"><code>━━━ typo-fix ━━━
+❌ typo-fix (1/2 graders passed, 1 failed)</code></pre>
+        <p class="expect">You should see: eighteen blocks, one per saved trial. Find the six for <code>typo-fix</code>. In our run three passed and three failed, matching the count from lesson 5. Two of the failing ones name <code>no-made-up-number</code>. The third names <code>adds-an-entry</code>: in that trial the model asked for the number and wrote nothing. The dot after <code>--run-dir</code> means "this folder".</p></li>
+
+      <li><span class="goal">Goal: put in the pattern that looks right and is not. This edits one file.</span>
+        In your text editor, open <code>evals/changelog.eval.yaml</code> from <code>practice</code>. In the <code>no-made-up-number</code> grader, delete the four characters <code>(?m)</code> from the start of the pattern, so that it reads as the flawed one shown earlier. Your terminal stays where it is.</li>
+
+      <li><span class="goal">Goal: ask the oracle about the changed grader.</span>
+        Go back to <code>practice</code> first.
+<pre><code class="language-bash">cd ../../..</code></pre>
+<pre><code class="language-bash">vally oracle -e evals/changelog.eval.yaml \
+  --stimulus typo-fix --verbose</code></pre>
+<pre><code class="language-bash">vally oracle -e evals/changelog.eval.yaml \
+  --stimulus typo-fix --no-golden-input --verbose</code></pre>
+        <p class="expect">You should see: <code>PASSED</code> from the first, and from the second <code>N/A</code> for <code>no-made-up-number</code> and a last line beginning <code>baseline OK</code>. The oracle has no complaint.</p></li>
+
+      <li><span class="goal">Goal: ask the saved trials about the changed grader.</span>
+<pre><code class="language-bash">cd results/lesson-5-before/2026-11-10T14-55-35-995Z</code></pre>
+<pre><code class="language-bash">vally grade -e ../../../evals/changelog.eval.yaml \
+  --run-dir . &lt; results.jsonl</code></pre>
+<pre class="output"><code>━━━ typo-fix ━━━
+✅ typo-fix (2/2 graders passed)</code></pre>
+        <p class="expect">You should see: no <code>typo-fix</code> block that names <code>no-made-up-number</code>, including the trials where you know a number was made up. In ours, five of the six passed; the sixth still failed <code>adds-an-entry</code>, the trial that wrote nothing. The grader cannot fail.</p></li>
+
+      <li><span class="goal">Goal: put the correct pattern back and confirm it. This edits one file.</span>
+        Restore <code>(?m)</code> at the start of the pattern. You are still in the run folder, so run the <code>vally grade</code> command from step 6 again, without its <code>cd</code> line.
+        <p class="expect">You should see: the same count as in step 3. Then return to <code>practice</code> with <code>cd ../../..</code>.</p></li>
+    </ol>
+  </section>
+
+  <h2 id="a-habit-for-every-grader" data-mode="think">A habit for every grader</h2>
+
+  <p>Four characters were the difference between a grader that works and one that approves everything, and the oracle could not tell them apart. This was a real mistake, made and caught while writing this course, and it was caught the way you just caught it: by running the grader on a trial known to be bad.</p>
+
+  <p>The same re-grade settled your other absence grader without any extra work. Look at the <code>refactor</code> blocks from step 3: <code>adds-nothing</code> failed all six, on trials where both models recorded the refactor. Both "must not" graders now have saved trials that they fail.</p>
+
+  <p>Make this a habit whenever you write or change a grader. Run the oracle, which is free. Then re-grade a saved run where the failure is known to occur, which is also free. Only then spend agent runs.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/reference/cli/grade/">CLI: grade, Vally docs</a></p>
+    <p>Read the list of options, especially <code>--run-dir</code>, which this lesson depends on. The page describes re-grading from Vally's side.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, say which kind of grader the oracle cannot test, why, and what tests it instead.
+        <details class="answer"><summary>Show model answer</summary><p>A grader that checks something is absent. An untouched workspace passes it honestly, so the oracle reports N/A. It is tested by re-grading a saved trial that is known to contain the fault: the grader must fail that trial.</p></details></li>
+      <li>You tighten <code>adds-an-entry</code> so that it looks for the words <code>Fix typo</code>. Which saved run would you re-grade to find out whether it is now too strict, and what would you look for?
+        <details class="answer"><summary>Show model answer</summary><p>The "after" run from lesson 5, where the typo-fix trials were correct and worded in several ways. Any trial that now fails <code>adds-an-entry</code> has a correct entry in different words, such as "Correct the help text", which means the grader has become too strict.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="8" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> re-grade a saved run without starting an agent, and use it to show that a grader which passed the oracle could never fail.</p>
+    <p><strong>Up next:</strong> <a href="./0009-does-the-skill-load.html">Does the skill load when it should</a>. The graders are now tested against correct answers, empty answers and real bad answers. In every trial so far the skill was loaded. Will it load for other wordings, and stay out of requests that are not its job?</p>
+    <a class="next-lesson" href="./0009-does-the-skill-load.html">Next lesson: Does the skill load when it should <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

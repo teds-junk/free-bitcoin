@@ -1,0 +1,1394 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/0005-turn-a-failure-into-a-grader",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "b9efd29075d47f35",
+      "text": "We have a list of ways this skill goes wrong, and we found every one by going through patches.",
+      "tts_text": "We have a list of ways this skill goes wrong, and we found every one by going through patches.",
+      "heard": "You have a list of ways this skill goes wrong, and we found everyone by going through patches.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "We",
+          "heard": "You",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "f45a954cb0c5e5a6",
+      "text": "We could fix the skill now: add a rule, try it, and look at the result.",
+      "tts_text": "We could fix the skill now: add a rule, try it, and look at the result.",
+      "heard": "We could fix the skill now, add a rule, try it, and look at the result.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "415dccdfadf11c72",
+      "text": "But looking at the result means going through patches again, on both models, several times each, after every edit.",
+      "tts_text": "But looking at the result means going through patches again, on both models, several times each, after every edit.",
+      "heard": "But looking at the result means going through patches again on both models several times each after every edit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "8fcdb50681591573",
+      "text": "Hardly anybody keeps that up.",
+      "tts_text": "Hardly anybody keeps that up.",
+      "heard": "Hardly anybody keeps that up.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 4,
+      "file": "audio/s01_04.wav",
+      "clip_sha": "01507bd8caeb9513",
+      "text": "In this lesson, you'll hand that work to code: one small grader for each failure, so that one command counts how often it happens, before an edit and after it.",
+      "tts_text": "In this lesson, you'll hand that work to code: one small grader for each failure, so that one command counts how often it happens, before an edit and after it.",
+      "heard": "In this lesson you'll hand that work to code, one small grader for each failure, so that one command counts how often it happens before an edit and after it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "587321fcd0748154",
+      "text": "Let's start with what makes a grader worth having: three habits.",
+      "tts_text": "Let's start with what makes a grader worth having: three habits.",
+      "heard": "Let's start with what makes a greater worth having, three habits.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "b4f380b5adaf7892",
+      "text": "First, we grade the result, not the route.",
+      "tts_text": "First, we grade the result, not the route.",
+      "heard": "First, we grade the result, not the root.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "2bb2f8d55a0ff9b9",
+      "text": "An agent can reach a correct changelog by many routes: opening the file or searching it, one edit or two.",
+      "tts_text": "An agent can reach a correct changelog by many routes: opening the file or searching it, one edit or two.",
+      "heard": "An agent can reach a correct changelog by many routes, opening the file or searching it, one edit or two.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 3,
+      "file": "audio/s02_03.wav",
+      "clip_sha": "9af0d2cb9b1f3695",
+      "text": "A grader that insists on one route fails every good route we didn't think of.",
+      "tts_text": "A grader that insists on one route fails every good route we didn't think of.",
+      "heard": "Greater that insists on one root fails every good root we didn't think of.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "A grader",
+          "heard": "Greater",
+          "similarity": 0.77
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s02",
+      "i": 4,
+      "file": "audio/s02_04.wav",
+      "clip_sha": "8f2b331d7b66fb8b",
+      "text": "So we look at what the agent left behind.",
+      "tts_text": "So we look at what the agent left behind.",
+      "heard": "So we look at what the agent left behind.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "47790c1024ded62c",
+      "text": "Second, we write one grader for each failure mode, and name it after the failure.",
+      "tts_text": "Second, we write one grader for each failure mode, and name it after the failure.",
+      "heard": "Second, we write one grader for each failure mode and name it after the failure.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "2f8dcc36e0d89fc3",
+      "text": "When a grader called no made-up number fails, you know what went wrong without opening a file.",
+      "tts_text": "When a grader called no made-up number fails, you know what went wrong without opening a file.",
+      "heard": "In a grader called No Made Up Number fails, you know what went wrong without opening a file.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "When",
+          "heard": "In",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s03",
+      "i": 2,
+      "file": "audio/s03_02.wav",
+      "clip_sha": "d8eb1dd2534c67a7",
+      "text": "One grader that checks five things at once only tells you that something went wrong.",
+      "tts_text": "One grader that checks five things at once only tells you that something went wrong.",
+      "heard": "One grader that checks five things at once only tells you that something went wrong.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 0,
+      "file": "audio/s04_00.wav",
+      "clip_sha": "7d314ef9c6175784",
+      "text": "Third, a grader has to be able to fail.",
+      "tts_text": "Third, a grader has to be able to fail.",
+      "heard": "Third, a greater has to be able to fail.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s04",
+      "i": 1,
+      "file": "audio/s04_01.wav",
+      "clip_sha": "1b38b592913fba95",
+      "text": "So far we've had one grader, and it passed every trial, including the trials that made up a number.",
+      "tts_text": "So far we've had one grader, and it passed every trial, including the trials that made up a number.",
+      "heard": "So far we've had one greater and it passed every trial, including the trials that made up a number.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s04",
+      "i": 2,
+      "file": "audio/s04_02.wav",
+      "clip_sha": "0a9d1e6b255b0aaf",
+      "text": "A grader that has never failed might be checking nothing.",
+      "tts_text": "A grader that has never failed might be checking nothing.",
+      "heard": "A greater that has never failed might be checking nothing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s04",
+      "i": 3,
+      "file": "audio/s04_03.wav",
+      "clip_sha": "579f14bb1710f781",
+      "text": "So the first time we run a new grader, we run it where we already know the failure happens.",
+      "tts_text": "So the first time we run a new grader, we run it where we already know the failure happens.",
+      "heard": "So the first time we run a new grader, we run it where we already know the failure happens.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 4,
+      "file": "audio/s04_04.wav",
+      "clip_sha": "3d0de3f8809de67c",
+      "text": "If it passes there, the grader is wrong.",
+      "tts_text": "If it passes there, the grader is wrong.",
+      "heard": "If it passes there, the greater is wrong.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s05",
+      "i": 0,
+      "file": "audio/s05_00.wav",
+      "clip_sha": "5e78dfaac9fd38ce",
+      "text": "One more habit goes with those three: code does everything that code can decide.",
+      "tts_text": "One more habit goes with those three: code does everything that code can decide.",
+      "heard": "One more habit goes with those three. Code does everything that code can decide.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 1,
+      "file": "audio/s05_01.wav",
+      "clip_sha": "1f30388cb6c59db2",
+      "text": "A pattern costs nothing to run, and it gives the same answer every time.",
+      "tts_text": "A pattern costs nothing to run, and it gives the same answer every time.",
+      "heard": "A pattern costs nothing to run, and it gives the same answer every time.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 2,
+      "file": "audio/s05_02.wav",
+      "clip_sha": "827f65c173eb9c0b",
+      "text": "Some qualities are beyond a pattern, such as whether an entry is written for the people who use the tool.",
+      "tts_text": "Some qualities are beyond a pattern, such as whether an entry is written for the people who use the tool.",
+      "heard": "Some qualities are beyond a pattern, such as whether an entry is written for the people who use the tool.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 3,
+      "file": "audio/s05_03.wav",
+      "clip_sha": "0a58df72194f2ab2",
+      "text": "Those wait until later.",
+      "tts_text": "Those wait until later.",
+      "heard": "Those wait until later.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 0,
+      "file": "audio/s06_00.wav",
+      "clip_sha": "78e56848544e8e06",
+      "text": "Those are the habits; here's what Vally gives us to follow them.",
+      "tts_text": "Those are the habits; here's what Valley gives us to follow them.",
+      "heard": "Those are the habits, here's what Valley gives us to follow them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 1,
+      "file": "audio/s06_01.wav",
+      "clip_sha": "1862a755c1b39f09",
+      "text": "Three of the failure modes on our list are about what the agent added to the changelog, or whether adding anything was right.",
+      "tts_text": "Three of the failure modes on our list are about what the agent added to the changelog, or whether adding anything was right.",
+      "heard": "Three of the failure modes on our list are about what the agent added to the changelog, or whether adding anything was right.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 2,
+      "file": "audio/s06_02.wav",
+      "clip_sha": "83777f3afe0feedb",
+      "text": "The patch already holds exactly that, and Vally has three graders that look at it.",
+      "tts_text": "The patch already holds exactly that, and Valley has three graders that look at it.",
+      "heard": "The patch already holds exactly that, and Valley has three graders that look at it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 3,
+      "file": "audio/s06_03.wav",
+      "clip_sha": "e0ef5978bf734867",
+      "text": "Vally calls the patch the diff, which is another word for the same thing.",
+      "tts_text": "Valley calls the patch the diff, which is another word for the same thing.",
+      "heard": "Valley calls the patch the diff, which is another word for the same thing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 4,
+      "file": "audio/s06_04.wav",
+      "clip_sha": "45a55a4f3ee0a6ba",
+      "text": "Diff contains passes when the patch contains the text or pattern we give it.",
+      "tts_text": "Diff contains passes when the patch contains the text or pattern we give it.",
+      "heard": "Diff contains passes when the patch contains the text or pattern, we give it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 5,
+      "file": "audio/s06_05.wav",
+      "clip_sha": "dd31f05c43f52801",
+      "text": "Diff not contains passes when the patch doesn't contain it.",
+      "tts_text": "Diff not contains passes when the patch doesn't contain it.",
+      "heard": "If not, contains passes when the patch doesn't contain it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 6,
+      "file": "audio/s06_06.wav",
+      "clip_sha": "d1b6a7856ce5670b",
+      "text": "Finally, diff empty passes when the agent changed nothing at all.",
+      "tts_text": "Finally, diff empty passes when the agent changed nothing at all.",
+      "heard": "Finally, diff-empty passes when the agent changed nothing at all.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 0,
+      "file": "audio/s07_00.wav",
+      "clip_sha": "60b32594aa9031bd",
+      "text": "One thing to know before using them: these graders see the whole patch, including the unchanged lines around the change.",
+      "tts_text": "One thing to know before using them: these graders see the whole patch, including the unchanged lines around the change.",
+      "heard": "One thing to know before using them, these graders see the whole patch, including the unchanged lines around the change.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 1,
+      "file": "audio/s07_01.wav",
+      "clip_sha": "c29ba9a335d1c7f0",
+      "text": "Here's the patch from a trial that made up a number.",
+      "tts_text": "Here's the patch from a trial that made up a number.",
+      "heard": "Here's the patch from a trial that made up a number.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 2,
+      "file": "audio/s07_02.wav",
+      "clip_sha": "3220b65065a197e2",
+      "text": "This unchanged line happens to hold a pull request number, forty-one.",
+      "tts_text": "This unchanged line happens to hold a pull request number, forty-one.",
+      "heard": "This unchanged line happens to hold a pull request number 41.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 3,
+      "file": "audio/s07_03.wav",
+      "clip_sha": "bc63c79697690261",
+      "text": "It's in the patch, so a grader that looked for any number in brackets would find one in every trial.",
+      "tts_text": "It's in the patch, so a grader that looked for any number in brackets would find one in every trial.",
+      "heard": "It's in the patch so a grater that looked for any number in brackets would find one in every trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 4,
+      "file": "audio/s07_04.wav",
+      "clip_sha": "75efeb0b06be6735",
+      "text": "What matters is this line, the one the agent added.",
+      "tts_text": "What matters is this line, the one the agent added.",
+      "heard": "What matters is this line, the one the agent added.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 5,
+      "file": "audio/s07_05.wav",
+      "clip_sha": "65639a88b3dcad91",
+      "text": "So a grader for made-up numbers has to look only at lines that begin with a plus.",
+      "tts_text": "So a grader for made-up numbers has to look only at lines that begin with a plus.",
+      "heard": "So a greater for made-up numbers has to look only at lines that begin with a plus.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 0,
+      "file": "audio/s08_00.wav",
+      "clip_sha": "899bc790e09de73e",
+      "text": "Each of these graders takes a value, which is exact text, or a pattern, which is a regular expression.",
+      "tts_text": "Each of these graders takes a value, which is exact text, or a pattern, which is a regular expression.",
+      "heard": "Each of these graders takes a value, which is exact text or a pattern, which is a regular expression.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 1,
+      "file": "audio/s08_01.wav",
+      "clip_sha": "23a15d4309ac03ab",
+      "text": "Here's the eval file we're going to run: three of the six stimuli we went through earlier, with graders at the end of each.",
+      "tts_text": "Here's the [eval](/ˌivˈæl/) file we're going to run: three of the six stimuli we went through earlier, with graders at the end of each.",
+      "heard": "Here's the EVAL file we're going to run. Three of the six stimuli we went through earlier, with graders at the end of each.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 2,
+      "file": "audio/s08_02.wav",
+      "clip_sha": "5f648b5b0a5a0deb",
+      "text": "Its first stimulus is the typo fix, and it gets two graders.",
+      "tts_text": "Its first stimulus is the typo fix, and it gets two graders.",
+      "heard": "Its first stimulus is the type O fix and it gets two graders.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 3,
+      "file": "audio/s08_03.wav",
+      "clip_sha": "2455d83983c7f8bb",
+      "text": "The first asks whether the agent added an entry at all.",
+      "tts_text": "The first asks whether the agent added an entry at all.",
+      "heard": "The first asks whether the agent added an entry at all.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 4,
+      "file": "audio/s08_04.wav",
+      "clip_sha": "df2df8e938d66d3e",
+      "text": "Nothing in the starting changelog mentions notes add, so that text can only be in the patch if the agent wrote it.",
+      "tts_text": "Nothing in the starting changelog mentions notes add, so that text can only be in the patch if the agent wrote it.",
+      "heard": "Nothing in the starting changelog mentions notes add, so that text can only be in the patch if the agent wrote it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 5,
+      "file": "audio/s08_05.wav",
+      "clip_sha": "9715447a3b366963",
+      "text": "The second is the grader for made-up numbers, and it passes only if its pattern is found nowhere in the patch.",
+      "tts_text": "The second is the grader for made-up numbers, and it passes only if its pattern is found nowhere in the patch.",
+      "heard": "The second is the grater for made-up numbers, and it passes only if its pattern is found nowhere in the patch.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s09",
+      "i": 0,
+      "file": "audio/s09_00.wav",
+      "clip_sha": "2d01a8fe62ab085e",
+      "text": "Here's that pattern, a piece at a time.",
+      "tts_text": "Here's that pattern, a piece at a time.",
+      "heard": "Here's that pattern of peace at a time.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "a piece",
+          "heard": "of peace",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 1,
+      "file": "audio/s09_01.wav",
+      "clip_sha": "e463745b05c37cc7",
+      "text": "A caret and an escaped plus mean a line that starts with a plus: a line the agent added.",
+      "tts_text": "A caret and an escaped plus mean a line that starts with a plus: a line the agent added.",
+      "heard": "A carrot and an escaped plus mean a line that starts with a plus, a line the agent added.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s09",
+      "i": 2,
+      "file": "audio/s09_02.wav",
+      "clip_sha": "f52055ab49087352",
+      "text": "The switch at the front makes the caret match at the start of every line, where it would otherwise match only the start of the whole patch.",
+      "tts_text": "The switch at the front makes the caret match at the start of every line, where it would otherwise match only the start of the whole patch.",
+      "heard": "The switch at the front makes the carrot match at the start of every line, where it would otherwise match only the start of the whole patch.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s09",
+      "i": 3,
+      "file": "audio/s09_03.wav",
+      "clip_sha": "d1345e9d628f1005",
+      "text": "Then comes anything at all, and then a hash and digits in brackets.",
+      "tts_text": "Then comes anything at all, and then a hash and digits in brackets.",
+      "heard": "Then comes anything at all, and then a hash and digits in brackets.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 4,
+      "file": "audio/s09_04.wav",
+      "clip_sha": "69952a1a97c22d22",
+      "text": "In words: an added line that contains a pull request number.",
+      "tts_text": "In words: an added line that contains a pull request number.",
+      "heard": "In words, an added line that contains a pull request number.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 0,
+      "file": "audio/s10_00.wav",
+      "clip_sha": "bfe6e21cfe0c11a4",
+      "text": "The other two stimuli get one grader each.",
+      "tts_text": "The other two stimuli get one grader each.",
+      "heard": "The other two stimuli get one greater each.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 1,
+      "file": "audio/s10_01.wav",
+      "clip_sha": "19dde47f322769e8",
+      "text": "The refactor changes nothing for users, so the right result is no change to the changelog.",
+      "tts_text": "The refactor changes nothing for users, so the right result is no change to the changelog.",
+      "heard": "The refactor changes nothing for users, so the right result is no change to the changelog.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 2,
+      "file": "audio/s10_02.wav",
+      "clip_sha": "8b9a894d1e90872a",
+      "text": "Diff empty checks exactly that, and it takes no settings.",
+      "tts_text": "Diff empty checks exactly that, and it takes no settings.",
+      "heard": "DiffEmpty checks exactly that and it takes no settings.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 3,
+      "file": "audio/s10_03.wav",
+      "clip_sha": "89cf27aefbed7ca9",
+      "text": "For the security fix, the grader looks for an added line that starts with a Security heading.",
+      "tts_text": "For the security fix, the grader looks for an added line that starts with a Security heading.",
+      "heard": "For the security fix, the greater looks for an added line that starts with a security heading.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 4,
+      "file": "audio/s10_04.wav",
+      "clip_sha": "8b79a94f42c3003a",
+      "text": "It passes when the agent has created a Security category.",
+      "tts_text": "It passes when the agent has created a Security category.",
+      "heard": "It passes when the agent has created a security category.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 0,
+      "file": "audio/s11_00.wav",
+      "clip_sha": "50317bb323839cfa",
+      "text": "When a stimulus has more than one grader, a trial passes only if every one of them passes.",
+      "tts_text": "When a stimulus has more than one grader, a trial passes only if every one of them passes.",
+      "heard": "An a stimulus has more than one greater, a trial passes only if every one of them passes.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "When",
+          "heard": "An",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s11",
+      "i": 1,
+      "file": "audio/s11_01.wav",
+      "clip_sha": "c612a4020f5daafe",
+      "text": "Vally lint prints a warning, named scoring defaults applied, to say that this rule is in force.",
+      "tts_text": "Valley lint prints a warning, named scoring defaults applied, to say that this rule is in force.",
+      "heard": "Ballylint prints a warning named scoring default supplied to say that this rule is in force.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Vally lint",
+          "heard": "Ballylint",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s11",
+      "i": 2,
+      "file": "audio/s11_02.wav",
+      "clip_sha": "bfc13d6dc4b71aec",
+      "text": "It's the rule we want, so we expect the warning.",
+      "tts_text": "It's the rule we want, so we expect the warning.",
+      "heard": "It's the rule we want, so we expect the warning.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 0,
+      "file": "audio/s12_00.wav",
+      "clip_sha": "6c225417335d5b7e",
+      "text": "That's how the graders work; now let's count with them.",
+      "tts_text": "That's how the graders work; now let's count with them.",
+      "heard": "That's how the graders work. Now let's count with them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 1,
+      "file": "audio/s12_01.wav",
+      "clip_sha": "3797d935bbcd3bf7",
+      "text": "First, we run these three stimuli three times on each model, with the skill as it is.",
+      "tts_text": "First, we run these three stimuli three times on each model, with the skill as it is.",
+      "heard": "First, we run these three stimuli three times on each model, with the skill as it is.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 2,
+      "file": "audio/s12_02.wav",
+      "clip_sha": "f70b14f91138ad4b",
+      "text": "Then we add three rules to the skill, and run the same command again.",
+      "tts_text": "Then we add three rules to the skill, and run the same command again.",
+      "heard": "Then we add three rules to the skill and run the same command again.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 3,
+      "file": "audio/s12_03.wav",
+      "clip_sha": "35c996b4cf4a6bf7",
+      "text": "Each time, we count how many of a stimulus's three trials passed, on each model.",
+      "tts_text": "Each time, we count how many of a stimulus's three trials passed, on each model.",
+      "heard": "Each time we count how many of a stimulus is three trials passed on each model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s12",
+      "i": 4,
+      "file": "audio/s12_04.wav",
+      "clip_sha": "2f661451c37eb0f9",
+      "text": "What would you expect the edit to change, on each model?",
+      "tts_text": "What would you expect the edit to change, on each model?",
+      "heard": "What would you expect the edit to change on each model?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 5,
+      "file": "audio/s12_05.wav",
+      "clip_sha": "b749f7ec6a23fa0f",
+      "text": "If you tried it yourself, here's what you'd see.",
+      "tts_text": "If you tried it yourself, here's what you'd see.",
+      "heard": "If you tried it yourself, here's what you'd see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 0,
+      "file": "audio/s13_00.wav",
+      "clip_sha": "4cb10edd4428c44b",
+      "text": "The graders are now in the eval file, so we lint it first, which costs nothing.",
+      "tts_text": "The graders are now in the [eval](/ˌivˈæl/) file, so we lint it first, which costs nothing.",
+      "heard": "The graders are now in the eval file, so we lint it first, which costs nothing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 1,
+      "file": "audio/s13_01.wav",
+      "clip_sha": "b45b0ffc6d351474",
+      "text": "One warning, the one we expected, and no errors.",
+      "tts_text": "One warning, the one we expected, and no errors.",
+      "heard": "One warning the one we expected and no errors.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 0,
+      "file": "audio/s14_00.wav",
+      "clip_sha": "bdfbc655d8dd93c7",
+      "text": "Now we measure the skill as it is: the command from before, with three runs of each stimulus, two at a time.",
+      "tts_text": "Now we measure the skill as it is: the command from before, with three runs of each stimulus, two at a time.",
+      "heard": "Now we measure the skill as it is, the command from before with three runs of each stimulus, two at a time.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 1,
+      "file": "audio/s14_01.wav",
+      "clip_sha": "3d240dad66193c14",
+      "text": "It spends eighteen short agent runs.",
+      "tts_text": "It spends eighteen short agent runs.",
+      "heard": "It spends 18 short-agent runs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s14",
+      "i": 2,
+      "file": "audio/s14_02.wav",
+      "clip_sha": "3a89eb2917bb1303",
+      "text": "We're after the last line, which says, for each model, how many of the three stimuli passed in every trial.",
+      "tts_text": "We're after the last line, which says, for each model, how many of the three stimuli passed in every trial.",
+      "heard": "We're after the last line, which says, for each model, how many of the three stimuli passed in every trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 3,
+      "file": "audio/s14_03.wav",
+      "clip_sha": "43c92032a0c4a5c7",
+      "text": "About three minutes later, it says one of the three on haiku, and none on terra.",
+      "tts_text": "About three minutes later, it says one of the three on haiku, and none on terra.",
+      "heard": "About three minutes later, it says one of the three on haiku and none on terra.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 4,
+      "file": "audio/s14_04.wav",
+      "clip_sha": "a0f128853d35da35",
+      "text": "Above that line, Vally lists each stimulus that didn't pass, with the grader that objected and its evidence.",
+      "tts_text": "Above that line, Valley lists each stimulus that didn't pass, with the grader that objected and its evidence.",
+      "heard": "Above that line, Valley lists each stimulus that didn't pass, with the greater that objected and its evidence.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s15",
+      "i": 0,
+      "file": "audio/s15_00.wav",
+      "clip_sha": "fe0710ab65171536",
+      "text": "The same output says how many trials of each stimulus passed, and that fills in the first half of the table.",
+      "tts_text": "The same output says how many trials of each stimulus passed, and that fills in the first half of the table.",
+      "heard": "The same output says how many trials of each stimulus passed, and that fills in the first half of the table.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 1,
+      "file": "audio/s15_01.wav",
+      "clip_sha": "97291331007303dc",
+      "text": "On the typo fix, haiku passed three of three, and terra none.",
+      "tts_text": "On the typo fix, haiku passed three of three, and terra none.",
+      "heard": "On the Type-O Fix, Hiku passed 3 of 3 and Terra none.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s15",
+      "i": 2,
+      "file": "audio/s15_02.wav",
+      "clip_sha": "e3d749de00192a72",
+      "text": "Neither model passed the refactor or the security fix, in any trial.",
+      "tts_text": "Neither model passed the refactor or the security fix, in any trial.",
+      "heard": "Neither model passed the refactor or the security fix in any trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 0,
+      "file": "audio/s16_00.wav",
+      "clip_sha": "c7b9db7ef768c7f4",
+      "text": "Next comes the edit to the skill.",
+      "tts_text": "Next comes the edit to the skill.",
+      "heard": "Next comes the edit to the skill.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 1,
+      "file": "audio/s16_01.wav",
+      "clip_sha": "061652b4af499ba4",
+      "text": "Each failure is a case the skill left open, so we add three rules at the end, one for each failure mode.",
+      "tts_text": "Each failure is a case the skill left open, so we add three rules at the end, one for each failure mode.",
+      "heard": "Each failure is a case the skill left open, so we add three rules at the end, one for each failure mode.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 2,
+      "file": "audio/s16_02.wav",
+      "clip_sha": "67b50b381735541b",
+      "text": "The first covers a missing pull request number: the agent leaves the reference off, never makes one up, and doesn't stop to ask.",
+      "tts_text": "The first covers a missing pull request number: the agent leaves the reference off, never makes one up, and doesn't stop to ask.",
+      "heard": "The first covers a missing pull request number. The agent leaves the reference off, never makes one up, and doesn't stop to ask.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 3,
+      "file": "audio/s16_03.wav",
+      "clip_sha": "0d0c2ef898b620a4",
+      "text": "In a Vally run nobody is there to answer a question, so we chose to leave it off.",
+      "tts_text": "In a Valley run nobody is there to answer a question, so we chose to leave it off.",
+      "heard": "In a valley run nobody is there to answer a question, so we chose to leave it off.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 4,
+      "file": "audio/s16_04.wav",
+      "clip_sha": "102c9a05acb43384",
+      "text": "The second says that a change which makes no difference to users gets no entry.",
+      "tts_text": "The second says that a change which makes no difference to users gets no entry.",
+      "heard": "The second says that a change which makes no difference to users, gets no entry.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 5,
+      "file": "audio/s16_05.wav",
+      "clip_sha": "a446b69f18c44adf",
+      "text": "The third lists the categories in order, and puts a security fix under Security.",
+      "tts_text": "The third lists the categories in order, and puts a security fix under Security.",
+      "heard": "The third lists the categories in order and puts a security fix under security.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 0,
+      "file": "audio/s17_00.wav",
+      "clip_sha": "0d6af6019880530b",
+      "text": "With the rules in the skill, we measure again, the same way, into a second results folder.",
+      "tts_text": "With the rules in the skill, we measure again, the same way, into a second results folder.",
+      "heard": "With the rules in the skill, we measure again the same way into a second results folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 1,
+      "file": "audio/s17_01.wav",
+      "clip_sha": "12b14f1439affc55",
+      "text": "That's another eighteen agent runs.",
+      "tts_text": "That's another eighteen agent runs.",
+      "heard": "That's another 18 agent runs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 2,
+      "file": "audio/s17_02.wav",
+      "clip_sha": "259fabec748310a8",
+      "text": "About three minutes later, the last line says three of three, on both models.",
+      "tts_text": "About three minutes later, the last line says three of three, on both models.",
+      "heard": "About three minutes later, the last line says three of three on both models.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 3,
+      "file": "audio/s17_03.wav",
+      "clip_sha": "937630287f9e4f2d",
+      "text": "This time, nothing is listed above it: every trial of every stimulus passed.",
+      "tts_text": "This time, nothing is listed above it: every trial of every stimulus passed.",
+      "heard": "This time nothing is listed above it, every trial of every stimulus passed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 0,
+      "file": "audio/s18_00.wav",
+      "clip_sha": "02694c48f4a36293",
+      "text": "Here are both counts, side by side.",
+      "tts_text": "Here are both counts, side by side.",
+      "heard": "Here are both counts side by side.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 1,
+      "file": "audio/s18_01.wav",
+      "clip_sha": "f4c28e05098f8f97",
+      "text": "The made-up number is gone on terra, the model that produced it.",
+      "tts_text": "The made-up number is gone on terra, the model that produced it.",
+      "heard": "The made-up number is gone on Terra, the model that produced it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 2,
+      "file": "audio/s18_02.wav",
+      "clip_sha": "6d313f53a43bc3f0",
+      "text": "Neither model adds an entry for the refactor any more.",
+      "tts_text": "Neither model adds an entry for the refactor any more.",
+      "heard": "Neither model adds an entry for the refactor anymore.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 3,
+      "file": "audio/s18_03.wav",
+      "clip_sha": "7b224259c9051a9f",
+      "text": "The security rule worked every time, on both models.",
+      "tts_text": "The security rule worked every time, on both models.",
+      "heard": "The security rule worked every time on both models.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 0,
+      "file": "audio/s19_00.wav",
+      "clip_sha": "e53f7b9c10127f4d",
+      "text": "So what do the counts show?",
+      "tts_text": "So what do the counts show?",
+      "heard": "So, what do the counts show?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 1,
+      "file": "audio/s19_01.wav",
+      "clip_sha": "ab7c468d847c58ed",
+      "text": "One edit added three rules, and in our run, all three worked on both models.",
+      "tts_text": "One edit added three rules, and in our run, all three worked on both models.",
+      "heard": "One edit added three rules, and in our run, all three worked on both models.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 2,
+      "file": "audio/s19_02.wav",
+      "clip_sha": "c35a50d705b182f5",
+      "text": "An earlier run of the same edit came out differently: haiku still filed one security fix under Fixed, and passed eight of nine.",
+      "tts_text": "An earlier run of the same edit came out differently: haiku still filed one security fix under Fixed, and passed eight of nine.",
+      "heard": "An earlier run of the same edit came out differently, Hiku still filed one security fix under fixed and passed 8 of 9.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s19",
+      "i": 3,
+      "file": "audio/s19_03.wav",
+      "clip_sha": "4888e21f19b1fc6f",
+      "text": "So the same words can have a different effect, on another model or on another run.",
+      "tts_text": "So the same words can have a different effect, on another model or on another run.",
+      "heard": "So the same words can have a different effect on another model or on another run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 4,
+      "file": "audio/s19_04.wav",
+      "clip_sha": "c8ce7064fe119ff4",
+      "text": "Going through a couple of patches by hand might well have shown us only the trials where it worked.",
+      "tts_text": "Going through a couple of patches by hand might well have shown us only the trials where it worked.",
+      "heard": "Going through a couple of patches by hand might well have shown us only the trials where it worked.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 5,
+      "file": "audio/s19_05.wav",
+      "clip_sha": "c9df5fdb70d72cf8",
+      "text": "A count shows all of them, and one command will count again after the next edit.",
+      "tts_text": "A count shows all of them, and one command will count again after the next edit.",
+      "heard": "Account shows all of them, and one command will count again after the next edit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 0,
+      "file": "audio/s20_00.wav",
+      "clip_sha": "a1988d62f3a5ffec",
+      "text": "It's also worth a look at what the graders did in the first run.",
+      "tts_text": "It's also worth a look at what the graders did in the first run.",
+      "heard": "It's also worth a look at what the graders did in the first run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 1,
+      "file": "audio/s20_01.wav",
+      "clip_sha": "462a0dca707ddfca",
+      "text": "Every one of them failed somewhere, on the kinds of trial we already knew to be bad.",
+      "tts_text": "Every one of them failed somewhere, on the kinds of trial we already knew to be bad.",
+      "heard": "Every one of them failed somewhere. On the kinds of trial, we already knew to be bad.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 2,
+      "file": "audio/s20_02.wav",
+      "clip_sha": "5010b3aca70a8ad6",
+      "text": "That's a first piece of evidence that they check what we meant.",
+      "tts_text": "That's a first piece of evidence that they check what we meant.",
+      "heard": "That's a first piece of evidence that they check what we meant.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 3,
+      "file": "audio/s20_03.wav",
+      "clip_sha": "792916cd4d3f3606",
+      "text": "Later, we'll run that test on purpose.",
+      "tts_text": "Later, we'll run that test on purpose.",
+      "heard": "Later, we'll run that test on purpose.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 0,
+      "file": "audio/s21_00.wav",
+      "clip_sha": "291d1f145fe2d5c7",
+      "text": "Before you go on: what are the three habits that make a grader worth having?",
+      "tts_text": "Before you go on: what are the three habits that make a grader worth having?",
+      "heard": "Before you go on, what are the three habits that make a greater worth having?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s21",
+      "i": 1,
+      "file": "audio/s21_01.wav",
+      "clip_sha": "300d4ea84b5aee16",
+      "text": "We grade the result the agent left, not the route it took.",
+      "tts_text": "We grade the result the agent left, not the route it took.",
+      "heard": "We grade the result the agent left, not the route it took.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 2,
+      "file": "audio/s21_02.wav",
+      "clip_sha": "4f8831651a5df37f",
+      "text": "We write one grader per failure mode, and name it after the failure.",
+      "tts_text": "We write one grader per failure mode, and name it after the failure.",
+      "heard": "We write one grader per failure mode and name it after the failure.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 3,
+      "file": "audio/s21_03.wav",
+      "clip_sha": "5e778250f183881d",
+      "text": "Last, we make sure each grader can fail, by running it first where the failure is known to happen.",
+      "tts_text": "Last, we make sure each grader can fail, by running it first where the failure is known to happen.",
+      "heard": "Last, we make sure each grader can fail, by running it first where the failure is known to happen.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 0,
+      "file": "audio/s22_00.wav",
+      "clip_sha": "e5d74ca914ad1b0a",
+      "text": "You can now show, with a count before and after, what an edit to the skill changed on each model.",
+      "tts_text": "You can now show, with a count before and after, what an edit to the skill changed on each model.",
+      "heard": "You can now show with a count before and after what an edit to the skill changed on each model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 1,
+      "file": "audio/s22_01.wav",
+      "clip_sha": "0b20d2275a38bfa9",
+      "text": "Patterns caught three failures.",
+      "tts_text": "Patterns caught three failures.",
+      "heard": "Patterns caught three failures.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 2,
+      "file": "audio/s22_02.wav",
+      "clip_sha": "dd668fc2b6f3ff07",
+      "text": "Checking that nothing else in the file changed is beyond a pattern: it takes a script.",
+      "tts_text": "Checking that nothing else in the file changed is beyond a pattern: it takes a script.",
+      "heard": "Checking that nothing else in the file changed is beyond a pattern. It takes a script.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 3,
+      "file": "audio/s22_03.wav",
+      "clip_sha": "f0b67289ac05ef34",
+      "text": "Where can we keep a script, so that the agent can't open it or edit it?",
+      "tts_text": "Where can we keep a script, so that the agent can't open it or edit it?",
+      "heard": "Where can we keep a script so that the agent can't open it or edit it?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 4,
+      "file": "audio/s22_04.wav",
+      "clip_sha": "c0fa80d6856b024e",
+      "text": "That's the next lesson.",
+      "tts_text": "That's the next lesson.",
+      "heard": "That's the next lesson.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 5,
+      "file": "audio/s22_05.wav",
+      "clip_sha": "1ebfb40727709c44",
+      "text": "The exercises on the lesson page are worth doing first.",
+      "tts_text": "The exercises on the lesson page are worth doing first.",
+      "heard": "The exercises on the lesson page are worth doing first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "haiku",
+      "sentences": 2,
+      "heard": [
+        "Hiku"
+      ],
+      "of": 3,
+      "share": 0.67
+    },
+    {
+      "word": "lint",
+      "sentences": 1,
+      "heard": [
+        "Ballylint"
+      ],
+      "of": 2,
+      "share": 0.5
+    },
+    {
+      "word": "piece",
+      "sentences": 1,
+      "heard": [
+        "of peace"
+      ],
+      "of": 2,
+      "share": 0.5
+    },
+    {
+      "word": "When",
+      "sentences": 2,
+      "heard": [
+        "In",
+        "An"
+      ],
+      "of": 6,
+      "share": 0.33
+    },
+    {
+      "word": "Vally",
+      "sentences": 1,
+      "heard": [
+        "Ballylint"
+      ],
+      "of": 6,
+      "share": 0.17
+    },
+    {
+      "word": "A",
+      "sentences": 2,
+      "heard": [
+        "Greater",
+        "of peace"
+      ],
+      "of": 43,
+      "share": 0.05
+    },
+    {
+      "word": "grader",
+      "sentences": 1,
+      "heard": [
+        "Greater"
+      ],
+      "of": 21,
+      "share": 0.05
+    },
+    {
+      "word": "We",
+      "sentences": 1,
+      "heard": [
+        "You"
+      ],
+      "of": 26,
+      "share": 0.04
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 104,
+    "mismatched": 8,
+    "transcribed": 104,
+    "reused": 0,
+    "seconds_per_sentence": 0.123
+  }
+}

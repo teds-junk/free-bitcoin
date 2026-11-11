@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Five tool calls, no skill call</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.card{width:fit-content}.card>.code.dark.spans{font-size:36px;line-height:1.6;padding:26px 36px;min-width:760px}.callout{font-size:32px}.lead{font-size:38px}.stage{gap:22px}.annotated{align-items:end}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Run the app, convert, grade</div>
+  <h2 class="scene-title">Five tool calls, no skill call</h2>
+  <div class="stage">
+<p class="lead"><span data-concept="count" data-rep="note">143 lines · 109 of them session timings</span></p>
+  <div class="annotated">
+    <div class="card"><div class="who"><span class="mono">app-run/traces.jsonl</span> · the lines whose name begins <span class="mono">execute_tool</span></div>
+    <pre class="code dark spans" data-lang="text"><code><span data-concept="t1" data-rep="code"><span>"name":"execute_tool view"</span></span>
+<span data-concept="merged" data-rep="code"><span>"name":"execute_tool view"</span></span>
+<span data-concept="t3" data-rep="code"><span>"name":"execute_tool view"</span></span>
+<span data-concept="t4" data-rep="code"><span>"name":"execute_tool edit"</span></span>
+<span data-concept="t5" data-rep="code"><span>"name":"execute_tool view"</span></span></code></pre></div>
+    <aside class="callouts"><p class="callout" data-anchor="merged">the read of release/merged.txt</p><p class="callout" data-anchor="t5">no execute_tool skill</p></aside>
+  </div>
+  <p class="note">our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "count",
+  "at": "0",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "t1",
+  "at": "1~searching",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "merged",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

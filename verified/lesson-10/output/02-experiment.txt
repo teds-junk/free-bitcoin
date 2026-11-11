@@ -1,0 +1,46 @@
+Running experiment 'with-and-without'
+
+Loaded 20 stimuli from changelog · 2 models · 2 workers
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+changelog
+
+haiku-no-skill · claude-haiku-4.5
+  FAIL  refactor · 0/1 graders · 11.1s
+   ✘ adds-nothing  Workspace diff is not empty — the stimulus changed the workspace
+
+haiku-no-skill · claude-haiku-4.5
+  FAIL  security · 0/1 graders · 10.5s
+   ✘ under-security  Pattern /(?m)^\+### Security/ not found in workspace diff
+
+terra-no-skill · gpt-5.6-terra
+  FAIL  refactor · 0/1 graders · 10.3s
+   ✘ adds-nothing  Workspace diff is not empty — the stimulus changed the workspace
+
+terra-no-skill · gpt-5.6-terra
+  FAIL  security · 0/1 graders · 16.7s
+   ✘ under-security  Pattern /(?m)^\+### Security/ not found in workspace diff
+
+────────────────────────────────────────────────────────
+
+Experiment  with-and-without   varying /environment/skills, /defaults/model · baseline haiku-no-skill
+
+  → haiku-with-skill beat baseline — 5/5 vs 3/5 stimuli.
+
+  eval        haiku-no-skill (baseline)  haiku-with-skill  terra-no-skill  terra-with-skill
+  changelog   ✘ 3/5                      ✓ 5/5             ✘ 3/5           ✓ 5/5           
+  ──────────  ─────────────────────────  ────────────────  ──────────────  ────────────────
+  stimuli     3/5                        5/5               3/5             5/5             
+  tokens      371.0k                     360.0k            280.9k          255.0k          
+  trial time  55.2s                      47.8s             1m06s           46.6s           
+
+Run ID: a4db98da-0ec5-413b-8f64-387376c5b81c
+Output: results/lesson-10/2026-11-10T15-01-28-614Z

@@ -1,0 +1,15 @@
+Failures  2 failed
+  ✘ conversation · three-requests [claude-haiku-4.5]
+      ✘ third-no-made-up-number  Pattern /(?m)^\+.*\(#\d+\)/ found in workspace diff · trial 3
+  ERROR conversation · three-requests [gpt-5.6-terra]
+      Session disconnected while waiting for a response
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+  eval          claude-haiku-4.5  gpt-5.6-terra
+  conversation  ✘ 0/1             ✘ 0/1        
+
+Saved  ~/src/demo/practice/results/lesson-11/2026-11-11T06-32-52-447Z/
+Run ID  d0d8ae4c-be39-43b6-8c95-955fdc42a60b

@@ -1,0 +1,85 @@
+warning: Multiple graders with no scoring config
+
+━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+  ✗ [prompt "Begin your reason b…"] The entry is "Improve performance of `notes list --tag` with LRU caching on large folders (#66)". It states the user-facing speedup but also mentions LRU caching, which is how it was coded. That fails the criterion.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+  ✗ [prompt "Begin your reason b…"] The entry is "Improve performance of `notes list --tag` with LRU cache for tag index (#66)". It leaks implementation detail (LRU cache, tag index) and doesn't say that the command no longer rescans files or that big folders get faster. It fails the criterion.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The entry \"Fix date parser to support single-digit months and days (#67)\" states the user-facing effect and leaves out the regex and tokenizer rewrite. It is placed correctly under Unreleased > Fixed.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The entry "Fix date parser to support single-digit months and days (#67)" is under Fixed in Unreleased. It is user-focused and does not mention the tokenizer or regex.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ parser ━━━
+❌ parser (1/2 graders passed, 1 failed)
+  ✗ [prompt "Begin your reason b…"] The new entry is \"Fix out-of-memory errors during large imports by using a streaming JSON parser (#49)\". It leaks the implementation detail of the streaming parser, so it fails the criterion.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ parser ━━━
+❌ parser (1/2 graders passed, 1 failed)
+  ✗ [prompt "Begin your reason b…"] The new entry is "Fix out-of-memory errors when importing large files by using a streaming parser in importer.js (#49)". It gives the user-facing fix but also describes the implementation (streaming parser, importer.js), which violates the criterion.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+  ✗ [prompt "Begin your reason b…"] The new entry reads: "Speed up `notes list --tag` on large folders by caching the tag index (#66)". It gets the user benefit right, but the phrase "by caching the tag index" describes the implementation, so it fails a strict reading of the rubric.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+  ✗ [prompt "Begin your reason b…"] The entry is "Speed up `notes list --tag` for large folders by caching the tag index (#66)". Its category, placement and PR reference are correct. It leads with the user benefit but includes an implementation detail ("by caching the tag index"), so it fails the strict criterion.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The new entry is "Parse dates with single-digit months and days (#67)". It sits under Fixed in Unreleased, is user-focused, and has no implementation details.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The entry "Parse dates with single-digit months and days correctly (#67)" was added under Unreleased → Fixed. It is user-focused, has no implementation details, and cites the PR number.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ parser ━━━
+✅ parser (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The new entry, "Prevent out-of-memory errors when importing large JSON files (#49)", is a user-facing fix under Fixed. It says nothing about how the code was changed.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ parser ━━━
+✅ parser (2/2 graders passed)
+  ✓ [prompt "Begin your reason b…"] The entry is user-facing, describes the fix, and has no implementation detail.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 100.0% | PASSED

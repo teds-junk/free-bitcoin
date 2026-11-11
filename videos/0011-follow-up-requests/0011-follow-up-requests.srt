@@ -1,0 +1,644 @@
+1
+00:00:00,400 --> 00:00:03,800
+Nobody uses an agent one request at a
+time.
+
+2
+00:00:04,300 --> 00:00:08,700
+You ask for a changelog entry, then
+remember a second change, then a third.
+
+3
+00:00:09,200 --> 00:00:14,125
+Yet every stimulus we've written starts a
+fresh conversation, with a single request.
+
+4
+00:00:14,625 --> 00:00:18,988
+Here, you'll test a conversation of three
+requests, and find a mistake that comes
+
+5
+00:00:18,988 --> 00:00:20,550
+from the conversation itself.
+
+6
+00:00:21,767 --> 00:00:25,417
+Let's start with what's different when a
+conversation goes on.
+
+7
+00:00:25,917 --> 00:00:29,192
+Each request in a conversation is called a
+turn.
+
+8
+00:00:29,692 --> 00:00:32,517
+Between turns, the agent keeps two things.
+
+9
+00:00:33,017 --> 00:00:36,792
+One is the workspace, exactly as the last
+turn left it.
+
+10
+00:00:37,292 --> 00:00:40,092
+Its memory of what was said is the other.
+
+11
+00:00:40,592 --> 00:00:43,367
+That memory is a new source of mistakes.
+
+12
+00:00:44,567 --> 00:00:48,567
+Three things can now go wrong that can't
+go wrong in a single request.
+
+13
+00:00:49,067 --> 00:00:51,092
+First, a rule fades.
+
+14
+00:00:51,592 --> 00:00:55,805
+The skill was loaded at the start, and
+several turns later the model follows the
+
+15
+00:00:55,805 --> 00:00:58,492
+pattern of its own recent work more than
+the rules.
+
+16
+00:00:58,992 --> 00:01:03,753
+Second, an earlier turn leaks into a later
+one: a detail from the previous request is
+
+17
+00:01:03,753 --> 00:01:06,442
+carried into a change it has nothing to do
+with.
+
+18
+00:01:06,942 --> 00:01:11,706
+Third, a later turn disturbs earlier work:
+while adding the third entry, the agent
+
+19
+00:01:11,706 --> 00:01:13,217
+alters or drops the first.
+
+20
+00:01:14,433 --> 00:01:16,533
+So where should a grader look?
+
+21
+00:01:17,033 --> 00:01:21,682
+One that reads only the final file can't
+tell you which turn went wrong, and it can
+
+22
+00:01:21,682 --> 00:01:22,858
+miss a leak entirely.
+
+23
+00:01:23,358 --> 00:01:26,283
+So we grade a conversation turn by turn.
+
+24
+00:01:26,783 --> 00:01:31,251
+For each request, the question is: what
+did the agent change in response to that
+
+25
+00:01:31,251 --> 00:01:32,033
+request alone?
+
+26
+00:01:33,233 --> 00:01:36,908
+There's one limit to know before designing
+a conversation.
+
+27
+00:01:37,408 --> 00:01:41,740
+Vally sends the follow-up requests you
+wrote, in order, whatever the agent
+
+28
+00:01:41,740 --> 00:01:42,208
+replied.
+
+29
+00:01:42,708 --> 00:01:47,515
+It doesn't play a user who reacts, and its
+documentation describes no way to make it
+
+30
+00:01:47,515 --> 00:01:47,858
+do so.
+
+31
+00:01:48,358 --> 00:01:52,760
+So we can test how the skill copes with a
+script of requests, but not with a user
+
+32
+00:01:52,760 --> 00:01:53,683
+who answers back.
+
+33
+00:01:54,900 --> 00:01:58,450
+That's the idea; here's how an eval file
+expresses it.
+
+34
+00:01:58,950 --> 00:02:03,625
+A stimulus can have turns in place of
+prompt, and turns is a list of requests.
+
+35
+00:02:04,125 --> 00:02:08,708
+Vally sends the first, waits for the agent
+to finish, then sends the second to the
+
+36
+00:02:08,708 --> 00:02:10,050
+same session, and so on.
+
+37
+00:02:10,550 --> 00:02:14,575
+However many turns it has, one
+conversation is one trial.
+
+38
+00:02:15,800 --> 00:02:19,652
+This conversation is already in our
+practice folder, and each of its three
+
+39
+00:02:19,652 --> 00:02:22,150
+requests leans on a different rule of the
+skill.
+
+40
+00:02:22,650 --> 00:02:27,253
+Its first request names a merged pull
+request, sixty-four, so the entry should
+
+41
+00:02:27,253 --> 00:02:27,725
+cite it.
+
+42
+00:02:28,225 --> 00:02:32,899
+Next comes an internal change, and by the
+skill's rule the right response is to add
+
+43
+00:02:32,899 --> 00:02:33,350
+nothing.
+
+44
+00:02:33,850 --> 00:02:39,148
+Last is a fix with no pull request number,
+arriving just after two requests that had
+
+45
+00:02:39,148 --> 00:02:39,400
+one.
+
+46
+00:02:40,600 --> 00:02:42,250
+Next, the graders.
+
+47
+00:02:42,750 --> 00:02:46,700
+You can limit a grader to one turn by
+adding turn and a number.
+
+48
+00:02:47,200 --> 00:02:51,050
+Vally's documentation calls such a grader
+scoped to a turn.
+
+49
+00:02:51,550 --> 00:02:53,900
+Turns are numbered from zero.
+
+50
+00:02:54,400 --> 00:02:59,014
+So a diff grader with turn two sees only
+what the agent changed during the third
+
+51
+00:02:59,014 --> 00:02:59,475
+request.
+
+52
+00:02:59,975 --> 00:03:04,025
+With no turn, a grader sees the whole
+conversation, as before.
+
+53
+00:03:05,233 --> 00:03:08,233
+Not every grader can be limited this way.
+
+54
+00:03:08,733 --> 00:03:11,083
+All three diff graders can.
+
+55
+00:03:11,583 --> 00:03:15,783
+So can graders that look at the agent's
+events, such as skill invocation.
+
+56
+00:03:16,283 --> 00:03:21,075
+But a script grader can't, because it sees
+only the workspace as it is at the very
+
+57
+00:03:21,075 --> 00:03:21,308
+end.
+
+58
+00:03:22,533 --> 00:03:25,408
+Here are the graders we'll add under the
+turns.
+
+59
+00:03:25,908 --> 00:03:30,258
+Each turn key sits beside type and name,
+not nested with the pattern.
+
+60
+00:03:30,758 --> 00:03:35,458
+In turn zero, the agent must add a line
+that cites pull request sixty-four.
+
+61
+00:03:35,958 --> 00:03:40,083
+In turn one, it must change nothing, so
+that grader is diff empty.
+
+62
+00:03:41,300 --> 00:03:43,875
+There are two graders on turn two.
+
+63
+00:03:44,375 --> 00:03:48,775
+One says the agent must add an entry that
+mentions notes export.
+
+64
+00:03:49,275 --> 00:03:53,740
+Its partner says the agent must add no
+line that cites any pull request, with the
+
+65
+00:03:53,740 --> 00:03:56,275
+pattern that caught the made-up number
+before.
+
+66
+00:03:56,775 --> 00:04:01,293
+Our last grader has no turn, so it reads
+the whole conversation: by the end, the
+
+67
+00:04:01,293 --> 00:04:03,100
+first entry must still be there.
+
+68
+00:04:04,300 --> 00:04:06,775
+One more thing before we run it.
+
+69
+00:04:07,275 --> 00:04:12,403
+Vally saves a diff for every turn of every
+trial, in a folder named diffs inside the
+
+70
+00:04:12,403 --> 00:04:13,075
+run folder.
+
+71
+00:04:13,575 --> 00:04:18,425
+Each file's name ends with its trial and
+turn numbers, both counted from zero.
+
+72
+00:04:19,633 --> 00:04:22,233
+That's how it works; now let's run it.
+
+73
+00:04:22,733 --> 00:04:27,089
+First we add the graders, then run the
+conversation three times on each model,
+
+74
+00:04:27,089 --> 00:04:29,658
+and then open the diff of any turn that
+fails.
+
+75
+00:04:30,158 --> 00:04:33,358
+Which of the three turns would you expect
+to go wrong?
+
+76
+00:04:35,858 --> 00:04:38,733
+If you tried it yourself, here's what
+you'd see.
+
+77
+00:04:39,933 --> 00:04:44,783
+With the five graders in the eval file, we
+lint it first, since that costs nothing.
+
+78
+00:04:48,073 --> 00:04:52,448
+One warning, the reminder that every
+grader must pass, and no errors.
+
+79
+00:04:54,948 --> 00:04:59,448
+Now the run: the conversation, three times
+on each model, with two workers.
+
+80
+00:04:59,948 --> 00:05:03,573
+This run spends six agent runs of three
+requests each.
+
+81
+00:05:04,073 --> 00:05:08,264
+We're watching for a block above the
+summary, which appears for any model that
+
+82
+00:05:08,264 --> 00:05:10,198
+didn't pass all three conversations.
+
+83
+00:05:12,467 --> 00:05:16,844
+About a minute later, there is one, for
+haiku: one of its three conversations
+
+84
+00:05:16,844 --> 00:05:17,242
+failed.
+
+85
+00:05:17,742 --> 00:05:21,979
+Its failing grader, third no made-up
+number, names the turn and the problem,
+
+86
+00:05:21,979 --> 00:05:23,317
+and points at trial two.
+
+87
+00:05:27,817 --> 00:05:32,817
+Every other grader passed on both models,
+so terra passed all three conversations.
+
+88
+00:05:36,033 --> 00:05:40,108
+So let's read what that turn changed,
+starting in the results folder.
+
+89
+00:05:41,933 --> 00:05:45,083
+There's one run folder, and we change into
+it.
+
+90
+00:05:47,480 --> 00:05:52,298
+That summary counted from one and file
+names count from zero, so its trial two is
+
+91
+00:05:52,298 --> 00:05:54,380
+the file named trial one, turn two.
+
+92
+00:05:54,880 --> 00:05:58,230
+That star stands for the start of the
+file's long name.
+
+93
+00:06:00,000 --> 00:06:03,675
+It's a short patch, holding only what that
+one turn changed.
+
+94
+00:06:07,175 --> 00:06:11,755
+It adds one entry under a Fixed heading,
+and the entry ends with pull request
+
+95
+00:06:11,755 --> 00:06:12,350
+sixty-six.
+
+96
+00:06:16,850 --> 00:06:21,669
+But the third request gave no number: the
+two requests before it gave sixty-four and
+
+97
+00:06:21,669 --> 00:06:22,300
+sixty-five.
+
+98
+00:06:25,500 --> 00:06:28,775
+That gap is in the skill, so that's where
+we fix it.
+
+99
+00:06:29,275 --> 00:06:33,425
+We add one more rule at the end: treat
+every request on its own.
+
+100
+00:06:33,925 --> 00:06:37,918
+By this rule, a pull request number
+belongs only to the change it was given
+
+101
+00:06:37,918 --> 00:06:40,900
+with, and is never carried over from an
+earlier request.
+
+102
+00:06:42,100 --> 00:06:46,375
+Then we run the same conversations again,
+saving to a second folder.
+
+103
+00:06:46,875 --> 00:06:49,450
+That's another six agent runs.
+
+104
+00:06:58,480 --> 00:07:02,975
+This time there's a tick for each model,
+and no block above the summary: all six
+
+105
+00:07:02,975 --> 00:07:04,155
+conversations passed.
+
+106
+00:07:08,367 --> 00:07:10,717
+So what did the conversation show?
+
+107
+00:07:11,217 --> 00:07:15,667
+Here's the line that the failing turn
+added, under the two requests before it.
+
+108
+00:07:16,167 --> 00:07:21,192
+Sixty-six is a number nobody gave: it
+simply follows sixty-four and sixty-five.
+
+109
+00:07:21,692 --> 00:07:26,140
+In an earlier run of this same
+conversation, that turn cited sixty-five
+
+110
+00:07:26,140 --> 00:07:26,642
+instead.
+
+111
+00:07:27,142 --> 00:07:31,799
+Sixty-five is a real number: it belongs to
+the internal rename, which the agent had
+
+112
+00:07:31,799 --> 00:07:34,717
+correctly left out of the changelog a
+moment before.
+
+113
+00:07:35,217 --> 00:07:39,420
+So there, the number wasn't invented: it
+leaked from one turn into the next, and
+
+114
+00:07:39,420 --> 00:07:41,417
+attached itself to a different change.
+
+115
+00:07:42,633 --> 00:07:46,829
+This happened on haiku, which hadn't made
+up a number in any of our single-request
+
+116
+00:07:46,829 --> 00:07:50,308
+runs; a test of those alone would have
+called it safe on this point.
+
+117
+00:07:50,808 --> 00:07:55,305
+Reading only the final file, a grader
+would have seen this: a tidy, well-formed
+
+118
+00:07:55,305 --> 00:07:57,183
+entry with a plausible reference.
+
+119
+00:08:00,400 --> 00:08:05,117
+Before the new rule, one of haiku's three
+conversations failed; after it, all six
+
+120
+00:08:05,117 --> 00:08:05,525
+passed.
+
+121
+00:08:06,025 --> 00:08:10,900
+One failure in three becoming none in
+three is, once again, a small sample.
+
+122
+00:08:12,100 --> 00:08:15,900
+There's something these graders didn't
+check, and we're leaving it alone.
+
+123
+00:08:16,400 --> 00:08:20,550
+None of them asks whether an entry is
+filed under the right category.
+
+124
+00:08:21,050 --> 00:08:23,350
+That's a judgement about meaning.
+
+125
+00:08:23,850 --> 00:08:28,463
+So is a question we left open earlier: is
+an entry written for the people who use
+
+126
+00:08:28,463 --> 00:08:28,975
+the tool?
+
+127
+00:08:29,475 --> 00:08:31,975
+No pattern can decide either one.
+
+128
+00:08:33,200 --> 00:08:37,863
+Before you go on: what are the three ways
+a conversation can go wrong that a single
+
+129
+00:08:37,863 --> 00:08:38,650
+request can't?
+
+130
+00:08:41,650 --> 00:08:43,500
+One: a rule fades.
+
+131
+00:08:44,000 --> 00:08:47,125
+Two: an earlier turn leaks into a later
+one.
+
+132
+00:08:47,625 --> 00:08:50,650
+Three: a later turn disturbs earlier work.
+
+133
+00:08:51,867 --> 00:08:56,298
+You can now show, turn by turn and on both
+models, whether the skill's rules survive
+
+134
+00:08:56,298 --> 00:08:58,092
+a follow-up, and fix what doesn't.
+
+135
+00:08:58,592 --> 00:09:02,392
+Everything graded so far is structure that
+code can see.
+
+136
+00:09:02,892 --> 00:09:06,342
+Written for the people who use the tool is
+not a pattern.
+
+137
+00:09:06,842 --> 00:09:08,867
+So how do you grade that?
+
+138
+00:09:09,367 --> 00:09:11,217
+That's the next lesson.
+
+139
+00:09:11,717 --> 00:09:15,292
+The exercises on the lesson page are worth
+doing first.

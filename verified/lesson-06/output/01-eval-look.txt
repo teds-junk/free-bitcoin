@@ -1,0 +1,8 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 1 stimulus from one-request
+
+Summary
+  PASS  one-request
+
+Saved  results/lesson-6-look/2026-11-10T15-00-01-395Z/
+Run ID  167d3812-2a2e-4cd3-8b84-85d8e71bd3cb

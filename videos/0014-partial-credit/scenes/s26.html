@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A failure hides in an average</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.hides{font-size:32px}.hides th{font-size:28px}.hides td{padding-top:14px;padding-bottom:14px}.hides td:nth-child(-n+2){white-space:nowrap;font-family:var(--font-code);font-size:30px}.lead{font-size:38px;margin:0}.stage{gap:22px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the scores showed</div>
+  <h2 class="scene-title">A failure hides in an average</h2>
+  <div class="stage">
+<table class="data-table full hides">
+    <thead><tr><th>Judge</th><th>Trial</th><th>Entry, shortened</th></tr></thead>
+    <tbody>
+<tr><td><span data-concept="jx" data-rep="cell">✗ fails</span></td><td><span data-concept="tk" data-rep="cell">✓ passes · 62.5%</span></td>
+        <td>…on large imports by using streaming parser in importer.js</td></tr>
+<tr><td><span data-concept="jx" data-rep="cell">✗ fails</span></td><td><span data-concept="tk" data-rep="cell">✓ passes · 62.5%</span></td>
+        <td>…of `notes list --tag` with LRU cache on large folders</td></tr>
+<tr><td><span data-concept="jx" data-rep="cell">✗ fails</span></td><td><span data-concept="tk" data-rep="cell">✓ passes · 62.5%</span></td>
+        <td>…of `notes list --tag` with LRU cache for tag index</td></tr>
+<tr><td><span data-concept="jx" data-rep="cell">✗ fails</span></td><td><span data-concept="tk" data-rep="cell">✓ passes · 75%</span></td>
+        <td>…list --tag` on large folders by caching the tag index</td></tr>
+    </tbody>
+  </table>
+  <p class="lead"><span data-concept="sum" data-rep="note">a judge’s 2: 0.5 × 0.25 + 0.5 × 1 = 0.625 · reaches 0.6</span></p>
+  <p class="note">the second grading, with the scoring block · from our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "jx",
+  "at": "2~failed",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "tk",
+  "at": "2~passed",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "sum",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The grader cannot fail</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.cmp{font-size:52px}.cmp th{font-size:28px}.cmp td{padding-top:26px;padding-bottom:26px}.cmp td:first-child{font-size:36px}.cmp th:last-child,.cmp td:last-child{padding-right:16px}.card > .code.dark{font-size:32px;padding:18px 28px}.card .who{font-size:30px}.stage{gap:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Catch a grader that cannot fail</div>
+  <h2 class="scene-title">The grader cannot fail</h2>
+  <div class="stage">
+<table class="data-table full cmp">
+    <thead><tr><th>the six <span class="mono">typo-fix</span> trials, re-graded</th><th class="num">passed</th>
+      <th class="num">failed <span class="mono">no-made-up-number</span></th><th class="num">failed <span class="mono">adds-an-entry</span></th></tr></thead>
+    <tbody>
+      <tr><td>with the right pattern</td><td class="num"><span data-concept="b-pass" data-rep="cell">3</span></td><td class="num"><span data-concept="b-nmn" data-rep="cell">2</span></td><td class="num"><span data-concept="b-aae" data-rep="cell">1</span></td></tr>
+      <tr><td>with the flawed pattern</td><td class="num"><span data-concept="f-pass" data-rep="cell">5</span></td><td class="num"><span data-concept="f-nmn" data-rep="cell">0</span></td><td class="num"><span data-concept="f-aae" data-rep="cell">1</span></td></tr>
+    </tbody>
+  </table>
+  <div class="card" data-concept="still" data-rep="card">
+        <div class="who">still in a saved patch, in both re-grades</div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix typo in </span><span style="color:#3CC0B3">`notes add`</span><span> help text </span><span data-concept="pr" data-rep="code"><span>(#42)</span></span></code></pre>
+      </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "b-nmn",
+  "at": "0~two failed",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "f-nmn",
+  "at": "1~none",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "pr",
+  "at": "1~made up",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "f-pass",
+  "at": "2~Five",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "f-aae",
+  "at": "2~sixth",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

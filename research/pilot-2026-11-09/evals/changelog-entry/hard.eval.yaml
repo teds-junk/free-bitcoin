@@ -1,0 +1,97 @@
+name: changelog-entry-hard
+description: Messier, ordinary changelog requests
+type: capability
+
+defaults:
+  runs: 1
+  timeout: 3m
+
+agent_environment:
+  skills:
+    - ../../skills/changelog-entry
+
+stimuli:
+  - name: internal-refactor
+    prompt: |
+      PR 61 is merged. It splits storage.js into three
+      smaller modules. Nothing changes for users, it's
+      purely a cleanup. Update the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    graders:
+      - type: file-exists
+        config:
+          path: CHANGELOG.md
+
+  - name: no-unreleased-section
+    prompt: |
+      PR 58 just landed: `notes add` now accepts
+      `--from-clipboard` to create a note from whatever
+      is on the clipboard. Add it to the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/just-released/CHANGELOG.md
+          dest: CHANGELOG.md
+    graders:
+      - type: file-exists
+        config:
+          path: CHANGELOG.md
+
+  - name: two-changes-one-pr
+    prompt: |
+      PR 60 is in. It adds a `--json` flag to
+      `notes list`, and while I was in there I fixed
+      the bug where page 2 repeated the last note of
+      page 1. Changelog please.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    graders:
+      - type: file-exists
+        config:
+          path: CHANGELOG.md
+
+  - name: no-pr-number
+    prompt: |
+      I fixed the typo in the help text for `notes add`
+      (it said "tittle"). Put that in the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    graders:
+      - type: file-exists
+        config:
+          path: CHANGELOG.md
+
+  - name: security-fix
+    prompt: |
+      PR 63 closes a hole: `notes export --out` let you
+      write outside the notes folder with a path like
+      ../../etc. It now refuses. Update the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    graders:
+      - type: file-exists
+        config:
+          path: CHANGELOG.md
+
+  - name: implementation-words
+    prompt: |
+      Merged PR 49. I swapped JSON.parse for a streaming
+      parser in importer.js so we stop loading the whole
+      file into memory. Big imports used to die with an
+      out-of-memory error. Changelog it.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    graders:
+      - type: file-exists
+        config:
+          path: CHANGELOG.md

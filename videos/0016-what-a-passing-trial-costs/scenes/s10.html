@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Vally prints no total cost</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:130px;padding-top:18px;padding-bottom:18px}.terms .title{font-size:38px}.terms .label{font-size:32px}.stage{gap:22px}.quote{width:100%;padding-top:12px;padding-bottom:14px}.quote p{font-size:34px}.quote .mono,.terms .mono{font-family:var(--font-code)}.cols .semantic-block{min-height:170px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Where cost is recorded</div>
+  <h2 class="scene-title">Vally prints no total cost</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="table" data-rep="block" data-role="structure">
+      <div class="title words">The experiment’s table</div><div class="label">total tokens</div>
+    </div>
+    <div class="semantic-block" data-concept="report" data-rep="block" data-role="structure">
+      <div class="title words"><span class="mono">report.md</span></div><div class="label">median tokens</div>
+    </div>
+  </div>
+  <div class="quote" data-concept="calc" data-rep="quote"><span class="who">The course’s cost calculator</span><p>A page that reads the <span class="mono">results.jsonl</span> files you pick, in your browser.</p></div>
+  <div class="cols">
+    <div class="semantic-block" data-concept="c1" data-rep="block" data-role="structure">
+      <div class="step">1</div><div class="title">Add</div><div class="label">every trial’s cost</div>
+    </div><div class="semantic-block" data-concept="c2" data-rep="block" data-role="transform">
+      <div class="step">2</div><div class="title">Count</div><div class="label">the trials that passed</div>
+    </div><div class="semantic-block" data-concept="c3" data-rep="block" data-role="attention">
+      <div class="step">3</div><div class="title">Divide</div><div class="label">cost per passing trial</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "table",
+  "at": "1~table",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "report",
+  "at": "1~report",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "calc",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "c1",
+  "at": "3~adds",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "c2",
+  "at": "3~counts",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "c3",
+  "at": "3~divides",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

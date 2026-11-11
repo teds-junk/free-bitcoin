@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A colon makes a mapping</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.annotated .code.dark{font-size:40px;line-height:1.5;padding:30px 38px}.callout{font-size:34px}.code.dark.trap{min-width:820px}.stage{gap:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Where each answer lives</div>
+  <h2 class="scene-title">A colon makes a mapping</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark trap" data-lang="text"><code><span>- </span><span data-concept="k" data-rep="code"><span>echo note:</span></span><span> hello</span>
+
+<span>- </span><span data-concept="s" data-rep="code"><span>'echo note: hello'</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="k">a mapping: key “echo note”, value “hello”</p><p class="callout" data-anchor="s">a string</p></aside>
+  </div>
+  <p class="note">two entries of a <span class="mono">commands:</span> list</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "k",
+  "at": "1~colon",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "s",
+  "at": "5",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

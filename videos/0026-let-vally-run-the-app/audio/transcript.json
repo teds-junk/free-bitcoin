@@ -1,0 +1,2179 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/0026-let-vally-run-the-app",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "19c3200b475d39f5",
+      "text": "The release app ran once on haiku, and failed: no skill loaded, and an entry for the refactor.",
+      "tts_text": "The release app ran once on haiku, and failed: no skill loaded, and an entry for the refactor.",
+      "heard": "The release app ran once on haiku and failed, no skill loaded and an entry for the refactor.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "41abf4ab7966ff6e",
+      "text": "Vally's own trials of that skill passed three of eight on haiku.",
+      "tts_text": "Valley's own trials of that skill passed three of eight on haiku.",
+      "heard": "Bally's own trials of that skill passed 3 of 8 on Haiku.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Vally's",
+          "heard": "Bally's",
+          "similarity": 0.6
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "5ed896a4a49ddbb2",
+      "text": "So is the app worse than those trials, or was one run unlucky, and does it cost the same?",
+      "tts_text": "So is the app worse than those trials, or was one run unlucky, and does it cost the same?",
+      "heard": "So is the app worse than those trials, or was one run unlucky, and does it cost the same?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "7baccee6e0df1c2b",
+      "text": "One run can't say, and a run of the app that has already happened can't be repeated.",
+      "tts_text": "One run can't say, and a run of the app that has already happened can't be repeated.",
+      "heard": "One run can't say, and a run of the app that has already happened can't be repeated.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 4,
+      "file": "audio/s01_04.wav",
+      "clip_sha": "7efbd27e8a2eb5f6",
+      "text": "In this lesson, you'll plug the app's own code into Vally, so it runs as many trials as we like, on any model, under the graders we already have.",
+      "tts_text": "In this lesson, you'll plug the app's own code into Valley, so it runs as many trials as we like, on any model, under the graders we already have.",
+      "heard": "In this lesson, you'll plug the app's own code into Valley, so it runs as many trials as we like, on any model, under the graders we already have.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "03eae92d753e538f",
+      "text": "Let's start with where an app could fit inside Vally.",
+      "tts_text": "Let's start with where an app could fit inside Valley.",
+      "heard": "Let's start with where an app could fit inside Valley.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "71e6218a359ec753",
+      "text": "Around every trial, Vally does the same work: it prepares the workspace, and afterwards saves the patch and runs the graders.",
+      "tts_text": "Around every trial, Valley does the same work: it prepares the workspace, and afterwards saves the patch and runs the graders.",
+      "heard": "Round every trial valley does the same work, it prepares the workspace, and afterwards saves the patch and runs the graders.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "b27f754a05df3f44",
+      "text": "One step in the middle runs the agent, and that step is the executor.",
+      "tts_text": "One step in the middle runs the agent, and that step is the [executor](/ˈɛksəkjˌuɾəɹ/).",
+      "heard": "One step in the middle runs the agent, and that step is the executor.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 3,
+      "file": "audio/s02_03.wav",
+      "clip_sha": "752dce0d103fabcd",
+      "text": "It gets a stimulus and a workspace, and hands back a trajectory: the account of what the agent did.",
+      "tts_text": "It gets a stimulus and a workspace, and hands back a trajectory: the account of what the agent did.",
+      "heard": "Gets a stimulus and a workspace and hands back a trajectory, the account of what the agent did.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "It",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 4,
+      "file": "audio/s02_04.wav",
+      "clip_sha": "2da8eebbd54cc271",
+      "text": "That's the one part we're about to swap.",
+      "tts_text": "That's the one part we're about to swap.",
+      "heard": "That's the one part we're about to swap.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "801316b94a7ac460",
+      "text": "Vally's own executor opens a Copilot SDK session, with settings that Vally chose.",
+      "tts_text": "Valley's own [executor](/ˈɛksəkjˌuɾəɹ/) opens a Copilot SDK session, with settings that Valley chose.",
+      "heard": "Valley's own executor opens a copilot SDK session with settings that Valley chose.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "ab901d42a7584014",
+      "text": "Our release app opens one too, with settings the team chose.",
+      "tts_text": "Our release app opens one too, with settings the team chose.",
+      "heard": "A release app opens 1.2 with settings the team chose.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Our",
+          "heard": "A",
+          "similarity": 0.0
+        },
+        {
+          "kind": "different",
+          "expected": "one too",
+          "heard": "1.2",
+          "similarity": 0.71
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 2,
+      "file": "audio/s03_02.wav",
+      "clip_sha": "67d1ba11fe79a6fa",
+      "text": "Those choices are part of the feature being tested.",
+      "tts_text": "Those choices are part of the feature being tested.",
+      "heard": "Those choices are part of the feature being tested.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 3,
+      "file": "audio/s03_03.wav",
+      "clip_sha": "3810f6fb776c3f41",
+      "text": "If the app's agent behaves differently, an eval through Vally's executor won't show it.",
+      "tts_text": "If the app's agent behaves differently, an [eval](/ˌivˈæl/) through Valley's [executor](/ˈɛksəkjˌuɾəɹ/) won't show it.",
+      "heard": "If the app's agent behaves differently, an eval through Valley's executor won't show it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 4,
+      "file": "audio/s03_04.wav",
+      "clip_sha": "ed40da23cec2bd72",
+      "text": "Once the executor is one that calls the app, every trial runs the code the team ships.",
+      "tts_text": "Once the [executor](/ˈɛksəkjˌuɾəɹ/) is one that calls the app, every trial runs the code the team ships.",
+      "heard": "Once the executor is one that calls the app, every trial runs the code the team ships.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 0,
+      "file": "audio/s04_00.wav",
+      "clip_sha": "7202e47b3745fbe6",
+      "text": "That gives us three ways to look at the release feature, and each answers something the others can't.",
+      "tts_text": "That gives us three ways to look at the release feature, and each answers something the others can't.",
+      "heard": "That gives us three ways to look at the release feature, and each answer is something the others can't.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s04",
+      "i": 1,
+      "file": "audio/s04_01.wav",
+      "clip_sha": "8bc6820290839764",
+      "text": "Vally's own executor shows whether the skill does its job, on any model, apart from the app.",
+      "tts_text": "Valley's own [executor](/ˈɛksəkjˌuɾəɹ/) shows whether the skill does its job, on any model, apart from the app.",
+      "heard": "Bally's own executor shows whether the skill does its job on any model apart from the app.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Vally's",
+          "heard": "Bally's",
+          "similarity": 0.6
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 2,
+      "file": "audio/s04_02.wav",
+      "clip_sha": "2eafc240de88d91e",
+      "text": "Running the app through an executor shows whether the feature, as shipped, does its job, and it's repeatable, so we can count.",
+      "tts_text": "Running the app through an [executor](/ˈɛksəkjˌuɾəɹ/) shows whether the feature, as shipped, does its job, and it's repeatable, so we can count.",
+      "heard": "Running the app through an executor shows whether the feature as shipped does its job and it's repeatable so we can count.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 3,
+      "file": "audio/s04_03.wav",
+      "clip_sha": "b1d6037a35eb1819",
+      "text": "Grading the app's real runs afterwards shows whether it's still doing its job in real use.",
+      "tts_text": "Grading the app's real runs afterwards shows whether it's still doing its job in real use.",
+      "heard": "Grading the app's real runs afterwards shows whether it's still doing its job in real use.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 0,
+      "file": "audio/s05_00.wav",
+      "clip_sha": "3c18f5eab8c81e12",
+      "text": "That's the idea; here's the file that expresses it.",
+      "tts_text": "That's the idea; here's the file that expresses it.",
+      "heard": "That's the idea. Here's the file that expresses it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 1,
+      "file": "audio/s05_01.wav",
+      "clip_sha": "f79778a59796adae",
+      "text": "An executor plugin is a JavaScript module, and the starter ships this one with everything written except one function.",
+      "tts_text": "An [executor](/ˈɛksəkjˌuɾəɹ/) plugin is a JavaScript module, and the starter ships this one with everything written except one function.",
+      "heard": "An executor plugin is a JavaScript module, and the starter ships this one with everything written except one function.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 2,
+      "file": "audio/s05_02.wav",
+      "clip_sha": "47ed75c1a8824074",
+      "text": "Our executor is an object, and its name is release app.",
+      "tts_text": "Our [executor](/ˈɛksəkjˌuɾəɹ/) is an object, and its name is release app.",
+      "heard": "Our executor is an object and its name is release app.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 3,
+      "file": "audio/s05_03.wav",
+      "clip_sha": "befde15ca82d5fbe",
+      "text": "Its execute function runs one trial, and it's the part still to write.",
+      "tts_text": "Its execute function runs one trial, and it's the part still to write.",
+      "heard": "Its execute function runs one trial, and it's the part still to write.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 4,
+      "file": "audio/s05_04.wav",
+      "clip_sha": "d59d23f96b453d60",
+      "text": "Shutdown is called at the end, and has nothing to clean up, because the app opens and closes its own session in each trial.",
+      "tts_text": "Shutdown is called at the end, and has nothing to clean up, because the app opens and closes its own session in each trial.",
+      "heard": "Shut down is called at the end and has nothing to clean up because the app opens and closes its own session in each trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s05",
+      "i": 5,
+      "file": "audio/s05_05.wav",
+      "clip_sha": "d7942736d30f2fe9",
+      "text": "Vally looks for one exported function, register executors, and calls it with its registry: the list of executors it knows.",
+      "tts_text": "Valley looks for one exported function, register [executors](/ˈɛksəkjˌuɾəɹz/), and calls it with its registry: the list of [executors](/ˈɛksəkjˌuɾəɹz/) it knows.",
+      "heard": "Valley looks for one exported function, register executors, and calls it with its registry, the list of executors it knows.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 6,
+      "file": "audio/s05_06.wav",
+      "clip_sha": "ceda0623e8f54359",
+      "text": "Ours adds this object to that list, so its name is what a command or an eval file can ask for, the way they ask for a model by name.",
+      "tts_text": "Ours adds this object to that list, so its name is what a command or an [eval](/ˌivˈæl/) file can ask for, the way they ask for a model by name.",
+      "heard": "Hours adds this object to that list, so its name is what a command or an eval file can ask for, the way they ask for a model by name.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 0,
+      "file": "audio/s06_00.wav",
+      "clip_sha": "c76cabfcc550c017",
+      "text": "Here's that function, written.",
+      "tts_text": "Here's that function, written.",
+      "heard": "Here's that function written.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 1,
+      "file": "audio/s06_01.wav",
+      "clip_sha": "d956080a69cdf7e9",
+      "text": "Vally hands it two things: the stimulus, and the options for this one trial.",
+      "tts_text": "Valley hands it two things: the stimulus, and the options for this one trial.",
+      "heard": "Valley hands it two things, the stimulus, and the options for this one trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 2,
+      "file": "audio/s06_02.wav",
+      "clip_sha": "edc8f6e284e859e0",
+      "text": "It passes them on to write entries, which is the app's own function: the one the app's run script called.",
+      "tts_text": "It passes them on to write entries, which is the app's own function: the one the app's run script called.",
+      "heard": "Passes them on to write entries, which is the app's own function, the one the apps run script called.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "It",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 3,
+      "file": "audio/s06_03.wav",
+      "clip_sha": "15909be513848646",
+      "text": "Where to work is the first option: the prepared workspace, after the setup commands ran.",
+      "tts_text": "Where to work is the first option: the prepared workspace, after the setup commands ran.",
+      "heard": "Where to work is the first option, the prepared workspace after the setup commands ran.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 4,
+      "file": "audio/s06_04.wav",
+      "clip_sha": "8854c64d6d04a7ac",
+      "text": "Which model to run comes next, so one command can try any model.",
+      "tts_text": "Which model to run comes next, so one command can try any model.",
+      "heard": "Which model to run comes next, so one command can try any model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 5,
+      "file": "audio/s06_05.wav",
+      "clip_sha": "98adc74143f00cdf",
+      "text": "Skills arrive as the path of each skill file, and the SDK wants folders, so each path is cut back to its folder.",
+      "tts_text": "Skills arrive as the path of each skill file, and the SDK wants folders, so each path is cut back to its folder.",
+      "heard": "Skills arrive as the path of each skill file and the SDK wants folders, so each path is cut back to its folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 6,
+      "file": "audio/s06_06.wav",
+      "clip_sha": "b5f598a4986b07eb",
+      "text": "The request is the stimulus's prompt, and the time limit is Vally's.",
+      "tts_text": "The request is the stimulus's prompt, and the time limit is Valley's.",
+      "heard": "The request is the stimulus is prompt and the time limit is values.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Vally's",
+          "heard": "values",
+          "similarity": 0.73
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s06",
+      "i": 7,
+      "file": "audio/s06_07.wav",
+      "clip_sha": "9a48c25991261615",
+      "text": "For traces, the app gets a file in the trial's results folder to write them to.",
+      "tts_text": "For traces, the app gets a file in the trial's results folder to write them to.",
+      "heard": "For traces, the app gets a file in the trial's results folder to write them to.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 8,
+      "file": "audio/s06_08.wav",
+      "clip_sha": "46c54b9bf3786d7e",
+      "text": "Last is the trial's trace context, which we'll come to.",
+      "tts_text": "Last is the trial's trace context, which we'll come to.",
+      "heard": "Last is the trial's trace context, which we'll come to.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 0,
+      "file": "audio/s07_00.wav",
+      "clip_sha": "56e118f04b7a2fe2",
+      "text": "What comes back from the app is the agent's reply, and every session event the SDK reported.",
+      "tts_text": "What comes back from the app is the agent's reply, and every session event the SDK reported.",
+      "heard": "What comes back from the app is the agent's reply and every session event the SDK reported.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 1,
+      "file": "audio/s07_01.wav",
+      "clip_sha": "e727f91d342cddab",
+      "text": "One helper in the same file renames those events to Vally's.",
+      "tts_text": "One helper in the same file renames those events to Valley's.",
+      "heard": "One helper in the same file renames those events to valleys.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 2,
+      "file": "audio/s07_02.wav",
+      "clip_sha": "ffd3ba361ae9c155",
+      "text": "Then the function returns a trajectory: the events, the reply as the trial's output, and the workspace.",
+      "tts_text": "Then the function returns a trajectory: the events, the reply as the trial's output, and the workspace.",
+      "heard": "Then the function returns a trajectory, the events, the reply as the trial's output, and the workspace.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 3,
+      "file": "audio/s07_03.wav",
+      "clip_sha": "70de4ae96234b963",
+      "text": "Its metrics come from compute metrics, a function Vally exports that adds up a trajectory's events.",
+      "tts_text": "Its metrics come from compute metrics, a function Valley exports that adds up a trajectory's events.",
+      "heard": "Its metrics come from Compute Metrics, a function valley exports that adds up a trajectory's events.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 4,
+      "file": "audio/s07_04.wav",
+      "clip_sha": "cfc2e7833b59769c",
+      "text": "So a plugin's tokens, cost and tool calls are counted the way the built-in executor's are.",
+      "tts_text": "So a plugin's tokens, cost and tool calls are counted the way the built-in [executor](/ˈɛksəkjˌuɾəɹ/)'s are.",
+      "heard": "Though plugins' tokens, cost and tool calls are counted the way the built-in executors are.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "So a",
+          "heard": "Though",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 5,
+      "file": "audio/s07_05.wav",
+      "clip_sha": "685a020919638ee8",
+      "text": "Compute metrics can't know how long the app took, so the wall time is ours to measure.",
+      "tts_text": "Compute metrics can't know how long the app took, so the wall time is ours to measure.",
+      "heard": "Compute metrics can't know how long the app took, so the wall time is hours to measure.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 6,
+      "file": "audio/s07_06.wav",
+      "clip_sha": "c0b8ec8a76e7001d",
+      "text": "Last comes some metadata: the model, the skills that loaded, and the executor's name.",
+      "tts_text": "Last comes some metadata: the model, the skills that loaded, and the [executor](/ˈɛksəkjˌuɾəɹ/)'s name.",
+      "heard": "Last comes some metadata, the model, the skills that loaded and the executor's name.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 0,
+      "file": "audio/s08_00.wav",
+      "clip_sha": "1f205dbbbd41c0bf",
+      "text": "That renaming helper is short, and three of its branches matter to our graders.",
+      "tts_text": "That renaming helper is short, and three of its branches matter to our graders.",
+      "heard": "That renaming helper is short, and three of its branches matter to our graders.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 1,
+      "file": "audio/s08_01.wav",
+      "clip_sha": "507c38cb8ef8d578",
+      "text": "When the SDK reports a tool starting, the helper adds a tool call event: the kind our tool-calls graders check.",
+      "tts_text": "When the SDK reports a tool starting, the helper adds a tool call event: the kind our tool-calls graders check.",
+      "heard": "When the SDK reports a tool starting, the helper adds a tool call event. The kind our tool calls graders check.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 2,
+      "file": "audio/s08_02.wav",
+      "clip_sha": "f0724b70d745b43e",
+      "text": "When a skill is opened, it adds a skill activation, the event that says a skill loaded.",
+      "tts_text": "When a skill is opened, it adds a skill activation, the event that says a skill loaded.",
+      "heard": "When a skill is opened, it adds a skill activation, the event that says a skill loaded.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 3,
+      "file": "audio/s08_03.wav",
+      "clip_sha": "c844daa9a136c35e",
+      "text": "Both the skill-invocation grader and the report's Skills column rely on that one.",
+      "tts_text": "Both the skill-invocation grader and the report's Skills column rely on that one.",
+      "heard": "Both the skill invocation grader and the report skills column rely on that one.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s08",
+      "i": 4,
+      "file": "audio/s08_04.wav",
+      "clip_sha": "5eba0fabe731e91b",
+      "text": "After each model call, it adds a token usage event: how many tokens the call used, with its cost attached.",
+      "tts_text": "After each model call, it adds a token usage event: how many tokens the call used, with its cost attached.",
+      "heard": "After each model call, it adds a token usage event, how many tokens the call used with its cost attached.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 5,
+      "file": "audio/s08_05.wav",
+      "clip_sha": "c7a020897677d38f",
+      "text": "So cost is filled in for these trials, which it wasn't when we graded the app's run afterwards.",
+      "tts_text": "So cost is filled in for these trials, which it wasn't when we graded the app's run afterwards.",
+      "heard": "So cost is filled in for these trials, which it wasn't when we graded the apps run afterwards.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 0,
+      "file": "audio/s09_00.wav",
+      "clip_sha": "bec36ede19eb17b7",
+      "text": "Vally loads the plugin from dot vally dot yaml, the settings file that holds our suites.",
+      "tts_text": "Valley loads the plugin from dot valley dot yammel, the settings file that holds our suites.",
+      "heard": "Valley loads the plugin from .Valley.yaml, the settings file that holds our suites.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s09",
+      "i": 1,
+      "file": "audio/s09_01.wav",
+      "clip_sha": "cc59b2f0fe4e1099",
+      "text": "Three new lines at its top list the plugin file, under plugins, as an executor.",
+      "tts_text": "Three new lines at its top list the plugin file, under plugins, as an [executor](/ˈɛksəkjˌuɾəɹ/).",
+      "heard": "Three new lines at its top list the plugin file, under plugins, as an executor.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 0,
+      "file": "audio/s10_00.wav",
+      "clip_sha": "d42e512a0b9c7590",
+      "text": "Loading the file doesn't select the executor.",
+      "tts_text": "Loading the file doesn't select the [executor](/ˈɛksəkjˌuɾəɹ/).",
+      "heard": "Loading the file doesn't select the executor.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 1,
+      "file": "audio/s10_01.wav",
+      "clip_sha": "4266b019b557a1fb",
+      "text": "We choose it for one run with dash dash executor, for an eval file under defaults, or for an experiment under overrides.",
+      "tts_text": "We choose it for one run with dash dash [executor](/ˈɛksəkjˌuɾəɹ/), for an [eval](/ˌivˈæl/) file under defaults, or for an experiment under overrides.",
+      "heard": "You choose it for one run with dash-dash executor, for an eval file under defaults, or for an experiment under overrides.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "We",
+          "heard": "You",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s11",
+      "i": 0,
+      "file": "audio/s11_00.wav",
+      "clip_sha": "5d69bd1aadf37810",
+      "text": "One more thing an executor does is declare what it supports.",
+      "tts_text": "One more thing an [executor](/ˈɛksəkjˌuɾəɹ/) does is declare what it supports.",
+      "heard": "One more thing an executor does is declare what it supports.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 1,
+      "file": "audio/s11_01.wav",
+      "clip_sha": "43362b3d7a707c4e",
+      "text": "Ours declares nothing, so it can't run a stimulus that has a simulation block.",
+      "tts_text": "Ours declares nothing, so it can't run a stimulus that has a simulation block.",
+      "heard": "Hours declares nothing, so it can't run a stimulus that has a simulation block.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s11",
+      "i": 2,
+      "file": "audio/s11_02.wav",
+      "clip_sha": "4cf9dba9d0899613",
+      "text": "Our release eval has one: tracker down, where a tool is made to fail on purpose.",
+      "tts_text": "Our release [eval](/ˌivˈæl/) has one: tracker down, where a tool is made to fail on purpose.",
+      "heard": "A release eval has one, tracker down, where a tool is made to fail on purpose.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Our",
+          "heard": "A",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 3,
+      "file": "audio/s11_03.wav",
+      "clip_sha": "8792dded62faff27",
+      "text": "Vally checks before starting the agent, so through this executor, that stimulus ends in error, with this message, and spends no agent run.",
+      "tts_text": "Valley checks before starting the agent, so through this [executor](/ˈɛksəkjˌuɾəɹ/), that stimulus ends in error, with this message, and spends no agent run.",
+      "heard": "Valley checks before starting the agent, so through this executor, that stimulus ends an error with this message and spends no agent run.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "in",
+          "heard": "an",
+          "similarity": 0.5
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 4,
+      "file": "audio/s11_04.wav",
+      "clip_sha": "1d3e8858f3d219a0",
+      "text": "That error will show in every run that follows, and it's expected: it isn't a fault in the app.",
+      "tts_text": "That error will show in every run that follows, and it's expected: it isn't a fault in the app.",
+      "heard": "That error will show in every run that follows and it's expected, it isn't a fault in the app.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 0,
+      "file": "audio/s12_00.wav",
+      "clip_sha": "4609d29c34b48c25",
+      "text": "Both programs keep traces, and so far nothing has linked them.",
+      "tts_text": "Both programs keep traces, and so far nothing has linked them.",
+      "heard": "Both programs keep traces, and so far nothing has linked them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 1,
+      "file": "audio/s12_01.wav",
+      "clip_sha": "ad698773d3dcda62",
+      "text": "Vally writes spans of its own for every trial, to a file in the run folder: one span for the trial, and inside it, one for each attempt.",
+      "tts_text": "Valley writes spans of its own for every trial, to a file in the run folder: one span for the trial, and inside it, one for each attempt.",
+      "heard": "Valley-right spans of its own for every trial to a file in the run folder, one span for the trial and inside it, one for each attempt.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s12",
+      "i": 2,
+      "file": "audio/s12_02.wav",
+      "clip_sha": "2e0eeae252c19aa2",
+      "text": "Our app writes its spans to its own file, and the outermost, named invoke agent, covers one whole session.",
+      "tts_text": "Our app writes its spans to its own file, and the outermost, named invoke agent, covers one whole session.",
+      "heard": "Our app writes its spans to its own file, and the outermost named Invoke Agent covers one whole session.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 3,
+      "file": "audio/s12_03.wav",
+      "clip_sha": "f3367d52ed6cdc56",
+      "text": "When the app runs alone, that session span has no parent.",
+      "tts_text": "When the app runs alone, that session span has no parent.",
+      "heard": "When the app runs alone, that session span has no parent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 4,
+      "file": "audio/s12_04.wav",
+      "clip_sha": "65f9b6c14654c6ce",
+      "text": "If both send their spans to one tracing tool, we'd want the app's spans inside the trial's.",
+      "tts_text": "If both send their spans to one tracing tool, we'd want the app's spans inside the trial's.",
+      "heard": "If both send their spans to one tracing tool, we'd want the app spans inside the trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s12",
+      "i": 5,
+      "file": "audio/s12_05.wav",
+      "clip_sha": "159ffc81dae48603",
+      "text": "Then a slow or expensive trial can be opened, and followed from Vally's step down to the model call.",
+      "tts_text": "Then a slow or expensive trial can be opened, and followed from Valley's step down to the model call.",
+      "heard": "Then a slow or expensive trial can be opened and followed from valleys stepped down to the model call.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s13",
+      "i": 0,
+      "file": "audio/s13_00.wav",
+      "clip_sha": "5dcc3afd5f90773c",
+      "text": "What links two programs' spans is a trace context.",
+      "tts_text": "What links two programs' spans is a trace context.",
+      "heard": "What Lynx 2 program spans is a trace context.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s13",
+      "i": 1,
+      "file": "audio/s13_01.wav",
+      "clip_sha": "48fac6333b0caa30",
+      "text": "It's the ID of a trace, and of the span that's open in it, passed from one program to the next.",
+      "tts_text": "It's the ID of a trace, and of the span that's open in it, passed from one program to the next.",
+      "heard": "It's the idea of a trace and of the span that's open in it, passed from one program to the next.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s13",
+      "i": 2,
+      "file": "audio/s13_02.wav",
+      "clip_sha": "76670bf0f1ee091a",
+      "text": "With it, the second program's spans join the first one's trace, as children.",
+      "tts_text": "With it, the second program's spans join the first one's trace, as children.",
+      "heard": "With it, the second program spans Join the first one's trace as children.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s13",
+      "i": 3,
+      "file": "audio/s13_03.wav",
+      "clip_sha": "4fc0e0412cde65b0",
+      "text": "One web standard writes it as a short string named trace parent: a version, the trace ID, the parent span's ID, and some flags.",
+      "tts_text": "One web standard writes it as a short string named trace parent: a version, the trace ID, the parent span's ID, and some flags.",
+      "heard": "One web standard writes it as a short string named trace parent, a version the trace ID, the parent spans ID and some flags.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 0,
+      "file": "audio/s14_00.wav",
+      "clip_sha": "bd782bcdb0d94dfb",
+      "text": "Vally passes each trial's trace context to the executor, in its options, and our execute function hands it on to the app.",
+      "tts_text": "Valley passes each trial's trace context to the [executor](/ˈɛksəkjˌuɾəɹ/), in its options, and our execute function hands it on to the app.",
+      "heard": "Valley passes each trial's trace context to the executor in its options and our execute function hands it on to the app.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 1,
+      "file": "audio/s14_01.wav",
+      "clip_sha": "c7e4cd17bd75eced",
+      "text": "The Copilot SDK has a hook for exactly this: a function it calls to ask which trace to join, before it opens a session or sends a message.",
+      "tts_text": "The Copilot SDK has a hook for exactly this: a function it calls to ask which trace to join, before it opens a session or sends a message.",
+      "heard": "The Copilot SDK has a hook for exactly this, a function it calls to ask which trace to join before it opens a session or sends a message.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 2,
+      "file": "audio/s14_02.wav",
+      "clip_sha": "2c9a88272ccc35a0",
+      "text": "So the app needed two lines: give the SDK whatever trace context the caller gave, or none.",
+      "tts_text": "So the app needed two lines: give the SDK whatever trace context the caller gave, or none.",
+      "heard": "So the app needed two lines, give the SDK whatever trace context the caller gave or none.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 3,
+      "file": "audio/s14_03.wav",
+      "clip_sha": "89089df43563e05d",
+      "text": "When the app runs from its own script, there's none, and the session starts a trace of its own.",
+      "tts_text": "When the app runs from its own script, there's none, and the session starts a trace of its own.",
+      "heard": "When the app runs from its own script, there's none, and the session starts a trace of its own.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 4,
+      "file": "audio/s14_04.wav",
+      "clip_sha": "c89b9d91e1ea5d01",
+      "text": "When it runs from our executor, the session span should carry the trial's trace ID, with Vally's attempt span as its parent.",
+      "tts_text": "When it runs from our [executor](/ˈɛksəkjˌuɾəɹ/), the session span should carry the trial's trace ID, with Valley's attempt span as its parent.",
+      "heard": "When it runs from our executor, the session span should carry the trial's trace ID with Valley's attempt span as its parent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 0,
+      "file": "audio/s15_00.wav",
+      "clip_sha": "f9500eb06b69630c",
+      "text": "That's how the plugin works; now let's run it.",
+      "tts_text": "That's how the plugin works; now let's run it.",
+      "heard": "That's how the plugin works, now let's run it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 1,
+      "file": "audio/s15_01.wav",
+      "clip_sha": "be8b58d0e882c5f9",
+      "text": "First, the release eval goes through the app once on each model.",
+      "tts_text": "First, the release [eval](/ˌivˈæl/) goes through the app once on each model.",
+      "heard": "First, the release eval goes through the app once on each model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 2,
+      "file": "audio/s15_02.wav",
+      "clip_sha": "22acaa0a059742d7",
+      "text": "Then an experiment runs it three more times on each: four trials a model in all.",
+      "tts_text": "Then an experiment runs it three more times on each: four trials a model in all.",
+      "heard": "Then an experiment runs it three more times on each, four trials a model in all.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 3,
+      "file": "audio/s15_03.wav",
+      "clip_sha": "cae7ea58f23c6e0b",
+      "text": "In its one earlier run of the app, haiku failed, without loading the skill.",
+      "tts_text": "In its one earlier run of the app, haiku failed, without loading the skill.",
+      "heard": "In its one earlier run of the app, Hiku failed without loading the skill.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 4,
+      "file": "audio/s15_04.wav",
+      "clip_sha": "20372689c620500c",
+      "text": "How many of four would you expect it to pass now, and would terra do any better?",
+      "tts_text": "How many of four would you expect it to pass now, and would terra do any better?",
+      "heard": "How many of four would you expect it to pass now, and would Tara do any better?",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "terra",
+          "heard": "Tara",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 5,
+      "file": "audio/s15_05.wav",
+      "clip_sha": "b749f7ec6a23fa0f",
+      "text": "If you tried it yourself, here's what you'd see.",
+      "tts_text": "If you tried it yourself, here's what you'd see.",
+      "heard": "If you tried it yourself, here's what you'd see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 0,
+      "file": "audio/s16_00.wav",
+      "clip_sha": "e6cc05ee231d741b",
+      "text": "The execute function is now in the plugin file, and the three plugins lines are in the settings file.",
+      "tts_text": "The execute function is now in the plugin file, and the three plugins lines are in the settings file.",
+      "heard": "The execute function is now in the plugin file, and the three plugins lines are in the settings file.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 1,
+      "file": "audio/s16_01.wav",
+      "clip_sha": "5124693418bc5bcb",
+      "text": "First, node dash dash check tells us whether the file is valid JavaScript, without starting anything.",
+      "tts_text": "First, node dash dash check tells us whether the file is valid JavaScript, without starting anything.",
+      "heard": "First, no dash dash check tells us whether the file is valid JavaScript without starting anything.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s16",
+      "i": 2,
+      "file": "audio/s16_02.wav",
+      "clip_sha": "b6272c6d827319b8",
+      "text": "It prints nothing, which means no errors.",
+      "tts_text": "It prints nothing, which means no errors.",
+      "heard": "It prints nothing, which means no errors.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 3,
+      "file": "audio/s16_03.wav",
+      "clip_sha": "712c1209e5f0644c",
+      "text": "Now the release eval, with dash dash executor release app, on both models, two at a time.",
+      "tts_text": "Now the release [eval](/ˌivˈæl/), with dash dash [executor](/ˈɛksəkjˌuɾəɹ/) release app, on both models, two at a time.",
+      "heard": "Now the release eval with dash-exsecutor release app on both models two at a time.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s16",
+      "i": 4,
+      "file": "audio/s16_04.wav",
+      "clip_sha": "526f28d38420f891",
+      "text": "It spends two agent runs, because tracker down is refused before any agent starts.",
+      "tts_text": "It spends two agent runs, because tracker down is refused before any agent starts.",
+      "heard": "It spends two agent runs because tracker down is refused before any agent starts.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 5,
+      "file": "audio/s16_05.wav",
+      "clip_sha": "9640b0a38a50b01b",
+      "text": "The table at the end counts stimuli, two for each model, and the refused one can't pass.",
+      "tts_text": "The table at the end counts stimuli, two for each model, and the refused one can't pass.",
+      "heard": "The table at the end counts stimuli, two for each model, and the refused one can't pass.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 6,
+      "file": "audio/s16_06.wav",
+      "clip_sha": "da59367e9ca8e4de",
+      "text": "Moments later, haiku has failed since last release, and terra has passed it.",
+      "tts_text": "Moments later, haiku has failed since last release, and terra has passed it.",
+      "heard": "Moments later, Haiku has failed since last release, and Tara has passed it.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "terra",
+          "heard": "Tara",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 7,
+      "file": "audio/s16_07.wav",
+      "clip_sha": "ece918a9f6c3e36a",
+      "text": "So the counts are none of two stimuli for haiku, and one of two for terra.",
+      "tts_text": "So the counts are none of two stimuli for haiku, and one of two for terra.",
+      "heard": "So the counts are none of two stimuli for haiku and one of two for terra.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 0,
+      "file": "audio/s17_00.wav",
+      "clip_sha": "8c5448ab471d3afd",
+      "text": "The report in the new results folder confirms what ran: under each table, the executor is release app.",
+      "tts_text": "The report in the new results folder confirms what ran: under each table, the [executor](/ˈɛksəkjˌuɾəɹ/) is release app.",
+      "heard": "The report in the new results folder confirms what ran. Under each table, the executor is release app.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 1,
+      "file": "audio/s17_01.wav",
+      "clip_sha": "fd3ab1e9f13d8949",
+      "text": "Haiku's table has no Skills column at all, because no skill loaded, and its tool calls were four views and one edit.",
+      "tts_text": "Haiku's table has no Skills column at all, because no skill loaded, and its tool calls were four views and one edit.",
+      "heard": "IQ's table has no skills column at all, because no skill loaded, and its tool calls were four views and one edit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s17",
+      "i": 2,
+      "file": "audio/s17_02.wav",
+      "clip_sha": "e97bef5a48131cc7",
+      "text": "Terra's lists the changelog entry skill, and a skill call among its tools.",
+      "tts_text": "Terra's lists the changelog entry skill, and a skill call among its tools.",
+      "heard": "Tara's lists the changelog entry skill and a skill call among its tools.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Terra's",
+          "heard": "Tara's",
+          "similarity": 0.73
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 0,
+      "file": "audio/s18_00.wav",
+      "clip_sha": "0360515abf8485f3",
+      "text": "The app's traces for a trial are kept in that trial's results folder, and Vally's spans are in the run folder.",
+      "tts_text": "The app's traces for a trial are kept in that trial's results folder, and Valley's spans are in the run folder.",
+      "heard": "The apps traces for a trial are kept in that trial's results folder, and valley spans are in the run folder.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 1,
+      "file": "audio/s18_01.wav",
+      "clip_sha": "ba0a59ccf7927920",
+      "text": "Here's one line from each, for haiku's trial, cut to three fields.",
+      "tts_text": "Here's one line from each, for haiku's trial, cut to three fields.",
+      "heard": "Here's one line from each for Haiku's trial cut to three fields.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 2,
+      "file": "audio/s18_02.wav",
+      "clip_sha": "c992c887f9b85b9f",
+      "text": "Both carry one trace ID, so the app's session joined Vally's trace.",
+      "tts_text": "Both carry one trace ID, so the app's session joined Valley's trace.",
+      "heard": "Both carry one trace ID, so the app session join Valley's trace.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s18",
+      "i": 3,
+      "file": "audio/s18_03.wav",
+      "clip_sha": "def7da3ed417d759",
+      "text": "Its parent is Vally's attempt span, so every model call and tool call beneath it follows.",
+      "tts_text": "Its parent is Valley's attempt span, so every model call and tool call beneath it follows.",
+      "heard": "Its parent is Valley's attempt span, so every model call and tool call beneath it follows.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 0,
+      "file": "audio/s19_00.wav",
+      "clip_sha": "306d79aaa679b079",
+      "text": "For more trials, we use an experiment file, the kind we've used to compare variants.",
+      "tts_text": "For more trials, we use an experiment file, the kind we've used to compare variants.",
+      "heard": "For more trials we use an experiment file, the kind we've used to compare variants.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 1,
+      "file": "audio/s19_01.wav",
+      "clip_sha": "fd035411d6636fa4",
+      "text": "It names the release eval, and two variants, haiku and terra, which differ only in the model.",
+      "tts_text": "It names the release [eval](/ˌivˈæl/), and two variants, haiku and terra, which differ only in the model.",
+      "heard": "It names the release EVAL and two variants, Hiku and Terra, which differ only in the model.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 2,
+      "file": "audio/s19_02.wav",
+      "clip_sha": "6b45880d00fef8a6",
+      "text": "What's new is one line under the top-level overrides: executor, release app, set once for both variants.",
+      "tts_text": "What's new is one line under the top-level overrides: [executor](/ˈɛksəkjˌuɾəɹ/), release app, set once for both variants.",
+      "heard": "What's new is one line under the top-level overrides. Executor, release app, set once for both variants.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 3,
+      "file": "audio/s19_03.wav",
+      "clip_sha": "adc6f20dc1971e50",
+      "text": "Beside it, runs is three.",
+      "tts_text": "Beside it, runs is three.",
+      "heard": "Beside it runs is 3.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s20",
+      "i": 0,
+      "file": "audio/s20_00.wav",
+      "clip_sha": "9b394d5bb5938c1b",
+      "text": "With dash dash dry run, Vally plans the experiment and starts nothing.",
+      "tts_text": "With dash dash dry run, Valley plans the experiment and starts nothing.",
+      "heard": "With dash dash dry run, Valley plans the experiment and starts nothing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 1,
+      "file": "audio/s20_01.wav",
+      "clip_sha": "633eb89da19e74be",
+      "text": "It finds two plans, one for each variant, with haiku as the baseline.",
+      "tts_text": "It finds two plans, one for each variant, with haiku as the baseline.",
+      "heard": "It finds two plans, one for each variant, with Haiku as the baseline.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 0,
+      "file": "audio/s21_00.wav",
+      "clip_sha": "d623cbb90ed05769",
+      "text": "Now the real thing: three trials a model, through the app, two at a time.",
+      "tts_text": "Now the real thing: three trials a model, through the app, two at a time.",
+      "heard": "Now the real thing, three trials a model through the app two at a time.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 1,
+      "file": "audio/s21_01.wav",
+      "clip_sha": "aa1241a3bf31a0ad",
+      "text": "That's six agent runs, since tracker down is refused again, three times for each variant.",
+      "tts_text": "That's six agent runs, since tracker down is refused again, three times for each variant.",
+      "heard": "That's six agent runs, since tracker down is refused again, three times for each variant.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 2,
+      "file": "audio/s21_02.wav",
+      "clip_sha": "fb9da030a6a09090",
+      "text": "About a minute later, the table gives terra one stimulus of two, and haiku none.",
+      "tts_text": "About a minute later, the table gives terra one stimulus of two, and haiku none.",
+      "heard": "About a minute later the table gives Terra one stimulus of two and haiku none.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 3,
+      "file": "audio/s21_03.wav",
+      "clip_sha": "6d2f125a85db751f",
+      "text": "Under that, terra used about a quarter fewer tokens than haiku.",
+      "tts_text": "Under that, terra used about a quarter fewer tokens than haiku.",
+      "heard": "Under that, Tara used about a quarter fewer tokens than Haiku.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "terra",
+          "heard": "Tara",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 0,
+      "file": "audio/s22_00.wav",
+      "clip_sha": "33ae91e8bf747658",
+      "text": "That table counts stimuli, so we count three more things from each variant's trials.",
+      "tts_text": "That table counts stimuli, so we count three more things from each variant's trials.",
+      "heard": "That table counts stimuli, so we count three more things from each variance trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s22",
+      "i": 1,
+      "file": "audio/s22_01.wav",
+      "clip_sha": "20681ff82fcdbaed",
+      "text": "Haiku passed none of three, loaded the skill in one, and wrote an entry for the refactor, pull request seventy-six, every time.",
+      "tts_text": "Haiku passed none of three, loaded the skill in one, and wrote an entry for the refactor, pull request seventy-six, every time.",
+      "heard": "Iku passed none of three, loaded the skill in one, and wrote an entry for the refactor, pull request 76 every time.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Haiku",
+          "heard": "Iku",
+          "similarity": 0.57
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s22",
+      "i": 2,
+      "file": "audio/s22_02.wav",
+      "clip_sha": "5f4966940adb2c57",
+      "text": "Terra passed all three, loaded the skill in all three, and left the refactor out.",
+      "tts_text": "Terra passed all three, loaded the skill in all three, and left the refactor out.",
+      "heard": "Terra passed all three, loaded the skill in all three, and left the refactor out.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 3,
+      "file": "audio/s22_03.wav",
+      "clip_sha": "5fc8a80303bc1001",
+      "text": "Adding up each trial's cost, haiku's three came to about six point seven AIU, and terra's to about ten point seven.",
+      "tts_text": "Adding up each trial's cost, haiku's three came to about six point seven AIU, and terra's to about ten point seven.",
+      "heard": "Adding up each trial's cost, HIKO's 3 came to about 6.7 AIU and terrors to about 10.7.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku's three",
+          "heard": "HIKO's 3",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s23",
+      "i": 0,
+      "file": "audio/s23_00.wav",
+      "clip_sha": "519b8e3bb6dbb065",
+      "text": "So what can we measure now?",
+      "tts_text": "So what can we measure now?",
+      "heard": "So, what can we measure now?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 1,
+      "file": "audio/s23_01.wav",
+      "clip_sha": "c76ca481d577e378",
+      "text": "The same eval file ran unchanged: its setup command, its hidden test and its tool-calls graders didn't depend on which executor ran.",
+      "tts_text": "The same [eval](/ˌivˈæl/) file ran unchanged: its setup command, its hidden test and its tool-calls graders didn't depend on which [executor](/ˈɛksəkjˌuɾəɹ/) ran.",
+      "heard": "The same eval file ran unchanged. Its setup command, its hidden test and its tool calls graders didn't depend on which executor ran.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s23",
+      "i": 2,
+      "file": "audio/s23_02.wav",
+      "clip_sha": "70c11043503a0093",
+      "text": "Cost was filled in again, because the executor reports the runtime's own usage.",
+      "tts_text": "Cost was filled in again, because the [executor](/ˈɛksəkjˌuɾəɹ/) reports the runtime's own usage.",
+      "heard": "Cost was filled in again because the executor reports the runtime's own usage.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 3,
+      "file": "audio/s23_03.wav",
+      "clip_sha": "9b8cf9b2ed5a9291",
+      "text": "Budgets, ranges and comparisons all work on these trials, because they're ordinary trials.",
+      "tts_text": "Budgets, ranges and comparisons all work on these trials, because they're ordinary trials.",
+      "heard": "Budgets, ranges, and comparisons all work on these trials because they're ordinary trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 0,
+      "file": "audio/s24_00.wav",
+      "clip_sha": "ad4a12964e009950",
+      "text": "Now the earlier question has counts.",
+      "tts_text": "Now the earlier question has counts.",
+      "heard": "Now the earlier question has counts.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 1,
+      "file": "audio/s24_01.wav",
+      "clip_sha": "85c2ca003aecde1c",
+      "text": "Our earlier runs of this stimulus went through Vally's own executor, eight trials a model, and the app has now run it four times on each.",
+      "tts_text": "Our earlier runs of this stimulus went through Valley's own [executor](/ˈɛksəkjˌuɾəɹ/), eight trials a model, and the app has now run it four times on each.",
+      "heard": "Her earlier runs of the stimulus went through Valley's own executor, 8 trials a model, and the app has now run it 4 times on each.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Our",
+          "heard": "Her",
+          "similarity": 0.33
+        },
+        {
+          "kind": "different",
+          "expected": "this",
+          "heard": "the",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s24",
+      "i": 2,
+      "file": "audio/s24_02.wav",
+      "clip_sha": "f7287b8a63e9e85f",
+      "text": "Passed is each run's own verdict.",
+      "tts_text": "Passed is each run's own verdict.",
+      "heard": "Past is each run's own verdict.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s24",
+      "i": 3,
+      "file": "audio/s24_03.wav",
+      "clip_sha": "330c00ccd580c29f",
+      "text": "Tokens a model call is a row's trial tokens, divided by its model calls.",
+      "tts_text": "Tokens a model call is a row's trial tokens, divided by its model calls.",
+      "heard": "Tokens a model call is a rose trail tokens, divided by its model calls. // // // // // // // // // // // // // // // // // // // // // // // // //",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s24",
+      "i": 4,
+      "file": "audio/s24_04.wav",
+      "clip_sha": "9f8328a2797eafba",
+      "text": "AIU a trial is a row's cost, divided by its trials.",
+      "tts_text": "AIU a trial is a row's cost, divided by its trials.",
+      "heard": "AIU a trial is a rose cost, divided by its trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s24",
+      "i": 5,
+      "file": "audio/s24_05.wav",
+      "clip_sha": "68e954cd9605f45b",
+      "text": "Two things stand out: one is a weak sign, and one held in every trial.",
+      "tts_text": "Two things stand out: one is a weak sign, and one held in every trial.",
+      "heard": "Two things stand out, one is a weak sign, and one held in every trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 0,
+      "file": "audio/s25_00.wav",
+      "clip_sha": "9021f757fac679f8",
+      "text": "First, the weak sign: how the app behaves, beside Vally's own runs of the skill.",
+      "tts_text": "First, the weak sign: how the app behaves, beside Valley's own runs of the skill.",
+      "heard": "First, the week sign, how the app behaves beside Valley's own runs of the skill.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s25",
+      "i": 1,
+      "file": "audio/s25_01.wav",
+      "clip_sha": "b7a4e34ba704435e",
+      "text": "Terra loaded the skill and passed every time, either way.",
+      "tts_text": "Terra loaded the skill and passed every time, either way.",
+      "heard": "Tara loaded the skill and passed every time, either way.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Terra",
+          "heard": "Tara",
+          "similarity": 0.67
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 2,
+      "file": "audio/s25_02.wav",
+      "clip_sha": "e4c06b27db828471",
+      "text": "Haiku is where they differ.",
+      "tts_text": "Haiku is where they differ.",
+      "heard": "Haiku is where they differ.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 3,
+      "file": "audio/s25_03.wav",
+      "clip_sha": "9ca49cd3fe30e784",
+      "text": "Through the app, it loaded the skill in one of five trials, counting its one earlier run.",
+      "tts_text": "Through the app, it loaded the skill in one of five trials, counting its one earlier run.",
+      "heard": "Through the app it loaded the skill in one of five trials, counting its one earlier run.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 4,
+      "file": "audio/s25_04.wav",
+      "clip_sha": "8b4e8d3376c543bf",
+      "text": "Through Vally's executor, it loaded in four of eight.",
+      "tts_text": "Through Valley's [executor](/ˈɛksəkjˌuɾəɹ/), it loaded in four of eight.",
+      "heard": "Through Valley's executor, it loaded in four of eight.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s25",
+      "i": 5,
+      "file": "audio/s25_05.wav",
+      "clip_sha": "be1c4b85c36103ab",
+      "text": "As ranges, that's four to sixty-two percent, against twenty-two to seventy-eight, which overlap widely.",
+      "tts_text": "As ranges, that's four to sixty-two percent, against twenty-two to seventy-eight, which overlap widely.",
+      "heard": "As range is, that's 4 to 62% against 22 to 78, which overlap widely.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 5
+    },
+    {
+      "scene": "s25",
+      "i": 6,
+      "file": "audio/s25_06.wav",
+      "clip_sha": "799500153107c75e",
+      "text": "In an earlier run of ours, the two were closer: none of five, against one of eight.",
+      "tts_text": "In an earlier run of ours, the two were closer: none of five, against one of eight.",
+      "heard": "In an earlier run of hours, the two were closer, none of five against one of eight.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s25",
+      "i": 7,
+      "file": "audio/s25_07.wav",
+      "clip_sha": "cb5cc9482e3f6f38",
+      "text": "So with this few trials, we can't yet say that the app makes haiku worse, but now we can run more, and find out.",
+      "tts_text": "So with this few trials, we can't yet say that the app makes haiku worse, but now we can run more, and find out.",
+      "heard": "So with this few trials, we can't yet say that the app makes Hiku worse, but now we can run more and find out.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 0,
+      "file": "audio/s26_00.wav",
+      "clip_sha": "4880ce80e943cc80",
+      "text": "Second, the one that held in every trial: the app costs more per model call.",
+      "tts_text": "Second, the one that held in every trial: the app costs more per model call.",
+      "heard": "Second, the one that held in every trial, the app costs more per model call.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 1,
+      "file": "audio/s26_01.wav",
+      "clip_sha": "6df450dd301b21d3",
+      "text": "The test is a strict one: even the app's lowest trial, against the highest through Vally's executor.",
+      "tts_text": "The test is a strict one: even the app's lowest trial, against the highest through Valley's [executor](/ˈɛksəkjˌuɾəɹ/).",
+      "heard": "The test is a strict one, even the app's lowest trial against the highest through Valley's executor.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s26",
+      "i": 2,
+      "file": "audio/s26_02.wav",
+      "clip_sha": "fab9a41dc1595360",
+      "text": "On haiku, the app's lowest used about seventeen thousand four hundred tokens a call, and the highest through Vally's executor about fifteen thousand three hundred.",
+      "tts_text": "On haiku, the app's lowest used about seventeen thousand four hundred tokens a call, and the highest through Valley's [executor](/ˈɛksəkjˌuɾəɹ/) about fifteen thousand three hundred.",
+      "heard": "On Hiku, the app's lowest used about 17,400 tokens a call, and the highest through Valley's executor about 15,300.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s26",
+      "i": 3,
+      "file": "audio/s26_03.wav",
+      "clip_sha": "a5de62d3a9054621",
+      "text": "On terra, it was about fourteen thousand, against twelve thousand five hundred.",
+      "tts_text": "On terra, it was about fourteen thousand, against twelve thousand five hundred.",
+      "heard": "On Terra it was about 14,000 against 12,500.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s26",
+      "i": 4,
+      "file": "audio/s26_04.wav",
+      "clip_sha": "9520327c4c67617e",
+      "text": "On average, that's about sixteen percent more a call on haiku, and thirteen percent on terra.",
+      "tts_text": "On average, that's about sixteen percent more a call on haiku, and thirteen percent on terra.",
+      "heard": "On average, that's about 16% more a call on haiku and 13% on terra.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s27",
+      "i": 0,
+      "file": "audio/s27_00.wav",
+      "clip_sha": "422080d12e7d436a",
+      "text": "Why would one model need more tokens for each call through the app?",
+      "tts_text": "Why would one model need more tokens for each call through the app?",
+      "heard": "Why would one model need more tokens for each call through the app?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 1,
+      "file": "audio/s27_01.wav",
+      "clip_sha": "4e87c1af0093b0cb",
+      "text": "The app's traces show the reason: an MCP server.",
+      "tts_text": "The app's traces show the reason: an MCP server.",
+      "heard": "The apps traces show the reason, an MCP server.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 2,
+      "file": "audio/s27_02.wav",
+      "clip_sha": "dfda98825ef03502",
+      "text": "That's a program that offers an agent extra tools, through a shared protocol.",
+      "tts_text": "That's a program that offers an agent extra tools, through a shared protocol.",
+      "heard": "That's a program that offers an agent extra tools through a shared protocol.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s27",
+      "i": 3,
+      "file": "audio/s27_03.wav",
+      "clip_sha": "31fa449362e00aec",
+      "text": "Our app's sessions include GitHub's hosted one, which adds five GitHub tools to every request the model sees.",
+      "tts_text": "Our app's sessions include GitHub's hosted one, which adds five GitHub tools to every request the model sees.",
+      "heard": "Our app sessions include GitHub's hosted one, which adds five GitHub tools to every request the model sees.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s27",
+      "i": 4,
+      "file": "audio/s27_04.wav",
+      "clip_sha": "23209ed4d34e60ef",
+      "text": "Vally's own executor turns that server off.",
+      "tts_text": "Valley's own [executor](/ˈɛksəkjˌuɾəɹ/) turns that server off.",
+      "heard": "Valley's own executor turns that server off.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 0,
+      "file": "audio/s28_00.wav",
+      "clip_sha": "f0c9b298c6fe3df9",
+      "text": "More tokens a call doesn't have to mean a more expensive trial, because a trial's cost also depends on how many calls it makes.",
+      "tts_text": "More tokens a call doesn't have to mean a more expensive trial, because a trial's cost also depends on how many calls it makes.",
+      "heard": "More tokens a call doesn't have to mean a more expensive trial, because a trial's cost also depends on how many calls it makes.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 1,
+      "file": "audio/s28_01.wav",
+      "clip_sha": "87fa3a04faef75f9",
+      "text": "On haiku, the app's trials made fewer calls: five and a quarter a trial, against five and three quarters through Vally's executor.",
+      "tts_text": "On haiku, the app's trials made fewer calls: five and a quarter a trial, against five and three quarters through Valley's [executor](/ˈɛksəkjˌuɾəɹ/).",
+      "heard": "On Hiku, the app's trials made fewer calls, five and a quarter trial, against five and three quarters through Valley's executor.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        },
+        {
+          "kind": "missing",
+          "expected": "a",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 2,
+      "file": "audio/s28_02.wav",
+      "clip_sha": "0e32c0eec3ba3d56",
+      "text": "So they cost about the same: two point five four AIU a trial, against two point five eight.",
+      "tts_text": "So they cost about the same: two point five four AIU a trial, against two point five eight.",
+      "heard": "So they cost about the same 2.54 AIU a trial against 2.58.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s28",
+      "i": 3,
+      "file": "audio/s28_03.wav",
+      "clip_sha": "c64fe79f77fe6f77",
+      "text": "On terra, the app's trials made slightly more calls, and cost more: about four AIU a trial, against three point two seven.",
+      "tts_text": "On terra, the app's trials made slightly more calls, and cost more: about four AIU a trial, against three point two seven.",
+      "heard": "On Terra, the app's trials made slightly more calls and cost more, about four AIU a trial against 3.27.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s28",
+      "i": 4,
+      "file": "audio/s28_04.wav",
+      "clip_sha": "c53220c3b1dfdc14",
+      "text": "Each call through the app carries the same extra cost.",
+      "tts_text": "Each call through the app carries the same extra cost.",
+      "heard": "Each call through the app carries the same extra cost.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 5,
+      "file": "audio/s28_05.wav",
+      "clip_sha": "f4ce8857969edfb9",
+      "text": "Whether a whole trial costs more depends on how many calls that trial makes.",
+      "tts_text": "Whether a whole trial costs more depends on how many calls that trial makes.",
+      "heard": "Whether a whole trial costs more depends on how many calls that trial makes.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s28",
+      "i": 6,
+      "file": "audio/s28_06.wav",
+      "clip_sha": "5ed56c6de7675721",
+      "text": "An eval of the skill alone wouldn't have shown that overhead at all.",
+      "tts_text": "An [eval](/ˌivˈæl/) of the skill alone wouldn't have shown that overhead at all.",
+      "heard": "An eval of the skill alone wouldn't have shown that overhead at all.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s29",
+      "i": 0,
+      "file": "audio/s29_00.wav",
+      "clip_sha": "e815d32f363e99b1",
+      "text": "Earlier, this table could only say what running the app through an executor might answer.",
+      "tts_text": "Earlier, this table could only say what running the app through an [executor](/ˈɛksəkjˌuɾəɹ/) might answer.",
+      "heard": "Earlier, this table could only say what running the app through an executor might answer.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s29",
+      "i": 1,
+      "file": "audio/s29_01.wav",
+      "clip_sha": "cb8722c805cb4e15",
+      "text": "Now it has answered: on terra, the app did as well as the skill alone; on haiku, it's too early to say; and every call paid for five extra tools.",
+      "tts_text": "Now it has answered: on terra, the app did as well as the skill alone; on haiku, it's too early to say; and every call paid for five extra tools.",
+      "heard": "Now it is answered, on Terra the app did as well as the skill alone, on haiku it's too early to say, and every call paid for 5 extra tools.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "has",
+          "heard": "is",
+          "similarity": 0.4
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s29",
+      "i": 2,
+      "file": "audio/s29_02.wav",
+      "clip_sha": "5d31b184112cf484",
+      "text": "Neither could be counted from the app's real runs, and the second was invisible from inside Vally's own executor.",
+      "tts_text": "Neither could be counted from the app's real runs, and the second was invisible from inside Valley's own [executor](/ˈɛksəkjˌuɾəɹ/).",
+      "heard": "Neither could be counted from the app's real runs, and the second was invisible from inside Valley's own executor.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s29",
+      "i": 3,
+      "file": "audio/s29_03.wav",
+      "clip_sha": "fb20249b52ef8bfa",
+      "text": "That's the reason to plug the app in: the eval now measures what the team ships.",
+      "tts_text": "That's the reason to plug the app in: the [eval](/ˌivˈæl/) now measures what the team ships.",
+      "heard": "That's the reason to plug the app in, the EVAL now measures what the team ships.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s30",
+      "i": 0,
+      "file": "audio/s30_00.wav",
+      "clip_sha": "183beade32158f1a",
+      "text": "Before you go on: what does an executor plugin export, and what does its execute function give back?",
+      "tts_text": "Before you go on: what does an [executor](/ˈɛksəkjˌuɾəɹ/) plugin export, and what does its execute function give back?",
+      "heard": "Before you go on, what does an executor plug-in export and what does its execute function give back?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s30",
+      "i": 1,
+      "file": "audio/s30_01.wav",
+      "clip_sha": "9ed5ee70ed23d275",
+      "text": "It exports register executors, which registers an executor by name.",
+      "tts_text": "It exports register [executors](/ˈɛksəkjˌuɾəɹz/), which registers an [executor](/ˈɛksəkjˌuɾəɹ/) by name.",
+      "heard": "It exports register executors, which registers an executor by name.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s30",
+      "i": 2,
+      "file": "audio/s30_02.wav",
+      "clip_sha": "fff746391748cbe8",
+      "text": "Its execute function receives the stimulus and the trial's options, and runs the app.",
+      "tts_text": "Its execute function receives the stimulus and the trial's options, and runs the app.",
+      "heard": "Its execute function receives the stimulus and the trials options and runs the app.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s30",
+      "i": 3,
+      "file": "audio/s30_03.wav",
+      "clip_sha": "895db8e60b03f44d",
+      "text": "It returns a trajectory: the events, the agent's reply, and the metrics.",
+      "tts_text": "It returns a trajectory: the events, the agent's reply, and the metrics.",
+      "heard": "It returns a trajectory, the events, the agents reply and the metrics.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s31",
+      "i": 0,
+      "file": "audio/s31_00.wav",
+      "clip_sha": "73db40cab191f7d6",
+      "text": "You can now run the app's own agent code under Vally's trials, experiments and model comparisons.",
+      "tts_text": "You can now run the app's own agent code under Valley's trials, experiments and model comparisons.",
+      "heard": "You can now run the app's own agent code under Valley's Trials, Experiments, and Model Comparisons.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s31",
+      "i": 1,
+      "file": "audio/s31_01.wav",
+      "clip_sha": "ec68d1179044b4af",
+      "text": "With that, the course is complete.",
+      "tts_text": "With that, the course is complete.",
+      "heard": "With that, the course is complete.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s31",
+      "i": 2,
+      "file": "audio/s31_02.wav",
+      "clip_sha": "b093b1abd13c4d5d",
+      "text": "The workflow guide walks the whole procedure, for a skill or for a feature in an app.",
+      "tts_text": "The workflow guide walks the whole procedure, for a skill or for a feature in an app.",
+      "heard": "The workflow guide walks the whole procedure for a skill or for a feature in an app.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s31",
+      "i": 3,
+      "file": "audio/s31_03.wav",
+      "clip_sha": "889059d3cf0bb3eb",
+      "text": "The exercises on the lesson page are worth doing, too.",
+      "tts_text": "The exercises on the lesson page are worth doing, too.",
+      "heard": "The exercises on the lesson page are worth doing too.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "haiku",
+      "sentences": 7,
+      "heard": [
+        "Hiku",
+        "Iku",
+        "HIKO's 3"
+      ],
+      "of": 19,
+      "share": 0.37
+    },
+    {
+      "word": "terra",
+      "sentences": 5,
+      "heard": [
+        "Tara",
+        "Tara's"
+      ],
+      "of": 14,
+      "share": 0.36
+    },
+    {
+      "word": "too",
+      "sentences": 1,
+      "heard": [
+        "1.2"
+      ],
+      "of": 3,
+      "share": 0.33
+    },
+    {
+      "word": "Our",
+      "sentences": 3,
+      "heard": [
+        "A",
+        "Her"
+      ],
+      "of": 11,
+      "share": 0.27
+    },
+    {
+      "word": "We",
+      "sentences": 1,
+      "heard": [
+        "You"
+      ],
+      "of": 8,
+      "share": 0.12
+    },
+    {
+      "word": "this",
+      "sentences": 1,
+      "heard": [
+        "the"
+      ],
+      "of": 9,
+      "share": 0.11
+    },
+    {
+      "word": "Vally's",
+      "sentences": 3,
+      "heard": [
+        "Bally's",
+        "values"
+      ],
+      "of": 33,
+      "share": 0.09
+    },
+    {
+      "word": "has",
+      "sentences": 1,
+      "heard": [
+        "is"
+      ],
+      "of": 12,
+      "share": 0.08
+    },
+    {
+      "word": "three",
+      "sentences": 1,
+      "heard": [
+        "HIKO's 3"
+      ],
+      "of": 17,
+      "share": 0.06
+    },
+    {
+      "word": "a",
+      "sentences": 2,
+      "heard": [
+        "Though"
+      ],
+      "of": 44,
+      "share": 0.05
+    },
+    {
+      "word": "So",
+      "sentences": 1,
+      "heard": [
+        "Though"
+      ],
+      "of": 20,
+      "share": 0.05
+    },
+    {
+      "word": "It",
+      "sentences": 2,
+      "heard": [],
+      "of": 48,
+      "share": 0.04
+    },
+    {
+      "word": "in",
+      "sentences": 1,
+      "heard": [
+        "an"
+      ],
+      "of": 28,
+      "share": 0.04
+    },
+    {
+      "word": "one",
+      "sentences": 1,
+      "heard": [
+        "1.2"
+      ],
+      "of": 40,
+      "share": 0.03
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 154,
+    "mismatched": 24,
+    "transcribed": 154,
+    "reused": 0,
+    "seconds_per_sentence": 0.114
+  }
+}

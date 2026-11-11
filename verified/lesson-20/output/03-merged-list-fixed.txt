@@ -1,0 +1,8 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 1 stimulus from merged-list
+
+Summary
+  PASS  merged-list
+
+Saved  …/practice/results/lesson-20/2026-11-10T17-47-10-769Z/
+Run ID  cc1e4fb1-8cb2-43bb-a944-84c2d8598a49

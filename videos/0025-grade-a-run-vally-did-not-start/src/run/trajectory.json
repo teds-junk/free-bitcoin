@@ -1,0 +1,155 @@
+{
+  "schema_version": "ATIF-v1.4",
+  "session_id": "774404c8-3bfb-4d48-b2b3-a17e69a0a85b",
+  "agent": {
+    "name": "notes-cli-release-app",
+    "version": "1.0",
+    "model_name": "claude-haiku-4.5"
+  },
+  "steps": [
+    {
+      "step_id": 1,
+      "source": "agent",
+      "model_name": "claude-haiku-4.5",
+      "message": "",
+      "tool_calls": [
+        {
+          "tool_call_id": "toolu_0135FhAXwCqe5Skhjhux8Smq",
+          "function_name": "view",
+          "arguments": {
+            "path": "~/src/demo/practice/app-run/repo"
+          }
+        },
+        {
+          "tool_call_id": "toolu_01GumEGmGxLzS6m98UdQoVpM",
+          "function_name": "view",
+          "arguments": {
+            "path": "~/src/demo/practice/app-run/repo/release/merged.txt"
+          }
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "toolu_0135FhAXwCqe5Skhjhux8Smq",
+            "content": "{\"content\":\"CHANGELOG.md\\nrelease\\ntools\"}"
+          },
+          {
+            "source_call_id": "toolu_01GumEGmGxLzS6m98UdQoVpM",
+            "content": "{\"content\":\"#74 feat: add --since <date> to notes list\\n#75 fix: notes …"
+          }
+        ]
+      },
+      "metrics": {
+        "prompt_tokens": 16620,
+        "completion_tokens": 217,
+        "cost_usd": 0.0218575
+      }
+    },
+    {
+      "step_id": 2,
+      "source": "agent",
+      "model_name": "claude-haiku-4.5",
+      "message": "Now let me check the existing CHANGELOG.md to understand the format:",
+      "tool_calls": [
+        {
+          "tool_call_id": "toolu_013D3EMJ3VcDRV8RXv2ViCYL",
+          "function_name": "view",
+          "arguments": {
+            "path": "~/src/demo/practice/app-run/repo/CHANGELOG.md"
+          }
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "toolu_013D3EMJ3VcDRV8RXv2ViCYL",
+            "content": "{\"content\":\"# Changelog\\n\\nAll notable changes to notes-cli.\\n\\n## [Unr…"
+          }
+        ]
+      },
+      "metrics": {
+        "prompt_tokens": 16946,
+        "completion_tokens": 86,
+        "cached_tokens": 16610,
+        "cost_usd": 0.00250925
+      }
+    },
+    {
+      "step_id": 3,
+      "source": "agent",
+      "model_name": "claude-haiku-4.5",
+      "message": "Perfect! I can see the format. Now I'll add the three changes from `rel…",
+      "tool_calls": [
+        {
+          "tool_call_id": "toolu_01SqDg2MkqDaAmAuGkx4p8cF",
+          "function_name": "edit",
+          "arguments": {
+            "path": "~/src/demo/practice/app-run/repo/CHANGELOG.md",
+            "old_str": "## [Unreleased]\n\n### Added\n- Add `notes list --tag` to filter by tag (#…",
+            "new_str": "## [Unreleased]\n\n### Added\n- Add `notes list --tag` to filter by tag (#…"
+          }
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "toolu_01SqDg2MkqDaAmAuGkx4p8cF",
+            "content": "{\"content\":\"File ~/src/demo/practice/app-run/repo/CHANGELOG.md updated …"
+          }
+        ]
+      },
+      "metrics": {
+        "prompt_tokens": 17162,
+        "completion_tokens": 244,
+        "cached_tokens": 16156,
+        "cost_usd": 0.0040916
+      }
+    },
+    {
+      "step_id": 4,
+      "source": "agent",
+      "model_name": "claude-haiku-4.5",
+      "message": "",
+      "tool_calls": [
+        {
+          "tool_call_id": "toolu_0157KWr4MZaaqa81traJj1KP",
+          "function_name": "view",
+          "arguments": {
+            "path": "~/src/demo/practice/app-run/repo/CHANGELOG.md"
+          }
+        }
+      ],
+      "observation": {
+        "results": [
+          {
+            "source_call_id": "toolu_0157KWr4MZaaqa81traJj1KP",
+            "content": "{\"content\":\"# Changelog\\n\\nAll notable changes to notes-cli.\\n\\n## [Unr…"
+          }
+        ]
+      },
+      "metrics": {
+        "prompt_tokens": 17442,
+        "completion_tokens": 70,
+        "cached_tokens": 17156,
+        "cost_usd": 0.00242185
+      }
+    },
+    {
+      "step_id": 5,
+      "source": "agent",
+      "model_name": "claude-haiku-4.5",
+      "message": "Done! I've added all three changes from `release/merged.txt` to the Unr…",
+      "tool_calls": [],
+      "observation": {
+        "results": []
+      },
+      "metrics": {
+        "prompt_tokens": 17716,
+        "completion_tokens": 124,
+        "cached_tokens": 17437,
+        "cost_usd": 0.00271095
+      }
+    }
+  ]
+}

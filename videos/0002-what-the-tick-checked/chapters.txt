@@ -1,0 +1,6 @@
+0:00 What did the tick check?
+0:15 Read the eval file
+2:07 What a run leaves behind
+4:40 What a trial used
+6:18 Why both models passed
+7:26 Find it in the files

@@ -1,0 +1,11 @@
+Our FIRST take of s18 (the full suite), recorded 2026-11-11 08:17, a few minutes before the kept take.
+Run folder, moved aside by the second take (not deleted): /Users/Shared/.demo-old.lesson-21-full.1794414136
+(was results/lesson-21-full/2026-11-11T16-18-12-120Z). 30 agent runs; 28 trials finished, 2 ended in ERROR.
+  full-take1.log            what vally printed (paths rewritten to ~/src/demo)
+  full-take1.exit           its exit code: 1
+  full-take1.results.jsonl  the run's records (paths rewritten)
+What happened: two claude-haiku-4.5 trials ended in ERROR, "Session disconnected while waiting for a response"
+(conversation · three-requests, wording · cache), and one real FAIL: loading · skip-question on gpt-5.6-terra,
+"The following disallowed skills were called: changelog-entry". Because of the ERRORs the tape was recorded
+again (the retake rule); the second take passed everything and is the one in the video. s19 and s24 show this
+first run, labelled as our first run.

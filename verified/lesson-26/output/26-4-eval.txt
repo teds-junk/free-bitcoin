@@ -1,0 +1,41 @@
+Loaded 4 stimuli from release · 2 models · 2 workers
+  WARN release · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+release
+
+claude-haiku-4.5
+  ERROR  tracker-down
+   Executor 'release-app' does not support tool-call simulation, but stimulus 'tracker-down'
+   declares a 'simulation' block. Use a simulation-capable executor (e.g. 'copilot-sdk') or remove
+   the simulation config.
+
+gpt-5.6-terra
+  ERROR  tracker-down
+   Executor 'release-app' does not support tool-call simulation, but stimulus 'tracker-down'
+   declares a 'simulation' block. Use a simulation-capable executor (e.g. 'copilot-sdk') or remove
+   the simulation config.
+
+claude-haiku-4.5
+  FAIL  since-last-release · 3/5 graders · 14.2s
+   ✘ every-change-handled  Command 'node .vally-grading/check-release.mjs' failed: Expected exit
+                           code 0, got 1
+   ✘ loads-the-skill  The following required skills were not called: changelog-entry
+
+────────────────────────────────────────────────────────
+
+Failures  3 failed
+  ✘ release · since-last-release [claude-haiku-4.5]  every-change-handled · Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1 (+1 more)
+  ERROR release · tracker-down [claude-haiku-4.5]  Executor 'release-app' does not support tool-call simulation, but stimulus 'tracker-down' declares a 'simulation' block. Use a simulation-capable executor (e.g. 'copilot-sdk') or remove the simulation config.
+  ERROR release · tracker-down [gpt-5.6-terra]  Executor 'release-app' does not support tool-call simulation, but stimulus 'tracker-down' declares a 'simulation' block. Use a simulation-capable executor (e.g. 'copilot-sdk') or remove the simulation config.
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra     0/1 evals passed
+
+  eval     claude-haiku-4.5  gpt-5.6-terra
+  release  ✘ 0/2             ✘ 1/2        
+
+Saved  …/practice/results/lesson-26/2026-11-10T17-52-29-999Z/
+Run ID  f021c685-e61a-4c0d-bc05-52687d5e8b49

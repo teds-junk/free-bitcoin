@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Why near-miss requests?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#test{width:100%;padding:36px 40px 44px;gap:24px}#test .parts{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;width:100%}#test .part{min-height:280px}#test .part .title{font-size:46px;line-height:1.2}#test .part .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">Why near-miss requests?</h2>
+  <div class="stage">
+<div class="semantic-block" id="test" data-role="structure">
+    <div class="title words">a loading test</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title words">Requests that should load it</div><div class="label">catch a skill that stays unused</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title words">Near-miss requests</div><div class="label">catch a skill that loads where it doesn’t belong</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#test",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

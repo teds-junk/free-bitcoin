@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Divide by the passes</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.stage{gap:34px}.stage > .semantic-block{width:100%}.stage > .semantic-block .label{font-size:38px}.formula{display:grid;grid-template-columns:1fr auto 1fr;gap:32px;align-items:center;width:100%}.formula .semantic-block{min-height:210px}.formula .title{font-size:46px}.formula .label{font-size:34px}.formula .op{font-family:var(--font-code);font-size:96px;color:var(--ink);line-height:1}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Cost per passing trial</div>
+  <h2 class="scene-title">Divide by the passes</h2>
+  <div class="stage">
+<div class="semantic-block" data-concept="def" data-rep="block" data-role="structure">
+      <div class="title">cost per passing trial</div><div class="label">What one useful result costs you.</div>
+    </div>
+  <div class="formula">
+    <div class="semantic-block" data-concept="total" data-rep="block" data-role="attention">
+      <div class="title words">Total cost</div><div class="label">every trial of the variant</div>
+    </div>
+    <div class="op">÷</div>
+    <div class="semantic-block" data-concept="passes" data-rep="block" data-role="attention">
+      <div class="title words">Trials that passed</div><div class="label">only those</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "total",
+  "at": "1~total cost",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "passes",
+  "at": "1~divided",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "def",
+  "at": "2",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

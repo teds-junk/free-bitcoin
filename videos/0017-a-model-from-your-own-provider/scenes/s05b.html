@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What the provider block holds</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.byok{font-size:34px;line-height:1.42;padding:20px 32px;min-width:900px}.callout{font-size:32px}.stage{gap:18px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Bring your own key</div>
+  <h2 class="scene-title">What the provider block holds</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark byok" data-lang="yaml"><code><span data-concept="dflt" data-rep="code"><span style="color:#4EA5E6">defaults</span><span style="color:#B3C0BF">:</span></span>
+<span style="color:#B3C0BF">  </span><span data-concept="model" data-rep="code"><span style="color:#4EA5E6">model</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">my-model-name</span></span>
+<span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">executor</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">    </span><span data-concept="name" data-rep="code"><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">copilot-sdk</span></span>
+<span style="color:#B3C0BF">    </span><span data-concept="cfg" data-rep="code"><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span></span>
+<span style="color:#B3C0BF">      </span><span data-concept="prov" data-rep="code"><span style="color:#4EA5E6">provider</span><span style="color:#B3C0BF">:</span></span>
+<span style="color:#B3C0BF">        </span><span data-concept="url" data-rep="code"><span style="color:#4EA5E6">baseUrl</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">https://api.example.com/v1</span></span>
+<span style="color:#B3C0BF">        </span><span data-concept="type" data-rep="code"><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">openai</span></span>
+<span style="color:#B3C0BF">        </span><span data-concept="key" data-rep="code"><span style="color:#4EA5E6">apiKeyEnv</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">MY_PROVIDER_KEY</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="url">the address: the only required field</p><p class="callout" data-anchor="type">the kind of interface</p><p class="callout" data-anchor="key">the name of a variable, not the key</p></aside>
+  </div>
+  <p class="note">An eval file’s defaults, for a hosted provider · checked with <span class="mono">vally lint</span>, not run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "prov",
+  "at": "0",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "url",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "type",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "key",
+  "at": "4",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

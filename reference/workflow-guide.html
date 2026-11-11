@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workflow guide: improving a skill with evals — Vally &amp; Agent Evals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Reference · Vally &amp; Agent Evals</div>
+    <h1>Workflow guide: improving a skill with evals</h1>
+    <div class="lesson-meta">Verified 2026-11-10 · Vally 0.21.0</div>
+  </div>
+
+  <p>This guide takes a skill from "it worked when I tried it" to a quick suite and a full suite you can run after every change, with a known cost per passing trial and a check that fails on a regression. A last stage covers a skill that an app calls. It is written for someone who took the course a while ago. Every step says what to do, how to tell it is done, and which lesson explains it. The commands use the course's file names; put your own in their place.</p>
+
+  <h2>Where are you?</h2>
+  <ul>
+    <li>Starting with a new skill and no evals: start at <a href="#A">A</a>.</li>
+    <li>You have an eval file and want graders: <a href="#C1">GOTO C1</a>.</li>
+    <li>You wrote or changed a grader: <a href="#C3">GOTO C3</a>.</li>
+    <li>You edited the skill: <a href="#H2">GOTO H2</a>.</li>
+    <li>A count improved and you want to know if it is real: <a href="#F1">GOTO F1</a>.</li>
+    <li>You are about to rely on an edit: <a href="#F4">GOTO F4</a>.</li>
+    <li>You need to know what the skill costs, or want budgets: <a href="#G1">GOTO G1</a>.</li>
+    <li>A model you use was replaced: <a href="#G4">GOTO G4</a>.</li>
+    <li>A run ended in ERROR, FLAKY or a surprising FAIL: <a href="#I1">GOTO I1</a>.</li>
+    <li>The skill is called by an app: <a href="#J1">GOTO J1</a>.</li>
+  </ul>
+
+  <h2>The workflow</h2>
+  <ol class="workflow">
+    <li id="A"><span class="wf-label">A</span><strong>Set up</strong>
+      <ol>
+        <li id="A1"><span class="wf-label">A1</span>Check the tools.
+<pre><code class="language-bash">node --version
+vally --version</code></pre>
+          <span class="wf-done">Done when: Node is 22.15 or higher and Vally prints a version.</span>
+          <span class="wf-goto">If either is missing, see Before you start on the <a href="../index.html#before-you-start">course home</a>.</span>
+          <a class="wf-src" href="../lessons/0001-it-works-for-me.html#run-on-two-models">Lesson 1</a></li>
+        <li id="A2"><span class="wf-label">A2</span>Lay out the folder: <code>skills/your-skill/SKILL.md</code>, and <code>evals/</code> beside <code>skills/</code>, never inside it. Put starting files under <code>evals/fixtures/</code>.
+          <span class="wf-done">Done when: no eval file or grading file is inside a skill folder.</span>
+          <a class="wf-src" href="../lessons/0006-keep-graders-out-of-reach.html#what-goes-in">Lesson 6</a></li>
+        <li id="A3"><span class="wf-label">A3</span>List your account's models and choose two that differ.
+<pre><code class="language-bash">vally eval -e evals/one-request.eval.yaml \
+  --model list-my-models \
+  --output-dir results/models</code></pre>
+          <span class="wf-done">Done when: the error lists your models and you have written down two.</span>
+          <a class="wf-src" href="../lessons/0001-it-works-for-me.html#run-on-two-models">Lesson 1</a></li>
+      </ol>
+    </li>
+
+    <li id="B"><span class="wf-label">B</span><strong>See what the skill does</strong>
+      <ol>
+        <li id="B1"><span class="wf-label">B1</span>Write an eval file with four to six realistic requests and no graders. Include messy ones. Lint it.
+<pre><code class="language-bash">vally lint -e evals/six-requests.eval.yaml</code></pre>
+          <span class="wf-done">Done when: lint reports the file is valid.</span>
+          <a class="wf-src" href="../lessons/0004-read-the-runs-first.html#read-and-name">Lesson 4</a></li>
+        <li id="B2"><span class="wf-label">B2</span>Run it on both models without grading.
+<pre><code class="language-bash">vally eval -e evals/six-requests.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --skip-grade --workers 2 \
+  --output-dir results/reading</code></pre>
+          <span class="wf-done">Done when: every trial finished.</span>
+          <span class="wf-goto">If any trial shows ERROR, it did not complete: <a href="#I2">GOTO I2</a>.</span>
+          <a class="wf-src" href="../lessons/0004-read-the-runs-first.html#read-and-name">Lesson 4</a></li>
+        <li id="B3"><span class="wf-label">B3</span>Read every <code>workspace.patch</code>. Write one note per trial, then group the notes into named failure modes.
+          <span class="wf-done">Done when: each failure mode has a name and a trial that shows it.</span>
+          <span class="wf-goto">If you found none, write harder requests and <a href="#B1">GOTO B1</a>.</span>
+          <a class="wf-src" href="../lessons/0004-read-the-runs-first.html#read-and-name">Lesson 4</a></li>
+      </ol>
+    </li>
+
+    <li id="C"><span class="wf-label">C</span><strong>Turn failures into graders you can trust</strong>
+      <ol>
+        <li id="C1"><span class="wf-label">C1</span>For each failure mode, choose the cheapest grader that can decide it.
+          <span class="wf-goto">If it is about what was added or not added, use a diff grader and continue to C2.</span>
+          <span class="wf-goto">If it is about where something sits in a file, use a script through the grading environment and continue to C2.</span>
+          <span class="wf-goto">If only a reader could decide it, <a href="#E1">GOTO E1</a>.</span>
+          <a class="wf-src" href="../lessons/0005-turn-a-failure-into-a-grader.html#diff-graders">Lesson 5</a></li>
+        <li id="C2"><span class="wf-label">C2</span>Add the graders, one per failure mode, named after it. Lint.
+<pre><code class="language-bash">vally lint -e evals/changelog.eval.yaml</code></pre>
+          <span class="wf-done">Done when: lint shows no errors. One warning, <code>scoring-defaults-applied</code>, is expected.</span>
+          <a class="wf-src" href="../lessons/0005-turn-a-failure-into-a-grader.html#diff-graders">Lesson 5</a></li>
+        <li id="C3"><span class="wf-label">C3</span>Save a correct trial's patch as the golden patch, name it in the stimulus, and run the oracle both ways.
+<pre><code class="language-bash">vally oracle -e evals/changelog.eval.yaml --verbose</code></pre>
+<pre><code class="language-bash">vally oracle -e evals/changelog.eval.yaml \
+  --no-golden-input --verbose</code></pre>
+          <span class="wf-done">Done when: the first prints PASSED for each stimulus that has a golden patch and the second ends each stimulus with baseline OK.</span>
+          <span class="wf-goto">If a grader is "trivially passing" or fails the golden patch, fix it and <a href="#C2">GOTO C2</a>.</span>
+          <a class="wf-src" href="../lessons/0007-test-a-grader.html#prove-your-graders">Lesson 7</a></li>
+        <li id="C4"><span class="wf-label">C4</span>For every grader the oracle marked N/A, re-grade a saved run where that failure happened. Type this in the run's folder.
+<pre><code class="language-bash">vally grade -e ../../../evals/changelog.eval.yaml \
+  --run-dir . &lt; results.jsonl</code></pre>
+          <span class="wf-done">Done when: the grader fails the trials you know are bad.</span>
+          <span class="wf-goto">If it passes them, the grader cannot fail. Fix it and <a href="#C2">GOTO C2</a>.</span>
+          <span class="wf-goto">If no saved run has diffs yet, continue to D1 and come back after it.</span>
+          <span class="wf-goto">Ignore script graders here: with the workspace gone they fail every trial, and with <code>--require-pass</code> they make the exit code 1. C3 is their test.</span>
+          <a class="wf-src" href="../lessons/0008-check-graders-against-saved-trials.html#catch-it">Lesson 8</a></li>
+      </ol>
+    </li>
+
+    <li id="D"><span class="wf-label">D</span><strong>Measure, edit, measure</strong>
+      <ol>
+        <li id="D1"><span class="wf-label">D1</span>Run the graded eval several times on both models and write down the count per stimulus and model.
+<pre><code class="language-bash">vally eval -e evals/changelog.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 3 --workers 2 \
+  --output-dir results/before</code></pre>
+          <span class="wf-done">Done when: you have a count for each stimulus on each model.</span>
+          <span class="wf-goto">If any trial shows ERROR, it did not complete: <a href="#I2">GOTO I2</a>.</span>
+          <a class="wf-src" href="../lessons/0005-turn-a-failure-into-a-grader.html#measure-edit-measure">Lesson 5</a></li>
+        <li id="D2"><span class="wf-label">D2</span>Add one rule to the skill per failure mode. Say what to do in the case the skill left open.
+          <span class="wf-done">Done when: each rule names a case and an action.</span>
+          <a class="wf-src" href="../lessons/0005-turn-a-failure-into-a-grader.html#measure-edit-measure">Lesson 5</a></li>
+        <li id="D3"><span class="wf-label">D3</span>Run D1's command again into a new folder, and compare stimulus by stimulus.
+          <span class="wf-goto">If a count moved only a little, <a href="#F1">GOTO F1</a> before believing it.</span>
+          <span class="wf-goto">If a stimulus that passed now fails, read its patch before changing anything.</span>
+          <a class="wf-src" href="../lessons/0005-turn-a-failure-into-a-grader.html#measure-edit-measure">Lesson 5</a></li>
+        <li id="D4"><span class="wf-label">D4</span>Test loading: requests that should load the skill, near-miss requests that should not, and neighbouring skills installed. Rewrite the description if it misses.
+          <span class="wf-done">Done when: the skill loads for every request that needs it and for no near-miss.</span>
+          <span class="wf-goto">If any trial shows ERROR, it did not complete: <a href="#I2">GOTO I2</a>.</span>
+          <a class="wf-src" href="../lessons/0009-does-the-skill-load.html#test-then-fix">Lesson 9</a></li>
+        <li id="D5"><span class="wf-label">D5</span>Compare with no skill.
+<pre><code class="language-bash">vally experiment run \
+  evals/with-and-without.experiment.yaml \
+  --workers 2 --output-dir results/with-and-without</code></pre>
+          <span class="wf-done">Done when: you can say on which stimuli the skill helps, makes no difference, or hurts.</span>
+          <span class="wf-goto">If a stimulus passes without the skill and fails with it, find the rule that causes it and <a href="#D2">GOTO D2</a>.</span>
+          <a class="wf-src" href="../lessons/0010-is-the-agent-better-with-the-skill.html#run-with-and-without">Lesson 10</a></li>
+        <li id="D6"><span class="wf-label">D6</span>Write one conversation of three requests, each leaning on a different rule, with a grader per turn.
+          <span class="wf-done">Done when: each turn's own change is graded.</span>
+          <a class="wf-src" href="../lessons/0011-follow-up-requests.html#write-and-run">Lesson 11</a></li>
+      </ol>
+    </li>
+
+    <li id="E"><span class="wf-label">E</span><strong>Judge what code cannot</strong>
+      <ol>
+        <li id="E1"><span class="wf-label">E1</span>Produce a dozen or more entries, read each, and write your own yes or no.
+          <span class="wf-done">Done when: every entry has your label, written before any judge ran.</span>
+          <a class="wf-src" href="../lessons/0012-a-judge-for-what-code-cannot-check.html#write-the-judge">Lesson 12</a></li>
+        <li id="E2"><span class="wf-label">E2</span>Add a rubric with one criterion, a <code>prompt</code> grader with <code>scoring: binary</code>, and a named <code>judge_model</code>. Lint.
+          <a class="wf-src" href="../lessons/0012-a-judge-for-what-code-cannot-check.html#write-the-judge">Lesson 12</a></li>
+        <li id="E3"><span class="wf-label">E3</span>Judge the saved trials. Typed in the run's folder.
+<pre><code class="language-bash">vally grade -e ../../../evals/wording.eval.yaml \
+  --run-dir . --verbose &lt; results.jsonl</code></pre>
+          <span class="wf-done">Done when: each trial has a verdict and a reason.</span>
+          <a class="wf-src" href="../lessons/0012-a-judge-for-what-code-cannot-check.html#write-the-judge">Lesson 12</a></li>
+        <li id="E4"><span class="wf-label">E4</span>Count the four boxes and work out TPR and TNR.
+          <span class="wf-done">Done when: you have both numbers and the number of labels.</span>
+          <span class="wf-goto">If either is below 90%, read each disagreement, reword the criterion, and <a href="#E3">GOTO E3</a>. Stop after two attempts and add labels.</span>
+          <a class="wf-src" href="../lessons/0013-check-the-judge.html#label-compare-decide">Lesson 13</a></li>
+      </ol>
+    </li>
+
+    <li id="F"><span class="wf-label">F</span><strong>Decide whether a change is real</strong>
+      <ol>
+        <li id="F1"><span class="wf-label">F1</span>Keep a copy of the skill as it was. If an older copy is there from a previous comparison, remove it first, because <code>cp -R</code> would put the new copy inside it.
+<pre><code class="language-bash">rm -rf skills/changelog-entry-before</code></pre>
+<pre><code class="language-bash">cp -R skills/changelog-entry \
+  skills/changelog-entry-before</code></pre>
+          <a class="wf-src" href="../lessons/0015-is-the-change-real.html#before-and-after">Lesson 15</a></li>
+        <li id="F2"><span class="wf-label">F2</span>Run both versions on both models as variants of one experiment, three trials or more each.
+<pre><code class="language-bash">vally experiment run \
+  evals/before-and-after.experiment.yaml \
+  --workers 2 --output-dir results/before-and-after</code></pre>
+          <span class="wf-done">Done when: you have trials passed, of trials finished, for each variant.</span>
+          <a class="wf-src" href="../lessons/0015-is-the-change-real.html#before-and-after">Lesson 15</a></li>
+        <li id="F3"><span class="wf-label">F3</span>Put the before and after counts into the range calculator on the <a href="judges-and-statistics.html#small-counts">judges and small counts</a> sheet.
+          <span class="wf-goto">If the ranges do not overlap, the change is real. Continue to F4.</span>
+          <span class="wf-goto">If they overlap, say "these trials cannot tell". Run more trials or use harder requests, and <a href="#F2">GOTO F2</a>.</span>
+          <a class="wf-src" href="../lessons/0015-is-the-change-real.html#before-and-after">Lesson 15</a></li>
+        <li id="F4"><span class="wf-label">F4</span>Before relying on an edit (not after every edit), judge before against after side by side, once per model. Type this in the run folder F2 made, naming its variant folders.
+<pre><code class="language-bash">vally compare \
+  --baseline haiku-before \
+  --treatment haiku-after \
+  --judge-model claude-sonnet-5.5 \
+  --fail-on-regression</code></pre>
+<pre data-shell="taught"><code class="language-bash">echo $?</code></pre>
+          <span class="wf-done">Done when: it prints 0 for every model. It exits 1 only when the after version's mean score is below zero and its whole range is too.</span>
+          <span class="wf-goto">If it prints 1, read the pairs the after version lost, then <a href="#D2">GOTO D2</a>.</span>
+          <span class="wf-goto">This gates judged quality only: a rise in tokens does not change the exit code. Gate cost with budgets: <a href="#G5">GOTO G5</a>.</span>
+          <a class="wf-src" href="../lessons/0019-is-it-worse-than-before.html#compare-before-and-after">Lesson 19</a></li>
+      </ol>
+    </li>
+
+    <li id="G"><span class="wf-label">G</span><strong>Price it and set ceilings</strong>
+      <ol>
+        <li id="G1"><span class="wf-label">G1</span>Run an experiment whose variants differ in model and reasoning effort (<code>vary: [/defaults/model, /defaults/reasoning_effort]</code>), three trials each.
+<pre><code class="language-bash">vally experiment run \
+  evals/cost.experiment.yaml \
+  --workers 2 --output-dir results/cost</code></pre>
+          <span class="wf-done">Done when: you have each variant's cost per passing trial, its total cost divided by its passing trials, from the cost calculator in lesson 16. Judge calls are not in Vally's cost.</span>
+          <a class="wf-src" href="../lessons/0016-what-a-passing-trial-costs.html#price-the-variants">Lesson 16</a></li>
+        <li id="G2"><span class="wf-label">G2</span>Choose a variant. Drop any that another beats on both counts: costs more and passes no more often. Among the rest, choose by what a failure costs you. Tokens are not price: in our run the model with the fewest tokens cost the most.
+          <span class="wf-done">Done when: you can state the choice with its pass rate and cost per passing trial.</span>
+          <a class="wf-src" href="../lessons/0016-what-a-passing-trial-costs.html#what-the-table-says">Lesson 16</a></li>
+        <li id="G3"><span class="wf-label">G3</span>Does the app call its model through its own provider? If no, continue to G4. If yes, add a variant with <code>executor: {name: copilot-sdk, config: {provider: …}}</code>, keep keys out of the file, and add <code>/defaults/executor</code> to <code>vary</code>. A model on your own computer needs <code>--workers 1</code>.
+          <span class="wf-done">Done when: the variant runs. Its cost is empty: price its tokens at your provider's rate.</span>
+          <span class="wf-goto">If the dry run says <code>Experiment drift detected</code>, a path is missing from <code>vary</code>.</span>
+          <a class="wf-src" href="../lessons/0017-a-model-from-your-own-provider.html#run-provider">Lesson 17</a></li>
+        <li id="G4"><span class="wf-label">G4</span>Before moving the suites to another model, repeat <a href="#G1">G1</a> with it, then re-test the budgets on its trials as in <a href="#G5">G5</a>, then run the full suite at <a href="#H3">H3</a>.
+          <span class="wf-done">Done when: the new model's cost per passing trial is known and its good trials pass every budget.</span>
+          <a class="wf-src" href="../lessons/0021-keep-it-working.html#two-suites-and-conventions">Lesson 21</a></li>
+        <li id="G5"><span class="wf-label">G5</span>Put budget graders on the quick stimuli, each <code>max</code> just above a typical saved trial, and a time limit that stops the agent.
+<pre><code class="language-yaml">      - type: token-budget
+        config:
+          max: 107000
+      - type: turn-count
+        config:
+          max: 5
+      - type: wall-time
+        config:
+          max: 14s</code></pre>
+<pre><code class="language-yaml">    constraints:
+      max_agent_duration: 1m</code></pre>
+          Then test them on saved trials, for free, in a run's folder:
+<pre><code class="language-bash">vally grade -e ../../../evals/changelog.eval.yaml \
+  --run-dir . &lt; results.jsonl</code></pre>
+          <span class="wf-done">Done when: every good saved trial passes every budget.</span>
+          <span class="wf-goto">If a good trial fails one, raise that <code>max</code> and re-grade.</span>
+          <span class="wf-goto">A token budget catches a trial that loops. It does not stop an expensive model; G1 does.</span>
+          <a class="wf-src" href="../lessons/0018-put-a-ceiling-on-a-trial.html#set-budgets">Lesson 18</a></li>
+      </ol>
+    </li>
+
+    <li id="H"><span class="wf-label">H</span><strong>Keep it working</strong>
+      <ol>
+        <li id="H1"><span class="wf-label">H1</span>Tag the stimuli that code can check, and define a quick and a full suite in <code>.vally.yaml</code>. The quick stimuli carry the budgets from <a href="#G5">G5</a>.
+          <a class="wf-src" href="../lessons/0021-keep-it-working.html#two-suites-and-conventions">Lesson 21</a></li>
+        <li id="H2"><span class="wf-label">H2</span>After every edit to the skill, run the quick suite.
+<pre><code class="language-bash">vally eval --suite quick \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --require-pass \
+  --output-dir results/quick</code></pre>
+          <span class="wf-done">Done when: the command exits with 0. An over-budget trial fails like any other.</span>
+          <span class="wf-goto">If any trial shows ERROR, it did not complete: <a href="#I2">GOTO I2</a>.</span>
+          <span class="wf-goto">If it fails, read the failing trial's patch, then <a href="#D2">GOTO D2</a>.</span>
+          <a class="wf-src" href="../lessons/0021-keep-it-working.html#two-suites-and-conventions">Lesson 21</a></li>
+        <li id="H3"><span class="wf-label">H3</span>Before sharing the skill, and when a model changes (after <a href="#G4">G4</a>), run the full suite and repeat <a href="#D5">D5</a>.
+<pre><code class="language-bash">vally eval --suite full \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --require-pass \
+  --output-dir results/full</code></pre>
+          <span class="wf-done">Done when: every eval passes on every model you support.</span>
+          <span class="wf-goto">If any trial shows ERROR, it did not complete: <a href="#I2">GOTO I2</a>.</span>
+          <a class="wf-src" href="../lessons/0021-keep-it-working.html#two-suites-and-conventions">Lesson 21</a></li>
+        <li id="H4"><span class="wf-label">H4</span>Write or update the one-page conventions file.
+          <span class="wf-done">Done when: a teammate could run H2 and H3 from it.</span>
+          <a class="wf-src" href="../lessons/0021-keep-it-working.html#two-suites-and-conventions">Lesson 21</a></li>
+        <li id="H5"><span class="wf-label">H5</span>Optional: run the quick suite automatically on a hosting service. We have not run this step. It follows <a href="https://microsoft.github.io/vally/get-started/add-to-ci/">Vally's Add to CI page</a>, which gives the full workflow file. The lines that matter:
+<pre><code class="language-yaml">permissions:
+  contents: read
+  copilot-requests: write</code></pre>
+<pre><code class="language-yaml">env:
+  GITHUB_TOKEN: ${{ github.token }}</code></pre>
+          <span class="wf-done">Done when: a change that breaks a quick stimulus makes the automated check fail.</span></li>
+      </ol>
+    </li>
+
+    <li id="I"><span class="wf-label">I</span><strong>When a run goes wrong</strong>
+      <ol>
+        <li id="I1"><span class="wf-label">I1</span>Is the eval valid? Lint it, and read the run's first lines.
+<pre><code class="language-bash">vally lint -e evals/changelog.eval.yaml</code></pre>
+          <span class="wf-done">Done when: lint says the file is valid and the run reached an agent.</span>
+          <span class="wf-goto">If lint passes but every trial ends in ERROR within milliseconds, quote each <code>commands:</code> entry; see the <a href="troubleshooting.html#valid">troubleshooting</a> sheet.</span>
+          <a class="wf-src" href="../lessons/0020-when-a-run-goes-wrong.html#four-questions">Lesson 20</a></li>
+        <li id="I2"><span class="wf-label">I2</span>Did it complete? Read the ERROR line, then list the trial's folder.
+          <span class="wf-goto">If it holds only <code>metadata.json</code>, setup failed: fix the eval file and <a href="#I4">GOTO I4</a>.</span>
+          <span class="wf-goto">If it holds <code>events.jsonl</code> and no <code>workspace.patch</code>, the agent was stopped: a time limit or a dropped session. Fix and <a href="#I4">GOTO I4</a>.</span>
+          <span class="wf-goto">If it holds both, the agent finished: <a href="#I3">GOTO I3</a>.</span>
+          <span class="wf-done">Done when: you know where the trial stopped. The <a href="troubleshooting.html#complete">troubleshooting</a> sheet lists the messages.</span>
+          <a class="wf-src" href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></li>
+        <li id="I3"><span class="wf-label">I3</span>Why was the result unexpected? Read the grader's evidence and the trial's <code>workspace.patch</code>; add <code>--verbose</code> to <code>vally eval</code> to see the agent's final reply. Decide who is wrong.
+          <span class="wf-goto">If the grader is wrong, fix it and <a href="#I4">GOTO I4</a>.</span>
+          <span class="wf-goto">If the agent is wrong, it is a real failure: <a href="#D2">GOTO D2</a>.</span>
+          <span class="wf-goto">If the stimulus is FLAKY, more trials before deciding: <a href="#F2">GOTO F2</a>.</span>
+          <a class="wf-src" href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></li>
+        <li id="I4"><span class="wf-label">I4</span>Does the fix work? Use the cheapest check that can show it. A fix to a diff grader, a budget or a rubric: re-grade the saved run, as in <a href="#C4">C4</a>, free or judge calls only. A fix to a file or script grader: <code>vally oracle</code>. A fix to the setup or a time limit: one new run, on one model.
+          <span class="wf-done">Done when: the symptom is gone.</span>
+          <span class="wf-goto">If it is still there after two attempts, <a href="#I1">GOTO I1</a> and question each answer again.</span>
+          <a class="wf-src" href="../lessons/0020-when-a-run-goes-wrong.html#fix-four">Lesson 20</a></li>
+      </ol>
+    </li>
+
+    <li id="J"><span class="wf-label">J</span><strong>A skill inside an app</strong>
+      <ol>
+        <li id="J1"><span class="wf-label">J1</span>Start the agent where the app would: stage the files the app's checkout has, and run the app's setup step as <code>commands:</code>, each entry quoted. Lint and run.
+          <span class="wf-done">Done when: the patches show only the agent's change, not what setup created.</span>
+          <a class="wf-src" href="../lessons/0022-start-the-agent-where-the-app-would.html#run-the-setup">Lesson 22</a></li>
+        <li id="J2"><span class="wf-label">J2</span>Add the app's own test as a hidden <code>run-command</code> grader, staged through <code>grading_environment</code>, and run the oracle without the golden patch.
+<pre><code class="language-bash">vally oracle -e evals/release.eval.yaml \
+  --no-golden-input</code></pre>
+          <span class="wf-done">Done when: the test fails the unchanged workspace.</span>
+          <a class="wf-src" href="../lessons/0022-start-the-agent-where-the-app-would.html#hidden-test">Lesson 22</a></li>
+        <li id="J3"><span class="wf-label">J3</span>Only for steps the app depends on, add <code>tool-calls</code> graders (required or disallowed), <code>max-repeat</code> and <code>skill-invocation</code>. Re-grade a saved run, for free.
+          <span class="wf-done">Done when: each route grader fails a saved trial that broke its rule, or you know none did.</span>
+          <a class="wf-src" href="../lessons/0023-check-what-the-agent-did.html#require-forbid-regrade">Lesson 23</a></li>
+        <li id="J4"><span class="wf-label">J4</span>For a tool the app relies on, add a tagged stimulus whose <code>simulation</code> block makes the tool fail, take the answer out of the workspace, and run only it.
+<pre><code class="language-bash">vally eval -e evals/release.eval.yaml \
+  --tag case=tool-fails \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 3 --workers 2 \
+  --output-dir results/tool-fails</code></pre>
+          <span class="wf-done">Done when: the trials show whether the agent writes nothing, says why, and stops retrying.</span>
+          <a class="wf-src" href="../lessons/0024-when-a-tool-fails.html#make-the-tool-fail">Lesson 24</a></li>
+        <li id="J5"><span class="wf-label">J5</span>Decide where to grade the app. To check its real runs, continue to J6. To count trials of the app's own code on several models, <a href="#J7">GOTO J7</a>. Most teams do both.
+          <a class="wf-src" href="../lessons/0025-grade-a-run-vally-did-not-start.html#inside-or-after">Lesson 25</a></li>
+        <li id="J6"><span class="wf-label">J6</span>Grade a run Vally did not start: convert the app's traces to ATIF, then grade with the diff and the workspace.
+<pre><code class="language-bash">node app/traces-to-atif.mjs app-run/traces.jsonl \
+  &gt; app-run/trajectory.json</code></pre>
+<pre><code class="language-bash">vally grade -e evals/release.eval.yaml \
+  --stimulus since-last-release \
+  --workspace app-run/repo \
+  --diff-file app-run/change.diff \
+  --verbose &lt; app-run/trajectory.json</code></pre>
+          <span class="wf-done">Done when: there is one line per grader. Cost is empty and wall time 0 for this input.</span>
+          <a class="wf-src" href="../lessons/0025-grade-a-run-vally-did-not-start.html#run-convert-grade">Lesson 25</a></li>
+        <li id="J7"><span class="wf-label">J7</span>Let Vally run the app: write the executor plugin's <code>execute</code>, list the plugin under <code>plugins: executor:</code> in <code>.vally.yaml</code>, and select it.
+<pre><code class="language-bash">vally eval -e evals/release.eval.yaml \
+  --executor release-app \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --output-dir results/app</code></pre>
+          <span class="wf-done">Done when: <code>eval-results.md</code> says <code>Executor: release-app</code> under each table. Stimuli with a <code>simulation</code> block end in ERROR at no cost; that is expected.</span>
+          <span class="wf-goto">To compare models through the app, set <code>executor</code> under an experiment's <code>overrides</code> and <a href="#G1">GOTO G1</a>.</span>
+          <a class="wf-src" href="../lessons/0026-let-vally-run-the-app.html#write-and-run">Lesson 26</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <nav class="course-map" data-current="0" data-root="../"></nav>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

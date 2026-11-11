@@ -1,0 +1,532 @@
+{
+  "schema": 2,
+  "title": "Turn a failure into a grader",
+  "slug": "0005-turn-a-failure-into-a-grader",
+  "kind": "lesson",
+  "lesson_number": 5,
+  "source": "/Users/ted/src/learn/vally/lessons/0005-turn-a-failure-into-a-grader.html",
+  "created": "2026-11-11",
+  "poster": "s01",
+  "people": [],
+  "pacing": {
+    "lead_in": 0.4,
+    "gap": 0.5,
+    "tail": 0.8
+  },
+  "narrative": {
+    "question": "How do I make code decide whether a trial has one of these failures?",
+    "viewer_starts": "A professional programmer who knows the shell and regular expressions, and has watched the changelog-entry skill measured so far: one request on two models (claude-haiku-4.5 and gpt-5.6-terra), then five trials each, then six ordinary requests run without grading and read patch by patch. Knows skill, agent, model, eval, eval file, workspace, patch, stimulus, grader, trial and run; the vally eval command with -e, --model, --runs, --workers and --output-dir; vally lint; the results folder with a workspace.patch per trial; the words PASS, FLAKY, FAIL and ERROR; and that the eval file's one grader so far only looks for the words 'notes add', so it passed trials that made up a pull request number. Has a short written list of the skill's failure modes, each a named way its output goes wrong, among them: a made-up pull request number, an entry for a change users cannot see, and a security fix filed under Fixed. Has never written a grader, and does not know the diff graders.",
+    "arc": [
+      {
+        "stage": "worth-having",
+        "viewer_can": "name the three habits that make a grader worth having"
+      },
+      {
+        "stage": "diff-graders",
+        "viewer_can": "read a diff grader and predict which patches it passes"
+      },
+      {
+        "stage": "measure-edit-measure",
+        "viewer_can": "count how often each failure happens before and after an edit to the skill, with one command each time"
+      },
+      {
+        "stage": "what-the-counts-show",
+        "viewer_can": "show, with three graders and a count before and after, what one edit to the skill changed on each model"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "role": "hook",
+      "mode": "think",
+      "stage": "worth-having",
+      "chapter": "Hand the reading to code",
+      "renderer": "html",
+      "visual": "scenes/s01.html",
+      "on_screen": "Headline 'Turn a failure into a grader' in the display serif. Three blocks in a row, no arrows, one per failure mode: 'A made-up pull request number', 'An entry for a change users can't see', 'A security fix filed under Fixed', each with the stimulus that showed it. Each fills in turn during the first sentence, then all rest.",
+      "introduces": [],
+      "narration": [
+        "By now, we have a list of ways this skill goes wrong, and we found every one by going through patches.",
+        "We could fix the skill now: add a rule, try it, and look at the result.",
+        "But looking at the result means going through patches again, on both models, several times each, after every edit.",
+        "Hardly anybody keeps that up.",
+        "Here, you'll hand that work to code: one small grader for each failure, so that one command counts how often it happens, before an edit and after it."
+      ]
+    },
+    {
+      "id": "s02",
+      "role": "body",
+      "mode": "think",
+      "stage": "worth-having",
+      "chapter": "Three habits for graders",
+      "renderer": "html",
+      "visual": "scenes/s02.html",
+      "on_screen": "Headline 'Grade the result, not the route'. Two blocks side by side, no arrow: 'The route · look in the file or search it, one edit or two' and 'The result · what the agent left behind: the patch'. The first fills as routes are named, the second on 'left behind'.",
+      "introduces": [],
+      "narration": [
+        "Let's start with what makes a grader worth having: three habits.",
+        "First, we grade the result, not the route.",
+        "An agent can reach a correct changelog by many routes: opening the file or searching it, one edit or two.",
+        "Any grader that insists on one route fails every good route we didn't think of.",
+        "So we look at what the agent left behind."
+      ]
+    },
+    {
+      "id": "s03",
+      "role": "body",
+      "mode": "think",
+      "stage": "worth-having",
+      "renderer": "html",
+      "visual": "scenes/s03.html",
+      "on_screen": "Headline 'One grader per failure mode'. A three-row table: 'Failure mode' and 'A grader named after it': a made-up pull request number → no-made-up-number; an entry for a change users can't see → adds-nothing; a security fix filed under Fixed → under-security. 'no-made-up-number' lights when it is said.",
+      "introduces": [],
+      "narration": [
+        "Second, we write one grader for each failure mode, and name it after the failure.",
+        "If a grader called no made-up number fails, you know what went wrong without opening a file.",
+        "One grader that checks five things at once only tells you that something went wrong."
+      ]
+    },
+    {
+      "id": "s04",
+      "role": "body",
+      "mode": "think",
+      "stage": "worth-having",
+      "renderer": "html",
+      "visual": "scenes/s04.html",
+      "on_screen": "Headline 'Can this grader fail?'. Left: a card 'The only grader so far' with its six lines from the eval file in a dark box. Right: one block with a large count from the five-trial run, '10 of 10 trials passed', and under it '5 of them with a made-up number'. The count fills on 'passed every trial'.",
+      "introduces": [],
+      "narration": [
+        "Third, a grader has to be able to fail.",
+        "So far we've had one grader, and it passed every trial, including the trials that made up a number.",
+        "A grader that has never failed might be checking nothing.",
+        "So the first time we run a new grader, we run it where we already know the failure happens.",
+        "If it passes there, the grader is wrong."
+      ]
+    },
+    {
+      "id": "s05",
+      "role": "body",
+      "mode": "think",
+      "stage": "worth-having",
+      "renderer": "html",
+      "visual": "scenes/s05.html",
+      "on_screen": "Headline 'Code first, where code decides'. Two blocks side by side: 'A pattern can decide · is there a made-up number? is there a Security heading?' and 'Beyond a pattern · is the entry written for the people who use the tool?'. Each fills as it is spoken.",
+      "introduces": [],
+      "narration": [
+        "One more habit goes with those three: code does everything that code can decide.",
+        "A pattern costs nothing to run, and it gives the same answer every time.",
+        "Some qualities are beyond a pattern, such as whether an entry is written for the people who use the tool.",
+        "Those wait until later."
+      ]
+    },
+    {
+      "id": "s06",
+      "role": "body",
+      "mode": "works",
+      "stage": "diff-graders",
+      "chapter": "Graders that read the diff",
+      "renderer": "html",
+      "visual": "scenes/s06.html",
+      "on_screen": "Headline 'Three graders read the patch'. Dark code box, left, three lines: diff-contains, diff-not-contains, diff-empty. Right, level with each: 'the patch contains it', 'the patch doesn't contain it', 'the agent changed nothing'. Each line lights as it is named.",
+      "introduces": [
+        "diff-contains",
+        "diff-not-contains",
+        "diff-empty"
+      ],
+      "narration": [
+        "Those are the habits; here's what Vally gives us to follow them.",
+        "Three of the failure modes on our list are about what the agent added to the changelog, or whether adding anything was right.",
+        "The patch already holds exactly that, and Vally has three graders that look at it.",
+        "Vally calls the patch the diff, which is another word for the same thing.",
+        "Diff contains passes when the patch contains the text or pattern we give it.",
+        "Diff not contains passes when the patch doesn't contain it.",
+        "Finally, diff empty passes when the agent changed nothing at all."
+      ]
+    },
+    {
+      "id": "s07",
+      "role": "body",
+      "mode": "works",
+      "stage": "diff-graders",
+      "renderer": "html",
+      "visual": "scenes/s07.html",
+      "on_screen": "Headline 'They see unchanged lines too'. File panel labelled 'workspace.patch · gpt-5.6-terra': the patch from a trial of the five-trial run, with a 'lines hidden' row above. '(#41)' on an unchanged line lights, with the note 'unchanged, still in the patch'; then the added entry line ending '(#42)', with the note 'added by the agent'.",
+      "introduces": [
+        "workspace.patch",
+        "workspace.patch · gpt-5.6-terra"
+      ],
+      "shows": [
+        "workspace.patch"
+      ],
+      "narration": [
+        "One thing to know before using them: these graders see the whole patch, including the unchanged lines around the change.",
+        "Here's the patch from a trial that made up a number.",
+        "This unchanged line happens to hold a pull request number, forty-one.",
+        "It's in the patch, so a grader that looked for any number in brackets would find one in every trial.",
+        "What matters is this line, the one the agent added.",
+        "So a grader for made-up numbers has to look only at lines that begin with a plus."
+      ]
+    },
+    {
+      "id": "s08",
+      "role": "body",
+      "mode": "works",
+      "stage": "diff-graders",
+      "renderer": "html",
+      "visual": "scenes/s08.html",
+      "on_screen": "Headline 'A value, or a pattern'. File panel labelled 'evals/changelog.eval.yaml', with a minimap, opening on the first stimulus, typo-fix. It scrolls to that stimulus's graders block. The name 'adds-an-entry' lights, then its value '\"notes add\"' with the note 'exact text'; then 'no-made-up-number', then its pattern with the note 'a regular expression'.",
+      "introduces": [
+        "changelog.eval.yaml",
+        "evals/changelog.eval.yaml"
+      ],
+      "shows": [
+        "changelog.eval.yaml"
+      ],
+      "narration": [
+        "Each of these graders takes a value, which is exact text, or a pattern, which is a regular expression.",
+        "Here's the eval file we're going to run: three of the six stimuli we went through earlier, with graders at the end of each.",
+        "Its first stimulus is the typo fix, and it gets two graders.",
+        "The first asks whether the agent added an entry at all.",
+        "Nothing in the starting changelog mentions notes add, so that text can only be in the patch if the agent wrote it.",
+        "The second is the grader for made-up numbers, and it passes only if its pattern is found nowhere in the patch."
+      ]
+    },
+    {
+      "id": "s09",
+      "role": "body",
+      "mode": "works",
+      "stage": "diff-graders",
+      "renderer": "html",
+      "visual": "scenes/s09.html",
+      "on_screen": "Headline 'An added line with a number'. Dark code box, left: the pattern on one line, then its four pieces one per line: (?m), ^\\+, .*, \\(#\\d+\\). Right, level with each piece: '^ matches at every line', 'a line that starts with +', 'anything', 'a hash and digits, in brackets'. Each piece lights as it is described; the whole pattern on the last sentence.",
+      "introduces": [],
+      "narration": [
+        "Here's that pattern, a piece at a time.",
+        "A caret and an escaped plus mean a line that starts with a plus: a line the agent added.",
+        "The switch at the front makes the caret match at the start of every line, where it would otherwise match only the start of the whole patch.",
+        "Then comes anything at all, and then a hash and digits in brackets.",
+        "In words: an added line that contains a pull request number."
+      ]
+    },
+    {
+      "id": "s10",
+      "role": "body",
+      "mode": "works",
+      "stage": "diff-graders",
+      "renderer": "html",
+      "visual": "scenes/s10.html",
+      "on_screen": "Headline 'One grader each for the rest'. The same file panel, 'evals/changelog.eval.yaml', opening on the refactor stimulus and its graders block, with the prompt lines shown as hidden. 'diff-empty' lights with the note 'passes only when nothing changed'. The panel scrolls to the security stimulus; its pattern lights with the note 'an added ### Security line'.",
+      "introduces": [],
+      "shows": [
+        "changelog.eval.yaml"
+      ],
+      "narration": [
+        "The other two stimuli get one grader each.",
+        "The refactor changes nothing for users, so the right result is no change to the changelog.",
+        "Diff empty checks exactly that, and it takes no settings.",
+        "For the security fix, the grader looks for an added line that starts with a Security heading.",
+        "It passes when the agent has created a Security category."
+      ]
+    },
+    {
+      "id": "s11",
+      "role": "body",
+      "mode": "works",
+      "stage": "diff-graders",
+      "renderer": "html",
+      "visual": "scenes/s11.html",
+      "on_screen": "Headline 'Every grader has to pass'. Three illustration rows for one trial of typo-fix, each with two boxes under the grader names adds-an-entry and no-made-up-number: tick tick 'the trial passes'; tick cross 'the trial fails'; cross tick 'the trial fails'. Below, in a dark box, 'scoring-defaults-applied' with the note 'lint's reminder of this rule'. The rows light in turn, then the warning's name.",
+      "introduces": [
+        "vally lint"
+      ],
+      "narration": [
+        "Once a stimulus has more than one grader, a trial passes only if every one of them passes.",
+        "Vally lint prints a warning, named scoring defaults applied, to say that this rule is in force.",
+        "It's the rule we want, so we expect the warning."
+      ]
+    },
+    {
+      "id": "s12",
+      "role": "practice",
+      "mode": "use",
+      "stage": "measure-edit-measure",
+      "chapter": "Measure, edit, measure again",
+      "renderer": "html",
+      "visual": "scenes/s12.html",
+      "on_screen": "Headline 'A count before, a count after'. An empty table: rows typo-fix, refactor, security; under each model, claude-haiku-4.5 and gpt-5.6-terra, a 'before' and an 'after' column. The 'before' columns light, then the 'after' columns. The cells stay empty.",
+      "introduces": [],
+      "narration": [
+        "That's how the graders work; now let's count with them.",
+        "First, we run these three stimuli three times on each model, with the skill as it is.",
+        "Then we add three rules to the skill, and run the same command again.",
+        "Each time, we count how many of a stimulus's three trials passed, on each model.",
+        {
+          "text": "What would you expect the edit to change, on each model?",
+          "read": 2
+        },
+        "If you tried it yourself, here's what you'd see."
+      ]
+    },
+    {
+      "id": "s13",
+      "role": "practice",
+      "mode": "use",
+      "stage": "measure-edit-measure",
+      "renderer": "terminal",
+      "visual": "tapes/s13.tape",
+      "on_screen": "Terminal in the practice folder; the prompt shows only the folder name. vally lint -e evals/changelog.eval.yaml prints one warning, scoring-defaults-applied, and '1 warning(s)'. Held until it has been read.",
+      "introduces": [
+        "-e"
+      ],
+      "shows": [
+        "vally lint"
+      ],
+      "narration": [
+        {
+          "text": "The graders are now in the eval file, so we lint it first, which costs nothing.",
+          "before": "typed:1"
+        },
+        {
+          "text": "One warning, the one we expected, and no errors.",
+          "wait_for": "output:1",
+          "read": 3
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "role": "practice",
+      "mode": "use",
+      "stage": "measure-edit-measure",
+      "renderer": "terminal",
+      "visual": "tapes/s14.tape",
+      "on_screen": "Terminal, continuing in the practice folder. The vally eval command over four lines, with --runs 3 --workers 2 and --output-dir results/lesson-5-before; a jump cut; then the end of the output: the last failures listed with their graders and evidence, the model summary, and the last line with a count for each model. Held until it has been read.",
+      "introduces": [
+        "vally eval",
+        "--model",
+        "--runs",
+        "--workers",
+        "--output-dir",
+        "lesson-5-before"
+      ],
+      "shows": [
+        "vally eval"
+      ],
+      "narration": [
+        {
+          "text": "Now we measure the skill as it is: the command from before, with three runs of each stimulus, two at a time.",
+          "before": "typed:1"
+        },
+        {
+          "text": "It spends eighteen short agent runs.",
+          "before": "enter:1"
+        },
+        {
+          "text": "We're after the table at the end, which says, for each model, how many of the three stimuli passed in every trial.",
+          "before": "enter:1"
+        },
+        {
+          "text": "About three minutes later, it says one of the three on haiku, and none on terra.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 3
+        },
+        {
+          "text": "Above that table, Vally lists each stimulus that didn't pass, with the grader that objected and its evidence.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 5
+        }
+      ]
+    },
+    {
+      "id": "s15",
+      "role": "practice",
+      "mode": "use",
+      "stage": "measure-edit-measure",
+      "renderer": "html",
+      "visual": "scenes/s15.html",
+      "on_screen": "Headline 'The count before the edit'. The table from before, its 'before' columns filled from our run as 'n of 3'; the 'after' columns still empty. The typo-fix row lights, then the refactor and security rows.",
+      "introduces": [],
+      "narration": [
+        "The same output says how many trials of each stimulus passed, and that fills in the first half of the table.",
+        {
+          "text": "On the typo fix, haiku passed three of three, and terra none.",
+          "outcome": true
+        },
+        {
+          "text": "Neither model passed the refactor or the security fix, in any trial.",
+          "outcome": true,
+          "read": 2
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "role": "practice",
+      "mode": "use",
+      "stage": "measure-edit-measure",
+      "renderer": "html",
+      "visual": "scenes/s16.html",
+      "on_screen": "Headline 'Three rules, one per failure'. File panel labelled 'changelog-entry/SKILL.md', with a minimap, showing the end of the skill: its four original rules and the seven added lines. Each added rule lights as it is described.",
+      "introduces": [
+        "SKILL.md",
+        "changelog-entry/SKILL.md"
+      ],
+      "shows": [
+        "SKILL.md"
+      ],
+      "narration": [
+        "Next comes the edit to the skill.",
+        "Each failure is a case the skill left open, so we add three rules at the end, one for each failure mode.",
+        "The first covers a missing pull request number: the agent leaves the reference off, never makes one up, and doesn't stop to ask.",
+        "In a Vally run nobody is there to answer a question, so we chose to leave it off.",
+        "The second says that a change which makes no difference to users gets no entry.",
+        "The third lists the categories in order, and puts a security fix under Security."
+      ]
+    },
+    {
+      "id": "s17",
+      "role": "practice",
+      "mode": "use",
+      "stage": "measure-edit-measure",
+      "renderer": "terminal",
+      "visual": "tapes/s17.tape",
+      "on_screen": "Terminal in the practice folder. The same vally eval command, with --output-dir results/lesson-5-after; a jump cut; then the end of the output: the model summary with three of three for both models, nothing listed above it, and the Saved line.",
+      "introduces": [
+        "lesson-5-after"
+      ],
+      "shows": [
+        "vally eval"
+      ],
+      "narration": [
+        {
+          "text": "With the rules in the skill, we measure again, the same way, into a second results folder.",
+          "before": "typed:1"
+        },
+        {
+          "text": "That's another eighteen agent runs.",
+          "before": "enter:1"
+        },
+        {
+          "text": "About three minutes later, the table says three of three, on both models.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 3
+        },
+        {
+          "text": "This time, no failures are listed above it: every trial of every stimulus passed.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 4
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "role": "practice",
+      "mode": "use",
+      "stage": "measure-edit-measure",
+      "renderer": "html",
+      "visual": "scenes/s18.html",
+      "on_screen": "Headline 'Before and after, side by side'. The same table, now with both halves filled from our two runs. The terra typo-fix cells light, then the refactor row, then the security row, ending on haiku's 'after' cell.",
+      "introduces": [],
+      "narration": [
+        "Here are both counts, side by side.",
+        {
+          "text": "The made-up number is gone on terra, the model that produced it.",
+          "outcome": true
+        },
+        {
+          "text": "Neither model adds an entry for the refactor any more.",
+          "outcome": true
+        },
+        {
+          "text": "The security rule worked every time, on both models.",
+          "outcome": true,
+          "read": 3
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-counts-show",
+      "chapter": "What the counts show",
+      "renderer": "html",
+      "visual": "scenes/s19.html",
+      "on_screen": "Headline 'Same words, different effect'. Three blocks side by side, each a large count of trials passed after the edit: terra and haiku from our run (with the count before the edit under each), then haiku from an earlier run of the same edit. The two from our run light together, then the earlier one.",
+      "introduces": [],
+      "narration": [
+        "So what do the counts show?",
+        {
+          "text": "One edit added three rules, and in our run, all three worked on both models.",
+          "outcome": true
+        },
+        {
+          "text": "An earlier run of the same edit came out differently: haiku still filed one security fix under Fixed, and passed eight of nine.",
+          "outcome": true
+        },
+        "So the same words can have a different effect, on another model or on another run.",
+        "Going through a couple of patches by hand might well have shown us only the trials where it worked.",
+        "A count shows all of them, and one command will count again after the next edit."
+      ]
+    },
+    {
+      "id": "s20",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-counts-show",
+      "renderer": "html",
+      "visual": "scenes/s20.html",
+      "on_screen": "Headline 'Every grader failed first'. A four-row table from the first run: each grader's name and how many of its six trials it failed before the edit: adds-an-entry, no-made-up-number, adds-nothing, under-security. The count column lights on 'failed somewhere'.",
+      "introduces": [],
+      "narration": [
+        "It's also worth a look at what the graders did in the first run.",
+        {
+          "text": "Every one of them failed somewhere, on the kinds of trial we already knew to be bad.",
+          "outcome": true
+        },
+        "That's a first piece of evidence that they check what we meant.",
+        "Later, we'll run that test on purpose."
+      ]
+    },
+    {
+      "id": "s21",
+      "role": "recap",
+      "stage": "what-the-counts-show",
+      "renderer": "html",
+      "visual": "scenes/s21.html",
+      "on_screen": "Headline 'What are the three habits?'. One block, 'a grader worth having', which opens after the question and a pause into three parts, each lit as it is said: 'Grade the result · not the route', 'One per failure mode · named after it', 'Able to fail · run it first where the failure is known'.",
+      "introduces": [],
+      "narration": [
+        "Before you go on: what are the three habits that make a grader worth having?",
+        {
+          "text": "We grade the result the agent left, not the route it took.",
+          "pause": 2.5
+        },
+        "We write one grader per failure mode, and name it after the failure.",
+        "Last, we make sure each grader can fail, by running it first where the failure is known to happen."
+      ]
+    },
+    {
+      "id": "s22",
+      "role": "next",
+      "stage": "what-the-counts-show",
+      "renderer": "slide",
+      "visual": "scenes/s22.html",
+      "on_screen": "'Next: Keep graders out of the agent's reach' in the display serif. Below, the hand-off question: 'Where can a script live so the agent cannot read or edit it?' A note: 'Exercises are on the lesson page · Source: Vally docs, Choose a Grader'.",
+      "introduces": [],
+      "narration": [
+        "You can now show, with a count before and after, what an edit to the skill changed on each model.",
+        "Patterns caught three failures.",
+        "Checking that nothing else in the file changed is beyond a pattern: it takes a script.",
+        "Where can we keep a script, so that the agent can't open it or edit it?",
+        "That's the next lesson.",
+        "The exercises on the lesson page are worth doing first."
+      ]
+    }
+  ]
+}

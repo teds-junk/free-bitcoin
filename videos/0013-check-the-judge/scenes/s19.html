@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A judge that always says yes</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#always{width:100%;padding:36px 40px 44px;gap:24px}#always .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}#always .part{min-height:260px}#always .part .title{font-size:50px;line-height:1.2}#always .part .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">A judge that always says yes</h2>
+  <div class="stage">
+<div class="semantic-block" id="always" data-role="structure">
+    <div class="title words">yes to every trial · we labelled nine yes, and one no</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title">TPR · 100%</div><div class="label">it passed all 9 entries we labelled yes</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title">TNR · 0%</div><div class="label">it passed the 1 entry we labelled no</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title">agreement · 90%</div><div class="label">9 of 10, which hides both</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#always",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "2",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "3",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "4",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

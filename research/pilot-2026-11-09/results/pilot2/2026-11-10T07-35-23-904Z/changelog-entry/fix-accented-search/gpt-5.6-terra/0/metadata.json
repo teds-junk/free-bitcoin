@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml",
+  "variant": "main",
+  "stimulusName": "fix-accented-search",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml::main::gpt-5.6-terra::fix-accented-search::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "gpt-5.6-terra",
+  "trialIndex": 0,
+  "startedAt": "2026-11-10T07:36:00.365Z",
+  "status": "success",
+  "trajectoryId": "acb6616e-684c-4502-9230-bd570bf4bc6f",
+  "executorSessionId": "7f2abb14-51df-41db-8824-39fc1eddc3ba",
+  "completedAt": "2026-11-10T07:36:07.211Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/pilot2/2026-11-10T07-35-23-904Z/changelog-entry/fix-accented-search/gpt-5.6-terra/0/events.jsonl"
+}

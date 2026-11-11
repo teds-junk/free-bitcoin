@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml",
+  "variant": "main",
+  "stimulusName": "change-list-sort",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml::main::claude-haiku-4.5::change-list-sort::trial-1",
+  "executorName": "copilot-sdk",
+  "model": "claude-haiku-4.5",
+  "trialIndex": 1,
+  "startedAt": "2026-11-10T07:34:24.717Z",
+  "status": "success",
+  "trajectoryId": "43e1f106-87b5-49fa-97f2-8aef2646c394",
+  "executorSessionId": "d432eebb-9d50-44b6-bf0d-e1032a6419ba",
+  "completedAt": "2026-11-10T07:34:37.584Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/pilot/2026-11-10T07-34-24-705Z/changelog-entry/change-list-sort/claude-haiku-4.5/1/events.jsonl"
+}

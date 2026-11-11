@@ -1,0 +1,21 @@
+{
+ "_about": "mcp_tools: the tools named github-mcp-server-* in the tool definitions of the app's own traces for this video's s16 run (both models' app-traces.jsonl), counted 2026-11-11. earlier_run: the course's verified run of this lesson, saved as src/run/earlier-run.txt (haiku skill loads: the app 0 of 5 counting its one run outside Vally, Vally's executor 1 of 8).",
+ "mcp_tools": 5,
+ "mcp_tool_names": [
+  "get_copilot_space",
+  "get_file_contents",
+  "list_copilot_spaces",
+  "search_code",
+  "search_users"
+ ],
+ "earlier_run": {
+  "app": [
+   0,
+   5
+  ],
+  "vally": [
+   1,
+   8
+  ]
+ }
+}

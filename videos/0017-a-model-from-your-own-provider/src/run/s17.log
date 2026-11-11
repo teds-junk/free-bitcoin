@@ -1,0 +1,18 @@
+  FAIL  after-release · 0/1 graders · 164.1s
+   ✘ entry-in-new-unreleased  no '## [Unreleased]' heading
+
+  FAIL  refactor · 0/1 graders · 145.9s
+   ✘ adds-nothing  Workspace diff is not empty — the stimulus changed the
+
+  FAIL  security · 0/1 graders · 98.7s
+   ✘ under-security  Pattern /(?m)^\+### Security/ not found in workspace diff
+
+  → Comparison unavailable — baseline not run (no observed stimuli).
+
+  eval       qwen-local
+  changelog  ✘ 2/5
+  ─────────  ──────────
+  stimuli    2/5
+
+Run ID: d1566840-bb94-428f-ba20-079a5702b628
+Output: ~/src/demo/practice/results/lesson-17/2026-11-11T13-59-30-867Z

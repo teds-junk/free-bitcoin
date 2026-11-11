@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What does one run do?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#run{width:100%;padding:36px 40px 44px;gap:24px}#run .parts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%}#run .part{min-height:330px}#run .part .title{font-size:32px;line-height:1.2}#run .part .step{font-size:56px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">What does one run do?</h2>
+  <div class="stage">
+<div class="semantic-block" id="run" data-role="structure">
+    <div class="title">one run</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part"><div class="step">1</div>
+      <div class="title words">Makes a workspace</div><div class="label">the starting files and the skill</div></div><div class="part" data-concept="p2" data-rep="part"><div class="step">2</div>
+      <div class="title words">Runs an agent</div><div class="label">on the model you named</div></div><div class="part" data-concept="p3" data-rep="part"><div class="step">3</div>
+      <div class="title words">Saves a patch</div><div class="label">of what the agent changed</div></div><div class="part" data-concept="p4" data-rep="part"><div class="step">4</div>
+      <div class="title words">Runs the check</div><div class="label">✓ or ✘</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#run",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "p4",
+  "at": "4",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

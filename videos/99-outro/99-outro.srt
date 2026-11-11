@@ -1,0 +1,45 @@
+1
+00:00:00,400 --> 00:00:02,225
+That's the whole course.
+
+2
+00:00:02,725 --> 00:00:06,754
+You can now edit a skill, or change the
+model under it, and say with evidence
+
+3
+00:00:06,754 --> 00:00:08,900
+whether it got better, and what it costs.
+
+4
+00:00:09,400 --> 00:00:13,762
+Your graders are tested, your judge is
+checked against your own labels, and your
+
+5
+00:00:13,762 --> 00:00:15,125
+results come with ranges.
+
+6
+00:00:15,625 --> 00:00:19,150
+Those checks run as a routine that a
+teammate can repeat.
+
+7
+00:00:19,650 --> 00:00:24,225
+And you can evaluate the same skill when
+an app, not a person, starts the agent.
+
+8
+00:00:25,433 --> 00:00:28,958
+On the course site, you'll find the
+exercises for every part.
+
+9
+00:00:29,458 --> 00:00:33,782
+There's also a workflow guide, which walks
+the whole procedure, for a skill or for a
+
+10
+00:00:33,782 --> 00:00:34,708
+feature in an app.

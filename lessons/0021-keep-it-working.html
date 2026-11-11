@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 21: Keep it working — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 21 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Keep it working</h1>
+    <div class="lesson-meta">13 min · Run a quick suite after every edit and a full suite before sharing, with commands that fail loudly on a failing verdict, an over-budget trial or a regression, and hand a teammate a one-page conventions file.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What two tests does <code>vally oracle</code> run on a grader, and what does it cost?
+        <details class="answer"><summary>Show answer</summary><p>With the golden patch applied, a healthy grader passes. With <code>--no-golden-input</code>, on the untouched baseline, a healthy grader fails. It starts no agent, so it costs nothing.</p></details></li>
+      <li>What does a <code>token-budget</code> grader do, and how did lesson 18 choose its <code>max</code>?
+        <details class="answer"><summary>Show answer</summary><p>It reads the trial's token count from the trajectory and fails the trial when the count is above <code>max</code>. Lesson 18 first set it just above the typical trial, found in a free re-grade that this failed good work, and raised it to about twice the largest typical trial: 215000 in our run.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You have eval files for single requests, a conversation, loading and wording, with tested graders, a measured judge and a way to tell a real change from luck. You know what a passing trial costs, budgets guard each trial, a pairwise judge can say whether an edit made things worse, and you have four questions for a run that goes wrong.</p>
+    <p><strong>This lesson answers:</strong> How do I make this a routine that I and a teammate can repeat?</p>
+  </div>
+
+  <p class="drop-cap">Everything you have built works when you remember to run it, in the right order, with the right flags. That is not a routine, and it will not survive a busy week or a new teammate. The skill will be edited again. The models under it will change without telling you, and so will their prices. What keeps it working is making the right check the easy one: one short command after every edit, a longer one before anything is shared, and a page that says what your team agreed. This lesson, the last of part 1, builds those three things.</p>
+
+  <h2 id="cheapest-first" data-mode="think">Cheapest check first</h2>
+
+  <p>You now have five ways to check the skill, and they differ enormously in cost. Use the cheapest one that can answer the question you actually have.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="Five bars of rising height: lint, oracle and re-grade are free; the quick suite costs ten agent runs; the full suite costs thirty.">
+      <rect x="20" y="176" width="96" height="14" rx="2"/>
+      <rect x="140" y="176" width="96" height="14" rx="2"/>
+      <rect x="260" y="176" width="96" height="14" rx="2"/>
+      <rect x="380" y="130" width="96" height="60" rx="2" style="stroke: var(--accent)"/>
+      <rect x="500" y="40" width="96" height="150" rx="2" style="stroke: var(--accent); stroke-width: 2"/>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: currentColor; stroke: none">
+        <text x="68" y="220" text-anchor="middle">lint</text>
+        <text x="188" y="220" text-anchor="middle">oracle</text>
+        <text x="308" y="220" text-anchor="middle">re-grade</text>
+        <text x="428" y="220" text-anchor="middle">quick</text>
+        <text x="548" y="220" text-anchor="middle">full</text>
+      </g>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="68" y="164" text-anchor="middle">free</text>
+        <text x="188" y="164" text-anchor="middle">free</text>
+        <text x="308" y="164" text-anchor="middle">free</text>
+        <text x="428" y="118" text-anchor="middle">10 runs</text>
+        <text x="548" y="28" text-anchor="middle">30 runs</text>
+      </g>
+    </svg>
+    <figcaption>What each check costs, in agent runs, for two models. The first three start no agent. A re-grade is free for code graders and costs one judge call per trial for a judge. Script graders cannot be re-graded: the workspace they read is gone. What the two suites cost in AIU is in the last section.</figcaption>
+  </figure>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Check</th><th>Answers</th><th>When</th></tr></thead>
+    <tbody>
+      <tr><td><code>vally lint</code></td><td>Is the eval file well formed?</td><td>After editing an eval file</td></tr>
+      <tr><td><code>vally oracle</code></td><td>Do the graders pass a correct answer and fail an empty one?</td><td>After writing or changing a grader</td></tr>
+      <tr><td><code>vally grade</code></td><td>What do today's graders and budgets say about trials already saved?</td><td>After changing a pattern grader, a budget or a rubric. Script graders need the oracle instead</td></tr>
+      <tr><td>Quick suite</td><td>Did my edit break anything code can check, or push a trial over budget?</td><td>After every edit to the skill</td></tr>
+      <tr><td>Full suite</td><td>Does everything still hold, loading and wording included?</td><td>Before sharing the skill, and when a model changes</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Three more checks sit outside this order because they answer one-off questions. The with-and-without experiment from lesson 10 is worth repeating after a large rewrite. A before-and-after experiment, as in lesson 15, followed by <code>vally compare</code> from lesson 19, tells you whether an edit really helped or made things worse; the comparison starts no agent but spends about two judge calls per pair of trials. And lesson 16's cost per passing trial is the check to run before you move the suites to a different model or reasoning effort.</p>
+
+  <p>For a team, the commands are the easy part. What drifts is agreement: what deserves a grader, where grading files live, how a result is reported, what a run may cost. Write those down in one page while they are fresh. A page that people can disagree with is how the agreement gets better.</p>
+
+  <div class="source-citation">Source: <a href="https://hamel.dev/blog/posts/evals-faq/">Husain and Shankar, AI Evals FAQ, reissued 2026-09-18</a>, on running cheap exact checks on every change and judges less often.</div>
+
+  <h2 id="tags-suites-exit-codes" data-mode="works">Tags, suites and exit codes</h2>
+
+  <p>A <strong>tag</strong> is a label you put on a stimulus: a name and a value, on a <code>tags</code> line. The name <code>tier</code> and the value <code>quick</code> are ours. Any words will do.</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">evals/changelog.eval.yaml (the start of one stimulus)</div>
+<pre><code class="language-yaml">  - name: typo-fix
+    tags: { tier: quick }</code></pre>
+  </div>
+
+  <div class="callout definition">
+    <div class="callout-title">Suite</div>
+    <p>A named group of stimuli: a list of eval files, optionally narrowed to stimuli with a given tag. Suites are defined in a file named <code>.vally.yaml</code> in the folder you run Vally from.</p>
+  </div>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">.vally.yaml</div>
+<pre><code class="language-yaml">suites:
+  quick:<span class="mark">1</span>
+    description: Code graders and budgets, one trial.
+    evals:<span class="mark">2</span>
+      - evals/changelog.eval.yaml
+    filter: { tier: quick }<span class="mark">3</span>
+  full:
+    description: Everything, with loading and the judge.
+    evals:<span class="mark">4</span>
+      - evals/changelog.eval.yaml
+      - evals/conversation.eval.yaml
+      - evals/loading.eval.yaml
+      - evals/wording.eval.yaml</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The suite's name, which is what you type on the command line.</li>
+      <li>The eval files it draws on, relative to this file.</li>
+      <li>Only stimuli tagged <code>tier: quick</code> are run.</li>
+      <li>No filter, so every stimulus in these four files is run.</li>
+    </ol>
+  </div>
+
+  <p>To run a suite, give <code>vally eval</code> the option <code>--suite</code> and the suite's name in place of <code>-e</code> and a file. Everything else works as before.</p>
+
+  <p>A suite names stimuli; it adds no graders of its own. The five quick stimuli are the ones you gave budgets in lesson 18, so the quick suite carries them: every trial is checked against 215000 tokens, 10 turns and 30 seconds, and lesson 18's <code>max_agent_duration: 1m</code> stops the agent after a minute and grades what it had done. Behind that, <code>timeout: 3m</code> under the file's <code>defaults</code> is the hard limit on each trial, which ends it in <code>ERROR</code> (lesson 20). A trial over a budget fails its stimulus like a trial whose entry is wrong. That is what makes the quick suite a cost check as well as a quality check.</p>
+
+  <p>The last piece is how a command reports failure to whatever ran it. As lesson 6 said, every command ends with an exit code, a number: 0 means it succeeded, anything else means it did not. Scripts and automated checks read that number. In a terminal you can print the last command's exit code with <code>echo $?</code>.</p>
+
+  <p>By default, <code>vally eval</code> exits with 0 even when stimuli fail, because the run itself completed. Adding <code>--require-pass</code> changes that: any failing stimulus makes the exit code 1, whichever grader failed it, budgets included. A run that hit an <code>ERROR</code> exits with 1 either way. <code>vally grade</code> accepts the same option.</p>
+
+  <p>One kind of failure no grader sees: an edit that makes the entries a little worse while every pattern still matches. That is lesson 19's pairwise judge. <code>vally compare</code> with <code>--fail-on-regression</code> exits 1 when the change under test scored worse than the baseline, with the whole range below zero. In lesson 19 we ran it with the two roles swapped, so that the before skill was the change under test. We ran that twice. In one of our two runs the whole range lay below zero:</p>
+
+<pre><code class="language-bash">vally compare \
+  --baseline haiku-after \
+  --treatment haiku-before \
+  --judge-model claude-sonnet-5.5 \
+  --fail-on-regression</code></pre>
+<pre class="output"><code>  Mean score: -0.49 [95% CI -0.90, -0.07]
+    (+ = treatment better)
+
+❌ Regression: 'haiku-before' scored
+   significantly worse than baseline.</code></pre>
+
+  <p>That output is from the earlier of our two runs in lesson 19, wrapped to fit, and the command exited with 1. In the later run the range reached +0.02 and it exited 0: a range that ends near zero can land on either side of it. We do not run it again here: it needs a before-and-after experiment and spends about eighteen judge calls each time. So it belongs before you rely on an edit you have measured with an experiment, not after every edit. Remember too what lesson 19 found: it gates on the judged score alone. A rise in tokens is the budgets' job.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">You run the quick suite without <code>--require-pass</code>. One trial goes over its token budget; every other grader passes and nothing errors. What is the exit code?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, true)">Zero, because the run completed</button></li>
+      <li><button onclick="checkAnswer(this, false)">One, because a budget was exceeded</button></li>
+      <li><button onclick="checkAnswer(this, false)">Zero, because budgets never fail a stimulus</button></li>
+      <li><button onclick="checkAnswer(this, false)">One, because suites always require passes</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. The budget fails that stimulus, but without <code>--require-pass</code> a failing verdict still exits with 0. That is why an automated check must add the option.</div>
+    <div class="quiz-feedback incorrect">Zero, because the run completed. The budget does fail the stimulus, but without <code>--require-pass</code> a failing verdict does not change the exit code; only an <code>ERROR</code> does. An automated check has to add the option.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/guides/authoring-eval-suites/">Vally docs, Authoring Eval Suites</a>; <a href="https://microsoft.github.io/vally/reference/vally-yaml/">.vally.yaml reference</a>; <a href="https://microsoft.github.io/vally/reference/cli/eval/">CLI: eval</a>; <a href="https://microsoft.github.io/vally/reference/cli/compare/">CLI: compare</a>. The exit codes are from our runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="two-suites-and-conventions" data-mode="use">Two suites and a conventions page</h2>
+
+  <p>You will tag five stimuli, define the two suites, run the quick one so that it fails loudly, see a failing exit code for a wrong entry and for an over-budget trial without spending anything, run the full suite once, and write your conventions.</p>
+
+  <section class="checkpoint">
+    <h3>A routine anyone can run</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: tag the stimuli that code can check. This edits one file.</span>
+        Open a terminal in <code>practice</code>. In <code>evals/changelog.eval.yaml</code>, add the line <code>tags: { tier: quick }</code> under the <code>name</code> of each of the five stimuli, as shown above.</li>
+
+      <li><span class="goal">Goal: define the two suites. This creates one file.</span>
+        Create a file named <code>.vally.yaml</code> in <code>practice</code> with the thirteen lines shown above. The name begins with a dot.</li>
+
+      <li><span class="goal">Goal: catch mistakes before spending anything.</span>
+<pre><code class="language-bash">vally lint -e evals/changelog.eval.yaml</code></pre>
+        <p class="expect">You should see: the usual one warning, <code>scoring-defaults-applied</code>, and no errors.</p></li>
+
+      <li><span class="goal">Goal: run the quick suite so that a failure is an error. This spends ten agent runs.</span>
+<pre><code class="language-bash">vally eval --suite quick \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --require-pass \
+  --output-dir results/lesson-21-quick</code></pre>
+<pre class="output"><code>  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✓ 5/5             ✓ 5/5</code></pre>
+        <p class="expect">You should see: your summary. Ours is above: every stimulus passed on both models, budgets included.</p></li>
+
+      <li><span class="goal">Goal: read the exit code of that run.</span>
+<pre data-shell="taught"><code class="language-bash">echo $?</code></pre>
+<pre class="output"><code>0</code></pre>
+        <p class="expect">You should see: <code>0</code> if every stimulus passed, as ours did, and <code>1</code> if any failed.</p></li>
+
+      <li><span class="goal">Goal: see a wrong entry fail loudly, without spending anything.</span>
+        Your "before" run from lesson 5 is full of failures, and its stimuli use only diff graders and budgets, which re-grade correctly. Re-grade it with <code>--require-pass</code>. Use your folder's name.
+<pre><code class="language-bash">cd results/lesson-5-before/2026-11-10T14-55-35-995Z</code></pre>
+<pre><code class="language-bash">vally grade -e ../../../evals/changelog.eval.yaml \
+  --run-dir . --require-pass &lt; results.jsonl</code></pre>
+<pre data-shell="taught"><code class="language-bash">echo $?</code></pre>
+        <p class="expect">You should see: the failing blocks from lesson 8, each now with the budgets among its graders, then <code>1</code>. One of ours, wrapped to fit:</p>
+<pre class="output"><code>❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not
+    empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED</code></pre>
+        <p class="expect">Every budget passed every one of those eighteen trials; only the graders of the result failed.</p></li>
+
+      <li><span class="goal">Goal: see an over-budget trial fail loudly, for free. This edits one file for a moment.</span>
+        In <code>evals/changelog.eval.yaml</code>, in the <code>typo-fix</code> stimulus, change the <code>token-budget</code>'s <code>max</code> from 215000 to 70000, below what these trials used. Then run the same <code>vally grade</code> command again, and <code>echo $?</code>.
+        <p class="expect">You should see: <code>1</code> again, and the <code>typo-fix</code> trials of your first model, which passed every grader in the previous step, now failing on the budget alone. Ours:</p>
+<pre class="output"><code>❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [token-budget max 70000] 74052 tokens
+    exceeds max of 70000
+
+Score: 98.8% | FAILED</code></pre>
+        <p class="expect">Two more blocks like it followed, at 74,161 and 74,202 tokens. A trial that did the work and cost too much is a failing verdict like any other.</p>
+        <p class="expect">Why 98.8% and still FAILED: the score is the plain average of the five graders' scores (<a href="./0014-partial-credit.html#how-vally-decides">lesson 14</a>). Four passed and score 1. A budget grader over its <code>max</code> scores less in proportion to the overrun (<a href="./0018-put-a-ceiling-on-a-trial.html#budget-graders">lesson 18</a>): 1 − (74052 − 70000) ÷ 70000, about 0.94. The average of 1, 1, 1, 1 and 0.94 is 98.8%. With no <code>scoring</code> block the score decides nothing; every grader must pass, and one did not.</p></li>
+
+      <li><span class="goal">Goal: undo the experiment and go back. This edits one file.</span>
+        Change the <code>max</code> back to 215000, then return to <code>practice</code>:
+<pre><code class="language-bash">cd ../../..</code></pre></li>
+
+      <li><span class="goal">Goal: run everything once. This spends thirty agent runs and six judge calls, and takes several minutes.</span>
+<pre><code class="language-bash">vally eval --suite full \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --require-pass \
+  --output-dir results/lesson-21-full</code></pre>
+<pre class="output"><code>conversation · claude-haiku-4.5
+  FAIL  three-requests · 4/5 graders · 17.5s
+   ✘ third-no-made-up-number  Pattern …
+     found in workspace diff
+
+loading · gpt-5.6-terra
+  ERROR  skip-release-notes
+   Session disconnected while waiting …
+
+  eval          claude-haiku-4.5  gpt-5.6-terra
+  changelog     ✓ 5/5             ✓ 5/5
+  conversation  ✘ 0/1             ✓ 1/1
+  loading       ✓ 6/6             ✘ 5/6
+  wording       ✓ 3/3             ✓ 3/3</code></pre>
+        <p class="expect">You should see: one row per eval file, one trial each, and a block above the table for any stimulus that did not pass. Ours is above, and it shows two different kinds of trouble. One loading trial on the second model ended in <code>ERROR</code> because the session dropped. That is lesson 20's second question, "did it complete?", and the answer was no, so it says nothing about the skill: run it again, or leave that trial out and say so when you report the result. The other is a real <code>FAIL</code>. On <code>claude-haiku-4.5</code>, the conversation's third entry, for the <code>notes export</code> fix, cited <code>(#65)</code>: the number of the internal rename from the second request. That is the leak <a href="./0011-follow-up-requests.html#what-the-conversation-showed">lesson 11</a> found and added a rule against, and its grader caught it. Every other stimulus passed on both models, budgets and judge included. Either problem alone makes the command exit with 1, and ours did.</p></li>
+
+      <li><span class="goal">Goal: write down what you have agreed with yourself. This creates one file.</span>
+        Create <code>CONVENTIONS.md</code> in <code>practice</code>. Give it these ten headings, and one or two sentences under each, in your own words: what earns a grader; code first, judge second; where files live; before trusting a grader; before trusting a judge; what we run and when; how we report a result; what a run may cost; when a run goes wrong; models and dates. The last matters because models and their prices change: a result means little without knowing which model produced it, and when.
+        <details class="answer"><summary>Show our conventions</summary>
+          <ol>
+            <li><strong>What earns a grader.</strong> A failure we have seen in a real trial. One grader per failure mode, named after it.</li>
+            <li><strong>Code first, judge second.</strong> A judge only for what code cannot decide, with one yes-or-no criterion.</li>
+            <li><strong>Where files live.</strong> <code>evals/</code> beside <code>skills/</code>, never inside a skill. Grading scripts in <code>evals/grading</code>, brought in through the grading environment.</li>
+            <li><strong>Before trusting a grader.</strong> The oracle, with and without the golden patch. A grader that checks for absence must also fail a saved trial known to be bad. A new budget is re-graded against saved trials and must pass all the good ones.</li>
+            <li><strong>Before trusting a judge.</strong> Our own labels first. TPR and TNR (<a href="./0013-check-the-judge.html#tpr-and-tnr">lesson 13</a>: how often the judge passes what we passed, and fails what we failed) reported with the number of labels. Label again when the rubric or the judge model changes.</li>
+            <li><strong>What we run and when.</strong> The quick suite with <code>--require-pass</code> after every edit to the skill. The full suite before sharing and when a model changes. A before-and-after experiment and <code>vally compare --fail-on-regression</code> before relying on an edit. With-and-without after a large rewrite.</li>
+            <li><strong>How we report a result.</strong> Counts, per model, with cost per passing trial. "These trials cannot tell" when the ranges overlap.</li>
+            <li><strong>What a run may cost.</strong> Budgets at about twice the largest typical trial: 215000 tokens, 10 turns, 30 seconds, and a 1-minute limit on the agent. Re-tested for free whenever the skill, the model or the effort changes. Cost per passing trial compared before switching models, with the judge's calls counted on top.</li>
+            <li><strong>When a run goes wrong.</strong> The four questions in order: is the eval valid, did it complete, why was the result unexpected, does the fix work. Read what the run saved before running anything again; an <code>ERROR</code> is re-run or left out and said so, never counted as a failure of the skill.</li>
+            <li><strong>Models and dates.</strong> claude-haiku-4.5 and gpt-5.6-terra, judged by claude-sonnet-5.5, checked on 2026-11-10, at $0.01 per AIU.</li>
+          </ol>
+        </details></li>
+    </ol>
+  </section>
+
+  <h2 id="where-the-skill-stands" data-mode="think">Where the skill stands</h2>
+
+  <p>Compare the last table with where you started. In lesson 1 this skill was five lines that one model answered by inventing a pull request number, and a tick that hid it. In lesson 5 a single stimulus-and-model pair out of six passed. Now the suites cover a conversation, a loading test with near-misses, a judged quality that no pattern can see, and budgets on every quick stimulus. In our last run every stimulus passed on both models except two: one trial whose session dropped, and one conversation on <code>claude-haiku-4.5</code> in which a number from an earlier request leaked into a later entry. Lesson 11's rule did not make that leak impossible; the grader lesson 11 added is what caught it. Every rule in the skill is there because a trial showed it was needed, and every grader is there because a failure was seen.</p>
+
+  <p>Now say what it costs. In our run the quick suite's ten trials cost 23.81 AIU, about 24 cents an edit: 9.62 AIU on <code>claude-haiku-4.5</code> and 14.19 on <code>gpt-5.6-terra</code>, from 1.63 to 3.40 AIU a trial. The full suite's 29 finished trials cost 64.03 AIU, about 64 cents, an average of 2.21 AIU a trial, close to the 2.2 AIU that lesson 16 used for its estimates; its six judge calls are on top. None of these trials came near the token budget: the largest quick trial used 91,454 tokens against 215000.</p>
+
+  <p>Those numbers are for the course's pair of models. Lesson 16 found <code>claude-haiku-5.5</code> at low effort passing all 15 of its trials on the same five quick stimuli at 0.21 AIU per passing trial, so a quick suite on that one variant would cost about 1 AIU an edit, a cent. Our conventions say how to make that move: compare cost per passing trial, re-test the budgets on its saved trials, and run the full suite on it first, since the judged wording stimuli are where models differed.</p>
+
+  <p>Keep one caution from lesson 15 as you close part 1. That last table is one trial per stimulus. Our own run shows why that matters: the conversation passed all six of lesson 11's runs after its fix, and failed here. One trial says what can pass, not what always will. The suites are how you find out when that changes.</p>
+
+  <p>One step is left for you. Teams often have a service run a check like the quick suite automatically, every time someone proposes a change to the code. We could not run that for this course, because it needs a project of your own hosted on such a service. The <a href="../reference/workflow-guide.html">workflow guide</a>, the first of the reference sheets, shows the few lines it takes, marked as not run by us.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/guides/authoring-eval-suites/">Authoring Eval Suites, Vally docs</a></p>
+    <p>Read the parts on tags and on suites. They show other ways to slice a set of stimuli, such as by cost, that a larger project will want.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, list the five checks in order of cost, and say when you would use each.
+        <details class="answer"><summary>Show model answer</summary><p>Lint, after editing an eval file. The oracle, after writing or changing a grader. A re-grade of a saved run, after changing a grader, a budget or a rubric. The quick suite, after every edit to the skill. The full suite, before sharing the skill and when a model changes.</p></details></li>
+      <li>Name the three ways a command in your routine can fail loudly, and the command and option for each.
+        <details class="answer"><summary>Show model answer</summary><p>A failing verdict and an over-budget trial both fail a stimulus, so <code>vally eval</code> (or <code>vally grade</code>) with <code>--require-pass</code> exits 1 for either. A regression in judged quality makes <code>vally compare</code> with <code>--fail-on-regression</code> exit 1. An <code>ERROR</code> exits 1 from any of them, with or without the option.</p></details></li>
+      <li>After an edit, the quick suite exits 0, but the summary shows every trial using about a third more tokens than before, still under the budget. Which of your three gates caught it, and what would you do?
+        <details class="answer"><summary>Show model answer</summary><p>None of them. The budget sits at about twice the typical trial, so a third more passes, and <code>--fail-on-regression</code> looks only at the judged score. Read the metric lines: lesson 19 prints the token change with its range, and the cost calculator gives cost per passing trial. If the rise is real and not worth it, change the edit; if you accept it, re-test the budgets on the new trials as lesson 18 did.</p></details></li>
+      <li>A model you depend on is replaced by a newer one. Write, in order, what you would run, and what would make you edit the skill.
+        <details class="answer"><summary>Show model answer</summary><p>Put the new model name in the commands and the experiment files. Re-grade saved trials of the new model against the budgets once you have some, since its token counts will differ. Run the full suite on it, and price it with cost per passing trial. Run the with-and-without experiment, since a newer model may no longer need some rules, or may react badly to one. Read the patches of anything that fails before changing a rule, and measure any edit before and after with enough trials to separate the ranges.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="21" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> run a quick suite after every edit and a full suite before sharing, with commands that fail loudly on a failing verdict, an over-budget trial or a regression, and hand a teammate a one-page conventions file.</p>
+    <p><strong>Up next:</strong> <a href="./0022-start-the-agent-where-the-app-would.html">Start the agent where the app would</a>. Part 1 is complete. In part 2, the <code>notes-cli</code> team has put the skill inside their release tooling. Does it still hold when an app, not a person, starts the agent?</p>
+    <a class="next-lesson" href="./0022-start-the-agent-where-the-app-would.html">Next lesson: Start the agent where the app would <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

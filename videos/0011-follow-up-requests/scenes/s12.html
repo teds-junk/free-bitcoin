@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One diff per turn</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.tree{min-width:860px;font-size:38px;line-height:1.7}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Turns and scoped graders</div>
+  <h2 class="scene-title">One diff per turn</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark tree" data-lang="text"><code><span>results/lesson-11/</span>
+<span>  </span><span data-concept="run" data-rep="code"><span>2026-11-11T06-35-45-792Z/</span></span>
+<span>    </span><span data-concept="diffs" data-rep="code"><span>diffs/</span></span>
+<span>      …</span><span data-concept="name" data-rep="code"><span>__trial-1__turn-2.diff</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="run">the run folder</p><p class="callout" data-anchor="diffs">one file per turn of every trial</p><p class="callout" data-anchor="name">trial and turn, both from 0</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "diffs",
+  "at": "1~diffs",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "name",
+  "at": "2~trial",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

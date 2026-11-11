@@ -1,0 +1,25 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from changelog · 2 models · 2 workers
+
+changelog
+
+gpt-5.6-terra
+  FLAKY  typo-fix  4 passed · 1 failed
+   ✘ mentions-the-command  4 passed · 1 failed · 'notes add' not found in any file matching
+                                                 'CHANGELOG.md'  trial 1
+
+────────────────────────────────────────────────────────
+
+Failures  1 failed
+  ✘ changelog · typo-fix [gpt-5.6-terra]
+      ✘ mentions-the-command  'notes add' not found in any file matching 'CHANGELOG.md' · trial 1
+
+Model summary
+  ✓ claude-haiku-4.5  1/1 evals passed
+  ✘ gpt-5.6-terra     0/1 evals passed
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✓ 1/1             ✘ 0/1        
+
+Saved  /private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/course-run/practice/results/lesson-3/2026-11-10T08-07-12-152Z/
+Run ID  abff2df3-93d6-412f-a2a2-50358c1a6b83

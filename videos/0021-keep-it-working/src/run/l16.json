@@ -1,0 +1,9 @@
+{
+ "_about": "REAL: the lesson 16 video's own run results/lesson-16/2026-11-11T08-39-02-179Z (its HANDOVER.md): haiku-low passed 15 of 15 at 0.21 AIU a passing trial, the cheapest variant that passed everything.",
+ "model": "claude-haiku-5.5",
+ "effort": "low",
+ "passed": 15,
+ "trials": 15,
+ "aiu_per_passing": 0.21,
+ "quick_stimuli": 5
+}

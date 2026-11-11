@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ten headings, one page</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Two suites and a conventions page</div>
+  <h2 class="scene-title">Ten headings, one page</h2>
+  <div class="stage">
+<!-- file-panel:conv · regenerate with: node file-panel.js --file src/state/CONVENTIONS.md --label CONVENTIONS.md --id conv --width 63 --rows 9 --expect '3=What earns a grader' --expect '30=Models and dates' --mark 30=models --into scenes/s20.html -->
+<div class="file-panel" id="conv" data-file="CONVENTIONS.md" data-lines="31" data-rows="9" style="--rows:9;--cols:63;--ln:2">
+<div class="code-file">CONVENTIONS.md<span class="file-meta">31 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="markdown"><code>
+<span class="file-row" data-line="1"><span class="ln">1</span><span style="color:#4EA5E6"># Conventions for the changelog-entry evals</span></span>
+<span class="file-row" data-line="2"><span class="ln">2</span></span>
+<span class="file-row" data-line="3"><span class="ln">3</span><span style="color:#4EA5E6">## What earns a grader</span></span>
+<span class="file-row" data-line="4"><span class="ln">4</span><span style="color:#B3C0BF">A failure we have seen in a real trial. One grader per failure </span></span>
+<span class="file-row" data-line="4" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">mode, named after it.</span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span style="color:#4EA5E6">## Code first, judge second</span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span><span style="color:#B3C0BF">A judge only for what code cannot decide, with one yes-or-no </span></span>
+<span class="file-row" data-line="7" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">criterion.</span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span><span style="color:#4EA5E6">## Where files live</span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span><span style="color:#3CC0B3">`evals/`</span><span style="color:#B3C0BF"> beside </span><span style="color:#3CC0B3">`skills/`</span><span style="color:#B3C0BF">, never inside a skill. Grading </span></span>
+<span class="file-row" data-line="10" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">scripts in </span><span style="color:#3CC0B3">`evals/grading`</span><span style="color:#B3C0BF">, brought in through the grading </span></span>
+<span class="file-row" data-line="10" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">environment.</span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span></span>
+<span class="file-row" data-line="12"><span class="ln">12</span><span style="color:#4EA5E6">## Before trusting a grader</span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span style="color:#B3C0BF">The oracle, with and without the golden patch. A grader that </span></span>
+<span class="file-row" data-line="13" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">checks for absence must also fail a saved trial known to be </span></span>
+<span class="file-row" data-line="13" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">bad. A new budget is re-graded against saved trials and </span></span>
+<span class="file-row" data-line="13" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">must pass all the good ones.</span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span></span>
+<span class="file-row" data-line="15"><span class="ln">15</span><span style="color:#4EA5E6">## Before trusting a judge</span></span>
+<span class="file-row" data-line="16"><span class="ln">16</span><span style="color:#B3C0BF">Our own labels first. TPR and TNR reported with the number of </span></span>
+<span class="file-row" data-line="16" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">labels. Label again when the rubric or the judge model </span></span>
+<span class="file-row" data-line="16" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">changes.</span></span>
+<span class="file-row" data-line="17"><span class="ln">17</span></span>
+<span class="file-row" data-line="18"><span class="ln">18</span><span style="color:#4EA5E6">## What we run and when</span></span>
+<span class="file-row" data-line="19"><span class="ln">19</span><span style="color:#B3C0BF">The quick suite with </span><span style="color:#3CC0B3">`--require-pass`</span><span style="color:#B3C0BF"> after every edit to the </span></span>
+<span class="file-row" data-line="19" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">skill. The full suite before sharing and when a model </span></span>
+<span class="file-row" data-line="19" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">changes. A before-and-after experiment and </span><span style="color:#3CC0B3">`vally compare </span></span>
+<span class="file-row" data-line="19" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#3CC0B3">--fail-on-regression`</span><span style="color:#B3C0BF"> before relying on an edit. </span></span>
+<span class="file-row" data-line="19" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">With-and-without after a large rewrite.</span></span>
+<span class="file-row" data-line="20"><span class="ln">20</span></span>
+<span class="file-row" data-line="21"><span class="ln">21</span><span style="color:#4EA5E6">## How we report a result</span></span>
+<span class="file-row" data-line="22"><span class="ln">22</span><span style="color:#B3C0BF">Counts, per model, with cost per passing trial. </span></span>
+<span class="file-row" data-line="22" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">"These trials cannot tell" when the ranges overlap.</span></span>
+<span class="file-row" data-line="23"><span class="ln">23</span></span>
+<span class="file-row" data-line="24"><span class="ln">24</span><span style="color:#4EA5E6">## What a run may cost</span></span>
+<span class="file-row" data-line="25"><span class="ln">25</span><span style="color:#B3C0BF">Budgets at about twice the largest typical trial: 215000 </span></span>
+<span class="file-row" data-line="25" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">tokens, 10 turns, 30 seconds, and a 1-minute limit on the </span></span>
+<span class="file-row" data-line="25" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">agent. Re-tested for free whenever the skill, the model or </span></span>
+<span class="file-row" data-line="25" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">the effort changes. Cost per passing trial compared before </span></span>
+<span class="file-row" data-line="25" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">switching models, with the judge's calls counted on top.</span></span>
+<span class="file-row" data-line="26"><span class="ln">26</span></span>
+<span class="file-row" data-line="27"><span class="ln">27</span><span style="color:#4EA5E6">## When a run goes wrong</span></span>
+<span class="file-row" data-line="28"><span class="ln">28</span><span style="color:#B3C0BF">The four questions in order: is the eval valid, did it </span></span>
+<span class="file-row" data-line="28" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">complete, why was the result unexpected, does the fix work. </span></span>
+<span class="file-row" data-line="28" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">Read what the run saved before running anything again; an </span></span>
+<span class="file-row" data-line="28" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">ERROR is re-run or left out and said so, never counted as a </span></span>
+<span class="file-row" data-line="28" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">failure of the skill.</span></span>
+<span class="file-row" data-line="29"><span class="ln">29</span></span>
+<span class="file-row" data-line="30"><span class="ln">30</span><span data-concept="models" data-rep="code"><span style="color:#4EA5E6">## Models and dates</span></span></span>
+<span class="file-row" data-line="31"><span class="ln">31</span><span style="color:#B3C0BF">claude-haiku-4.5 and gpt-5.6-terra, judged by </span></span>
+<span class="file-row" data-line="31" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#B3C0BF">claude-sonnet-5.5, checked on 2026-11-10, at $0.01 per AIU.</span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="31" style="height:217px" aria-hidden="true"><b class="file-map-view" style="top:0px;height:49px"></b><svg width="120" height="217" viewBox="0 0 120 217" shape-rendering="crispEdges"><rect x="0" y="0" width="1.5" height="4" fill="#4EA5E6"/><rect x="2.4" y="0" width="12.6" height="4" fill="#4EA5E6"/><rect x="16.8" y="0" width="3" height="4" fill="#4EA5E6"/><rect x="21.6" y="0" width="3" height="4" fill="#4EA5E6"/><rect x="26.4" y="0" width="17.4" height="4" fill="#4EA5E6"/><rect x="45.6" y="0" width="5.4" height="4" fill="#4EA5E6"/><rect x="0" y="14" width="1.8" height="4" fill="#4EA5E6"/><rect x="3.6" y="14" width="4.2" height="4" fill="#4EA5E6"/><rect x="9.6" y="14" width="5.4" height="4" fill="#4EA5E6"/><rect x="16.8" y="14" width="1.5" height="4" fill="#4EA5E6"/><rect x="19.2" y="14" width="6.6" height="4" fill="#4EA5E6"/><rect x="0" y="21" width="1.5" height="4" fill="#B3C0BF"/><rect x="2.4" y="21" width="7.8" height="4" fill="#B3C0BF"/><rect x="12" y="21" width="1.8" height="4" fill="#B3C0BF"/><rect x="15.6" y="21" width="4.2" height="4" fill="#B3C0BF"/><rect x="21.6" y="21" width="4.2" height="4" fill="#B3C0BF"/><rect x="27.6" y="21" width="1.8" height="4" fill="#B3C0BF"/><rect x="31.2" y="21" width="1.5" height="4" fill="#B3C0BF"/><rect x="33.6" y="21" width="4.2" height="4" fill="#B3C0BF"/><rect x="39.6" y="21" width="6.6" height="4" fill="#B3C0BF"/><rect x="48" y="21" width="3" height="4" fill="#B3C0BF"/><rect x="52.8" y="21" width="6.6" height="4" fill="#B3C0BF"/><rect x="61.2" y="21" width="3" height="4" fill="#B3C0BF"/><rect x="66" y="21" width="7.8" height="4" fill="#B3C0BF"/><rect x="75.6" y="21" width="5.4" height="4" fill="#B3C0BF"/><rect x="82.8" y="21" width="5.4" height="4" fill="#B3C0BF"/><rect x="90" y="21" width="5.4" height="4" fill="#B3C0BF"/><rect x="97.2" y="21" width="3" height="4" fill="#B3C0BF"/><rect x="0" y="35" width="1.8" height="4" fill="#4EA5E6"/><rect x="3.6" y="35" width="4.2" height="4" fill="#4EA5E6"/><rect x="9.6" y="35" width="6.6" height="4" fill="#4EA5E6"/><rect x="18" y="35" width="5.4" height="4" fill="#4EA5E6"/><rect x="25.2" y="35" width="6.6" height="4" fill="#4EA5E6"/><rect x="0" y="42" width="1.5" height="4" fill="#B3C0BF"/><rect x="2.4" y="42" width="5.4" height="4" fill="#B3C0BF"/><rect x="9.6" y="42" width="4.2" height="4" fill="#B3C0BF"/><rect x="15.6" y="42" width="3" height="4" fill="#B3C0BF"/><rect x="20.4" y="42" width="4.2" height="4" fill="#B3C0BF"/><rect x="26.4" y="42" width="4.2" height="4" fill="#B3C0BF"/><rect x="32.4" y="42" width="6.6" height="4" fill="#B3C0BF"/><rect x="40.8" y="42" width="7.8" height="4" fill="#B3C0BF"/><rect x="50.4" y="42" width="4.2" height="4" fill="#B3C0BF"/><rect x="56.4" y="42" width="3" height="4" fill="#B3C0BF"/><rect x="61.2" y="42" width="10.2" height="4" fill="#B3C0BF"/><rect x="73.2" y="42" width="11.4" height="4" fill="#B3C0BF"/><rect x="0" y="56" width="1.8" height="4" fill="#4EA5E6"/><rect x="3.6" y="56" width="5.4" height="4" fill="#4EA5E6"/><rect x="10.8" y="56" width="5.4" height="4" fill="#4EA5E6"/><rect x="18" y="56" width="4.2" height="4" fill="#4EA5E6"/><rect x="0" y="63" width="9" height="4" fill="#3CC0B3"/><rect x="10.8" y="63" width="6.6" height="4" fill="#B3C0BF"/><rect x="19.2" y="63" width="10.2" height="4" fill="#3CC0B3"/><rect x="30" y="63" width="1.5" height="4" fill="#B3C0BF"/><rect x="32.4" y="63" width="5.4" height="4" fill="#B3C0BF"/><rect x="39.6" y="63" width="6.6" height="4" fill="#B3C0BF"/><rect x="48" y="63" width="1.5" height="4" fill="#B3C0BF"/><rect x="50.4" y="63" width="6.6" height="4" fill="#B3C0BF"/><rect x="58.8" y="63" width="7.8" height="4" fill="#B3C0BF"/><rect x="68.4" y="63" width="7.8" height="4" fill="#B3C0BF"/><rect x="78" y="63" width="1.8" height="4" fill="#B3C0BF"/><rect x="81.6" y="63" width="17.4" height="4" fill="#3CC0B3"/><rect x="99.6" y="63" width="1.5" height="4" fill="#B3C0BF"/><rect x="102" y="63" width="7.8" height="4" fill="#B3C0BF"/><rect x="111.6" y="63" width="1.8" height="4" fill="#B3C0BF"/><rect x="115.2" y="63" width="4.2" height="4" fill="#B3C0BF"/><rect x="0" y="77" width="1.8" height="4" fill="#4EA5E6"/><rect x="3.6" y="77" width="6.6" height="4" fill="#4EA5E6"/><rect x="12" y="77" width="9" height="4" fill="#4EA5E6"/><rect x="22.8" y="77" width="1.5" height="4" fill="#4EA5E6"/><rect x="25.2" y="77" width="6.6" height="4" fill="#4EA5E6"/><rect x="0" y="84" width="3" height="4" fill="#B3C0BF"/><rect x="4.8" y="84" width="7.8" height="4" fill="#B3C0BF"/><rect x="14.4" y="84" width="4.2" height="4" fill="#B3C0BF"/><rect x="20.4" y="84" width="3" height="4" fill="#B3C0BF"/><rect x="25.2" y="84" width="7.8" height="4" fill="#B3C0BF"/><rect x="34.8" y="84" width="3" height="4" fill="#B3C0BF"/><rect x="39.6" y="84" width="6.6" height="4" fill="#B3C0BF"/><rect x="48" y="84" width="6.6" height="4" fill="#B3C0BF"/><rect x="56.4" y="84" width="1.5" height="4" fill="#B3C0BF"/><rect x="58.8" y="84" width="6.6" height="4" fill="#B3C0BF"/><rect x="67.2" y="84" width="4.2" height="4" fill="#B3C0BF"/><rect x="73.2" y="84" width="6.6" height="4" fill="#B3C0BF"/><rect x="81.6" y="84" width="3" height="4" fill="#B3C0BF"/><rect x="86.4" y="84" width="7.8" height="4" fill="#B3C0BF"/><rect x="96" y="84" width="4.2" height="4" fill="#B3C0BF"/><rect x="102" y="84" width="4.2" height="4" fill="#B3C0BF"/><rect x="108" y="84" width="4.2" height="4" fill="#B3C0BF"/><rect x="114" y="84" width="1.5" height="4" fill="#B3C0BF"/><rect x="116.4" y="84" width="3" height="4" fill="#B3C0BF"/><rect x="0" y="98" width="1.8" height="4" fill="#4EA5E6"/><rect x="3.6" y="98" width="6.6" height="4" fill="#4EA5E6"/><rect x="12" y="98" width="9" height="4" fill="#4EA5E6"/><rect x="22.8" y="98" width="1.5" height="4" fill="#4EA5E6"/><rect x="25.2" y="98" width="5.4" height="4" fill="#4EA5E6"/><rect x="0" y="105" width="3" height="4" fill="#B3C0BF"/><rect x="4.8" y="105" width="3" height="4" fill="#B3C0BF"/><rect x="9.6" y="105" width="6.6" height="4" fill="#B3C0BF"/><rect x="18" y="105" width="6.6" height="4" fill="#B3C0BF"/><rect x="26.4" y="105" width="3" height="4" fill="#B3C0BF"/><rect x="31.2" y="105" width="3" height="4" fill="#B3C0BF"/><rect x="36" y="105" width="3" height="4" fill="#B3C0BF"/><rect x="40.8" y="105" width="9" height="4" fill="#B3C0BF"/><rect x="51.6" y="105" width="4.2" height="4" fill="#B3C0BF"/><rect x="57.6" y="105" width="3" height="4" fill="#B3C0BF"/><rect x="62.4" y="105" width="6.6" height="4" fill="#B3C0BF"/><rect x="70.8" y="105" width="1.8" height="4" fill="#B3C0BF"/><rect x="74.4" y="105" width="7.8" height="4" fill="#B3C0BF"/><rect x="84" y="105" width="5.4" height="4" fill="#B3C0BF"/><rect x="91.2" y="105" width="5.4" height="4" fill="#B3C0BF"/><rect x="98.4" y="105" width="4.2" height="4" fill="#B3C0BF"/><rect x="104.4" y="105" width="3" height="4" fill="#B3C0BF"/><rect x="109.2" y="105" width="6.6" height="4" fill="#B3C0BF"/><rect x="117.6" y="105" width="1.8" height="4" fill="#B3C0BF"/><rect x="0" y="119" width="1.8" height="4" fill="#4EA5E6"/><rect x="3.6" y="119" width="4.2" height="4" fill="#4EA5E6"/><rect x="9.6" y="119" width="1.8" height="4" fill="#4EA5E6"/><rect x="13.2" y="119" width="3" height="4" fill="#4EA5E6"/><rect x="18" y="119" width="3" height="4" fill="#4EA5E6"/><rect x="22.8" y="119" width="4.2" height="4" fill="#4EA5E6"/><rect x="0" y="126" width="3" height="4" fill="#B3C0BF"/><rect x="4.8" y="126" width="5.4" height="4" fill="#B3C0BF"/><rect x="12" y="126" width="5.4" height="4" fill="#B3C0BF"/><rect x="19.2" y="126" width="4.2" height="4" fill="#B3C0BF"/><rect x="25.2" y="126" width="18.6" height="4" fill="#3CC0B3"/><rect x="45.6" y="126" width="5.4" height="4" fill="#B3C0BF"/><rect x="52.8" y="126" width="5.4" height="4" fill="#B3C0BF"/><rect x="60" y="126" width="4.2" height="4" fill="#B3C0BF"/><rect x="66" y="126" width="1.8" height="4" fill="#B3C0BF"/><rect x="69.6" y="126" width="3" height="4" fill="#B3C0BF"/><rect x="74.4" y="126" width="6.6" height="4" fill="#B3C0BF"/><rect x="82.8" y="126" width="3" height="4" fill="#B3C0BF"/><rect x="87.6" y="126" width="4.2" height="4" fill="#B3C0BF"/><rect x="93.6" y="126" width="5.4" height="4" fill="#B3C0BF"/><rect x="100.8" y="126" width="6.6" height="4" fill="#B3C0BF"/><rect x="109.2" y="126" width="7.8" height="4" fill="#B3C0BF"/><rect x="118.8" y="126" width="1.5" height="4" fill="#B3C0BF"/><rect x="0" y="140" width="1.8" height="4" fill="#4EA5E6"/><rect x="3.6" y="140" width="3" height="4" fill="#4EA5E6"/><rect x="8.4" y="140" width="1.8" height="4" fill="#4EA5E6"/><rect x="12" y="140" width="6.6" height="4" fill="#4EA5E6"/><rect x="20.4" y="140" width="1.5" height="4" fill="#4EA5E6"/><rect x="22.8" y="140" width="6.6" height="4" fill="#4EA5E6"/><rect x="0" y="147" width="7.8" height="4" fill="#B3C0BF"/><rect x="9.6" y="147" width="3" height="4" fill="#B3C0BF"/><rect x="14.4" y="147" width="6.6" height="4" fill="#B3C0BF"/><rect x="22.8" y="147" width="4.2" height="4" fill="#B3C0BF"/><rect x="28.8" y="147" width="4.2" height="4" fill="#B3C0BF"/><rect x="34.8" y="147" width="3" height="4" fill="#B3C0BF"/><rect x="39.6" y="147" width="7.8" height="4" fill="#B3C0BF"/><rect x="49.2" y="147" width="6.6" height="4" fill="#B3C0BF"/><rect x="57.6" y="147" width="6.6" height="4" fill="#B3C0BF"/><rect x="66" y="147" width="6.6" height="4" fill="#B3C0BF"/><rect x="74.4" y="147" width="6.6" height="4" fill="#B3C0BF"/><rect x="82.8" y="147" width="5.4" height="4" fill="#B3C0BF"/><rect x="90" y="147" width="4.2" height="4" fill="#B3C0BF"/><rect x="96" y="147" width="3" height="4" fill="#B3C0BF"/><rect x="100.8" y="147" width="6.6" height="4" fill="#B3C0BF"/><rect x="109.2" y="147" width="9" height="4" fill="#B3C0BF"/><rect x="0" y="161" width="1.8" height="4" fill="#4EA5E6"/><rect x="3.6" y="161" width="4.2" height="4" fill="#4EA5E6"/><rect x="9.6" y="161" width="1.5" height="4" fill="#4EA5E6"/><rect x="12" y="161" width="3" height="4" fill="#4EA5E6"/><rect x="16.8" y="161" width="3" height="4" fill="#4EA5E6"/><rect x="21.6" y="161" width="4.2" height="4" fill="#4EA5E6"/><rect x="0" y="168" width="7.8" height="4" fill="#B3C0BF"/><rect x="9.6" y="168" width="1.8" height="4" fill="#B3C0BF"/><rect x="13.2" y="168" width="5.4" height="4" fill="#B3C0BF"/><rect x="20.4" y="168" width="5.4" height="4" fill="#B3C0BF"/><rect x="27.6" y="168" width="3" height="4" fill="#B3C0BF"/><rect x="32.4" y="168" width="7.8" height="4" fill="#B3C0BF"/><rect x="42" y="168" width="7.8" height="4" fill="#B3C0BF"/><rect x="51.6" y="168" width="6.6" height="4" fill="#B3C0BF"/><rect x="60" y="168" width="6.6" height="4" fill="#B3C0BF"/><rect x="68.4" y="168" width="7.8" height="4" fill="#B3C0BF"/><rect x="78" y="168" width="1.8" height="4" fill="#B3C0BF"/><rect x="81.6" y="168" width="6.6" height="4" fill="#B3C0BF"/><rect x="90" y="168" width="1.8" height="4" fill="#B3C0BF"/><rect x="93.6" y="168" width="9" height="4" fill="#B3C0BF"/><rect x="104.4" y="168" width="3" height="4" fill="#B3C0BF"/><rect x="109.2" y="168" width="1.5" height="4" fill="#B3C0BF"/><rect x="111.6" y="168" width="7.8" height="4" fill="#B3C0BF"/><rect x="0" y="182" width="1.8" height="4" fill="#4EA5E6"/><rect x="3.6" y="182" width="4.2" height="4" fill="#4EA5E6"/><rect x="9.6" y="182" width="1.5" height="4" fill="#4EA5E6"/><rect x="12" y="182" width="3" height="4" fill="#4EA5E6"/><rect x="16.8" y="182" width="4.2" height="4" fill="#4EA5E6"/><rect x="22.8" y="182" width="5.4" height="4" fill="#4EA5E6"/><rect x="0" y="189" width="3" height="4" fill="#B3C0BF"/><rect x="4.8" y="189" width="4.2" height="4" fill="#B3C0BF"/><rect x="10.8" y="189" width="10.2" height="4" fill="#B3C0BF"/><rect x="22.8" y="189" width="1.8" height="4" fill="#B3C0BF"/><rect x="26.4" y="189" width="6.6" height="4" fill="#B3C0BF"/><rect x="34.8" y="189" width="1.8" height="4" fill="#B3C0BF"/><rect x="38.4" y="189" width="3" height="4" fill="#B3C0BF"/><rect x="43.2" y="189" width="4.2" height="4" fill="#B3C0BF"/><rect x="49.2" y="189" width="6.6" height="4" fill="#B3C0BF"/><rect x="57.6" y="189" width="3" height="4" fill="#B3C0BF"/><rect x="62.4" y="189" width="1.8" height="4" fill="#B3C0BF"/><rect x="66" y="189" width="10.2" height="4" fill="#B3C0BF"/><rect x="78" y="189" width="3" height="4" fill="#B3C0BF"/><rect x="82.8" y="189" width="3" height="4" fill="#B3C0BF"/><rect x="87.6" y="189" width="3" height="4" fill="#B3C0BF"/><rect x="92.4" y="189" width="6.6" height="4" fill="#B3C0BF"/><rect x="100.8" y="189" width="12.6" height="4" fill="#B3C0BF"/><rect x="115.2" y="189" width="4.2" height="4" fill="#B3C0BF"/><rect x="0" y="203" width="1.8" height="4" fill="#4EA5E6"/><rect x="3.6" y="203" width="6.6" height="4" fill="#4EA5E6"/><rect x="12" y="203" width="3" height="4" fill="#4EA5E6"/><rect x="16.8" y="203" width="5.4" height="4" fill="#4EA5E6"/><rect x="0" y="210" width="18.6" height="4" fill="#B3C0BF"/><rect x="20.4" y="210" width="3" height="4" fill="#B3C0BF"/><rect x="25.2" y="210" width="16.2" height="4" fill="#B3C0BF"/><rect x="43.2" y="210" width="6.6" height="4" fill="#B3C0BF"/><rect x="51.6" y="210" width="1.8" height="4" fill="#B3C0BF"/><rect x="55.2" y="210" width="21" height="4" fill="#B3C0BF"/><rect x="78" y="210" width="7.8" height="4" fill="#B3C0BF"/><rect x="87.6" y="210" width="1.8" height="4" fill="#B3C0BF"/><rect x="91.2" y="210" width="12.6" height="4" fill="#B3C0BF"/><rect x="105.6" y="210" width="1.8" height="4" fill="#B3C0BF"/><rect x="109.2" y="210" width="5.4" height="4" fill="#B3C0BF"/><rect x="116.4" y="210" width="3" height="4" fill="#B3C0BF"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:conv -->
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "scroll",
+  "target": "#conv",
+  "to": "3-9",
+  "at": "2"
+ },
+ {
+  "type": "scroll",
+  "target": "#conv",
+  "to": "9-12",
+  "at": "2~where files"
+ },
+ {
+  "type": "scroll",
+  "target": "#conv",
+  "to": "15-16",
+  "at": "2~judge"
+ },
+ {
+  "type": "scroll",
+  "target": "#conv",
+  "to": "18-21",
+  "at": "3"
+ },
+ {
+  "type": "scroll",
+  "target": "#conv",
+  "to": "24-25",
+  "at": "3~what a run"
+ },
+ {
+  "type": "scroll",
+  "target": "#conv",
+  "to": "27-28",
+  "at": "4"
+ },
+ {
+  "type": "scroll",
+  "target": "#conv",
+  "to": "30-31",
+  "at": "4~which models"
+ },
+ {
+  "type": "focus",
+  "target": "models",
+  "at": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

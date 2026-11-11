@@ -1,0 +1,302 @@
+/*
+ * Solarized Technical Essay — video-lesson house theme. 1920x1080 canvas.
+ * Full design system: references/SOLARIZED-TECHNICAL-ESSAY.md. Do not edit per video.
+ * Fonts are bundled in ./fonts (OFL) so rendering never touches the network.
+ *
+ * Three faces, three jobs (SLIDES.md → The three faces):
+ *   display serif  short headlines only (six words or fewer)
+ *   sans           everything a viewer reads as prose: leads, labels, notes, tables
+ *   mono           code, commands, file names, terms that are typed
+ * Text colours on the paper are --ink, --ink-soft and --ink-muted, nothing lighter: a video is
+ * watched small and compressed, and pale grey on cream disappears. preview.js measures it.
+ */
+
+@font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; font-display: block; src: url("fonts/instrument-serif-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: block; src: url("fonts/instrument-serif-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: block; src: url("fonts/inter-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: italic; font-weight: 400; font-display: block; src: url("fonts/inter-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: block; src: url("fonts/inter-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: block; src: url("fonts/inter-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 400; font-display: block; src: url("fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: italic; font-weight: 400; font-display: block; src: url("fonts/jetbrains-mono-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 500; font-display: block; src: url("fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "JetBrains Mono"; font-style: normal; font-weight: 700; font-display: block; src: url("fonts/jetbrains-mono-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  /* Solarized */
+  --base03: #002b36; --base02: #073642; --base01: #586e75; --base00: #657b83;
+  --base0: #839496; --base1: #93a1a1; --base2: #eee8d5; --base3: #fdf6e3;
+  --blue: #268bd2; --cyan: #2aa198; --yellow: #b58900; --green: #859900;
+  --orange: #cb4b16; --red: #dc322f; --violet: #6c71c4; --magenta: #d33682;
+
+  /* Darker accessible variants for SMALL text on paper (labels < 36px). */
+  --blue-ink: #1b6aa3; --cyan-ink: #1c7a72; --yellow-ink: #8a6800; --green-ink: #5f6e00;
+  --orange-ink: #a63c0f; --red-ink: #b42523; --violet-ink: #4f53a3; --magenta-ink: #a8255f;
+
+  /* Semantic surfaces and roles */
+  --paper: var(--base3); --paper-muted: #f1ead4;
+  /* Text on the paper, by contrast against it: 12:1, 8.7:1, 6.1:1. base00, base0 and base1 are
+     NOT text colours on the paper (4.1:1, 2.9:1, 2.5:1); they are for rules and marks only. */
+  --ink: var(--base02); --ink-soft: #2f4a53; --ink-muted: #4a6068;
+  --rule: #d9d2bd;
+  --code-dark: var(--base02);
+  /* Text on the dark panel (6.9:1, 4.2:1) and its line numbers. */
+  --code-fg: #b3c0bf; --code-dim: #8296a0; --code-ln: #6f858c;
+  --structure: var(--blue); --transform: var(--cyan); --attention: var(--yellow);
+  --success: var(--green); --change: var(--orange); --failure: var(--red);
+
+  /* Block fills at rest: barely off the paper, so a highlight has somewhere to go. */
+  --tint-blue: #e3edf0; --tint-cyan: #deeee6; --tint-yellow: #f6ecc6;
+  --tint-green: #ebeecd; --tint-orange: #f9e5d7; --tint-red: #f9e0d9;
+  /* Highlight backings on the paper and on blocks (derived, not canonical Solarized). */
+  --focus-cyan: #bfe1d7; --focus-blue: #c5dded; --focus-yellow: #eed98a;
+  --focus-green: #d5df9b; --focus-orange: #f3c7ab; --focus-red: #f2bfb5; --focus-violet: #d6d3ee;
+  /* Backings on the dark code panel */
+  --focus-dark-cyan: #11585d; --focus-dark-blue: #104f75; --focus-dark-yellow: #5a531a;
+  --focus-dark-green: #37561f; --focus-dark-orange: #6a3a24; --focus-dark-red: #6b3037; --focus-dark-violet: #354476;
+
+  /* Typography */
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-code: "JetBrains Mono", Menlo, monospace;
+
+  /* Canvas: 120px safe margin on every side, plus a caption band at the bottom. */
+  --scene-width: 1920px; --scene-height: 1080px;
+  --safe: 120px; --caption-band: 160px;
+  --radius: 10px;
+
+  /* Motion (the runtime reads these defaults) */
+  --motion-focus: 350ms; --motion-morph: 700ms; --motion-connect: 500ms; --motion-expand: 650ms;
+  --ease-standard: cubic-bezier(.22, 1, .36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); }
+
+/* ---- Scene ---------------------------------------------------------------- */
+/* Every scene is one frame: an optional eyebrow, a short headline pinned top-left, and a .stage
+   that takes the rest of the safe area and centres its content in it. Content fills the width;
+   nothing floats in a corner. */
+.scene {
+  position: relative;
+  width: var(--scene-width); height: var(--scene-height);
+  overflow: hidden;
+  background: var(--paper); color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  padding: 104px var(--safe) var(--caption-band);
+  display: flex; flex-direction: column; gap: 40px;
+}
+.scene.dark { background: var(--base03); color: var(--base2); }
+/* The 40px at the bottom lifts the content a little above the middle: the caption band under it is
+   empty in most viewings, so true centring looks low. */
+.stage { flex: 1; min-height: 0; width: 100%; display: flex; flex-direction: column; justify-content: center; gap: 36px; padding-bottom: 40px; }
+.stage.top { justify-content: flex-start; }
+/* Equal columns across the full width. */
+.cols { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 40px; width: 100%; align-items: stretch; }
+.cols.wide { gap: 72px; }
+
+/* ---- Type ------------------------------------------------------------------- */
+.eyebrow { font: 600 24px/1.2 var(--font-body); color: var(--blue-ink); letter-spacing: .03em; }
+.eyebrow + .scene-title { margin-top: -24px; }
+/* Display serif: SHORT headlines only. It is a condensed face; a full sentence in it is hard to
+   read. Six words or fewer, one line. The claim's detail goes in a .lead or to the voice. */
+.scene-title {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: 96px; line-height: 1.04; letter-spacing: -0.02em; color: var(--ink);
+  max-width: 1680px;
+}
+.scene-title em { font-style: italic; color: var(--blue); }
+.scene-title code, .scene-title .mono { font: 500 0.66em var(--font-code); letter-spacing: -0.02em; }
+.scene-title.chapter { font-size: 136px; }
+.lead { font: 400 38px/1.4 var(--font-body); color: var(--ink-soft); max-width: 1500px; }
+.body { font: 400 34px/1.45 var(--font-body); color: var(--ink); }
+.muted { color: var(--ink-muted); }
+.label { font: 400 32px/1.35 var(--font-body); color: var(--ink-soft); }
+.note { font: 400 30px/1.35 var(--font-body); color: var(--ink-muted); }
+code, .mono, .node, .semantic-block .title { font-family: var(--font-code); font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+.inline-code { font: 400 0.9em var(--font-code); color: var(--ink); white-space: nowrap; }
+
+/* Semantic text colors: large text uses the canonical accent, small text the -ink variant. */
+.c-structure { color: var(--blue); } .c-transform { color: var(--cyan); } .c-attention { color: var(--yellow); }
+.c-success { color: var(--green); } .c-change { color: var(--orange); } .c-failure { color: var(--red); }
+.label.c-structure { color: var(--blue-ink); } .label.c-transform { color: var(--cyan-ink); }
+.label.c-attention { color: var(--yellow-ink); } .label.c-success { color: var(--green-ink); }
+.label.c-change { color: var(--orange-ink); } .label.c-failure { color: var(--red-ink); }
+
+/* ---- Data tables: real numbers, set quietly (SLIDES.md, Evidence not bullets) -- */
+/* No vertical rules, hairline row rules, numbers right-aligned in tabular figures, units in the
+   header. Wrap a number in <span data-concept="…" data-rep="cell"> so a focus cue highlights it. */
+.data-table { border-collapse: collapse; align-self: flex-start; width: auto; font: 400 36px/1.35 var(--font-body); color: var(--ink); } /* as wide as its content: numbers stay near their labels */
+.data-table.full { width: 100%; }
+.data-table caption { caption-side: bottom; text-align: left; padding-top: 20px; font: 400 28px/1.35 var(--font-body); color: var(--ink-muted); }
+.data-table th { font: 500 28px/1.3 var(--font-body); color: var(--ink-muted); text-align: left; padding: 0 56px 14px 0; border-bottom: 2px solid var(--base1); }
+.data-table td { padding: 18px 56px 18px 0; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table th:last-child, .data-table td:last-child { padding-right: 0; }
+.data-table .num { text-align: right; }
+.data-table td.num { font-family: var(--font-code); font-variant-numeric: tabular-nums; font-feature-settings: "liga" 0, "calt" 0; }
+.data-table .unit { color: var(--ink-muted); font-size: .8em; }
+.scene.dark .data-table { color: var(--base2); }
+.scene.dark .data-table th { color: var(--base1); border-bottom-color: var(--base01); }
+.scene.dark .data-table td { border-bottom-color: var(--base02); }
+
+/* ---- Code as typography (generated by scripts/code.js) ----------------------- */
+.code {
+  font-family: var(--font-code); font-size: 42px; line-height: 1.75;
+  white-space: pre; color: var(--ink-soft); background: none; tab-size: 2;
+  font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; /* show the characters as typed */
+}
+.code.small { font-size: 38px; } /* side-by-side code; the spec's minimum for primary code */
+.code.dark {
+  background: var(--code-dark); color: var(--code-fg);
+  padding: 36px 44px; border-radius: var(--radius); font-size: 36px; line-height: 1.7;
+}
+.code.dark.wrap { white-space: pre-wrap; } /* quoted output that may run long: wrap, never shrink */
+.code .ln { display: inline-block; width: 2.5ch; margin-right: 1.5ch; text-align: right; color: var(--ink-muted); }
+.code.dark .ln { color: var(--code-ln); }
+.code-file { font: 500 26px var(--font-code); color: var(--ink-muted); margin-bottom: -24px; }
+
+/* ---- File panels (generated by scripts/file-panel.js) ------------------------ */
+/* A real file in a dark panel: a window of whole rows that "scroll" cues move, the file's own
+   line numbers, one row for every hidden stretch, and a minimap of the whole file beside it.
+   Every row is exactly --file-row tall (file-panel.js sizes the minimap from the same 58px),
+   so the window always rests on whole rows. The script sets --rows, --cols and --ln. */
+.file-panel { --file-row: 58px; width: fit-content; }
+.file-panel > .code-file { margin: 0 0 12px; line-height: 30px; white-space: nowrap; }
+.code-file .file-meta { margin-left: 2ch; font-weight: 400; }
+.file-body {
+  display: flex; align-items: flex-start; gap: 40px;
+  background: var(--code-dark); border-radius: var(--radius); padding: 24px 36px;
+}
+.file-window {
+  position: relative; overflow: hidden; flex: none;
+  font: 400 36px var(--font-code); /* sets the ch the width is counted in */
+  width: calc((var(--ln) + 1.5 + var(--cols)) * 1ch); height: calc(var(--rows) * var(--file-row));
+}
+.code.dark.file-code { background: none; padding: 0; border-radius: 0; line-height: var(--file-row); }
+.file-code > code { display: flex; flex-direction: column; }
+.file-row { display: block; height: var(--file-row); white-space: pre; }
+.file-code .ln { width: calc(var(--ln) * 1ch); }
+.file-row .hang { display: inline-block; }
+.file-row .tab { display: inline-block; width: 2ch; } /* a tab is two columns, wherever it falls */
+/* "N lines hidden": an editorial row, not file text, so it is set in the body face. */
+.elide {
+  display: inline-block; vertical-align: middle; min-width: 420px; padding: 0 18px; border-radius: 4px;
+  background: rgba(38, 139, 210, .2); color: var(--code-fg);
+  font: 500 26px/42px var(--font-body); font-variant-numeric: tabular-nums;
+}
+/* Only rows inside the window are visible (the runtime switches the others off), so the tall
+   strip of rows never counts as content running off the canvas. */
+.file-code, .file-code > code, .file-code > .vl-hl-layer { visibility: hidden; }
+.file-row, .file-code .vl-hl { visibility: visible; }
+/* Minimap: the whole file in miniature, the way an editor draws it: every line at its own
+   indentation, every word a small block in its syntax colour. Lines the panel does not show are
+   fainter. .file-map-view backs the region in the window and moves with every scroll. */
+.file-map { position: relative; flex: none; width: 120px; }
+.file-map > svg { display: block; overflow: visible; }
+.file-map-view { position: absolute; left: -10px; right: -10px; border-radius: 3px; background: rgba(147, 161, 161, .24); }
+/* Scrollbar: what a panel gets when there is no room for the minimap and its "lines hidden" rows
+   cannot all be seen at once (it scrolls). The track is the whole file, the thumb the lines in
+   the window. Something must always tell the viewer there is more of the file. */
+.file-map.file-bar { width: 10px; margin-left: -16px; border-radius: 5px; background: rgba(147, 161, 161, .18); }
+.file-bar > .file-map-view { left: 0; right: 0; border-radius: 5px; background: rgba(179, 192, 191, .62); }
+
+/* ---- Annotated code: a dark code box on the left, its notes on the right -------------- */
+/* The one way to explain code, a command, or a file: the thing itself in a dark box, and a short
+   note beside each line that needs one. The runtime lines each .callout up with the element named
+   in its data-anchor and draws the short rule that joins them; a callout is quiet until its anchor
+   is highlighted, then it is lit. Never position a callout by hand. */
+.annotated { display: grid; grid-template-columns: auto minmax(320px, 1fr); align-items: start; width: 100%; }
+.annotated > :first-child { min-width: 0; }
+.callouts { position: relative; align-self: stretch; min-height: 60px; }
+.callout {
+  position: absolute; left: 0; right: 0; top: 0; padding-left: 84px;
+  font: 400 32px/1.3 var(--font-body); color: var(--ink-muted);
+}
+.callout::before { content: ""; position: absolute; left: 16px; top: calc(0.65em - 1px); width: 50px; height: 2px; border-radius: 1px; background: var(--base1); }
+.callout.lit { color: var(--ink); }
+.callout.lit::before { background: var(--ink); }
+.callout code, .callout .mono { font-size: .92em; color: inherit; }
+
+/* ---- Quotes and cards ------------------------------------------------------- */
+/* Something somebody said or typed to the agent: a request, a prompt, a line from a file. */
+.quote { background: var(--paper-muted); border-radius: var(--radius); padding: 28px 40px 32px; font: 400 38px/1.4 var(--font-body); color: var(--ink); }
+.quote > .who { display: block; font: 600 24px/1.2 var(--font-body); letter-spacing: .03em; color: var(--ink-muted); margin-bottom: 12px; }
+/* A labelled result: the label says whose it is, the dark box shows it. */
+.card { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.card > .who { font: 500 30px/1.2 var(--font-body); color: var(--ink-soft); }
+.card > .who .mono { font-size: .94em; color: var(--ink); }
+.card > .code.dark { flex: 1; font-size: 32px; padding: 28px 32px; }
+
+/* ---- Diagrams --------------------------------------------------------------- */
+.diagram { position: relative; display: flex; align-items: center; gap: 56px; }
+.diagram.vertical { flex-direction: column; align-items: flex-start; gap: 36px; }
+.node { font: 400 40px/1.2 var(--font-code); color: var(--ink); padding: 6px 4px; white-space: nowrap; }
+.node.word { font-family: var(--font-body); font-weight: 500; }
+.op { font: 400 40px var(--font-body); color: var(--ink-muted); }  /* typographic arrows: → ⇒ ∘ */
+
+/* A soft block: a term and what it means. At rest it is barely tinted; a focus cue fills it. */
+.semantic-block {
+  position: relative;
+  border-radius: var(--radius); background: var(--paper-muted);
+  padding: 36px 40px 40px; display: flex; flex-direction: column; gap: 14px;
+}
+.semantic-block > .title, .semantic-block > .label { width: fit-content; } /* collapse clips to the title's own width */
+.semantic-block[data-role="structure"] { background: var(--tint-blue); }
+.semantic-block[data-role="transform"] { background: var(--tint-cyan); }
+.semantic-block[data-role="attention"] { background: var(--tint-yellow); }
+.semantic-block[data-role="success"] { background: var(--tint-green); }
+.semantic-block[data-role="change"] { background: var(--tint-orange); }
+.semantic-block[data-role="failure"] { background: var(--tint-red); }
+.semantic-block .title { font: 500 44px/1.2 var(--font-code); color: var(--ink); }
+.semantic-block .title.words { font-family: var(--font-body); font-weight: 600; font-size: 40px; }
+.semantic-block .label { font-size: 32px; }
+.semantic-block .step { font: 400 64px/1 var(--font-display); color: var(--ink-muted); margin-bottom: 6px; } /* a step number, when order matters */
+.semantic-block .parts { display: flex; gap: 20px; flex-wrap: wrap; }
+.part { color: var(--ink); background: var(--paper); border-radius: 6px; padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 10px; }
+.part .title { font-size: 36px; } .part .label { font-size: 30px; }
+
+/* ---- Runtime layers (managed by vl-runtime.js; never hand-position) ---------- */
+/* Highlights live in a layer inside their host (.code, .semantic-block, or .scene) at z-index -1
+   with isolation, so they paint above the host's background and below its text. No reflow. */
+.vl-transitions, .vl-connectors { position: absolute; inset: 0; pointer-events: none; }
+.vl-connectors { z-index: 1; overflow: visible; }
+.vl-transitions { z-index: 3; }
+.scene > *:not(.vl-transitions):not(.vl-connectors):not(.vl-hl-layer) { position: relative; z-index: 2; }
+.vl-hl { position: absolute; border-radius: 6px; background: var(--focus-cyan); }
+.vl-connectors path { fill: none; stroke: var(--ink-muted); stroke-width: 3; stroke-linecap: round; }
+.vl-connectors path.c-structure { stroke: var(--blue); } .vl-connectors path.c-transform { stroke: var(--cyan); }
+.vl-connectors path.c-attention { stroke: var(--yellow); } .vl-connectors path.c-success { stroke: var(--green); }
+
+/* ---- Layouts (A–H in the design system) -------------------------------------- */
+/* A. Concept introduction: headline, one sentence, one simple relationship. */
+.layout-intro { justify-content: center; }
+.layout-intro .diagram { margin-top: 40px; }
+/* B. Code + diagram: code left, concept right, both visible. */
+.layout-code-diagram .row { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 80px; align-items: center; flex: 1; }
+/* C. Full-width code with small annotations. */
+.layout-code .row { display: flex; gap: 64px; align-items: center; flex: 1; }
+.layout-code .annotations { display: flex; flex-direction: column; gap: 28px; max-width: 520px; }
+/* D. Before / after: two complete representations side by side. */
+.layout-before-after .row { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; flex: 1; align-items: start; }
+.layout-before-after .side > .eyebrow { margin-bottom: 20px; }
+/* E. System overview: typographic nodes and soft blocks in space. */
+.layout-system .stage { position: relative; display: block; }
+/* F. Concept expansion: one block grows to reveal its parts. */
+.layout-expand .stage { align-items: center; }
+/* H. File walk: a real file in a scrolling panel, optionally with notes under it. */
+.layout-file .under { display: flex; gap: 56px; flex-wrap: wrap; }
+.layout-file .stage { padding-bottom: 0; } /* a panel needs the whole height */
+.layout-file .stage > .file-panel { width: 100%; }
+.layout-file .stage > .file-panel .file-body { justify-content: space-between; } /* the minimap sits at the right edge */
+/* Panels side by side: equal widths and equal heights, whatever each one holds. */
+.cols > .file-panel { width: 100%; display: flex; flex-direction: column; }
+.cols > .file-panel > .file-body { flex: 1; }
+/* G. Summary: one concise statement with an already-explained visual. */
+.layout-summary { justify-content: center; }
+
+/* Title card: the one place the display face runs large. */
+.title-card { justify-content: center; align-items: flex-start; gap: 28px; }
+.title-card .eyebrow + .scene-title { margin-top: 0; }
+.title-card .lead { margin-top: 8px; font-size: 40px; max-width: 1400px; }

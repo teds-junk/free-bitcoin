@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A turn is one reply</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:260px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Budget graders</div>
+  <h2 class="scene-title">A turn is one reply</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="conv" data-rep="block" data-role="structure">
+      <div class="title words">a turn in a conversation</div><div class="label">one request</div>
+    </div>
+    <div class="semantic-block" data-concept="trial" data-rep="block" data-role="attention">
+      <div class="title words">a turn in a trial</div><div class="label">one reply from the model</div>
+    </div>
+  </div>
+  <p class="note">one request, several replies · <span class="mono">turn-count</span> counts the replies</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "conv",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "trial",
+  "at": "1~here",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

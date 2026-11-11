@@ -1,0 +1,33 @@
+name: before-and-after
+
+evals:
+  - wording.eval.yaml
+
+vary: [/environment/skills, /defaults/model]
+
+baseline: haiku-before
+
+overrides:
+  runs: 3
+
+variants:
+  haiku-before:
+    overrides:
+      model: claude-haiku-4.5
+    environment:
+      skills: [../skills/changelog-entry-before]
+  haiku-after:
+    overrides:
+      model: claude-haiku-4.5
+    environment:
+      skills: [../skills/changelog-entry]
+  terra-before:
+    overrides:
+      model: gpt-5.6-terra
+    environment:
+      skills: [../skills/changelog-entry-before]
+  terra-after:
+    overrides:
+      model: gpt-5.6-terra
+    environment:
+      skills: [../skills/changelog-entry]

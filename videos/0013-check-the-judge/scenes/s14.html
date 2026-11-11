@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A disagreement gets examined</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.pair{align-items:stretch}.cases{display:flex;flex-direction:column;gap:22px;justify-content:center}.cases .semantic-block{min-height:150px;justify-content:center}.pair .label{font-size:34px}.pair > .semantic-block{justify-content:center}.lead{font-size:38px;margin:0}.stage{gap:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Count, compare, decide</div>
+  <h2 class="scene-title">A disagreement gets examined</h2>
+  <div class="stage">
+<div class="cols pair">
+    <div class="semantic-block" data-concept="again" data-rep="block" data-role="structure">
+      <div class="title words">For each disagreement</div><div class="label">read the entry and the judge’s reason again, and decide who is right</div>
+    </div>
+    <div class="cases">
+      <div class="semantic-block" data-concept="still" data-rep="block" data-role="failure">
+      <div class="title words">We still disagree</div><div class="label">one error of the judge’s</div>
+    </div>
+      <div class="semantic-block" data-concept="persuaded" data-rep="block" data-role="attention">
+      <div class="title words">The judge persuaded us</div><div class="label">our criterion wasn’t what we thought</div>
+    </div>
+    </div>
+  </div>
+  <p class="lead"><span data-concept="stays" data-rep="note">Either way, the label stays as first written, and the entry counts as a disagreement.</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "again",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "still",
+  "at": "2",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "persuaded",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "stays",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "6"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three views, one answer</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:300px;justify-content:center}.terms .title{font-size:72px;line-height:1.15}.terms .label{font-size:32px}.lead{font-size:36px}.stage{gap:26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What it supports</div>
+  <h2 class="scene-title">Three views, one answer</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="counts" data-rep="block" data-role="structure">
+      <div class="title">5, then 9</div><div class="label">Trials passed, of 9 · the two ranges overlap</div>
+    </div>
+    <div class="semantic-block" data-concept="flips" data-rep="block" data-role="structure">
+      <div class="title">+4 / −0</div><div class="label">Grader flips · p = 0.125, not significant</div>
+    </div>
+    <div class="semantic-block" data-concept="pairwise" data-rep="block" data-role="structure">
+      <div class="title">+0.33</div><div class="label">Pairwise judge · range −0.08 to +0.75, includes zero</div>
+    </div>
+  </div>
+  <p class="note"><span class="mono">claude-haiku-4.5</span>, before the edit against after it, in our run</p>
+  <p class="lead"><span data-concept="earlier" data-rep="note">An earlier run, on other saved trials: pairwise +0.53, range +0.17 to +0.89, above zero</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "counts",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "flips",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "pairwise",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ },
+ {
+  "type": "focus",
+  "target": "earlier",
+  "at": "6",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "7"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,831 @@
+1
+00:00:00,400 --> 00:00:05,500
+So far, every request came from a person,
+describing one change in their own words.
+
+2
+00:00:06,000 --> 00:00:10,207
+Now the team that owns this changelog has
+built our skill into their release
+
+3
+00:00:10,207 --> 00:00:10,650
+tooling.
+
+4
+00:00:11,150 --> 00:00:15,191
+Before each release, a small tool lists
+the pull requests merged since the last
+
+5
+00:00:15,191 --> 00:00:19,436
+one, saves the list as a file, and asks an
+agent to write the changelog entries for
+
+6
+00:00:19,436 --> 00:00:20,050
+all of them.
+
+7
+00:00:20,550 --> 00:00:24,725
+Nobody types a request, and nobody checks
+the entries before they ship.
+
+8
+00:00:25,225 --> 00:00:29,559
+Here, you'll set up a stimulus that starts
+the agent exactly where that tool does,
+
+9
+00:00:29,559 --> 00:00:32,625
+and grade what it writes with a test the
+agent never sees.
+
+10
+00:00:33,833 --> 00:00:38,360
+Let's start with what a stimulus is, when
+the thing under test is a feature of an
+
+11
+00:00:38,360 --> 00:00:38,583
+app.
+
+12
+00:00:39,083 --> 00:00:41,933
+It has two halves, and both come from the
+app.
+
+13
+00:00:42,433 --> 00:00:46,926
+One half is the prompt: whatever the app
+sends, which is usually short, always the
+
+14
+00:00:46,926 --> 00:00:48,733
+same, and written by a developer.
+
+15
+00:00:49,233 --> 00:00:53,846
+The other is the workspace: whatever the
+app has prepared by the time it calls the
+
+16
+00:00:53,846 --> 00:00:54,183
+agent.
+
+17
+00:00:54,683 --> 00:00:58,868
+If a stimulus rewords the prompt more
+kindly, or tidies the workspace, it
+
+18
+00:00:58,868 --> 00:01:01,333
+measures a situation the app never
+creates.
+
+19
+00:01:02,533 --> 00:01:05,908
+So we copy the prompt from the app's code,
+word for word.
+
+20
+00:01:06,408 --> 00:01:10,698
+For the workspace, we run the app's own
+setup steps, instead of writing their
+
+21
+00:01:10,698 --> 00:01:11,533
+output by hand.
+
+22
+00:01:12,033 --> 00:01:15,483
+Next month, the team might change the
+format of that list.
+
+23
+00:01:15,983 --> 00:01:20,058
+But an eval that runs their tool sees the
+new format straight away.
+
+24
+00:01:20,558 --> 00:01:24,952
+An eval with a hand-written copy of the
+old list keeps passing, and tells you
+
+25
+00:01:24,952 --> 00:01:25,408
+nothing.
+
+26
+00:01:26,633 --> 00:01:31,093
+Our release tool's prompt is one sentence:
+it asks for the Unreleased entries, for
+
+27
+00:01:31,093 --> 00:01:34,683
+every change listed in a file named
+merged, in the release folder.
+
+28
+00:01:35,183 --> 00:01:38,583
+Its setup is one command, which writes
+that file.
+
+29
+00:01:39,083 --> 00:01:41,933
+Those two things are what we're going to
+reproduce.
+
+30
+00:01:43,133 --> 00:01:47,833
+That's the idea; here's how an eval file
+reproduces it, starting with the tool.
+
+31
+00:01:48,333 --> 00:01:53,156
+First, the release tool's opening job is
+done by a short Node script named list
+
+32
+00:01:53,156 --> 00:01:53,583
+merged.
+
+33
+00:01:54,083 --> 00:01:58,450
+In the real one, the list comes from the
+team's issue tracker; ours prints a fixed
+
+34
+00:01:58,450 --> 00:02:00,633
+list, so every trial starts the same way.
+
+35
+00:02:01,133 --> 00:02:06,183
+Each line holds a pull request number and
+a type, as in the team's commit messages.
+
+36
+00:02:06,683 --> 00:02:11,707
+Feat means a new feature, and fix means a
+bug fix: users notice both, so both need
+
+37
+00:02:11,707 --> 00:02:12,258
+an entry.
+
+38
+00:02:12,758 --> 00:02:17,558
+Refactor means only the code changed, and
+for that, our skill says to add nothing.
+
+39
+00:02:18,058 --> 00:02:22,731
+Earlier, a refactor request said outright
+that nothing changes for users; this list
+
+40
+00:02:22,731 --> 00:02:25,433
+says only refactor, and the agent has to
+decide.
+
+41
+00:02:26,633 --> 00:02:31,459
+An eval file can run a command like that
+one, with a key we've met once before:
+
+42
+00:02:31,459 --> 00:02:32,008
+commands.
+
+43
+00:02:32,508 --> 00:02:36,708
+Inside an agent environment, commands is a
+list of shell commands.
+
+44
+00:02:37,208 --> 00:02:41,232
+Vally runs them in the workspace, in
+order, after it has copied in the files
+
+45
+00:02:41,232 --> 00:02:43,508
+and the skill, and before the agent
+starts.
+
+46
+00:02:44,008 --> 00:02:48,408
+Each command gets sixty seconds, unless
+the file sets a longer limit.
+
+47
+00:02:48,908 --> 00:02:51,258
+That order matters for grading.
+
+48
+00:02:51,758 --> 00:02:55,916
+Whatever a command creates is part of the
+starting state, exactly like a staged
+
+49
+00:02:55,916 --> 00:02:59,283
+file: the agent can open it, and it
+doesn't appear in the patch.
+
+50
+00:02:59,783 --> 00:03:02,383
+Only what the agent changes does.
+
+51
+00:03:03,600 --> 00:03:06,325
+Here's the eval file for the release tool.
+
+52
+00:03:06,825 --> 00:03:11,301
+Our skill is installed as before, and the
+tool is staged into the workspace, like
+
+53
+00:03:11,301 --> 00:03:12,075
+the changelog.
+
+54
+00:03:12,575 --> 00:03:16,875
+There's one stimulus, and its prompt is
+the app's sentence, word for word.
+
+55
+00:03:17,375 --> 00:03:21,900
+Under it, the stimulus has an agent
+environment of its own, with two commands.
+
+56
+00:03:22,400 --> 00:03:26,918
+One makes the release folder; the other
+runs the tool, and saves what it prints as
+
+57
+00:03:26,918 --> 00:03:27,800
+the merged file.
+
+58
+00:03:28,300 --> 00:03:32,478
+Each command is in quotes, because an
+unquoted command with a colon and a space
+
+59
+00:03:32,478 --> 00:03:36,075
+in it would be taken for YAML structure,
+and lint wouldn't catch it.
+
+60
+00:03:37,300 --> 00:03:41,300
+Two more fields can prepare the start, and
+this eval needs neither.
+
+61
+00:03:41,800 --> 00:03:45,888
+One sets environment variables on the
+agent's process, for an app that passes
+
+62
+00:03:45,888 --> 00:03:50,188
+its settings that way; their values can
+show up in saved trials, so it's no place
+
+63
+00:03:50,188 --> 00:03:50,825
+for secrets.
+
+64
+00:03:51,325 --> 00:03:55,534
+The other, git, builds the workspace from
+a repository instead of copied files,
+
+65
+00:03:55,534 --> 00:03:58,625
+which is how a real release tool would get
+at the history.
+
+66
+00:03:59,125 --> 00:04:03,825
+Ours has no repository, so we leave git as
+the documentation shows it.
+
+67
+00:04:05,033 --> 00:04:09,033
+So the agent starts where the app would;
+now, what should a grader check?
+
+68
+00:04:09,533 --> 00:04:14,149
+For each feature and each fix on the list,
+the changelog needs exactly one line,
+
+69
+00:04:14,149 --> 00:04:15,533
+citing its pull request.
+
+70
+00:04:16,033 --> 00:04:18,408
+For the refactor, it needs none.
+
+71
+00:04:18,908 --> 00:04:23,462
+What's correct depends on the list, so the
+check has to open the merged file as well
+
+72
+00:04:23,462 --> 00:04:24,383
+as the changelog.
+
+73
+00:04:24,883 --> 00:04:28,283
+No pattern on the diff can do that; it
+takes a script.
+
+74
+00:04:29,500 --> 00:04:33,706
+We've run a grading script before, with
+the program grader, which expects the
+
+75
+00:04:33,706 --> 00:04:35,400
+script to print a line of JSON.
+
+76
+00:04:35,900 --> 00:04:40,639
+The run command grader is simpler; despite
+its name, it has nothing to do with the
+
+77
+00:04:40,639 --> 00:04:42,200
+setup commands we just saw.
+
+78
+00:04:42,700 --> 00:04:47,256
+It runs a shell command in the graded copy
+of the workspace, and passes when the
+
+79
+00:04:47,256 --> 00:04:48,850
+command's exit code is zero.
+
+80
+00:04:49,350 --> 00:04:53,775
+It can also check what the command prints,
+but the exit code is the heart of it.
+
+81
+00:04:54,275 --> 00:04:58,768
+So any test you already have works
+unchanged: a test suite, a linter, or a
+
+82
+00:04:58,768 --> 00:04:59,800
+script like ours.
+
+83
+00:05:01,000 --> 00:05:03,300
+Here's the rest of the stimulus.
+
+84
+00:05:03,800 --> 00:05:08,042
+Its grading environment stages our script,
+so the agent never has it: Vally's
+
+85
+00:05:08,042 --> 00:05:12,450
+documentation calls these grader-only
+files, and a test run this way is a hidden
+
+86
+00:05:12,450 --> 00:05:12,725
+test.
+
+87
+00:05:13,225 --> 00:05:18,075
+Then comes the grader, named every change
+handled, which runs the script with node.
+
+88
+00:05:19,300 --> 00:05:21,900
+Now the script itself, which is short.
+
+89
+00:05:22,400 --> 00:05:26,796
+It opens two files: the changelog, and the
+merged list, which is still there because
+
+90
+00:05:26,796 --> 00:05:28,575
+it was part of the starting state.
+
+91
+00:05:29,075 --> 00:05:32,025
+It keeps the lines of the Unreleased
+section.
+
+92
+00:05:32,525 --> 00:05:36,543
+Then, for each change on the list, it
+takes the number and the type, and finds
+
+93
+00:05:36,543 --> 00:05:38,500
+the lines that cite that pull request.
+
+94
+00:05:39,000 --> 00:05:41,400
+For a refactor, there must be none.
+
+95
+00:05:41,900 --> 00:05:46,567
+A feature or a fix must be cited on
+exactly one line, and that line must not
+
+96
+00:05:46,567 --> 00:05:48,225
+cite a second pull request.
+
+97
+00:05:48,725 --> 00:05:53,271
+Between them, those checks catch a skipped
+change, an entry for the refactor, and two
+
+98
+00:05:53,271 --> 00:05:54,875
+changes merged into one entry.
+
+99
+00:05:55,375 --> 00:06:00,275
+On any failure, the script exits with code
+one, and that exit code is the verdict.
+
+100
+00:06:01,500 --> 00:06:06,061
+One limit is worth knowing: a hidden test
+needs the finished workspace, which Vally
+
+101
+00:06:06,061 --> 00:06:06,775
+doesn't keep.
+
+102
+00:06:07,275 --> 00:06:11,882
+So, like a program grader, it can't be
+re-graded from saved trials; graders that
+
+103
+00:06:11,882 --> 00:06:14,300
+only need the patch or the trajectory can.
+
+104
+00:06:15,500 --> 00:06:18,750
+That's the setup and the test; now let's
+run them.
+
+105
+00:06:19,250 --> 00:06:22,750
+First, we run the release tool by hand, to
+see the list.
+
+106
+00:06:23,250 --> 00:06:27,300
+Then we lint the eval file, and run it
+five times on each model.
+
+107
+00:06:27,800 --> 00:06:30,725
+After that, we open a patch from each
+model.
+
+108
+00:06:31,225 --> 00:06:35,697
+Three changes are on the list, and one of
+them is a refactor: what would you expect
+
+109
+00:06:35,697 --> 00:06:36,775
+each model to write?
+
+110
+00:06:39,275 --> 00:06:42,150
+If you tried it yourself, here's what
+you'd see.
+
+111
+00:06:43,367 --> 00:06:47,517
+We're in the practice folder, and this is
+the release tool, run by hand.
+
+112
+00:06:49,727 --> 00:06:53,527
+Three changes come back: a feature, a fix,
+and a refactor.
+
+113
+00:06:57,027 --> 00:07:01,506
+Both new files are in place, the hidden
+test and the eval file, so we lint before
+
+114
+00:07:01,506 --> 00:07:02,502
+spending anything.
+
+115
+00:07:05,553 --> 00:07:07,753
+Lint finds nothing wrong.
+
+116
+00:07:10,967 --> 00:07:15,642
+Now the app's situation, on both models:
+five trials each, two at a time.
+
+117
+00:07:16,142 --> 00:07:18,267
+That's ten agent runs.
+
+118
+00:07:18,767 --> 00:07:23,750
+The table at the end counts stimuli, not
+trials: this file has one stimulus, and it
+
+119
+00:07:23,750 --> 00:07:25,792
+passes only if all five trials do.
+
+120
+00:07:28,113 --> 00:07:32,763
+About a minute later, that table shows a
+cross for haiku, and a tick for terra.
+
+121
+00:07:36,263 --> 00:07:40,799
+Just above it is the grader that failed,
+every change handled, with its evidence:
+
+122
+00:07:40,799 --> 00:07:44,438
+the command exited with code one in three
+of haiku's five trials.
+
+123
+00:07:50,667 --> 00:07:54,492
+The run is saved in a folder named for the
+time it started.
+
+124
+00:07:56,333 --> 00:08:00,258
+We change into it, and then into the
+folder for our one stimulus.
+
+125
+00:08:00,758 --> 00:08:05,189
+Let's open one of haiku's failing trials
+first: trial two, which is folder one,
+
+126
+00:08:05,189 --> 00:08:07,208
+because the folders count from zero.
+
+127
+00:08:10,033 --> 00:08:14,207
+Only the changelog is in the patch: the
+merged file isn't, because the setup
+
+128
+00:08:14,207 --> 00:08:16,458
+command made it before the agent started.
+
+129
+00:08:20,958 --> 00:08:25,396
+There are entries for the feature and the
+fix, and a third, under Changed, for the
+
+130
+00:08:25,396 --> 00:08:25,883
+refactor.
+
+131
+00:08:31,100 --> 00:08:34,650
+For comparison, here's a trial from terra,
+which passed.
+
+132
+00:08:37,340 --> 00:08:41,740
+It has two entries, for the feature and
+the fix, and nothing for the refactor.
+
+133
+00:08:50,967 --> 00:08:53,317
+So what did the hidden test show?
+
+134
+00:08:53,817 --> 00:08:58,255
+When we ran it, neither model skipped a
+change, and neither merged two into one
+
+135
+00:08:58,255 --> 00:08:58,592
+entry.
+
+136
+00:08:59,092 --> 00:09:03,727
+Every failure was the same kind: haiku
+wrote an entry for the refactor in three
+
+137
+00:09:03,727 --> 00:09:04,842
+of its five trials.
+
+138
+00:09:05,342 --> 00:09:09,969
+In the patch we opened, that entry sits
+under Changed and names a source file; our
+
+139
+00:09:09,969 --> 00:09:11,042
+skill forbids both.
+
+140
+00:09:11,542 --> 00:09:15,892
+Terra left the refactor out every time,
+and said why in its reply.
+
+141
+00:09:17,100 --> 00:09:21,950
+The run's records add one more piece of
+evidence: which trials loaded our skill.
+
+142
+00:09:22,450 --> 00:09:26,250
+Terra loaded it in all five trials, and
+haiku in three.
+
+143
+00:09:26,750 --> 00:09:31,201
+Haiku's two trials without the skill both
+recorded the refactor; of the three with
+
+144
+00:09:31,201 --> 00:09:34,350
+it, two left the refactor out, and one
+recorded it anyway.
+
+145
+00:09:34,850 --> 00:09:38,836
+Our hidden test couldn't have told us
+that: it sees only the finished changelog,
+
+146
+00:09:38,836 --> 00:09:42,225
+not whether the agent opened the list, or
+used the skill on the way.
+
+147
+00:09:43,433 --> 00:09:45,758
+So what does this run support?
+
+148
+00:09:46,258 --> 00:09:49,925
+The app's input is shorter than a
+person's: its prompt is one fixed
+
+149
+00:09:49,925 --> 00:09:54,248
+sentence, and its list says only refactor,
+where a person had said that nothing
+
+150
+00:09:54,248 --> 00:09:55,233
+changes for users.
+
+151
+00:09:55,733 --> 00:10:00,149
+With that input, haiku skipped the skill
+in two of its five trials, and recorded
+
+152
+00:10:00,149 --> 00:10:01,308
+the refactor in both.
+
+153
+00:10:01,808 --> 00:10:06,308
+Loading isn't the whole story, since one
+trial loaded the skill and recorded the
+
+154
+00:10:06,308 --> 00:10:07,208
+refactor anyway.
+
+155
+00:10:07,708 --> 00:10:12,023
+Five trials on each model, in one run,
+can't prove a cause, but they suggest that
+
+156
+00:10:12,023 --> 00:10:14,633
+the app's wording matters as much as the
+skill's.
+
+157
+00:10:15,133 --> 00:10:19,358
+That's the kind of difference an app
+brings in without anyone noticing.
+
+158
+00:10:20,567 --> 00:10:23,942
+Passing the test isn't the same as being
+right, either.
+
+159
+00:10:24,442 --> 00:10:28,648
+Terra's entries for the feature each say
+what the new flag filters by, and they
+
+160
+00:10:28,648 --> 00:10:30,192
+don't all say the same thing.
+
+161
+00:10:30,692 --> 00:10:35,164
+The list doesn't say; the flag might just
+as well filter by the date a note was
+
+162
+00:10:35,164 --> 00:10:35,617
+changed.
+
+163
+00:10:36,117 --> 00:10:40,354
+None of our graders checks for details the
+list doesn't support, and in an app,
+
+164
+00:10:40,354 --> 00:10:42,392
+nobody sees the entry before it ships.
+
+165
+00:10:43,600 --> 00:10:47,918
+Before you go on: if a setup command
+creates one file, and the agent creates
+
+166
+00:10:47,918 --> 00:10:50,475
+another, which of them can a diff grader
+see?
+
+167
+00:10:53,475 --> 00:10:55,250
+Only the agent's.
+
+168
+00:10:55,750 --> 00:11:00,235
+Commands run before the agent starts, so
+what they create is part of the starting
+
+169
+00:11:00,235 --> 00:11:01,675
+state, like a staged file.
+
+170
+00:11:02,175 --> 00:11:06,184
+And a test that needs both files can still
+run, hidden, because the grading
+
+171
+00:11:06,184 --> 00:11:08,750
+environment adds it after the agent has
+stopped.
+
+172
+00:11:09,967 --> 00:11:14,483
+You can now set up a stimulus the way an
+app would, with its own setup command, and
+
+173
+00:11:14,483 --> 00:11:16,442
+grade the result with a hidden test.
+
+174
+00:11:16,942 --> 00:11:19,167
+So the entries can be checked.
+
+175
+00:11:19,667 --> 00:11:23,672
+But in the app, how the agent got there
+matters too: did it open the list, did it
+
+176
+00:11:23,672 --> 00:11:26,392
+touch files it shouldn't, did it try to
+commit or push?
+
+177
+00:11:26,892 --> 00:11:28,742
+That's the next lesson.
+
+178
+00:11:29,242 --> 00:11:32,817
+The exercises on the lesson page are worth
+doing first.

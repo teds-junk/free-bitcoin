@@ -1,0 +1,2 @@
+Updated `CHANGELOG.md` with Unreleased entries for #74 and #75. Omitted #76 because it is an internal refactor with no user-visible change.
+Wrote app-run/traces.jsonl and app-run/change.diff

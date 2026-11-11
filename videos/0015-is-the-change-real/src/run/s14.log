@@ -1,0 +1,67 @@
+Running experiment 'before-and-after'
+Loaded 12 stimuli from wording · 2 models · 2 workers
+
+haiku-before · claude-haiku-4.5
+  FAIL  cache  0/3
+   ✘ prompt "Begin your reason b…"  0 passed · 3 failed · 3 critiques
+     ✘ trial 1   The new entry reads "Improve performance of `notes list
+                 --tag` with LRU caching on large folders (#66)". It correctly
+                 describes the user benefit, but "LRU caching" leaks an
+                 implementation detail into the changelog, which the criterion
+                 forbids.
+     ✘ trial 2   The new entry is "Improve performance of `notes list --tag`
+                 with LRU cache for tag index (#66)". It leaks the
+                 implementation detail "LRU cache for tag index" into a
+                 user-facing changelog, so it fails the criterion.
+     ✘ trial 3   The new entry is "Improve performance of `notes list --tag`
+                 with LRU cache on large folders (#66)". It leaks the
+                 implementation detail "LRU cache" into a user-facing
+                 changelog, so it fails the criterion.
+
+haiku-before · claude-haiku-4.5
+  FLAKY  parser  2 passed · 1 failed
+   ✘ prompt "Begin your reason b…"  2 passed · 1 failed · 1 critique
+     ✘ trial 1   The new entry reads "Fix out-of-memory error on large imports
+                 by using streaming JSON parser (#49)". The user-facing fix is
+                 stated, but the entry also names the implementation
+                 ("streaming JSON parser"), which the rubric forbids.
+     ✓ trial 2   passed
+     ✓ trial 3   passed
+
+terra-before · gpt-5.6-terra
+  ERROR  cache  1 passed · 1 failed · 1 error
+   trial 3 · Session disconnected while waiting for a response
+   ✘ prompt "Begin your reason b…"  1 passed · 1 failed · 1 critique
+     ✓ trial 1   passed
+     ✘ trial 2   The entry is "Speed up `notes list --tag` in large folders by
+                 caching the tag index (#66)". It is mostly user-focused, but
+                 "by caching the tag index" leaks an implementation detail,
+                 which the criterion forbids.
+
+terra-before · gpt-5.6-terra
+  ERROR  dates  2 passed · 1 error
+   trial 3 · Session disconnected while waiting for a response
+   ✓ passed   prompt "Begin your reason b…" · cites-67
+
+terra-before · gpt-5.6-terra
+  ERROR  parser  2 passed · 1 error
+   trial 2 · Session disconnected while waiting for a response
+   ✓ passed   prompt "Begin your reason b…" · cites-49
+
+────────────────────────────────────────────────────────
+
+Experiment
+  before-and-after
+  varying /environment/skills, /defaults/model · baseline haiku-before
+
+  → haiku-after beat baseline — 3/3 vs 1/3 stimuli.
+
+  eval        haiku-before (baseline)  haiku-after  terra-before  terra-after
+  wording     ✘ 1/3                    ✓ 3/3        ✘ 0/3         ✓ 3/3
+  ──────────  ───────────────────────  ───────────  ────────────  ───────────
+  stimuli     1/3                      3/3          0/3           3/3
+  tokens      803.3k                   680.2k       367.4k        501.8k
+  trial time  3m40s                    3m36s        2m43s         3m26s
+
+Run ID: 7f115fe4-0c90-419c-b57e-903bd63f8c52
+Output: ~/src/demo/practice/results/lesson-15/2026-11-11T07-53-29-176Z

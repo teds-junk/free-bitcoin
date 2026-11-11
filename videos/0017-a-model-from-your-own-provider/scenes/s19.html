@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>No cost was recorded</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.card{width:1100px}.card .who{font-size:30px}.calc{font-size:36px}.calc td{padding-top:13px;padding-bottom:13px}.stage{gap:18px}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Run a variant on your provider</div>
+  <h2 class="scene-title">No cost was recorded</h2>
+  <div class="stage">
+<div class="card" data-concept="calc" data-rep="card">
+        <div class="who">the course’s cost calculator · on <span class="mono">qwen-local/results.jsonl</span></div>
+        <table class="data-table full calc"><tbody><tr><td>Trials</td><td class="num"><span data-concept="c0" data-rep="cell">5</span></td></tr><tr><td>Passing</td><td class="num"><span data-concept="c1" data-rep="cell">2 of 5</span></td></tr><tr><td>ERROR</td><td class="num"><span data-concept="c2" data-rep="cell">0</span></td></tr><tr><td>Total cost</td><td class="num"><span data-concept="nocost" data-rep="cell">—</span></td></tr><tr><td>Per passing trial</td><td class="num"><span data-concept="nocost" data-rep="cell">—</span></td></tr><tr><td>Median tokens</td><td class="num"><span data-concept="c5" data-rep="cell">62.7k</span></td></tr></tbody></table>
+      </div>
+  <p class="note">our run · 2026-11-11T13-59-30-867Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "c0",
+  "at": "1~five trials",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "c1",
+  "at": "1~two",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "c2",
+  "at": "1~none",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "nocost",
+  "at": "2~dash",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

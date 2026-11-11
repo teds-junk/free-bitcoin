@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Judge the trials you saved</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.cmd{font-size:36px;line-height:1.75;padding:30px 36px}.callout{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">How the judge decides</div>
+  <h2 class="scene-title">Judge the trials you saved</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark cmd" data-lang="bash"><code><span data-concept="grade" data-rep="code"><span style="color:#4EA5E6">vally</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">grade</span></span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="e" data-rep="code"><span style="color:#F0733F">-e</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">../../../evals/wording.eval.yaml</span></span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="rd" data-rep="code"><span style="color:#F0733F">--run-dir</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">.</span></span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="vb" data-rep="code"><span style="color:#F0733F">--verbose</span></span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="in" data-rep="code"><span style="color:#A4BA1E">&lt;</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">results.jsonl</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="grade">grades a saved run · no agent</p><p class="callout" data-anchor="e">the eval file’s current graders</p><p class="callout" data-anchor="rd">the run folder we’re in</p><p class="callout" data-anchor="vb">print each grader’s evidence</p><p class="callout" data-anchor="in">the saved trials</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "grade",
+  "at": "0~vally grade",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "rd",
+  "at": "1~run dir",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "in",
+  "at": "1~results",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "vb",
+  "at": "2~verbose",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "e",
+  "at": "3~rubric",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

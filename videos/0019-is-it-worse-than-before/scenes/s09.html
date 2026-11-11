@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Win rate, then mean score</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.out{min-width:900px;font-size:36px;line-height:1.6}.callout{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What compare reports</div>
+  <h2 class="scene-title">Win rate, then mean score</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark out" data-lang="text"><code><span>haiku-after vs haiku-before (baseline)</span>
+<span>  </span><span data-concept="win" data-rep="code"><span>Win rate: 67%  6 wins</span></span><span> / </span><span data-concept="ties" data-rep="code"><span>3 ties</span></span><span> / 0 losses</span>
+<span>      over 9 trials</span>
+<span>  </span><span data-concept="mean" data-rep="code"><span>Mean score: +0.53</span></span><span> </span><span data-concept="ci" data-rep="code"><span>[95% CI +0.17, +0.89]</span></span>
+<span>      (+ = treatment better)</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="win">pairs the treatment won</p><p class="callout" data-anchor="ties">count against it</p><p class="callout" data-anchor="mean">average of the nine scores</p><p class="callout" data-anchor="ci">its range</p></aside>
+  </div>
+  <p class="note">an earlier run of this command, on other saved trials · two long lines wrapped</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "win",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ties",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "mean",
+  "at": "3",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ci",
+  "at": "4",
+  "color": "cyan"
+ }
+]
+</script>
+</body>
+</html>

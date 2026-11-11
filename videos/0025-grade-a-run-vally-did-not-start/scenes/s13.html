@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Traces hold private values</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.priv .semantic-block{min-height:300px;justify-content:center}.priv .title{font-size:44px;line-height:1.25}.priv .label{display:none}.lead{font-size:38px}.stage{gap:28px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">From OpenTelemetry traces</div>
+  <h2 class="scene-title">Traces hold private values</h2>
+  <div class="stage">
+<p class="lead">a trace written with content captured holds</p>
+  <div class="cols priv">
+    <div class="semantic-block" data-concept="pv1" data-rep="block" data-role="attention">
+      <div class="title words">the whole prompt</div><div class="label"></div>
+    </div><div class="semantic-block" data-concept="pv2" data-rep="block" data-role="attention">
+      <div class="title words">every file the agent opened</div><div class="label"></div>
+    </div><div class="semantic-block" data-concept="pv3" data-rep="block" data-role="attention">
+      <div class="title words">full paths on your machine</div><div class="label"></div>
+    </div><div class="semantic-block" data-concept="pv4" data-rep="block" data-role="attention">
+      <div class="title words">an ID for your account</div><div class="label"></div>
+    </div>
+  </div>
+  <p class="note">the traces in this video were cleaned first</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "pv1",
+  "at": "1~whole prompt",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "pv2",
+  "at": "1~every file",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "pv3",
+  "at": "1~full paths",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "pv4",
+  "at": "1~identifies",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

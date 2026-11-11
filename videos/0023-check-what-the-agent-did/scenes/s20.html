@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Now it can fail</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.wide{font-size:30px;line-height:1.7;width:100%;box-sizing:border-box;padding:34px 40px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Require, forbid, re-grade</div>
+  <h2 class="scene-title">Now it can fail</h2>
+  <div class="stage">
+<pre class="code dark wide" data-lang="text"><code><span>❌ since-last-release (2/5 graders passed, 3 failed)</span>
+<span>  </span><span data-concept="nc" data-rep="code"><span>✗ [never-commits] All required tools were called</span></span>
+<span>      </span><span data-concept="ev" data-rep="code"><span>The following disallowed tools were called: /^bash$/ {command=/find/}</span></span></code></pre>
+  <p class="note">from the block of the one trial that ran <span class="mono">find</span> · that block’s other lines left out</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "nc",
+  "at": "1",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "ev",
+  "at": "1~evidence",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+Done! I've added the three merged changes to the Unreleased section of CHANGELOG.md:
+
+- **#74**: Added `--since <date>` option under "Added"
+- **#75**: Fixed accents in search titles under "Fixed"  
+- **#76**: Refactored config loading under "Changed"
+
+All entries are organized under their appropriate changelog categories.
+Wrote app-run/traces.jsonl and app-run/change.diff

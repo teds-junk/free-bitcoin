@@ -1,0 +1,23 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 1 stimulus from one-request
+
+one-request
+
+  ERROR  typo-fix
+   Model "list-my-models" is not available in Copilot. Available models: auto, claude-haiku-4.5,
+   claude-haiku-5.5, claude-opus-5.5, claude-sonnet-5, claude-sonnet-5.5, gpt-5.3-codex,
+   gpt-5.6-luna, gpt-5.6-sol, gpt-5.6-sol-fast, gpt-5.6-terra, gpt-6-luna, gpt-6-sol, gpt-6.1-sol,
+   gpt-6.1-terra, grok-4.6, grok-4.7, mai-code-1.1-flash, mai-code-2-flash.
+
+────────────────────────────────────────────────────────
+
+Summary
+  ERROR  one-request
+    ERROR typo-fix   execution error
+    Model "list-my-models" is not available in Copilot. Available models: auto, claude-haiku-4.5,
+    claude-haiku-5.5, claude-opus-5.5, claude-sonnet-5, claude-sonnet-5.5, gpt-5.3-codex,
+    gpt-5.6-luna, gpt-5.6-sol, gpt-5.6-sol-fast, gpt-5.6-terra, gpt-6-luna, gpt-6-sol, gpt-6.1-sol,
+    gpt-6.1-terra, grok-4.6, grok-4.7, mai-code-1.1-flash, mai-code-2-flash.
+
+Saved  results/models/2026-11-10T14-55-12-249Z/
+Run ID  86e3aea2-32fb-4a43-88b9-412cc962de37

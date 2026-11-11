@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3: The same request, five times — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 3 of 26 · Vally &amp; Agent Evals</div>
+    <h1>The same request, five times</h1>
+    <div class="lesson-meta">12 min · Run five trials on each model and state, as counts, how often each one invents a pull request number.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What is a stimulus?
+        <details class="answer"><summary>Show answer</summary><p>One entry under <code>stimuli</code> in the eval file: a request, together with the graders that check the result.</p></details></li>
+      <li>Where does Vally save the patch for one trial?
+        <details class="answer"><summary>Show answer</summary><p>In the run's results folder, under the eval name, then the stimulus name, then the model, then the trial number, in a file named <code>workspace.patch</code>.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You can read an eval file and find everything about a trial in the results folder. You have seen one trial per model.</p>
+    <p><strong>This lesson answers:</strong> If the same model gets the same request again, does it do the same thing?</p>
+  </div>
+
+  <p class="drop-cap">One model invented a pull request number and one did not. It is tempting to conclude that the first model is the careless one and move on. But you have watched each model once. If you asked a colleague to do a task once and they made a slip, you would not know whether they slip every time or one time in ten, and those call for different responses. The same is true here, and finding out costs one extra word on the command line.</p>
+
+  <h2 id="one-sample" data-mode="think">One run is one sample</h2>
+
+  <p>A language model does not compute one fixed answer. It produces one of many plausible answers, and which one you get varies from run to run even when nothing else changes. An agent adds to this, because each step it takes depends on the step before.</p>
+
+  <p>So a single trial answers the question "can this happen?" and nothing more. The questions you care about for a skill are different: how often does it go wrong, and is that the same on each model? Those are counts, and a count needs several trials of the same stimulus.</p>
+
+  <p>The variation is not small. One 2026 preprint, a paper not yet reviewed by other researchers, ran the same agent several times on the same set of coding tasks. The share of tasks it completed moved by 2 to 6 percentage points from one identical run to the next.</p>
+
+  <div class="source-citation">Sources: <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Anthropic, Demystifying evals for AI agents, 2026-01-09</a>; <a href="https://arxiv.org/abs/2602.07150">KTH, variance on SWE-bench Verified, 2026</a> (a preprint, one benchmark).</div>
+
+  <h2 id="trials-and-outcomes" data-mode="works">Trials and their four outcomes</h2>
+
+  <p>Adding <code>--runs 5</code> to <code>vally eval</code> runs every stimulus five times on every model you name. Each one is a separate trial in a fresh workspace, and each gets its own numbered folder: <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>.</p>
+
+  <p>With several trials, a stimulus no longer just passes or fails. Vally sums up its trials with one of four words:</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Word</th><th>What happened across the trials</th></tr></thead>
+    <tbody>
+      <tr><td><code>PASS</code></td><td>Every trial passed.</td></tr>
+      <tr><td><code>FLAKY</code></td><td>Some trials passed and some failed.</td></tr>
+      <tr><td><code>FAIL</code></td><td>No trial passed.</td></tr>
+      <tr><td><code>ERROR</code></td><td>At least one trial did not finish, so it has no verdict.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 600 190" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="An illustration: five trials for each of two models. The first model passes all five. The second fails the first trial and passes the other four.">
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="242" y="26" text-anchor="middle">0</text>
+        <text x="296" y="26" text-anchor="middle">1</text>
+        <text x="350" y="26" text-anchor="middle">2</text>
+        <text x="404" y="26" text-anchor="middle">3</text>
+        <text x="458" y="26" text-anchor="middle">4</text>
+      </g>
+      <g>
+        <rect x="220" y="40" width="44" height="44" rx="3"/>
+        <rect x="274" y="40" width="44" height="44" rx="3"/>
+        <rect x="328" y="40" width="44" height="44" rx="3"/>
+        <rect x="382" y="40" width="44" height="44" rx="3"/>
+        <rect x="436" y="40" width="44" height="44" rx="3"/>
+        <rect x="220" y="114" width="44" height="44" rx="3" style="stroke: var(--accent); stroke-width: 3"/>
+        <rect x="274" y="114" width="44" height="44" rx="3"/>
+        <rect x="328" y="114" width="44" height="44" rx="3"/>
+        <rect x="382" y="114" width="44" height="44" rx="3"/>
+        <rect x="436" y="114" width="44" height="44" rx="3"/>
+      </g>
+      <g style="font-family: var(--grotesk); font-size: 22px; fill: currentColor; stroke: none">
+        <text x="242" y="70" text-anchor="middle">✓</text>
+        <text x="296" y="70" text-anchor="middle">✓</text>
+        <text x="350" y="70" text-anchor="middle">✓</text>
+        <text x="404" y="70" text-anchor="middle">✓</text>
+        <text x="458" y="70" text-anchor="middle">✓</text>
+        <text x="242" y="144" text-anchor="middle" style="fill: var(--accent)">✘</text>
+        <text x="296" y="144" text-anchor="middle">✓</text>
+        <text x="350" y="144" text-anchor="middle">✓</text>
+        <text x="404" y="144" text-anchor="middle">✓</text>
+        <text x="458" y="144" text-anchor="middle">✓</text>
+        <text x="500" y="70">PASS</text>
+        <text x="500" y="144">FLAKY</text>
+      </g>
+      <g style="font-family: var(--mono); font-size: 20px; fill: currentColor; stroke: none">
+        <text x="4" y="69">claude-haiku-4.5</text>
+        <text x="4" y="143">gpt-5.6-terra</text>
+      </g>
+    </svg>
+    <figcaption>An illustration: five trials of one stimulus on each model, as the one grader judged them. One failing trial out of five makes the stimulus <code>FLAKY</code> for that model. In our run all ten passed.</figcaption>
+  </figure>
+
+  <p>Two details will save you confusion. First, folders number trials from 0, but the lines Vally prints in the terminal number them from 1. "Trial 1" on screen is folder <code>0</code>. Second, <code>ERROR</code> is not a kind of failure. It means the agent never produced an answer to judge, for example because its connection dropped. When you see <code>ERROR</code>, run the command again, or leave that trial out of your count and say that you did.</p>
+
+  <p>One more thing is saved for every trial, and you will need it when a patch is empty. An empty patch means the agent changed no file. The trial's record in <code>results.jsonl</code> keeps the agent's final reply, in a field named <code>output</code>, and the reply usually says why.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/concepts/scoring/">Vally docs, Scoring</a>; trial numbering from our run on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="workers" data-mode="works">Why the course limits workers</h2>
+
+  <p>Vally does not run trials one after another. It runs several agent sessions at once, and <code>--workers</code> sets how many. The default is five.</p>
+
+  <p>More sessions at once is faster, but each one holds an open connection to the model service, and those connections can drop under load. When we ran ten trials with the default five workers, three ended in <code>ERROR</code> with the message "Session disconnected while waiting for a response". With <code>--workers 2</code>, all ten finished. Two workers still drops a session now and then, so an occasional <code>ERROR</code> remains possible.</p>
+
+  <p>This course uses <code>--workers 2</code> whenever a command starts more than a couple of trials. The cost is time: the ten trials in this lesson took about a minute in our run.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">A stimulus runs five trials. Three pass, and two never finish because the connection dropped. Which word does Vally show for it?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">PASS, since no trial failed</button></li>
+      <li><button onclick="checkAnswer(this, false)">FLAKY, since results were mixed</button></li>
+      <li><button onclick="checkAnswer(this, false)">FAIL, since two were lost</button></li>
+      <li><button onclick="checkAnswer(this, true)">ERROR, since two never finished</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. A trial that did not finish has no verdict, and one such trial is enough to mark the stimulus <code>ERROR</code>. Run it again.</div>
+    <div class="quiz-feedback incorrect">It shows ERROR. FLAKY and FAIL describe trials that finished and were judged. A dropped connection produces no answer to judge, so the stimulus is marked ERROR and should be run again.</div>
+  </div>
+
+  <h2 id="count-it" data-mode="use">Count it</h2>
+
+  <p>You will run the lesson 1 stimulus five times on each of your two models, then open the ten patches and tally what each trial did about the pull request reference.</p>
+
+  <section class="checkpoint">
+    <h3>Ten trials, one tally</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: run five trials per model. This spends ten short agent runs and takes a minute or two.</span>
+        Open a terminal in <code>practice</code>. Use your two model names.
+<pre><code class="language-bash">vally eval -e evals/one-request.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 5 --workers 2 \
+  --output-dir results/lesson-3</code></pre>
+<pre class="output"><code>Model summary
+  ✓ claude-haiku-4.5  1/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed</code></pre>
+        <p class="expect">You should see: a model summary, and above it a line for any stimulus that was not a clean pass. Those above are ours. A model gets a tick in the summary only when none of its trials failed. If you see <code>ERROR</code>, run the command again.</p></li>
+
+      <li><span class="goal">Goal: find this run's folder.</span>
+<pre><code class="language-bash">ls results/lesson-3</code></pre>
+        <p class="expect">You should see: one folder named with a time. Use its name in the next step.</p></li>
+
+      <li><span class="goal">Goal: move to the trials for this stimulus and see how they are numbered.</span>
+<pre><code class="language-bash">cd results/lesson-3/2026-11-10T14-57-29-750Z
+cd one-request/typo-fix
+ls gpt-5.6-terra</code></pre>
+<pre class="output"><code>0
+1
+2
+3
+4</code></pre></li>
+
+      <li><span class="goal">Goal: read what one trial did.</span>
+<pre><code class="language-bash">cat gpt-5.6-terra/0/workspace.patch</code></pre>
+        <p class="expect">You should see: a patch, or nothing at all. An empty patch means the agent changed no file in that trial. In our run this one added an entry ending <code>(#42)</code>.</p></li>
+
+      <li><span class="goal">Goal: read the other nine and tally them.</span>
+        Repeat the last command for trials <code>1</code> to <code>4</code>, then for all five trials of your other model. For each trial, put a mark in one column:
+        <div class="table-wrap">
+        <table>
+          <thead><tr><th>Model</th><th>Entry, no number</th><th>Entry, made-up number</th><th>No entry</th></tr></thead>
+          <tbody>
+            <tr><td>Your first model</td><td></td><td></td><td></td></tr>
+            <tr><td>Your second model</td><td></td><td></td><td></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <details class="answer"><summary>Show our tally</summary>
+          <div class="table-wrap">
+          <table>
+            <thead><tr><th>Model</th><th>Entry, no number</th><th>Entry, made-up number</th><th>No entry</th></tr></thead>
+            <tbody>
+              <tr><td>claude-haiku-4.5</td><td>4</td><td>1</td><td>0</td></tr>
+              <tr><td>gpt-5.6-terra</td><td>0</td><td>5</td><td>0</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </details></li>
+
+      <li><span class="goal">Goal: for a trial with an empty patch, find out what the agent said instead.</span>
+        Open <code>results.jsonl</code> in a text editor. It is two folders up from here, in the run folder. Search for <code>"output"</code>. Each trial's record has one.
+        <p class="expect">You should see: one reply per trial. In our run no patch was empty, so every reply reports an edit. All five of gpt-5.6-terra's replies name the number outright, such as "referencing PR #42".</p></li>
+
+      <li><span class="goal">Goal: return to the practice folder.</span>
+<pre><code class="language-bash">cd ../../../../..</code></pre></li>
+    </ol>
+  </section>
+
+  <details class="answer"><summary>Optional: a scripting shortcut for the replies</summary>
+    <p>Typed in the run folder, the one that contains <code>results.jsonl</code>, this prints the model, trial number and final reply from each record. It needs <code>jq</code>.</p>
+<pre><code class="language-bash">jq '{model, trialIndex, reply: .trajectory.output}' \
+  results.jsonl</code></pre>
+    <p>The part in braces builds a small object from three parts of each record: <code>model</code> and <code>trialIndex</code> as they are, and <code>.trajectory.output</code> under the name <code>reply</code>. The last object is all <code>null</code>: it comes from the summary record. Nothing in this course depends on this command.</p>
+  </details>
+
+  <h2 id="what-the-tally-says" data-mode="think">What the tally says</h2>
+
+  <p>Now you have counts in place of an impression. In our run, one model invented a number in one of five trials and the other did so in all five. That is a property of the skill on each model, and it is worth fixing in the skill.</p>
+
+  <p>Every trial that made up a number passed. The careful answer would be to change nothing and ask which pull request to cite, and that is the only kind of answer this grader fails. In lesson 5 one of our trials does exactly that. Keep it in mind; lesson 8 comes back to it.</p>
+
+  <div class="primary-source">
+    <p><a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Demystifying evals for AI agents, Anthropic, 2026-01-09</a></p>
+    <p>Read the part on non-determinism and on running several trials. It gives the reasoning behind this lesson from a team that runs agent evals at scale.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, give the four words Vally uses to sum up a stimulus's trials, and what each means.
+        <details class="answer"><summary>Show model answer</summary><p><code>PASS</code>: every trial passed. <code>FLAKY</code>: some passed and some failed. <code>FAIL</code>: none passed. <code>ERROR</code>: at least one trial did not finish, so it has no verdict and should be run again.</p></details></li>
+      <li>Using your own tally, write one sentence per model of the form "On this model, the skill led to a made-up pull request number in N of 5 trials."
+        <details class="answer"><summary>Show model answer</summary><p>From our tally: "On claude-haiku-4.5, the skill led to a made-up pull request number in 1 of 5 trials. On gpt-5.6-terra, it did in 5 of 5." Sentences like these are what you will compare against after you edit the skill.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="3" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> run five trials on each model and state, as counts, how often each one invents a pull request number.</p>
+    <p><strong>Up next:</strong> <a href="./0004-read-the-runs-first.html">Read the runs before writing graders</a>. You counted one problem on one request by reading ten patches. What else goes wrong when the requests get messier?</p>
+    <a class="next-lesson" href="./0004-read-the-runs-first.html">Next lesson: Read the runs before writing graders <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

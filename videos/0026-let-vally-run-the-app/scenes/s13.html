@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A trace context joins them</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.parent{font-size:38px;line-height:1.5;padding:22px 34px}.callout{font-size:34px}.stage{gap:26px}.terms .semantic-block{min-height:150px}.terms .title{font-size:40px}.terms .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Joining the app’s traces to Vally’s</div>
+  <h2 class="scene-title">A trace context joins them</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark parent" data-lang="text"><code><span data-concept="tp" data-rep="code"><span>traceparent</span></span>
+
+<span>  </span><span data-concept="ver" data-rep="code"><span>version</span></span><span> - </span><span data-concept="tid" data-rep="code"><span>trace ID</span></span><span> - </span><span data-concept="pid" data-rep="code"><span>parent span ID</span></span><span> - </span><span data-concept="fl" data-rep="code"><span>flags</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="tp">one short string</p></aside>
+  </div>
+  <div class="cols wide terms">
+    <div class="semantic-block" data-concept="tid" data-rep="block" data-role="structure">
+      <div class="title">trace ID</div><div class="label">which trace to join</div>
+    </div>
+    <div class="semantic-block" data-concept="pid" data-rep="block" data-role="attention">
+      <div class="title">parent span ID</div><div class="label">which span to sit under</div>
+    </div>
+  </div>
+  <p class="note">Source: W3C, “Trace Context”</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "tid",
+  "at": "1~ID of a trace",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "pid",
+  "at": "1~span that's open",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "tp",
+  "at": "3~trace parent",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ver",
+  "at": "3~version",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "tid",
+  "at": "3~the trace ID",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "pid",
+  "at": "3~parent span's ID",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "fl",
+  "at": "3~flags",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Count trials, not stimuli</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.counts{font-size:44px}.counts th{font-size:32px}.counts td{padding-top:26px;padding-bottom:26px}.counts td.mono{font-family:var(--font-code);font-size:38px;white-space:nowrap}.counts td.num{font-family:var(--font-code)}.tally{align-items:start;grid-auto-columns:auto;grid-template-columns:880px minmax(0,1fr);gap:44px}.code.dark.out{font-size:30px;line-height:1.42;padding:22px 28px}.right{display:flex;flex-direction:column;gap:18px}.counts{font-size:38px}.counts th{font-size:25px}.counts td.mono{font-size:27px}.counts td{padding-top:20px;padding-bottom:20px}.note{margin:0}.stage{gap:22px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Compare before and after</div>
+  <h2 class="scene-title">Count trials, not stimuli</h2>
+  <div class="stage">
+<div class="cols wide tally">
+    <pre class="code dark out" data-lang="yaml"><code><span data-concept="bhb" data-rep="code"><span style="color:#3CC0B3">haiku-before · claude-haiku-4.5</span></span>
+<span style="color:#B3C0BF">  </span><span style="color:#3CC0B3">FAIL  cache  0/3</span>
+<span style="color:#B3C0BF">  </span><span style="color:#3CC0B3">FLAKY  parser  2 passed · 1 failed</span>
+
+<span data-concept="btb" data-rep="code"><span style="color:#3CC0B3">terra-before · gpt-5.6-terra</span></span>
+<span style="color:#B3C0BF">  </span><span style="color:#3CC0B3">ERROR  cache  1 passed · 1 failed · 1 error</span>
+<span style="color:#B3C0BF">  </span><span style="color:#3CC0B3">ERROR  dates  2 passed · 1 error</span>
+<span style="color:#B3C0BF">  </span><span style="color:#3CC0B3">ERROR  parser  2 passed · 1 error</span></code></pre>
+    <div class="right">
+      <table class="data-table full counts">
+    <thead><tr><th>trials passed</th><th class="num">before the edit</th><th class="num">after the edit</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">claude-haiku-4.5</td><td class="num"><span data-concept="chb" data-rep="cell">5 of 9</span></td><td class="num"><span data-concept="cha" data-rep="cell">9 of 9</span></td></tr>
+      <tr><td class="mono">gpt-5.6-terra</td><td class="num"><span data-concept="ctb" data-rep="cell">5 of 6</span></td><td class="num"><span data-concept="cta" data-rep="cell">9 of 9</span></td></tr>
+    </tbody>
+  </table>
+      <p class="note">a stimulus with no block passed 3 of 3 · a trial that ended in ERROR is left out</p>
+    </div>
+  </div>
+  <p class="note">every block of the run, cut to its first lines · our run · 2026-11-11T07-53-29-176Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "chb",
+  "at": "2~five of nine",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "cha",
+  "at": "2~nine of nine after",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ctb",
+  "at": "3~five of six",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "cta",
+  "at": "3~nine of nine after",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

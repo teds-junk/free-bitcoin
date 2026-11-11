@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The tally, filled in</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.tally{font-size:56px}.tally th{font-size:32px}.tally td{padding-top:40px;padding-bottom:40px;height:70px}.tally td.mono{font-family:var(--font-code);font-size:36px}.tally th:last-child,.tally td:last-child{padding-right:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Count it</div>
+  <h2 class="scene-title">The tally, filled in</h2>
+  <div class="stage">
+<table class="data-table full tally">
+    <thead><tr><th></th><th class="num"><span data-concept="c-none" data-rep="head">Entry, no number</span></th><th class="num"><span data-concept="c-made" data-rep="head">Entry, made-up number</span></th><th class="num"><span data-concept="c-no" data-rep="head">No entry</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono">claude-haiku-4.5</td><td class="num"><span data-concept="h-none" data-rep="cell">5</span></td><td class="num"><span data-concept="h-made" data-rep="cell">0</span></td><td class="num"><span data-concept="h-no" data-rep="cell">0</span></td></tr>
+<tr><td class="mono">gpt-5.6-terra</td><td class="num"><span data-concept="t-none" data-rep="cell">0</span></td><td class="num"><span data-concept="t-made" data-rep="cell">5</span></td><td class="num"><span data-concept="t-no" data-rep="cell">0</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">from the ten patches of our run · 2026-11-11T04-09-57-574Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "h-none",
+  "at": "0~five with no number",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "t-made",
+  "at": "0~five made up",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "c-no",
+  "at": "0~nothing",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/99-outro",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "a3bc5abde8c04fcd",
+      "text": "That's the whole course.",
+      "tts_text": "That's the whole course.",
+      "heard": "That's the whole course.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "fe4e8c968cdac9af",
+      "text": "You can now edit a skill, or change the model under it, and say with evidence whether it got better, and what it costs.",
+      "tts_text": "You can now edit a skill, or change the model under it, and say with evidence whether it got better, and what it costs.",
+      "heard": "You can now edit a skill or change the model under it and say with evidence whether it got better and what it costs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "0dced6732886d6a6",
+      "text": "Your graders are tested, your judge is checked against your own labels, and your results come with ranges.",
+      "tts_text": "Your graders are tested, your judge is checked against your own labels, and your results come with ranges.",
+      "heard": "Your graders are tested, your judge is checked against your own labels, and your results come with ranges.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "1be67034a3bdd819",
+      "text": "Those checks run as a routine that a teammate can repeat.",
+      "tts_text": "Those checks run as a routine that a teammate can repeat.",
+      "heard": "Those checks run as a routine that a teammate can repeat.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 4,
+      "file": "audio/s01_04.wav",
+      "clip_sha": "253d49f794af966c",
+      "text": "And you can evaluate the same skill when an app, not a person, starts the agent.",
+      "tts_text": "And you can evaluate the same skill when an app, not a person, starts the agent.",
+      "heard": "And you can evaluate the same skill when an app, not a person, starts the agent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "4fc3502610bf0a33",
+      "text": "On the course site, you'll find the exercises for every part.",
+      "tts_text": "On the course site, you'll find the exercises for every part.",
+      "heard": "On the core site, you'll find the exercises for every part.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "a4e4fc367d98fb16",
+      "text": "There's also a workflow guide, which walks the whole procedure, for a skill or for a feature in an app.",
+      "tts_text": "There's also a workflow guide, which walks the whole procedure, for a skill or for a feature in an app.",
+      "heard": "There's also a workflow guide which walks the whole procedure for a skill or for a feature in an app.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 7,
+    "mismatched": 0,
+    "transcribed": 7,
+    "reused": 0,
+    "seconds_per_sentence": 0.325
+  }
+}

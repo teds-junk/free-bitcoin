@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A run keeps its diffs</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.tree{min-width:860px;font-size:36px;line-height:1.7}.callout{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Re-grade a saved run</div>
+  <h2 class="scene-title">A run keeps its diffs</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark tree" data-lang="text"><code><span data-concept="run" data-rep="code"><span>2026-11-11T05-21-37-779Z/</span></span>
+<span>  </span><span data-concept="rec" data-rep="code"><span>results.jsonl</span></span>
+<span>  </span><span data-concept="diffs" data-rep="code"><span>diffs/</span></span>
+<span>  changelog/typo-fix/gpt-5.6-terra/0/</span>
+<span>    </span><span data-concept="patch" data-rep="code"><span>workspace.patch</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="run">one saved run</p><p class="callout" data-anchor="rec">one record per trial</p><p class="callout" data-anchor="diffs">a copy of every trial’s diff</p><p class="callout" data-anchor="patch">the same diff, for us to read</p></aside>
+  </div>
+  <p class="note"><span class="mono">diffs/</span> is kept only when the eval file has a diff grader</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "patch",
+  "at": "0~workspace patch",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "diffs",
+  "at": "1~diffs",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "run",
+  "at": "2~which run",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "diffs",
+  "at": "4~no copies",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

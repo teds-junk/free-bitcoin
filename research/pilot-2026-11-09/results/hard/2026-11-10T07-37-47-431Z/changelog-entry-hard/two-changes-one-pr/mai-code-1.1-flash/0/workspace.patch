@@ -1,0 +1,17 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 697937c..484e36f 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -5,8 +5,12 @@ All notable changes to notes-cli are recorded in this file.
+ ## [Unreleased]
+ 
+ ### Added
++- Add `notes list --json` to print note results as JSON (#60)
+ - Add `notes list --tag` to show only notes with a given tag (#41)
+ 
++### Fixed
++- Fix `notes list` page 2 repeating the last note from page 1 (#60)
++
+ ## [1.2.0] - 2026-09-14
+ 
+ ### Added

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Loading isn’t selecting</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.select{min-width:900px;font-size:40px;line-height:1.5}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What an executor returns</div>
+  <h2 class="scene-title">Loading isn’t selecting</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark select" data-lang="yaml"><code><span style="color:#3CC0B3">vally eval … </span><span data-concept="run" data-rep="code"><span style="color:#3CC0B3">--executor release-app</span></span>
+
+<span style="color:#4EA5E6">defaults</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  </span><span data-concept="def" data-rep="code"><span style="color:#4EA5E6">executor</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">release-app</span></span>
+
+<span style="color:#4EA5E6">overrides</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  </span><span data-concept="over" data-rep="code"><span style="color:#4EA5E6">executor</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">release-app</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="run">for one run</p><p class="callout" data-anchor="def">for one eval file</p><p class="callout" data-anchor="over">for one experiment</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "run",
+  "at": "1~dash dash executor",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "def",
+  "at": "1~defaults",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "over",
+  "at": "1~overrides",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

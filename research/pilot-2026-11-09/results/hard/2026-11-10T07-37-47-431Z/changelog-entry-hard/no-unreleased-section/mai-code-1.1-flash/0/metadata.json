@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "no-unreleased-section",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::mai-code-1.1-flash::no-unreleased-section::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "mai-code-1.1-flash",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:39:09.189Z",
+  "status": "error",
+  "error": "Stimulus 'no-unreleased-section' timed out after 180000 ms during turn 1 of 1",
+  "completedAt": "2026-11-10T07:42:10.369Z",
+  "executorSessionId": "bd23f503-0566-48bc-a489-e2a1852f1e33",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/no-unreleased-section/mai-code-1.1-flash/0/events.jsonl"
+}

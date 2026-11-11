@@ -1,0 +1,73 @@
+name: wording-scaled
+
+defaults:
+  timeout: 3m
+  judge_model: claude-sonnet-5.5
+
+agent_environment:
+  skills:
+    - ../skills/changelog-entry
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+
+stimuli:
+  - name: parser
+    prompt: |
+      Merged PR 49. I swapped JSON.parse for a streaming
+      parser in importer.js so we stop loading the whole
+      file into memory. Big imports used to die with an
+      out-of-memory error. Changelog it.
+    rubric:
+      - The new changelog entry says what changes for people
+        who use the tool, and does not say how it was coded.
+    graders:
+      - type: prompt
+        config:
+          scoring: scale_1_5
+          threshold: 0.75
+          prompt: Begin your reason by quoting the new entry.
+      - type: diff-contains
+        name: cites-49
+        config:
+          pattern: '(?m)^\+.*\(#49\)'
+
+  - name: cache
+    prompt: |
+      PR 66 is in: I put an LRU cache in front of the tag
+      index, so `notes list --tag` no longer rescans
+      every file. Much faster on big folders. Add it to
+      the changelog.
+    rubric:
+      - The new changelog entry says what changes for people
+        who use the tool, and does not say how it was coded.
+    graders:
+      - type: prompt
+        config:
+          scoring: scale_1_5
+          threshold: 0.75
+          prompt: Begin your reason by quoting the new entry.
+      - type: diff-contains
+        name: cites-66
+        config:
+          pattern: '(?m)^\+.*\(#66\)'
+
+  - name: dates
+    prompt: |
+      Merged PR 67. The date parser used a greedy regex
+      that choked on dates like 2026-1-5, so I rewrote
+      it as a small tokenizer. Single-digit months and
+      days work now. Update the changelog.
+    rubric:
+      - The new changelog entry says what changes for people
+        who use the tool, and does not say how it was coded.
+    graders:
+      - type: prompt
+        config:
+          scoring: scale_1_5
+          threshold: 0.75
+          prompt: Begin your reason by quoting the new entry.
+      - type: diff-contains
+        name: cites-67
+        config:
+          pattern: '(?m)^\+.*\(#67\)'

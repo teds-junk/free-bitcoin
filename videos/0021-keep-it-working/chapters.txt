@@ -1,0 +1,9 @@
+0:00 From checks to a routine
+0:25 Cheapest check first
+2:22 Name a group of stimuli
+4:11 Make failure an error
+5:39 Run the quick suite
+7:03 See a failure exit with one
+9:24 Run the full suite
+10:45 Write down what we agreed
+11:21 Where the skill stands

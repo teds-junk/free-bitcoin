@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A model as the grader</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.def{width:100%}.def .semantic-block{width:100%;box-sizing:border-box}.def .label{font-size:36px}.costs .semantic-block{min-height:190px}.costs .title{font-size:38px}.costs .label{font-size:30px}.stage{gap:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">When a judge fits</div>
+  <h2 class="scene-title">A model as the grader</h2>
+  <div class="stage">
+<div class="def">
+    <div class="semantic-block" data-concept="judge" data-rep="block" data-role="structure">
+      <div class="title words">LLM judge</div><div class="label">a grader that asks a language model to read what the agent did, and decide whether it meets a criterion you wrote</div>
+    </div>
+  </div>
+  <div class="cols wide costs">
+    <div class="semantic-block" data-concept="slow" data-rep="block" data-role="attention">
+      <div class="title words">slower than code</div><div class="label"></div>
+    </div><div class="semantic-block" data-concept="call" data-rep="block" data-role="attention">
+      <div class="title words">a model call per trial</div><div class="label"></div>
+    </div><div class="semantic-block" data-concept="wrong" data-rep="block" data-role="attention">
+      <div class="title words">wrong in new ways</div><div class="label">swayed by confident wording</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "judge",
+  "at": "0",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "slow",
+  "at": "3~slower",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "call",
+  "at": "3~every trial",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "wrong",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "judge",
+  "at": "5",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

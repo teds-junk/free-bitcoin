@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A cross inside a pass</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.out{font-size:29px;line-height:1.4;padding:20px 28px}.callout{font-size:31px}.stage{gap:16px;justify-content:safe center}.note{margin:0}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Score the wording</div>
+  <h2 class="scene-title">A cross inside a pass</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark out" data-lang="text"><code><span>━━━ cache ━━━</span>
+<span data-concept="head" data-rep="code"><span>✅ cache</span></span><span> (1/2 graders passed, 1 failed)</span>
+<span>  </span><span data-concept="judge" data-rep="code"><span>✗ [prompt "Begin your reason b…"]</span></span><span> The entry quoted is:</span>
+<span>      \"Improve performance of `notes list --tag` with LRU</span>
+<span>      cache for tag index (#66)\". It is placed correctly</span>
+<span>      under Unreleased &gt; Changed and carries the #66</span>
+<span>      reference. It still leaks the implementation (\"LRU</span>
+<span>      cache for tag index\"), so it fails the key criterion.</span>
+<span>  </span><span data-concept="check" data-rep="code"><span>✓ [cites-66]</span></span><span> Pattern /(?m)^\+.*\(#66\)/ found in workspace</span>
+<span>      diff</span>
+
+<span data-concept="score" data-rep="code"><span>Score: 62.5%</span></span><span> | PASSED (threshold: 60.0%)</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="head">the trial passes</p><p class="callout" data-anchor="judge">the judge still fails it</p><p class="callout" data-anchor="score">0.5 × 0.25 + 0.5 × 1 = 0.625</p></aside>
+  </div>
+  <p class="note">one of the twelve blocks, with the scoring block · from our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "judge",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "head",
+  "at": "2",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "score",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

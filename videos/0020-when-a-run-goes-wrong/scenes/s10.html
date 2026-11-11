@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Evidence, then the patch</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.annotated .code.dark{font-size:32px;line-height:1.5;padding:26px 32px}.callout{font-size:32px}.stage{gap:24px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Where each answer lives</div>
+  <h2 class="scene-title">Evidence, then the patch</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark vb" data-lang="text"><code><span>FAIL  typo-fix · 0/1 graders · 8.4s</span>
+<span> </span><span data-concept="ev" data-rep="code"><span>✘ adds-an-entry</span></span><span>  Pattern /^\+.*notes add/</span>
+<span>     not found in workspace diff</span>
+
+<span> </span><span data-concept="st" data-rep="code"><span>5 turns · 4 tools · skill×1 · 75.1k tok</span></span>
+
+<span> agent output</span>
+<span> </span><span data-concept="re" data-rep="code"><span>Done! Added the typo fix to the CHANGELOG</span></span>
+<span> under the Fixed category in the Unreleased</span>
+<span> section.</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="ev">the grader’s evidence</p><p class="callout" data-anchor="st">--verbose adds turns, tools and tokens</p><p class="callout" data-anchor="re">and the agent’s final reply</p></aside>
+  </div>
+  <p class="note">one failing trial, with <span class="mono">--verbose</span> · from our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "ev",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "st",
+  "at": "3~turns",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "re",
+  "at": "3~final reply",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

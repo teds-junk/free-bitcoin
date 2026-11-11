@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Two stimuli for the script</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.two .quote{font-size:30px;padding:20px 28px 24px;flex:1}.two .quote p{margin:0}.nb{white-space:nowrap}.two .card .who{font-size:30px}.two .card > .code.dark{flex:none;font-size:36px;padding:20px 32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Files only graders get</div>
+  <h2 class="scene-title">Two stimuli for the script</h2>
+  <div class="stage">
+<div class="cols two">
+    <div class="card" data-concept="c-two" data-rep="card">
+        <div class="who"><span class="mono">two-changes</span></div>
+        <div class="quote"><span class="who">The request</span><p>“PR 60 is in. It adds a <span class="nb">--json</span> flag to notes list, and while I was in there I fixed the bug where page 2 repeated the last note of page 1. Changelog please.”</p></div>
+        <pre class="code dark" data-lang="text"><code><span data-concept="a60" data-rep="code"><span>Added=60</span></span>
+<span data-concept="a60" data-rep="code"><span>Fixed=60</span></span></code></pre>
+      </div>
+    <div class="card" data-concept="c-after" data-rep="card">
+        <div class="who"><span class="mono">after-release</span> · starts with no Unreleased section</div>
+        <div class="quote"><span class="who">The request</span><p>“PR 58 just landed: notes add now accepts <span class="nb">--from-clipboard</span> to create a note from whatever is on the clipboard. Add it to the changelog.”</p></div>
+        <pre class="code dark" data-lang="text"><code><span data-concept="a58" data-rep="code"><span>Added=58</span></span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "c-two",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "a60",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "c-after",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "a58",
+  "at": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

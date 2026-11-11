@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 6: Keep graders out of the agent's reach — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 6 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Keep graders out of the agent's reach</h1>
+    <div class="lesson-meta">12 min · See exactly what an agent is given to work with, and add a grading script that reaches the graders without ever reaching the agent.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What does a diff grader read, and what does that include besides the lines the agent added?
+        <details class="answer"><summary>Show answer</summary><p>The patch of what the agent changed. It includes the unchanged lines around each change, which is why a pattern for added lines has to ask for a leading plus sign.</p></details></li>
+      <li>A stimulus has two graders. In one trial, one passes and one fails. What is the trial's verdict?
+        <details class="answer"><summary>Show answer</summary><p>It fails. A trial passes only if every grader on its stimulus passes.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You can turn a failure mode into a pattern grader and count how often it happens before and after an edit to the skill.</p>
+    <p><strong>This lesson answers:</strong> Where can I put a grading script so the agent cannot read or change it?</p>
+  </div>
+
+  <p class="drop-cap">Patterns have a limit. A pattern can say "the patch contains an entry citing pull request 60". It cannot say "and that entry sits under Fixed, inside Unreleased, and not inside a version that has already shipped". Position in a file is structure, and structure needs a few lines of code that read the file. The moment a grader is a script, a new question appears: a script is a file, the agent works in a folder full of files, and an agent that can read its own exam, or edit it, tells you nothing.</p>
+
+  <h2 id="why-hide" data-mode="think">Why the agent must not see the grader</h2>
+
+  <p>An agent can read and edit everything in its workspace. If the grading script were there, three things could happen. The agent could read it and learn exactly what is being looked for. It could edit it so that it always passes. Or, most likely, it could simply be distracted by an unexpected file and start "fixing" it.</p>
+
+  <p>This is not a theoretical worry. A benchmark is a public set of tasks with graders, used to compare agents. In April 2026, researchers at Berkeley took eight well-known ones and scored between 73% and 100% on them with agents that solved none of the tasks, for example by reading answers the graders had left where an agent could reach them. In June 2026, the makers of the Cursor editor reported that in 63% of one model's passing runs on a coding benchmark, the agent had found the published fix and copied it instead of working it out.</p>
+
+  <p>Your changelog skill does not need a security review. It needs two plain rules. Keep grading scripts and expected answers where the agent cannot see them. And never let a grader depend on a file the agent could have altered in order to pass.</p>
+
+  <div class="source-citation">Sources: <a href="https://rdi.berkeley.edu/blog/trustworthy-benchmarks-cont/">Berkeley RDI, How we broke top AI agent benchmarks, April 2026</a>; <a href="https://cursor.com/blog/reward-hacking-coding-benchmarks">Cursor, Reward hacking on coding benchmarks, 2026-06-25</a> (reported by the vendor, one model).</div>
+
+  <h2 id="what-goes-in" data-mode="works">What goes into the workspace</h2>
+
+  <p>Lesson 2 defined the agent environment: the skills and files copied into the workspace before the agent starts. Two details matter now.</p>
+
+  <p>First, a skill is copied as a whole folder. Whatever is inside the skill's folder goes into the workspace, not only <code>SKILL.md</code>. Second, files listed under <code>files</code> arrive under the name you give as <code>dest</code>.</p>
+
+  <p>You can see this for yourself. Adding <code>--workspace</code> and a folder name to <code>vally eval</code> tells Vally to keep each trial's workspace in that folder when the trial ends, where it would normally delete it. The command <code>find kept -type f</code> then lists every file under a folder named <code>kept</code>. For the one-request eval file and one model, this is everything that was kept:</p>
+
+<pre class="output"><code>kept/main/typo-fix/CHANGELOG.md
+kept/main/typo-fix/changelog-entry/SKILL.md</code></pre>
+
+  <p>The path is the folder you named, then a folder Vally calls <code>main</code>, then the stimulus name. Inside is what the agent had: the changelog, as it left it, and the skill folder.</p>
+
+  <p><code>--workspace</code> works with one model at a time. The kept path has no model name in it, so with several models Vally stops before running anything and reports <code>workspace-collision</code>.</p>
+
+  <div class="callout warning">
+    <div class="callout-title">Keep eval files outside the skill folder</div>
+    <p>Because the whole skill folder is copied, anything you store inside it is handed to the agent: eval files, graders, expected answers. This course keeps <code>evals/</code> beside <code>skills/</code>, never inside a skill.</p>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/eval-spec/">Vally docs, Eval Spec reference</a>; the listing and the collision are from our runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="grading-only" data-mode="works">What is added only for grading</h2>
+
+  <div class="callout definition">
+    <div class="callout-title">Grading environment</div>
+    <p>Files that Vally adds after the agent has stopped, to a copy of the finished workspace that only graders use. The copy is thrown away when grading ends. It is the <code>grading_environment</code> part of a stimulus.</p>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 640 270" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="On the left, the workspace the agent works in, holding the changelog and the skill folder. On the right, the grading copy, holding the same files plus the grading script. An arrow labelled agent stops goes from left to right.">
+      <rect x="6" y="46" width="262" height="176" rx="3" style="stroke: var(--accent)"/>
+      <rect x="372" y="46" width="262" height="176" rx="3" style="stroke-dasharray: 6 5"/>
+      <path d="M268 134 L370 134 M362 128 L370 134 L362 140"/>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="137" y="30" text-anchor="middle">WORKSPACE</text>
+        <text x="503" y="30" text-anchor="middle">GRADING COPY</text>
+        <text x="319" y="122" text-anchor="middle">agent</text>
+        <text x="319" y="162" text-anchor="middle">stops</text>
+        <text x="137" y="252" text-anchor="middle">the agent works here</text>
+        <text x="503" y="252" text-anchor="middle">only graders run here</text>
+      </g>
+      <g style="font-family: var(--mono); font-size: 20px; fill: currentColor; stroke: none">
+        <text x="24" y="92">CHANGELOG.md</text>
+        <text x="24" y="124">changelog-entry/</text>
+        <text x="390" y="92">CHANGELOG.md</text>
+        <text x="390" y="124">changelog-entry/</text>
+      </g>
+      <g style="font-family: var(--mono); font-size: 20px; fill: var(--accent); stroke: none">
+        <text x="390" y="164">.vally-grading/</text>
+        <text x="390" y="196">  check-entry.mjs</text>
+      </g>
+    </svg>
+    <figcaption>The grading script joins the files only after the agent has stopped, in a copy the agent never works in.</figcaption>
+  </figure>
+
+  <p>The grader that runs a script is called <code>program</code>. It runs one program inside the grading copy, and the program tells Vally the verdict by printing it. This course calls a <code>program</code> grader that runs a script a script grader. Here is a stimulus with a grading environment and a script grader.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/changelog.eval.yaml (a new stimulus)</div>
+<pre><code class="language-yaml">  - name: two-changes
+<span class="gap">9 lines hidden: the prompt and the starting changelog</span>
+    grading_environment:<span class="mark">1</span>
+      files:
+        - src: grading/check-entry.mjs<span class="mark">2</span>
+          dest: .vally-grading/check-entry.mjs<span class="mark">3</span>
+    graders:
+      - type: program<span class="mark">4</span>
+        name: two-entries-in-place
+        config:
+          program: node
+          args:<span class="mark">5</span>
+            - .vally-grading/check-entry.mjs
+            - Added=60
+            - Fixed=60</code></pre>
+    </div>
+    <ol class="notes">
+      <li>Files for graders only. It is written like the <code>files</code> part of the agent environment.</li>
+      <li>Where the script is now: in <code>evals/grading</code>, which no agent environment copies.</li>
+      <li>Where it goes in the grading copy. A folder starting with a dot keeps it apart from the agent's files.</li>
+      <li>Run a program in the grading copy and take the verdict from what it prints. The program is <code>node</code>, which runs JavaScript files, and the script is one.</li>
+      <li>The command's arguments: the script to run, then what to look for.</li>
+    </ol>
+  </div>
+
+  <p>The script ships with the starter folder, in plain JavaScript with nothing to install. Its opening comment says what it checks, and its last few lines say how it reports.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/grading/check-entry.mjs</div>
+<pre><code class="language-javascript">// Checks the finished CHANGELOG.md.
+// Each argument is Category=number. The Unreleased section
+// must have an entry under that category that cites that
+// pull request. Prints one result: pass or fail, and why.
+<span class="gap">31 lines hidden: the code that reads the changelog</span>
+function report(passed, evidence) {
+  console.log(JSON.stringify({<span class="mark">1</span>
+    name: "check-entry",
+    kind: "code",<span class="mark">2</span>
+    passed,<span class="mark">3</span>
+    score: passed ? 1 : 0,<span class="mark">4</span>
+    evidence,<span class="mark">5</span>
+  }));
+  process.exit(0);<span class="mark">6</span>
+}</code></pre>
+    </div>
+    <ol class="notes">
+      <li>Print the result as one line of JSON. JSON is a common way of writing data as text: names and values inside braces. Each record in <code>results.jsonl</code>, from lesson 2, is written the same way.</li>
+      <li>Says that code made this check. Vally needs all five fields, from <code>name</code> to <code>evidence</code>.</li>
+      <li>The verdict: <code>true</code> for a pass, <code>false</code> for a fail.</li>
+      <li>1 for a pass, 0 for a fail.</li>
+      <li>A sentence saying what the script found, such as <code>no entry citing #60 under Fixed</code>. It appears in the results as the grader's evidence, where a pattern grader's evidence appears.</li>
+      <li>Every program ends by reporting a number, its exit code, and 0 means "no problem". This script exits with 0 whether the entry is there or not, because the verdict is in what it printed. A different exit code would mean the script itself had broken.</li>
+    </ol>
+  </div>
+
+  <p>So <code>Added=60</code> and <code>Fixed=60</code> mean: under Unreleased there must be an entry under Added that cites <code>(#60)</code>, and one under Fixed that cites <code>(#60)</code>. An entry in a released version does not count, and the heading must be written exactly as <code>## [Unreleased]</code>.</p>
+
+  <p>The starter has a second stimulus ready as well, <code>after-release</code>, for the changelog with no Unreleased section. Its grader is named <code>entry-in-new-unreleased</code>, and it asks the script for <code>Added=58</code>. Both stimuli are in <code>evals/snippets/lesson-6-stimuli.yaml</code>, for you to paste in.</p>
+
+  <p>Two things about script graders are worth knowing in advance. <code>vally lint</code> refuses a grading file whose source the agent could see, with the error <code>grading-file-src-agent-visible</code>. And if a script prints a result with a field missing, Vally fails the trial with <code>Grader output did not match schema</code>. That is a mistake in the script, not in the agent's work.</p>
+
+  <div class="callout">
+    <div class="callout-title">The other script grader</div>
+    <p>Vally has a second grader that runs a script, <code>run-command</code>, which passes when the script exits with 0. It is simpler to write and tells you less: when it fails, the evidence is only <code>Expected exit code 0, got 1</code>, and you have to read the patch to find out why. This course uses <code>program</code> so the results say why.</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-question">You move <code>check-entry.mjs</code> into <code>skills/changelog-entry/</code> to keep things tidy. What happens?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">Nothing changes: graders still run it fine</button></li>
+      <li><button onclick="checkAnswer(this, true)">Lint refuses: the agent would see it</button></li>
+      <li><button onclick="checkAnswer(this, false)">Vally hides it from the agent itself</button></li>
+      <li><button onclick="checkAnswer(this, false)">The script runs twice per trial instead</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. The whole skill folder is copied into the workspace, so the script would be in front of the agent. Lint reports <code>grading-file-src-agent-visible</code>.</div>
+    <div class="quiz-feedback incorrect">Lint refuses. The whole skill folder is copied into the agent's workspace, so a script stored there is visible to the agent, and <code>vally lint</code> reports <code>grading-file-src-agent-visible</code>.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/guides/writing-eval-specs/">Vally docs, Writing Eval Specs, Grader-only files</a>; <a href="https://microsoft.github.io/vally/reference/graders/program/">Grader: program</a>; <a href="https://microsoft.github.io/vally/reference/graders/run-command/">Grader: run-command</a>. The lint error and the evidence texts are from our runs.</div>
+
+  <h2 id="look-then-hide" data-mode="use">Look inside, then add the hidden script</h2>
+
+  <p>You will keep one workspace and list it, to see what an agent is given. Then you will add two stimuli that use the script, run all five stimuli, add one more rule to the skill, and run again. This is the rule, for step 8. It covers the case the second new stimulus tests:</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">skills/changelog-entry/SKILL.md (lines to add at the end)</div>
+<pre><code class="language-markdown">- If the changelog has no Unreleased section, add one above
+  the newest version. Write its heading exactly as
+  `## [Unreleased]`, with the square brackets.</code></pre>
+  </div>
+
+  <section class="checkpoint">
+    <h3>A script the agent never sees</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: keep a workspace so you can look inside it. This spends one agent run and creates a folder named <code>kept</code>.</span>
+        Open a terminal in <code>practice</code>. Use one of your models.
+<pre><code class="language-bash">vally eval -e evals/one-request.eval.yaml \
+  --model claude-haiku-4.5 \
+  --workspace kept \
+  --output-dir results/lesson-6-look</code></pre>
+        <p class="expect">You should see: <code>PASS  one-request</code>. With one model, the summary is a single line.</p></li>
+
+      <li><span class="goal">Goal: list every file the agent had.</span>
+<pre><code class="language-bash">find kept -type f</code></pre>
+<pre class="output"><code>kept/main/typo-fix/CHANGELOG.md
+kept/main/typo-fix/changelog-entry/SKILL.md</code></pre>
+        <p class="expect">You should see: the changelog and the skill, and nothing from <code>evals</code>.</p></li>
+
+      <li><span class="goal">Goal: read what the grading script checks.</span>
+<pre><code class="language-bash">cat evals/grading/check-entry.mjs</code></pre>
+        <p class="expect">You should see: 45 lines, starting with the comment shown above and ending with the lines annotated above.</p></li>
+
+      <li><span class="goal">Goal: add two stimuli that use the script. This edits one file.</span>
+        Open <code>evals/snippets/lesson-6-stimuli.yaml</code>, copy all of it, and paste it at the end of <code>evals/changelog.eval.yaml</code>. The first stimulus is the one annotated above, and the second is the one described after it.</li>
+
+      <li><span class="goal">Goal: catch mistakes before spending anything.</span>
+<pre><code class="language-bash">vally lint -e evals/changelog.eval.yaml</code></pre>
+        <p class="expect">You should see: the one warning from lesson 5 and no errors.</p></li>
+
+      <li><span class="goal">Goal: run all five stimuli once on each model. This spends ten agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/changelog.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 \
+  --output-dir results/lesson-6</code></pre>
+<pre class="output"><code>claude-haiku-4.5
+  FAIL  after-release · 0/1 graders · 9.5s
+
+gpt-5.6-terra
+  FAIL  after-release · 0/1 graders · 8.5s
+
+gpt-5.6-terra
+  ERROR  security
+   Session disconnected while waiting …
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✘ 4/5             ✘ 3/5</code></pre>
+        <p class="expect">You should see: a summary, and a block for any stimulus that failed. Those above are ours. With one trial per stimulus, a block's first line counts graders: <code>0/1 graders</code>. Under a failing script grader, a line shortened out of ours, is the script's own sentence saying what it did not find; ours, under <code>entry-in-new-unreleased</code>, was <code>no '## [Unreleased]' heading</code>. <code>ERROR</code>, as on <code>security</code> in ours, means the session dropped before the trial finished, so that trial has no verdict.</p></li>
+
+      <li><span class="goal">Goal: see what the agent wrote instead.</span>
+        The evidence says what the script did not find. If one failed for you, read that trial's patch to see what the agent wrote in its place. These are the commands for ours; use your run folder, stimulus and model.
+<pre><code class="language-bash">ls results/lesson-6</code></pre>
+<pre><code class="language-bash">cd results/lesson-6/2026-11-10T15-00-31-535Z
+cd changelog
+cat after-release/gpt-5.6-terra/0/workspace.patch</code></pre>
+<pre><code class="language-bash">cd ../../../..</code></pre>
+        <p class="expect">You should see: in both our failing trials, the new heading was <code>## Unreleased</code>, without brackets, so the script found no <code>## [Unreleased]</code> section. The last command returns you to <code>practice</code>.</p></li>
+
+      <li><span class="goal">Goal: close that gap in the skill. This edits one file.</span>
+        Add the three lines shown above the checkpoint to the end of <code>skills/changelog-entry/SKILL.md</code>.</li>
+
+      <li><span class="goal">Goal: run the five stimuli again. This spends another ten agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/changelog.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 \
+  --output-dir results/lesson-6-after</code></pre>
+<pre class="output"><code>claude-haiku-4.5
+  ERROR  after-release
+   Session disconnected while waiting …
+
+  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✘ 4/5             ✓ 5/5</code></pre>
+        <p class="expect">You should see: your own summary. Ours is above. Every <code>two-changes</code> trial passed, and one of those passes was wrong, as described below.</p></li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-script-caught" data-mode="think">What the script caught, and what it missed</h2>
+
+  <p>Three things happened in our runs that are worth dwelling on.</p>
+
+  <p>The heading without brackets appeared on both models this time. In lesson 4 only one model wrote <code>## Unreleased</code>. One trial per model shows that a failure can happen; it does not show which model is prone to it. After the new rule, the second model wrote the heading correctly. The first model's trial ended in ERROR, so for that model this run cannot say.</p>
+
+  <p>Then the surprise, and it is not a happy one. In the second run the script passed every <code>two-changes</code> trial, and one of them was wrong. This is its patch, with the first five lines and one long line shortened:</p>
+
+<pre class="output"><code> ### Added
+ - Add `notes list --tag` to filter by tag (#41)
++- Add `notes list --json` to output as JSON (#60)
+ 
+-## [1.2.0] - 2026-09-14
++### Fixed
++- Fix pagination bug where page 2 repeated … (#60)
+ 
+ ### Added
+ - Add `notes export` for a single-file backup (#37)</code></pre>
+
+  <p>The agent wrote its Fixed entry where the heading of version 1.2.0 had been, and deleted that heading. Version 1.2.0 has been released, and its entries now sit under Unreleased, as if they had never shipped. The script finds the Unreleased section and reads down to the next version heading. With 1.2.0's heading gone, the next one was further down, so the script found every entry it wanted and passed.</p>
+
+  <p>That is a sixth failure mode, and the grader hid it. A grader that passes a wrong answer is worse than none, because its tick tells you to stop looking. The skill already forbids this ("Leave released versions alone"), so the gap is in the grader, not the skill. Exercise 3 below closes it. Lessons 7 and 8 are about catching graders like this one before they mislead you.</p>
+
+  <p>The third thing is quieter. In lesson 5 the first model filed the security fix under Fixed in one of three trials. In these two runs, with the same rule in the skill, it filed it under Security every time. Nothing was changed to cause that. It is the run-to-run variation from lesson 3, and a reminder that two or three trials are a glimpse, not a measurement.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/guides/writing-eval-specs/">Writing Eval Specs, Vally docs</a></p>
+    <p>Read the section "Grader-only files". It is the official form of what this lesson did, with a second example.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, say what the agent environment and the grading environment each add, and when.
+        <details class="answer"><summary>Show model answer</summary><p>The agent environment copies skills and files into the workspace before the agent starts; the agent can read and edit all of it. The grading environment adds files to a copy of the finished workspace after the agent has stopped; only graders use that copy, and it is thrown away afterwards.</p></details></li>
+      <li>A teammate stores expected answers in <code>skills/their-skill/evals/answers.json</code>. Explain the problem in one sentence and give the fix.
+        <details class="answer"><summary>Show model answer</summary><p>The whole skill folder is copied into the agent's workspace, so the agent can read the answers; move the <code>evals</code> folder out of the skill folder, and bring <code>answers.json</code> in through <code>grading_environment</code> if a grader needs it.</p></details></li>
+      <li>Write a second grader for <code>two-changes</code> that fails the trial shown above: one that fails whenever the agent deletes a version heading. Use a pattern grader from lesson 5.
+        <details class="answer"><summary>Show model answer</summary>
+<pre><code class="language-yaml">      - type: diff-not-contains
+        name: keeps-released-versions
+        config:
+          pattern: '(?m)^-## \['</code></pre>
+        <p>In a patch, a deleted line starts with a minus sign, and every version heading starts with <code>## [</code>. So the pattern matches a deleted version heading anywhere in the patch, and the grader fails. We tested it on our two <code>two-changes</code> trials from the second run: it failed the one above and passed the other.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="6" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> see exactly what an agent is given to work with, and add a grading script that reaches the graders without ever reaching the agent.</p>
+    <p><strong>Up next:</strong> <a href="./0007-test-a-grader.html">Test a grader without running an agent</a>. A hidden script now decides pass and fail, and only you can see whether it is right. How do you test a grader?</p>
+    <a class="next-lesson" href="./0007-test-a-grader.html">Next lesson: Test a grader without running an agent <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

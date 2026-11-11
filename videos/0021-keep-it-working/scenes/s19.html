@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Our first run had trouble</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.pair{align-items:start;grid-auto-columns:auto 1fr;gap:64px;margin-top:28px}.fulls{font-size:36px}.fulls th{font-size:28px}.fulls th.mono,.fulls td.mono{font-family:var(--font-code);font-size:32px}.fulls td{padding-top:22px;padding-bottom:22px}.fulls td.num{white-space:nowrap}.cards{display:flex;flex-direction:column;gap:16px}.cards .semantic-block{padding:18px 26px}.cards .title{font-size:36px}.cards .label{font-size:27px;line-height:1.35}.stage{justify-content:flex-start;gap:18px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Two suites and a conventions page</div>
+  <h2 class="scene-title">Our first run had trouble</h2>
+  <div class="stage">
+<div class="cols pair">
+    <table class="data-table fulls">
+      <thead><tr><th class="mono">eval</th><th class="mono num">claude-haiku-4.5</th><th class="mono num">gpt-5.6-terra</th></tr></thead>
+      <tbody>
+<tr><td class="mono">changelog</td><td class="num">✓ 5/5</td><td class="num">✓ 5/5</td></tr>
+<tr><td class="mono">conversation</td><td class="num">✘ 0/1</td><td class="num">✓ 1/1</td></tr>
+<tr><td class="mono">loading</td><td class="num">✓ 6/6</td><td class="num">✘ 5/6</td></tr>
+<tr><td class="mono">wording</td><td class="num">✘ 2/3</td><td class="num">✓ 3/3</td></tr>
+      </tbody>
+    </table>
+    <div class="cards">
+      <div class="semantic-block" data-concept="error" data-rep="block" data-role="attention">
+      <div class="title">ERROR × 2</div><div class="label"><span class="mono">conversation · three-requests</span> on <span class="mono">claude-haiku-4.5</span><br><span class="mono">wording · cache</span> on <span class="mono">claude-haiku-4.5</span><br>Session disconnected while waiting for a response</div>
+    </div>
+    <div class="semantic-block" data-concept="fail" data-rep="block" data-role="failure">
+      <div class="title">FAIL</div><div class="label"><span class="mono">loading · skip-question</span> on <span class="mono">gpt-5.6-terra</span><br>the skill loaded for a question that should not load it</div>
+    </div>
+    </div>
+  </div>
+  <p class="note">our first run of the full suite, minutes before the one we kept · exit code 1</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "error",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "fail",
+  "at": "6",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "8"
+ }
+]
+</script>
+</body>
+</html>

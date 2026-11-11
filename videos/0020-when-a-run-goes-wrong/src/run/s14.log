@@ -1,0 +1,95 @@
+✔ evals/broken/merged-list.eval.yaml is valid
+⠋ Loading evaluations…
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from merged-list · 2 models · 2 workers
+
+░░░░░░░░░░░░░░░░  0/2 completed · 0 running · 2 queued · 00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval         claude-haiku-4.5  gpt-5.6-terra   
+
+  merged-list  0/1 · queued      0/1 · queued    
+
+
+merged-list
+
+gpt-5.6-terra
+  ERROR  from-the-list
+   The "command" argument must be of type string. Received an instance of
+   Object
+
+████████░░░░░░░░  1/2 completed · 1 running · 0 queued · 00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+    gpt-5.6-terra  pending
+
+
+
+  eval         claude-haiku-4.5  gpt-5.6-terra   
+
+  merged-list  0/1 · 1 running   0/1 · finalizing
+
+
+claude-haiku-4.5
+  ERROR  from-the-list
+   The "command" argument must be of type string. Received an instance of
+   Object
+
+████████████████  2/2 completed · 0 running · 0 queued · 00:00
+
+─────────────────────────────────────────────────────────────────────────────
+
+Live summary
+
+    claude-haiku-4.5  pending
+
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+
+
+  eval         claude-haiku-4.5  gpt-5.6-terra   
+
+  merged-list  0/1 · finalizing  ✘ 0/1           
+
+[composite-reporter] EvalMarkdownReporter threw: TypeError: text.replace is not a function
+    at sanitizeCell (file:///.../node_modules/@microsoft/vally/dist/reporting/eval-markdown.js:822:28)
+    at file:///.../node_modules/@microsoft/vally/dist/reporting/eval-markdown.js:596:52
+    at Array.map (<anonymous>)
+    at formatEnvironmentDetails (file:///.../node_modules/@microsoft/vally/dist/reporting/eval-markdown.js:596:36)
+    at formatEnvironmentCell (file:///.../node_modules/@microsoft/vally/dist/reporting/eval-markdown.js:624:21)
+    at EvalMarkdownReporter.buildRow (file:///.../node_modules/@microsoft/vally/dist/reporting/eval-markdown.js:314:59)
+    at file:///.../node_modules/@microsoft/vally/dist/reporting/eval-markdown.js:242:30
+    at Array.map (<anonymous>)
+    at EvalMarkdownReporter.appendSectionTable (file:///.../node_modules/@microsoft/vally/dist/reporting/eval-markdown.js:242:14)
+    at EvalMarkdownReporter.appendSection (file:///.../node_modules/@microsoft/vally/dist/reporting/eval-markdown.js:185:18)
+
+────────────────────────────────────────────────────────
+
+Failures  2 failed
+  ERROR merged-list · from-the-list [claude-haiku-4.5]  The "command" argument must be of type string. Received an instance of Object
+  ERROR merged-list · from-the-list [gpt-5.6-terra]  The "command" argument must be of type string. Received an instance of Object
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra  0/1 evals passed
+
+  eval         claude-haiku-4.5  gpt-5.6-terra
+  merged-list  ✘ 0/1             ✘ 0/1        
+
+Saved  ~/src/demo/practice/results/lesson-20/2026-11-11T15-37-37-941Z/
+Run ID  cb33894f-b72c-4c1c-a08f-26b32dd7383d
+⚠ 1 reporter callback error(s) occurred during the run (reporters are isolated; the run result is unaffected). See logs above for details.

@@ -1,0 +1,648 @@
+1
+00:00:00,400 --> 00:00:04,725
+Imagine you wrote a skill, tried it once,
+and the agent did what you wanted.
+
+2
+00:00:05,225 --> 00:00:09,547
+Then a teammate runs it on another model
+and gets something different, and neither
+
+3
+00:00:09,547 --> 00:00:11,550
+of you can say which result is normal.
+
+4
+00:00:12,050 --> 00:00:16,539
+Here, you'll run an experiment on two
+models, and find the differences in their
+
+5
+00:00:16,539 --> 00:00:17,050
+behavior.
+
+6
+00:00:18,267 --> 00:00:20,492
+Let's start with what a skill is.
+
+7
+00:00:20,992 --> 00:00:26,054
+It's a folder with a file called SKILL dot
+M D in it: a name, a one-line description,
+
+8
+00:00:26,054 --> 00:00:27,067
+and instructions.
+
+9
+00:00:27,567 --> 00:00:32,545
+An agent is a program that uses a language
+model to do a task with tools: it reads
+
+10
+00:00:32,545 --> 00:00:34,792
+files, edits them, and runs commands.
+
+11
+00:00:35,292 --> 00:00:39,664
+The model is the part that decides what to
+do, and the same agent can run on
+
+12
+00:00:39,664 --> 00:00:40,642
+different models.
+
+13
+00:00:41,142 --> 00:00:44,967
+So a skill isn't code that runs the same
+way every time.
+
+14
+00:00:45,467 --> 00:00:48,792
+It's advice, and each model reads it its
+own way.
+
+15
+00:00:50,000 --> 00:00:54,550
+The skill this course improves is about
+one small chore: keeping a changelog.
+
+16
+00:00:55,050 --> 00:00:59,652
+A changelog lists what changed in each
+version of a tool, for the people who use
+
+17
+00:00:59,652 --> 00:00:59,825
+it.
+
+18
+00:01:00,325 --> 00:01:04,350
+Changes that haven't shipped yet go under
+a heading called Unreleased.
+
+19
+00:01:04,850 --> 00:01:09,375
+They're grouped into categories such as
+Added and Fixed, one line per entry.
+
+20
+00:01:09,875 --> 00:01:13,994
+And an entry often ends with a reference
+like this one: the number of the pull
+
+21
+00:01:13,994 --> 00:01:15,525
+request that made the change.
+
+22
+00:01:16,025 --> 00:01:20,250
+A pull request is a numbered proposal to
+change a project's code.
+
+23
+00:01:21,467 --> 00:01:23,042
+Here's the skill.
+
+24
+00:01:23,542 --> 00:01:27,955
+It tells an agent how to add an entry to a
+changelog, and it's a plain first draft,
+
+25
+00:01:27,955 --> 00:01:29,817
+the kind you write in five minutes.
+
+26
+00:01:30,317 --> 00:01:33,017
+Let's read it the way a model has to.
+
+27
+00:01:33,517 --> 00:01:36,217
+Add the entry in the right category.
+
+28
+00:01:36,717 --> 00:01:38,817
+Which categories exist?
+
+29
+00:01:39,317 --> 00:01:41,467
+Reference the pull request.
+
+30
+00:01:41,967 --> 00:01:44,717
+In what form, and what if there isn't one?
+
+31
+00:01:45,217 --> 00:01:49,292
+The skill doesn't say, so each model fills
+the gap with its own guess.
+
+32
+00:01:50,500 --> 00:01:54,300
+When you try the skill by hand, you see
+one model's guess, once.
+
+33
+00:01:54,800 --> 00:01:59,305
+That's one observation, and it tells you
+little about the next model, or the next
+
+34
+00:01:59,305 --> 00:01:59,750
+request.
+
+35
+00:02:00,250 --> 00:02:04,632
+To see more than that, you need a tool
+that runs the agent for you and keeps a
+
+36
+00:02:04,632 --> 00:02:05,025
+record.
+
+37
+00:02:06,233 --> 00:02:07,858
+That's the problem.
+
+38
+00:02:08,358 --> 00:02:10,508
+Now here's how Vally works.
+
+39
+00:02:11,008 --> 00:02:15,623
+Vally is a command-line tool that runs an
+agent in a controlled way and keeps a
+
+40
+00:02:15,623 --> 00:02:16,908
+record of what it did.
+
+41
+00:02:17,408 --> 00:02:21,809
+The agent it runs is the one that comes
+with GitHub Copilot, which is why this
+
+42
+00:02:21,809 --> 00:02:23,558
+course needs a Copilot account.
+
+43
+00:02:24,058 --> 00:02:28,767
+What it runs is an eval: a repeatable test
+of an agent, with the same request, in the
+
+44
+00:02:28,767 --> 00:02:31,758
+same starting folder, checked the same way
+every time.
+
+45
+00:02:32,967 --> 00:02:37,251
+First, Vally makes a fresh scratch folder,
+called the workspace, and copies in the
+
+46
+00:02:37,251 --> 00:02:38,767
+starting files and the skill.
+
+47
+00:02:39,267 --> 00:02:43,567
+Second, it starts an agent on the model
+you named, and gives it the request.
+
+48
+00:02:44,067 --> 00:02:48,417
+Third, when the agent stops, it saves a
+record of what the agent changed.
+
+49
+00:02:48,917 --> 00:02:52,467
+And fourth, it runs the check, and prints
+a tick or a cross.
+
+50
+00:02:52,967 --> 00:02:57,617
+Every run gets a new workspace, so no run
+can see what another one did.
+
+51
+00:02:58,117 --> 00:03:01,042
+What's inside the check, we'll explain
+later.
+
+52
+00:03:02,267 --> 00:03:06,517
+The command that does all this is vally
+eval, and we're going to start by giving
+
+53
+00:03:06,517 --> 00:03:07,367
+it three things.
+
+54
+00:03:07,867 --> 00:03:10,917
+Dash e, followed by the eval file to run.
+
+55
+00:03:11,417 --> 00:03:14,767
+The course comes with one, holding a
+single request.
+
+56
+00:03:15,267 --> 00:03:18,917
+It says: I fixed the typo in the help text
+for notes add.
+
+57
+00:03:19,417 --> 00:03:21,542
+Put that in the changelog.
+
+58
+00:03:22,042 --> 00:03:26,917
+Dash dash model, followed by one model
+name, or several separated by commas.
+
+59
+00:03:27,417 --> 00:03:30,667
+With several, Vally does the whole run
+once for each.
+
+60
+00:03:31,167 --> 00:03:35,642
+And dash dash output dir, followed by the
+folder to save the results in.
+
+61
+00:03:36,867 --> 00:03:41,542
+It writes only inside that results folder,
+but each run is one short session with the
+
+62
+00:03:41,542 --> 00:03:44,567
+agent, and that spends requests from your
+Copilot plan.
+
+63
+00:03:45,067 --> 00:03:48,667
+If the connection drops, Vally prints
+ERROR for that model.
+
+64
+00:03:49,167 --> 00:03:53,217
+That says nothing about the skill, so
+you'd just run the command again.
+
+65
+00:03:54,433 --> 00:03:58,596
+One more thing we'll use in a moment:
+model names differ from account to
+
+66
+00:03:58,596 --> 00:03:59,058
+account.
+
+67
+00:03:59,558 --> 00:04:03,739
+If you name a model your account doesn't
+have, Vally stops before starting any
+
+68
+00:04:03,739 --> 00:04:05,883
+agent, and prints the names you do have.
+
+69
+00:04:06,383 --> 00:04:09,558
+So a made-up name is a free way to see
+your list.
+
+70
+00:04:10,767 --> 00:04:15,117
+Step three, the record of what the agent
+changed, is a patch: a text file that
+
+71
+00:04:15,117 --> 00:04:18,742
+records a change to other files as lines
+added and lines removed.
+
+72
+00:04:19,242 --> 00:04:23,317
+Vally writes one for every run, and names
+it workspace dot patch.
+
+73
+00:04:23,817 --> 00:04:28,199
+It saves each command's results in a
+folder named with the time the command
+
+74
+00:04:28,199 --> 00:04:28,667
+started.
+
+75
+00:04:29,167 --> 00:04:33,337
+Inside that, the patch sits under the
+eval's name, then the request's name, then
+
+76
+00:04:33,337 --> 00:04:35,892
+the model, then a run number that starts
+at zero.
+
+77
+00:04:37,100 --> 00:04:40,250
+Here's a real one, from the run you're
+about to see.
+
+78
+00:04:40,750 --> 00:04:43,675
+The first line names the file that
+changed.
+
+79
+00:04:44,175 --> 00:04:47,825
+The next three repeat it in other forms,
+and you can skip them.
+
+80
+00:04:48,325 --> 00:04:52,050
+This line says where the change is:
+starting at line seven.
+
+81
+00:04:52,550 --> 00:04:55,025
+The rest of that line you can skip.
+
+82
+00:04:55,525 --> 00:04:59,675
+A line that begins with a space was
+already there, and hasn't changed.
+
+83
+00:05:00,175 --> 00:05:03,375
+It's context, so you can see where the
+change sits.
+
+84
+00:05:03,875 --> 00:05:07,525
+A line that begins with a plus was added
+by the agent.
+
+85
+00:05:08,025 --> 00:05:11,600
+A minus would mean one it removed, and
+this patch has none.
+
+86
+00:05:12,100 --> 00:05:16,544
+So this model added a Fixed heading and
+one entry under Unreleased, and touched
+
+87
+00:05:16,544 --> 00:05:17,275
+nothing else.
+
+88
+00:05:17,775 --> 00:05:22,250
+You can read exactly what an agent did to
+a file without opening the file.
+
+89
+00:05:23,467 --> 00:05:25,542
+That's everything you need.
+
+90
+00:05:26,042 --> 00:05:28,917
+If you tried it yourself, here's what
+you'd see.
+
+91
+00:05:29,417 --> 00:05:33,770
+Both models get the same skill, the same
+changelog, and the same request, and the
+
+92
+00:05:33,770 --> 00:05:35,867
+request doesn't mention a pull request.
+
+93
+00:05:36,367 --> 00:05:40,717
+So what would you expect each model to do
+about reference the pull request?
+
+94
+00:05:43,933 --> 00:05:48,624
+First, we check the tools: node twenty-two
+point fifteen or later, and Vally zero
+
+95
+00:05:48,624 --> 00:05:49,608
+point twenty-one.
+
+96
+00:05:53,393 --> 00:05:57,946
+Then we copy the starter that ships with
+the course into a new practice folder, and
+
+97
+00:05:57,946 --> 00:05:58,768
+change into it.
+
+98
+00:06:03,253 --> 00:06:06,003
+Every checkpoint in the course starts
+there.
+
+99
+00:06:08,933 --> 00:06:12,183
+Next, we list the models, using the
+made-up name.
+
+100
+00:06:12,683 --> 00:06:15,508
+It starts no agent and spends nothing.
+
+101
+00:06:20,633 --> 00:06:23,133
+There's the list, inside the error.
+
+102
+00:06:23,633 --> 00:06:25,358
+Yours will differ.
+
+103
+00:06:25,858 --> 00:06:30,458
+We'll use claude haiku four point five and
+G P T five point six terra.
+
+104
+00:06:33,367 --> 00:06:36,042
+Now the real run, on both models.
+
+105
+00:06:36,542 --> 00:06:39,917
+You'd put your own two model names in
+place of these.
+
+106
+00:06:40,417 --> 00:06:43,892
+This one spends two short agent runs from
+your plan.
+
+107
+00:06:44,392 --> 00:06:47,867
+We're watching for a tick or a cross next
+to each model.
+
+108
+00:06:50,180 --> 00:06:53,630
+About twenty seconds later, there's a tick
+for each model.
+
+109
+00:06:54,130 --> 00:06:57,555
+The Saved line at the bottom says where
+the results went.
+
+110
+00:07:01,055 --> 00:07:03,730
+So let's look in that results folder.
+
+111
+00:07:05,500 --> 00:07:08,925
+There's one folder in it, named with the
+time of the run.
+
+112
+00:07:09,425 --> 00:07:13,804
+We change into it, then into the folders
+for the eval and the request, and list
+
+113
+00:07:13,804 --> 00:07:14,525
+what's there.
+
+114
+00:07:21,193 --> 00:07:23,518
+One folder for each model.
+
+115
+00:07:26,433 --> 00:07:28,908
+Here's the patch from the first model.
+
+116
+00:07:29,408 --> 00:07:32,183
+The zero in the path is its first run.
+
+117
+00:07:32,683 --> 00:07:35,908
+The lines that begin with a plus are what
+it added.
+
+118
+00:07:39,408 --> 00:07:42,008
+And here's the patch from the second
+model.
+
+119
+00:07:44,640 --> 00:07:47,815
+Its entry ends differently from the first
+model's.
+
+120
+00:07:52,315 --> 00:07:55,215
+Then we change back up to the practice
+folder.
+
+121
+00:08:01,233 --> 00:08:03,008
+So what did that show?
+
+122
+00:08:03,508 --> 00:08:05,508
+Both models got a tick.
+
+123
+00:08:06,008 --> 00:08:09,383
+One wrote an entry with no pull request
+number.
+
+124
+00:08:09,883 --> 00:08:13,483
+The other ended its entry with pull
+request forty-two.
+
+125
+00:08:13,983 --> 00:08:16,958
+Nobody mentioned a pull request forty-two.
+
+126
+00:08:17,458 --> 00:08:21,633
+The entry above it is forty-one, and the
+model made up the next number.
+
+127
+00:08:22,133 --> 00:08:26,583
+In our runs, terra usually made up a
+number, and haiku usually didn't.
+
+128
+00:08:27,083 --> 00:08:30,533
+Your two models may differ in another way,
+or agree.
+
+129
+00:08:31,033 --> 00:08:35,506
+Either way, it's evidence about your skill
+that would be difficult to discover for
+
+130
+00:08:35,506 --> 00:08:37,633
+every model if you were trying by hand.
+
+131
+00:08:38,833 --> 00:08:43,208
+Before you go on: what are the four things
+Vally does in one run, in order?
+
+132
+00:08:46,208 --> 00:08:50,033
+It makes a fresh workspace, with the
+starting files and the skill.
+
+133
+00:08:50,533 --> 00:08:54,533
+It runs an agent on the model you named,
+and gives it the request.
+
+134
+00:08:55,033 --> 00:08:57,908
+It saves a patch of what the agent
+changed.
+
+135
+00:08:58,408 --> 00:09:00,383
+Then it runs the check.
+
+136
+00:09:01,600 --> 00:09:06,280
+In this rudimentary eval, both models got
+a green tick, yet they did different
+
+137
+00:09:06,280 --> 00:09:06,700
+things.
+
+138
+00:09:07,200 --> 00:09:09,175
+So what did the tick check?
+
+139
+00:09:09,675 --> 00:09:11,525
+That's the next lesson.
+
+140
+00:09:12,025 --> 00:09:15,600
+The exercises on the lesson page are worth
+doing first.

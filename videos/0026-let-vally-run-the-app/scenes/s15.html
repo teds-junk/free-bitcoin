@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>How will the app compare?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:38px}.data-table th{font-size:30px}.data-table td{padding-top:24px;padding-bottom:24px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:34px}.data-table th:last-child,.data-table td:last-child{padding-right:16px}.ask td{padding-top:34px;padding-bottom:34px;height:56px}.ask th .mono{font-family:var(--font-code)}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Write and run the executor</div>
+  <h2 class="scene-title">How will the app compare?</h2>
+  <div class="stage">
+<table class="data-table full ask">
+    <thead><tr><th><span class="mono">since-last-release</span>, through the app</th><th class="num"><span data-concept="c1" data-rep="cell">Trials passed, of 4</span></th><th class="num"><span data-concept="c2" data-rep="cell">Trials that loaded the skill, of 4</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono">claude-haiku-4.5</td><td class="num"></td><td class="num"></td></tr>
+<tr><td class="mono">gpt-5.6-terra</td><td class="num"></td><td class="num"></td></tr>
+    </tbody>
+  </table>
+  <p class="note">four trials a model: one from the eval, three more from the experiment</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "c2",
+  "at": "3~loading the skill",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "c1",
+  "at": "4~pass",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

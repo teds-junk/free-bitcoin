@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The app’s situation, as a stimulus</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Set up before the agent starts</div>
+  <h2 class="scene-title">The app’s situation, as a stimulus</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:spec · regenerate with: node file-panel.js --file src/state/release.eval.yaml --label evals/release.eval.yaml --id spec --width 62 --rows 9 --show 6-23 --expect 12=../tools/list-merged.mjs --expect '17=prompt: >-' --expect '23=node tools/list-merged.mjs' --mark 12-13=tool --mark 17-19=prompt --mark 21=cmds --mark '22=q:"mkdir -p release"' --mark '23=q:"node tools/list-merged.mjs > release/merged.txt"' --into scenes/s07.html -->
+<div class="file-panel" id="spec" data-file="evals/release.eval.yaml" data-lines="32" data-rows="9" style="--rows:9;--cols:62;--ln:2">
+<div class="code-file">evals/release.eval.yaml<span class="file-meta">32 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="yaml"><code>
+<span class="file-row file-skip" data-hidden="1-5"><span class="ln">⋮</span><span class="elide">5 lines hidden · 1–5</span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span style="color:#4EA5E6">agent_environment</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span><span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">skills</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span><span style="color:#B3C0BF">    - </span><span style="color:#3CC0B3">../skills/changelog-entry</span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span><span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">files</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span><span style="color:#B3C0BF">    - </span><span style="color:#4EA5E6">src</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">fixtures/notes-cli/CHANGELOG.md</span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">dest</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">CHANGELOG.md</span></span>
+<span class="file-row" data-line="12"><span class="ln">12</span><span style="color:#B3C0BF">    </span><span data-concept="tool" data-rep="code"><span style="color:#B3C0BF">- </span><span style="color:#4EA5E6">src</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">../tools/list-merged.mjs</span></span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span style="color:#B3C0BF">      </span><span data-concept="tool" data-rep="code"><span style="color:#4EA5E6">dest</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">tools/list-merged.mjs</span></span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span></span>
+<span class="file-row" data-line="15"><span class="ln">15</span><span style="color:#4EA5E6">stimuli</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="16"><span class="ln">16</span><span style="color:#B3C0BF">  - </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">since-last-release</span></span>
+<span class="file-row" data-line="17"><span class="ln">17</span><span style="color:#B3C0BF">    </span><span data-concept="prompt" data-rep="code"><span style="color:#4EA5E6">prompt</span><span style="color:#B3C0BF">: </span><span style="color:#A4BA1E">&gt;</span><span style="color:#B3C0BF">-</span></span></span>
+<span class="file-row" data-line="18"><span class="ln">18</span><span style="color:#3CC0B3">      </span><span data-concept="prompt" data-rep="code"><span style="color:#3CC0B3">Write the Unreleased changelog entries for every</span></span></span>
+<span class="file-row" data-line="19"><span class="ln">19</span><span style="color:#3CC0B3">      </span><span data-concept="prompt" data-rep="code"><span style="color:#3CC0B3">change listed in release/merged.txt.</span></span></span>
+<span class="file-row" data-line="20"><span class="ln">20</span><span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">agent_environment</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="21"><span class="ln">21</span><span style="color:#B3C0BF">      </span><span data-concept="cmds" data-rep="code"><span style="color:#4EA5E6">commands</span><span style="color:#B3C0BF">:</span></span></span>
+<span class="file-row" data-line="22"><span class="ln">22</span><span style="color:#B3C0BF">        - </span><span data-concept="q" data-rep="code"><span style="color:#3CC0B3">"mkdir -p release"</span></span></span>
+<span class="file-row" data-line="23"><span class="ln">23</span><span style="color:#B3C0BF">        - </span><span data-concept="q" data-rep="code"><span style="color:#3CC0B3">"node tools/list-merged.mjs &gt; release/merged.txt"</span></span></span>
+<span class="file-row file-skip" data-hidden="24-32"><span class="ln">⋮</span><span class="elide">9 lines hidden · 24–32</span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="32" style="height:224px" aria-hidden="true"><b class="file-map-view" style="top:35px;height:56px"></b><svg width="120" height="224" viewBox="0 0 120 224" shape-rendering="crispEdges"><rect x="0" y="0" width="7.54" height="4" fill="#4EA5E6" opacity=".38"/><rect x="8.14" y="0" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.2" y="0" width="13.64" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="14" width="15.67" height="4" fill="#4EA5E6" opacity=".38"/><rect x="16.27" y="14" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="4.07" y="21" width="13.64" height="4" fill="#4EA5E6" opacity=".38"/><rect x="18.31" y="21" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="22.37" y="21" width="3.47" height="4" fill="#3CC0B3" opacity=".38"/><rect x="0" y="35" width="33.98" height="4" fill="#4EA5E6"/><rect x="34.58" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="4.07" y="42" width="11.6" height="4" fill="#4EA5E6"/><rect x="16.27" y="42" width="1.5" height="4" fill="#B3C0BF"/><rect x="8.14" y="49" width="1.5" height="4" fill="#B3C0BF"/><rect x="12.2" y="49" width="50.25" height="4" fill="#3CC0B3"/><rect x="4.07" y="56" width="9.57" height="4" fill="#4EA5E6"/><rect x="14.24" y="56" width="1.5" height="4" fill="#B3C0BF"/><rect x="8.14" y="63" width="1.5" height="4" fill="#B3C0BF"/><rect x="12.2" y="63" width="5.5" height="4" fill="#4EA5E6"/><rect x="18.31" y="63" width="1.5" height="4" fill="#B3C0BF"/><rect x="22.37" y="63" width="62.45" height="4" fill="#3CC0B3"/><rect x="12.2" y="70" width="7.54" height="4" fill="#4EA5E6"/><rect x="20.34" y="70" width="1.5" height="4" fill="#B3C0BF"/><rect x="24.41" y="70" width="23.81" height="4" fill="#3CC0B3"/><rect x="8.14" y="77" width="1.5" height="4" fill="#B3C0BF"/><rect x="12.2" y="77" width="5.5" height="4" fill="#4EA5E6"/><rect x="18.31" y="77" width="1.5" height="4" fill="#B3C0BF"/><rect x="22.37" y="77" width="48.21" height="4" fill="#3CC0B3"/><rect x="12.2" y="84" width="7.54" height="4" fill="#4EA5E6"/><rect x="20.34" y="84" width="1.5" height="4" fill="#B3C0BF"/><rect x="24.41" y="84" width="42.11" height="4" fill="#3CC0B3"/><rect x="0" y="98" width="13.64" height="4" fill="#4EA5E6"/><rect x="14.24" y="98" width="1.5" height="4" fill="#B3C0BF"/><rect x="4.07" y="105" width="1.5" height="4" fill="#B3C0BF"/><rect x="8.14" y="105" width="7.54" height="4" fill="#4EA5E6"/><rect x="16.27" y="105" width="1.5" height="4" fill="#B3C0BF"/><rect x="20.34" y="105" width="36.01" height="4" fill="#3CC0B3"/><rect x="8.14" y="112" width="11.6" height="4" fill="#4EA5E6"/><rect x="20.34" y="112" width="1.5" height="4" fill="#B3C0BF"/><rect x="24.41" y="112" width="1.5" height="4" fill="#A4BA1E"/><rect x="26.44" y="112" width="1.5" height="4" fill="#B3C0BF"/><rect x="12.2" y="119" width="9.57" height="4" fill="#3CC0B3"/><rect x="24.41" y="119" width="5.5" height="4" fill="#3CC0B3"/><rect x="32.54" y="119" width="19.74" height="4" fill="#3CC0B3"/><rect x="54.92" y="119" width="17.71" height="4" fill="#3CC0B3"/><rect x="75.25" y="119" width="13.64" height="4" fill="#3CC0B3"/><rect x="91.53" y="119" width="5.5" height="4" fill="#3CC0B3"/><rect x="99.66" y="119" width="9.57" height="4" fill="#3CC0B3"/><rect x="12.2" y="126" width="11.6" height="4" fill="#3CC0B3"/><rect x="26.44" y="126" width="11.6" height="4" fill="#3CC0B3"/><rect x="40.68" y="126" width="3.47" height="4" fill="#3CC0B3"/><rect x="46.78" y="126" width="38.04" height="4" fill="#3CC0B3"/><rect x="8.14" y="133" width="33.98" height="4" fill="#4EA5E6"/><rect x="42.71" y="133" width="1.5" height="4" fill="#B3C0BF"/><rect x="12.2" y="140" width="15.67" height="4" fill="#4EA5E6"/><rect x="28.47" y="140" width="1.5" height="4" fill="#B3C0BF"/><rect x="16.27" y="147" width="1.5" height="4" fill="#B3C0BF"/><rect x="20.34" y="147" width="11.6" height="4" fill="#3CC0B3"/><rect x="34.58" y="147" width="3.47" height="4" fill="#3CC0B3"/><rect x="40.68" y="147" width="15.67" height="4" fill="#3CC0B3"/><rect x="16.27" y="154" width="1.5" height="4" fill="#B3C0BF"/><rect x="20.34" y="154" width="9.57" height="4" fill="#3CC0B3"/><rect x="32.54" y="154" width="42.11" height="4" fill="#3CC0B3"/><rect x="77.29" y="154" width="1.5" height="4" fill="#3CC0B3"/><rect x="81.36" y="154" width="38.04" height="4" fill="#3CC0B3"/><rect x="8.14" y="161" width="38.04" height="4" fill="#4EA5E6" opacity=".38"/><rect x="46.78" y="161" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.2" y="168" width="9.57" height="4" fill="#4EA5E6" opacity=".38"/><rect x="22.37" y="168" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="16.27" y="175" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="20.34" y="175" width="5.5" height="4" fill="#4EA5E6" opacity=".38"/><rect x="26.44" y="175" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="30.51" y="175" width="50.25" height="4" fill="#3CC0B3" opacity=".38"/><rect x="20.34" y="182" width="7.54" height="4" fill="#4EA5E6" opacity=".38"/><rect x="28.47" y="182" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="32.54" y="182" width="64.48" height="4" fill="#3CC0B3" opacity=".38"/><rect x="8.14" y="189" width="13.64" height="4" fill="#4EA5E6" opacity=".38"/><rect x="22.37" y="189" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="12.2" y="196" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="16.27" y="196" width="7.54" height="4" fill="#4EA5E6" opacity=".38"/><rect x="24.41" y="196" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="28.47" y="196" width="21.77" height="4" fill="#3CC0B3" opacity=".38"/><rect x="16.27" y="203" width="7.54" height="4" fill="#4EA5E6" opacity=".38"/><rect x="24.41" y="203" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="28.47" y="203" width="40.08" height="4" fill="#3CC0B3" opacity=".38"/><rect x="16.27" y="210" width="11.6" height="4" fill="#4EA5E6" opacity=".38"/><rect x="28.47" y="210" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="20.34" y="217" width="13.64" height="4" fill="#4EA5E6" opacity=".38"/><rect x="34.58" y="217" width="1.5" height="4" fill="#B3C0BF" opacity=".38"/><rect x="38.64" y="217" width="7.54" height="4" fill="#3CC0B3" opacity=".38"/><rect x="48.81" y="217" width="64.48" height="4" fill="#3CC0B3" opacity=".38"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:spec -->
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "tool",
+  "at": "1~staged",
+  "color": "blue"
+ },
+ {
+  "type": "scroll",
+  "target": "#spec",
+  "to": "15-23",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "prompt",
+  "at": "2~prompt",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "cmds",
+  "at": "3~two commands",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "q",
+  "at": "5~quotes",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

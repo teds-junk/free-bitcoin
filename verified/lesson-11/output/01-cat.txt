@@ -1,0 +1,25 @@
+name: conversation
+
+defaults:
+  timeout: 5m
+
+agent_environment:
+  skills:
+    - ../skills/changelog-entry
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+
+stimuli:
+  - name: three-requests
+    turns:
+      - |
+        PR 64 is merged: `notes delete` now asks for
+        confirmation before it deletes anything. Update
+        the changelog.
+      - |
+        One more, PR 65: I renamed some internal helper
+        functions. Add that too.
+      - |
+        I also fixed the exit code of `notes export` when
+        the disk is full. Record that as well.

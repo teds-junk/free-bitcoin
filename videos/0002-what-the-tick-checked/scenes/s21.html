@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Where would you look?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#trial{width:100%;padding:36px 40px 44px;gap:24px}#trial .parts{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%}#trial .part{min-height:330px}#trial .part .title{font-size:32px;line-height:1.2}#trial .part .step{font-size:56px}#trial .part .label{font-size:28px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">Where would you look?</h2>
+  <div class="stage">
+<div class="semantic-block" id="trial" data-role="structure">
+    <div class="title">any trial</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part"><div class="step">1</div>
+      <div class="title words">Its request</div><div class="label">the prompt of a stimulus, in the eval file</div></div><div class="part" data-concept="p2" data-rep="part"><div class="step">2</div>
+      <div class="title words">Its changes</div><div class="label"><span class="mono">workspace.patch</span></div></div><div class="part" data-concept="p3" data-rep="part"><div class="step">3</div>
+      <div class="title words">Its verdict</div><div class="label">the report; the evidence is in <span class="mono">results.jsonl</span></div></div><div class="part" data-concept="p4" data-rep="part"><div class="step">4</div>
+      <div class="title words">Its tokens</div><div class="label">the report’s Tokens column; detail in <span class="mono">results.jsonl</span></div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#trial",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "p4",
+  "at": "4",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

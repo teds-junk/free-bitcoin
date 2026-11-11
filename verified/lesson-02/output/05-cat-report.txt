@@ -1,0 +1,25 @@
+## Eval Results
+
+> Timestamp: 2026-11-10T14:55:41.220Z
+
+### one-request [claude-haiku-4.5] (evals/one-request.eval.yaml)
+
+> **Environment**: 1 file · 1 skill
+
+| Stimulus | Environment | Skills | Graders | Pass Rate | Duration | Tokens | Turns | Tool Calls | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| typo-fix | <details><summary>1 file · 1 skill</summary>Files: `fixtures/notes-cli/CHANGELOG.md` → `CHANGELOG.md`<br/>Skills: `../skills/changelog-entry`</details> | `changelog-entry` | ✅ mentions-the-command 1/1 | 1/1 | 8.6s | 74,052 | 5 | <details><summary>4 calls</summary>view: 2, skill: 1, edit: 1</details> | ✅ |
+
+> Model: claude-haiku-4.5 | Executor: copilot-sdk
+
+<hr>
+
+### one-request [gpt-5.6-terra] (evals/one-request.eval.yaml)
+
+> **Environment**: 1 file · 1 skill
+
+| Stimulus | Environment | Skills | Graders | Pass Rate | Duration | Tokens | Turns | Tool Calls | Verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| typo-fix | <details><summary>1 file · 1 skill</summary>Files: `fixtures/notes-cli/CHANGELOG.md` → `CHANGELOG.md`<br/>Skills: `../skills/changelog-entry`</details> | `changelog-entry` | ✅ mentions-the-command 1/1 | 1/1 | 16.4s | 85,777 | 7 | <details><summary>8 calls</summary>glob: 2, view: 2, skill: 1, rg: 1, bash: 1, apply_patch: 1</details> | ✅ |
+
+> Model: gpt-5.6-terra | Executor: copilot-sdk

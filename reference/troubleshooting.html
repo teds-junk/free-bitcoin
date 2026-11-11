@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Troubleshooting — Vally &amp; Agent Evals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Reference · Vally &amp; Agent Evals</div>
+    <h1>Troubleshooting</h1>
+    <div class="lesson-meta">Verified 2026-11-10 · Vally 0.21.0</div>
+  </div>
+
+  <p>What a symptom usually means, where to look, and the cheapest proof that a fix worked. Rows are grouped by lesson 20's four questions, in the order to ask them: a verdict means nothing until the eval is valid and the trial completed. Rows marked "ours" come from runs in this course; rows marked "docs" come from Vally's <a href="https://microsoft.github.io/vally/guides/debugging-evals/">Debugging Evals</a> guide and have not been met in our runs. Each fix links to the lesson section that teaches it.</p>
+
+  <div class="callout">
+    <div class="callout-title">Before running anything again</div>
+    <p>Read what the failed run already saved: the console, the trial folder and <code>results.jsonl</code>. Re-run only when the fix changes something that happens before or during the agent's session, and then with one model if one is enough. <a href="../lessons/0020-when-a-run-goes-wrong.html#four-questions">Lesson 20</a></p>
+  </div>
+
+  <h2 id="trial-folder">How far did a trial get?</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>The trial folder holds</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td><code>metadata.json</code> only</td><td>No agent session started. The failure came during setup.</td></tr>
+      <tr><td><code>events.jsonl</code>, no <code>workspace.<wbr>patch</code></td><td>The agent started and was stopped before it finished.</td></tr>
+      <tr><td><code>events.jsonl</code> and <code>workspace.<wbr>patch</code></td><td>The agent finished. Anything wrong is in the grading or the work.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>A grader that did not reach a verdict has <code>"status": "error"</code> in its record and a score of 0. A grader that ran and said no has no <code>status</code> field, and also scores 0. <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></p>
+
+  <h2 id="valid">1. Is the eval valid?</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Symptom</th><th>Where to look</th><th>Likely cause</th><th>Fix, and the cheapest proof</th></tr></thead>
+    <tbody>
+      <tr id="commands-mapping"><td>Lints clean; every trial <code>ERROR</code> in milliseconds: <code>The "command" argument must be of type string. Received an instance of Object</code> (ours)</td><td>Trial folder holds only <code>metadata.json</code>; the <code>commands:</code> entries</td><td>An unquoted command containing <code>: </code>, which YAML reads as a mapping. Lint accepts it.</td><td>Quote every <code>commands:</code> entry. One run on one model. <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a>, <a href="../lessons/0022-start-the-agent-where-the-app-would.html#setup-commands">lesson 22</a></td></tr>
+      <tr id="conflicting-files"><td>Run stops before any agent: <code>environment-resolution-failed</code>, "Conflicting files for destination" (ours)</td><td>The console</td><td>Two files staged to the same place. Lint does not catch it.</td><td>Give each file its own <code>dest</code>. <a href="../lessons/0020-when-a-run-goes-wrong.html#symptoms">Lesson 20</a></td></tr>
+      <tr id="model-not-found"><td><code>--model</code> name not found: the account's model list, exit code 1 (ours)</td><td>The console</td><td>A name your account does not have.</td><td>Copy a name from the list. No run was spent. <a href="../lessons/0001-it-works-for-me.html#run-on-two-models">Lesson 1</a></td></tr>
+      <tr id="drift"><td><code>Experiment drift detected</code> (ours)</td><td>The experiment file's <code>vary</code> line</td><td>Variants differ in a setting not listed under <code>vary</code>, such as <code>/<wbr>defaults/<wbr>executor</code> for a provider variant.</td><td>Add the path to <code>vary</code>, or make the variants agree. Check with <code>--dry-run</code>, free. <a href="../lessons/0010-is-the-agent-better-with-the-skill.html#experiment-file">Lesson 10</a>, <a href="../lessons/0017-a-model-from-your-own-provider.html#run-provider">lesson 17</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="complete">2. Did it complete?</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Symptom</th><th>Where to look</th><th>Likely cause</th><th>Fix, and the cheapest proof</th></tr></thead>
+    <tbody>
+      <tr id="timed-out"><td><code>ERROR</code>: <code>Stimulus '…' timed out after N ms during turn 1 of 1</code> (ours)</td><td><code>events.jsonl</code> ends in <code>abort</code>; <code>durationMs</code> of passing trials</td><td>A limit below what the task needs, or an agent going round in circles. The trial still cost money: its cost is only in the log's last <code>session.<wbr>usage_<wbr>checkpoint</code>.</td><td>Raise <code>timeout</code>. A new run; re-running without raising it pays again for the same <code>ERROR</code>. <a href="../lessons/0020-when-a-run-goes-wrong.html#fix-four">Lesson 20</a></td></tr>
+      <tr id="local-timeouts"><td>A model on your own computer: every trial times out (ours: <code>timed out after 540000 ms</code>)</td><td>The <code>--workers</code> value</td><td>The local server answers one request at a time, so with two workers each trial waits on the other.</td><td>Run local models with <code>--workers 1</code>. <a href="../lessons/0017-a-model-from-your-own-provider.html#run-provider">Lesson 17</a></td></tr>
+      <tr id="session-disconnected"><td><code>ERROR</code>: "Session disconnected while waiting for a response" (ours)</td><td>The console</td><td>Too many sessions at once, or a dropped session even at two workers.</td><td>Use <code>--workers 2</code>. Re-run that stimulus, or leave the trial out and say so. It says nothing about the skill. <a href="../lessons/0003-the-same-request-five-times.html#workers">Lesson 3</a>, <a href="../lessons/0021-keep-it-working.html#two-suites-and-conventions">lesson 21</a></td></tr>
+      <tr id="not-authenticated"><td><code>Session was not created with authentication</code> (docs)</td><td>The console</td><td>The agent's runtime is not signed in.</td><td>Follow Vally's <a href="https://microsoft.github.io/vally/get-started/runtime-setup/">Runtime Setup</a> page. <a href="../lessons/0020-when-a-run-goes-wrong.html#symptoms">Lesson 20</a></td></tr>
+      <tr id="no-simulation-support"><td><code>ERROR</code>: <code>Executor '…' does not support tool-call simulation</code> (ours)</td><td>The stimulus's <code>simulation</code> block; the run's <code>--executor</code></td><td>A custom executor that declares no simulation support. Vally refuses the stimulus before starting an agent, at no cost.</td><td>Run simulated stimuli with <code>copilot-sdk</code>, or select the others with a tag filter (<code>--tag</code>). <a href="../lessons/0026-let-vally-run-the-app.html#executor-contract">Lesson 26</a>, <a href="../lessons/0024-when-a-tool-fails.html#make-the-tool-fail">lesson 24</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="unexpected">3. Why was the result unexpected?</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Symptom</th><th>Where to look</th><th>Likely cause</th><th>Fix, and the cheapest proof</th></tr></thead>
+    <tbody>
+      <tr id="grader-fails-good-work"><td>Every trial <code>FAIL</code>s one grader, but the patch looks right (ours)</td><td>The grader's evidence, then <code>workspace.<wbr>patch</code></td><td>The grader is wrong, for example a pattern missing <code>(?m)</code>, so <code>^</code> matches only the start of the patch.</td><td>Fix the grader; <code>vally grade</code> on the saved run, free. <a href="../lessons/0020-when-a-run-goes-wrong.html#fix-four">Lesson 20</a></td></tr>
+      <tr id="judge-failed"><td><code>ERROR</code>: <code>Grading error; verdict is invalid.</code> with <code>LLM judge failed: …</code> (ours)</td><td>The grader's record: <code>status</code> <code>error</code>, <code>score</code> 0</td><td>The judge call failed and Vally did not retry it; ours named a model that does not exist.</td><td>Fix <code>judge_model</code>; <code>vally grade</code>, judge calls only. A re-grade is also the retry when the judge's service was briefly down. <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></td></tr>
+      <tr id="flaky"><td>FLAKY (docs)</td><td>Pass Rate, pass@k and pass^k</td><td>The agent varies from trial to trial.</td><td>More trials before deciding anything, and a range. <a href="../lessons/0015-is-the-change-real.html#small-samples">Lesson 15</a></td></tr>
+      <tr id="all-pass-stimulus-fails"><td>Every grader passes but the stimulus fails (docs)</td><td>The <code>scoring</code> block</td><td>Weights or a threshold.</td><td>Change them and re-grade. <a href="../lessons/0014-partial-credit.html#how-vally-decides">Lesson 14</a></td></tr>
+      <tr id="judge-scores-low"><td>A judge's scores are low (docs)</td><td>Its reasons, with <code>--verbose</code></td><td>The rubric or the work.</td><td>Change one thing at a time; re-grade. <a href="../lessons/0014-partial-credit.html#judge-on-a-scale">Lesson 14</a></td></tr>
+      <tr id="no-cost"><td>The cost column shows dashes; "No cost recorded" (ours)</td><td><code>cost</code> in the trial records</td><td>Vally records cost only from the Copilot runtime's AIU. A model on your own provider, and an ATIF file graded with <code>vally grade</code>, have none.</td><td>Price the tokens yourself at your provider's rate. <a href="../lessons/0017-a-model-from-your-own-provider.html#what-changed">Lesson 17</a>, <a href="../lessons/0025-grade-a-run-vally-did-not-start.html#atif">lesson 25</a></td></tr>
+      <tr id="ci-differs"><td>Results differ on your machine and in CI (docs)</td><td>Model, environment and runtime settings of both</td><td>Something differs between the two set-ups.</td><td>Compare them before the skill. <a href="../lessons/0020-when-a-run-goes-wrong.html#symptoms">Lesson 20</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="fix-works">4. Does the fix work?</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Symptom</th><th>Where to look</th><th>Likely cause</th><th>Fix, and the cheapest proof</th></tr></thead>
+    <tbody>
+      <tr id="regrade-no-directory"><td>In a re-grade, <code>Grader error: Directory '…' does not exist</code>, or a script grader failing every trial (ours)</td><td>The grader's type</td><td>File and script graders read the workspace, which a saved run does not keep.</td><td>Use a diff grader and re-grade, or re-run with <code>--workspace</code>. Test script graders with <code>vally oracle</code>. <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></td></tr>
+      <tr id="regrade-require-pass"><td><code>vally grade --require-pass</code> exits 1 although the patches are right (ours)</td><td>The graders of the stimuli re-graded</td><td>A script or file grader among them fails every re-graded trial, and the exit code counts it.</td><td>Use <code>--require-pass</code> in a re-grade only for stimuli whose graders are diff graders and budgets. <a href="../lessons/0021-keep-it-working.html#cheapest-first">Lesson 21</a></td></tr>
+      <tr id="no-workspace-diff"><td>A re-grade says "No workspace diff is available" (ours)</td><td>The eval file the run used</td><td>It had no diff grader, so no diffs were saved.</td><td>One new run with a diff grader in the file. <a href="../lessons/0020-when-a-run-goes-wrong.html#symptoms">Lesson 20</a></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/guides/debugging-evals/">Vally docs, Debugging Evals</a> (rows marked "docs"; fetched 2026-11-10); rows marked "ours" are from this course's runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <nav class="course-map" data-current="0" data-root="../"></nav>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

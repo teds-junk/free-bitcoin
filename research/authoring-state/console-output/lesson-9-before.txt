@@ -1,0 +1,41 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 12 stimuli from loading · 2 models · 2 workers
+⚠  Running with 2 trial(s). For statistically significant results, use --runs 5 or higher.
+
+loading
+
+claude-haiku-4.5
+  FLAKY  load-no-keyword  1 passed · 1 failed
+   ✘ skill-invocation requires changelog-ent…  1 passed · 1 failed · The following required skills
+                                                                     were not called:
+                                                                     changelog-entry  trial 2
+
+claude-haiku-4.5
+  ERROR  skip-release-notes  1 passed · 1 error
+   trial 1 · Session disconnected while waiting for a response
+   ✓ passed   skill-invocation forbids changelog-ent…
+
+gpt-5.6-terra
+  ERROR  skip-release-notes  1 passed · 1 error
+   trial 1 · Session disconnected while waiting for a response
+   ✓ passed   skill-invocation forbids changelog-ent…
+
+────────────────────────────────────────────────────────
+
+Failures  3 failed
+  ✘ loading · load-no-keyword [claude-haiku-4.5]
+      ✘ skill-invocation requires changelog-ent…  The following required skills were not called: changelog-entry · trial 2
+  ERROR loading · skip-release-notes [claude-haiku-4.5]
+      Session disconnected while waiting for a response
+  ERROR loading · skip-release-notes [gpt-5.6-terra]
+      Session disconnected while waiting for a response
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✘ gpt-5.6-terra     0/1 evals passed
+
+  eval     claude-haiku-4.5  gpt-5.6-terra
+  loading  ✘ 4/6             ✘ 5/6        
+
+Saved  practice/results/lesson-9-before/2026-11-10T08-41-10-268Z/
+Run ID  23bc36bf-96cb-4489-9613-2c5f15aa9b55

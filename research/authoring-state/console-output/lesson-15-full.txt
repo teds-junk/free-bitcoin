@@ -1,0 +1,22 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 30 stimuli from 4 evals · 2 models · 2 workers
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN conversation · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN wording · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+Model summary
+  ✓ claude-haiku-4.5  4/4 evals passed
+  ✓ gpt-5.6-terra     4/4 evals passed
+
+  eval          claude-haiku-4.5  gpt-5.6-terra
+  changelog     ✓ 5/5             ✓ 5/5        
+  conversation  ✓ 1/1             ✓ 1/1        
+  loading       ✓ 6/6             ✓ 6/6        
+  wording       ✓ 3/3             ✓ 3/3        
+
+Saved  practice/results/lesson-15-full/2026-11-10T09-29-51-013Z/
+Run ID  5a5c30a9-d1cc-4d21-9c54-4b001f9cb34f

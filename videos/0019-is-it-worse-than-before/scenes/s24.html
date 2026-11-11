@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>When does the check fail?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#gate{width:100%;padding:36px 40px 44px;gap:24px}#gate .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}#gate .part{min-height:280px}#gate .part .title{font-size:44px;line-height:1.2}#gate .part .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">When does the check fail?</h2>
+  <div class="stage">
+<div class="semantic-block" id="gate" data-role="structure">
+    <div class="title words">exit code 1, with <span class="mono">--fail-on-regression</span></div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title words">Mean score below zero</div><div class="label">the treatment was judged worse</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title words">Whole range below zero</div><div class="label">not only the mean</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title words">Not counted</div><div class="label">tokens · grader flips</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#gate",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

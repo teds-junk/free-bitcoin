@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What didn’t carry over</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.gaps .semantic-block{min-height:290px}.gaps .title{font-size:40px}.gaps .big{font:500 54px/1.2 var(--font-code);color:var(--ink)}.gaps .label{font-size:30px;line-height:1.4}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;width:100%}.grid4 .semantic-block{min-height:330px}.grid4 .big{font-size:40px}.grid4 .title{font-size:36px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What carried over</div>
+  <h2 class="scene-title">What didn’t carry over</h2>
+  <div class="stage">
+<div class="grid4 gaps">
+    <div class="semantic-block" data-concept="cost" data-rep="block" data-role="attention">
+      <div class="title words">cost</div><div class="big">empty</div><div class="label">add up each step’s dollars</div>
+    </div><div class="semantic-block" data-concept="wall" data-rep="block" data-role="attention">
+      <div class="title words">wall time</div><div class="big">0</div><div class="label">a wall-time grader passes anything</div>
+    </div><div class="semantic-block" data-concept="skill" data-rep="block" data-role="attention">
+      <div class="title words">skill loaded</div><div class="big">only as a tool call</div><div class="label">the agent’s skill call, in the trace</div>
+    </div>
+    <div class="semantic-block" data-concept="down" data-rep="block" data-role="attention">
+      <div class="title words">tracker-down</div><div class="big">nothing to grade</div><div class="label">the tool fails only inside Vally</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "cost",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "wall",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "skill",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ },
+ {
+  "type": "focus",
+  "target": "down",
+  "at": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

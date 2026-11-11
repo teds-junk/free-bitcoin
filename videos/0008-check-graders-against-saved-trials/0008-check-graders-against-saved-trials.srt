@@ -1,0 +1,682 @@
+1
+00:00:00,400 --> 00:00:04,559
+Among our graders, no made-up number is
+the one we've leaned on most, and the
+
+2
+00:00:04,559 --> 00:00:06,125
+oracle couldn't vouch for it.
+
+3
+00:00:06,625 --> 00:00:11,125
+An untouched changelog has no made-up
+number in it, so the grader passes it, and
+
+4
+00:00:11,125 --> 00:00:12,250
+that proves nothing.
+
+5
+00:00:12,750 --> 00:00:17,050
+What would prove something is a changelog
+where a model did make up a number.
+
+6
+00:00:17,550 --> 00:00:21,575
+Trials like that are already saved, from a
+run we paid for earlier.
+
+7
+00:00:22,075 --> 00:00:26,537
+Here, you'll run your graders over trials
+you've already saved, and catch a grader
+
+8
+00:00:26,537 --> 00:00:27,625
+that can never fail.
+
+9
+00:00:28,833 --> 00:00:32,058
+Let's start with why saved trials are
+worth keeping.
+
+10
+00:00:32,558 --> 00:00:36,847
+Every trial you've read is an example with
+a known answer: you know whether it's
+
+11
+00:00:36,847 --> 00:00:38,133
+right or wrong, and why.
+
+12
+00:00:38,633 --> 00:00:43,430
+That makes saved trials the best material
+we have for testing graders, in two ways
+
+13
+00:00:43,430 --> 00:00:44,833
+the oracle can't manage.
+
+14
+00:00:45,333 --> 00:00:49,844
+Any trial you know is bad tests a grader
+that checks for absence, because the
+
+15
+00:00:49,844 --> 00:00:51,133
+grader has to fail it.
+
+16
+00:00:51,633 --> 00:00:55,871
+Any trial you know is good, but worded
+differently from the golden patch, tests
+
+17
+00:00:55,871 --> 00:00:57,533
+whether a grader is too strict.
+
+18
+00:00:58,033 --> 00:01:02,476
+The oracle tried one correct answer for
+each stimulus, while our saved runs hold
+
+19
+00:01:02,476 --> 00:01:04,808
+several, each worded a little differently.
+
+20
+00:01:05,308 --> 00:01:09,658
+When a grader fails one of them, it's
+objecting to wording, not to a fault.
+
+21
+00:01:10,867 --> 00:01:15,376
+The example here is no made-up number,
+which passes when its pattern is absent
+
+22
+00:01:15,376 --> 00:01:17,342
+from the patch: a must-not grader.
+
+23
+00:01:17,842 --> 00:01:22,322
+If it doesn't fail a trial where the model
+wrote a number nobody gave it, the grader
+
+24
+00:01:22,322 --> 00:01:24,242
+is broken, whatever the oracle said.
+
+25
+00:01:24,742 --> 00:01:29,222
+That gives us a simple rule: every
+must-not grader needs at least one saved
+
+26
+00:01:29,222 --> 00:01:30,417
+trial that it fails.
+
+27
+00:01:30,917 --> 00:01:35,137
+And when a grader and our own reading
+disagree, we don't assume either is right:
+
+28
+00:01:35,137 --> 00:01:37,617
+we open the evidence and the patch, and
+decide.
+
+29
+00:01:38,833 --> 00:01:41,733
+That's the idea; here's the command that
+does it.
+
+30
+00:01:42,233 --> 00:01:46,258
+Vally grade runs graders over trials that
+are already saved.
+
+31
+00:01:46,758 --> 00:01:49,533
+No agent starts, so it costs nothing.
+
+32
+00:01:50,033 --> 00:01:52,508
+Dash e names the eval file.
+
+33
+00:01:53,008 --> 00:01:57,672
+Its graders are applied as they are in the
+file now, matched to each saved trial by
+
+34
+00:01:57,672 --> 00:01:58,458
+stimulus name.
+
+35
+00:01:58,958 --> 00:02:02,983
+So when we change a grader, the next
+re-grade uses the changed one.
+
+36
+00:02:03,483 --> 00:02:08,933
+The saved trials are the run's results dot
+jsonl, given to the command as its input.
+
+37
+00:02:09,433 --> 00:02:13,975
+And dash dash run dir names the run's
+folder, because one more piece is kept
+
+38
+00:02:13,975 --> 00:02:14,333
+there.
+
+39
+00:02:15,533 --> 00:02:19,008
+Each trial's folder has a workspace patch
+for us to read.
+
+40
+00:02:19,508 --> 00:02:23,690
+If the eval file has a diff grader,
+meaning one of the three graders that work
+
+41
+00:02:23,690 --> 00:02:28,087
+from the patch, the run also keeps a copy
+of every trial's diff, in a folder named
+
+42
+00:02:28,087 --> 00:02:28,408
+diffs.
+
+43
+00:02:28,908 --> 00:02:33,683
+Those copies are what a re-grade reads,
+and run dir tells it which run to look in.
+
+44
+00:02:34,183 --> 00:02:36,783
+There are two limits, and here's the
+first.
+
+45
+00:02:37,283 --> 00:02:42,278
+Runs made before the eval file had a diff
+grader kept no copies, so they give a diff
+
+46
+00:02:42,278 --> 00:02:43,883
+grader nothing to re-grade.
+
+47
+00:02:45,100 --> 00:02:47,925
+The second limit is about script graders.
+
+48
+00:02:48,425 --> 00:02:52,900
+Diff graders work from the saved diff, so
+their results in a re-grade hold.
+
+49
+00:02:53,400 --> 00:02:57,783
+Script graders need the workspace, and a
+saved run keeps the diff, not the
+
+50
+00:02:57,783 --> 00:02:58,375
+workspace.
+
+51
+00:02:58,875 --> 00:03:03,998
+So in a re-grade, a script grader fails on
+every trial, including trials that really
+
+52
+00:03:03,998 --> 00:03:04,425
+passed.
+
+53
+00:03:04,925 --> 00:03:08,275
+Ours even says why: there's no changelog
+to check.
+
+54
+00:03:08,775 --> 00:03:13,100
+In a re-grade we ignore script graders,
+and test those with the oracle.
+
+55
+00:03:14,300 --> 00:03:18,930
+The saved trials are about to catch a real
+mistake, one we made while writing this
+
+56
+00:03:18,930 --> 00:03:19,325
+course.
+
+57
+00:03:19,825 --> 00:03:23,525
+When we first wrote no made-up number,
+this was its pattern.
+
+58
+00:03:24,025 --> 00:03:28,375
+The eval file's pattern is the same, plus
+four characters at the front.
+
+59
+00:03:28,875 --> 00:03:33,555
+And it reads correctly: a line that starts
+with a plus sign, and contains a number in
+
+60
+00:03:33,555 --> 00:03:34,050
+brackets.
+
+61
+00:03:34,550 --> 00:03:36,150
+It's wrong, though.
+
+62
+00:03:37,367 --> 00:03:40,317
+Here's why, on the patch from a saved
+trial.
+
+63
+00:03:40,817 --> 00:03:45,284
+Those four characters are a switch that
+makes the caret mean the start of every
+
+64
+00:03:45,284 --> 00:03:45,567
+line.
+
+65
+00:03:46,067 --> 00:03:50,117
+Without the switch, the caret means only
+the very start of the whole patch.
+
+66
+00:03:50,617 --> 00:03:55,310
+But a patch never starts with a plus sign;
+it starts with a header line like this
+
+67
+00:03:55,310 --> 00:03:55,542
+one.
+
+68
+00:03:56,042 --> 00:04:00,667
+So the pattern can never be found, however
+many made-up numbers sit further down.
+
+69
+00:04:01,167 --> 00:04:05,892
+Any grader that passes when its pattern
+isn't found will then pass everything.
+
+70
+00:04:07,100 --> 00:04:09,650
+That's how it works; now let's catch it.
+
+71
+00:04:10,150 --> 00:04:14,628
+First, we'll re-grade a saved run where we
+know failures happened, with the graders
+
+72
+00:04:14,628 --> 00:04:15,275
+as they are.
+
+73
+00:04:15,775 --> 00:04:20,211
+Then the flawed pattern goes in, and we
+ask the oracle and the saved trials about
+
+74
+00:04:20,211 --> 00:04:21,525
+it, one after the other.
+
+75
+00:04:22,025 --> 00:04:24,475
+Last, the right pattern goes back.
+
+76
+00:04:24,975 --> 00:04:29,300
+What would you expect the oracle to say
+about a grader that can never fail?
+
+77
+00:04:31,800 --> 00:04:34,675
+If you tried it yourself, here's what
+you'd see.
+
+78
+00:04:35,900 --> 00:04:40,275
+For this, the run we want is the first one
+we graded with diff graders, made before
+
+79
+00:04:40,275 --> 00:04:44,650
+the skill had any rule about numbers, and
+before the eval file had a script grader.
+
+80
+00:04:46,860 --> 00:04:49,985
+There's one folder, named with the time of
+the run.
+
+81
+00:04:50,485 --> 00:04:53,385
+We change into it, so the paths stay
+short.
+
+82
+00:04:56,180 --> 00:05:00,749
+Now the re-grade: the eval file is three
+folders up, the run dir is this folder,
+
+83
+00:05:00,749 --> 00:05:02,805
+and the saved results are the input.
+
+84
+00:05:03,305 --> 00:05:07,304
+Vally prints one block for each saved
+trial: the stimulus name, a tick or a
+
+85
+00:05:07,304 --> 00:05:10,930
+cross, and each failing grader with its
+evidence, but not the model.
+
+86
+00:05:12,033 --> 00:05:16,239
+Eighteen blocks come back, for three
+stimuli run three times on two models,
+
+87
+00:05:16,239 --> 00:05:18,258
+which is more than fits on a screen.
+
+88
+00:05:22,467 --> 00:05:27,304
+Here are the six blocks for the typo fix
+stimulus: three trials on each of the two
+
+89
+00:05:27,304 --> 00:05:27,717
+models.
+
+90
+00:05:28,217 --> 00:05:32,567
+Three passed and three failed, the same
+count as when the run was first graded.
+
+91
+00:05:33,067 --> 00:05:37,674
+Two of the failures name no made-up
+number: those are the trials where a model
+
+92
+00:05:37,674 --> 00:05:38,442
+invented one.
+
+93
+00:05:38,942 --> 00:05:43,474
+The third names adds an entry: in that
+trial the model asked for the number, and
+
+94
+00:05:43,474 --> 00:05:44,267
+wrote nothing.
+
+95
+00:05:47,467 --> 00:05:49,992
+Next, the flawed pattern goes in.
+
+96
+00:05:50,492 --> 00:05:54,282
+In the eval file, under the no made-up
+number grader, we delete the four
+
+97
+00:05:54,282 --> 00:05:56,967
+characters from the front of the pattern,
+and save.
+
+98
+00:05:57,467 --> 00:05:59,992
+Nothing else in the file changes.
+
+99
+00:06:01,200 --> 00:06:05,425
+Back in the practice folder, we ask the
+oracle about the changed grader.
+
+100
+00:06:06,787 --> 00:06:11,635
+First with the golden patch applied, for
+the typo fix stimulus alone, printing each
+
+101
+00:06:11,635 --> 00:06:12,687
+grader's evidence.
+
+102
+00:06:18,433 --> 00:06:22,383
+It passed: with a correct answer in place,
+the pattern isn't found.
+
+103
+00:06:25,883 --> 00:06:29,108
+Then without the golden patch, on the
+untouched file.
+
+104
+00:06:36,067 --> 00:06:40,828
+Adds an entry failed as expected, no
+made-up number is marked not applicable,
+
+105
+00:06:40,828 --> 00:06:42,992
+and the last line says baseline OK.
+
+106
+00:06:47,492 --> 00:06:49,867
+The oracle has no complaint.
+
+107
+00:06:52,767 --> 00:06:57,631
+So let's ask the saved trials: back into
+the run's folder, and the same re-grade as
+
+108
+00:06:57,631 --> 00:06:58,042
+before.
+
+109
+00:07:00,827 --> 00:07:03,902
+The only thing that has changed is the
+pattern.
+
+110
+00:07:07,707 --> 00:07:09,757
+Eighteen blocks again.
+
+111
+00:07:12,967 --> 00:07:17,746
+Side by side, for the six typo fix trials:
+with the right pattern, two failed no
+
+112
+00:07:17,746 --> 00:07:18,642
+made-up number.
+
+113
+00:07:19,142 --> 00:07:23,601
+With the flawed pattern, none did, not
+even the trials where we know a number was
+
+114
+00:07:23,601 --> 00:07:24,042
+made up.
+
+115
+00:07:24,542 --> 00:07:28,836
+Five of the six now pass, and the sixth
+still fails adds an entry, because it
+
+116
+00:07:28,836 --> 00:07:29,617
+wrote nothing.
+
+117
+00:07:30,117 --> 00:07:34,892
+So the oracle accepted this grader, and
+the saved trials show that it cannot fail.
+
+118
+00:07:38,100 --> 00:07:42,457
+Finally, the four characters go back into
+the eval file, and we run the re-grade
+
+119
+00:07:42,457 --> 00:07:44,200
+once more from the run's folder.
+
+120
+00:07:50,753 --> 00:07:55,753
+These blocks match the first re-grade: no
+made-up number fails the trials it should.
+
+121
+00:07:59,967 --> 00:08:02,142
+So what should we make of that?
+
+122
+00:08:02,642 --> 00:08:06,758
+Four characters were the difference
+between a grader that works and one that
+
+123
+00:08:06,758 --> 00:08:07,842
+approves everything.
+
+124
+00:08:08,342 --> 00:08:11,267
+Our oracle runs couldn't tell the two
+apart.
+
+125
+00:08:11,767 --> 00:08:15,367
+Saved trials could, because some of them
+were known to be bad.
+
+126
+00:08:16,567 --> 00:08:21,292
+The same re-grade settled our other
+must-not grader, with no extra work.
+
+127
+00:08:21,792 --> 00:08:26,530
+Adds nothing failed all six refactor
+trials, as it should, because both models
+
+128
+00:08:26,530 --> 00:08:27,867
+recorded the refactor.
+
+129
+00:08:28,367 --> 00:08:32,342
+So both must-not graders now have saved
+trials that they fail.
+
+130
+00:08:33,567 --> 00:08:37,667
+This is worth making a habit, whenever we
+write or change a grader.
+
+131
+00:08:38,167 --> 00:08:40,542
+First the oracle, which is free.
+
+132
+00:08:41,042 --> 00:08:45,845
+Then a re-grade of a saved run where the
+failure is known to occur, which is also
+
+133
+00:08:45,845 --> 00:08:46,142
+free.
+
+134
+00:08:46,642 --> 00:08:49,367
+Only then do we spend agent runs.
+
+135
+00:08:50,567 --> 00:08:55,039
+Before you go on: which kind of grader
+can't the oracle test, and what tests it
+
+136
+00:08:55,039 --> 00:08:55,492
+instead?
+
+137
+00:08:58,492 --> 00:09:02,688
+Graders that check for absence: an
+untouched workspace passes them, so the
+
+138
+00:09:02,688 --> 00:09:03,992
+oracle can't test them.
+
+139
+00:09:04,492 --> 00:09:08,895
+What tests it is a re-grade of a saved
+trial known to contain the fault: the
+
+140
+00:09:08,895 --> 00:09:10,517
+grader must fail that trial.
+
+141
+00:09:11,733 --> 00:09:16,316
+You can now re-grade a saved run without
+starting an agent, and show that a grader
+
+142
+00:09:16,316 --> 00:09:18,383
+the oracle accepted could never fail.
+
+143
+00:09:18,883 --> 00:09:23,550
+Our graders have been tested against
+correct answers, untouched files, and real
+
+144
+00:09:23,550 --> 00:09:24,258
+bad answers.
+
+145
+00:09:24,758 --> 00:09:28,133
+But in every trial so far, the skill was
+loaded.
+
+146
+00:09:28,633 --> 00:09:33,108
+But will it load for other wordings, and
+stay out of requests that aren't its job?
+
+147
+00:09:33,608 --> 00:09:35,458
+That's the next lesson.
+
+148
+00:09:35,958 --> 00:09:39,533
+The exercises on the lesson page are worth
+doing first.

@@ -1,0 +1,12 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from one-request · 2 models · 2 workers
+
+Model summary
+  ✓ claude-haiku-4.5  1/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval         claude-haiku-4.5  gpt-5.6-terra
+  one-request  ✓ 1/1             ✓ 1/1        
+
+Saved  results/lesson-1/2026-11-10T14-55-22-404Z/
+Run ID  1819d8ae-f602-4087-909e-b8dc5666cf35

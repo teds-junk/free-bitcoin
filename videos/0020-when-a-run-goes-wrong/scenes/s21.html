@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Stopped, and still paid for</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.card{width:100%}.card .who{font-size:30px}.annotated .code.dark{font-size:32px;line-height:1.55;padding:26px 32px}.callout{font-size:32px}.stage{gap:24px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A trial that runs out of time</div>
+  <h2 class="scene-title">Stopped, and still paid for</h2>
+  <div class="stage">
+<div class="card">
+    <div class="who"><span class="mono">quick/typo-fix/gpt-5.6-terra/0/events.jsonl</span> · its last lines, shortened</div>
+    <div class="annotated">
+      <pre class="code dark ev" data-lang="text"><code><span>{"type":"</span><span data-concept="sk" data-rep="code"><span>skill.invoked</span></span><span>", …}</span>
+<span>{"type":"assistant.turn_end", …}</span>
+<span>{"type":"assistant.turn_start", …}</span>
+<span>{"type":"abort","data":{</span><span data-concept="ab" data-rep="code"><span>"reason":"user_initiated"</span></span><span>}, …}</span>
+<span>{"type":"assistant.turn_end", …}</span>
+<span>{"type":"session.usage_checkpoint",</span>
+<span> "data":{</span><span data-concept="cost" data-rep="code"><span>"totalNanoAiu":2954400000</span></span><span>, …}, …}</span></code></pre>
+      <aside class="callouts"><p class="callout" data-anchor="sk">the skill had loaded</p><p class="callout" data-anchor="ab">Vally stopped the session</p><p class="callout" data-anchor="cost">2.95 AIU</p></aside>
+    </div>
+  </div>
+  <p class="note"><span data-concept="both" data-rep="cell"><span class="mono">gpt-5.6-terra</span> 2.95 AIU · <span class="mono">claude-haiku-4.5</span> 0.74 AIU · for two trials that produced nothing</span> · from our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "cost",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "both",
+  "at": "2",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

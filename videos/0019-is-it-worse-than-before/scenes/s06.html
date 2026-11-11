@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Compare two saved runs</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.cmd{min-width:840px;font-size:38px;line-height:1.6}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What compare reports</div>
+  <h2 class="scene-title">Compare two saved runs</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark cmd" data-lang="bash"><code><span data-concept="cmd" data-rep="code"><span style="color:#4EA5E6">vally</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">compare</span></span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="base" data-rep="code"><span style="color:#F0733F">--baseline</span></span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">haiku-before</span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="treat" data-rep="code"><span style="color:#F0733F">--treatment</span></span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">haiku-after</span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="judge" data-rep="code"><span style="color:#F0733F">--judge-model</span></span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">claude-sonnet-5.5</span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="out" data-rep="code"><span style="color:#F0733F">--output</span></span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">haiku-compare.jsonl</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="base">the version to compare against</p><p class="callout" data-anchor="treat">the version that changed</p><p class="callout" data-anchor="judge">has to be named</p><p class="callout" data-anchor="out">a record of every pair</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "cmd",
+  "at": "1",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "base",
+  "at": "2~baseline",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "treat",
+  "at": "2~treatment",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "judge",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "out",
+  "at": "5",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

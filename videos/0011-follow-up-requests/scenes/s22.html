@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three ways a conversation fails?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#ways{width:100%;padding:36px 40px 44px;gap:24px}#ways .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}#ways .part{min-height:300px}#ways .part .title{font-size:42px;line-height:1.2}#ways .part .label{font-size:30px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">Three ways a conversation fails?</h2>
+  <div class="stage">
+<div class="semantic-block" id="ways" data-role="structure">
+    <div class="title words">a conversation, not a single request</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title words">A rule fades</div><div class="label">later turns follow recent work more than the skill</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title words">An earlier turn leaks</div><div class="label">a detail is carried into a change it has nothing to do with</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title words">A later turn disturbs earlier work</div><div class="label">something already done is rewritten or dropped</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#ways",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

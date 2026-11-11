@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Each turn, its own diff</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.semantic-block .title{font-family:var(--font-code);font-size:42px}.scoped .semantic-block{min-height:230px}.semantic-block .label{font-size:34px}.stage{gap:36px}.stage > .semantic-block{width:100%;min-height:150px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Turns and scoped graders</div>
+  <h2 class="scene-title">Each turn, its own diff</h2>
+  <div class="stage">
+<div class="cols scoped">
+    <div class="semantic-block" data-concept="t0" data-rep="block" data-role="structure">
+      <div class="title">turn: 0</div><div class="label">first request<br>its own diff</div>
+    </div>
+    <div class="semantic-block" data-concept="t1" data-rep="block" data-role="structure">
+      <div class="title">turn: 1</div><div class="label">second request<br>its own diff</div>
+    </div>
+    <div class="semantic-block" data-concept="t2" data-rep="block" data-role="structure">
+      <div class="title">turn: 2</div><div class="label">third request<br>its own diff</div>
+    </div>
+  </div>
+  <div class="semantic-block" data-concept="whole" data-rep="block" data-role="transform">
+      <div class="title">no turn:</div><div class="label">the whole conversation’s diff</div>
+    </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "t0",
+  "at": "3~zero",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "t2",
+  "at": "4~turn two",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "whole",
+  "at": "5",
+  "color": "cyan"
+ }
+]
+</script>
+</body>
+</html>

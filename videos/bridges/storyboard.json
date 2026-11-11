@@ -1,0 +1,379 @@
+{
+  "schema": 2,
+  "title": "Bridges",
+  "slug": "bridges",
+  "kind": "bridges",
+  "source": "",
+  "created": "2026-11-11",
+  "pacing": {
+    "lead_in": 0.4,
+    "gap": 0.5,
+    "tail": 0.8
+  },
+  "narrative": {
+    "question": "What does the viewer have after each part, and why does the next one follow?",
+    "viewer_starts": "Has just watched one part of the course.",
+    "arc": [
+      {
+        "stage": "skill",
+        "viewer_can": "say what they can now do with the skill and what question leads on"
+      },
+      {
+        "stage": "app",
+        "viewer_can": "carry the same questions over to the skill inside an app"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "role": "bridge",
+      "after": "0001-it-works-for-me",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s01.html",
+      "on_screen": "'What did the tick check?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "Both models got a green tick, yet they did different things.",
+        "So what did that tick actually check?"
+      ]
+    },
+    {
+      "id": "s02",
+      "role": "bridge",
+      "after": "0002-what-the-tick-checked",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s02.html",
+      "on_screen": "'Would it happen again?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "We can now read everything a run left behind.",
+        "But each model ran only once: would it do the same thing next time?"
+      ]
+    },
+    {
+      "id": "s03",
+      "role": "bridge",
+      "after": "0003-the-same-request-five-times",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s03.html",
+      "on_screen": "'What else goes wrong?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "So far we've counted one problem, on one tidy request, by reading ten patches.",
+        "What else goes wrong when the requests get messier?"
+      ]
+    },
+    {
+      "id": "s04",
+      "role": "bridge",
+      "after": "0004-read-the-runs-first",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s04.html",
+      "on_screen": "'Can code do the reading?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "We found those failures by reading.",
+        "After every edit to the skill, we'd have to read them all again, so can code do the reading?"
+      ]
+    },
+    {
+      "id": "s05",
+      "role": "bridge",
+      "after": "0005-turn-a-failure-into-a-grader",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s05.html",
+      "on_screen": "'Where can a script live?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "Patterns now catch the failures we named.",
+        "But checking that nothing else in the file changed is not a pattern: it needs a script, kept where the agent can't read or edit it."
+      ]
+    },
+    {
+      "id": "s06",
+      "role": "bridge",
+      "after": "0006-keep-graders-out-of-reach",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s06.html",
+      "on_screen": "'How do we test a grader?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "A hidden script now decides pass and fail, and only we can see whether it's right.",
+        "So how do we test a grader?"
+      ]
+    },
+    {
+      "id": "s07",
+      "role": "bridge",
+      "after": "0007-test-a-grader",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s07.html",
+      "on_screen": "'Graders against real answers' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "That test tried one correct answer for each grader, and it couldn't test the graders that check for absence.",
+        "But we have dozens of real answers saved, good and bad: can the graders run on those?"
+      ]
+    },
+    {
+      "id": "s08",
+      "role": "bridge",
+      "after": "0008-check-graders-against-saved-trials",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s08.html",
+      "on_screen": "'Does the skill load?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "Our graders are now tested against correct answers, untouched files, and real bad answers.",
+        "In every trial so far the skill was there to use: will it load for other wordings, and stay out of requests that aren't its job?"
+      ]
+    },
+    {
+      "id": "s09",
+      "role": "bridge",
+      "after": "0009-does-the-skill-load",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s09.html",
+      "on_screen": "'Better with the skill?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "We know when the skill loads.",
+        "But is the result any better with the skill than with no skill at all?"
+      ]
+    },
+    {
+      "id": "s10",
+      "role": "bridge",
+      "after": "0010-is-the-agent-better-with-the-skill",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s10.html",
+      "on_screen": "'What about a follow-up?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "Every stimulus so far has been a single request.",
+        "Real use goes on: someone asks for a follow-up."
+      ]
+    },
+    {
+      "id": "s11",
+      "role": "bridge",
+      "after": "0011-follow-up-requests",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s11.html",
+      "on_screen": "'What code can't check' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "Everything we've graded so far is structure that code can see.",
+        "Whether an entry is written for the people who use the tool is not a pattern, so it needs another kind of grader."
+      ]
+    },
+    {
+      "id": "s12",
+      "role": "bridge",
+      "after": "0012-a-judge-for-what-code-cannot-check",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s12.html",
+      "on_screen": "'Is the judge right?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "The judge said yes for some trials and no for others.",
+        "It's a model too, so is it right?"
+      ]
+    },
+    {
+      "id": "s13",
+      "role": "bridge",
+      "after": "0013-check-the-judge",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s13.html",
+      "on_screen": "'Can a grader give partial credit?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "We've measured the judge against our own labels.",
+        "But some entries it refused were nearly right and some were far off, and a yes or no can't tell them apart: can a grader give partial credit without hiding a failure?"
+      ]
+    },
+    {
+      "id": "s14",
+      "role": "bridge",
+      "after": "0014-partial-credit",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s14.html",
+      "on_screen": "'Is the change real?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "Scores and counts both move after an edit.",
+        "If seven of ten becomes nine of ten, is that real?"
+      ]
+    },
+    {
+      "id": "s15",
+      "role": "bridge",
+      "after": "0015-is-the-change-real",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s15.html",
+      "on_screen": "'What does a pass cost?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "We can now say what a before-and-after result supports.",
+        "That same table also printed tokens for each variant, and they differ by model: so what does a passing trial cost?"
+      ]
+    },
+    {
+      "id": "s16",
+      "role": "bridge",
+      "after": "0016-what-a-passing-trial-costs",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s16.html",
+      "on_screen": "'A model of your own' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "We can price the models a Copilot account offers.",
+        "An app may call a model through a service of its own, or one the team runs: can Vally run that model too, and what does a passing trial cost there?"
+      ]
+    },
+    {
+      "id": "s17",
+      "role": "bridge",
+      "after": "0017-a-model-from-your-own-provider",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s17.html",
+      "on_screen": "'A ceiling on a trial' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "We can now price any model, including one we run ourselves, where a single trial took minutes.",
+        "One trial that loops can cost or take many times the typical one, so how do we fail, or stop, a trial that takes too much?"
+      ]
+    },
+    {
+      "id": "s18",
+      "role": "bridge",
+      "after": "0018-put-a-ceiling-on-a-trial",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s18.html",
+      "on_screen": "'No worse than before?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "Budgets now guard every trial.",
+        "Before relying on an edit, we want a check that says no worse than before: can Vally decide that?"
+      ]
+    },
+    {
+      "id": "s19",
+      "role": "bridge",
+      "after": "0019-is-it-worse-than-before",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s19.html",
+      "on_screen": "'Where do we look first?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "There are many moving parts now, and runs sometimes end in error, or fail for reasons that aren't the skill.",
+        "When a run goes wrong, where do we look first?"
+      ]
+    },
+    {
+      "id": "s20",
+      "role": "bridge",
+      "after": "0020-when-a-run-goes-wrong",
+      "stage": "skill",
+      "renderer": "slide",
+      "visual": "scenes/s20.html",
+      "on_screen": "'Make it a routine' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "We can measure, gate and debug.",
+        "What's left is to make it a routine that a teammate can repeat."
+      ]
+    },
+    {
+      "id": "s21",
+      "role": "bridge",
+      "after": "0021-keep-it-working",
+      "stage": "app",
+      "renderer": "slide",
+      "visual": "scenes/s21.html",
+      "on_screen": "'The skill inside an app' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "That completes the checks on the skill by itself.",
+        "Now a team has put the skill inside their release tooling: does it still hold when an app, not a person, starts the agent?"
+      ]
+    },
+    {
+      "id": "s22",
+      "role": "bridge",
+      "after": "0022-start-the-agent-where-the-app-would",
+      "stage": "app",
+      "renderer": "slide",
+      "visual": "scenes/s22.html",
+      "on_screen": "'How did it get there?' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "The hidden test sees only the finished changelog.",
+        "In an app, how the agent got there matters too: did it read the list, and did it try to commit or push?"
+      ]
+    },
+    {
+      "id": "s23",
+      "role": "bridge",
+      "after": "0023-check-what-the-agent-did",
+      "stage": "app",
+      "renderer": "slide",
+      "visual": "scenes/s23.html",
+      "on_screen": "'When a tool fails' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "In real use, the tracker or the network sometimes fails.",
+        "Does the agent cope, and can we test that without breaking anything?"
+      ]
+    },
+    {
+      "id": "s24",
+      "role": "bridge",
+      "after": "0024-when-a-tool-fails",
+      "stage": "app",
+      "renderer": "slide",
+      "visual": "scenes/s24.html",
+      "on_screen": "'A run Vally didn't start' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "All of this ran inside Vally.",
+        "The app also runs by itself, and keeps its own record of what it did: can Vally grade a run it didn't start?"
+      ]
+    },
+    {
+      "id": "s25",
+      "role": "bridge",
+      "after": "0025-grade-a-run-vally-did-not-start",
+      "stage": "app",
+      "renderer": "slide",
+      "visual": "scenes/s25.html",
+      "on_screen": "'Let Vally run the app' in the display serif, alone on the page.",
+      "introduces": [],
+      "narration": [
+        "Grading afterwards gives one sample for each run, on whatever model the app used.",
+        "To get trials, experiments and other models, Vally has to start the app itself."
+      ]
+    }
+  ]
+}

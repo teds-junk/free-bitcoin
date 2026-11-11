@@ -1,0 +1,17 @@
+$ vally lint -e evals/broken/merged-list.eval.yaml
+✔ evals/broken/merged-list.eval.yaml is valid
+exit 0
+$ vally lint -e evals/broken/quick.eval.yaml
+✔ evals/broken/quick.eval.yaml is valid
+exit 0
+$ vally lint -e evals/broken/entry.eval.yaml
+✔ evals/broken/entry.eval.yaml is valid
+exit 0
+$ vally lint -e evals/broken/judged.eval.yaml
+Eval: evals/broken/judged.eval.yaml
+⚠ warning [scoring-defaults-applied] Multiple graders with no scoring config
+  at scoring
+  Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+  1 warning(s)
+exit 0

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A script, not a user</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What changes in a conversation</div>
+  <h2 class="scene-title">A script, not a user</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="script" data-rep="block" data-role="structure">
+      <div class="title words">A script of requests</div><div class="label">sent in order, whatever the agent replied: this is what Vally sends</div>
+    </div>
+    <div class="semantic-block" data-concept="user" data-rep="block" data-role="attention">
+      <div class="title words">A user who answers back</div><div class="label">Vally doesn’t play one</div>
+    </div>
+  </div>
+  <p class="note">Source: Vally docs, Writing Eval Specs, “Multi-turn conversations”</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "script",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "user",
+  "at": "2~user",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "script",
+  "at": "3~script",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "user",
+  "at": "3~user",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Graded turn by turn</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What changes in a conversation</div>
+  <h2 class="scene-title">Graded turn by turn</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="final" data-rep="block" data-role="structure">
+      <div class="title words">A grader on the final file</div><div class="label">can’t say which turn went wrong, and can miss a leak</div>
+    </div>
+    <div class="semantic-block" data-concept="each" data-rep="block" data-role="success">
+      <div class="title words">A grader for each turn</div><div class="label">what did this request alone change?</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "final",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "each",
+  "at": "2~turn by turn",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

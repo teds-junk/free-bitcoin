@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Wrong budgets, or wrong trials?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.fails{font-size:34px}.fails th{font-size:26px}.fails td{padding-top:18px;padding-bottom:18px}.fails th:nth-child(2),.fails th:nth-child(3){text-align:left}.fails th:last-child,.fails td:last-child{padding-right:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Set budgets from your runs</div>
+  <h2 class="scene-title">Wrong budgets, or wrong trials?</h2>
+  <div class="stage">
+<table class="data-table full cmp fails"><thead><tr><th>stimulus</th><th class=num>variant</th><th class=num>budget</th><th class=num>used</th><th class=num>max</th></tr></thead><tbody><tr><td><span class="mono">two-changes</span></td><td><span class="mono">haiku-high</span></td><td><span class="mono">token-budget</span></td><td class="num"><span data-concept="tok" data-rep="cell">108,012 tokens</span></td><td class="num">107000</td></tr><tr><td><span class="mono">after-release</span></td><td><span class="mono">terra-high</span></td><td><span class="mono">turn-count</span></td><td class="num"><span data-concept="turn" data-rep="cell">6 turns</span></td><td class="num">5</td></tr><tr><td><span class="mono">two-changes</span></td><td><span class="mono">terra-high</span></td><td><span class="mono">turn-count</span></td><td class="num"><span data-concept="turn" data-rep="cell">6 turns</span></td><td class="num">5</td></tr></tbody></table>
+  <p class="note">every trial a budget failed, of the 30 saved trials we re-graded</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "tok",
+  "at": "3~token",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "turn",
+  "at": "3~turn",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

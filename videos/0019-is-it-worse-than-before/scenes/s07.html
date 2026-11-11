@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Two variants, not the folder</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.tree{min-width:820px;font-size:38px;line-height:1.7}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What compare reports</div>
+  <h2 class="scene-title">Two variants, not the folder</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark tree" data-lang="text"><code><span>2026-11-11T07-53-29-176Z/</span>
+<span>  </span><span data-concept="hb" data-rep="code"><span>haiku-before/</span></span><span>   </span><span data-concept="rj" data-rep="code"><span>results.jsonl</span></span>
+<span>  </span><span data-concept="ha" data-rep="code"><span>haiku-after/</span></span><span>    results.jsonl</span>
+<span>  </span><span data-concept="tb" data-rep="code"><span>terra-before/</span></span><span>   results.jsonl</span>
+<span>  </span><span data-concept="tb" data-rep="code"><span>terra-after/</span></span><span>    results.jsonl</span>
+<span>  report.md</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="hb">the experiment’s baseline</p><p class="callout" data-anchor="ha">our treatment</p><p class="callout" data-anchor="tb">another model</p></aside>
+  </div>
+  <p class="note">the before-and-after experiment’s folder, under <span class="mono">results/lesson-15</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "hb",
+  "at": "1~baseline",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "tb",
+  "at": "2~terra",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "ha",
+  "at": "3~two variant",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "rj",
+  "at": "4~results",
+  "color": "cyan"
+ }
+]
+</script>
+</body>
+</html>

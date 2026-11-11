@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml",
+  "variant": "main",
+  "stimulusName": "fix-accented-search",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml::main::mai-code-1.1-flash::fix-accented-search::trial-1",
+  "executorName": "copilot-sdk",
+  "model": "mai-code-1.1-flash",
+  "trialIndex": 1,
+  "startedAt": "2026-11-10T07:36:39.109Z",
+  "status": "success",
+  "trajectoryId": "3dd60d0b-e4ae-4e77-bb7b-ae4da7819ae6",
+  "executorSessionId": "a355b235-a4a2-4d92-9112-35dbcc6cd97d",
+  "completedAt": "2026-11-10T07:36:52.644Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/pilot2/2026-11-10T07-35-23-904Z/changelog-entry/fix-accented-search/mai-code-1.1-flash/1/events.jsonl"
+}

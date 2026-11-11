@@ -1,0 +1,210 @@
+{
+ "_about": "Per stimulus and model: trials that passed, failed a grader, or ended in ERROR, and which of the three installed skills loaded in how many trials. Written by build-src/extract-run.py from each run's results.jsonl.",
+ "before": {
+  "run": "2026-11-11T06-08-46-235Z",
+  "models": {
+   "claude-haiku-4.5": {
+    "load-indirect": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "load-no-keyword": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "load-plain": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "skip-commit": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "commit-message": 2
+     }
+    },
+    "skip-question": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {}
+    },
+    "skip-release-notes": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "release-notes": 2
+     }
+    }
+   },
+   "gpt-5.6-terra": {
+    "load-indirect": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "load-no-keyword": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "load-plain": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "skip-commit": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "commit-message": 2
+     }
+    },
+    "skip-question": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "release-notes": 1
+     }
+    },
+    "skip-release-notes": {
+     "passed": 1,
+     "failed": 0,
+     "errors": 1,
+     "skills": {
+      "release-notes": 1
+     }
+    }
+   }
+  }
+ },
+ "after": {
+  "run": "2026-11-11T06-14-48-546Z",
+  "models": {
+   "claude-haiku-4.5": {
+    "load-indirect": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "load-no-keyword": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "load-plain": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "skip-commit": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "commit-message": 2
+     }
+    },
+    "skip-question": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {}
+    },
+    "skip-release-notes": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "release-notes": 2
+     }
+    }
+   },
+   "gpt-5.6-terra": {
+    "load-indirect": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "load-no-keyword": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "load-plain": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "changelog-entry": 2
+     }
+    },
+    "skip-commit": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "commit-message": 2
+     }
+    },
+    "skip-question": {
+     "passed": 1,
+     "failed": 1,
+     "errors": 0,
+     "skills": {
+      "release-notes": 1,
+      "changelog-entry": 1
+     }
+    },
+    "skip-release-notes": {
+     "passed": 2,
+     "failed": 0,
+     "errors": 0,
+     "skills": {
+      "release-notes": 2
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,14 @@
+{
+  "_about": "The one place the lesson 18 video's budgets live. build-src/make-state.py writes the three staged eval files from it; build-src/make-scenes.py reads it for everything it shows and asserts. 'typical' is the largest median in the series' own lesson 16 report.md (tokens, turns, seconds); 'tight' is typical rounded up a little; 'wide' is about twice typical. Set from the series' own lesson 16 run 2026-11-11T08-39-02-179Z by capture-run.py --budgets.",
+  "tight": {
+    "tokens": 107000,
+    "turns": 5,
+    "wall": "13s"
+  },
+  "wide": {
+    "tokens": 215000,
+    "turns": 10,
+    "wall": "30s"
+  },
+  "agent_limit": "1m"
+}

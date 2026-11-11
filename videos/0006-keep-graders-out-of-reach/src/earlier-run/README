@@ -1,0 +1,6 @@
+Evidence from an EARLIER run of the same stimuli (the course's verified run of 2026-11-10), which the
+video reports as "an earlier run", never as ours.
+two-changes.excerpt.patch   the excerpt of the wrongly passed two-changes patch, exactly as the lesson page
+                            prints it (its first five lines left out, one long line shortened with an ellipsis)
+lesson5-after-console.txt   console output of the earlier run with the security rule in the skill
+                            (copied from ../0005-turn-a-failure-into-a-grader/src/page-run/after-console.txt)

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The answer depends on the list</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.card .who{font-size:30px}.card > .code.dark.needs{font-size:36px;line-height:1.7;padding:26px 34px}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A hidden test</div>
+  <h2 class="scene-title">The answer depends on the list</h2>
+  <div class="stage">
+<div class="annotated">
+    <div class="card" data-concept="listc" data-rep="card">
+        <div class="who"><span class="mono">release/merged.txt</span></div>
+        <pre class="code dark needs" data-lang="text"><code><span data-concept="n0" data-rep="code"><span>#74 feat</span></span><span>: add --since &lt;date&gt; to notes list</span>
+<span data-concept="n1" data-rep="code"><span>#75 fix</span></span><span>: notes search missed titles with accents</span>
+<span data-concept="n2" data-rep="code"><span>#76 refactor</span></span><span>: move config loading out of cli.js</span></code></pre>
+      </div>
+    <aside class="callouts"><p class="callout" data-anchor="n0">one line, citing #74</p><p class="callout" data-anchor="n1">one line, citing #75</p><p class="callout" data-anchor="n2">no line</p></aside>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "n0",
+  "at": "1~feature",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "n1",
+  "at": "1~fix",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "n2",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

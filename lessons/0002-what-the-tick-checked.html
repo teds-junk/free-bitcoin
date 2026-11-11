@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 2: What the tick checked — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 2 of 26 · Vally &amp; Agent Evals</div>
+    <h1>What the tick checked</h1>
+    <div class="lesson-meta">17 min · Explain every line of the eval file, and find any run's request, changes, verdict and token count in the results folder.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>In a patch, what does a line beginning with <code>+</code> mean, and what does a line beginning with a space mean?
+        <details class="answer"><summary>Show answer</summary><p>A <code>+</code> line was added by the agent. A line beginning with a space was already in the file and is unchanged; it is context around the change.</p></details></li>
+      <li>What is a workspace, and why does Vally make a new one for every run?
+        <details class="answer"><summary>Show answer</summary><p>The scratch folder an agent works in during one run. A new one each time means no run can see or be affected by what another run did.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You ran one request on two models and saw, in the saved patches, that they changed the changelog differently.</p>
+    <p><strong>This lesson answers:</strong> What exactly did Vally run and check when it gave both models a tick?</p>
+  </div>
+
+  <p class="drop-cap">Two models, two different entries, two green ticks. One of the entries cites a pull request that does not exist. Before you can decide what to do about that, you need to know what the tick meant. This lesson opens the two things you have only used so far: the eval file that told Vally what to do, and the folder where it wrote down what happened.</p>
+
+  <h2 id="eval-file" data-mode="works">The eval file, line by line</h2>
+
+  <p>This is the whole file you ran in lesson 1.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/one-request.eval.yaml</div>
+<pre><code class="language-yaml">name: one-request<span class="mark">1</span>
+
+defaults:
+  timeout: 3m<span class="mark">2</span>
+
+agent_environment:<span class="mark">3</span>
+  skills:
+    - ../skills/changelog-entry<span class="mark">4</span>
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md<span class="mark">5</span>
+      dest: CHANGELOG.md
+
+stimuli:<span class="mark">6</span>
+  - name: typo-fix
+    prompt: |<span class="mark">7</span>
+      I fixed the typo in the help text for `notes add`
+      (it said "tittle"). Put that in the changelog.
+    graders:<span class="mark">8</span>
+      - type: file-contains
+        name: mentions-the-command
+        config:
+          path: CHANGELOG.md
+          value: "notes add"</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The eval's name. Vally uses it as a folder name when it saves results.</li>
+      <li><code>defaults</code> holds settings that apply to every stimulus. This one is how long the agent may take before Vally stops it. The unit is required: <code>3m</code> is three minutes.</li>
+      <li>What the agent starts with. Everything listed here is copied into the workspace before the agent begins.</li>
+      <li>A skill folder to install. The path is relative to this file.</li>
+      <li>A file to copy in: <code>src</code> is where it is now, <code>dest</code> is its name in the workspace. The agent sees a file called <code>CHANGELOG.md</code>.</li>
+      <li>The list of things to try. This file has one.</li>
+      <li>The request, word for word as the agent receives it. The <code>|</code> means the indented lines that follow are the text.</li>
+      <li>The checks to run when the agent has finished. This file has one: does <code>CHANGELOG.md</code> contain the text <code>notes add</code>?</li>
+    </ol>
+  </div>
+
+  <p>Vally has names for the three parts, and from here on this course uses them.</p>
+
+  <div class="callout definition">
+    <div class="callout-title">Stimulus</div>
+    <p>One entry under <code>stimuli</code>: a request, together with the graders that check the result. The plural is stimuli.</p>
+  </div>
+
+  <div class="callout definition">
+    <div class="callout-title">Grader</div>
+    <p>One check, run by Vally after the agent has stopped. It reports pass or fail and a line of evidence saying what it found. Lesson 1 called this a check.</p>
+  </div>
+
+  <div class="callout definition">
+    <div class="callout-title">Agent environment</div>
+    <p>The skills and files copied into the workspace before the agent starts: the <code>agent_environment</code> part of the eval file.</p>
+  </div>
+
+  <p>The grader's <code>type</code> chooses one of Vally's built-in graders. <code>file-contains</code> reads one file in the finished workspace and passes if the file contains the text in <code>value</code>. The <code>name</code> is yours, and it is what the results show.</p>
+
+  <p>One more command belongs with the eval file. <code>vally lint</code> reads an eval file and reports mistakes in it, such as a misspelt key or a missing file, without starting an agent. It takes <code>-e</code> and the file's path, prints either a tick or a list of problems, and spends nothing.</p>
+
+  <div class="source-citation">Source: <a href="https://microsoft.github.io/vally/reference/eval-spec/">Vally docs, Eval Spec reference</a>.</div>
+
+  <h2 id="results-folder" data-mode="works">What a run leaves behind</h2>
+
+  <div class="callout definition">
+    <div class="callout-title">Trial</div>
+    <p>One attempt at one stimulus by one model. Lesson 1's command made two trials: one stimulus, two models. From here on, a run is one <code>vally eval</code> command and everything it saves, and a trial is one attempt inside it.</p>
+  </div>
+
+  <p>Each <code>vally eval</code> command writes one folder, named with the time it started. This is everything in the folder from lesson 1:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results/lesson-1/2026-11-10T14-55-22-404Z/</div>
+<pre><code>eval-results.md<span class="mark">1</span>
+results.jsonl<span class="mark">2</span>
+otel-spans.jsonl<span class="mark">3</span>
+one-request/<span class="mark">4</span>
+  typo-fix/
+    claude-haiku-4.5/
+      0/<span class="mark">5</span>
+        workspace.patch
+        events.jsonl<span class="mark">6</span>
+        metadata.json<span class="mark">7</span>
+    gpt-5.6-terra/
+      0/
+        workspace.patch
+        events.jsonl
+        metadata.json</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The report: a table for people, one row per stimulus, for each model.</li>
+      <li>The same results for programs. Each line of the file is one record, a block of facts about one thing: one record per trial, then one summary record.</li>
+      <li>Timing data for tracing tools. This course does not use it.</li>
+      <li>One folder per trial, at eval name, then stimulus name, then model, then trial number.</li>
+      <li>Trials are numbered from 0. With one trial per model there is only <code>0</code>.</li>
+      <li>The agent's own log of the session: every message, every tool it used, one event per line.</li>
+      <li>A few facts about the trial: which model, when it started and ended, whether it completed.</li>
+    </ol>
+  </div>
+
+  <p>The report is a Markdown table. Shown as a table, the row for one model reads like this (four more columns are hidden here: Environment, Skills, Tokens and Turns):</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Stimulus</th><th>Graders</th><th>Pass Rate</th><th>Duration</th><th>Tool Calls</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>typo-fix</td><td>✅ mentions-the-command 1/1</td><td>1/1</td><td>8.6s</td><td>4 calls</td><td>✅</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>The Graders column lists each grader by the name you gave it. Pass Rate is the trials that passed out of those run, here one of one. Tool Calls is how many times the agent used a tool, such as reading or editing a file. The Verdict column is the result: a trial passes only if every one of its graders passes.</p>
+
+  <p><code>results.jsonl</code> holds the detail behind that row. It is written for programs, with each record on one very long line, so you will rarely open it. Spread out, the record for one trial looks like this:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results.jsonl (one record, spread over several lines)</div>
+<pre><code class="language-json">{
+  "type": "trial-result",<span class="mark">1</span>
+<span class="gap">5 fields hidden: identifiers and long file paths</span>
+  "stimulus": "typo-fix",
+  "model": "gpt-5.6-terra",
+  "status": "success",<span class="mark">2</span>
+  "durationMs": 18085,</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The kind of record. The last line of the file is a different kind, a summary of the whole run.</li>
+      <li>Whether the agent finished. This is about the run completing, not about the answer being right.</li>
+    </ol>
+  </div>
+
+  <p>The record continues with the part that explains the tick, and ends with the full account of what the agent did.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results.jsonl (the same record, continued)</div>
+<pre><code class="language-json">  "gradeResult": {
+    "name": "trajectory-grade",
+    "kind": "code",
+    "passed": true,<span class="mark">1</span>
+    "score": 1,
+    "evidence": "1/1 graders passed",
+    "details": [<span class="mark">2</span>
+      {
+        "name": "mentions-the-command",
+        "kind": "code",
+        "passed": true,
+        "score": 1,
+        "evidence": "'notes add' found in CHANGELOG.md",<span class="mark">3</span>
+        "label": "correct",
+        "graderType": "file-contains",
+        "configuredName": "mentions-the-command"
+      }
+    ],
+    "stimulusName": "typo-fix",
+    "trajectoryId": "7554ebfb-3f6f-4d47-aa12-b298f05ff999",
+    "timestamp": "2026-11-10T14:55:40.497Z"
+  },
+  "trajectory": {<span class="mark">4</span>
+<span class="gap">the agent's 46 events, final reply and timings hidden</span>
+  }
+}</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The trial's verdict.</li>
+      <li>One entry per grader. This trial had one.</li>
+      <li>The grader's evidence: what it found, in its own words.</li>
+      <li>Vally's name for the full record of what the agent did in a trial is its <strong>trajectory</strong>.</li>
+    </ol>
+  </div>
+
+  <p>The fields without a note are names, scores and identifiers that repeat what the noted lines say. You can ignore them.</p>
+
+  <div class="source-citation">Sources: our run on 2026-11-10 with Vally 0.21.0; <a href="https://microsoft.github.io/vally/reference/trajectory-format/">Vally docs, Trajectory Format</a>.</div>
+
+  <h2 id="what-a-trial-used" data-mode="works">What a trial used</h2>
+
+  <p>A model reads and writes text in pieces called <strong>tokens</strong>, each a word or part of a word. Model services measure their work in tokens and charge for it that way. Every trial records the tokens it used, its <strong>token usage</strong>, near the end of its trajectory. This is the same record as above, the <code>gpt-5.6-terra</code> trial from lesson 1:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results.jsonl (the same record, inside "trajectory")</div>
+<pre><code class="language-json">  "trajectory": {
+<span class="gap">7 fields hidden: the 46 events, final reply, paths and timings</span>
+    "metrics": {
+      "tokenUsage": {
+        "inputTokens": 85162,<span class="mark">1</span>
+        "outputTokens": 615,<span class="mark">2</span>
+        "totalTokens": 85777,<span class="mark">3</span>
+        "cacheReadTokens": 72410,<span class="mark">4</span>
+        "cacheWriteTokens": 12731,
+        "callCount": 7,<span class="mark">5</span>
+        "byModel": {<span class="mark">6</span>
+          "gpt-5.6-terra": {
+            "inputTokens": 85162,
+            "outputTokens": 615,
+            "callCount": 7
+          }
+        },
+        "cost": {<span class="mark">7</span>
+          "provider": "github-copilot",
+          "unit": "nano-aiu",
+          "amount": 5373150000<span class="mark">8</span>
+        }
+      },
+<span class="gap">9 fields hidden: counts of tool calls, turns, errors and time</span>
+    }
+  }</code></pre>
+    </div>
+    <ol class="notes">
+      <li>Input tokens: everything the model read, added up over all its calls. That includes the request, the skill, the files the agent opened, and the conversation so far, which is read again on every call.</li>
+      <li>Output tokens: everything the model wrote, the entry and its tool calls. Far fewer than it read.</li>
+      <li>The two added together. This is the number in the report's Tokens column, which this lesson's table left out. With several trials of a stimulus, that column shows their median, the middle value.</li>
+      <li>The part of the input read from cache: text the service had already processed earlier in the session, which it can read again more cheaply. The next line is the part it stored for later calls.</li>
+      <li>How many times the agent called the model. Each call re-reads the conversation, which is why input is so much larger than output.</li>
+      <li>The same counts for each model the trial used. Here there is one.</li>
+      <li>What the trial cost, as GitHub Copilot reported it.</li>
+      <li>The amount, in nano-AIU.</li>
+    </ol>
+  </div>
+
+  <div class="callout definition">
+    <div class="callout-title">Nano-AIU and AI Credit</div>
+    <p>A nano-AIU is a billionth of an AIU, the unit Copilot reports usage in. One AIU is one GitHub AI Credit, the unit Copilot usage is billed in, and one AI Credit is $0.01.</p>
+  </div>
+
+  <p>So this trial's 5,373,150,000 nano-AIU are 5.37 AIU, about 5 cents. The <code>claude-haiku-4.5</code> trial in the same run used 74,052 tokens and 2.89 AIU, about 3 cents. Across our clean re-run of lessons 1 to 15, the 213 trials with usage recorded cost about 2.2 AIU each, so a typical trial costs about 2 cents. Copilot counts usage first against your plan's monthly allowance, which differs by plan, so a trial may cost you nothing extra until that is used up.</p>
+
+  <p>Nothing in the next lessons depends on these numbers yet. Lesson 16 builds on them, to work out what a passing trial costs.</p>
+
+  <div class="source-citation">Sources: our run on 2026-11-10 with Vally 0.21.0; <a href="https://microsoft.github.io/vally/reference/trajectory-format/">Vally docs, Trajectory Format</a>; <a href="https://docs.github.com/en/billing/concepts/product-billing/github-copilot-billing">GitHub Docs, GitHub Copilot billing</a>, checked 2026-11-10.</div>
+
+  <h2 id="why-both-passed" data-mode="think">Why both models passed</h2>
+
+  <p>Put the two halves together. The eval file's only grader asks one question: does <code>CHANGELOG.md</code> contain the text <code>notes add</code>? The evidence line confirms that is all it looked at: <code>'notes add' found in CHANGELOG.md</code>. Both models wrote an entry mentioning <code>notes add</code>, so both passed. The invented <code>(#42)</code> was never examined.</p>
+
+  <p>That is the first thing to hold on to about any eval result. A grader objects only to what you told it to look for. A pass means "none of my graders objected". It does not mean "this is correct". A tick is exactly as informative as the graders behind it, and so far there is one grader, written before anyone had looked at what the models do.</p>
+
+  <p>It is tempting to fix this at once by adding a grader for invented pull request numbers. Hold off. You have seen two trials. You do not yet know whether that model always does this, or what else goes wrong on other requests. The next two lessons find out, and lesson 5 writes graders for what they turn up.</p>
+
+  <div class="sorter" data-categories="The eval file|workspace.patch|metadata.json">
+    <p>Where would you look for each of these?</p>
+    <div class="sort-item" data-answer="The eval file" data-why="The request is the prompt of a stimulus, and stimuli are written in the eval file.">The exact words of the request the agent was given</div>
+    <div class="sort-item" data-answer="workspace.patch" data-why="The patch records every line the agent added or removed in the workspace.">The lines the agent added to the changelog</div>
+    <div class="sort-item" data-answer="metadata.json" data-why="Each trial's metadata file names the model and says whether the run completed.">Which model a trial ran on, and whether it completed</div>
+    <div class="sort-item" data-answer="The eval file" data-why="What a grader looks for is its config, written under the stimulus in the eval file.">What a grader looks for when it decides pass or fail</div>
+  </div>
+
+  <h2 id="find-it" data-mode="use">Find it in the files</h2>
+
+  <p>You will lint the eval file, then walk through the results folder from lesson 1 and find each thing this lesson described. Nothing here starts an agent.</p>
+
+  <section class="checkpoint">
+    <h3>From the tick back to its evidence</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: confirm the eval file has no mistakes. This starts no agent.</span>
+        Open a terminal in <code>practice</code>.
+<pre><code class="language-bash">vally lint -e evals/one-request.eval.yaml</code></pre>
+<pre class="output"><code>✔ evals/one-request.eval.yaml is valid</code></pre></li>
+
+      <li><span class="goal">Goal: find the grader in the eval file.</span>
+<pre><code class="language-bash">cat evals/one-request.eval.yaml</code></pre>
+        <p class="expect">You should see: the file shown above. Find the line under <code>graders</code> that begins <code>value:</code>. That text is the only thing the grader looks for.</p></li>
+
+      <li><span class="goal">Goal: find the folder of your lesson 1 run.</span>
+<pre><code class="language-bash">ls results/lesson-1</code></pre>
+        <p class="expect">You should see: your run's folder, named with a time. Use its name in place of ours in the next step.</p></li>
+
+      <li><span class="goal">Goal: see what one run leaves behind.</span>
+<pre><code class="language-bash">cd results/lesson-1/2026-11-10T14-55-22-404Z
+ls</code></pre>
+<pre class="output"><code>eval-results.md
+one-request
+otel-spans.jsonl
+results.jsonl</code></pre></li>
+
+      <li><span class="goal">Goal: read the report.</span>
+<pre><code class="language-bash">cat eval-results.md</code></pre>
+        <p class="expect">You should see: a heading and a table for each model. In a terminal the table's rows are long lines; an editor's Markdown preview shows it as a table. In each row, find <code>mentions-the-command 1/1</code> and the tick at the end.</p></li>
+
+      <li><span class="goal">Goal: see the files saved for one trial.</span>
+<pre><code class="language-bash">cd one-request/typo-fix
+ls claude-haiku-4.5/0</code></pre>
+<pre class="output"><code>events.jsonl
+metadata.json
+workspace.patch</code></pre></li>
+
+      <li><span class="goal">Goal: read the facts about that trial.</span>
+<pre><code class="language-bash">cat claude-haiku-4.5/0/metadata.json</code></pre>
+        <p class="expect">You should see: about seventeen lines. Find <code>"model"</code> and <code>"status": "success"</code>. The long paths are folders on your own machine.</p></li>
+
+      <li><span class="goal">Goal: return to the practice folder.</span>
+<pre><code class="language-bash">cd ../../../../..</code></pre></li>
+
+      <li><span class="goal">Goal: check you can explain the tick.</span>
+        Answer these from what you have just read, then check.
+        <details class="answer"><summary>Which file did the grader read, and what did it look for?</summary><p><code>CHANGELOG.md</code> in the finished workspace, for the text <code>notes add</code>.</p></details>
+        <details class="answer"><summary>Suppose a model had put its entry under the released 1.2.0 section. Would this grader have passed it?</summary><p>Yes. The entry would still contain <code>notes add</code>, and the grader looks at nothing else.</p></details>
+        <details class="answer"><summary>Suppose a model had changed nothing at all. Would this grader have passed it?</summary><p>No. The starting changelog does not contain <code>notes add</code>, so the grader would report that the text was not found, and the trial would fail.</p></details>
+        <details class="answer"><summary>Which model used more tokens in your run? Look at the Tokens column of the report from step 5.</summary><p>Yours will differ. In our run <code>gpt-5.6-terra</code> used more: 85,777 tokens against 74,052 for <code>claude-haiku-4.5</code>.</p></details></li>
+    </ol>
+  </section>
+
+  <details class="answer"><summary>Optional: a scripting shortcut for results.jsonl</summary>
+    <p>Now that you know the shape of a record, one command prints the grading part of every record. It needs the <code>jq</code> tool, and it is typed in the run folder, the one that contains <code>results.jsonl</code>. From <code>practice</code>, that is the folder you moved into in step 4.</p>
+<pre><code class="language-bash">jq .gradeResult results.jsonl</code></pre>
+    <p><code>jq</code> reads the file one record at a time. <code>.gradeResult</code> means "print only the part named gradeResult". You get one block per trial, each with the <code>evidence</code> line shown above, and a final <code>null</code> for the summary record, which has no such part. Nothing in this course depends on this command.</p>
+  </details>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/reference/eval-spec/">Eval Spec reference, Vally docs</a></p>
+    <p>The full list of what an eval file can contain. Read the first table, the top-level fields, and find the four used in this lesson: <code>name</code>, <code>defaults</code>, <code>agent_environment</code> and <code>stimuli</code>. Skim the rest so you know where to look later.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, name the three files saved for every trial and say what each one holds.
+        <details class="answer"><summary>Show model answer</summary><p><code>workspace.patch</code>: the lines the agent added and removed. <code>events.jsonl</code>: the agent's own log of the session, one event per line. <code>metadata.json</code>: facts about the trial, such as the model and whether it completed.</p></details></li>
+      <li>A colleague shows you a results table with ten ticks and says the skill is working. Write the one question you would ask before agreeing.
+        <details class="answer"><summary>Show model answer</summary><p>"What do the graders look for?" A tick means none of the graders objected, so ten ticks say as much as the graders do. If the only grader checks that a file mentions a command, ten ticks say very little.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="2" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> explain every line of the eval file, and find any run's request, changes, verdict and token count in the results folder.</p>
+    <p><strong>Up next:</strong> <a href="./0003-the-same-request-five-times.html">The same request, five times</a>. You can read everything about a run. But each model ran once. Would it do the same thing next time?</p>
+    <a class="next-lesson" href="./0003-the-same-request-five-times.html">Next lesson: The same request, five times <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

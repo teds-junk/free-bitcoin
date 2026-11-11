@@ -1,0 +1,506 @@
+{
+  "schema": 2,
+  "title": "Check the judge against your own labels",
+  "slug": "0013-check-the-judge",
+  "kind": "lesson",
+  "lesson_number": 13,
+  "source": "/Users/ted/src/learn/vally/lessons/0013-check-the-judge.html",
+  "created": "2026-11-10",
+  "poster": "s01",
+  "people": [],
+  "pacing": {
+    "lead_in": 0.4,
+    "gap": 0.5,
+    "tail": 0.8
+  },
+  "narrative": {
+    "question": "Can I trust the judge's verdicts?",
+    "viewer_starts": "A professional programmer who knows the shell and has followed the course's running example: the changelog-entry skill, measured on claude-haiku-4.5 and gpt-5.6-terra. Knows stimulus (a request plus its graders), grader and trial; that a judge's yes or no becomes its grader's pass or fail; that a grader can be wrong in two ways (it can fail correct work, or pass work that was not done); and has tested code graders against a golden patch and against saved trials. Knows what an LLM judge is, and a rubric with one criterion: the new changelog entry says what changes for people who use the tool, and does not say how it was coded. Has a yes-or-no judge that was run over twelve saved trials and gave a verdict and a reason for each. Has a notes file, wording-labels.md, listing the twelve entries with our own yes or no for each (a label), written before the judge ran, and the judge's yes or no beside it. Knows that eleven of the judge's verdicts match ours and one doesn't, and that the judge gave different verdicts to two nearly identical entries. Has never counted the two lists against each other, and does not know the terms TPR and TNR.",
+    "arc": [
+      {
+        "stage": "measured-not-trusted",
+        "viewer_can": "name the two directions a judge can be wrong in, and say why one agreement figure hides them"
+      },
+      {
+        "stage": "tpr-and-tnr",
+        "viewer_can": "work out TPR and TNR from four counts, and say what a low value of each means"
+      },
+      {
+        "stage": "count-compare-decide",
+        "viewer_can": "sort labelled trials into four boxes, work out both rates, examine each disagreement, and write down a decision"
+      },
+      {
+        "stage": "what-twelve-labels-show",
+        "viewer_can": "say what two rates from twelve labels can and can't show, and so how far to rely on the judge"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "role": "hook",
+      "mode": "think",
+      "stage": "measured-not-trusted",
+      "chapter": "A judge is measured",
+      "renderer": "html",
+      "visual": "scenes/s01.html",
+      "on_screen": "Headline 'Check the judge' in the display serif. One of the twelve entries from our run in a dark box, labelled with its stimulus, model and trial. Under it, two blocks side by side: 'Judge: no' with the judge's reason for that entry, verbatim, and 'Ours: no' with 'written before the judge ran'. The judge's block fills when its reason is mentioned, then ours.",
+      "introduces": [],
+      "narration": [
+        "Our judge gave a yes or a no to twelve changelog entries, with a well-written reason for each.",
+        "But the judge is a model, and a well-written reason isn't evidence of a correct verdict.",
+        "Code graders could be tested against a golden patch, and there's no golden patch for whether an entry reads well to a user.",
+        "What we do have is our own yes or no for the same twelve entries, written down before the judge ran.",
+        "Here, you'll measure the judge against those labels as two numbers, and decide whether to rely on it."
+      ]
+    },
+    {
+      "id": "s02",
+      "role": "body",
+      "mode": "think",
+      "stage": "measured-not-trusted",
+      "renderer": "html",
+      "visual": "scenes/s02.html",
+      "on_screen": "Headline 'Wrong in two directions'. Two blocks side by side, no arrow. Left: 'Judge says yes · we'd say no', with 'a failure slips through'. Right: 'Judge says no · we'd say yes', with 'a false alarm'. Each fills as it is described.",
+      "introduces": [],
+      "narration": [
+        "Let's start with how a judge can be wrong.",
+        "Like any grader, it can be wrong in two directions.",
+        "It can say yes to an entry we'd reject: a failure slips through, and we believe the skill is better than it is.",
+        "Or it can say no to an entry we'd accept: a false alarm, and we go hunting for a problem that isn't there."
+      ]
+    },
+    {
+      "id": "s03",
+      "role": "body",
+      "mode": "think",
+      "stage": "measured-not-trusted",
+      "renderer": "html",
+      "visual": "scenes/s03.html",
+      "on_screen": "Headline 'Agreement hides the direction'. Two rows of twenty boxes, labelled 'an invented example'. Top row, 'our labels': eighteen hold a tick (yes) and two a cross (no). Bottom row, 'a judge that always says yes': twenty ticks. Under them two figures side by side: '18 of 20 agree · 90%' and '0 of 2 bad entries caught'. The rows light as they are described, then each figure.",
+      "introduces": [],
+      "narration": [
+        "The obvious measure is agreement: on what share of the entries did the judge and we say the same thing?",
+        "That makes it a poor measure, because it hides which direction the errors run in.",
+        "Let's say we label twenty entries, and eighteen are fine.",
+        "Even a judge that says yes to everything agrees with us eighteen times out of twenty, which is ninety percent.",
+        "Yet it has caught neither of the two bad entries.",
+        "It's useless, and its agreement looks excellent."
+      ]
+    },
+    {
+      "id": "s04",
+      "role": "body",
+      "mode": "think",
+      "stage": "measured-not-trusted",
+      "renderer": "html",
+      "visual": "scenes/s04.html",
+      "on_screen": "Headline 'Two counts, not one'. Two blocks side by side: 'Of our yes labels · how many did the judge pass?' and 'Of our no labels · how many did the judge fail?'. A note under them: 'Aim above 90% on each · 100 or more labels for a judge you depend on · Husain and Shankar, validate-evaluator skill; AI Evals FAQ (2026)'. Each block fills as its question is asked; the note lights when the aim is given.",
+      "introduces": [],
+      "narration": [
+        "So we count the two directions separately.",
+        "Of the entries we said yes to, how many did the judge pass, by saying yes too?",
+        "Of the entries we said no to, how many did it fail?",
+        "That makes two numbers, and a judge has to do well on both.",
+        "How well is well enough?",
+        "Practitioners this course leans on suggest aiming above ninety percent on each number, and labelling a hundred or more examples for a judge we intend to depend on.",
+        "Twelve labels, which is what we have, can show that a judge is badly wrong.",
+        "They can't show that it's reliably right."
+      ]
+    },
+    {
+      "id": "s05",
+      "role": "body",
+      "mode": "think",
+      "stage": "measured-not-trusted",
+      "renderer": "html",
+      "visual": "scenes/s05.html",
+      "on_screen": "Headline 'Three changes undo it'. Three blocks in a row: 'the rubric's wording', 'the judge model', 'the kind of request', each labelled 'change it, and we label again'. Under them one line: 'While a rubric is reworded, some labelled entries stay aside, unread.' Each block fills as it is named, then the line lights.",
+      "introduces": [],
+      "narration": [
+        "One caution before the arithmetic: a measurement like this holds for one rubric, one judge model, and one kind of request.",
+        "Changing the rubric's wording, changing the judge model, or pointing the judge at a different kind of request undoes it.",
+        "Each of them means labelling again.",
+        "When we reword a rubric to fix a disagreement, we set some labelled entries aside first, and don't look at them while rewording.",
+        "Otherwise, we'd be fitting the rubric to the examples we're testing it on."
+      ]
+    },
+    {
+      "id": "s06",
+      "role": "body",
+      "mode": "works",
+      "stage": "tpr-and-tnr",
+      "chapter": "TPR and TNR",
+      "renderer": "html",
+      "visual": "scenes/s06.html",
+      "on_screen": "Headline 'Two rates, two names'. Two blocks side by side. Left: 'TPR', 'true positive rate', 'of the trials we labelled yes, the share the judge also passed'. Right: 'TNR', 'true negative rate', 'of the trials we labelled no, the share the judge also failed'. A note: 'positive = yes · negative = no'. Each block fills as it is defined.",
+      "introduces": [
+        "TPR",
+        "TNR"
+      ],
+      "narration": [
+        "That's the idea; here's how the two numbers are worked out, starting with their names.",
+        "First, the true positive rate, or TPR: of the trials we labelled yes, the share the judge also passed.",
+        "Positive is the statistician's word for yes.",
+        "Second, the true negative rate, or TNR: of the trials we labelled no, the share the judge also failed.",
+        "Negative is the word for no."
+      ]
+    },
+    {
+      "id": "s07",
+      "role": "body",
+      "mode": "works",
+      "stage": "tpr-and-tnr",
+      "renderer": "html",
+      "visual": "scenes/s07.html",
+      "on_screen": "Headline 'Every trial, one box'. A two-by-two table, labelled 'an invented judge, to show the arithmetic': columns 'Ours: yes' and 'Ours: no'; rows 'Judge: yes' and 'Judge: no'; counts 11, 3, 1, 5. Under the columns, their totals: 12 and 8. The column totals light, then the 11, the 3, the 1 and the 5 as each is said.",
+      "introduces": [],
+      "narration": [
+        "To work them out, every trial goes into one of four boxes, by what the judge said and what we said.",
+        "Here's an invented judge, to show the arithmetic.",
+        "We labelled twenty entries: twelve yes, and eight no.",
+        "This judge passed eleven of our twelve, and it also passed three of our eight.",
+        "So it failed one of our yes entries, and five of our no entries."
+      ]
+    },
+    {
+      "id": "s08",
+      "role": "body",
+      "mode": "works",
+      "stage": "tpr-and-tnr",
+      "renderer": "html",
+      "visual": "scenes/s08.html",
+      "on_screen": "Headline 'Each rate reads one column'. The same table in the same place, now with a last row of rates under the columns: 'TPR · 11 of 12 · 92%' under the left, 'TNR · 5 of 8 · 63%' under the right, and under the table 'agreement · 16 of 20 · 80%'. The left column's rate lights, then the right column's, then the agreement figure, then the right column's rate again.",
+      "introduces": [],
+      "narration": [
+        "Each rate uses one column, read downwards.",
+        "On the left is TPR: eleven out of twelve, which is ninety-two percent.",
+        "On the right is TNR: five out of eight, which is sixty-three percent.",
+        "Agreement is sixteen out of twenty, eighty percent, which sounds respectable.",
+        "TNR tells the real story: of the entries we'd reject, this judge lets more than a third through."
+      ]
+    },
+    {
+      "id": "s09",
+      "role": "body",
+      "mode": "works",
+      "stage": "tpr-and-tnr",
+      "renderer": "html",
+      "visual": "scenes/s09.html",
+      "on_screen": "Headline 'What a low rate means'. Two blocks side by side: 'Low TPR · false alarms · the judge is stricter than we are' and 'Low TNR · missed failures · the judge is more lenient than we are'. Each fills as it is said; both rest for the last sentence.",
+      "introduces": [],
+      "narration": [
+        "Each number, when it's low, says something different.",
+        "Low TPR means false alarms: the judge is stricter than we are.",
+        "Low TNR means missed failures: the judge is more lenient than we are.",
+        "Which matters more depends on what the judge is for, but a judge with either number low isn't measuring our criterion."
+      ]
+    },
+    {
+      "id": "s10",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-compare-decide",
+      "chapter": "Count, compare, decide",
+      "renderer": "html",
+      "visual": "scenes/s10.html",
+      "on_screen": "Headline 'Twelve trials, four boxes'. The two-by-two table with no counts yet: columns 'Ours: yes' and 'Ours: no'; rows 'Judge: yes' and 'Judge: no'; each cell says what landing there means ('both say yes', 'a failure slips through', 'a false alarm', 'both say no'). A note: 'our 12 trials · no agent runs, no judge calls'. The agreeing cells light as the sorting is named, then the 'Judge: yes, Ours: no' cell for the one entry where we differ, and again for the question.",
+      "introduces": [],
+      "narration": [
+        "That's how the numbers work; now let's count ours.",
+        "First we'll sort our twelve trials into the four boxes, and work out both rates.",
+        "Then we'll look closely at the one entry where the judge and we differ, and write down what we will and won't rely on the judge for.",
+        "None of it runs an agent or a judge.",
+        {
+          "text": "On that entry we said no and the judge said yes: which of the two rates will it lower?",
+          "read": 2
+        },
+        "If you did the same count yourself, here's what you'd see."
+      ]
+    },
+    {
+      "id": "s11",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-compare-decide",
+      "renderer": "html",
+      "visual": "scenes/s11.html",
+      "on_screen": "File panel labelled 'notes/wording-labels.md', with a minimap: the criterion on line 3, then a table with a row per trial and the columns Entry, Ours and Judge. 'Ours' lights in the header row, then 'Judge'. The panel then scrolls down through the twelve rows to the end of the file.",
+      "introduces": [
+        "wording-labels.md",
+        "notes/wording-labels.md"
+      ],
+      "shows": [
+        "notes/wording-labels.md"
+      ],
+      "narration": [
+        "Both lists are in the notes file from the judging, named wording labels.",
+        "Each of the twelve entries has our yes or no, with the judge's beside it.",
+        {
+          "text": "Our answers haven't been changed since the judge ran.",
+          "read": 3
+        }
+      ]
+    },
+    {
+      "id": "s12",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-compare-decide",
+      "renderer": "html",
+      "visual": "scenes/s12.html",
+      "on_screen": "Headline 'Twelve trials, sorted'. The two-by-two table, each cell now holding its count and, under it in small type, the trials that fell there, named by stimulus, model and trial number as in the notes file. From our run: 7 in 'Judge: yes, Ours: yes', 1 in 'Judge: yes, Ours: no' (cache, terra, 1), 0 in 'Judge: no, Ours: yes', 4 in 'Judge: no, Ours: no'. The yes-yes cell lights, then the no-no cell, then the cell with the one disagreement, then the empty cell.",
+      "introduces": [],
+      "narration": [
+        "Sorting takes one look at each row's two answers.",
+        {
+          "text": "Seven entries got a yes from both of us, and four got a no from both.",
+          "outcome": true,
+          "read": 2
+        },
+        {
+          "text": "One entry got a yes from the judge and a no from us, and the last box is empty.",
+          "outcome": true,
+          "read": 2
+        }
+      ]
+    },
+    {
+      "id": "s13",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-compare-decide",
+      "renderer": "html",
+      "visual": "scenes/s13.html",
+      "on_screen": "Headline 'Both rates, from our counts'. The same table in the same place with the counts alone (7, 1, 0, 4), the labels row (7 and 5), and a last row of rates under the columns: 'TPR · 7 of 7 · 100%' and 'TNR · 4 of 5 · 80%'. Under the table: 'agreement · 11 of 12 · 92%', and a note: 'from 12 labels · both rates are rough'. The left rate lights, then the right, then the agreement figure, then the note.",
+      "introduces": [],
+      "narration": [
+        "Now the two rates, one column each.",
+        {
+          "text": "On the left, TPR is seven out of seven: a hundred percent.",
+          "outcome": true
+        },
+        {
+          "text": "On the right, TNR is four out of five: eighty percent.",
+          "outcome": true
+        },
+        {
+          "text": "Agreement is eleven out of twelve, ninety-two percent, and it wouldn't say which column the miss is in.",
+          "outcome": true
+        },
+        {
+          "text": "With only twelve labels, both rates are rough.",
+          "read": 2
+        }
+      ]
+    },
+    {
+      "id": "s14",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-compare-decide",
+      "renderer": "html",
+      "visual": "scenes/s14.html",
+      "on_screen": "Headline 'A disagreement gets examined'. Left, one block: 'For each disagreement · read the entry and the judge's reason again'. Right, two blocks stacked: 'We still disagree · one error of the judge's' and 'The judge persuaded us · our criterion wasn't what we thought'. Under them one line: 'Either way the label stays as first written, and the entry counts as a disagreement.' The left block fills, then each right block in turn, then the line lights.",
+      "introduces": [],
+      "narration": [
+        "Next, every disagreement gets a second look.",
+        "For each one, we'd read the entry and the judge's reason again, and decide who is right.",
+        "If we still disagree, that's one error of the judge's.",
+        "If the judge has persuaded us, our criterion wasn't what we thought.",
+        "Even then, the label stays as we first wrote it, and the entry still counts as a disagreement.",
+        "Changing labels to match a judge would make any judge look good.",
+        "For a criterion that turned out unclear, the remedy is to reword it, then measure again on fresh labels."
+      ]
+    },
+    {
+      "id": "s15",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-compare-decide",
+      "renderer": "html",
+      "visual": "scenes/s15.html",
+      "on_screen": "Headline 'One word apart, two verdicts'. A dark box labelled 'cache · gpt-5.6-terra · the entry from each of its two trials' with both entries, trial number on the left; 'by caching the tag index' is marked in each, and 'note', the one word the second has and the first lacks. Under it one line: 'ours, for both: no · hesitated: the benefit, then a hint of the method'. Under that, two blocks side by side with the judge's reason for each, verbatim: 'The judge, trial 0 · no' and 'The judge, trial 1 · yes'. The word lights, then the phrase in both entries, then our line, then each of the judge's blocks in turn.",
+      "introduces": [],
+      "narration": [
+        {
+          "text": "In our run, there's one to examine.",
+          "outcome": true
+        },
+        {
+          "text": "It's one of two entries from the same model, which differ by a single word.",
+          "outcome": true
+        },
+        {
+          "text": "Both say a command got faster by caching the tag index: the benefit, with a hint of the method.",
+          "outcome": true
+        },
+        {
+          "text": "We hesitated over both when labelling, and said no to both.",
+          "outcome": true
+        },
+        {
+          "text": "To the first, the judge said no as well, because it states the implementation.",
+          "outcome": true
+        },
+        {
+          "text": "To the second, it said yes, calling the same mention a minor blemish.",
+          "outcome": true,
+          "read": 4
+        }
+      ]
+    },
+    {
+      "id": "s15b",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-compare-decide",
+      "renderer": "html",
+      "visual": "scenes/s15b.html",
+      "on_screen": "Headline 'One error of the judge's'. The same dark box with the two entries, in the same place. Under it three blocks in a row: 'The criterion', with the rubric's one line verbatim; 'We still disagree · the judge said no to one entry, and yes to its near twin'; 'Our label stays · no, as first written, with our hesitation on record'. The criterion block fills, then the phrase 'by caching the tag index' in both entries, then the middle block, then the last.",
+      "introduces": [],
+      "narration": [
+        "So who is right?",
+        "Our criterion says an entry doesn't say how the change was coded, and the phrase by caching the tag index says how.",
+        {
+          "text": "In its reason for the first entry, the judge says the same.",
+          "outcome": true
+        },
+        {
+          "text": "So we still disagree, and count it as one error of the judge's: it was inconsistent on two entries a single word apart.",
+          "outcome": true
+        },
+        {
+          "text": "It's also the wording we hesitated over ourselves, which suggests our criterion isn't clear at this edge.",
+          "outcome": true
+        },
+        "Our label stays as we wrote it."
+      ]
+    },
+    {
+      "id": "s16",
+      "role": "practice",
+      "mode": "use",
+      "stage": "count-compare-decide",
+      "renderer": "html",
+      "visual": "scenes/s16.html",
+      "on_screen": "File panel labelled 'notes/wording-labels.md', with a minimap, opened at the end of the file: the decision we added as the file's last line: 'On 12 labels (7 yes, 5 no) the judge matched 11: TPR 100%, TNR 80%. The one miss is an entry we hesitated over ourselves, which the judge failed in one trial and passed in the other. That is enough to use it to compare versions of the skill, knowing it may pass a borderline entry, and not enough to trust a single verdict without reading its reason; we will label more whenever the rubric or the judge model changes.' The last line lights and stays lit.",
+      "introduces": [],
+      "shows": [
+        "notes/wording-labels.md"
+      ],
+      "narration": [
+        "Last, we write the decision down, at the end of the same notes file.",
+        {
+          "text": "On twelve labels, seven yes and five no, the judge matched eleven.",
+          "outcome": true
+        },
+        {
+          "text": "Its one miss is an entry we hesitated over ourselves, which it failed in one trial and passed in the other.",
+          "outcome": true
+        },
+        {
+          "text": "That's enough to use the judge for comparing versions of the skill, knowing it may pass a borderline entry.",
+          "outcome": true
+        },
+        {
+          "text": "It's not enough to trust a single verdict without reading its reason.",
+          "outcome": true
+        },
+        {
+          "text": "Whenever the rubric or the judge model changes, we'll label more.",
+          "read": 3
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-twelve-labels-show",
+      "chapter": "What twelve labels show",
+      "renderer": "html",
+      "visual": "scenes/s17.html",
+      "on_screen": "Headline 'One entry is 20 points'. Two blocks side by side: '4 of 5 · 80% · TNR in our run, with its one miss' and '5 of 5 · 100% · TNR had that one entry gone the other way'. Under them a line: '12 labels can't tell a judge that's right 99% of the time from one that's right 85% of the time.' The first block fills, then the second, then the line lights.",
+      "introduces": [],
+      "narration": [
+        "So what does that result show?",
+        {
+          "text": "On these twelve entries, this judge model applied this criterion the way we do eleven times.",
+          "outcome": true
+        },
+        {
+          "text": "Its TNR came out at eighty percent, under the ninety we aim for.",
+          "outcome": true
+        },
+        {
+          "text": "But with five no labels, one entry is the whole distance between eighty and a hundred.",
+          "outcome": true
+        },
+        "Twelve labels are too few to tell a judge that's right ninety-nine percent of the time from one that's right eighty-five percent of the time."
+      ]
+    },
+    {
+      "id": "s18",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-twelve-labels-show",
+      "renderer": "html",
+      "visual": "scenes/s18.html",
+      "on_screen": "Headline 'Still a real result'. Two small two-by-two tables side by side, each with its two rates under it. Left, 'our judge': 7, 1, 0, 4, TPR 100%, TNR 80%. Right, 'a judge that passes everything, on the same labels': 7 and 5 in the top row, 0 and 0 in the bottom, TPR 100%, TNR 0%. The right table's TNR lights, then, for the last sentence, the left table's.",
+      "introduces": [],
+      "narration": [
+        "It's still a real result.",
+        {
+          "text": "Had the judge passed everything, the same twelve labels would have put its TNR at zero.",
+          "outcome": true
+        },
+        "Likewise, a judge that failed entries for reasons unrelated to the criterion would have shown up at once.",
+        "Those are the most common ways for a judge to go wrong.",
+        {
+          "text": "Ours did neither: it caught four of our five no entries, and wavered on one borderline one.",
+          "outcome": true
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "role": "recap",
+      "stage": "what-twelve-labels-show",
+      "renderer": "html",
+      "visual": "scenes/s19.html",
+      "on_screen": "Headline 'A judge that always says yes'. One block: 'yes to every trial · we labelled nine yes, and one no'. After the question and a pause it opens into three parts, each lit as it is said: 'TPR · 9 of 9 · 100%', 'TNR · 0 of 1 · 0%', 'agreement · 9 of 10 · 90%'.",
+      "introduces": [],
+      "narration": [
+        "Before you go on: a judge says yes to every trial, and we labelled nine trials yes and one no.",
+        "What are its TPR and its TNR?",
+        {
+          "text": "TPR is a hundred percent: it passed all nine of the entries we labelled yes.",
+          "pause": 2.5
+        },
+        "TNR is zero: we labelled one entry no, and the judge passed it.",
+        "Its agreement, ninety percent, hides that completely."
+      ]
+    },
+    {
+      "id": "s20",
+      "role": "next",
+      "stage": "what-twelve-labels-show",
+      "renderer": "slide",
+      "visual": "scenes/s20.html",
+      "on_screen": "'Next: Partial credit' in the display serif. Below, the hand-off question: 'Can a grader give partial credit without hiding a failure?' A note: 'Exercises are on the lesson page · Source: Husain and Shankar, validate-evaluator skill'.",
+      "introduces": [],
+      "narration": [
+        "You can now measure a judge against your own labels as two numbers, and decide whether to rely on it.",
+        {
+          "text": "On these twelve entries, our judge's verdicts match our labels eleven times out of twelve.",
+          "outcome": true
+        },
+        "But some of the no entries were nearly right and some were far off, and a yes or no can't tell them apart.",
+        "Can a grader give partial credit without hiding a failure?",
+        "That's the next lesson.",
+        "The exercises on the lesson page are worth doing first."
+      ]
+    }
+  ]
+}

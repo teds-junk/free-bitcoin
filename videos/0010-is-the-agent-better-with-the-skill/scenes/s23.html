@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What are the three answers?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#answers{width:100%;padding:36px 40px 44px;gap:24px}#answers .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}#answers .part{min-height:280px}#answers .part .title{font-size:48px;line-height:1.2}#answers .part .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">What are the three answers?</h2>
+  <div class="stage">
+<div class="semantic-block" id="answers" data-role="structure">
+    <div class="title words">one stimulus, with and without the skill</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title words">The skill helps</div><div class="label">fails without it, passes with it</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title words">No difference</div><div class="label">the same result either way</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title words">The skill hurts</div><div class="label">passes without it, fails with it</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#answers",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

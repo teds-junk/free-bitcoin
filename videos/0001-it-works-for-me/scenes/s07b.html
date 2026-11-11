@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One run, four steps.</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.steps .semantic-block{min-height:380px;padding:30px 32px 36px}.steps .semantic-block .title{font-size:34px}.steps .semantic-block .label{font-size:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What one Vally run does</div>
+  <h2 class="scene-title">One run, four steps.</h2>
+  <div class="stage">
+<div class="cols steps">
+    <div class="semantic-block" data-concept="ws" data-rep="block" data-role="structure">
+      <div class="step">1</div><div class="title">workspace</div><div class="label">Makes a fresh folder: the starting files and the skill.</div>
+    </div><div class="semantic-block" data-concept="run" data-rep="block" data-role="transform">
+      <div class="step">2</div><div class="title">agent + model</div><div class="label">Starts an agent and gives it the request.</div>
+    </div><div class="semantic-block" data-concept="patch" data-rep="block" data-role="change">
+      <div class="step">3</div><div class="title">patch</div><div class="label">Saves what the agent changed.</div>
+    </div><div class="semantic-block" data-concept="check" data-rep="block" data-role="success">
+      <div class="step">4</div><div class="title">check</div><div class="label">Runs the check and prints ✓ or ✘.</div>
+    </div>
+  </div>
+  <p class="lead"><span data-concept="repeat" data-rep="note">Once for each model you name, in a new workspace every time.</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "ws",
+  "at": "0",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "run",
+  "at": "1",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "patch",
+  "at": "2",
+  "color": "orange"
+ },
+ {
+  "type": "focus",
+  "target": "check",
+  "at": "3",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "repeat",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "check",
+  "at": "5",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A pattern that looks right</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.annotated .code.dark{font-size:44px;line-height:2;padding:34px 44px}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Re-grade a saved run</div>
+  <h2 class="scene-title">A pattern that looks right</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark" data-lang="yaml"><code><span style="color:#4EA5E6">pattern</span><span style="color:#B3C0BF">: </span><span data-concept="first" data-rep="code"><span style="color:#3CC0B3">'^\+.*\(#\d+\)'</span></span>
+<span style="color:#4EA5E6">pattern</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">'</span><span data-concept="sw" data-rep="code"><span style="color:#3CC0B3">(?m)</span></span><span style="color:#3CC0B3">^\+.*\(#\d+\)'</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="first">as we first wrote it</p><p class="callout" data-anchor="sw">as the eval file has it</p></aside>
+  </div>
+  <p class="note">the pattern of <span class="mono">no-made-up-number</span>, a <span class="mono">diff-not-contains</span> grader</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "first",
+  "at": "1~pattern",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "sw",
+  "at": "2~four characters",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "first",
+  "at": "3~plus sign",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "first",
+  "at": "4",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

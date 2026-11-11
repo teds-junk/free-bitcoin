@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Evidence that says why</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.two .card > .code.dark{font-size:36px;padding:44px 36px}.two .card .who{font-size:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Files only graders get</div>
+  <h2 class="scene-title">Evidence that says why</h2>
+  <div class="stage">
+<div class="cols wide two">
+    <div class="card" data-concept="rc" data-rep="card">
+        <div class="who"><span class="mono">run-command</span> · passes when the script exits with 0</div>
+        <pre class="code dark" data-lang="text"><code><span>Expected exit code 0, got 1</span></code></pre>
+      </div>
+    <div class="card" data-concept="pg" data-rep="card">
+        <div class="who"><span class="mono">program</span> · the script prints its verdict</div>
+        <pre class="code dark" data-lang="text"><code><span>no entry citing #60 under Fixed</span></code></pre>
+      </div>
+  </div>
+  <p class="note">the evidence each grader leaves when a trial fails</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "rc",
+  "at": "0~run command",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "pg",
+  "at": "2",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 1 stimulus from changelog
+
+Summary
+  PASS  changelog
+
+Saved  practice/results/lesson-6-look/2026-11-10T08-25-28-769Z/
+Run ID  b437ecd9-dd29-4476-a4b7-71fa8410e5c6

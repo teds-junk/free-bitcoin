@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Judges and small counts — Vally &amp; Agent Evals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Reference · Vally &amp; Agent Evals</div>
+    <h1>Judges and small counts</h1>
+    <div class="lesson-meta">Verified 2026-11-10 · Vally 0.21.0</div>
+  </div>
+
+  <p>How to write a judge, how to measure it, how to give it a scale, how to judge two versions side by side, and how to read a count from a handful of trials. Both calculators from the lessons are on this page.</p>
+
+  <h2 id="writing-a-judge">Writing a judge</h2>
+  <ol>
+    <li>Use a judge only for what code cannot decide.</li>
+    <li>Read real entries and write your own yes or no for each before the judge runs.</li>
+    <li>Write one criterion, answerable yes or no.</li>
+    <li>Name the judge model, and choose one that is not under test.</li>
+    <li>Ask the judge to quote what it judged, so each verdict can be matched to a trial.</li>
+  </ol>
+  <div class="file-excerpt">
+    <div class="file-name">In a stimulus</div>
+<pre><code class="language-yaml">    rubric:
+      - The new changelog entry says what changes for people
+        who use the tool, and does not say how it was coded.
+    graders:
+      - type: prompt
+        config:
+          scoring: binary
+          prompt: Begin your reason by quoting the new entry.</code></pre>
+  </div>
+  <p>The judge model is named once, as <code>judge_model</code> under <code>defaults</code>. A judge call that fails is not retried: the grader records <code>status: error</code> and the stimulus shows <code>ERROR</code>; fix the cause and re-grade the saved trials. <a href="../lessons/0012-a-judge-for-what-code-cannot-check.html#how-the-judge-decides">Lesson 12</a>, <a href="../lessons/0020-when-a-run-goes-wrong.html#where-answers-live">Lesson 20</a></p>
+
+  <h2 id="measuring-a-judge">Measuring a judge</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Number</th><th>Meaning</th><th>Low means</th></tr></thead>
+    <tbody>
+      <tr><td>TPR</td><td>Of your yes labels, the share the judge passed</td><td>False alarms: stricter than you</td></tr>
+      <tr><td>TNR</td><td>Of your no labels, the share the judge failed</td><td>Missed failures: more lenient than you</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Agreement alone hides which way the errors run: a judge that always says yes scores well whenever most labels are yes. The aim suggested by practitioners is above 90% on each number, on a hundred or more labels for a judge you depend on. <a href="../lessons/0013-check-the-judge.html#tpr-and-tnr">Lesson 13</a></p>
+
+  <div class="agreement-calc" data-yy="7" data-ny="0" data-yn="0" data-nn="5"></div>
+
+  <p>Label again when the rubric's wording changes, when the judge model changes, when the judge is pointed at a different kind of request, or when its scale or threshold changes. Keep some labels aside while rewording a rubric.</p>
+
+  <h2 id="scaled-scores">A judge on a scale</h2>
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/wording-scaled.eval.yaml (one judge)</div>
+<pre><code class="language-yaml">      - type: prompt
+        config:
+          scoring: scale_1_5<span class="mark">1</span>
+          threshold: 0.75<span class="mark">2</span>
+          prompt: Begin your reason by quoting the new entry.</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The judge gives each rubric criterion a whole number from 1 to 5. This is the default when <code>scoring</code> is left out; <code>scale_1_10</code> also exists.</li>
+      <li>The judge's own pass line, on the rescaled score. Left out, it is 0.5, so a 3 passes. <a href="../lessons/0014-partial-credit.html#judge-on-a-scale">Lesson 14</a></li>
+    </ol>
+  </div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Judge's answer</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead>
+    <tbody>
+      <tr><td>Rescaled score</td><td>0</td><td>0.25</td><td>0.5</td><td>0.75</td><td>1</td></tr>
+      <tr><td>Score line, beside one passing check</td><td>50%</td><td>62.5%</td><td>75%</td><td>87.5%</td><td>100%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p><code>vally grade</code> prints the judge's reason and its tick or cross, and the trial's Score line, but not the judge's own number. With one other grader that passed, read the answer off the Score line as above.</p>
+  <ul>
+    <li>Use a scale when work can be partly right and you want to know how far off a failure is. Keep checks that must all hold out of any weighted score.</li>
+    <li>Two thresholds, two jobs. The judge's <code>threshold</code> decides its tick or cross. A top-level <code>scoring</code> block's <code>threshold</code> decides the trial, from the weighted scores, and then the judge's tick no longer matters.</li>
+    <li>In our run on twelve labelled entries, the 1-to-5 judge at 0.75 changed one verdict, passing an entry we had failed: TNR fell from 6 of 6 to 5 of 6. At the default 0.5, TNR would have been 3 of 6.</li>
+    <li>Judged again, three of twelve answers moved by one point, and the entry at the threshold lost its pass. Scores near the threshold are where run-to-run variation changes verdicts.</li>
+    <li>With weights of 0.5 each and a threshold of 0.75, two entries that failed the judge passed as trials. That is a failure hidden in an average.</li>
+  </ul>
+  <p>See <a href="../lessons/0014-partial-credit.html#what-the-scores-showed">Lesson 14</a>, and the <a href="eval-file-cheatsheet.html#scoring">scoring block</a> on the eval file cheat sheet.</p>
+
+  <h2 id="small-counts">Reading a small count</h2>
+  <p>A count is an estimate with a range around it. These ranges are our arithmetic, using the Wilson interval at 95%.</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Count</th><th>Range</th><th>Count</th><th>Range</th></tr></thead>
+    <tbody>
+      <tr><td>0 of 3</td><td>0% to 56%</td><td>3 of 3</td><td>44% to 100%</td></tr>
+      <tr><td>3 of 9</td><td>12% to 65%</td><td>9 of 9</td><td>70% to 100%</td></tr>
+      <tr><td>7 of 10</td><td>40% to 89%</td><td>9 of 10</td><td>60% to 98%</td></tr>
+      <tr><td>70 of 100</td><td>60% to 78%</td><td>90 of 100</td><td>83% to 94%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>If the ranges before and after an edit overlap, the trials cannot tell whether anything changed. <a href="../lessons/0015-is-the-change-real.html#small-samples">Lesson 15</a></p>
+
+  <div class="range-calc" data-before-pass="3" data-before-n="9" data-after-pass="9" data-after-n="9"></div>
+
+  <h2 id="pass-columns">The report's pass columns</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Column</th><th>Shows</th><th>Answers</th></tr></thead>
+    <tbody>
+      <tr><td>Pass Rate</td><td>Trials passed, of trials finished</td><td>How often?</td></tr>
+      <tr><td>pass@k</td><td>100% if at least one of k trials passed</td><td>Can it do this at all?</td></tr>
+      <tr><td>pass^k</td><td>The pass rate multiplied by itself k times</td><td>Can I count on it every time?</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2 id="side-by-side">Judging two versions side by side</h2>
+  <p><code>vally compare</code> pairs the baseline's and the treatment's saved trials by stimulus and trial number, and a pairwise judge says which answer of each pair is better. It reads each pair twice, in opposite order, because judges tend to favour one position. <a href="../lessons/0019-is-it-worse-than-before.html#side-by-side">Lesson 19</a></p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Verdict, from the treatment's side</th><th>Score</th></tr></thead>
+    <tbody>
+      <tr><td>Much better</td><td>+1.0</td></tr>
+      <tr><td>Slightly better</td><td>+0.4</td></tr>
+      <tr><td>Equal, or the two orders disagree</td><td>0</td></tr>
+      <tr><td>Slightly worse</td><td>−0.4</td></tr>
+      <tr><td>Much worse</td><td>−1.0</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Printed line</th><th>What it means</th><th>Ours, claude-haiku-4.5</th></tr></thead>
+    <tbody>
+      <tr><td>Win rate</td><td>Pairs the treatment won. Ties count against it, so it is not "not worse"</td><td>67%: 6 wins, 3 ties, 0 losses</td></tr>
+      <tr><td>Mean score, with a 95% range</td><td>The average verdict. The one line <code>--fail-on-regression</code> reads</td><td>+0.60, +0.22 to +0.98</td></tr>
+      <tr><td>McNemar</td><td>Ignores the judge: pairs where only one side passed its graders, and the chance of such a split. Below 0.05 is significant</td><td>+5/−0, p = 0.063</td></tr>
+      <tr><td>Metric deltas</td><td>Treatment minus baseline for tokens, turns, tool calls and time, each with a range</td><td>Tokens −5,106, −13,751 to +3,539</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <ul>
+    <li><code>--fail-on-regression</code> exits 1 only when the mean is below zero and its whole range is too. It ignores the metric deltas and McNemar. In our terra comparison tokens rose by 11,132 a trial, range +665 to +21,599, and it exited 0.</li>
+    <li>McNemar on one-way flips alone: 5 give p = 0.063, and it takes 6 to go below 0.05 (p = 0.031, our arithmetic). The pairwise judge can be surer, because it also credits a pair both versions failed but one failed less badly.</li>
+    <li>Our nine pairs were three stimuli tried three times, not nine independent requests, so the range is narrower than the evidence allows. Trust the sign and whether the range crosses zero, not the second decimal: swapping the two roles gave −0.49, not −0.60.</li>
+    <li>A pairwise judge is a model too, and we did not measure it against labels as in lesson 13.</li>
+  </ul>
+  <p>See <a href="../lessons/0019-is-it-worse-than-before.html#what-compare-reports">Lesson 19</a> and <a href="../lessons/0019-is-it-worse-than-before.html#what-it-supports">its last section</a>.</p>
+
+  <h2 id="what-makes-a-result-defensible">What makes a result defensible</h2>
+  <ul>
+    <li>The same stimuli, graders and models on both sides, run in one sitting.</li>
+    <li>Counts reported, per model, with the number of trials.</li>
+    <li>Ranges that do not overlap, or several small results that agree.</li>
+    <li>A mechanism you can see in a patch, and where possible a control, such as the run with no skill.</li>
+    <li>For "is it worse?", a side-by-side comparison whose range lies wholly on one side of zero, with the metric lines read as well.</li>
+  </ul>
+
+  <div class="source-citation">Sources: <a href="https://hamel.dev/blog/posts/llm-judge/">Hamel Husain, Using LLM-as-a-Judge</a>; <a href="https://raw.githubusercontent.com/ai-evals-course/evals-skills/main/skills/validate-evaluator/SKILL.md">Husain and Shankar, validate-evaluator skill</a>; <a href="https://arxiv.org/abs/2411.00640">Evan Miller, Adding Error Bars to Evals, 2024</a>; <a href="https://arxiv.org/abs/2503.01747">Bowyer et al., 2025</a>; <a href="https://arxiv.org/abs/2306.05685">Zheng et al., Judging LLM-as-a-Judge, 2023</a>; <a href="https://microsoft.github.io/vally/concepts/scoring/">Vally docs, Scoring</a>; <a href="https://microsoft.github.io/vally/reference/cli/compare/">Vally docs, CLI: compare</a>.</div>
+
+  <nav class="course-map" data-current="0" data-root="../"></nav>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+  <script src="../assets/judge-agreement-calculator.js"></script>
+  <script src="../assets/range-calculator.js"></script>
+</body>
+</html>

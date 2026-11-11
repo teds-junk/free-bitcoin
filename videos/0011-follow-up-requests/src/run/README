@@ -1,0 +1,7 @@
+This video's own runs, recorded 2026-11-11 (paths shown as ~/src/demo).
+  lint.log, before.log    s14, second take (the first had an ERROR, see src/earlier/README): run named in RUN
+  before.trials.json      each trial's status and grader verdicts, reduced from that run's results.jsonl
+  failing-turn.diff       diffs/*haiku-4.5__trial-1__turn-2.diff (what s15 prints)
+  failing-conversation.diff  diffs/*haiku-4.5__trial-1.diff (the whole conversation)
+  after.log, after.trials.json   s17: run named in RUN-AFTER
+  haiku-single-requests.json     the count behind s19's first sentence

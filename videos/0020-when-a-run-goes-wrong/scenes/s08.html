@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>How far did the trial get?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:38px}.data-table th{font-size:30px}.data-table td{padding-top:26px;padding-bottom:26px}.data-table td.mono{font-family:var(--font-code);font-size:32px;white-space:nowrap}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Where each answer lives</div>
+  <h2 class="scene-title">How far did the trial get?</h2>
+  <div class="stage">
+<table class="data-table full">
+    <thead><tr><th>The trial folder holds</th><th>What it means</th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="r1" data-rep="cell">metadata.json only</span></td><td><span data-concept="r1" data-rep="cell">no agent session started: the failure came during setup</span></td></tr><tr><td class="mono"><span data-concept="r2" data-rep="cell">events.jsonl, no workspace.patch</span></td><td><span data-concept="r2" data-rep="cell">the agent started, and was stopped before it finished</span></td></tr><tr><td class="mono"><span data-concept="r3" data-rep="cell">events.jsonl and workspace.patch</span></td><td><span data-concept="r3" data-rep="cell">the agent finished: look at the grading, or the work</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "r1",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r2",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r3",
+  "at": "5",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 18: Put a ceiling on a trial — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 18 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Put a ceiling on a trial</h1>
+    <div class="lesson-meta">12 min · Add budget graders and an agent time limit to the quick stimuli, and test each budget against real saved trials in a free re-grade.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What does <code>vally grade</code> do, and which graders can you trust when it re-grades a saved run?
+        <details class="answer"><summary>Show answer</summary><p>It applies an eval file's current graders to trials saved in a run folder, without starting an agent. Graders that read the saved diff or trajectory are reliable. Script graders are not: the workspace is gone, so they fail on every trial.</p></details></li>
+      <li>What are the two ways a grader can be wrong?
+        <details class="answer"><summary>Show answer</summary><p>It can fail correct work, or it can pass work that was not done. A grader that can never fail is the extreme case of the second.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> You know what a passing trial costs on each model and effort, including a model you run yourself, and what a typical trial uses.</p>
+    <p><strong>This lesson answers:</strong> How do I fail, or stop, a trial that costs or takes too much?</p>
+  </div>
+
+  <p class="drop-cap">Every grader so far asks whether the work is right. None asks what it took. A trial that writes the right entry after reading the same file forty times, or retrying a failing command until the time runs out, passes all of them, and you pay for every call. In lesson 16 a typical trial cost a fraction of a cent to a few cents. One that loops can cost ten times that, and a run every night multiplies whatever slips through. This lesson adds checks on what a trial used, and a limit that stops an agent before it spends too much.</p>
+
+  <h2 id="budget-is-a-grader" data-mode="think">A budget is a grader</h2>
+
+  <p>A <strong>budget</strong> here is a limit on what one trial may use: tokens, time, turns, or tool calls. Written as a grader, it fails any trial that goes over. It catches two kinds of trouble. One is a trial that loops, a single run gone wrong. The other is a cost regression: an edit to the skill that makes every trial read more or take longer, which no grader of the result would notice.</p>
+
+  <p>Set a budget from measured trials. A budget picked by guessing is wrong in one of lesson 7's two ways: too low, and it fails good work; too high, and it can never fail, like the pattern in lesson 8. Lesson 16's runs already tell you what a typical trial uses, and a saved run is a free test of any budget you choose.</p>
+
+  <p>Keep a check that the work was done beside every budget. A trial that gives up after one turn is well inside every budget. A budget says "not too much"; only the other graders say "and it was right".</p>
+
+  <h2 id="budget-graders" data-mode="works">Budget graders</h2>
+
+  <p>Four built-in graders compare one number from the trajectory with a <code>max</code>. They read the <code>metrics</code> block that lesson 2 showed at the end of every trial record:</p>
+
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Grader</th><th>What it counts</th><th>In the record</th></tr></thead>
+    <tbody>
+      <tr><td><code>token-budget</code></td><td>Input and output tokens together</td><td><code>totalTokens</code></td></tr>
+      <tr><td><code>turn-count</code></td><td>The model's replies in one trial</td><td><code>turnCount</code></td></tr>
+      <tr><td><code>wall-time</code></td><td>The agent's working time, by the clock</td><td><code>wallTimeMs</code></td></tr>
+      <tr><td><code>tool-call-count</code></td><td>Tool calls; a <code>tools</code> list of patterns counts only matching tools</td><td><code>toolCallCount</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Here a turn is one reply from the model within a single trial, usually ending in a tool call or the final answer; Vally counts one each time the model finishes a reply. That is not the turn of <a href="./0011-follow-up-requests.html#turns-and-scoped-graders">lesson 11</a>, which is one request in a conversation. A trial of a one-request eval has one request but several replies, and <code>turn-count</code> counts the replies. It is the same number as the <code>callCount</code> that <a href="./0002-what-the-tick-checked.html#what-a-trial-used">lesson 2</a> showed in <code>tokenUsage</code>, because each reply is one call to the model: in all 103 finished trials of our lessons 15, 16 and 18 runs the two were equal, from 2 to 7. Each grader passes when the number is at or under <code>max</code> and fails only when it is over. This course uses the first three; <code>tool-call-count</code> is on the grader catalog for when you need it.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/changelog.eval.yaml (three budgets, under one stimulus's graders)</div>
+<pre><code class="language-yaml">      - type: token-budget<span class="mark">1</span>
+        config:
+          max: 107000
+      - type: turn-count
+        config:
+          max: 5
+      - type: wall-time
+        config:
+          max: 14s<span class="mark">2</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>No <code>name</code>. Grader names must be unique across the whole eval file, and these three go under all five stimuli, so we leave them unnamed. Vally then names each one from its type and limit, such as <code>token-budget max 107000</code>.</li>
+      <li>A time is written with its unit, as in <code>defaults.timeout</code>.</li>
+    </ol>
+  </div>
+
+  <p>Because these graders read only the trajectory, which <code>results.jsonl</code> keeps in full, a re-grade with <code>vally grade</code> judges them exactly as a live run would. That makes them cheap to test: no agent run needed.</p>
+
+  <p>Over budget, a grader's score falls in proportion to the overrun, so a trial 28 tokens over scores almost 1. The verdict does not soften: the grader fails, and with no <code>scoring</code> block every grader must pass, so the trial fails.</p>
+
+  <div class="source-citation">Source: <a href="https://microsoft.github.io/vally/reference/graders/metric-thresholds/">Vally docs, Graders: metric thresholds</a>. The naming of unnamed graders and the duplicate-name error are from our runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="limits-that-stop" data-mode="works">Limits that stop the agent</h2>
+
+  <p>A budget grader judges a trial after it has finished, when the tokens are spent. To stop an agent while it is running, a stimulus takes a <code>constraints</code> block:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/changelog.eval.yaml (one stimulus, start)</div>
+<pre><code class="language-yaml">  - name: typo-fix
+    prompt: |
+      I fixed the typo in the help text for `notes add`
+      (it said "tittle"). Put that in the changelog.
+    constraints:<span class="mark">1</span>
+      max_agent_duration: 1m<span class="mark">2</span>
+    agent_environment:</code></pre>
+    </div>
+    <ol class="notes">
+      <li>Limits for this stimulus's trials. There is no eval-wide version, so each stimulus gets its own.</li>
+      <li>How long the agent may work. At the limit Vally stops it, then grades whatever it had done by then, as for any finished trial. The record's <code>endReason</code> says <code>agent_timeout</code> instead of <code>completed</code>.</li>
+    </ol>
+  </div>
+
+  <p>Three limits can go in the block:</p>
+
+  <ul>
+    <li><strong><code>max_agent_duration</code></strong> stops the agent and grades its partial work. Use it when an unfinished attempt is still worth grading, for instance to see how far the agent got.</li>
+    <li><strong><code>max_duration</code></strong> is a hard limit: a trial that reaches it is stopped and counted as a failure. It does for one stimulus what <code>defaults.timeout</code> does for all of them. When both are set, keep <code>max_agent_duration</code> below the hard limit, or the hard limit ends the trial first.</li>
+    <li><strong><code>max_turns</code></strong> is documented as the most turns a trial may take. The docs do not say what happens when it is reached, and we have not tested it, so this course uses the <code>turn-count</code> grader instead.</li>
+  </ul>
+
+  <div class="quiz">
+    <div class="quiz-question">You want an agent that runs too long to be stopped, and what it managed to write graded as usual. Which do you add?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">A <code>wall-time</code> grader with a <code>max</code></button></li>
+      <li><button onclick="checkAnswer(this, false)"><code>max_duration</code> under <code>constraints</code></button></li>
+      <li><button onclick="checkAnswer(this, true)"><code>max_agent_duration</code> under <code>constraints</code></button></li>
+      <li><button onclick="checkAnswer(this, false)">A <code>turn-count</code> grader with a <code>max</code></button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. <code>max_agent_duration</code> stops the agent and grades its partial work. <code>max_duration</code> also stops it, but fails the trial; the graders only judge after the trial ends, so they stop nothing.</div>
+    <div class="quiz-feedback incorrect"><code>max_agent_duration</code>. It stops the agent and grades what it had done. <code>max_duration</code> stops it too but fails the trial, and budget graders only judge after the trial ends, so they stop nothing.</div>
+  </div>
+
+  <div class="source-citation">Source: <a href="https://microsoft.github.io/vally/reference/eval-spec/">Vally docs, Eval Spec reference</a>, Constraints; read on 2026-11-10.</div>
+
+  <h2 id="set-budgets" data-mode="use">Set budgets from your runs</h2>
+
+  <p>You will set budgets just above lesson 16's typical trial, test them on its saved trials, adjust them, add a time limit, and run the quick stimuli once.</p>
+
+  <p>The numbers below come from an earlier lesson 16 run of ours, not the one on lesson 16's page. The two are close (the run on that page has a largest median of 106,556 tokens and 12.6 seconds, against 106,673 and 13.1 here), and none of its trials went over 107,000 tokens, so with it the token budget would have passed everything first time and only the turn budget would have caught good work. Your own run will differ from both; what carries over is the method: set from your numbers, test on saved trials, widen.</p>
+
+  <section class="checkpoint">
+    <h3>Budgets tested before they are trusted</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: find what a typical trial uses.</span>
+        Open a terminal in <code>practice</code>. Open <code>results/lesson-16/</code>, then your run folder, then <code>report.md</code>, in an editor's Markdown preview. It has a table per variant. Across all four, find the largest value in each of the columns Tokens (median), Turns (median) and Duration (median).
+        <p class="expect">You should see: in ours, 106,673 tokens (haiku-high, typo-fix), 5 turns, and 13.1 seconds (terra-high, two-changes).</p></li>
+
+      <li><span class="goal">Goal: add budgets just above those. This edits one file.</span>
+        In <code>evals/changelog.eval.yaml</code>, add the three budget graders shown above at the end of the <code>graders</code> list of each of the five stimuli, with your numbers rounded up a little. Ours are 107000, 5 and 14s. Then check the file:
+<pre><code class="language-bash">vally lint -e evals/changelog.eval.yaml</code></pre>
+        <p class="expect">You should see: no errors, and one warning, "Multiple graders with no scoring config", which only says every grader must pass. If you gave the budgets names, you will see <code>duplicate-grader-name</code>: remove the names.</p></li>
+
+      <li><span class="goal">Goal: test the budgets on real trials, for free. This starts no agent.</span>
+        Move into one variant's folder of your lesson 16 run, using your folder's name in place of ours:
+<pre><code class="language-bash">cd results/lesson-16/2026-11-10T16-29-20-716Z
+cd haiku-high
+vally grade \
+  -e ../../../../evals/changelog.eval.yaml \
+  --run-dir . &lt; results.jsonl</code></pre>
+        <p class="expect">You should see: one block per trial, named by stimulus. Every <code>after-release</code> and <code>two-changes</code> block fails with "no CHANGELOG.md to check": those are script graders, which cannot be re-graded, as lesson 8 showed. Ignore them. Look for a budget's name instead. Ours:</p>
+<pre class="output"><code>❌ two-changes (2/4 graders passed, 2 failed)
+  ✗ [two-entries-in-place] no CHANGELOG.md to check
+  ✗ [token-budget max 107000] 107126 tokens
+    exceeds max of 107000
+
+❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [token-budget max 107000] 107028 tokens
+    exceeds max of 107000
+
+Score: 100.0% | FAILED</code></pre>
+        <p class="expect">The long lines are wrapped here to fit. "Score: 100.0%" with "FAILED" is the overrun of 28 tokens: a score just under 1, rounded, and a failed grader all the same.</p></li>
+
+      <li><span class="goal">Goal: the same test on the other model.</span>
+<pre><code class="language-bash">cd ../terra-high
+vally grade \
+  -e ../../../../evals/changelog.eval.yaml \
+  --run-dir . &lt; results.jsonl</code></pre>
+        <p class="expect">You should see: in ours, <code>turn-count max 5</code> failing three trials with "6 turns exceeds max of 5", and on one of them also <code>wall-time max 14s</code> with "15.5s exceeds max of 14s".</p></li>
+
+      <li><span class="goal">Goal: decide whether the budgets or the trials are wrong.</span>
+        For each trial a budget failed, check its other graders in the same block. Did it do the work? Was it a loop, or a little slower than usual?
+        <details class="answer"><summary>Show ours</summary><p>Every trial a budget failed had passed its graders of the result, and none looped. The token failures, 107,028 and 107,126, were 0.03% and 0.12% over the budget of 107,000, and less than half a percent over the largest median, 106,673; and the turn failures took one turn more than usual. The budgets were wrong, not the trials: they failed good work.</p></details></li>
+
+      <li><span class="goal">Goal: leave room for normal variation, and test again.</span>
+        Raise each budget to about twice the largest typical value. Ours became 215000 tokens, 10 turns and 30s. Then run the same <code>vally grade</code> command again.
+        <p class="expect">You should see: only the script graders failing, as before. Every budget passes every trial.</p></li>
+
+      <li><span class="goal">Goal: return to the practice folder.</span>
+<pre><code class="language-bash">cd ../../../..</code></pre></li>
+
+      <li><span class="goal">Goal: add a time limit that stops the agent. This edits one file.</span>
+        In each of the five stimuli, add the two <code>constraints</code> lines shown above, just after the <code>prompt</code>. Run <code>vally lint</code> on the file again: no errors.</li>
+
+      <li><span class="goal">Goal: run the quick stimuli once with the budgets and the limit. This spends ten short agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/changelog.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --workers 2 --output-dir results/lesson-18</code></pre>
+<pre class="output"><code>  eval       claude-haiku-4.5  gpt-5.6-terra
+  changelog  ✓ 5/5             ✘ 4/5</code></pre>
+        <p class="expect">You should see: every trial that finished passing on both models, budgets included. In ours the largest trial used 90,309 tokens and 6 turns, and the slowest took 9.7 seconds, so none came near the 1-minute limit. One <code>gpt-5.6-terra</code> trial, typo-fix, ended in ERROR with "Session disconnected while waiting for a response": the connection to the model dropped, which no budget or limit causes. Lesson 20 shows what to do with such a trial; here, count it as not run.</p></li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-limits-caught" data-mode="think">What the limits caught</h2>
+
+  <p>Our first budgets, set just above the typical trial, failed five good trials of the twenty-nine we re-graded. That is lesson 7's first way for a grader to be wrong, and the saved trials caught it, exactly as lesson 8's habit says: oracle or saved trials first, agent runs after. A typical trial is a middle value, and half of all trials are above it. terra took four, five or six turns for the same request. A budget at the median fails normal variation. The live run showed it again: a good security trial on <code>claude-haiku-4.5</code> took 6 turns, which the first budget of 5 would have failed.</p>
+
+  <p>A budget is for the trial that runs away, at several times the usual cost, so it needs room above normal. Twice the largest typical trial still fails a loop that costs ten times as much, and passes a trial that took one turn more than usual. Re-test the budgets whenever you change the model, the effort or the skill, the same free way.</p>
+
+  <p>Notice what a token budget does not do. One budget holds for every model the eval runs on, and the models differ: a Haiku 5.5 trial here used about 106,000 tokens, a Haiku 4.5 trial about 75,000 and a terra trial about 61,000. A budget set for the hungriest is loose for the others. And lesson 16 showed that tokens are not price: terra used the fewest tokens and cost the most. A token budget catches a trial that loops; it does not stop you choosing an expensive model. That is what cost per passing trial is for.</p>
+
+  <p>The time limit did nothing in our run, which is what a limit should do on a good day. It is there for the day an agent stalls, so that a nightly run stops after a minute of waste per trial instead of the three-minute timeout, and still grades what was written.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/reference/graders/metric-thresholds/">Graders: metric thresholds, Vally docs</a></p>
+    <p>The short reference for every budget grader, including two this course does not use, <code>step-count</code> and <code>error-count</code>. Read the table at the top and the scoring formula. Then read the Constraints section of the <a href="https://microsoft.github.io/vally/reference/eval-spec/">Eval Spec reference</a> for the two duration limits.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, say how a budget grader differs from a limit under <code>constraints</code>, in what each does to the trial and when.
+        <details class="answer"><summary>Show model answer</summary><p>A budget grader judges the finished trial and fails it if a number in its trajectory is over <code>max</code>; by then the cost is spent. A limit acts while the agent is working: <code>max_agent_duration</code> stops it and grades what it produced, and <code>max_duration</code> stops it and fails the trial.</p></details></li>
+      <li>Our final token budget, 215000, failed no trial in any of our runs. Is it a grader that cannot fail, like lesson 8's pattern? How would you know?
+        <details class="answer"><summary>Show model answer</summary><p>No. The same grader with a lower <code>max</code> failed real trials in the first re-grade, so it does fail when a trial goes over. 215000 is chosen to catch a trial that uses about twice the usual or more; that none of our trials did is the expected result for good work. A grader that cannot fail is one whose condition can never be met, which is not the case here.</p></details></li>
+      <li>After an edit to the skill, every trial passes its graders of the result, and the <code>token-budget</code> fails on every trial of one model. What does that suggest, and what do you do first?
+        <details class="answer"><summary>Show model answer</summary><p>A cost regression: the edit made that model read or write much more on every request, perhaps because the skill grew or sends it to more files. First read the trajectory of one such trial to see where the tokens went, and compare its <code>callCount</code> and tool calls with a trial from before the edit. That needs no new run.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="18" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> add budget graders and an agent time limit to the quick stimuli, and test each budget against real saved trials in a free re-grade.</p>
+    <p><strong>Up next:</strong> <a href="./0019-is-it-worse-than-before.html">Is it worse than before</a>. Budgets now guard every trial. Before relying on an edit you want a check that says "no worse than before", in quality and in cost. Can Vally decide that?</p>
+    <a class="next-lesson" href="./0019-is-it-worse-than-before.html">Next lesson: Is it worse than before <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

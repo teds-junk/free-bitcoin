@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A skill is advice.</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:330px}.names{display:block;margin-top:18px;font:500 30px/1.45 var(--font-code);color:var(--ink)}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A skill is advice</div>
+  <h2 class="scene-title">A skill is advice.</h2>
+  <div class="stage">
+<div class="cols terms">
+    <div class="semantic-block" data-concept="skill" data-rep="block" data-role="structure">
+      <div class="title">skill</div><div class="label">A folder with a SKILL.md file: a name, a description, and instructions.</div>
+    </div>
+    <div class="semantic-block" data-concept="agent" data-rep="block" data-role="transform">
+      <div class="title">agent</div><div class="label">A program that uses a model and tools to do a task.</div>
+    </div>
+    <div class="semantic-block" data-concept="model" data-rep="block" data-role="attention">
+      <div class="title">model</div><div class="label">The part that decides what to do.<span class="names">claude-haiku-4.5<br>gpt-5.6-terra</span></div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "skill",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "agent",
+  "at": "2",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "model",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "skill",
+  "at": "4",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "model",
+  "at": "5~each model",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

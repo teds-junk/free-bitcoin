@@ -1,0 +1,85 @@
+warning: Multiple graders with no scoring config
+
+━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+  ✗ [prompt] The entry mentions the implementation detail "LRU cache on tag index", which fails the criterion.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+  ✗ [prompt] The entry is \"Improve performance of `notes list --tag` on large folders with LRU cache (#66)\". It includes the user benefit but also names the LRU cache implementation, which fails the criterion.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt] The entry is user-focused, under Unreleased/Fixed, references #67, and leaves out the tokenizer and regex details.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt] The entry meets the criterion: it focuses on user-visible behaviour and leaves out implementation details. It is also in the Fixed section under Unreleased and references #67.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ parser ━━━
+❌ parser (1/2 graders passed, 1 failed)
+  ✗ [prompt] The entry includes an implementation detail, the streaming JSON parser, so it fails the criterion even though it also states the user-facing fix.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ parser ━━━
+❌ parser (1/2 graders passed, 1 failed)
+  ✗ [prompt] The entry is user-focused in its first half, but it includes the implementation detail "by using streaming JSON parser", so it fails the criterion.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ cache ━━━
+✅ cache (2/2 graders passed)
+  ✓ [prompt] The entry is a user-facing one-liner about faster tag listing. It leaves out implementation details, so it meets the criterion.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ cache ━━━
+❌ cache (1/2 graders passed, 1 failed)
+  ✗ [prompt] The entry is mostly user-focused, but it includes an implementation detail ("by caching the tag index"). Under a strict reading of the criterion, that fails it.
+  ✓ [cites-66] Pattern /(?m)^\+.*\(#66\)/ found in workspace diff
+
+Score: 50.0% | FAILED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt] The changelog entry is user-focused and leaves out implementation details.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ dates ━━━
+✅ dates (2/2 graders passed)
+  ✓ [prompt] The entry is user-focused, with no implementation detail. It is placed under Unreleased → Fixed and references the PR.
+  ✓ [cites-67] Pattern /(?m)^\+.*\(#67\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ parser ━━━
+✅ parser (2/2 graders passed)
+  ✓ [prompt] The entry is user-focused and has no implementation details.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 100.0% | PASSED
+
+━━━ parser ━━━
+✅ parser (2/2 graders passed)
+  ✓ [prompt] The agent added a Fixed entry under Unreleased that is written for users and leaves out implementation details. It also references PR #49 as the skill requires.
+  ✓ [cites-49] Pattern /(?m)^\+.*\(#49\)/ found in workspace diff
+
+Score: 100.0% | PASSED

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Nothing near a limit</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.cmp{font-size:50px}.cmp th{font-size:28px}.cmp td{padding-top:24px;padding-bottom:24px}.cmp td:first-child{font-size:36px}.cmp th:last-child,.cmp td:last-child{padding-right:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Set budgets from your runs</div>
+  <h2 class="scene-title">Nothing near a limit</h2>
+  <div class="stage">
+<table class="data-table full cmp"><thead><tr><th></th><th class=num>largest in this run</th><th class=num>budget</th><th class=num>limit</th></tr></thead><tbody><tr><td>tokens</td><td class="num"><span data-concept="l-tok" data-rep="cell">75,717</span></td><td class="num"><span class="mono">215000</span></td><td class="num"></td></tr><tr><td>turns</td><td class="num"><span data-concept="l-turn" data-rep="cell">5</span></td><td class="num"><span class="mono">10</span></td><td class="num"></td></tr><tr><td>time</td><td class="num"><span data-concept="l-time" data-rep="cell">12.5 s</span></td><td class="num"><span class="mono">30s</span></td><td class="num"><span data-concept="lim" data-rep="cell"><span class="mono">1m</span></span></td></tr></tbody></table>
+  <p class="note">from our run · 2026-11-11T14-39-05-705Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "l-tok",
+  "at": "0~tokens",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "l-turn",
+  "at": "0~turns",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "l-time",
+  "at": "0~slowest",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "lim",
+  "at": "1~one-minute",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A patch shows only what changed.</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Reading a patch</div>
+  <h2 class="scene-title">A patch shows only what changed.</h2>
+  <div class="stage">
+<!-- file-panel:patch · regenerate with: node file-panel.js --file src/haiku.patch --label workspace.patch --id patch --width 62 --rows 9 --mark 1=file-line --mark '5=hunk:@@ -7,6 +7,9 @@' --mark 6-8=context --mark 9-11=added --expect '9=+### Fixed' --into scenes/s11.html -->
+<div class="file-panel" id="patch" data-file="workspace.patch" data-lines="14" data-rows="9" style="--rows:9;--cols:62;--ln:2">
+<div class="code-file">workspace.patch<span class="file-meta">14 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="diff"><code>
+<span class="file-row" data-line="1"><span class="ln">1</span><span data-concept="file-line" data-rep="code"><span style="color:#4EA5E6;font-style:italic">diff --git a/CHANGELOG.md b/CHANGELOG.md</span></span></span>
+<span class="file-row" data-line="2"><span class="ln">2</span><span style="color:#4EA5E6;font-style:italic">index 616c9f6..2968512 100644</span></span>
+<span class="file-row" data-line="3"><span class="ln">3</span><span style="color:#4EA5E6;font-style:italic">--- a/CHANGELOG.md</span></span>
+<span class="file-row" data-line="4"><span class="ln">4</span><span style="color:#4EA5E6;font-style:italic">+++ b/CHANGELOG.md</span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span><span data-concept="hunk" data-rep="code"><span style="color:#4EA5E6;font-style:italic">@@ -7,6 +7,9 @@</span></span><span style="color:#B3C0BF"> All notable changes to notes-cli.</span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span style="color:#B3C0BF"> </span><span data-concept="context" data-rep="code"><span style="color:#B3C0BF">### Added</span></span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span><span style="color:#B3C0BF"> </span><span data-concept="context" data-rep="code"><span style="color:#B3C0BF">- Add `notes list --tag` to filter by tag (#41)</span></span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span><span style="color:#B3C0BF"> </span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span><span data-concept="added" data-rep="code"><span style="color:#A4BA1E">+### Fixed</span></span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span><span data-concept="added" data-rep="code"><span style="color:#A4BA1E">+- Fix typo in `notes add` help text ("tittle" → "title")</span></span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span><span data-concept="added" data-rep="code"><span style="color:#A4BA1E">+</span></span></span>
+<span class="file-row" data-line="12"><span class="ln">12</span><span style="color:#B3C0BF"> ## [1.2.0] - 2026-09-14</span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span style="color:#B3C0BF"> </span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span><span style="color:#B3C0BF"> ### Added</span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="14" style="height:98px" aria-hidden="true"><b class="file-map-view" style="top:0px;height:63px"></b><svg width="120" height="98" viewBox="0 0 120 98" shape-rendering="crispEdges"><rect x="0" y="0" width="7.82" height="4" fill="#4EA5E6"/><rect x="10.53" y="0" width="9.93" height="4" fill="#4EA5E6"/><rect x="23.16" y="0" width="28.87" height="4" fill="#4EA5E6"/><rect x="54.74" y="0" width="28.87" height="4" fill="#4EA5E6"/><rect x="0" y="7" width="9.93" height="4" fill="#4EA5E6"/><rect x="12.63" y="7" width="33.08" height="4" fill="#4EA5E6"/><rect x="48.42" y="7" width="12.03" height="4" fill="#4EA5E6"/><rect x="0" y="14" width="5.72" height="4" fill="#4EA5E6"/><rect x="8.42" y="14" width="28.87" height="4" fill="#4EA5E6"/><rect x="0" y="21" width="5.72" height="4" fill="#4EA5E6"/><rect x="8.42" y="21" width="28.87" height="4" fill="#4EA5E6"/><rect x="0" y="28" width="3.61" height="4" fill="#4EA5E6"/><rect x="6.32" y="28" width="7.82" height="4" fill="#4EA5E6"/><rect x="16.84" y="28" width="7.82" height="4" fill="#4EA5E6"/><rect x="27.37" y="28" width="3.61" height="4" fill="#4EA5E6"/><rect x="33.68" y="28" width="5.72" height="4" fill="#B3C0BF"/><rect x="42.11" y="28" width="14.14" height="4" fill="#B3C0BF"/><rect x="58.95" y="28" width="14.14" height="4" fill="#B3C0BF"/><rect x="75.79" y="28" width="3.61" height="4" fill="#B3C0BF"/><rect x="82.11" y="28" width="20.45" height="4" fill="#B3C0BF"/><rect x="2.11" y="35" width="5.72" height="4" fill="#B3C0BF"/><rect x="10.53" y="35" width="9.93" height="4" fill="#B3C0BF"/><rect x="2.11" y="42" width="1.51" height="4" fill="#B3C0BF"/><rect x="6.32" y="42" width="5.72" height="4" fill="#B3C0BF"/><rect x="14.74" y="42" width="12.03" height="4" fill="#B3C0BF"/><rect x="29.47" y="42" width="7.82" height="4" fill="#B3C0BF"/><rect x="40" y="42" width="12.03" height="4" fill="#B3C0BF"/><rect x="54.74" y="42" width="3.61" height="4" fill="#B3C0BF"/><rect x="61.05" y="42" width="12.03" height="4" fill="#B3C0BF"/><rect x="75.79" y="42" width="3.61" height="4" fill="#B3C0BF"/><rect x="82.11" y="42" width="5.72" height="4" fill="#B3C0BF"/><rect x="90.53" y="42" width="9.93" height="4" fill="#B3C0BF"/><rect x="0" y="56" width="7.82" height="4" fill="#A4BA1E"/><rect x="10.53" y="56" width="9.93" height="4" fill="#A4BA1E"/><rect x="0" y="63" width="3.61" height="4" fill="#A4BA1E"/><rect x="6.32" y="63" width="5.72" height="4" fill="#A4BA1E"/><rect x="14.74" y="63" width="7.82" height="4" fill="#A4BA1E"/><rect x="25.26" y="63" width="3.61" height="4" fill="#A4BA1E"/><rect x="31.58" y="63" width="12.03" height="4" fill="#A4BA1E"/><rect x="46.32" y="63" width="7.82" height="4" fill="#A4BA1E"/><rect x="56.84" y="63" width="7.82" height="4" fill="#A4BA1E"/><rect x="67.37" y="63" width="7.82" height="4" fill="#A4BA1E"/><rect x="77.89" y="63" width="18.35" height="4" fill="#A4BA1E"/><rect x="98.95" y="63" width="1.51" height="4" fill="#A4BA1E"/><rect x="103.16" y="63" width="16.24" height="4" fill="#A4BA1E"/><rect x="0" y="70" width="1.51" height="4" fill="#A4BA1E"/><rect x="2.11" y="77" width="3.61" height="4" fill="#B3C0BF"/><rect x="8.42" y="77" width="14.14" height="4" fill="#B3C0BF"/><rect x="25.26" y="77" width="1.51" height="4" fill="#B3C0BF"/><rect x="29.47" y="77" width="20.45" height="4" fill="#B3C0BF"/><rect x="2.11" y="91" width="5.72" height="4" fill="#B3C0BF"/><rect x="10.53" y="91" width="9.93" height="4" fill="#B3C0BF"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:patch -->
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "file-line",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "scroll",
+  "target": "#patch",
+  "to": "5-13",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "hunk",
+  "at": "3+0.8",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "context",
+  "at": "5"
+ },
+ {
+  "type": "focus",
+  "target": "added",
+  "at": "7",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "10"
+ }
+]
+</script>
+</body>
+</html>

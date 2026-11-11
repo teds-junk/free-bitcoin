@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Does the skill load?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.results{display:flex;flex-direction:column;gap:34px;width:100%}.results .card > .code.dark{font-size:36px;padding:26px 36px}.results .card .who{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">Does the skill load?</h1>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="given" data-rep="card">
+        <div class="who">What the agent is given</div>
+        <pre class="code dark" data-lang="yaml"><code><span style="color:#4EA5E6">description</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">Adds an entry to the project changelog.</span></code></pre>
+      </div>
+      <div class="card" data-concept="rules" data-rep="card">
+        <div class="who">What it reads only if it opens the skill</div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Add the entry under Unreleased, in the right category.</span>
+<span>- One line per change, written for people who use the tool.</span>
+<span>- Reference the pull request.</span>
+<span>- Leave released versions alone.</span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "rules",
+  "at": "0~rule",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "given",
+  "at": "2~one-line",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Which graders will still work?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:40px}.data-table th{font-size:30px}.data-table td{padding-top:20px;padding-bottom:20px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Run the app, convert, grade</div>
+  <h2 class="scene-title">Which graders will still work?</h2>
+  <div class="stage">
+<table class="data-table full five">
+    <thead><tr><th>Grader</th><th>Type</th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="all" data-rep="cell">every-change-handled</span></td><td class="mono">run-command · the hidden test</td></tr>
+<tr><td class="mono"><span data-concept="all" data-rep="cell">reads-the-list</span></td><td class="mono">tool-calls</td></tr>
+<tr><td class="mono"><span data-concept="all" data-rep="cell">never-commits</span></td><td class="mono">tool-calls</td></tr>
+<tr><td class="mono"><span data-concept="all" data-rep="cell">no-loop</span></td><td class="mono">max-repeat</td></tr>
+<tr><td class="mono"><span data-concept="all" data-rep="cell">loads-the-skill</span></td><td class="mono">skill-invocation</td></tr>
+    </tbody>
+  </table>
+  <p class="note">evals/release.eval.yaml · <span class="mono">since-last-release</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "all",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

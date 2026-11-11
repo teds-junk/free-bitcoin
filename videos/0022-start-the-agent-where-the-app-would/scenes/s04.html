@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One sentence, one command</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.one{font-size:36px;line-height:1.55;padding:30px 36px}.callout{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">An app starts the agent</div>
+  <h2 class="scene-title">One sentence, one command</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark one" data-lang="text"><code><span data-concept="p" data-rep="code"><span>Write the Unreleased changelog entries for every</span></span>
+<span>change listed in release/merged.txt.</span>
+
+<span data-concept="c" data-rep="code"><span>node tools/list-merged.mjs &gt; release/merged.txt</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="p">what the app sends</p><p class="callout" data-anchor="c">what the app prepares</p></aside>
+  </div>
+  <p class="note">Source: Anthropic, “Demystifying evals for AI agents” (2026)</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "p",
+  "at": "0~one sentence",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "c",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

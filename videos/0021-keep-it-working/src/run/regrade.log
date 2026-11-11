@@ -1,0 +1,105 @@
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ typo-fix ━━━
+✅ typo-fix (5/5 graders passed)
+
+Score: 100.0% | PASSED
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ refactor ━━━
+❌ refactor (3/4 graders passed, 1 failed)
+  ✗ [adds-nothing] Workspace diff is not empty — the stimulus changed the workspace
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ security ━━━
+❌ security (3/4 graders passed, 1 failed)
+  ✗ [under-security] Pattern /(?m)^\+### Security/ not found in workspace diff
+
+Score: 75.0% | FAILED
+
+━━━ typo-fix ━━━
+❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [no-made-up-number] Pattern /(?m)^\+.*\(#\d+\)/ found in workspace diff
+
+Score: 80.0% | FAILED
+
+━━━ typo-fix ━━━
+❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [adds-an-entry] Pattern 'notes add' not found in workspace diff
+
+Score: 80.0% | FAILED
+
+━━━ typo-fix ━━━
+❌ typo-fix (4/5 graders passed, 1 failed)
+  ✗ [no-made-up-number] Pattern /(?m)^\+.*\(#\d+\)/ found in workspace diff
+
+Score: 80.0% | FAILED

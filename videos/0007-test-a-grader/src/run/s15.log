@@ -1,0 +1,7 @@
+warning: Multiple graders with no scoring config
+❌ typo-fix [baseline (no golden inputs)] (1 failed as expected, 1 n/a, 1 unexpectedly passed)
+  ✗ [mentions-unreleased] passed without the golden solution (trivially passing) — 'Unreleased' found in CHANGELOG.md
+  ✓ [adds-an-entry] failed as expected — Pattern 'notes add' not found in workspace diff
+  ⊘ [no-made-up-number] N/A — pass allowed on the empty baseline — Pattern /(?m)^\+.*\(#\d+\)/ not found in workspace diff
+Score: 66.7% | baseline PROBLEM (some graders PASSED on the baseline without depending on the golden solution)
+

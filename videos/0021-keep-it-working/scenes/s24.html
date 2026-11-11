@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One trial per stimulus</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.two .semantic-block{min-height:280px;justify-content:center}.two .title{font-size:100px;line-height:1.1}.two .label{font-size:34px}.lead{font-size:42px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Where the skill stands</div>
+  <h2 class="scene-title">One trial per stimulus</h2>
+  <div class="stage">
+<div class="cols wide two">
+    <div class="semantic-block" data-concept="then" data-rep="block" data-role="failure">
+      <div class="title">0 of 1</div><div class="label"><span class="mono">loading · skip-question</span> on <span class="mono">gpt-5.6-terra</span>, in our first run</div>
+    </div>
+    <div class="semantic-block" data-concept="here" data-rep="block" data-role="success">
+      <div class="title">1 of 1</div><div class="label">the same question, in the second run, minutes later</div>
+    </div>
+  </div>
+  <p class="lead"><span data-concept="say" data-rep="note">One pass shows it can pass, not that it will every time.</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "then",
+  "at": "1~failed",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "here",
+  "at": "1~passed",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "say",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

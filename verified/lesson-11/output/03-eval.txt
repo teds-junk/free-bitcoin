@@ -1,0 +1,29 @@
+⚠ No executor defined, defaulting to copilot-sdk
+Loaded 2 stimuli from conversation · 2 models · 2 workers
+  WARN conversation · scoring-defaults-applied  Multiple graders with no scoring config (2x)
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+⚠  Running with 3 trial(s). For statistically significant results, use --runs 5 or higher.
+
+conversation
+
+claude-haiku-4.5
+  FLAKY  three-requests  1 passed · 2 failed
+   ✘ third-no-made-up-number  1 passed · 2 failed · Pattern /(?m)^\+.*\(#\d+\)/ found in workspace
+                                                    diff  trials 1, 2
+
+────────────────────────────────────────────────────────
+
+Failures  1 failed
+  ✘ conversation · three-requests [claude-haiku-4.5]
+      ✘ third-no-made-up-number  Pattern /(?m)^\+.*\(#\d+\)/ found in workspace diff · trials 1, 2
+
+Model summary
+  ✘ claude-haiku-4.5  0/1 evals passed
+  ✓ gpt-5.6-terra     1/1 evals passed
+
+  eval          claude-haiku-4.5  gpt-5.6-terra
+  conversation  ✘ 0/1             ✓ 1/1        
+
+Saved  results/lesson-11/2026-11-10T15-04-14-517Z/
+Run ID  8ff35dc3-9c2e-4a38-b01c-0ad405b75d29

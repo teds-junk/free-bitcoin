@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 10: Is the agent better with the skill — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 10 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Is the agent better with the skill</h1>
+    <div class="lesson-meta">13 min · Compare results with and without the skill for each model, and say in one sentence where the skill helps, where it does not, and what it changes in tokens.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What is a near-miss request, and why does a loading test need some?
+        <details class="answer"><summary>Show answer</summary><p>A request that shares words or a subject with the skill's job but is not its job. Only requests that should not load the skill can show a description that is too broad.</p></details></li>
+      <li>A stimulus has three graders. When does a trial of it pass?
+        <details class="answer"><summary>Show answer</summary><p>Only when all three graders pass.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> Your skill loads when it should, and with it loaded both models pass most of your graders.</p>
+    <p><strong>This lesson answers:</strong> Are the results better with the skill than without it?</p>
+  </div>
+
+  <p class="drop-cap">In lesson 9 one trial did the job without loading the skill, and the result looked plausible. That raises an awkward question. Models already know what a changelog is. Perhaps they would pass your graders with no skill at all, and the skill is decoration. Or perhaps the skill matters a great deal. You have measured the skill against earlier versions of itself, and never against nothing. This lesson does that, and turns up something about the first draft that none of the earlier lessons could have shown.</p>
+
+  <h2 id="beat-no-skill" data-mode="think">A skill has to beat no skill</h2>
+
+  <p>A skill costs something. It adds to the text the model has to read on every request, it has to be maintained, and it can be wrong. It earns its place only on requests where the agent does better with it than without.</p>
+
+  <p>You cannot assume it does. One 2026 study ran the same 87 tasks with and without skills. Skills written with care raised the share of tasks completed by about 17 percentage points on average, yet made 13 of the 87 tasks worse. Skills that the models wrote for themselves lowered it.</p>
+
+  <p>The way to find out is a fair comparison: the same stimuli, the same graders, the same model, and one difference, whether the skill is installed. Lesson 7 defined a baseline as what you compare a result against. Here the baseline is the run with no skill.</p>
+
+  <p>Expect three kinds of answer, stimulus by stimulus. The skill helps: it fails without and passes with. The skill makes no difference: the model manages either way, and the skill is not earning anything there. The skill hurts: it passes without and fails with. All three are worth knowing.</p>
+
+  <div class="source-citation">Source: <a href="https://arxiv.org/html/2602.12670v4">SkillsBench, version 4, 2026</a> (a preprint; one benchmark of 87 tasks).</div>
+
+  <h2 id="experiment-file" data-mode="works">An experiment file</h2>
+
+  <div class="callout definition">
+    <div class="callout-title">Variant</div>
+    <p>One version of the set-up being compared: the same eval, run with one setting changed. "With the skill" and "without the skill" are two variants.</p>
+  </div>
+
+  <p>An <strong>experiment file</strong> lists variants of an eval, and one command runs them all. The starter folder has one.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/with-and-without.experiment.yaml</div>
+<pre><code class="language-yaml">name: with-and-without
+
+evals:
+  - changelog.eval.yaml<span class="mark">1</span>
+
+vary: [/environment/skills, /defaults/model]<span class="mark">2</span>
+
+baseline: haiku-no-skill<span class="mark">3</span>
+
+variants:
+  haiku-no-skill:<span class="mark">4</span>
+    overrides:
+      model: claude-haiku-4.5<span class="mark">5</span>
+    environment:
+      skills: []<span class="mark">6</span>
+  haiku-with-skill:
+    overrides:
+      model: claude-haiku-4.5
+    environment:
+      skills: [../skills/changelog-entry]<span class="mark">7</span>
+<span class="gap">10 lines hidden: the same two variants for gpt-5.6-terra</span></code></pre>
+    </div>
+    <ol class="notes">
+      <li>The eval file to run, relative to this file. Its stimuli and graders are used unchanged in every variant.</li>
+      <li>The settings the variants are allowed to differ in. Each is written as a path into the eval's settings: <code>/environment/skills</code> is the list of skills in the agent environment, and <code>/defaults/model</code> is the model. If a variant differs in anything else, Vally refuses to run and reports <code>Experiment drift detected</code>. That is what keeps the comparison fair.</li>
+      <li>The variant the others are compared with.</li>
+      <li>A variant's name. You choose it.</li>
+      <li>The model for this variant. <code>overrides</code> replaces settings from the eval file's <code>defaults</code>, and <code>model</code> here is the <code>/defaults/model</code> named under <code>vary</code>. An experiment sets the model in the file, and not on the command line.</li>
+      <li>An empty list: no skill installed.</li>
+      <li>The skill installed, as in the eval file. An experiment file says <code>environment</code> where an eval file says <code>agent_environment</code>; they mean the same.</li>
+    </ol>
+  </div>
+
+  <p>The command is <code>vally experiment run</code>, followed by the experiment file. It accepts <code>--workers</code> and <code>--output-dir</code> as <code>vally eval</code> does. Adding <code>--dry-run</code> makes it print the plan, one block per variant, without starting an agent, which is the experiment's version of lint.</p>
+
+  <p>When it finishes it prints a table with one column per variant, counting the stimuli that passed, and beneath it each variant's total tokens over all its trials and its trial time. The run folder has one subfolder per variant, named after it, each with its own <code>results.jsonl</code> and a folder for the eval laid out like the ones you already know. The report is one file for the whole experiment, <code>report.md</code>, in the run folder itself. An experiment writes it instead of a single eval's <code>eval-results.md</code>, with a heading and a table for each variant.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 230" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="Two variants, no skill and with the skill, both run the same five stimuli with the same graders, and the two counts are compared.">
+      <rect x="20" y="16" width="250" height="52" rx="3" style="stroke-dasharray: 6 5"/>
+      <rect x="370" y="16" width="250" height="52" rx="3" style="stroke: var(--accent); stroke-width: 2"/>
+      <rect x="130" y="112" width="380" height="52" rx="3"/>
+      <path d="M145 68 L230 110 M219 110 L230 110 L226 100"/>
+      <path d="M495 68 L410 110 M421 110 L410 110 L414 100"/>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: currentColor; stroke: none">
+        <text x="145" y="49" text-anchor="middle">Variant: no skill</text>
+        <text x="495" y="49" text-anchor="middle">Variant: with the skill</text>
+        <text x="320" y="145" text-anchor="middle">Same stimuli, same graders</text>
+      </g>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="320" y="206" text-anchor="middle">Compare the two counts, model by model</text>
+      </g>
+    </svg>
+    <figcaption>A fair comparison changes one thing. Everything the graders see is produced the same way in both variants, except for the skill.</figcaption>
+  </figure>
+
+  <div class="quiz">
+    <div class="quiz-question">In an experiment, one variant uses a different model, and the model is not listed under <code>vary</code>. What happens?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">It runs, and the model is ignored</button></li>
+      <li><button onclick="checkAnswer(this, false)">It runs, with a warning printed first</button></li>
+      <li><button onclick="checkAnswer(this, true)">Vally refuses, and reports experiment drift</button></li>
+      <li><button onclick="checkAnswer(this, false)">Only the baseline variant is then run</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. Variants may differ only in the settings listed under <code>vary</code>. Anything else is reported as drift, so a result cannot quietly depend on a second difference.</div>
+    <div class="quiz-feedback incorrect">Vally refuses and reports experiment drift. Variants may differ only in the settings listed under <code>vary</code>, so that a result cannot quietly depend on a second difference.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/guides/run-your-first-experiment/">Vally docs, Run Your First Experiment</a>; <a href="https://microsoft.github.io/vally/reference/experiment-file/">Experiment File Schema</a>. The drift message is from our test on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="run-with-and-without" data-mode="use">Run with and without</h2>
+
+  <p>You will put your model names into the experiment file, check the plan, run the four variants, and read the table.</p>
+
+  <div class="predict">
+    <p>Five stimuli: the typo fix with no pull request number, the refactor, the security fix, the two changes in one pull request, and the changelog with no Unreleased section. Which do you expect a model to get right with no skill at all?</p>
+    <details class="answer"><summary>Check your prediction</summary><p>Compare with your table after step 3. In our run both models passed the typo fix and the two-changes request with no skill, and both failed the refactor and the security fix.</p></details>
+  </div>
+
+  <section class="checkpoint">
+    <h3>Four variants, one table</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: put your own models into the experiment. This edits one file.</span>
+        Open a terminal in <code>practice</code>, and open <code>evals/with-and-without.experiment.yaml</code> in a text editor. If your models differ from the course's, replace the two model names, each of which appears twice. The variant names, such as <code>haiku-no-skill</code>, are only labels: rename them if you like, or leave them.</li>
+
+      <li><span class="goal">Goal: check the plan without running anything.</span>
+<pre><code class="language-bash">vally experiment run \
+  evals/with-and-without.experiment.yaml --dry-run</code></pre>
+<pre class="output"><code>Experiment: with-and-without
+Baseline:   haiku-no-skill
+Plans:      4</code></pre>
+        <p class="expect">You should see: those three lines, then a block for each variant naming its model. A plan is one variant applied to one eval file, so four variants make four plans.</p></li>
+
+      <li><span class="goal">Goal: run all four variants. This spends twenty short agent runs.</span>
+<pre><code class="language-bash">vally experiment run \
+  evals/with-and-without.experiment.yaml \
+  --workers 2 --output-dir results/lesson-10</code></pre>
+        <p class="expect">You should see: a block for each stimulus that failed, labelled with its variant, then a table. Our table, with the variant names shortened to fit:</p>
+        <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th>haiku, no skill</th><th>haiku, skill</th><th>terra, no skill</th><th>terra, skill</th></tr></thead>
+          <tbody>
+            <tr><td>stimuli passed</td><td>3 of 5</td><td>5 of 5</td><td>3 of 5</td><td>5 of 5</td></tr>
+            <tr><td>tokens</td><td>371.0k</td><td>360.0k</td><td>280.9k</td><td>255.0k</td></tr>
+            <tr><td>trial time</td><td>55.2s</td><td>47.8s</td><td>1m06s</td><td>46.6s</td></tr>
+          </tbody>
+        </table>
+        </div></li>
+
+      <li><span class="goal">Goal: see which stimuli the skill made the difference on.</span>
+        Scroll up to the blocks above the table. Each names a variant, a stimulus and the grader that failed.
+        <p class="expect">You should see: failures almost entirely in the two no-skill variants. In our run, both models without the skill recorded the refactor and filed the security fix under Fixed, and those were the only failures.</p></li>
+
+      <li><span class="goal">Goal: read what a model wrote with no skill.</span>
+        List <code>results/lesson-10</code> for the run folder's name, then use it in place of ours. Each variant's folder is named after the variant, so if you renamed <code>terra-no-skill</code> in step 1, use your name for it in the second line.
+<pre><code class="language-bash">cd results/lesson-10/2026-11-10T15-01-28-614Z
+cd terra-no-skill/changelog/typo-fix
+cat gpt-5.6-terra/0/workspace.patch</code></pre>
+<pre class="output"><code>+### Fixed
++- Fix typo in `notes add` help text
++</code></pre>
+        <p class="expect">You should see: an entry for the typo. Look at how it ends, and remember lesson 1. Then return to <code>practice</code> with <code>cd ../../../../../..</code>.</p></li>
+
+      <li><span class="goal">Goal: say what the comparison shows.</span>
+        Write one sentence of the form "With the skill, N of 5 stimuli pass on each model; without it, N and N. The skill makes the difference on …, and none on …. With it, each model used … tokens; without it, …."</li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-comparison-showed" data-mode="think">What the comparison showed</h2>
+
+  <p>In our run the answer to this lesson's question is yes: five of five with the skill on both models, three of five on each without. The skill is earning its place on the refactor and the security fix. Both models handled the missing Unreleased section on their own.</p>
+
+  <p>Now look at the patch in step 5. With no skill installed, the model that kept inventing <code>(#42)</code> in lessons 1 to 5 did not invent anything. Neither model did. The made-up pull request number was not a weakness of that model that your skill failed to prevent. Your first draft caused it. "Reference the pull request", with no word on what to do when there is none, pushed a model into making one up.</p>
+
+  <p>That is the third kind of answer from the section above: a skill making a result worse. You fixed it in lesson 5 without knowing its cause. Only a comparison with no skill could show it, which is a good reason to run one before trusting any skill, and again after any large edit.</p>
+
+  <p>The skill did not cost tokens either. It adds text for the model to read, yet in our run both models used fewer tokens with it than without: 360.0k against 371.0k on <code>claude-haiku-4.5</code>, and 255.0k against 280.9k on <code>gpt-5.6-terra</code>, over five trials each. That is too few trials to say the skill saves tokens; it is enough to see that it does not cost many. Lesson 16 turns tokens into money.</p>
+
+  <p>Each cell of the table is one trial per stimulus, so treat small differences with care. A stimulus that fails without the skill in every model is solid evidence. A single cell that differs is a reason to run more trials.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/guides/run-your-first-experiment/">Run Your First Experiment, Vally docs</a></p>
+    <p>The official walk-through of a two-variant experiment. Read as far as the dry run and the first results table; the later parts use a judged comparison, and judges are the subject of lessons 12 and 13.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, name the three kinds of answer a with-and-without comparison can give for a stimulus.
+        <details class="answer"><summary>Show model answer</summary><p>The skill helps: the stimulus fails without it and passes with it. The skill makes no difference: it passes, or fails, either way. The skill hurts: it passes without the skill and fails with it.</p></details></li>
+      <li>Two stimuli pass without the skill on both models. Does that mean they should be removed from the eval file? Give a reason.
+        <details class="answer"><summary>Show model answer</summary><p>No. They show that the skill adds nothing there today, but they also guard against the skill making those requests worse after a future edit, which is exactly what the first draft did to the typo fix. Keep them as checks that what works keeps working.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="10" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> compare results with and without the skill for each model, and say in one sentence where the skill helps, where it does not, and what it changes in tokens.</p>
+    <p><strong>Up next:</strong> <a href="./0011-follow-up-requests.html">Follow-up requests</a>. Every stimulus so far was one request. Real use goes on: someone asks for a follow-up, or changes their mind. Does the skill still hold?</p>
+    <a class="next-lesson" href="./0011-follow-up-requests.html">Next lesson: Follow-up requests <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

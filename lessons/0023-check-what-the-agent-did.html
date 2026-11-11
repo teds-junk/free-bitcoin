@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 23: Check what the agent did — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 23 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Check what the agent did</h1>
+    <div class="lesson-meta">13 min · Add <code>tool-calls</code> graders that require reading <code>release/merged.txt</code> and forbid <code>git commit</code> or <code>git push</code>, and a loop check, each tested against saved trials.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What is a trial's trajectory, and where is it saved?
+        <details class="answer"><summary>Show answer</summary><p>The record of what the agent did in that trial: its events (skills loaded, tool calls, messages), its final reply and its metrics, such as tokens. It is saved in the run's <code>results.jsonl</code>, one trial per line.</p></details></li>
+      <li>How does a trial record that the skill loaded, and which grader reads that record?
+        <details class="answer"><summary>Show answer</summary><p>As a <code>skill_activation</code> event in the trajectory. The <code>skill-invocation</code> grader reads it, and the report's Skills column counts it.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> Your release stimulus starts where the app starts, with the tool's list already written, and a hidden test checks the entries against that list.</p>
+    <p><strong>This lesson answers:</strong> How do I check the steps the agent took, not just the file it changed?</p>
+  </div>
+
+  <p class="drop-cap">Inside the release tool, nobody watches the agent work. The team cares about the changelog, and also about two things the changelog cannot show. The entries must come from the list the tool wrote, not from guesses that happen to be right. And the agent must never commit or push: the release tool does that itself, after a person has looked at the result, and a commit made by the agent cannot be undone by throwing the workspace away. Lesson 22's hidden test reads only the finished file. This lesson checks the route.</p>
+
+  <h2 id="when-to-grade-the-path" data-mode="think">Grade the path only when it matters</h2>
+
+  <p>The default is to grade the outcome. Agents find valid routes nobody planned for, and a grader that insists on one sequence of steps fails good work: an agent that reads a file with one tool instead of another has still read it. Most of the graders in this course check results for that reason.</p>
+
+  <p>Check the route only when the app depends on it, and then only the step it depends on. A step can be required: the app relies on the agent working from the list, because an entry written from the file names or the history would be right by luck. A step can be forbidden: a commit, a push, a deleted file, anything with effects outside the workspace. And a route can be too long: an agent that repeats the same call costs money and time even when it gets there.</p>
+
+  <p>Even a route grader should be as loose as the requirement. "Read <code>release/merged.txt</code>" is the requirement; "used the <code>view</code> tool on it" is one way to meet it, and the section after next shows why that difference mattered in our runs.</p>
+
+  <div class="source-citation">Source: <a href="https://www.anthropic.com/research/demystifying-evals-for-ai-agents">Anthropic, Demystifying evals for AI agents (2026-01-09)</a>, on grading what the agent produced rather than the path it took, and keeping checks on the path for steps that must or must not happen.</div>
+
+  <h2 id="tool-calls-grader" data-mode="works">The tool-calls grader</h2>
+
+  <p>Every time the agent uses a tool (reads a file, edits one, runs a shell command), the trajectory records a <code>tool_call</code> event. Spread out, the one where our agent read the list looks like this:</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">results.jsonl (one event inside one trial's trajectory)</div>
+<pre><code class="language-json">{
+  "type": "tool_call",
+  "timestamp": "2026-11-10T17:47:07.708Z",
+  "data": {
+    "toolName": "view",<span class="mark">1</span>
+    "toolCallId": "toolu_01SQRLn14RRSJdvNbxoFLcnk",
+    "turnId": "1",
+    "arguments": {<span class="mark">2</span>
+      "path": "&lt;workspace&gt;/release/merged.txt"
+    }
+  },
+  "turn": 0,
+  "endTimestamp": "2026-11-10T17:47:07.713Z"
+}</code></pre>
+    </div>
+    <ol class="notes">
+      <li>The tool's name. The agent's runtime decides the names. In our runs: <code>view</code> reads a file, <code>edit</code> and <code>apply_patch</code> change one, <code>bash</code> runs a shell command, <code>skill</code> loads a skill.</li>
+      <li>What the tool was given. A file tool gets a <code>path</code>; <code>bash</code> gets a <code>command</code>. We replaced the workspace's real location, a long temporary folder on our machine, with <code>&lt;workspace&gt;</code>.</li>
+    </ol>
+  </div>
+
+  <p>You do not need to open that file to learn the names. The report's Tool Calls column totals them for each stimulus. Ours for the first model in lesson 22 read: <code>view: 20, edit: 5, bash: 1</code>.</p>
+
+  <p>The <code>tool-calls</code> grader reads these events. Every entry under <code>required</code> must match at least one call, and no call may match an entry under <code>disallowed</code>. An entry is a set of regular expressions, all of which must match the same call: <code>name</code> on the tool's name, <code>command</code> on a shell call's command, <code>path</code> on a file tool's path, and <code>pattern</code> on all the call's arguments written out as text. The expressions are unanchored, so <code>^view$</code> means exactly <code>view</code> and <code>view</code> alone would also match <code>preview</code>.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/release.eval.yaml (graders added after every-change-handled)</div>
+<pre><code class="language-yaml">      - type: tool-calls
+        name: reads-the-list
+        config:
+          required:<span class="mark">1</span>
+            - name: ^(view|bash)$
+              pattern: release/merged\.txt
+      - type: tool-calls
+        name: never-commits
+        config:
+          disallowed:<span class="mark">2</span>
+            - name: ^bash$
+              command: git (commit|push)
+      - type: max-repeat<span class="mark">3</span>
+        name: no-loop
+        config:
+          max: 3
+      - type: skill-invocation<span class="mark">4</span>
+        name: loads-the-skill
+        config:
+          required: [changelog-entry]</code></pre>
+    </div>
+    <ol class="notes">
+      <li>At least one call to <code>view</code> or <code>bash</code> whose arguments mention <code>release/merged.txt</code>. Either tool can read a file: <code>view</code> directly, <code>bash</code> with a command such as <code>cat</code>.</li>
+      <li>No shell command containing <code>git commit</code> or <code>git push</code>. The <code>|</code> inside the brackets means "or".</li>
+      <li>The loop check, explained in the next section.</li>
+      <li>The grader from lesson 9. The report suggested the first model rarely loaded the skill; this makes that a verdict.</li>
+    </ol>
+  </div>
+
+  <p>When we first wrote <code>reads-the-list</code> it required <code>view</code> only. Every lesson 22 trial passed it. Then, in a run of ours for lesson 24, the first model read the list with <code>cat</code> through <code>bash</code>, and the grader failed a trial that had done exactly what the app needs. We widened it, and a re-grade of that run passed all six trials.</p>
+
+  <p>One more property decides how you test these graders. A grader with only a <code>disallowed</code> list checks for absence, so an empty trajectory passes it. As with <code>diff-not-contains</code> in lesson 8, the oracle cannot show such a grader failing; only a saved trial that did the forbidden thing can.</p>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/graders/tool-calls/">Vally docs, Grader: tool-calls</a>; <a href="https://microsoft.github.io/vally/reference/trajectory-format/">Trajectory Format</a>. The tool names and the <code>cat</code> trial are from our runs on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="catching-loops" data-mode="works">Catching loops</h2>
+
+  <p>An agent loops when it repeats the same action without getting anywhere: rereading a file, rerunning a command that fails. Two graders look for that in the trajectory after the trial has ended. Neither stops a running agent; lesson 18's limits do that.</p>
+
+  <p><code>max-repeat</code> fails when one action is repeated, back to back, more than <code>max</code> times. What counts as the same action is set by <code>match</code>: <code>observation</code> (the default) means calls that got the same result, <code>name</code> means calls to the same tool, and <code>name-args</code> the same tool with the same arguments. <code>tools</code> limits it to some tools, and <code>max_cycle_period</code> also catches an alternating pattern such as A, B, A, B. Our <code>no-loop</code> grader uses the defaults with <code>max: 3</code>: four identical results in a row fail.</p>
+
+  <p><code>loop-outcome</code> asks a slightly different question: did the agent loop, and was that what you expected? It counts retries (four identical calls in a row are three retries) against <code>max_acceptable_retries</code>, and <code>should_loop</code> says which answer passes: <code>false</code>, the usual case, passes when the agent did not loop. It fits a stimulus where retrying is the very thing under test, such as a tool that fails. Lesson 24 has one, so it waits until then.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">Why does <code>never-commits</code> need a saved trial, and not the oracle, to show it can fail?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">The oracle cannot read any tool calls at all</button></li>
+      <li><button onclick="checkAnswer(this, true)">An empty trajectory commits nothing, so it passes</button></li>
+      <li><button onclick="checkAnswer(this, false)">Saved trials are graded by a different judge model</button></li>
+      <li><button onclick="checkAnswer(this, false)">The oracle refuses graders without a golden patch</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. It only forbids something, and an empty trajectory does nothing forbidden. Only a real trial that ran the forbidden command can show the grader failing.</div>
+    <div class="quiz-feedback incorrect">An empty trajectory commits nothing, so it passes. The oracle's baseline does nothing at all, which satisfies any grader that only forbids. Only a real trial that ran the forbidden command can show the grader failing.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/reference/graders/max-repeat/">Vally docs, Grader: max-repeat</a>; <a href="https://microsoft.github.io/vally/reference/graders/loop-outcome/">Grader: loop-outcome</a>.</div>
+
+  <h2 id="require-forbid-regrade" data-mode="use">Require, forbid, re-grade</h2>
+
+  <p>You will add the four graders, check them on the baseline and on lesson 22's ten saved trials without starting an agent, make sure the forbidding grader can fail, and then run once more.</p>
+
+  <section class="checkpoint">
+    <h3>Graders for the route, tested before they run</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: add the route graders. This edits one file.</span>
+        Open a terminal in <code>practice</code>. In <code>evals/release.eval.yaml</code>, add the twenty lines shown above after the <code>every-change-handled</code> grader, at the same indent.</li>
+
+      <li><span class="goal">Goal: catch mistakes before spending anything.</span>
+<pre><code class="language-bash">vally lint -e evals/release.eval.yaml</code></pre>
+        <p class="expect">You should see: one warning, <code>scoring-defaults-applied</code>, and no errors. The stimulus now has several graders and no <code>scoring</code> block, so every grader must pass, which is what we want.</p></li>
+
+      <li><span class="goal">Goal: see what the graders say about doing nothing. This starts no agent.</span>
+<pre><code class="language-bash">vally oracle -e evals/release.eval.yaml \
+  --no-golden-input</code></pre>
+<pre class="output"><code>✅ since-last-release [baseline (no golden inputs)]
+  ✓ [every-change-handled] failed as expected
+  ✓ [reads-the-list] failed as expected
+  ⊘ [never-commits] N/A — pass allowed on the …
+  ⊘ [no-loop] N/A — pass allowed on the empty …
+  ✓ [loads-the-skill] failed as expected</code></pre>
+        <p class="expect">You should see: the three graders that require something fail on the untouched workspace, as they should, and the two that forbid something are N/A. Those two still need testing.</p></li>
+
+      <li><span class="goal">Goal: run the new graders on the ten saved trials. This starts no agent.</span>
+        Use your lesson 22 folder's name in place of ours.
+<pre><code class="language-bash">cd results/lesson-22/2026-11-10T17-47-00-752Z</code></pre>
+<pre><code class="language-bash">vally grade -e ../../../evals/release.eval.yaml \
+  --run-dir . --verbose &lt; results.jsonl</code></pre>
+<pre class="output"><code>❌ since-last-release (3/5 graders passed, …
+  ✗ [every-change-handled] … got 1
+  ✓ [reads-the-list] All required tools were …
+  ✓ [never-commits] … No disallowed tools …
+  ✓ [no-loop] No action repeated more than 3 …
+  ✗ [loads-the-skill] The following required …</code></pre>
+        <p class="expect">You should see: ten blocks, one per trial. <code>every-change-handled</code> fails in all ten, because a hidden test needs the finished workspace and a re-grade has none; ignore it here. In ours, <code>reads-the-list</code>, <code>never-commits</code> and <code>no-loop</code> passed all ten, and <code>loads-the-skill</code> failed five: every trial of the first model.</p></li>
+
+      <li><span class="goal">Goal: show that never-commits can fail. This edits the eval file and puts it back.</span>
+        No saved trial committed anything, so test the grader on a command one did run. The first model ran <code>find</code> in one of our trials. In <code>evals/release.eval.yaml</code>, change <code>git (commit|push)</code> to <code>find</code>, save, and run the same <code>vally grade</code> command again.
+<pre class="output"><code>  ✗ [never-commits] All required tools were called
+    The following disallowed tools were called:
+    /^bash$/ {command=/find/}</code></pre>
+        <p class="expect">You should see: <code>never-commits</code> failing in the trials that ran <code>find</code>, one in ours, naming the entry that matched. Change <code>find</code> back to <code>git (commit|push)</code> and save. Then return to <code>practice</code> with <code>cd ../../..</code>.</p></li>
+
+      <li><span class="goal">Goal: run once more with every grader. This spends six agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/release.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 3 --workers 2 \
+  --output-dir results/lesson-23</code></pre>
+<pre class="output"><code>claude-haiku-4.5
+  FAIL  since-last-release  0/3
+   ✘ every-change-handled  0 passed · 3 failed
+   ✘ loads-the-skill  1 passed · 2 failed
+
+  eval     claude-haiku-4.5  gpt-5.6-terra
+  release  ✘ 0/1             ✓ 1/1</code></pre>
+        <p class="expect">You should see: your summary, with a line for each grader that failed any trial. Ours is above: the second model passed every grader in all three trials; the first recorded the refactor in all three, and loaded the skill in one.</p></li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-path-showed" data-mode="think">What the path showed</h2>
+
+  <p>Two of the four graders never failed a real trial: no agent committed, pushed or looped. That is the normal state for a guard. It is there for the day a model update changes the agent's habits, and you have seen that it can fail, which is what makes its passes worth anything.</p>
+
+  <p>The interesting result is the route each model took. Put our eight trials of the first model together, five from lesson 22 and three from this run: it loaded the skill in one, and recorded the refactor in all eight. The second model loaded it in all eight and passed all eight. The pattern points at loading, but it is not the whole story: the one trial that loaded the skill recorded the refactor anyway. One trial is far too few to say more.</p>
+
+  <p>For the team this changes the question. "Does the skill write good entries?" was answered in part 1. "Does the app get the skill used?" is new, and it depends on the app's own prompt, which never says "changelog entry skill", and on the model. Both are things the team controls: the app can name the skill in its prompt, or the skill's description can name this situation. Either is an edit to measure, before and after, the way lesson 15 did.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/guides/choosing-graders/">Choose a Grader, Vally docs</a></p>
+    <p>A short guide that starts from the evidence you have (a reply, files, behaviour) and picks the simplest grader for it. Read the part on behaviour graders, then the <a href="https://microsoft.github.io/vally/reference/graders/tool-calls/">tool-calls reference</a> for <code>sequence</code>, <code>min_count</code> and the rest of what an entry can say.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory: when is it worth grading the route rather than only the result, and what goes wrong when you grade it too strictly?
+        <details class="answer"><summary>Show model answer</summary><p>When the app depends on a step being taken (reading the list) or never taken (commit, push), or when a long route costs too much (loops). Too strict a route grader fails good work: our <code>view</code>-only requirement failed a trial that read the list with <code>cat</code>.</p></details></li>
+      <li>The team decides the agent must change no file except <code>CHANGELOG.md</code>. Would you check that with <code>tool-calls</code>, or with a grader from part 1?
+        <details class="answer"><summary>Show model answer</summary><p>With a diff grader. A changed file is an outcome the patch records, whichever tool made the change, while a <code>tool-calls</code> entry would have to list every tool that can write. Every changed file starts its own <code>diff --git a/…</code> line in the patch, so this fails when any other file changed:</p>
+<pre><code class="language-yaml">- type: diff-not-contains
+  name: only-the-changelog
+  config:
+    pattern: '(?m)^diff --git a/(?!CHANGELOG\.md b/)'</code></pre>
+        <p><code>(?!…)</code> means "not followed by". We checked it on two patches: one from lesson 22, which it passed, and a copy of that patch with a deleted <code>tools/list-merged.mjs</code> added, which it failed. To grade a patch file you made yourself, we used <code>vally grade</code> with <code>--diff-file</code> and the file's name, in place of a run folder; lesson 25 explains that option.</p></details></li>
+      <li>Your <code>no-loop</code> grader uses <code>match: observation</code>. The agent views <code>CHANGELOG.md</code>, edits it, and views it again. Is that a repeat?
+        <details class="answer"><summary>Show model answer</summary><p>No. The two views are not back to back, and they returned different contents, since the file changed in between. With <code>match: name</code>, three views in a row of different files would count as a repeat; that is why <code>observation</code> is the default.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="23" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> add <code>tool-calls</code> graders that require reading <code>release/merged.txt</code> and forbid <code>git commit</code> or <code>git push</code>, and a loop check, each tested against saved trials.</p>
+    <p><strong>Up next:</strong> <a href="./0024-when-a-tool-fails.html">When a tool fails</a>. In real use, the tracker or the network sometimes fails. Does the agent cope, and can you test that without breaking anything?</p>
+    <a class="next-lesson" href="./0024-when-a-tool-fails.html">Next lesson: When a tool fails <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

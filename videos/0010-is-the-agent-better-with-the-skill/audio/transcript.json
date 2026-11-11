@@ -1,0 +1,1531 @@
+{
+  "video": "/Users/ted/src/learn/vally/videos/0010-is-the-agent-better-with-the-skill",
+  "model": "mlx-community/whisper-base.en-asr-fp16",
+  "sentences": [
+    {
+      "scene": "s01",
+      "i": 0,
+      "file": "audio/s01_00.wav",
+      "clip_sha": "9b47ce97bcb865fe",
+      "text": "Models already know what a changelog is.",
+      "tts_text": "Models already know what a changelog is.",
+      "heard": "Models already know what a changelog is.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 1,
+      "file": "audio/s01_01.wav",
+      "clip_sha": "0cd8ef60b4d9ad5b",
+      "text": "So perhaps they'd pass our graders with no skill at all, and the skill is decoration.",
+      "tts_text": "So perhaps they'd pass our graders with no skill at all, and the skill is decoration.",
+      "heard": "So perhaps they'd pass our graders with no skill at all, and the skill is decoration.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 2,
+      "file": "audio/s01_02.wav",
+      "clip_sha": "005c438b80153fc3",
+      "text": "Or perhaps the skill matters a great deal.",
+      "tts_text": "Or perhaps the skill matters a great deal.",
+      "heard": "Or perhaps the skill matters a great deal.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 3,
+      "file": "audio/s01_03.wav",
+      "clip_sha": "0c0dfbcb97b4538d",
+      "text": "So far, we've measured the skill against earlier versions of itself, but not against no skill.",
+      "tts_text": "So far, we've measured the skill against earlier versions of itself, but not against no skill.",
+      "heard": "So far, we've measured the skill against earlier versions of itself, but not against no skill.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s01",
+      "i": 4,
+      "file": "audio/s01_04.wav",
+      "clip_sha": "2db619e3889666d5",
+      "text": "In this lesson, you'll run the same stimuli with the skill and without it, and say where the skill earns its place.",
+      "tts_text": "In this lesson, you'll run the same stimuli with the skill and without it, and say where the skill earns its place.",
+      "heard": "In this lesson, you'll run the same stimuli with the skill and without it, and say where the skill earns its place.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 0,
+      "file": "audio/s02_00.wav",
+      "clip_sha": "07c0b379fb9c5dfb",
+      "text": "Let's start with what a skill costs.",
+      "tts_text": "Let's start with what a skill costs.",
+      "heard": "Let's start with what a skill costs.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 1,
+      "file": "audio/s02_01.wav",
+      "clip_sha": "18d076a8974cd2aa",
+      "text": "It adds to the text the model reads on every request.",
+      "tts_text": "It adds to the text the model reads on every request.",
+      "heard": "It adds to the text the model reads on every request.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 2,
+      "file": "audio/s02_02.wav",
+      "clip_sha": "bffb50d2c85ff24c",
+      "text": "It has to be maintained, and it can be wrong.",
+      "tts_text": "It has to be maintained, and it can be wrong.",
+      "heard": "It has to be maintained and it can be wrong.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s02",
+      "i": 3,
+      "file": "audio/s02_03.wav",
+      "clip_sha": "45840a9e092cd788",
+      "text": "So it earns its place only on requests where the agent does better with it than without.",
+      "tts_text": "So it earns its place only on requests where the agent does better with it than without.",
+      "heard": "So it earns its place only on requests where the agent does better with it than without.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 0,
+      "file": "audio/s03_00.wav",
+      "clip_sha": "3266415a3773e1e7",
+      "text": "We can't assume that it does.",
+      "tts_text": "We can't assume that it does.",
+      "heard": "We can't assume that it does.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s03",
+      "i": 1,
+      "file": "audio/s03_01.wav",
+      "clip_sha": "c3beb11035d6fa34",
+      "text": "One study from twenty twenty-six ran the same eighty-seven tasks with skills and without.",
+      "tts_text": "One study from twenty twenty-six ran the same eighty-seven tasks with skills and without.",
+      "heard": "One study from 2026 ran the same 87 tasks with skills and without.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s03",
+      "i": 2,
+      "file": "audio/s03_02.wav",
+      "clip_sha": "0abde3153c57fb2e",
+      "text": "Skills written with care raised the share of tasks completed by about seventeen percentage points, on average.",
+      "tts_text": "Skills written with care raised the share of tasks completed by about seventeen percentage points, on average.",
+      "heard": "Skills written with care raised the share of tasks completed by about 17 percentage points on average.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s03",
+      "i": 3,
+      "file": "audio/s03_03.wav",
+      "clip_sha": "d81c88ebf724b681",
+      "text": "Yet they made thirteen of the eighty-seven tasks worse.",
+      "tts_text": "Yet they made thirteen of the eighty-seven tasks worse.",
+      "heard": "Yet they made 13 of the 87 task's worst.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s03",
+      "i": 4,
+      "file": "audio/s03_04.wav",
+      "clip_sha": "ae20391ca76d130f",
+      "text": "And skills that the models wrote for themselves completed fewer tasks than no skills at all.",
+      "tts_text": "And skills that the models wrote for themselves completed fewer tasks than no skills at all.",
+      "heard": "and skills that the models wrote for themselves completed fewer tasks than no skills at all.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 0,
+      "file": "audio/s04_00.wav",
+      "clip_sha": "90028a0f1d2fa177",
+      "text": "The way to find out is a fair comparison.",
+      "tts_text": "The way to find out is a fair comparison.",
+      "heard": "The way to find out is a fair comparison.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 1,
+      "file": "audio/s04_01.wav",
+      "clip_sha": "b859baf67cb04869",
+      "text": "It keeps the same stimuli, the same graders and the same model, and changes one thing: whether the skill is installed.",
+      "tts_text": "It keeps the same stimuli, the same graders and the same model, and changes one thing: whether the skill is installed.",
+      "heard": "Keeps the same stimuli, the same graders and the same model, and changes one thing, whether the skill is installed.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "It",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s04",
+      "i": 2,
+      "file": "audio/s04_02.wav",
+      "clip_sha": "63325d3dd70b4752",
+      "text": "Here the baseline, the thing a result is compared against, is the run with no skill.",
+      "tts_text": "Here the baseline, the thing a result is compared against, is the run with no skill.",
+      "heard": "Here the baseline the thing a result is compared against is the run with no skill.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 0,
+      "file": "audio/s05_00.wav",
+      "clip_sha": "22d77fb96094674f",
+      "text": "For each stimulus, the comparison gives one of three answers.",
+      "tts_text": "For each stimulus, the comparison gives one of three answers.",
+      "heard": "For each stimulus, the comparison gives one of three answers.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 1,
+      "file": "audio/s05_01.wav",
+      "clip_sha": "b5769af01bae8d6a",
+      "text": "The skill helps: the stimulus fails without it, and passes with it.",
+      "tts_text": "The skill helps: the stimulus fails without it, and passes with it.",
+      "heard": "The skill helps the stimulus fails without it and passes with it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 2,
+      "file": "audio/s05_02.wav",
+      "clip_sha": "c5a42e84e1e6b45e",
+      "text": "The skill makes no difference: the model manages either way, so the skill isn't earning anything there.",
+      "tts_text": "The skill makes no difference: the model manages either way, so the skill isn't earning anything there.",
+      "heard": "The skill makes no difference, the model manages either way, so the skill isn't earning anything there.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 3,
+      "file": "audio/s05_03.wav",
+      "clip_sha": "10ddeb8461552c65",
+      "text": "Or the skill hurts: the stimulus passes without it, and fails with it.",
+      "tts_text": "Or the skill hurts: the stimulus passes without it, and fails with it.",
+      "heard": "or the skill hurts, the stimulus passes without it and fails with it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s05",
+      "i": 4,
+      "file": "audio/s05_04.wav",
+      "clip_sha": "0c95cc165ad07d64",
+      "text": "All three are worth knowing.",
+      "tts_text": "All three are worth knowing.",
+      "heard": "All three are worth knowing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 0,
+      "file": "audio/s06_00.wav",
+      "clip_sha": "3c18f5eab8c81e12",
+      "text": "That's the idea; here's the file that expresses it.",
+      "tts_text": "That's the idea; here's the file that expresses it.",
+      "heard": "That's the idea. Here's the file that expresses it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 1,
+      "file": "audio/s06_01.wav",
+      "clip_sha": "8848c810210c13d8",
+      "text": "An experiment file lists variants of an eval, and one command runs them all.",
+      "tts_text": "An experiment file lists variants of an [eval](/ˌivˈæl/), and one command runs them all.",
+      "heard": "An experiment file lists variants of an eval, and one command runs them all.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 2,
+      "file": "audio/s06_02.wav",
+      "clip_sha": "57be79ad227580fa",
+      "text": "Each variant is one version of the set-up being compared: the same eval, run with one setting changed.",
+      "tts_text": "Each variant is one version of the set-up being compared: the same [eval](/ˌivˈæl/), run with one setting changed.",
+      "heard": "Each variant is one version of the setup being compared. The same eval run with one setting changed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 3,
+      "file": "audio/s06_03.wav",
+      "clip_sha": "1fec12268d9473ae",
+      "text": "Our practice folder came with one, for comparing with and without the skill.",
+      "tts_text": "Our practice folder came with one, for comparing with and without the skill.",
+      "heard": "A practice folder came with one for comparing with and without the skill.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Our",
+          "heard": "A",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s06",
+      "i": 4,
+      "file": "audio/s06_04.wav",
+      "clip_sha": "5f15f4ca45723e47",
+      "text": "Its evals line names the eval file to run: the changelog eval, whose stimuli and graders are used unchanged in every variant.",
+      "tts_text": "Its [evals](/ˌivˈælz/) line names the [eval](/ˌivˈæl/) file to run: the changelog [eval](/ˌivˈæl/), whose stimuli and graders are used unchanged in every variant.",
+      "heard": "Cval's line names the eval file to run, the changelog eval, whose stimuli and graders are used unchanged in every variant.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 0,
+      "file": "audio/s07_00.wav",
+      "clip_sha": "d63efd63a4c880ec",
+      "text": "Next, the vary line lists the settings that variants are allowed to differ in.",
+      "tts_text": "Next, the vary line lists the settings that variants are allowed to differ in.",
+      "heard": "Next, the very line lists the settings that variants are allowed to differ in.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s07",
+      "i": 1,
+      "file": "audio/s07_01.wav",
+      "clip_sha": "2b095eae5e765396",
+      "text": "Each is written as a path into the eval's settings: one for the list of skills in the agent environment, and one for the model.",
+      "tts_text": "Each is written as a path into the [eval](/ˌivˈæl/)'s settings: one for the list of skills in the agent environment, and one for the model.",
+      "heard": "Each is written as a path into the EVAL settings, one for the list of skills in the agent environment, and one for the model.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "s",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 2,
+      "file": "audio/s07_02.wav",
+      "clip_sha": "97c4aa72f7c40bc4",
+      "text": "If a variant differed in anything else, Vally would refuse to run, and report experiment drift.",
+      "tts_text": "If a variant differed in anything else, Valley would refuse to run, and report experiment drift.",
+      "heard": "For variant differed in anything else, Valley would refuse to run and report experiment drift.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "If a",
+          "heard": "For",
+          "similarity": 0.33
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 3,
+      "file": "audio/s07_03.wav",
+      "clip_sha": "2a52d670d6b6022f",
+      "text": "That's what keeps the comparison fair.",
+      "tts_text": "That's what keeps the comparison fair.",
+      "heard": "That's what keeps the comparison fair.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s07",
+      "i": 4,
+      "file": "audio/s07_04.wav",
+      "clip_sha": "257866db87188a7b",
+      "text": "Then the baseline line names the variant that the others are compared with.",
+      "tts_text": "Then the baseline line names the variant that the others are compared with.",
+      "heard": "Then the baseline line names the variant that the others are compared with.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 0,
+      "file": "audio/s08_00.wav",
+      "clip_sha": "f950c20530d3f347",
+      "text": "After that come the variants, each under a name we choose.",
+      "tts_text": "After that come the variants, each under a name we choose.",
+      "heard": "After that, come the variants, each under a name we choose.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 1,
+      "file": "audio/s08_01.wav",
+      "clip_sha": "80d4ebee427edc70",
+      "text": "The first, haiku no skill, sets its model under overrides, and overrides replace the eval file's defaults.",
+      "tts_text": "The first, haiku no skill, sets its model under overrides, and overrides replace the [eval](/ˌivˈæl/) file's defaults.",
+      "heard": "The first haiku no skill sets its model under overrides and overrides replace the eval files defaults.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 2,
+      "file": "audio/s08_02.wav",
+      "clip_sha": "020b2511d9b76088",
+      "text": "Its list of skills is empty, so no skill is installed.",
+      "tts_text": "Its list of skills is empty, so no skill is installed.",
+      "heard": "Its list of skills is empty, so no skill is installed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 3,
+      "file": "audio/s08_03.wav",
+      "clip_sha": "cd7366a91a1f33aa",
+      "text": "Haiku with skill keeps the same model, and installs the changelog entry skill, as the eval file does.",
+      "tts_text": "Haiku with skill keeps the same model, and installs the changelog entry skill, as the [eval](/ˌivˈæl/) file does.",
+      "heard": "Iku with skill keeps the same model and installs the changelug entry skill as the EVAL file does.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Haiku",
+          "heard": "Iku",
+          "similarity": 0.57
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s08",
+      "i": 4,
+      "file": "audio/s08_04.wav",
+      "clip_sha": "3fc8747775493d13",
+      "text": "Two more variants do the same for terra.",
+      "tts_text": "Two more variants do the same for terra.",
+      "heard": "Two more variants do the same for Terra.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s08",
+      "i": 5,
+      "file": "audio/s08_05.wav",
+      "clip_sha": "287c6e4391757d5d",
+      "text": "So an experiment sets the model in the file, and not with the dash dash model flag.",
+      "tts_text": "So an experiment sets the model in the file, and not with the dash dash model flag.",
+      "heard": "So an experiment sets the model in the file and not with the dash dash model flag.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 0,
+      "file": "audio/s09_00.wav",
+      "clip_sha": "f6bcda1214d4681b",
+      "text": "The command is vally experiment run, followed by the experiment file.",
+      "tts_text": "The command is valley experiment run, followed by the experiment file.",
+      "heard": "The command is Valley Experiment Run, followed by the experiment file.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 1,
+      "file": "audio/s09_01.wav",
+      "clip_sha": "69bde96c5d910721",
+      "text": "Adding dash dash dry run makes it print the plan, one block per variant, without starting an agent.",
+      "tts_text": "Adding dash dash dry run makes it print the plan, one block per variant, without starting an agent.",
+      "heard": "Adding dash dash dry run makes it print the plan one block per variant without starting an agent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 2,
+      "file": "audio/s09_02.wav",
+      "clip_sha": "89ac0eff09ff054f",
+      "text": "That's the experiment's version of lint.",
+      "tts_text": "That's the experiment's version of lint.",
+      "heard": "That's the experiment's version of Lint.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s09",
+      "i": 3,
+      "file": "audio/s09_03.wav",
+      "clip_sha": "1933664c4551939e",
+      "text": "For the real run, it takes dash dash workers and dash dash output dir, as vally eval does.",
+      "tts_text": "For the real run, it takes dash dash workers and dash dash output dur, as valley [eval](/ˌivˈæl/) does.",
+      "heard": "For the real run it takes Dash Dash workers and Dash Dash output door as Valley Evaldas.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "output dir",
+          "heard": "door",
+          "similarity": 0.67
+        },
+        {
+          "kind": "different",
+          "expected": "eval does",
+          "heard": "Evaldas",
+          "similarity": 0.71
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 0,
+      "file": "audio/s10_00.wav",
+      "clip_sha": "3ef7318384ac5d98",
+      "text": "When the run finishes, it prints a table with one column per variant, and the baseline's column is labelled.",
+      "tts_text": "When the run finishes, it prints a table with one column per variant, and the baseline's column is labelled.",
+      "heard": "When the run finishes, it prints a table with one column per variant, and the baseline's column is labeled.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 1,
+      "file": "audio/s10_01.wav",
+      "clip_sha": "00eb5957e0c22375",
+      "text": "Its first row counts the stimuli that passed.",
+      "tts_text": "Its first row counts the stimuli that passed.",
+      "heard": "Its first row counts the stimuli that passed.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s10",
+      "i": 2,
+      "file": "audio/s10_02.wav",
+      "clip_sha": "17b6ac0f4d749e31",
+      "text": "Beneath that are each variant's total tokens over all its trials, and its trial time.",
+      "tts_text": "Beneath that are each variant's total tokens over all its trials, and its trial time.",
+      "heard": "Beneath that are each variance total tokens over all its trials and its trial time.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s10",
+      "i": 3,
+      "file": "audio/s10_03.wav",
+      "clip_sha": "68a9cb8a44a69c9a",
+      "text": "Above the table, it prints a block for each stimulus that failed, naming its variant, the stimulus, and the grader.",
+      "tts_text": "Above the table, it prints a block for each stimulus that failed, naming its variant, the stimulus, and the grader.",
+      "heard": "Above the table it prints a block for each stimulus that failed, naming its variant the stimulus and the greater.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s11",
+      "i": 0,
+      "file": "audio/s11_00.wav",
+      "clip_sha": "e6406d2a0e984083",
+      "text": "The run's folder gets one subfolder per variant, named after it.",
+      "tts_text": "The run's folder gets one subfolder per variant, named after it.",
+      "heard": "The runs folder gets one subfolder per variant, named after it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 1,
+      "file": "audio/s11_01.wav",
+      "clip_sha": "d5d84489b27ff78e",
+      "text": "Each has its own results dot jsonl, and a folder for the eval, laid out like the ones we already know.",
+      "tts_text": "Each has its own results dot jay-son-ell, and a folder for the [eval](/ˌivˈæl/), laid out like the ones we already know.",
+      "heard": "Each has its own results.jsono and a folder for the eval, laid out like the ones we already know.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "results dot jsonl",
+          "heard": "results.jsono",
+          "similarity": 0.65
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s11",
+      "i": 2,
+      "file": "audio/s11_02.wav",
+      "clip_sha": "eb9e9b1d0bad5194",
+      "text": "There's also one report for the whole experiment, report dot md, with a heading and a table for each variant.",
+      "tts_text": "There's also one report for the whole experiment, report dot md, with a heading and a table for each variant.",
+      "heard": "There's also one report for the whole experiment, report.md, with a heading and a table for each variant.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s11",
+      "i": 3,
+      "file": "audio/s11_03.wav",
+      "clip_sha": "6c2ec9ae8ed68b74",
+      "text": "An experiment writes it in place of a single eval's report.",
+      "tts_text": "An experiment writes it in place of a single [eval](/ˌivˈæl/)'s report.",
+      "heard": "An experiment writes it in place of a single EVALSE report.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "eval s",
+          "heard": "EVALSE",
+          "similarity": 0.57
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 0,
+      "file": "audio/s12_00.wav",
+      "clip_sha": "43c2b64e24b9e7e6",
+      "text": "That's how it works; now let's run it.",
+      "tts_text": "That's how it works; now let's run it.",
+      "heard": "That's how it works now let's run it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 1,
+      "file": "audio/s12_01.wav",
+      "clip_sha": "3b1fd5f3b7cb2c86",
+      "text": "The changelog eval's stimuli are the typo fix with no pull request number, the refactor, and the security fix.",
+      "tts_text": "The changelog [eval](/ˌivˈæl/)'s stimuli are the typo fix with no pull request number, the refactor, and the security fix.",
+      "heard": "The changelog EVAL stimuli are the type O fix with no pull request number, the refactor, and the security fix.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "missing",
+          "expected": "s",
+          "heard": "",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s12",
+      "i": 2,
+      "file": "audio/s12_02.wav",
+      "clip_sha": "cd293a72a37623b0",
+      "text": "Then come the two changes in one pull request, and the changelog with no Unreleased section.",
+      "tts_text": "Then come the two changes in one pull request, and the changelog with no Unreleased section.",
+      "heard": "Then come the two changes in one pull request and the changelog with no unreleased section.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 3,
+      "file": "audio/s12_03.wav",
+      "clip_sha": "61569c184ed13980",
+      "text": "Which of them would you expect a model to get right with no skill at all?",
+      "tts_text": "Which of them would you expect a model to get right with no skill at all?",
+      "heard": "Which of them would you expect a model to get right with no skill at all?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s12",
+      "i": 4,
+      "file": "audio/s12_04.wav",
+      "clip_sha": "b749f7ec6a23fa0f",
+      "text": "If you tried it yourself, here's what you'd see.",
+      "tts_text": "If you tried it yourself, here's what you'd see.",
+      "heard": "If you tried it yourself, here's what you'd see.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 0,
+      "file": "audio/s13_00.wav",
+      "clip_sha": "210cc5e0f3183f97",
+      "text": "Our experiment file already names the two models we use, so nothing needs editing.",
+      "tts_text": "Our experiment file already names the two models we use, so nothing needs editing.",
+      "heard": "Our experiment file already names the two models we use, so nothing needs editing.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 1,
+      "file": "audio/s13_01.wav",
+      "clip_sha": "4d105f95acb7cc92",
+      "text": "First comes the dry run, which checks the plan and starts no agent.",
+      "tts_text": "First comes the dry run, which checks the plan and starts no agent.",
+      "heard": "First comes the dry run, which checks the plan and starts no agent.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s13",
+      "i": 2,
+      "file": "audio/s13_02.wav",
+      "clip_sha": "2dd1db7f68af4c4f",
+      "text": "It prints a block for each of the four variants, naming its model; the screen holds the last of them.",
+      "tts_text": "It prints a block for each of the four variants, naming its model; the screen holds the last of them.",
+      "heard": "It prints a block for each of the four variants, naming its model. The screen holds the last of them.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 0,
+      "file": "audio/s14_00.wav",
+      "clip_sha": "049394cb6460c411",
+      "text": "Now the real run, with two workers and a folder for the results.",
+      "tts_text": "Now the real run, with two workers and a folder for the results.",
+      "heard": "Now the real run, with two workers and a folder for the results.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 1,
+      "file": "audio/s14_01.wav",
+      "clip_sha": "aa02fa05876a873b",
+      "text": "It spends twenty short agent runs: each of the four variants runs the five stimuli once.",
+      "tts_text": "It spends twenty short agent runs: each of the four variants runs the five stimuli once.",
+      "heard": "It spends 20 short agent runs, each of the four variants runs the five stimuli once.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s14",
+      "i": 2,
+      "file": "audio/s14_02.wav",
+      "clip_sha": "c11b2fe82101c125",
+      "text": "What we're after is the table at the end.",
+      "tts_text": "What we're after is the table at the end.",
+      "heard": "What we're after is the table at the end.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s14",
+      "i": 3,
+      "file": "audio/s14_03.wav",
+      "clip_sha": "e8407669dc527267",
+      "text": "About a minute and a half later, the table is there, with the last of the failed stimuli above it.",
+      "tts_text": "About a minute and a half later, the table is there, with the last of the failed stimuli above it.",
+      "heard": "About a minute and a half later, the table is there, with the last of the failed stimuli above it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 0,
+      "file": "audio/s15_00.wav",
+      "clip_sha": "0b09ceca13be0e91",
+      "text": "Here's that table again, as a slide.",
+      "tts_text": "Here's that table again, as a slide.",
+      "heard": "Here's that table again as a slide.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 1,
+      "file": "audio/s15_01.wav",
+      "clip_sha": "f4d2bdf478d2c2c7",
+      "text": "With no skill, haiku passes two of the five stimuli, and terra passes three.",
+      "tts_text": "With no skill, haiku passes two of the five stimuli, and terra passes three.",
+      "heard": "With no skill, Hiku passes two of the five stimuli, and Terra passes three.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s15",
+      "i": 2,
+      "file": "audio/s15_02.wav",
+      "clip_sha": "d6702dfa73bc8c7b",
+      "text": "With the skill, each passes all five.",
+      "tts_text": "With the skill, each passes all five.",
+      "heard": "With the skill, each passes all five.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 0,
+      "file": "audio/s16_00.wav",
+      "clip_sha": "67e306475205a22f",
+      "text": "Now for the blocks above the table.",
+      "tts_text": "Now for the blocks above the table.",
+      "heard": "Now for the blocks above the table.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 1,
+      "file": "audio/s16_01.wav",
+      "clip_sha": "c5f0b22b2ce32d22",
+      "text": "Our run printed five, and every one is in a no-skill variant.",
+      "tts_text": "Our run printed five, and every one is in a no-skill variant.",
+      "heard": "A run printed 5 and everyone is in a no skill variant.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "Our",
+          "heard": "A",
+          "similarity": 0.0
+        }
+      ],
+      "same_sound_spelled_differently": 3
+    },
+    {
+      "scene": "s16",
+      "i": 2,
+      "file": "audio/s16_02.wav",
+      "clip_sha": "930d0412130f4603",
+      "text": "Without the skill, both models wrote an entry for the refactor, where nothing should be added.",
+      "tts_text": "Without the skill, both models wrote an entry for the refactor, where nothing should be added.",
+      "heard": "Without the skill, both models wrote an entry for the refactor, where nothing should be added.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 3,
+      "file": "audio/s16_03.wav",
+      "clip_sha": "d0ba1a9ddfce44de",
+      "text": "Both also filed the security fix under Fixed, when it belongs under Security.",
+      "tts_text": "Both also filed the security fix under Fixed, when it belongs under Security.",
+      "heard": "Both also filed the security fix under fixed when it belongs under security.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s16",
+      "i": 4,
+      "file": "audio/s16_04.wav",
+      "clip_sha": "a86940a5256489ca",
+      "text": "Haiku, with no skill, also failed the changelog with no Unreleased section.",
+      "tts_text": "Haiku, with no skill, also failed the changelog with no Unreleased section.",
+      "heard": "Haiku with no skill also failed the changelog with no unreleased section.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 0,
+      "file": "audio/s17_00.wav",
+      "clip_sha": "90a2e465c3b56ace",
+      "text": "The typo fix is where a model once made up a pull request number, so let's read what one wrote for it with no skill.",
+      "tts_text": "The typo fix is where a model once made up a pull request number, so let's read what one wrote for it with no skill.",
+      "heard": "The typo fix is where a model once made up a pull request number, so let's read what one wrote for it with no skill.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 1,
+      "file": "audio/s17_01.wav",
+      "clip_sha": "5f9bdf43b7ac2871",
+      "text": "As before, the run's folder is named with its time, and we change into it.",
+      "tts_text": "As before, the run's folder is named with its time, and we change into it.",
+      "heard": "As before, the runs folder is named with its time, and we change into it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 2,
+      "file": "audio/s17_02.wav",
+      "clip_sha": "e3278c5de6bcb291",
+      "text": "Each variant's folder is named after the variant, so we go into terra no skill, then the eval, then the typo fix stimulus.",
+      "tts_text": "Each variant's folder is named after the variant, so we go into terra no skill, then the [eval](/ˌivˈæl/), then the typo fix stimulus.",
+      "heard": "Each variance folder is named after the variant, so we go into Terra No Skill, then the EVAL, then the Type-O Fix stimulus.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s17",
+      "i": 3,
+      "file": "audio/s17_03.wav",
+      "clip_sha": "a9b76d07a96deda0",
+      "text": "Here's the patch from that model's one trial.",
+      "tts_text": "Here's the patch from that model's one trial.",
+      "heard": "Here's the patch from that model's one trial.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s17",
+      "i": 4,
+      "file": "audio/s17_04.wav",
+      "clip_sha": "ac196b3e8843ba7b",
+      "text": "It adds an entry for the typo, and the entry ends with no pull request number.",
+      "tts_text": "It adds an entry for the typo, and the entry ends with no pull request number.",
+      "heard": "It adds an entry for the typo, and the entry ends with no pull request number.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 0,
+      "file": "audio/s18_00.wav",
+      "clip_sha": "f665dc61d11aac87",
+      "text": "So, are the results better with the skill?",
+      "tts_text": "So, are the results better with the skill?",
+      "heard": "So are the results better with the skill?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 1,
+      "file": "audio/s18_01.wav",
+      "clip_sha": "34f7abb92d11b197",
+      "text": "In our run, yes: five of five with the skill on both models, against two of five for haiku and three of five for terra without.",
+      "tts_text": "In our run, yes: five of five with the skill on both models, against two of five for haiku and three of five for terra without.",
+      "heard": "In our run, yes, 5 of 5 with the skill on both models, against 2 of 5 for haiku and 3 of 5 for terra without.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 6
+    },
+    {
+      "scene": "s18",
+      "i": 2,
+      "file": "audio/s18_02.wav",
+      "clip_sha": "de24efdf9bfe2b97",
+      "text": "The skill earns its place on the refactor and the security fix.",
+      "tts_text": "The skill earns its place on the refactor and the security fix.",
+      "heard": "The skill earns its place on the roof actor and the security fix.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s18",
+      "i": 3,
+      "file": "audio/s18_03.wav",
+      "clip_sha": "d084b02482e8055f",
+      "text": "On the typo fix and the two changes, both models managed without it.",
+      "tts_text": "On the typo fix and the two changes, both models managed without it.",
+      "heard": "On the typo fix and the two changes, both models managed without it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s18",
+      "i": 4,
+      "file": "audio/s18_04.wav",
+      "clip_sha": "97c6b3308e3d8fc0",
+      "text": "The changelog with no Unreleased section split them: terra handled it alone, and haiku didn't.",
+      "tts_text": "The changelog with no Unreleased section split them: terra handled it alone, and haiku didn't.",
+      "heard": "The changelog with no unreleased sections split them, Terra handled it alone, and Haiku didn't.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s19",
+      "i": 0,
+      "file": "audio/s19_00.wav",
+      "clip_sha": "e5d522bc70c3c759",
+      "text": "Now, back to that patch of the typo fix.",
+      "tts_text": "Now, back to that patch of the typo fix.",
+      "heard": "Now back to that patch of the typo fix.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 1,
+      "file": "audio/s19_01.wav",
+      "clip_sha": "92a0f9f46329edeb",
+      "text": "With the first-draft skill, this same model ended its entry with a made-up pull request number, in five trials of five.",
+      "tts_text": "With the first-draft skill, this same model ended its entry with a made-up pull request number, in five trials of five.",
+      "heard": "With the first draft skill, this same model ended its entry with a made-up pull request number in five trials of five.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s19",
+      "i": 2,
+      "file": "audio/s19_02.wav",
+      "clip_sha": "3d420b20038130cd",
+      "text": "With no skill installed, it made nothing up in its one trial, and neither did the other model.",
+      "tts_text": "With no skill installed, it made nothing up in its one trial, and neither did the other model.",
+      "heard": "With no skill installed, it made nothing up in its one trial and neither did the other model.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 3,
+      "file": "audio/s19_03.wav",
+      "clip_sha": "0792b0d259ba4b73",
+      "text": "So the made-up number wasn't that model's own weakness.",
+      "tts_text": "So the made-up number wasn't that model's own weakness.",
+      "heard": "So the made-up number wasn't that model's own weakness.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 4,
+      "file": "audio/s19_04.wav",
+      "clip_sha": "e80f1dc3537982f4",
+      "text": "Our first draft caused it.",
+      "tts_text": "Our first draft caused it.",
+      "heard": "Our first draft caused it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s19",
+      "i": 5,
+      "file": "audio/s19_05.wav",
+      "clip_sha": "fc545ba4bbd40b0a",
+      "text": "It said to reference the pull request, with no word on what to do when there is none, and that pushed a model into making one up.",
+      "tts_text": "It said to reference the pull request, with no word on what to do when there is none, and that pushed a model into making one up.",
+      "heard": "It said to reference the pull request, with no word on what to do when there is none, and that pushed a model into making one up.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 0,
+      "file": "audio/s20_00.wav",
+      "clip_sha": "f0cab36f8efae6f0",
+      "text": "That's the third kind of answer: the first draft made this result worse than no skill at all.",
+      "tts_text": "That's the third kind of answer: the first draft made this result worse than no skill at all.",
+      "heard": "That's the third kind of answer. The first draft made this result worse than no skill at all.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 1,
+      "file": "audio/s20_01.wav",
+      "clip_sha": "e4cfc7accfe14bdd",
+      "text": "We fixed it earlier, without knowing its cause.",
+      "tts_text": "We fixed it earlier, without knowing its cause.",
+      "heard": "We fixed it earlier without knowing its cause.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 2,
+      "file": "audio/s20_02.wav",
+      "clip_sha": "ab3bed6306c8cd20",
+      "text": "It took a comparison with no skill to show that cause.",
+      "tts_text": "It took a comparison with no skill to show that cause.",
+      "heard": "It took a comparison with no skill to show that cause.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s20",
+      "i": 3,
+      "file": "audio/s20_03.wav",
+      "clip_sha": "7dd5ab370f7b723b",
+      "text": "That's a good reason to run one before trusting any skill, and again after any large edit.",
+      "tts_text": "That's a good reason to run one before trusting any skill, and again after any large edit.",
+      "heard": "That's a good reason to run one before trusting any skill, and again after any large edit.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 0,
+      "file": "audio/s21_00.wav",
+      "clip_sha": "7e3f65fe509e1257",
+      "text": "Then there are the tokens.",
+      "tts_text": "Then there are the tokens.",
+      "heard": "Then there are the tokens.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 1,
+      "file": "audio/s21_01.wav",
+      "clip_sha": "81bf57587daecc1f",
+      "text": "A skill adds text for the model to read.",
+      "tts_text": "A skill adds text for the model to read.",
+      "heard": "A skill adds text for the model to read.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 2,
+      "file": "audio/s21_02.wav",
+      "clip_sha": "7ecd80038c01e4ea",
+      "text": "Yet in our run, both models used fewer tokens with it than without.",
+      "tts_text": "Yet in our run, both models used fewer tokens with it than without.",
+      "heard": "Yet in our run, both models used fewer tokens with it than without.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s21",
+      "i": 3,
+      "file": "audio/s21_03.wav",
+      "clip_sha": "c451d42f8cd9ac69",
+      "text": "On haiku, that's about three hundred thirty thousand with the skill, against about three hundred seventy-five thousand without.",
+      "tts_text": "On haiku, that's about three hundred thirty thousand with the skill, against about three hundred seventy-five thousand without.",
+      "heard": "On Hiku, that's about 330,000 with the skill, against about 375,000 without.",
+      "ok": false,
+      "mismatches": [
+        {
+          "kind": "different",
+          "expected": "haiku",
+          "heard": "Hiku",
+          "similarity": 0.75
+        }
+      ],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s21",
+      "i": 4,
+      "file": "audio/s21_04.wav",
+      "clip_sha": "236b160c5cbda2ad",
+      "text": "On terra, it's about two hundred eighty-two thousand, against about two hundred ninety thousand.",
+      "tts_text": "On terra, it's about two hundred eighty-two thousand, against about two hundred ninety thousand.",
+      "heard": "On Terra, it's about 282,000 against about 290,000.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 2
+    },
+    {
+      "scene": "s21",
+      "i": 5,
+      "file": "audio/s21_05.wav",
+      "clip_sha": "4ad58498ffb30087",
+      "text": "Each figure covers five trials: too few to say the skill saves tokens, but enough to see that it doesn't cost many.",
+      "tts_text": "Each figure covers five trials: too few to say the skill saves tokens, but enough to see that it doesn't cost many.",
+      "heard": "Each figure covers five trials, too few to say the skill saves tokens, but enough to see that it doesn't cost many.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 0,
+      "file": "audio/s22_00.wav",
+      "clip_sha": "1feb138e9fb050f4",
+      "text": "One caution about those ticks and crosses: each is one trial of one stimulus, so small differences deserve care.",
+      "tts_text": "One caution about those ticks and crosses: each is one trial of one stimulus, so small differences deserve care.",
+      "heard": "One caution about those ticks and crosses, each is one trial of one stimulus, so small differences deserve care.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 1,
+      "file": "audio/s22_01.wav",
+      "clip_sha": "65bca21617b78411",
+      "text": "When a stimulus fails without the skill on every model, that's solid evidence.",
+      "tts_text": "When a stimulus fails without the skill on every model, that's solid evidence.",
+      "heard": "When a stimulus fails without the skill on every model, that's solid evidence.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s22",
+      "i": 2,
+      "file": "audio/s22_02.wav",
+      "clip_sha": "f65364e550f36557",
+      "text": "When a single cell differs, as haiku's did on the changelog with no Unreleased section, that's a reason to run more trials.",
+      "tts_text": "When a single cell differs, as haiku's did on the changelog with no Unreleased section, that's a reason to run more trials.",
+      "heard": "When a single cell differs, as haikus did on the changelog with no unreleased section, that's a reason to run more trials.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 0,
+      "file": "audio/s23_00.wav",
+      "clip_sha": "3eed8b5510123b52",
+      "text": "Before you go on: what three answers can a with-and-without comparison give for a stimulus?",
+      "tts_text": "Before you go on: what three answers can a with-and-without comparison give for a stimulus?",
+      "heard": "Before you go on, what three answers can a with and without comparison give for a stimulus?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 1
+    },
+    {
+      "scene": "s23",
+      "i": 1,
+      "file": "audio/s23_01.wav",
+      "clip_sha": "b5769af01bae8d6a",
+      "text": "The skill helps: the stimulus fails without it, and passes with it.",
+      "tts_text": "The skill helps: the stimulus fails without it, and passes with it.",
+      "heard": "The skill helps the stimulus fails without it and passes with it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 2,
+      "file": "audio/s23_02.wav",
+      "clip_sha": "ef8900a27e203e3e",
+      "text": "The skill makes no difference: the result is the same either way.",
+      "tts_text": "The skill makes no difference: the result is the same either way.",
+      "heard": "The skill makes no difference, the result is the same either way.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s23",
+      "i": 3,
+      "file": "audio/s23_03.wav",
+      "clip_sha": "10ddeb8461552c65",
+      "text": "Or the skill hurts: the stimulus passes without it, and fails with it.",
+      "tts_text": "Or the skill hurts: the stimulus passes without it, and fails with it.",
+      "heard": "or the skill hurts, the stimulus passes without it and fails with it.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 0,
+      "file": "audio/s24_00.wav",
+      "clip_sha": "ae275427053736d3",
+      "text": "You can now say where a skill helps, where it makes no difference, and what it changes in tokens.",
+      "tts_text": "You can now say where a skill helps, where it makes no difference, and what it changes in tokens.",
+      "heard": "You can now say where a skill helps, where it makes no difference, and what it changes in tokens.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 1,
+      "file": "audio/s24_01.wav",
+      "clip_sha": "aaa4e2700279da6a",
+      "text": "But every stimulus so far was one request.",
+      "tts_text": "But every stimulus so far was one request.",
+      "heard": "But every stimulus so far was one request.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 2,
+      "file": "audio/s24_02.wav",
+      "clip_sha": "899e02db01cd4d64",
+      "text": "Real use goes on: someone asks for a follow-up, or changes their mind.",
+      "tts_text": "Real use goes on: someone asks for a follow-up, or changes their mind.",
+      "heard": "Real use goes on, someone asks for a follow-up or changes their mind.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 3,
+      "file": "audio/s24_03.wav",
+      "clip_sha": "b9b8acb4873c80ba",
+      "text": "Does the skill still hold?",
+      "tts_text": "Does the skill still hold?",
+      "heard": "Does the skill still hold?",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 4,
+      "file": "audio/s24_04.wav",
+      "clip_sha": "c0fa80d6856b024e",
+      "text": "That's the next lesson.",
+      "tts_text": "That's the next lesson.",
+      "heard": "That's the next lesson.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    },
+    {
+      "scene": "s24",
+      "i": 5,
+      "file": "audio/s24_05.wav",
+      "clip_sha": "1ebfb40727709c44",
+      "text": "The exercises on the lesson page are worth doing first.",
+      "tts_text": "The exercises on the lesson page are worth doing first.",
+      "heard": "The exercises on the lesson page are worth doing first.",
+      "ok": true,
+      "mismatches": [],
+      "same_sound_spelled_differently": 0
+    }
+  ],
+  "by_word": [
+    {
+      "word": "s",
+      "sentences": 3,
+      "heard": [
+        "EVALSE"
+      ],
+      "of": 3,
+      "share": 1.0
+    },
+    {
+      "word": "dir",
+      "sentences": 1,
+      "heard": [
+        "door"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "jsonl",
+      "sentences": 1,
+      "heard": [
+        "results.jsono"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "output",
+      "sentences": 1,
+      "heard": [
+        "door"
+      ],
+      "of": 1,
+      "share": 1.0
+    },
+    {
+      "word": "If",
+      "sentences": 1,
+      "heard": [
+        "For"
+      ],
+      "of": 2,
+      "share": 0.5
+    },
+    {
+      "word": "dot",
+      "sentences": 1,
+      "heard": [
+        "results.jsono"
+      ],
+      "of": 2,
+      "share": 0.5
+    },
+    {
+      "word": "Haiku",
+      "sentences": 3,
+      "heard": [
+        "Iku",
+        "Hiku"
+      ],
+      "of": 8,
+      "share": 0.38
+    },
+    {
+      "word": "results",
+      "sentences": 1,
+      "heard": [
+        "results.jsono"
+      ],
+      "of": 3,
+      "share": 0.33
+    },
+    {
+      "word": "Our",
+      "sentences": 2,
+      "heard": [
+        "A"
+      ],
+      "of": 7,
+      "share": 0.29
+    },
+    {
+      "word": "does",
+      "sentences": 1,
+      "heard": [
+        "Evaldas"
+      ],
+      "of": 5,
+      "share": 0.2
+    },
+    {
+      "word": "eval",
+      "sentences": 2,
+      "heard": [
+        "Evaldas",
+        "EVALSE"
+      ],
+      "of": 11,
+      "share": 0.18
+    },
+    {
+      "word": "It",
+      "sentences": 1,
+      "heard": [],
+      "of": 38,
+      "share": 0.03
+    },
+    {
+      "word": "a",
+      "sentences": 1,
+      "heard": [
+        "For"
+      ],
+      "of": 30,
+      "share": 0.03
+    }
+  ],
+  "limits": "Catches dropped, garbled and unknown words. Cannot catch a word said in the wrong tense (read/read, live/live) or a real word said in a valid but unwanted way: the transcriber writes the same spelling either way. A mismatch can also be the transcriber's own error; listen before changing anything.",
+  "summary": {
+    "sentences": 109,
+    "mismatched": 12,
+    "transcribed": 109,
+    "reused": 0,
+    "seconds_per_sentence": 0.113
+  }
+}

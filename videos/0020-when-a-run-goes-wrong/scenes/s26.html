@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Both agents say they did it</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.pair{align-items:stretch}.card > .code.dark{font-size:28px;line-height:1.45;padding:22px 26px}.card .who{font-size:30px}.annotated .code.dark.evid{font-size:28px;padding:18px 26px}.callout{font-size:30px}.stage{gap:22px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">A grader that fails good work</div>
+  <h2 class="scene-title">Both agents say they did it</h2>
+  <div class="stage">
+<div class="cols pair">
+    <div class="card" data-concept="h" data-rep="card">
+        <div class="who"><span class="mono">claude-haiku-4.5</span></div>
+        <pre class="code dark" data-lang="text"><code><span>5 turns · 4 tools · skill×1 · 75.1k tok</span>
+
+<span>agent output</span>
+<span>Done! Added the typo fix to the</span>
+<span>CHANGELOG under the Fixed category in</span>
+<span>the Unreleased section.</span></code></pre>
+      </div>
+    <div class="card" data-concept="t" data-rep="card">
+        <div class="who"><span class="mono">gpt-5.6-terra</span></div>
+        <pre class="code dark" data-lang="text"><code><span>5 turns · 5 tools · skill×1 · 61.0k tok</span>
+
+<span>agent output</span>
+<span>Added an **Unreleased / Fixed**</span>
+<span>changelog entry for the corrected `notes</span>
+<span>add` title help text.</span></code></pre>
+      </div>
+  </div>
+  <div class="annotated">
+    <pre class="code dark evid" data-lang="text"><code><span data-concept="ev" data-rep="code"><span>✘ adds-an-entry</span></span><span>  Pattern /^\+.*notes add/ not found in workspace diff</span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="ev">the grader, on both</p></aside>
+  </div>
+  <p class="note">what <span class="mono">--verbose</span> printed under each failing trial · from our run</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "h",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "t",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "ev",
+  "at": "3~grader",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

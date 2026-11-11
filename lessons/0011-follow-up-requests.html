@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 11: Follow-up requests — Vally &amp; Agent Evals</title>
+  <!-- Webfonts. Georgia and system fallbacks keep the page readable offline. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Space+Grotesk:wght@500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <!-- Apply the stored theme before first paint so dark mode never flashes white -->
+  <script>
+    try {
+      var t = localStorage.getItem('teach-me-theme');
+      if (t) document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" type="button" onclick="toggleTheme()" aria-label="Switch to dark mode">
+    <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+    <span class="theme-toggle-label">Dark</span>
+  </button>
+
+  <div class="lesson-header">
+    <div class="lesson-number">Lesson 11 of 26 · Vally &amp; Agent Evals</div>
+    <h1>Follow-up requests</h1>
+    <div class="lesson-meta">12 min · Show, with a three-turn stimulus graded turn by turn on both models, whether the skill's rules survive a follow-up, and fix what fades.</div>
+  </div>
+
+  <div class="lesson-video" hidden>
+    <video controls preload="metadata"></video>
+    <p class="lesson-video-caption">Video · <span class="lesson-video-length"></span> · this lesson, start to finish. Watch it, then do the checkpoint below yourself.</p>
+  </div>
+
+  <div class="warmup">
+    <p>Answer from memory before reading on.</p>
+    <ol>
+      <li>What does a diff grader read, and why does a pattern for added lines begin <code>(?m)^\+</code>?
+        <details class="answer"><summary>Show answer</summary><p>It reads the patch of what the agent changed, including unchanged lines around each change. <code>^\+</code> limits the pattern to lines the agent added, and <code>(?m)</code> lets <code>^</code> mean the start of any line.</p></details></li>
+      <li>In lesson 10, what was the baseline, and what did comparing against it show?
+        <details class="answer"><summary>Show answer</summary><p>The same stimuli and graders run with no skill installed. It showed where the skill helps, where it makes no difference, and that the first draft had caused the made-up pull request number.</p></details></li>
+    </ol>
+  </div>
+
+  <div class="lesson-question">
+    <p><strong>So far:</strong> On single requests, your skill loads when it should and beats no skill on both models.</p>
+    <p><strong>This lesson answers:</strong> Does the skill still hold when the conversation continues?</p>
+  </div>
+
+  <p class="drop-cap">Nobody uses an agent one request at a time. They ask for a changelog entry, then remember a second change, then a third. Every stimulus you have written starts a fresh conversation with a single request, which is the one situation real use rarely looks like. In a conversation the agent remembers what came before, and that memory is a new source of mistakes. This lesson tests a conversation of three requests, and finds a failure that no single request could have produced.</p>
+
+  <h2 id="what-changes" data-mode="think">What changes in a conversation</h2>
+
+  <p>Each request in a conversation is called a turn. When a conversation continues, the agent keeps two things from the earlier turns: the workspace as it left it, and its memory of what was said. Three things can then go wrong that cannot go wrong in a single request.</p>
+
+  <ul>
+    <li><strong>A rule fades.</strong> The skill was loaded at the start. Several turns later the model follows the pattern of its own recent work more than the rules.</li>
+    <li><strong>An earlier turn leaks into a later one.</strong> A detail from the previous request, such as a pull request number, is carried into a change it has nothing to do with.</li>
+    <li><strong>A later turn disturbs earlier work.</strong> While adding the third entry, the agent rewrites or drops the first.</li>
+  </ul>
+
+  <p>A grader that looks only at the final file cannot tell you which turn went wrong, and can miss the second kind of failure entirely. So a conversation is graded turn by turn: for each request, what did the agent change in response to that request alone?</p>
+
+  <p>One limit to know before you design a conversation. Vally sends the follow-up requests you wrote, in order, whatever the agent replied. It does not play a user who reacts, and its documentation describes no way to make it. So you can test how the skill copes with a script of requests, and not with a user who answers back.</p>
+
+  <h2 id="turns-and-scoped-graders" data-mode="works">Turns, and graders scoped to a turn</h2>
+
+  <p>A stimulus can have <code>turns:</code> in place of <code>prompt:</code>. It is a list of requests. Vally sends the first, waits for the agent to finish, sends the second to the same session, and so on. The agent keeps its workspace and its memory throughout. One conversation is one trial.</p>
+
+  <p>A grader can then be limited to one turn by adding <code>turn:</code> and a number. Vally's documentation calls such a grader scoped to a turn. Turns are numbered from 0. A diff grader with <code>turn: 2</code> sees only what the agent changed during the third request. A grader with no <code>turn:</code> sees the whole conversation, as before.</p>
+
+  <figure>
+    <svg viewBox="0 0 640 250" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" role="img" aria-label="Three turns in a row, numbered 0, 1 and 2. Each turn has its own diff, and a grader scoped to that turn reads only that diff. A grader with no turn reads the diff of the whole conversation.">
+      <rect x="10" y="40" width="190" height="52" rx="3"/>
+      <rect x="225" y="40" width="190" height="52" rx="3"/>
+      <rect x="440" y="40" width="190" height="52" rx="3"/>
+      <path d="M200 66 L223 66 M215 60 L223 66 L215 72"/>
+      <path d="M415 66 L438 66 M430 60 L438 66 L430 72"/>
+      <path d="M105 92 L105 118 M99 110 L105 118 L111 110"/>
+      <path d="M320 92 L320 118 M314 110 L320 118 L326 110"/>
+      <path d="M535 92 L535 118 M529 110 L535 118 L541 110"/>
+      <rect x="10" y="120" width="190" height="44" rx="3" style="stroke: var(--accent)"/>
+      <rect x="225" y="120" width="190" height="44" rx="3" style="stroke: var(--accent)"/>
+      <rect x="440" y="120" width="190" height="44" rx="3" style="stroke: var(--accent)"/>
+      <path d="M10 196 L630 196" style="stroke-dasharray: 6 5"/>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: var(--ink-soft); stroke: none">
+        <text x="105" y="26" text-anchor="middle">TURN 0</text>
+        <text x="320" y="26" text-anchor="middle">TURN 1</text>
+        <text x="535" y="26" text-anchor="middle">TURN 2</text>
+        <text x="320" y="230" text-anchor="middle">no turn: the whole conversation's diff</text>
+      </g>
+      <g style="font-family: var(--grotesk); font-size: 20px; fill: currentColor; stroke: none">
+        <text x="105" y="73" text-anchor="middle">first request</text>
+        <text x="320" y="73" text-anchor="middle">second request</text>
+        <text x="535" y="73" text-anchor="middle">third request</text>
+        <text x="105" y="149" text-anchor="middle">its own diff</text>
+        <text x="320" y="149" text-anchor="middle">its own diff</text>
+        <text x="535" y="149" text-anchor="middle">its own diff</text>
+      </g>
+    </svg>
+    <figcaption>Each turn's change is recorded separately. A grader with <code>turn:</code> reads one of the boxes in the second row. A grader without it reads everything below the dashed line.</figcaption>
+  </figure>
+
+  <p>Not every grader can be limited this way. The three diff graders can, and so can graders that read the agent's events, such as <code>skill-invocation</code>. A script grader cannot: it sees only the workspace as it is at the very end.</p>
+
+  <p>The starter folder has a conversation of three requests, each chosen to lean on a different rule of your skill. Here it is with the graders you will add.</p>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/conversation.eval.yaml (the stimulus)</div>
+<pre><code class="language-yaml">  - name: three-requests
+    turns:<span class="mark">1</span>
+      - |
+        PR 64 is merged: `notes delete` now asks for
+        confirmation before it deletes anything. Update
+        the changelog.
+      - |<span class="mark">2</span>
+        One more, PR 65: I renamed some internal helper
+        functions. Add that too.
+      - |<span class="mark">3</span>
+        I also fixed the exit code of `notes export` when
+        the disk is full. Record that as well.</code></pre>
+    </div>
+    <ol class="notes">
+      <li>A list of requests. Each <code>- |</code> starts one.</li>
+      <li>An internal change. By your skill's rule, the right response is to add nothing.</li>
+      <li>A fix with no pull request number, arriving just after two requests that had one.</li>
+    </ol>
+  </div>
+
+  <div class="annotated">
+    <div class="file-excerpt">
+      <div class="file-name">evals/conversation.eval.yaml (graders to add under the turns)</div>
+<pre><code class="language-yaml">    graders:
+      - type: diff-contains
+        name: first-adds-64
+        turn: 0<span class="mark">1</span>
+        config:
+          pattern: '(?m)^\+.*\(#64\)'
+      - type: diff-empty
+        name: second-adds-nothing
+        turn: 1<span class="mark">2</span>
+      - type: diff-contains
+        name: third-adds-entry
+        turn: 2
+        config:
+          value: "notes export"
+      - type: diff-not-contains
+        name: third-no-made-up-number
+        turn: 2<span class="mark">3</span>
+        config:
+          pattern: '(?m)^\+.*\(#\d+\)'
+      - type: diff-contains
+        name: first-entry-survives<span class="mark">4</span>
+        config:
+          pattern: '(?m)^\+.*\(#64\)'</code></pre>
+    </div>
+    <ol class="notes">
+      <li><code>turn:</code> sits beside <code>type</code> and <code>name</code>, not inside <code>config</code>. In the first turn the agent must add a line citing <code>(#64)</code>.</li>
+      <li>In the second turn it must change nothing.</li>
+      <li>In the third turn it must add no line that cites any pull request. The pattern is the one from lesson 5.</li>
+      <li>No <code>turn:</code>, so this reads the whole conversation: by the end, the first entry must still be there.</li>
+    </ol>
+  </div>
+
+  <p>Vally saves a diff for every turn of every trial, in a folder named <code>diffs</code> inside the run folder. The file names end with the trial and turn numbers, such as <code>trial-1__turn-2.diff</code>.</p>
+
+  <div class="quiz">
+    <div class="quiz-question">A conversation has three turns. A <code>diff-empty</code> grader has <code>turn: 1</code>. Which change does it look at?</div>
+    <ul class="quiz-options">
+      <li><button onclick="checkAnswer(this, false)">What the first request alone changed</button></li>
+      <li><button onclick="checkAnswer(this, true)">What the second request alone changed</button></li>
+      <li><button onclick="checkAnswer(this, false)">Everything changed by the first two</button></li>
+      <li><button onclick="checkAnswer(this, false)">Everything changed in the whole conversation</button></li>
+    </ul>
+    <div class="quiz-feedback correct">Right. Turns are numbered from 0, so <code>turn: 1</code> is the second request, and a scoped grader sees only that turn's own change.</div>
+    <div class="quiz-feedback incorrect">It looks at what the second request alone changed. Turns are numbered from 0, so <code>turn: 1</code> is the second, and a scoped grader sees only that turn's own change.</div>
+  </div>
+
+  <div class="source-citation">Sources: <a href="https://microsoft.github.io/vally/guides/writing-eval-specs/">Vally docs, Writing Eval Specs, Multi-turn conversations</a>; <a href="https://microsoft.github.io/vally/reference/eval-spec/">Eval Spec reference</a>. The saved per-turn diffs are from our run on 2026-11-10 with Vally 0.21.0.</div>
+
+  <h2 id="write-and-run" data-mode="use">Write and run a conversation</h2>
+
+  <p>You will add the graders, run the conversation three times on each model, read the diff of a turn that failed, add a rule to the skill, and run again. This is the rule, for step 6:</p>
+
+  <div class="file-excerpt">
+    <div class="file-name">skills/changelog-entry/SKILL.md (lines to add at the end)</div>
+<pre><code class="language-markdown">- Treat every request on its own. A pull request number
+  belongs only to the change it was given with. Never carry
+  one over from an earlier request.</code></pre>
+  </div>
+
+  <section class="checkpoint">
+    <h3>Three requests, graded one at a time</h3>
+    <ol class="steps">
+      <li><span class="goal">Goal: read the conversation.</span>
+        Open a terminal in <code>practice</code>.
+<pre><code class="language-bash">cat evals/conversation.eval.yaml</code></pre>
+        <p class="expect">You should see: one stimulus with three requests under <code>turns:</code>, and no graders.</p></li>
+
+      <li><span class="goal">Goal: add a grader for each turn. This edits one file.</span>
+        In <code>evals/conversation.eval.yaml</code>, add the graders shown above at the end of the stimulus, with <code>graders:</code> lined up under <code>turns:</code>.</li>
+
+      <li><span class="goal">Goal: catch mistakes before spending anything.</span>
+<pre><code class="language-bash">vally lint -e evals/conversation.eval.yaml</code></pre>
+        <p class="expect">You should see: the usual one warning and no errors.</p></li>
+
+      <li><span class="goal">Goal: run the conversation three times on each model. This spends six agent runs of three requests each, and takes about a minute.</span>
+<pre><code class="language-bash">vally eval -e evals/conversation.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 3 --workers 2 \
+  --output-dir results/lesson-11</code></pre>
+<pre class="output"><code>claude-haiku-4.5
+  FLAKY  three-requests  1 passed · 2 failed
+   ✘ third-no-made-up-number  1 passed · 2 failed</code></pre>
+        <p class="expect">You should see: a summary, and a block like this for any model that did not pass all three conversations. The grader's name tells you which turn failed and how. This is ours.</p></li>
+
+      <li><span class="goal">Goal: read what the failing turn changed.</span>
+        Find the run folder, move into it, print the diff of that turn, and come back. In our run the terminal named trials 1 and 2 of the first model. File names count from 0, so the second of those is <code>trial-1</code>, and the third turn is <code>turn-2</code>. The <code>*</code> stands for the start of the file's long name. Use your own folder, model, trial and turn. If none of yours failed, read any third turn.
+<pre><code class="language-bash">ls results/lesson-11</code></pre>
+<pre><code class="language-bash">cd results/lesson-11/2026-11-10T15-04-14-517Z
+cat diffs/*haiku-4.5__trial-1__turn-2.diff
+cd ../../..</code></pre>
+        <p class="expect">You should see: a short patch holding only what that one turn changed. Ours is shown after the checkpoint.</p></li>
+
+      <li><span class="goal">Goal: close the gap in the skill. This edits one file.</span>
+        Add the three lines shown above the checkpoint to the end of <code>skills/changelog-entry/SKILL.md</code>.</li>
+
+      <li><span class="goal">Goal: run the conversations again. This spends another six agent runs.</span>
+<pre><code class="language-bash">vally eval -e evals/conversation.eval.yaml \
+  --model claude-haiku-4.5,gpt-5.6-terra \
+  --runs 3 --workers 2 \
+  --output-dir results/lesson-11-after</code></pre>
+<pre class="output"><code>  eval          claude-haiku-4.5  gpt-5.6-terra
+  conversation  ✓ 1/1             ✓ 1/1</code></pre>
+        <p class="expect">You should see: your own summary. In ours, all six conversations passed.</p></li>
+    </ol>
+  </section>
+
+  <h2 id="what-the-conversation-showed" data-mode="think">What the conversation showed</h2>
+
+  <p>This is the line our failing turn added, under the Fixed heading:</p>
+
+<pre class="output"><code>+- Fix `notes export` exit code when disk is full (#65)</code></pre>
+
+  <p>Look closely at it. The third request gave no pull request number. The entry cites <code>(#65)</code>. That number is real: it belongs to the second request, the internal rename, which the agent had correctly left out of the changelog a moment before. The number was not invented. It leaked from one turn into the next, and attached itself to a different change.</p>
+
+  <p>This happened on the model that made up a number in a single request only once in every lesson so far, in lesson 3. In another of our conversations the same model cited <code>(#66)</code>, a number nobody gave. A test of single requests would have called that model nearly safe on this point. And a grader reading only the final file would have seen a tidy, well-formed entry with a plausible reference.</p>
+
+  <p>The fix was one more rule, and with it all six conversations passed. Two failures in three becoming none in three is, once again, a small sample.</p>
+
+  <p>There is something this lesson's graders did not check, and we are leaving it alone for now. In one of the other model's conversations, the first entry, a change in behaviour, was filed under Fixed. Whether that is the right category is a judgement about meaning, and so is the question lesson 4 left open: is an entry written for the people who use the tool? No pattern can decide either. The next lesson takes up the second.</p>
+
+  <div class="primary-source">
+    <p><a href="https://microsoft.github.io/vally/guides/writing-eval-specs/">Writing Eval Specs, Vally docs</a></p>
+    <p>Read the section "Multi-turn conversations". It is short, and it lists which graders can be limited to a turn.</p>
+  </div>
+
+  <section class="exercises">
+    <h2>Exercises</h2>
+    <ol>
+      <li>From memory, name the three ways a conversation can go wrong that a single request cannot.
+        <details class="answer"><summary>Show model answer</summary><p>A rule fades: later turns follow the pattern of recent work more than the skill. An earlier turn leaks into a later one: a detail is carried into a change it does not belong to. A later turn disturbs earlier work: something already done is rewritten or dropped.</p></details></li>
+      <li>Add a fourth request to the conversation: "Actually, PR 64 was reverted. Take that entry out." Write the grader that checks the fourth turn did what was asked.
+        <details class="answer"><summary>Show model answer</summary><p>A <code>diff-contains</code> grader with <code>turn: 3</code> and the pattern <code>'(?m)^-.*\(#64\)'</code>: in the fourth turn, a line citing <code>(#64)</code> was removed. The <code>-</code> in place of <code>\+</code> matches a removed line. You would also drop <code>first-entry-survives</code>, since the entry is now meant to be gone.</p></details></li>
+    </ol>
+  </section>
+
+  <nav class="course-map" data-current="11" data-root="../"></nav>
+
+  <footer class="next-steps">
+    <h2>What's Next</h2>
+    <p><strong>What you can do now:</strong> show, with a three-turn stimulus graded turn by turn on both models, whether the skill's rules survive a follow-up, and fix what fades.</p>
+    <p><strong>Up next:</strong> <a href="./0012-a-judge-for-what-code-cannot-check.html">A judge for what code cannot check</a>. Everything graded so far is structure that code can see. "Written for the people who use the tool" is not a pattern. How do you grade that?</p>
+    <a class="next-lesson" href="./0012-a-judge-for-what-code-cannot-check.html">Next lesson: A judge for what code cannot check <span aria-hidden="true">→</span></a>
+  </footer>
+
+  <script src="../assets/course.js"></script>
+  <script src="../assets/lesson.js"></script>
+</body>
+</html>

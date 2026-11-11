@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What it comes to in dollars</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.bill{font-size:34px}.bill th{font-size:28px}.bill td{padding-top:30px;padding-bottom:30px;font-family:var(--font-code)}.bill td.what{font-family:var(--font-body);font-weight:600}.bill td:nth-child(-n+3),.bill th{white-space:nowrap}.bill{font-size:32px}.bill td{padding-top:22px;padding-bottom:22px}.stage{gap:22px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the table says</div>
+  <h2 class="scene-title">What it comes to in dollars</h2>
+  <div class="stage">
+<table class="data-table full bill">
+    <thead><tr><th></th><th>Trials</th><th>AIU</th><th>In dollars</th></tr></thead>
+    <tbody>
+      <tr><td class="what"><span data-concept="r1" data-rep="cell">This experiment</span></td><td>60</td><td>90.51</td><td>$0.905</td></tr>
+      <tr><td class="what"><span data-concept="r2" data-rep="cell">A check after every edit</span></td><td>10</td><td>about 24</td><td>$0.24 an edit · $4.80 for twenty edits</td></tr>
+      <tr><td class="what"><span data-concept="r2b" data-rep="cell">The same check on haiku-low</span></td><td>5</td><td>about 1</td><td>$0.01 an edit</td></tr>
+      <tr><td class="what"><span data-concept="r3" data-rep="cell">Every stimulus, every night</span></td><td>30</td><td>about 71</td><td>about $21 for thirty nights, plus judge calls</td></tr>
+    </tbody>
+  </table>
+  <p class="note">$0.01 per AIU · rows two and four use our earlier runs’ average of about 2.4 AIU a trial on claude-haiku-4.5 and gpt-5.6-terra</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "r1",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r2",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "r2b",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "r3",
+  "at": "5",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

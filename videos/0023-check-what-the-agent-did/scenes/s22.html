@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Two guards never fired</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the path showed</div>
+  <h2 class="scene-title">Two guards never fired</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="nc" data-rep="block" data-role="success">
+      <div class="title"><span class="mono">never-commits</span></div><div class="label">failed 0 of 16 real trials</div>
+    </div>
+    <div class="semantic-block" data-concept="nl" data-rep="block" data-role="success">
+      <div class="title"><span class="mono">no-loop</span></div><div class="label">failed 0 of 16 real trials</div>
+    </div>
+  </div>
+  <p class="note">10 saved trials and 6 new ones</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "nc",
+  "at": "1~committed",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "nl",
+  "at": "1~looped",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "nc",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

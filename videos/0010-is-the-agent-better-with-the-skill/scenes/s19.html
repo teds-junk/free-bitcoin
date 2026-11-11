@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The first draft caused it</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.results{display:flex;flex-direction:column;gap:26px;width:100%}.results .card > .code.dark{font-size:36px;padding:22px 32px}.results .card .who{font-size:32px}.results .card{gap:10px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the comparison showed</div>
+  <h2 class="scene-title">The first draft caused it</h2>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="card-a" data-rep="card">
+        <div class="who"><span class="mono">gpt-5.6-terra</span> · with the first-draft skill</div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix the help text typo in </span><span style="color:#3CC0B3">`notes add`</span><span> </span><span data-concept="pr" data-rep="code"><span>(#42)</span></span></code></pre>
+      </div>
+      <div class="card" data-concept="card-b" data-rep="card">
+        <div class="who"><span class="mono">gpt-5.6-terra</span> · with no skill</div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix typo in </span><span style="color:#3CC0B3">`notes add`</span><span> help text</span></code></pre>
+      </div>
+      <div class="card" data-concept="card-c" data-rep="card">
+        <div class="who">the first draft’s rule</div>
+        <pre class="code dark" data-lang="markdown"><code><span data-concept="rule" data-rep="code"><span>- Reference the pull request.</span></span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "pr",
+  "at": "1~made-up",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "card-b",
+  "at": "2",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "rule",
+  "at": "4",
+  "color": "orange"
+ }
+]
+</script>
+</body>
+</html>

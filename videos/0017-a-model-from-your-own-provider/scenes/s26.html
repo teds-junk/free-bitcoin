@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One model, served one way</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.cols .semantic-block{min-height:260px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What changed</div>
+  <h2 class="scene-title">One model, served one way</h2>
+  <div class="stage">
+<div class="cols">
+    <div class="semantic-block" data-concept="m1" data-rep="block" data-role="structure">
+      <div class="step">1</div><div class="title">Run</div><div class="label">the endpoint your app calls</div>
+    </div><div class="semantic-block" data-concept="m2" data-rep="block" data-role="transform">
+      <div class="step">2</div><div class="title">Count</div><div class="label">the tokens</div>
+    </div><div class="semantic-block" data-concept="m3" data-rep="block" data-role="attention">
+      <div class="step">3</div><div class="title">Price</div><div class="label">at your own rates</div>
+    </div><div class="semantic-block" data-concept="m4" data-rep="block" data-role="change">
+      <div class="step">4</div><div class="title">Divide</div><div class="label">by the passing trials</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "m1",
+  "at": "2~run",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "m2",
+  "at": "2~count",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "m3",
+  "at": "2~price",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "m4",
+  "at": "2~divide",
+  "color": "orange"
+ }
+]
+</script>
+</body>
+</html>

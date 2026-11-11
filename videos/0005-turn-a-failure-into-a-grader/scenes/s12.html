@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A count before, a count after</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.counts{font-size:46px}.counts th{font-size:30px}.counts th.mono{font-family:var(--font-code);font-size:32px}.counts td{padding-top:30px;padding-bottom:30px;height:60px}.counts td.mono{font-family:var(--font-code);font-size:36px}.counts th:last-child,.counts td:last-child{padding-right:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Measure, edit, measure again</div>
+  <h2 class="scene-title">A count before, a count after</h2>
+  <div class="stage">
+<table class="data-table full counts">
+    <thead>
+      <tr><th></th><th class="mono num" colspan="2">claude-haiku-4.5</th><th class="mono num" colspan="2">gpt-5.6-terra</th></tr>
+      <tr><th>trials passed</th><th class="num"><span data-concept="col-before" data-rep="head">before</span></th><th class="num"><span data-concept="col-after" data-rep="head">after</span></th><th class="num"><span data-concept="col-before" data-rep="head">before</span></th><th class="num"><span data-concept="col-after" data-rep="head">after</span></th></tr>
+    </thead>
+    <tbody>
+<tr><td class="mono">typo-fix</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+<tr><td class="mono">refactor</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+<tr><td class="mono">security</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>
+    </tbody>
+  </table>
+  <p class="note">three trials of each stimulus on each model · before the edit to the skill, and after it</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "col-before",
+  "at": "1~as it is",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "col-after",
+  "at": "2~again",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

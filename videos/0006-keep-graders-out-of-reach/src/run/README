@@ -1,0 +1,6 @@
+This video's own runs, copied from /Users/Shared/demo/practice with that path shown as ~/src/demo.
+first/   results/lesson-6/<RUN>        recorded by s16 (the eval file with five stimuli, skill without the Unreleased rule)
+after/   results/lesson-6-after/<RUN>  recorded by s19 (the same, with the rule)
+         each: RUN, results.jsonl, eval-results.md, <stimulus>.<model>.patch (trial 0's workspace.patch)
+kept-files.txt   every file under kept/ after s14 (find kept -type f)
+lesson5-after.results.jsonl   the lesson 5 video's after run (copied from ../0005-turn-a-failure-into-a-grader/src/run/after)

@@ -1,0 +1,40 @@
+name: changelog-entry
+description: Does the agent record a change the way the skill asks?
+type: capability
+
+defaults:
+  runs: 1
+  timeout: 3m
+
+agent_environment:
+  skills:
+    - ../../skills/changelog-entry
+  files:
+    - src: fixtures/notes-cli/CHANGELOG.md
+      dest: CHANGELOG.md
+
+stimuli:
+  - name: fix-accented-search
+    prompt: |
+      I just merged PR 48. `notes search` was treating
+      accented characters as different letters, so
+      searching for "cafe" missed "café". That's fixed
+      now. Update the changelog.
+    graders:
+      - type: file-contains
+        name: mentions-pr-48
+        config:
+          path: CHANGELOG.md
+          value: "48"
+
+  - name: change-list-sort
+    prompt: |
+      PR 52 is in: `notes list` now sorts by when a note
+      was last edited instead of when it was created.
+      Add it to the changelog.
+    graders:
+      - type: file-contains
+        name: mentions-pr-52
+        config:
+          path: CHANGELOG.md
+          value: "52"

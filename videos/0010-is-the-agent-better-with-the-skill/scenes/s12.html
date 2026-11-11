@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Which pass with no skill?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.stim{font-size:40px}.stim td{padding-top:20px;padding-bottom:20px}.stim td.mono{font-family:var(--font-code);font-size:36px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Four variants, one table</div>
+  <h2 class="scene-title">Which pass with no skill?</h2>
+  <div class="stage">
+<table class="data-table full stim">
+    <thead><tr><th>stimulus</th><th>the request</th></tr></thead>
+    <tbody>
+<tr><td class="mono">typo-fix</td><td><span data-concept="q-typo-fix" data-rep="cell">a typo fix, with no pull request number</span></td></tr>
+<tr><td class="mono">refactor</td><td><span data-concept="q-refactor" data-rep="cell">a cleanup that users can’t see</span></td></tr>
+<tr><td class="mono">security</td><td><span data-concept="q-security" data-rep="cell">a security fix</span></td></tr>
+<tr><td class="mono">two-changes</td><td><span data-concept="q-two-changes" data-rep="cell">two changes in one pull request</span></td></tr>
+<tr><td class="mono">after-release</td><td><span data-concept="q-after-release" data-rep="cell">a changelog with no Unreleased section</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "q-typo-fix",
+  "at": "1~typo fix",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "q-refactor",
+  "at": "1~refactor",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "q-security",
+  "at": "1~security fix",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "q-two-changes",
+  "at": "2~two changes",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "q-after-release",
+  "at": "2~Unreleased",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "3"
+ }
+]
+</script>
+</body>
+</html>

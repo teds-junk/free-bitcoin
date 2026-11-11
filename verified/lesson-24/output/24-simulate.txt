@@ -1,0 +1,18 @@
+# Generated starting point — review before use.
+simulation:
+  tool_overrides:
+    shell:
+      patterns:
+        - pattern: ^\{"command":"find \. -maxdepth 2 -type f -name \\"\*\.txt\\" -o -name \\"CHANGELOG\*\\" \| head -20","description":"Find changelog and release files"\}$
+          output: |-
+            ./CHANGELOG.md
+            ./release/merged.txt
+            <shellId: 0 completed with exit code 0>
+Warning: Ignored successful non-shell tool "view" because it does not match a configured MCP server. (34 occurrences)
+Warning: Ignored successful non-shell tool "edit" because it does not match a configured MCP server. (5 occurrences)
+Warning: Omitted structured content recorded for non-MCP tool "bash".
+Warning: Ignored successful non-shell tool "skill" because it does not match a configured MCP server. (5 occurrences)
+Warning: Normalized scalar arguments to an empty object for tool "apply_patch" to match simulation runtime behavior. (5 occurrences)
+Warning: Ignored successful non-shell tool "apply_patch" because it does not match a configured MCP server. (5 occurrences)
+Warning: Ignored successful non-shell tool "sql" because it does not match a configured MCP server. (4 occurrences)
+Warning: Ignored successful non-shell tool "glob" because it does not match a configured MCP server.

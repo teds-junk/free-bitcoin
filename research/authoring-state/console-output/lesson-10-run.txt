@@ -1,0 +1,51 @@
+Running experiment 'with-and-without'
+
+Loaded 20 stimuli from changelog · 2 models · 2 workers
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+changelog
+
+haiku-no-skill · claude-haiku-4.5
+  FAIL  refactor · 0/1 graders · 17.4s
+   ✘ adds-nothing  Workspace diff is not empty — the stimulus changed the workspace
+
+haiku-no-skill · claude-haiku-4.5
+  FAIL  security · 0/1 graders · 9.7s
+   ✘ under-security  Pattern /(?m)^\+### Security/ not found in workspace diff
+
+terra-no-skill · gpt-5.6-terra
+  FAIL  after-release · 0/1 graders · 12.8s
+   ✘ entry-in-new-unreleased  Command 'node .vally-grading/check-entry.mjs Added=58' failed:
+                              Expected exit code 0, got 1
+
+terra-no-skill · gpt-5.6-terra
+  FAIL  refactor · 0/1 graders · 7.3s
+   ✘ adds-nothing  Workspace diff is not empty — the stimulus changed the workspace
+
+terra-no-skill · gpt-5.6-terra
+  FAIL  security · 0/1 graders · 8.4s
+   ✘ under-security  Pattern /(?m)^\+### Security/ not found in workspace diff
+
+────────────────────────────────────────────────────────
+
+Experiment  with-and-without   varying /environment/skills, /defaults/model · baseline haiku-no-skill
+
+  → haiku-with-skill beat baseline — 5/5 vs 3/5 stimuli.
+
+  eval        haiku-no-skill (baseline)  haiku-with-skill  terra-no-skill  terra-with-skill
+  changelog   ✘ 3/5                      ✓ 5/5             ✘ 2/5           ✓ 5/5           
+  ──────────  ─────────────────────────  ────────────────  ──────────────  ────────────────
+  stimuli     3/5                        5/5               2/5             5/5             
+  tokens      389.2k                     359.4k            252.5k          292.2k          
+  trial time  58.0s                      42.7s             47.0s           46.1s           
+
+Run ID: 0fa08fbf-8315-4684-95ed-74269d376649
+Output: practice/results/lesson-10/2026-11-10T08-48-50-678Z

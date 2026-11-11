@@ -1,0 +1,29 @@
+name: cost
+
+evals:
+  - changelog.eval.yaml
+
+vary: [/defaults/model, /defaults/reasoning_effort]
+
+baseline: haiku-low
+
+overrides:
+  runs: 3
+
+variants:
+  haiku-low:
+    overrides:
+      model: claude-haiku-5.5
+      reasoning_effort: low
+  haiku-high:
+    overrides:
+      model: claude-haiku-5.5
+      reasoning_effort: high
+  terra-low:
+    overrides:
+      model: gpt-5.6-terra
+      reasoning_effort: low
+  terra-high:
+    overrides:
+      model: gpt-5.6-terra
+      reasoning_effort: high

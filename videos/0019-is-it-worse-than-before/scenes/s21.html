@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hold that loosely</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:40px}.data-table th{font-size:30px}.data-table td{padding-top:20px;padding-bottom:20px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:32px}.data-table th:last-child,.data-table td:last-child{padding-right:16px}.swapped{font-size:36px}.swapped td{padding-top:30px;padding-bottom:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What it supports</div>
+  <h2 class="scene-title">Hold that loosely</h2>
+  <div class="stage">
+<table class="data-table full swapped">
+    <thead><tr><th>The swapped comparison, with the check on</th><th class="num">wins / ties / losses</th>
+      <th class="num">mean score, with its range</th><th class="num">exit code</th></tr></thead>
+    <tbody>
+<tr><td>an earlier run</td><td class="num">1 / 2 / 6</td><td class="num"><span data-concept="e1" data-rep="cell">−0.49 [−0.90, −0.07]</span></td><td class="num"><span data-concept="e1" data-rep="cell">1</span></td></tr>
+<tr><td>another, on the same saved trials</td><td class="num">1 / 3 / 5</td><td class="num"><span data-concept="e2" data-rep="cell">−0.38 [−0.78, +0.02]</span></td><td class="num"><span data-concept="e2" data-rep="cell">0</span></td></tr>
+<tr><td>ours, on our own saved trials</td><td class="num">1 / 4 / 4</td><td class="num"><span data-concept="ours" data-rep="cell">−0.33 [−0.75, +0.08]</span></td><td class="num"><span data-concept="ours" data-rep="cell">0</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">the same command each time</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "e1",
+  "at": "5~one failed",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "e2",
+  "at": "5~one passed",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "ours",
+  "at": "6",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "7"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+Running experiment 'before-and-after'
+
+Loaded 12 stimuli from wording · 2 models · 2 workers
+  WARN wording · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN wording · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN wording · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN wording · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+wording
+
+haiku-before · claude-haiku-4.5
+  FAIL  cache  0/3
+   ✘ prompt "Begin your reason b…"  0 passed · 3 failed · 3 critiques
+     ✘ trial 1   The new entry reads: "Improve performance of `notes list --tag` with LRU cache on
+                 tag index (#66)". It leaks implementation detail (LRU cache, tag index) and lacks a
+                 concrete user-facing benefit, so it fails the criterion.
+     ✘ trial 2   The new entry is "Improve performance of `notes list --tag` with LRU cache on tag
+                 index (#66)". It correctly states the user-facing speedup, but it also leaks the
+                 implementation detail "LRU cache on tag index". The criterion explicitly forbids
+                 that.
+     ✘ trial 3   The new entry reads: "- Improve performance of `notes list --tag` with LRU cache on
+                 tag index (#66)". It goes under Changed in Unreleased with the correct PR
+                 reference. It leaks the implementation detail "LRU cache on tag index", which the
+                 rubric forbids. It should have said something like "`notes list --tag` is much
+                 faster on large folders".
+
+haiku-before · claude-haiku-4.5
+  FAIL  parser  0/3
+   ✘ prompt "Begin your reason b…"  0 passed · 3 failed · 3 critiques
+     ✘ trial 1   The new entry is: "Fix out-of-memory errors on large imports by using a streaming
+                 parser (#49)". It is placed correctly under Fixed, and it states the user-facing
+                 fix. It fails the criterion because "by using a streaming parser" describes how the
+                 change was coded.
+     ✘ trial 2   The new entry is "Fix out-of-memory errors on large imports by using streaming
+                 parser (#49)". It names the user-facing fix, but the "by using streaming parser"
+                 clause leaks implementation detail, so it fails the criterion.
+     ✘ trial 3   The new entry is: "Fix out-of-memory error when importing large files by using
+                 streaming parser (#49)". The first half is user-facing. The "by using streaming
+                 parser" clause describes how it was coded, so the entry fails the criterion.
+
+terra-after · gpt-5.6-terra
+  ERROR  parser  2 passed · 1 error
+   trial 1 · Session disconnected while waiting for a response
+   ✓ passed   prompt "Begin your reason b…" · cites-49
+
+terra-before · gpt-5.6-terra
+  FLAKY  cache  2 passed · 1 failed
+   ✘ prompt "Begin your reason b…"  2 passed · 1 failed · 1 critique
+     ✓ trial 1   passed
+     ✓ trial 2   passed
+     ✘ trial 3   The entry is "Speed up `notes list --tag` on large folders by caching the tag index
+                 (#66)". It leads with the user benefit, but the phrase "by caching the tag index"
+                 leaks the implementation, so it fails the criterion.
+
+terra-before · gpt-5.6-terra
+  ERROR  dates  2 passed · 1 error
+   trial 1 · Session disconnected while waiting for a response
+   ✓ passed   prompt "Begin your reason b…" · cites-67
+
+────────────────────────────────────────────────────────
+
+Experiment  before-and-after   varying /environment/skills, /defaults/model · baseline haiku-before
+
+  → haiku-after beat baseline — 3/3 vs 1/3 stimuli.
+
+  eval        haiku-before (baseline)  haiku-after  terra-before  terra-after
+  wording     ✘ 1/3                    ✓ 3/3        ✘ 1/3         ✘ 2/3      
+  ──────────  ───────────────────────  ───────────  ────────────  ───────────
+  stimuli     1/3                      3/3          1/3           2/3        
+  tokens      724.9k                   679.7k       465.7k        465.7k     
+  trial time  3m13s                    3m12s        2m57s         2m41s      
+
+Run ID: c1a34136-a279-425a-8ea5-c2f75885a719
+Output: practice/results/lesson-14/2026-11-10T09-18-19-627Z

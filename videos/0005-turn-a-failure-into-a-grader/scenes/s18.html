@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Before and after, side by side</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.counts{font-size:46px}.counts th{font-size:30px}.counts th.mono{font-family:var(--font-code);font-size:32px}.counts td{padding-top:30px;padding-bottom:30px;height:60px}.counts td.mono{font-family:var(--font-code);font-size:36px}.counts th:last-child,.counts td:last-child{padding-right:16px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Measure, edit, measure again</div>
+  <h2 class="scene-title">Before and after, side by side</h2>
+  <div class="stage">
+<table class="data-table full counts">
+    <thead>
+      <tr><th></th><th class="mono num" colspan="2">claude-haiku-4.5</th><th class="mono num" colspan="2">gpt-5.6-terra</th></tr>
+      <tr><th>trials passed</th><th class="num"><span data-concept="col-before" data-rep="head">before</span></th><th class="num"><span data-concept="col-after" data-rep="head">after</span></th><th class="num"><span data-concept="col-before" data-rep="head">before</span></th><th class="num"><span data-concept="col-after" data-rep="head">after</span></th></tr>
+    </thead>
+    <tbody>
+<tr><td class="mono">typo-fix</td><td class="num">3 of 3</td><td class="num">3 of 3</td><td class="num"><span data-concept="terra-typo" data-rep="cell">0 of 3</span></td><td class="num"><span data-concept="terra-typo" data-rep="cell">3 of 3</span></td></tr>
+<tr><td class="mono">refactor</td><td class="num">0 of 3</td><td class="num"><span data-concept="refactor" data-rep="cell">3 of 3</span></td><td class="num">0 of 3</td><td class="num"><span data-concept="refactor" data-rep="cell">3 of 3</span></td></tr>
+<tr><td class="mono">security</td><td class="num">0 of 3</td><td class="num"><span data-concept="sec" data-rep="cell">3 of 3</span></td><td class="num">0 of 3</td><td class="num"><span data-concept="sec" data-rep="cell">3 of 3</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">before: our run · 2026-11-11T05-21-37-779Z · after: our run · 2026-11-11T05-25-01-110Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "terra-typo",
+  "at": "1",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "refactor",
+  "at": "2",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "sec",
+  "at": "3",
+  "color": "green"
+ }
+]
+</script>
+</body>
+</html>

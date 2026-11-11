@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One pattern per shell call</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Make the tool fail</div>
+  <h2 class="scene-title">One pattern per shell call</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:recorded · regenerate with: node file-panel.js --file src/run/s20.log --lang yaml --label 'what vally simulate record printed' --id recorded --width 60 --rows 9 --expect '6="command":"find ' --expect '11=cd /tmp/trial' --expect '15=Warning: Ignored successful non-shell tool "view"' --mark 6=pat1 --mark 7-10=out1 --mark 11=pat2 --mark 15-16=warn --into scenes/s21.html -->
+<div class="file-panel" id="recorded" data-file="what vally simulate record printed" data-lines="20" data-rows="9" style="--rows:9;--cols:60;--ln:2">
+<div class="code-file">what vally simulate record printed<span class="file-meta">20 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="yaml"><code>
+<span class="file-row" data-line="1"><span class="ln">1</span><span style="color:#8296A0;font-style:italic"># Generated starting point — review before use.</span></span>
+<span class="file-row" data-line="2"><span class="ln">2</span><span style="color:#4EA5E6">simulation</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="3"><span class="ln">3</span><span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">tool_overrides</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="4"><span class="ln">4</span><span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">shell</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span><span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">patterns</span><span style="color:#B3C0BF">:</span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span style="color:#B3C0BF">        </span><span data-concept="pat1" data-rep="code"><span style="color:#B3C0BF">- </span><span style="color:#4EA5E6">pattern</span><span style="color:#B3C0BF">:</span></span><span style="color:#B3C0BF"> </span></span>
+<span class="file-row" data-line="6" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:12ch"></i><span data-concept="pat1" data-rep="code"><span style="color:#3CC0B3">^\{"command":"find \. -name \\"release\\" -o</span></span><span style="color:#3CC0B3"> </span></span>
+<span class="file-row" data-line="6" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:12ch"></i><span data-concept="pat1" data-rep="code"><span style="color:#3CC0B3">-name \\"merged\.txt\\" 2&gt;/dev/null \| head</span></span><span style="color:#3CC0B3"> </span></span>
+<span class="file-row" data-line="6" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:12ch"></i><span data-concept="pat1" data-rep="code"><span style="color:#3CC0B3">-20","description":"Find release/merged\.txt</span></span><span style="color:#3CC0B3"> </span></span>
+<span class="file-row" data-line="6" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:12ch"></i><span data-concept="pat1" data-rep="code"><span style="color:#3CC0B3">file"\}$</span></span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span><span style="color:#B3C0BF">          </span><span data-concept="out1" data-rep="code"><span style="color:#4EA5E6">output</span><span style="color:#B3C0BF">: </span><span style="color:#A4BA1E">|</span><span style="color:#B3C0BF">-</span></span></span>
+<span class="file-row" data-line="8"><span class="ln">8</span><span style="color:#3CC0B3">            </span><span data-concept="out1" data-rep="code"><span style="color:#3CC0B3">./release</span></span></span>
+<span class="file-row" data-line="9"><span class="ln">9</span><span style="color:#3CC0B3">            </span><span data-concept="out1" data-rep="code"><span style="color:#3CC0B3">./release/merged.txt</span></span></span>
+<span class="file-row" data-line="10"><span class="ln">10</span><span style="color:#3CC0B3">            </span><span data-concept="out1" data-rep="code"><span style="color:#3CC0B3">&lt;shellId: 0 completed with exit code 0&gt;</span></span></span>
+<span class="file-row" data-line="11"><span class="ln">11</span><span style="color:#B3C0BF">        </span><span data-concept="pat2" data-rep="code"><span style="color:#B3C0BF">- </span><span style="color:#4EA5E6">pattern</span><span style="color:#B3C0BF">:</span></span><span style="color:#B3C0BF"> </span></span>
+<span class="file-row" data-line="11" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:12ch"></i><span data-concept="pat2" data-rep="code"><span style="color:#3CC0B3">^\{"command":"cd /tmp/trial &amp;&amp; cat</span></span><span style="color:#3CC0B3"> </span></span>
+<span class="file-row" data-line="11" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:12ch"></i><span data-concept="pat2" data-rep="code"><span style="color:#3CC0B3">changelog-entry/CHANGELOG\.md","description":"Ch</span></span></span>
+<span class="file-row" data-line="11" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:12ch"></i><span data-concept="pat2" data-rep="code"><span style="color:#3CC0B3">eck changelog entry tool's expected output</span></span><span style="color:#3CC0B3"> </span></span>
+<span class="file-row" data-line="11" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:12ch"></i><span data-concept="pat2" data-rep="code"><span style="color:#3CC0B3">format"\}$</span></span></span>
+<span class="file-row" data-line="12"><span class="ln">12</span><span style="color:#B3C0BF">          </span><span style="color:#4EA5E6">output</span><span style="color:#B3C0BF">: </span><span style="color:#A4BA1E">|</span><span style="color:#B3C0BF">-</span></span>
+<span class="file-row" data-line="13"><span class="ln">13</span><span style="color:#3CC0B3">            cat: changelog-entry/CHANGELOG.md: No such file </span></span>
+<span class="file-row" data-line="13" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:16ch"></i><span style="color:#3CC0B3">or directory</span></span>
+<span class="file-row" data-line="14"><span class="ln">14</span><span style="color:#3CC0B3">            &lt;shellId: 1 completed with exit code 1&gt;</span></span>
+<span class="file-row" data-line="15"><span class="ln">15</span><span data-concept="warn" data-rep="code"><span style="color:#4EA5E6">Warning</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">Ignored successful non-shell tool "view" because it</span></span><span style="color:#3CC0B3"> </span></span>
+<span class="file-row" data-line="15" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span data-concept="warn" data-rep="code"><span style="color:#3CC0B3">does not match a configured MCP server. (31 occurrences)</span></span></span>
+<span class="file-row" data-line="16"><span class="ln">16</span><span data-concept="warn" data-rep="code"><span style="color:#4EA5E6">Warning</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">Ignored successful non-shell tool "edit" because it</span></span><span style="color:#3CC0B3"> </span></span>
+<span class="file-row" data-line="16" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span data-concept="warn" data-rep="code"><span style="color:#3CC0B3">does not match a configured MCP server. (5 occurrences)</span></span></span>
+<span class="file-row" data-line="17"><span class="ln">17</span><span style="color:#4EA5E6">Warning</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">Omitted structured content recorded for non-MCP </span></span>
+<span class="file-row" data-line="17" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#3CC0B3">tool "bash". (2 occurrences)</span></span>
+<span class="file-row" data-line="18"><span class="ln">18</span><span style="color:#4EA5E6">Warning</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">Ignored successful non-shell tool "skill" because </span></span>
+<span class="file-row" data-line="18" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#3CC0B3">it does not match a configured MCP server. (8 </span></span>
+<span class="file-row" data-line="18" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#3CC0B3">occurrences)</span></span>
+<span class="file-row" data-line="19"><span class="ln">19</span><span style="color:#4EA5E6">Warning</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">Normalized scalar arguments to an empty object for </span></span>
+<span class="file-row" data-line="19" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#3CC0B3">tool "apply_patch" to match simulation runtime behavior. </span></span>
+<span class="file-row" data-line="19" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#3CC0B3">(5 occurrences)</span></span>
+<span class="file-row" data-line="20"><span class="ln">20</span><span style="color:#4EA5E6">Warning</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">Ignored successful non-shell tool "apply_patch" </span></span>
+<span class="file-row" data-line="20" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#3CC0B3">because it does not match a configured MCP server. (5 </span></span>
+<span class="file-row" data-line="20" data-wrap="1"><span class="ln">↪</span><i class="hang" style="width:4ch"></i><span style="color:#3CC0B3">occurrences)</span></span>
+</code></pre>
+</div>
+<div class="file-map" data-per="1" data-bars="20" style="height:140px" aria-hidden="true"><b class="file-map-view" style="top:0px;height:41px"></b><svg width="120" height="140" viewBox="0 0 120 140" shape-rendering="crispEdges"><rect x="0" y="0" width="1.5" height="4" fill="#8296A0"/><rect x="2.4" y="0" width="10.2" height="4" fill="#8296A0"/><rect x="14.4" y="0" width="9" height="4" fill="#8296A0"/><rect x="25.2" y="0" width="5.4" height="4" fill="#8296A0"/><rect x="32.4" y="0" width="1.5" height="4" fill="#8296A0"/><rect x="34.8" y="0" width="6.6" height="4" fill="#8296A0"/><rect x="43.2" y="0" width="6.6" height="4" fill="#8296A0"/><rect x="51.6" y="0" width="4.2" height="4" fill="#8296A0"/><rect x="0" y="7" width="11.4" height="4" fill="#4EA5E6"/><rect x="12" y="7" width="1.5" height="4" fill="#B3C0BF"/><rect x="2.4" y="14" width="16.2" height="4" fill="#4EA5E6"/><rect x="19.2" y="14" width="1.5" height="4" fill="#B3C0BF"/><rect x="4.8" y="21" width="5.4" height="4" fill="#4EA5E6"/><rect x="10.8" y="21" width="1.5" height="4" fill="#B3C0BF"/><rect x="7.2" y="28" width="9" height="4" fill="#4EA5E6"/><rect x="16.8" y="28" width="1.5" height="4" fill="#B3C0BF"/><rect x="9.6" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="12" y="35" width="7.8" height="4" fill="#4EA5E6"/><rect x="20.4" y="35" width="1.5" height="4" fill="#B3C0BF"/><rect x="22.8" y="35" width="21" height="4" fill="#3CC0B3"/><rect x="45.6" y="35" width="1.8" height="4" fill="#3CC0B3"/><rect x="49.2" y="35" width="5.4" height="4" fill="#3CC0B3"/><rect x="56.4" y="35" width="15" height="4" fill="#3CC0B3"/><rect x="73.2" y="35" width="1.8" height="4" fill="#3CC0B3"/><rect x="76.8" y="35" width="5.4" height="4" fill="#3CC0B3"/><rect x="84" y="35" width="19.8" height="4" fill="#3CC0B3"/><rect x="105.6" y="35" width="12.6" height="4" fill="#3CC0B3"/><rect x="12" y="42" width="6.6" height="4" fill="#4EA5E6"/><rect x="19.2" y="42" width="1.5" height="4" fill="#B3C0BF"/><rect x="21.6" y="42" width="1.5" height="4" fill="#A4BA1E"/><rect x="22.8" y="42" width="1.5" height="4" fill="#B3C0BF"/><rect x="14.4" y="49" width="10.2" height="4" fill="#3CC0B3"/><rect x="14.4" y="56" width="23.4" height="4" fill="#3CC0B3"/><rect x="14.4" y="63" width="10.2" height="4" fill="#3CC0B3"/><rect x="26.4" y="63" width="1.5" height="4" fill="#3CC0B3"/><rect x="28.8" y="63" width="10.2" height="4" fill="#3CC0B3"/><rect x="40.8" y="63" width="4.2" height="4" fill="#3CC0B3"/><rect x="46.8" y="63" width="4.2" height="4" fill="#3CC0B3"/><rect x="52.8" y="63" width="4.2" height="4" fill="#3CC0B3"/><rect x="58.8" y="63" width="1.8" height="4" fill="#3CC0B3"/><rect x="9.6" y="70" width="1.5" height="4" fill="#B3C0BF"/><rect x="12" y="70" width="7.8" height="4" fill="#4EA5E6"/><rect x="20.4" y="70" width="1.5" height="4" fill="#B3C0BF"/><rect x="22.8" y="70" width="18.6" height="4" fill="#3CC0B3"/><rect x="43.2" y="70" width="11.4" height="4" fill="#3CC0B3"/><rect x="56.4" y="70" width="1.8" height="4" fill="#3CC0B3"/><rect x="60" y="70" width="3" height="4" fill="#3CC0B3"/><rect x="64.8" y="70" width="54.6" height="4" fill="#3CC0B3"/><rect x="12" y="77" width="6.6" height="4" fill="#4EA5E6"/><rect x="19.2" y="77" width="1.5" height="4" fill="#B3C0BF"/><rect x="21.6" y="77" width="1.5" height="4" fill="#A4BA1E"/><rect x="22.8" y="77" width="1.5" height="4" fill="#B3C0BF"/><rect x="14.4" y="84" width="4.2" height="4" fill="#3CC0B3"/><rect x="20.4" y="84" width="34.2" height="4" fill="#3CC0B3"/><rect x="56.4" y="84" width="1.8" height="4" fill="#3CC0B3"/><rect x="60" y="84" width="4.2" height="4" fill="#3CC0B3"/><rect x="66" y="84" width="4.2" height="4" fill="#3CC0B3"/><rect x="72" y="84" width="1.8" height="4" fill="#3CC0B3"/><rect x="75.6" y="84" width="10.2" height="4" fill="#3CC0B3"/><rect x="14.4" y="91" width="10.2" height="4" fill="#3CC0B3"/><rect x="26.4" y="91" width="1.5" height="4" fill="#3CC0B3"/><rect x="28.8" y="91" width="10.2" height="4" fill="#3CC0B3"/><rect x="40.8" y="91" width="4.2" height="4" fill="#3CC0B3"/><rect x="46.8" y="91" width="4.2" height="4" fill="#3CC0B3"/><rect x="52.8" y="91" width="4.2" height="4" fill="#3CC0B3"/><rect x="58.8" y="91" width="1.8" height="4" fill="#3CC0B3"/><rect x="0" y="98" width="7.8" height="4" fill="#4EA5E6"/><rect x="8.4" y="98" width="1.5" height="4" fill="#B3C0BF"/><rect x="10.8" y="98" width="7.8" height="4" fill="#3CC0B3"/><rect x="20.4" y="98" width="11.4" height="4" fill="#3CC0B3"/><rect x="33.6" y="98" width="10.2" height="4" fill="#3CC0B3"/><rect x="45.6" y="98" width="4.2" height="4" fill="#3CC0B3"/><rect x="51.6" y="98" width="6.6" height="4" fill="#3CC0B3"/><rect x="60" y="98" width="7.8" height="4" fill="#3CC0B3"/><rect x="69.6" y="98" width="1.8" height="4" fill="#3CC0B3"/><rect x="73.2" y="98" width="4.2" height="4" fill="#3CC0B3"/><rect x="79.2" y="98" width="3" height="4" fill="#3CC0B3"/><rect x="84" y="98" width="5.4" height="4" fill="#3CC0B3"/><rect x="91.2" y="98" width="1.5" height="4" fill="#3CC0B3"/><rect x="93.6" y="98" width="11.4" height="4" fill="#3CC0B3"/><rect x="106.8" y="98" width="3" height="4" fill="#3CC0B3"/><rect x="111.6" y="98" width="7.8" height="4" fill="#3CC0B3"/><rect x="0" y="105" width="7.8" height="4" fill="#4EA5E6"/><rect x="8.4" y="105" width="1.5" height="4" fill="#B3C0BF"/><rect x="10.8" y="105" width="7.8" height="4" fill="#3CC0B3"/><rect x="20.4" y="105" width="11.4" height="4" fill="#3CC0B3"/><rect x="33.6" y="105" width="10.2" height="4" fill="#3CC0B3"/><rect x="45.6" y="105" width="4.2" height="4" fill="#3CC0B3"/><rect x="51.6" y="105" width="6.6" height="4" fill="#3CC0B3"/><rect x="60" y="105" width="7.8" height="4" fill="#3CC0B3"/><rect x="69.6" y="105" width="1.8" height="4" fill="#3CC0B3"/><rect x="73.2" y="105" width="4.2" height="4" fill="#3CC0B3"/><rect x="79.2" y="105" width="3" height="4" fill="#3CC0B3"/><rect x="84" y="105" width="5.4" height="4" fill="#3CC0B3"/><rect x="91.2" y="105" width="1.5" height="4" fill="#3CC0B3"/><rect x="93.6" y="105" width="11.4" height="4" fill="#3CC0B3"/><rect x="106.8" y="105" width="3" height="4" fill="#3CC0B3"/><rect x="111.6" y="105" width="7.8" height="4" fill="#3CC0B3"/><rect x="0" y="112" width="7.8" height="4" fill="#4EA5E6"/><rect x="8.4" y="112" width="1.5" height="4" fill="#B3C0BF"/><rect x="10.8" y="112" width="7.8" height="4" fill="#3CC0B3"/><rect x="20.4" y="112" width="11.4" height="4" fill="#3CC0B3"/><rect x="33.6" y="112" width="7.8" height="4" fill="#3CC0B3"/><rect x="43.2" y="112" width="9" height="4" fill="#3CC0B3"/><rect x="54" y="112" width="3" height="4" fill="#3CC0B3"/><rect x="58.8" y="112" width="7.8" height="4" fill="#3CC0B3"/><rect x="68.4" y="112" width="4.2" height="4" fill="#3CC0B3"/><rect x="74.4" y="112" width="7.8" height="4" fill="#3CC0B3"/><rect x="84" y="112" width="1.8" height="4" fill="#3CC0B3"/><rect x="87.6" y="112" width="13.8" height="4" fill="#3CC0B3"/><rect x="0" y="119" width="7.8" height="4" fill="#4EA5E6"/><rect x="8.4" y="119" width="1.5" height="4" fill="#B3C0BF"/><rect x="10.8" y="119" width="7.8" height="4" fill="#3CC0B3"/><rect x="20.4" y="119" width="11.4" height="4" fill="#3CC0B3"/><rect x="33.6" y="119" width="10.2" height="4" fill="#3CC0B3"/><rect x="45.6" y="119" width="4.2" height="4" fill="#3CC0B3"/><rect x="51.6" y="119" width="7.8" height="4" fill="#3CC0B3"/><rect x="61.2" y="119" width="7.8" height="4" fill="#3CC0B3"/><rect x="70.8" y="119" width="1.8" height="4" fill="#3CC0B3"/><rect x="74.4" y="119" width="4.2" height="4" fill="#3CC0B3"/><rect x="80.4" y="119" width="3" height="4" fill="#3CC0B3"/><rect x="85.2" y="119" width="5.4" height="4" fill="#3CC0B3"/><rect x="92.4" y="119" width="1.5" height="4" fill="#3CC0B3"/><rect x="94.8" y="119" width="11.4" height="4" fill="#3CC0B3"/><rect x="108" y="119" width="3" height="4" fill="#3CC0B3"/><rect x="112.8" y="119" width="6.6" height="4" fill="#3CC0B3"/><rect x="0" y="126" width="7.8" height="4" fill="#4EA5E6"/><rect x="8.4" y="126" width="1.5" height="4" fill="#B3C0BF"/><rect x="10.8" y="126" width="11.4" height="4" fill="#3CC0B3"/><rect x="24" y="126" width="6.6" height="4" fill="#3CC0B3"/><rect x="32.4" y="126" width="10.2" height="4" fill="#3CC0B3"/><rect x="44.4" y="126" width="1.8" height="4" fill="#3CC0B3"/><rect x="48" y="126" width="1.8" height="4" fill="#3CC0B3"/><rect x="51.6" y="126" width="5.4" height="4" fill="#3CC0B3"/><rect x="58.8" y="126" width="6.6" height="4" fill="#3CC0B3"/><rect x="67.2" y="126" width="3" height="4" fill="#3CC0B3"/><rect x="72" y="126" width="4.2" height="4" fill="#3CC0B3"/><rect x="78" y="126" width="15" height="4" fill="#3CC0B3"/><rect x="94.8" y="126" width="1.8" height="4" fill="#3CC0B3"/><rect x="98.4" y="126" width="5.4" height="4" fill="#3CC0B3"/><rect x="105.6" y="126" width="11.4" height="4" fill="#3CC0B3"/><rect x="118.8" y="126" width="1.5" height="4" fill="#3CC0B3"/><rect x="0" y="133" width="7.8" height="4" fill="#4EA5E6"/><rect x="8.4" y="133" width="1.5" height="4" fill="#B3C0BF"/><rect x="10.8" y="133" width="7.8" height="4" fill="#3CC0B3"/><rect x="20.4" y="133" width="11.4" height="4" fill="#3CC0B3"/><rect x="33.6" y="133" width="10.2" height="4" fill="#3CC0B3"/><rect x="45.6" y="133" width="4.2" height="4" fill="#3CC0B3"/><rect x="51.6" y="133" width="15" height="4" fill="#3CC0B3"/><rect x="68.4" y="133" width="7.8" height="4" fill="#3CC0B3"/><rect x="78" y="133" width="1.8" height="4" fill="#3CC0B3"/><rect x="81.6" y="133" width="4.2" height="4" fill="#3CC0B3"/><rect x="87.6" y="133" width="3" height="4" fill="#3CC0B3"/><rect x="92.4" y="133" width="5.4" height="4" fill="#3CC0B3"/><rect x="99.6" y="133" width="1.5" height="4" fill="#3CC0B3"/><rect x="102" y="133" width="11.4" height="4" fill="#3CC0B3"/><rect x="115.2" y="133" width="3" height="4" fill="#3CC0B3"/></svg></div>
+</div>
+</div>
+<!-- /file-panel:recorded -->
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "pat1",
+  "at": "1~two patterns",
+  "color": "yellow"
+ },
+ {
+  "type": "scroll",
+  "target": "#recorded",
+  "to": "6-10",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "out1",
+  "at": "2~under it",
+  "color": "blue"
+ },
+ {
+  "type": "scroll",
+  "target": "#recorded",
+  "to": "11-14",
+  "at": "3"
+ },
+ {
+  "type": "focus",
+  "target": "pat2",
+  "at": "3~temporary folder",
+  "color": "yellow"
+ },
+ {
+  "type": "scroll",
+  "target": "#recorded",
+  "to": "15-17",
+  "at": "4"
+ },
+ {
+  "type": "focus",
+  "target": "warn",
+  "at": "4~view and edit",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

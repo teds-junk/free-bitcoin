@@ -1,0 +1,161 @@
+{
+ "_about": "since-last-release through Vally's own executor: the series' own runs, 2026-11-11T16-51-44-338Z and 2026-11-11T17-27-07-928Z (5 and 3 trials a model). One object per trial. vx-from-series.py.",
+ "claude-haiku-4.5": {
+  "passed": 3,
+  "loaded": 4,
+  "entry76": 5,
+  "trials": [
+   {
+    "run": "l22",
+    "tokens": 75622,
+    "calls": 5,
+    "aiu": 3.0803,
+    "passed": false,
+    "loaded": false,
+    "entry76": true
+   },
+   {
+    "run": "l22",
+    "tokens": 76312,
+    "calls": 5,
+    "aiu": 3.1665,
+    "passed": false,
+    "loaded": false,
+    "entry76": true
+   },
+   {
+    "run": "l22",
+    "tokens": 91263,
+    "calls": 6,
+    "aiu": 2.2985,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   },
+   {
+    "run": "l22",
+    "tokens": 106635,
+    "calls": 7,
+    "aiu": 2.5499,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   },
+   {
+    "run": "l22",
+    "tokens": 75456,
+    "calls": 5,
+    "aiu": 2.0364,
+    "passed": false,
+    "loaded": true,
+    "entry76": true
+   },
+   {
+    "run": "l23",
+    "tokens": 74531,
+    "calls": 5,
+    "aiu": 1.8731,
+    "passed": false,
+    "loaded": false,
+    "entry76": true
+   },
+   {
+    "run": "l23",
+    "tokens": 90870,
+    "calls": 6,
+    "aiu": 3.3977,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   },
+   {
+    "run": "l23",
+    "tokens": 104951,
+    "calls": 7,
+    "aiu": 2.2672,
+    "passed": false,
+    "loaded": false,
+    "entry76": true
+   }
+  ]
+ },
+ "gpt-5.6-terra": {
+  "passed": 8,
+  "loaded": 8,
+  "entry76": 0,
+  "trials": [
+   {
+    "run": "l22",
+    "tokens": 62045,
+    "calls": 5,
+    "aiu": 3.1098,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   },
+   {
+    "run": "l22",
+    "tokens": 49190,
+    "calls": 4,
+    "aiu": 2.7322,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   },
+   {
+    "run": "l22",
+    "tokens": 49111,
+    "calls": 4,
+    "aiu": 2.6904,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   },
+   {
+    "run": "l22",
+    "tokens": 61968,
+    "calls": 5,
+    "aiu": 3.077,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   },
+   {
+    "run": "l22",
+    "tokens": 62136,
+    "calls": 5,
+    "aiu": 3.1635,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   },
+   {
+    "run": "l23",
+    "tokens": 62488,
+    "calls": 5,
+    "aiu": 4.9903,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   },
+   {
+    "run": "l23",
+    "tokens": 62727,
+    "calls": 5,
+    "aiu": 3.201,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   },
+   {
+    "run": "l23",
+    "tokens": 62215,
+    "calls": 5,
+    "aiu": 3.18,
+    "passed": true,
+    "loaded": true,
+    "entry76": false
+   }
+  ]
+ }
+}

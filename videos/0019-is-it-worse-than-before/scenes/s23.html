@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One reports, one can fail</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.two{min-width:1000px;font-size:36px;line-height:1.6}.callout{font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What it supports</div>
+  <h2 class="scene-title">One reports, one can fail</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark two" data-lang="bash"><code><span style="color:#4EA5E6">vally</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">experiment</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">run</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">…</span><span style="color:#B3C0BF"> </span><span data-concept="rep" data-rep="code"><span style="color:#F0733F">--compare</span></span>
+
+<span style="color:#4EA5E6">vally</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">compare</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">&lt;</span><span style="color:#3CC0B3">folde</span><span style="color:#B3C0BF">r</span><span style="color:#A4BA1E">&gt;</span><span style="color:#B3C0BF"> </span><span data-concept="gate" data-rep="code"><span style="color:#F0733F">--fail-on-regression</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="rep">judges every variant against the baseline, and reports</p><p class="callout" data-anchor="gate">the step that can fail</p></aside>
+  </div>
+  <p class="note">Source: Vally docs, “Run Your First Experiment”</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "rep",
+  "at": "0~dash dash compare",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "gate",
+  "at": "2~fail on regression",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

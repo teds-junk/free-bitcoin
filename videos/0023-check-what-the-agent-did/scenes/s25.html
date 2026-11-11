@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>When is a step worth grading?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>#when{width:100%;padding:36px 40px 44px;gap:24px}#when .parts{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;width:100%}#when .part{min-height:260px}#when .part .title{font-size:50px;line-height:1.2}#when .part .label{font-size:32px}</style>
+</head>
+<body>
+<main class="scene layout-expand">
+  <div class="eyebrow">Recap</div>
+  <h2 class="scene-title">When is a step worth grading?</h2>
+  <div class="stage">
+<div class="semantic-block" id="when" data-role="structure">
+    <div class="title words">grade a step when the app…</div>
+    <div class="parts"><div class="part" data-concept="p1" data-rep="part">
+      <div class="title words">requires it</div><div class="label">opening the list</div></div><div class="part" data-concept="p2" data-rep="part">
+      <div class="title words">forbids it</div><div class="label">a commit, a push</div></div><div class="part" data-concept="p3" data-rep="part">
+      <div class="title words">pays for a long route</div><div class="label">a loop</div></div></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "expand",
+  "target": "#when",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "p1",
+  "at": "1",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "2",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "p3",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "p2",
+  "at": "4",
+  "color": "red"
+ }
+]
+</script>
+</body>
+</html>

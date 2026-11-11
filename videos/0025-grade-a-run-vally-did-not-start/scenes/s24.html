@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Every grader worked</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.data-table{font-size:40px}.data-table th{font-size:30px}.data-table td{padding-top:20px;padding-bottom:20px}.data-table td.mono,.data-table th.mono{font-family:var(--font-code);font-size:34px}.reads td{padding-top:26px;padding-bottom:26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What carried over</div>
+  <h2 class="scene-title">Every grader worked</h2>
+  <div class="stage">
+<table class="data-table full reads">
+    <thead><tr><th>Grader</th><th>What it read, on the app’s run</th></tr></thead>
+    <tbody>
+<tr><td class="mono"><span data-concept="g1" data-rep="cell">every-change-handled</span></td><td>a copy of the app’s checkout</td></tr>
+<tr><td class="mono"><span data-concept="g2" data-rep="cell">reads-the-list · never-commits</span></td><td>the tool calls in the trajectory</td></tr>
+<tr><td class="mono"><span data-concept="g3" data-rep="cell">no-loop</span></td><td>the same record</td></tr>
+<tr><td class="mono"><span data-concept="g4" data-rep="cell">loads-the-skill</span></td><td>no skill call in the trajectory</td></tr>
+    </tbody>
+  </table>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "g1",
+  "at": "2",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "g2",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "g3",
+  "at": "4~loop check",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "g4",
+  "at": "4~skill check",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "5"
+ }
+]
+</script>
+</body>
+</html>

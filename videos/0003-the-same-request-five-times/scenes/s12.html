@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One line from each patch</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.lists{display:flex;flex-direction:column;gap:30px;width:100%}.lists .card > .code.dark{font-size:32px;line-height:1.38;padding:14px 28px}.lists .card .who{font-size:30px}.lists{gap:22px}.lists .card{gap:10px}.stage{justify-content:flex-start}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Count it</div>
+  <h2 class="scene-title">One line from each patch</h2>
+  <div class="stage">
+<div class="lists">
+    <div class="card" data-concept="list-a" data-rep="card">
+        <div class="who"><span class="mono">claude-haiku-4.5</span> · the entry each of its five trials added</div>
+        <pre class="code dark" data-lang="text"><code><span>0  - Fix typo in help text for `notes add` command</span>
+<span>1  - Fix typo in help text for `notes add` command</span>
+<span>2  - Fix typo in `notes add` help text</span>
+<span>3  - Fix typo in `notes add` help text</span>
+<span>4  - Fix typo in help text for `notes add` ("tittle" → "title")</span></code></pre>
+      </div>
+    <div class="card" data-concept="list-b" data-rep="card">
+        <div class="who"><span class="mono">gpt-5.6-terra</span> · the entry each of its five trials added</div>
+        <pre class="code dark" data-lang="text"><code><span>0  - Fix the help text typo in `notes add` </span><span data-concept="pr" data-rep="code"><span>(#42)</span></span>
+<span>1  - Fix the `notes add` help text typo </span><span data-concept="pr" data-rep="code"><span>(#42)</span></span>
+<span>2  - Fix the `notes add` help text typo </span><span data-concept="pr" data-rep="code"><span>(#42)</span></span>
+<span>3  - Fix typo in `notes add` help text </span><span data-concept="pr" data-rep="code"><span>(#42)</span></span>
+<span>4  - Fix the `notes add` help text typo </span><span data-concept="pr" data-rep="code"><span>(#42)</span></span></code></pre>
+      </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "pr",
+  "at": "2~made-up",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "list-a",
+  "at": "3",
+  "color": "blue"
+ }
+]
+</script>
+</body>
+</html>

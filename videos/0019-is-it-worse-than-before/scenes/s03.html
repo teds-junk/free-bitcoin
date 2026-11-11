@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Two answers, side by side</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.results{display:flex;flex-direction:column;gap:30px;width:100%}.results .card > .code.dark{font-size:34px;padding:24px 32px}.results .card .who{font-size:32px}.verdict{margin-left:28px;font-weight:600}.results{gap:18px}.results .card > .code.dark{padding:16px 32px}.semantic-block{width:100%;min-height:0;padding-top:20px;padding-bottom:20px}.semantic-block .label{font-size:32px}.stage{gap:22px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Is it any worse?</div>
+  <h2 class="scene-title">Two answers, side by side</h2>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="c-before" data-rep="card">
+        <div class="who">before the edit · <span class="mono">dates · trial 0</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix date parser to handle single-digit months and days</span>
+<span>  (e.g., 2026-1-5) (#67)</span></code></pre>
+      </div>
+      <div class="card" data-concept="c-after" data-rep="card">
+        <div class="who">after the edit · <span class="mono">dates · trial 0</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix date parser to accept single-digit months and days (#67)</span></code></pre>
+      </div>
+    </div>
+  <div class="semantic-block" data-concept="judge" data-rep="block" data-role="transform">
+      <div class="title words">pairwise judge</div><div class="label">shown both answers to one request · says which is better, and by how much</div>
+    </div>
+  <p class="note">Vally’s docs call this comparison mode</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "judge",
+  "at": "1",
+  "color": "cyan"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "judge",
+  "at": "3",
+  "color": "cyan"
+ }
+]
+</script>
+</body>
+</html>

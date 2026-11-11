@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Change one thing</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:200px}.terms .label{font-size:34px}.terms.one .semantic-block{min-height:150px}.stage{gap:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Does the skill beat no skill?</div>
+  <h2 class="scene-title">Change one thing</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="base" data-rep="block" data-role="attention">
+      <div class="title words">No skill installed</div><div class="label">the baseline</div>
+    </div>
+    <div class="semantic-block" data-concept="inst" data-rep="block" data-role="structure">
+      <div class="title words">The skill installed</div><div class="label">compared against it</div>
+    </div>
+  </div>
+  <div class="cols wide terms one">
+    <div class="semantic-block" data-concept="same" data-rep="block" data-role="structure">
+      <div class="title words">Same stimuli · same graders · same model</div><div class="label">everything else is produced the same way</div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "same",
+  "at": "1~same stimuli",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "inst",
+  "at": "1~whether",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "base",
+  "at": "2~baseline",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

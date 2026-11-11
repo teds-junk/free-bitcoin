@@ -1,0 +1,27 @@
+$ vally experiment run evals/cost.experiment.yaml --workers 2 --output-dir results/lesson-16
+Running experiment 'cost'
+
+Loaded 20 stimuli from changelog · 2 models · 2 workers
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+  WARN changelog · scoring-defaults-applied  Multiple graders with no scoring config
+    Using defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.
+
+
+Experiment  cost   varying /defaults/model, /defaults/reasoning_effort · baseline haiku-low
+
+  → No variant beat baseline. Same pass rate (5/5) for all.
+
+  eval        haiku-low (baseline)  haiku-high  terra-low  terra-high
+  changelog   ✓ 5/5                 ✓ 5/5       ✓ 5/5      ✓ 5/5     
+  ──────────  ────────────────────  ──────────  ─────────  ──────────
+  stimuli     5/5                   5/5         5/5        5/5       
+  tokens      1324.0k               1397.5k     795.8k     772.5k    
+  trial time  1m38s                 2m04s       2m27s      2m29s     
+
+Run ID: 7d79cfd9-abe9-44b9-b3a3-1ffdf607f231
+Output: <practice>/results/lesson-16/2026-11-10T17-47-01-928Z

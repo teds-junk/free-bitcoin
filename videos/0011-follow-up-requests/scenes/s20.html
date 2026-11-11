@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Before the rule, and after</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.boxes{display:flex;gap:14px}.box{display:flex;align-items:center;justify-content:center;width:76px;height:76px;border-radius:8px;border:3px solid var(--ink-muted);font:700 44px/1 var(--font-body);color:var(--ink)}.box.tick{color:var(--green-ink)}.box.cross{color:var(--red-ink)}.grp{gap:22px;padding:26px 30px;border-radius:10px}.grp > .who{font-size:36px}.trow{display:flex;align-items:center;gap:30px}.trow .who{font:500 32px/1 var(--font-code);color:var(--ink);min-width:340px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What the conversation showed</div>
+  <h2 class="scene-title">Before the rule, and after</h2>
+  <div class="stage">
+<div class="cols wide">
+    <div class="card grp" data-concept="before" data-rep="card">
+      <div class="who">before the rule</div>
+      <div class="trow" data-concept="before-haiku" data-rep="row"><span class="who">claude-haiku-4.5</span><span class="boxes"><span class="box tick">✔</span><span class="box cross">✘</span><span class="box tick">✔</span></span></div><div class="trow" data-concept="before-5.6" data-rep="row"><span class="who">gpt-5.6-terra</span><span class="boxes"><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span></span></div>
+    </div>
+    <div class="card grp" data-concept="after" data-rep="card">
+      <div class="who">after the rule</div>
+      <div class="trow" data-concept="after-haiku" data-rep="row"><span class="who">claude-haiku-4.5</span><span class="boxes"><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span></span></div><div class="trow" data-concept="after-5.6" data-rep="row"><span class="who">gpt-5.6-terra</span><span class="boxes"><span class="box tick">✔</span><span class="box tick">✔</span><span class="box tick">✔</span></span></div>
+    </div>
+  </div>
+  <p class="note">one box per conversation · three on each model · our runs</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "before",
+  "at": "0~Before",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "after",
+  "at": "0~after it",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "1"
+ }
+]
+</script>
+</body>
+</html>

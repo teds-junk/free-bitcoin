@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>What the agent gets back</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.code.dark.sim{font-size:32px;line-height:1.5;min-width:1090px}.callout{font-size:30px}.note{margin:0}.stage{gap:26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Simulation</div>
+  <h2 class="scene-title">What the agent gets back</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark sim" data-lang="yaml"><code><span style="color:#4EA5E6">simulation</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">tool_overrides</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">    </span><span data-concept="shell" data-rep="code"><span style="color:#4EA5E6">shell</span><span style="color:#B3C0BF">:</span></span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">patterns</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">        - </span><span data-concept="match" data-rep="code"><span style="color:#4EA5E6">match</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">list-merged</span></span>
+<span style="color:#B3C0BF">          </span><span data-concept="out" data-rep="code"><span style="color:#4EA5E6">output</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">"error: tracker did not answer (timeout)"</span></span>
+<span style="color:#B3C0BF">          </span><span data-concept="err" data-rep="code"><span style="color:#4EA5E6">is_error</span><span style="color:#B3C0BF">: </span><span style="color:#D3A41C">true</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="shell">the agent’s shell tool</p><p class="callout" data-anchor="match">a regular expression, searched for in each command</p><p class="callout" data-anchor="out">returned in place of the real result</p><p class="callout" data-anchor="err">returned as a failure</p></aside>
+  </div>
+  <p class="note"><span class="mono">evals/release.eval.yaml</span> · the <span class="mono">tracker-down</span> stimulus, lines 65 to 71</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "shell",
+  "at": "1~shell",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "match",
+  "at": "2~a match",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "out",
+  "at": "4",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "err",
+  "at": "5",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

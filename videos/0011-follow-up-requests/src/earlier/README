@@ -1,0 +1,10 @@
+The "earlier run" the video mentions in s18.
+
+turn-2.diff  the third turn's diff of claude-haiku-4.5 trial-2 (the terminal's "trial 3") in run
+             2026-11-11T06-32-52-447Z: this video's FIRST take of s14, same eval file, same skill, same command.
+take1.log    how that take's console output ended.
+
+That take was recorded again because one gpt-5.6-terra trial ended in ERROR ("Session disconnected while
+waiting for a response"); Ted's rule is to rerun a take with an ERROR. It was not rerun for its outcome.
+Its results were moved aside by the tape, not deleted: /Users/Shared/.demo-old.lesson-11.1794378910/.
+The video's own run (src/run/) is the second take, 2026-11-11T06-35-45-792Z.

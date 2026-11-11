@@ -1,0 +1,46 @@
+
+  - name: two-changes
+    prompt: |
+      PR 60 is in. It adds a `--json` flag to
+      `notes list`, and while I was in there I fixed
+      the bug where page 2 repeated the last note of
+      page 1. Changelog please.
+    agent_environment:
+      files:
+        - src: fixtures/notes-cli/CHANGELOG.md
+          dest: CHANGELOG.md
+    grading_environment:
+      files:
+        - src: grading/check-entry.mjs
+          dest: .vally-grading/check-entry.mjs
+    graders:
+      - type: program
+        name: two-entries-in-place
+        config:
+          program: node
+          args:
+            - .vally-grading/check-entry.mjs
+            - Added=60
+            - Fixed=60
+
+  - name: after-release
+    prompt: |
+      PR 58 just landed: `notes add` now accepts
+      `--from-clipboard` to create a note from whatever
+      is on the clipboard. Add it to the changelog.
+    agent_environment:
+      files:
+        - src: fixtures/just-released/CHANGELOG.md
+          dest: CHANGELOG.md
+    grading_environment:
+      files:
+        - src: grading/check-entry.mjs
+          dest: .vally-grading/check-entry.mjs
+    graders:
+      - type: program
+        name: entry-in-new-unreleased
+        config:
+          program: node
+          args:
+            - .vally-grading/check-entry.mjs
+            - Added=58

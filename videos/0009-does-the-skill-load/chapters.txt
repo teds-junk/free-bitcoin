@@ -1,0 +1,4 @@
+0:00 The description decides
+3:07 How a trial records loading
+5:30 Test loading, then fix it
+9:50 What the loading test showed

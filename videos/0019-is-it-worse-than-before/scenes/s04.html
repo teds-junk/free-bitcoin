@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Each pair is judged twice</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:190px}.terms .title{font-size:40px}.terms .label{font-size:32px}.stage{gap:26px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Is it any worse?</div>
+  <h2 class="scene-title">Each pair is judged twice</h2>
+  <div class="stage">
+<div class="cols wide terms">
+    <div class="semantic-block" data-concept="o1" data-rep="block" data-role="structure">
+      <div class="title words">First order</div><div class="label">before, then after</div>
+    </div>
+    <div class="semantic-block" data-concept="o2" data-rep="block" data-role="structure">
+      <div class="title words">Second order</div><div class="label">after, then before</div>
+    </div>
+  </div>
+  <div class="cols wide terms">
+    <div class="semantic-block" data-concept="agree" data-rep="block" data-role="success">
+      <div class="title words">Both orders agree</div><div class="label">that verdict stands</div>
+    </div>
+    <div class="semantic-block" data-concept="tie" data-rep="block" data-role="attention">
+      <div class="title words">The orders disagree</div><div class="label">a tie</div>
+    </div>
+  </div>
+  <p class="note">Sources: Zheng et al., “Judging LLM-as-a-Judge” (2023) · Vally docs, “CLI: compare”</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "o1",
+  "at": "1~one position",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "o2",
+  "at": "2~opposite",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "agree",
+  "at": "3",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "tie",
+  "at": "4",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

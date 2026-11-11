@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A missing type stops counting</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.stage{gap:18px}.pair{align-items:stretch;gap:20px}.card{padding:14px 18px 18px;border-radius:8px}.card > .code.dark.snip{font-size:34px;line-height:1.5;flex:0 0 auto;min-height:170px}.card .who{font-size:30px}.quote{width:100%;padding-top:16px;padding-bottom:18px}.quote p{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">From scores to a verdict</div>
+  <h2 class="scene-title">A missing type stops counting</h2>
+  <div class="stage">
+<div class="cols pair">
+    <div class="card" data-concept="silenced" data-rep="card">
+        <div class="who">The judge left out of the weights</div>
+        <pre class="code dark snip" data-lang="yaml"><code><span style="color:#4EA5E6">scoring</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  </span><span style="color:#4EA5E6">weights</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">    </span><span data-concept="only" data-rep="code"><span style="color:#4EA5E6">diff-contains</span><span style="color:#B3C0BF">: </span><span style="color:#EA6AA6">1</span></span></code></pre><div class="who">the judge is called, and changes nothing</div>
+      </div>
+    <div class="card" data-concept="outvoted" data-rep="card">
+        <div class="who">A threshold with no weights</div>
+        <pre class="code dark snip" data-lang="yaml"><code><span style="color:#4EA5E6">scoring</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  </span><span data-concept="bare" data-rep="code"><span style="color:#4EA5E6">threshold</span><span style="color:#B3C0BF">: </span><span style="color:#EA6AA6">0.6</span></span></code></pre><div class="who">a yes-or-no judge fails: 0 · two checks pass: 1 and 1</div><div class="who">(0 + 1 + 1) ÷ 3 = 0.67 · reaches 0.6</div>
+      </div>
+  </div>
+  <div class="quote" data-concept="docs" data-rep="quote"><span class="who">Vally docs, Scoring</span><p>“Omitting a type silences it, so list every type you care about.”</p></div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "silenced",
+  "at": "0",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "docs",
+  "at": "2",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "outvoted",
+  "at": "3",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A copy with nothing to copy</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene layout-file">
+  <div class="eyebrow">Simulation</div>
+  <h2 class="scene-title">A copy with nothing to copy</h2>
+  <div class="stage">
+<div class="annotated">
+    <!-- file-panel:fixture · regenerate with: node file-panel.js --file src/fixture-list-merged.mjs --label fixtures/release/list-merged.mjs --id fixture --width 64 --rows 7 --expect 3=tracker.example --expect '7=}' --mark 3=url --mark 5-7=loop --into scenes/s10.html -->
+<div class="file-panel" id="fixture" data-file="fixtures/release/list-merged.mjs" data-lines="7" data-rows="7" style="--rows:7;--cols:64;--ln:2">
+<div class="code-file">fixtures/release/list-merged.mjs<span class="file-meta">7 lines</span></div>
+<div class="file-body">
+<div class="file-window">
+<pre class="code dark file-code" data-lang="js"><code>
+<span class="file-row" data-line="1"><span class="ln">1</span><span style="color:#8296A0;font-style:italic">// Lists the changes merged since the last release, one per</span></span>
+<span class="file-row" data-line="2"><span class="ln">2</span><span style="color:#8296A0;font-style:italic">// line, as "#&lt;pull request&gt; &lt;type&gt;: &lt;summary&gt;".</span></span>
+<span class="file-row" data-line="3"><span class="ln">3</span><span data-concept="url" data-rep="code"><span style="color:#B3C0BF">const</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">url</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">=</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">"https://tracker.example/api/merged?since=1.2.0"</span><span style="color:#B3C0BF">;</span></span></span>
+<span class="file-row" data-line="4"><span class="ln">4</span><span style="color:#B3C0BF">const</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">merged</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">=</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">await</span><span style="color:#B3C0BF"> (</span><span style="color:#A4BA1E">await</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">fetch</span><span style="color:#B3C0BF">(</span><span style="color:#4EA5E6">url</span><span style="color:#B3C0BF">)).</span><span style="color:#4EA5E6">json</span><span style="color:#B3C0BF">();</span></span>
+<span class="file-row" data-line="5"><span class="ln">5</span><span data-concept="loop" data-rep="code"><span style="color:#A4BA1E">for</span><span style="color:#B3C0BF"> (</span><span style="color:#B3C0BF">const</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">pr</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">of</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">merged</span><span style="color:#B3C0BF">) {</span></span></span>
+<span class="file-row" data-line="6"><span class="ln">6</span><span style="color:#B3C0BF">  </span><span data-concept="loop" data-rep="code"><span style="color:#4EA5E6">console</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">log</span><span style="color:#B3C0BF">(</span><span style="color:#3CC0B3">"#"</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">+</span><span style="color:#B3C0BF"> </span><span style="color:#4EA5E6">pr</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">number</span><span style="color:#B3C0BF">, </span><span style="color:#4EA5E6">pr</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF"> </span><span style="color:#A4BA1E">+</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">":"</span><span style="color:#B3C0BF">, </span><span style="color:#4EA5E6">pr</span><span style="color:#B3C0BF">.</span><span style="color:#4EA5E6">title</span><span style="color:#B3C0BF">);</span></span></span>
+<span class="file-row" data-line="7"><span class="ln">7</span><span data-concept="loop" data-rep="code"><span style="color:#B3C0BF">}</span></span></span>
+</code></pre>
+</div>
+</div>
+</div>
+<!-- /file-panel:fixture -->
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "url",
+  "at": "1~fetches",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "loop",
+  "at": "1~prints one per line",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

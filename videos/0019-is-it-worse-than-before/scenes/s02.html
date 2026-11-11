@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Graders see one trial</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.results{display:flex;flex-direction:column;gap:30px;width:100%}.results .card > .code.dark{font-size:34px;padding:24px 32px}.results .card .who{font-size:32px}.verdict{margin-left:28px;font-weight:600}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Is it any worse?</div>
+  <h2 class="scene-title">Graders see one trial</h2>
+  <div class="stage">
+<div class="results">
+      <div class="card" data-concept="c-before" data-rep="card">
+        <div class="who">before the edit · <span class="mono">dates · trial 0</span><span class="verdict" data-concept="v" data-rep="note">passed its graders</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix date parser to handle single-digit months and days</span>
+<span>  (e.g., 2026-1-5) (#67)</span></code></pre>
+      </div>
+      <div class="card" data-concept="c-after" data-rep="card">
+        <div class="who">after the edit · <span class="mono">dates · trial 0</span><span class="verdict" data-concept="v" data-rep="note">passed its graders</span></div>
+        <pre class="code dark" data-lang="markdown"><code><span>- Fix date parser to accept single-digit months and days (#67)</span></code></pre>
+      </div>
+    </div>
+  <p class="note">the entry each version of the skill wrote for the same request, on <span class="mono">claude-haiku-4.5</span></p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "c-before",
+  "at": "3~two entries",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "v",
+  "at": "3~passed both",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "4"
+ }
+]
+</script>
+</body>
+</html>

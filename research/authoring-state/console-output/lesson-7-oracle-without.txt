@@ -1,0 +1,22 @@
+warning: Multiple graders with no scoring config
+✅ typo-fix [baseline (no golden inputs)] (1 failed as expected, 1 n/a)
+  ✓ [adds-an-entry] failed as expected — Pattern 'notes add' not found in workspace diff
+  ⊘ [no-made-up-number] N/A — pass allowed on the empty baseline — Pattern /(?m)^\+.*\(#\d+\)/ not found in workspace diff
+Score: 50.0% | baseline OK (graders correctly FAILED or had allowed baseline passes (N/A))
+
+✅ refactor [baseline (no golden inputs)] (0 failed as expected, 1 n/a)
+  ⊘ [adds-nothing] N/A — pass allowed on the empty baseline — Workspace diff is empty
+Score: 100.0% | baseline OK (all graders may pass on the empty baseline, reported N/A)
+
+✅ security [baseline (no golden inputs)] (1 failed as expected)
+  ✓ [under-security] failed as expected — Pattern /(?m)^\+### Security/ not found in workspace diff
+Score: 0.0% | baseline OK (graders correctly FAILED on the baseline (no golden inputs))
+
+✅ two-changes [baseline (no golden inputs)] (1 failed as expected)
+  ✓ [two-entries-in-place] failed as expected — Command 'node .vally-grading/check-entry.mjs Added=60 Fixed=60' failed: Expected exit code 0, got 1
+Score: 0.0% | baseline OK (graders correctly FAILED on the baseline (no golden inputs))
+
+✅ after-release [baseline (no golden inputs)] (1 failed as expected)
+  ✓ [entry-in-new-unreleased] failed as expected — Command 'node .vally-grading/check-entry.mjs Added=58' failed: Expected exit code 0, got 1
+Score: 0.0% | baseline OK (graders correctly FAILED on the baseline (no golden inputs))
+

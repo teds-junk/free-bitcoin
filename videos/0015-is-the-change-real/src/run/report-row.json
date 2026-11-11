@@ -1,0 +1,8 @@
+{
+  "_about": "One row of report.md from this video's own run 2026-11-11T07-53-29-176Z (src/run/report.md, the table for variant haiku-before): the one stimulus whose three trials neither all passed nor all failed.",
+  "variant": "haiku-before",
+  "stimulus": "parser",
+  "pass_rate": "2/3",
+  "pass_at_k": "100.0%",
+  "pass_hat_k": "29.6%"
+}

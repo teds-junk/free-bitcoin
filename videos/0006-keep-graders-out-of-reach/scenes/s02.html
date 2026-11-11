@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>A grader in plain sight</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.terms .semantic-block{min-height:280px}.terms .label{font-size:34px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Why hide the grader</div>
+  <h2 class="scene-title">A grader in plain sight</h2>
+  <div class="stage">
+<div class="cols terms">
+    <div class="semantic-block" data-concept="read" data-rep="block" data-role="structure">
+      <div class="title words">Read it</div><div class="label">and learn exactly what is being looked for</div>
+    </div>
+    <div class="semantic-block" data-concept="edit" data-rep="block" data-role="failure">
+      <div class="title words">Edit it</div><div class="label">so that it always passes</div>
+    </div>
+    <div class="semantic-block" data-concept="fix" data-rep="block" data-role="attention">
+      <div class="title words">“Fix” it</div><div class="label">distracted by a file it did not expect</div>
+    </div>
+  </div>
+  <p class="note">what an agent could do with a grading script left in its workspace</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "read",
+  "at": "2~read it",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "edit",
+  "at": "3",
+  "color": "red"
+ },
+ {
+  "type": "focus",
+  "target": "fix",
+  "at": "4~distracted",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

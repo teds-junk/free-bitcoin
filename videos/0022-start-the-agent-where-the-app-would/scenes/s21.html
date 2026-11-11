@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The app’s wording matters</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.pair{align-items:stretch}.quote p{font-size:36px;line-height:1.36}.quote .mono{font-family:var(--font-code);font-size:32px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What it showed</div>
+  <h2 class="scene-title">The app’s wording matters</h2>
+  <div class="stage">
+<div class="cols pair">
+    <div class="quote" data-concept="person" data-rep="quote"><span class="who">A person’s request, earlier</span><p>“PR 61 is merged. It splits storage.js into three smaller modules. Nothing changes for users, it's purely a cleanup. Update the changelog.”</p></div>
+    <div class="quote" data-concept="tool" data-rep="quote"><span class="who">The release tool’s input</span><p>“Write the Unreleased changelog entries for every change listed in release/merged.txt.”<br><span class="mono">#76 refactor: move config loading out of cli.js</span></p></div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "tool",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "person",
+  "at": "1~person had said",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml",
+  "variant": "main",
+  "stimulusName": "fix-accented-search",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/eval.yaml::main::claude-haiku-4.5::fix-accented-search::trial-1",
+  "executorName": "copilot-sdk",
+  "model": "claude-haiku-4.5",
+  "trialIndex": 1,
+  "startedAt": "2026-11-10T07:34:46.762Z",
+  "status": "error",
+  "error": "Session disconnected while waiting for a response",
+  "completedAt": "2026-11-10T07:34:48.699Z",
+  "executorSessionId": "9c227b0e-0c28-4bb6-933a-2332689d3388",
+  "logSource": "raw-event-fallback",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/pilot/2026-11-10T07-34-24-705Z/changelog-entry/fix-accented-search/claude-haiku-4.5/1/events.jsonl"
+}

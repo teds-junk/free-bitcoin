@@ -1,0 +1,1028 @@
+1
+00:00:00,400 --> 00:00:05,132
+So far, Vally has done everything itself,
+from preparing the workspace to grading
+
+2
+00:00:05,132 --> 00:00:05,775
+the result.
+
+3
+00:00:06,275 --> 00:00:09,325
+The team's release tool doesn't work that
+way.
+
+4
+00:00:09,825 --> 00:00:13,931
+After a merge, a script prepares a
+checkout, and a small program, the release
+
+5
+00:00:13,931 --> 00:00:15,850
+app, starts an agent session itself.
+
+6
+00:00:16,350 --> 00:00:20,402
+Nobody runs Vally, so what's left
+afterwards is the changed checkout, and
+
+7
+00:00:20,402 --> 00:00:22,400
+the app's own record of the session.
+
+8
+00:00:22,900 --> 00:00:27,510
+Here, you'll run that app, turn its record
+into a file Vally can read, and grade the
+
+9
+00:00:27,510 --> 00:00:29,650
+run with the eval file we already have.
+
+10
+00:00:30,867 --> 00:00:34,654
+Let's start with a choice: there are two
+ways to put an app's agent under our
+
+11
+00:00:34,654 --> 00:00:36,867
+graders, and they answer different
+questions.
+
+12
+00:00:37,367 --> 00:00:42,047
+The first is after the fact: the app runs
+as it always does, and we grade what it
+
+13
+00:00:42,047 --> 00:00:42,567
+recorded.
+
+14
+00:00:43,067 --> 00:00:47,718
+That shows the real thing: the app's own
+settings, its real inputs, and its real
+
+15
+00:00:47,718 --> 00:00:48,067
+model.
+
+16
+00:00:48,567 --> 00:00:53,330
+But each run happens once, so we can't ask
+for five more trials, or for another
+
+17
+00:00:53,330 --> 00:00:53,692
+model.
+
+18
+00:00:54,900 --> 00:00:59,597
+The other way is inside Vally, which can
+repeat a stimulus, change the model, and
+
+19
+00:00:59,597 --> 00:01:00,525
+run experiments.
+
+20
+00:01:01,025 --> 00:01:05,578
+What it runs, though, is a reproduction of
+the app, and a reproduction can differ in
+
+21
+00:01:05,578 --> 00:01:06,500
+ways that matter.
+
+22
+00:01:07,000 --> 00:01:11,250
+Most teams want both, and here we take the
+first: grading a real run.
+
+23
+00:01:12,467 --> 00:01:16,317
+That's the choice; now, how can Vally
+grade a run it never saw?
+
+24
+00:01:16,817 --> 00:01:21,715
+Vally grade has always read trajectories,
+and until now they came from Vally's own
+
+25
+00:01:21,715 --> 00:01:22,492
+results file.
+
+26
+00:01:22,992 --> 00:01:27,292
+It also reads a second, public format,
+which any program can write.
+
+27
+00:01:27,792 --> 00:01:32,464
+It's called ATIF, the Agent Trajectory
+Interchange Format: a JSON file that
+
+28
+00:01:32,464 --> 00:01:35,392
+describes one agent session as a list of
+steps.
+
+29
+00:01:35,892 --> 00:01:40,094
+Each step holds what the model said, the
+tool calls it made, what each call
+
+30
+00:01:40,094 --> 00:01:42,167
+returned, and metrics such as tokens.
+
+31
+00:01:42,667 --> 00:01:47,317
+Vally converts a file like that into its
+own trajectory before grading.
+
+32
+00:01:48,533 --> 00:01:51,983
+Here's the start of the file from the run
+we're about to make.
+
+33
+00:01:52,483 --> 00:01:57,925
+The first line is how Vally recognises it:
+a version that doesn't begin with ATIF is
+
+34
+00:01:57,925 --> 00:01:58,508
+rejected.
+
+35
+00:01:59,008 --> 00:02:02,658
+Then come the steps, one for each time the
+model answered.
+
+36
+00:02:03,158 --> 00:02:08,073
+Each tool call is listed with its name and
+its arguments, which is what a tool calls
+
+37
+00:02:08,073 --> 00:02:08,833
+grader reads.
+
+38
+00:02:09,333 --> 00:02:14,108
+Under observation is what each call
+returned, matched to its call by an ID.
+
+39
+00:02:14,608 --> 00:02:17,958
+Last come the step's metrics, such as its
+tokens.
+
+40
+00:02:19,167 --> 00:02:23,971
+For a run Vally didn't start, vally grade
+needs three things besides the eval file,
+
+41
+00:02:23,971 --> 00:02:25,592
+one for each kind of grader.
+
+42
+00:02:26,092 --> 00:02:30,004
+In this command, all three come from one
+folder, app run, which the app's script
+
+43
+00:02:30,004 --> 00:02:34,063
+will leave behind: the checkout the agent
+worked in, a diff of what it changed, and
+
+44
+00:02:34,063 --> 00:02:36,117
+its record of the session as a trajectory.
+
+45
+00:02:37,333 --> 00:02:41,763
+First, the trajectory: graders of the
+path, such as tool calls, skill invocation
+
+46
+00:02:41,763 --> 00:02:45,583
+and the budgets, need it, so the ATIF file
+arrives on standard input.
+
+47
+00:02:46,083 --> 00:02:50,707
+Second, the change: diff graders take it
+from the file that dash dash diff file
+
+48
+00:02:50,707 --> 00:02:51,058
+names.
+
+49
+00:02:51,558 --> 00:02:56,201
+Third, the changed files: a grader that
+runs a command, or opens a file, works in
+
+50
+00:02:56,201 --> 00:02:58,608
+the folder that dash dash workspace names.
+
+51
+00:02:59,108 --> 00:03:03,373
+Then there's one more flag, dash dash
+stimulus, which says whose graders apply,
+
+52
+00:03:03,373 --> 00:03:06,558
+because an ATIF file doesn't say which
+stimulus it answers.
+
+53
+00:03:07,058 --> 00:03:11,783
+Our hidden test still works, because its
+files are staged for the graders as usual.
+
+54
+00:03:13,000 --> 00:03:16,875
+Graders see only what's in the file, and
+three gaps matter here.
+
+55
+00:03:17,375 --> 00:03:22,054
+Vally's own cost field stays empty for a
+file like this, for a reason we'll come to
+
+56
+00:03:22,054 --> 00:03:23,125
+with the converter.
+
+57
+00:03:23,625 --> 00:03:28,472
+Next, the trial's wall time is recorded as
+zero, because the file has no start and
+
+58
+00:03:28,472 --> 00:03:29,950
+end time for the session.
+
+59
+00:03:30,450 --> 00:03:35,424
+Finally, a skill counts as loaded only if
+the trajectory shows the agent calling its
+
+60
+00:03:35,424 --> 00:03:36,075
+skill tool.
+
+61
+00:03:37,300 --> 00:03:40,075
+The release app doesn't write ATIF.
+
+62
+00:03:40,575 --> 00:03:44,825
+Like most programs built on an agent
+library, it writes traces.
+
+63
+00:03:45,325 --> 00:03:49,988
+Traces come from OpenTelemetry, an open
+standard for recording what a program does
+
+64
+00:03:49,988 --> 00:03:52,775
+as it runs, so that any tool can read the
+record.
+
+65
+00:03:53,275 --> 00:03:57,870
+One unit of work in a trace is a span: one
+call to a model, say, or one tool call,
+
+66
+00:03:57,870 --> 00:04:01,625
+with a start time, an end time, and named
+values called attributes.
+
+67
+00:04:02,125 --> 00:04:06,869
+Every span carries the ID of its trace,
+and a span started inside another names
+
+68
+00:04:06,869 --> 00:04:08,250
+that one as its parent.
+
+69
+00:04:08,750 --> 00:04:12,075
+So a span with no parent is the root of
+its trace.
+
+70
+00:04:13,300 --> 00:04:18,311
+What goes into those spans is agreed too,
+in OpenTelemetry's semantic conventions
+
+71
+00:04:18,311 --> 00:04:19,425
+for generative AI.
+
+72
+00:04:19,925 --> 00:04:22,625
+A model call is a span named chat.
+
+73
+00:04:23,125 --> 00:04:28,286
+A tool call is a span named execute tool,
+and a whole agent session is one named
+
+74
+00:04:28,286 --> 00:04:29,125
+invoke agent.
+
+75
+00:04:29,625 --> 00:04:34,175
+Attributes have agreed names as well, such
+as the one for input tokens.
+
+76
+00:04:34,675 --> 00:04:39,206
+Because the names are shared, a converter
+written for one library's traces mostly
+
+77
+00:04:39,206 --> 00:04:40,325
+works for another's.
+
+78
+00:04:40,825 --> 00:04:45,325
+These conventions are still marked as in
+development, so the names can change.
+
+79
+00:04:46,533 --> 00:04:51,552
+The release app is built on the GitHub
+Copilot SDK, the same library Vally's own
+
+80
+00:04:51,552 --> 00:04:53,433
+executor uses to run an agent.
+
+81
+00:04:53,933 --> 00:04:56,683
+Here is the app's entry point, all of it.
+
+82
+00:04:57,183 --> 00:05:02,050
+The app itself sends one request, in the
+same words as the stimulus in our eval
+
+83
+00:05:02,050 --> 00:05:02,358
+file.
+
+84
+00:05:02,858 --> 00:05:07,604
+It's called with a telemetry setting,
+which tells the SDK to write every span to
+
+85
+00:05:07,604 --> 00:05:09,383
+a file, one line of JSON each.
+
+86
+00:05:09,883 --> 00:05:14,211
+Inside that setting, the line capture
+content adds the message text, the tool
+
+87
+00:05:14,211 --> 00:05:16,683
+arguments and the tool results to the
+spans.
+
+88
+00:05:17,183 --> 00:05:21,712
+Without that, the spans would hold names
+and counts only, and no grader could check
+
+89
+00:05:21,712 --> 00:05:22,858
+what a tool call did.
+
+90
+00:05:24,067 --> 00:05:28,892
+Here's one line of the trace file from our
+run, laid out with one attribute per line.
+
+91
+00:05:29,392 --> 00:05:32,617
+It's a model call: its operation name is
+chat.
+
+92
+00:05:33,117 --> 00:05:37,608
+Its trace ID is shared by every span from
+this session, and the parent is the
+
+93
+00:05:37,608 --> 00:05:39,242
+session's invoke agent span.
+
+94
+00:05:39,742 --> 00:05:43,017
+Its tokens are here, under the
+conventions' names.
+
+95
+00:05:43,517 --> 00:05:47,717
+Then comes its price, in nano AIU, under a
+name of GitHub's own.
+
+96
+00:05:48,933 --> 00:05:52,433
+This one is a tool call: the one that read
+the merged list.
+
+97
+00:05:52,933 --> 00:05:57,208
+Its operation name is execute tool, and
+the tool's name follows.
+
+98
+00:05:57,708 --> 00:06:02,776
+The call ID is the one the model gave the
+call, and the ATIF file uses it to pair a
+
+99
+00:06:02,776 --> 00:06:04,058
+call with its result.
+
+100
+00:06:04,558 --> 00:06:08,808
+The arguments and the result are recorded
+because of capture content.
+
+101
+00:06:10,033 --> 00:06:14,208
+Vally can write traces of its own, but it
+has no way to read one in.
+
+102
+00:06:14,708 --> 00:06:19,433
+So to grade the app's run, something has
+to turn its spans into ATIF steps.
+
+103
+00:06:19,933 --> 00:06:24,783
+Our practice folder has a converter for
+that, about seventy lines of JavaScript.
+
+104
+00:06:25,283 --> 00:06:28,683
+It sorts the spans by start time, and
+walks through them.
+
+105
+00:06:29,183 --> 00:06:33,918
+Each model call, a chat span, becomes a
+new step, with its token attributes
+
+106
+00:06:33,918 --> 00:06:35,433
+renamed to ATIF's names.
+
+107
+00:06:35,933 --> 00:06:40,291
+A tool call is added to the step just
+before it, because that's where the model
+
+108
+00:06:40,291 --> 00:06:41,008
+asked for it.
+
+109
+00:06:41,508 --> 00:06:45,833
+Every other span, such as the session's
+setup and its timings, is skipped.
+
+110
+00:06:46,333 --> 00:06:51,321
+One tool records its arguments as plain
+text, not JSON, and the converter keeps
+
+111
+00:06:51,321 --> 00:06:52,583
+that text unchanged.
+
+112
+00:06:53,800 --> 00:06:58,050
+Cost takes one more step, so here is that
+story from start to finish.
+
+113
+00:06:58,550 --> 00:07:02,950
+The trace carries each model call's price
+in nano AIU, as we saw.
+
+114
+00:07:03,450 --> 00:07:07,525
+The converter keeps it, turned into
+dollars, in each step's metrics.
+
+115
+00:07:08,025 --> 00:07:12,726
+Vally's own cost field still comes out
+empty, because Vally only counts cost
+
+116
+00:07:12,726 --> 00:07:15,200
+reported in AIU by its own Copilot runs.
+
+117
+00:07:15,700 --> 00:07:20,450
+So for a run like this, the cost is in the
+file, and adding it up is left to us.
+
+118
+00:07:21,667 --> 00:07:24,167
+One caution about trace files.
+
+119
+00:07:24,667 --> 00:07:29,015
+With content captured, a trace holds the
+whole prompt, every file the agent opened,
+
+120
+00:07:29,015 --> 00:07:32,892
+full paths on your machine, and an
+attribute that identifies your account.
+
+121
+00:07:33,392 --> 00:07:37,725
+So a raw trace doesn't belong in an issue
+or in a commit, and the ones shown here
+
+122
+00:07:37,725 --> 00:07:38,742
+were cleaned first.
+
+123
+00:07:39,967 --> 00:07:43,317
+The last piece is the script the release
+tooling runs.
+
+124
+00:07:43,817 --> 00:07:48,573
+This script does by hand what our eval
+file's agent environment and its setup
+
+125
+00:07:48,573 --> 00:07:50,117
+commands do inside Vally.
+
+126
+00:07:50,617 --> 00:07:55,092
+First it builds the checkout: the same
+changelog, the same tool, and the skill in
+
+127
+00:07:55,092 --> 00:07:56,142
+a folder beside it.
+
+128
+00:07:56,642 --> 00:08:00,592
+Then it runs the same setup command, which
+writes the merged list.
+
+129
+00:08:01,092 --> 00:08:05,314
+It keeps a copy of that starting state, so
+the merged list counts as part of the
+
+130
+00:08:05,314 --> 00:08:07,267
+start, and not as part of the change.
+
+131
+00:08:07,767 --> 00:08:11,867
+Next it runs the app, on the model we give
+it, tracing to a file.
+
+132
+00:08:12,367 --> 00:08:17,229
+Finally it compares the two folders, and
+saves the difference as a plain diff, with
+
+133
+00:08:17,229 --> 00:08:18,167
+no git involved.
+
+134
+00:08:19,367 --> 00:08:23,946
+That's every piece; now let's run the app
+once, convert its traces, and grade the
+
+135
+00:08:23,946 --> 00:08:24,342
+result.
+
+136
+00:08:24,842 --> 00:08:29,258
+Our stimulus has five graders: a hidden
+test, two checks on its tool calls, a loop
+
+137
+00:08:29,258 --> 00:08:31,467
+check, and a check that the skill loaded.
+
+138
+00:08:31,967 --> 00:08:36,117
+Which of them would you expect to work on
+a run that Vally never saw?
+
+139
+00:08:38,617 --> 00:08:41,492
+If you tried it yourself, here's what
+you'd see.
+
+140
+00:08:42,700 --> 00:08:47,043
+First, the app needs two libraries: the
+Copilot SDK, which runs its agent, and
+
+141
+00:08:47,043 --> 00:08:50,550
+Vally's own package, for a part of the app
+we haven't used yet.
+
+142
+00:08:51,050 --> 00:08:56,056
+We install them with npm; dash dash prefix
+names the app's folder, and no agent
+
+143
+00:08:56,056 --> 00:08:56,500
+starts.
+
+144
+00:09:00,253 --> 00:09:04,453
+That adds about a hundred and forty
+packages, inside the app folder.
+
+145
+00:09:08,667 --> 00:09:12,292
+Now the app itself: the script, followed
+by the model's name.
+
+146
+00:09:12,792 --> 00:09:15,217
+This spends one agent run.
+
+147
+00:09:15,717 --> 00:09:20,217
+It prints the agent's reply, and then says
+where it wrote the traces and the diff.
+
+148
+00:09:22,527 --> 00:09:26,836
+Moments later, the reply says three
+changes were added, and both files are
+
+149
+00:09:26,836 --> 00:09:27,302
+written.
+
+150
+00:09:33,533 --> 00:09:36,008
+Here's the diff that the script saved.
+
+151
+00:09:36,508 --> 00:09:40,833
+Only the changelog changed, with a line
+for each entry the agent added.
+
+152
+00:09:41,333 --> 00:09:45,849
+There's an entry for the new option under
+Added, and one for the search fix under
+
+153
+00:09:45,849 --> 00:09:46,183
+Fixed.
+
+154
+00:09:46,683 --> 00:09:50,702
+There's also an entry for the refactor,
+under a new Changed heading, and that's
+
+155
+00:09:50,702 --> 00:09:52,533
+the one our skill says to leave out.
+
+156
+00:09:55,733 --> 00:10:00,099
+The trace file is longer: a hundred and
+forty-three lines, and the ones we care
+
+157
+00:10:00,099 --> 00:10:02,033
+about are the spans for tool calls.
+
+158
+00:10:02,533 --> 00:10:07,038
+Most lines are timings; searching for
+execute tool finds the agent's tool calls,
+
+159
+00:10:07,038 --> 00:10:08,108
+and there are five.
+
+160
+00:10:08,608 --> 00:10:11,408
+One of them is the read of the merged
+list.
+
+161
+00:10:11,908 --> 00:10:16,195
+None is a call to the skill tool, so in
+this run, the agent never loaded the
+
+162
+00:10:16,195 --> 00:10:16,533
+skill.
+
+163
+00:10:19,733 --> 00:10:24,358
+Next, we convert: the converter reads the
+trace file, and we send what it prints
+
+164
+00:10:24,358 --> 00:10:25,283
+into a new file.
+
+165
+00:10:30,773 --> 00:10:34,673
+Nothing is printed, because the trajectory
+went into that file.
+
+166
+00:10:37,600 --> 00:10:40,900
+Here's the trajectory it wrote, one row
+per step.
+
+167
+00:10:41,400 --> 00:10:46,131
+The five tool calls now sit in four steps,
+each under the model answer that asked for
+
+168
+00:10:46,131 --> 00:10:48,525
+them, and a last step holds only the
+reply.
+
+169
+00:10:51,733 --> 00:10:55,900
+Now the grade: our eval file, the
+stimulus's name, the app's checkout as the
+
+170
+00:10:55,900 --> 00:10:59,408
+workspace, the saved diff, and the
+trajectory on standard input.
+
+171
+00:10:59,908 --> 00:11:03,133
+Dash dash verbose prints a line for each
+grader.
+
+172
+00:11:03,633 --> 00:11:06,483
+No agent starts, so this costs nothing.
+
+173
+00:11:11,793 --> 00:11:16,037
+Three of the five graders passed: the list
+was read, nothing was committed, and
+
+174
+00:11:16,037 --> 00:11:16,843
+nothing looped.
+
+175
+00:11:21,343 --> 00:11:25,936
+The hidden test failed, on the refactor's
+entry, and so did the check that the skill
+
+176
+00:11:25,936 --> 00:11:26,318
+loaded.
+
+177
+00:11:31,533 --> 00:11:36,308
+Earlier, Vally ran this same stimulus
+itself: three trials, on the same model.
+
+178
+00:11:36,808 --> 00:11:41,133
+The sizes matter here: it's one run of the
+app, against three trials.
+
+179
+00:11:41,633 --> 00:11:45,808
+In those trials, the hidden test passed
+once, and the skill loaded once.
+
+180
+00:11:46,308 --> 00:11:50,569
+So the app's run failed the same two
+graders that most of Vally's trials
+
+181
+00:11:50,569 --> 00:11:50,983
+failed.
+
+182
+00:11:51,483 --> 00:11:55,158
+Does that show the app is no worse than
+Vally's own runs?
+
+183
+00:11:57,658 --> 00:12:02,333
+Not yet: it shows that the graders work on
+the app's run, and give the same kind of
+
+184
+00:12:02,333 --> 00:12:02,783
+verdict.
+
+185
+00:12:03,283 --> 00:12:06,683
+With one run, that's as far as the
+comparison goes.
+
+186
+00:12:07,900 --> 00:12:11,325
+So what carried over to a run that Vally
+never saw?
+
+187
+00:12:11,825 --> 00:12:14,950
+Every grader we wrote inside Vally worked.
+
+188
+00:12:15,450 --> 00:12:20,025
+The hidden test ran in a copy of the app's
+checkout, and caught the refactor's entry.
+
+189
+00:12:20,525 --> 00:12:24,845
+Both tool calls graders found the read of
+the merged list, and no commit, because
+
+190
+00:12:24,845 --> 00:12:27,725
+the trace recorded every tool call with
+its arguments.
+
+191
+00:12:28,225 --> 00:12:32,587
+The loop check counted repeats from the
+same record, and the skill check saw that
+
+192
+00:12:32,587 --> 00:12:33,825
+no skill call was made.
+
+193
+00:12:34,325 --> 00:12:38,569
+Those graders ask whether the run did the
+job the way the app needs, and that has
+
+194
+00:12:38,569 --> 00:12:40,875
+the same answer however the run was
+started.
+
+195
+00:12:42,100 --> 00:12:46,675
+Some things did not carry over, and each
+one goes back to what the file holds.
+
+196
+00:12:47,175 --> 00:12:51,795
+Cost came out empty, as we saw, so
+comparing cost means adding up each step's
+
+197
+00:12:51,795 --> 00:12:52,875
+dollars ourselves.
+
+198
+00:12:53,375 --> 00:12:57,275
+Wall time was zero, so a wall time grader
+would pass anything.
+
+199
+00:12:57,775 --> 00:13:02,258
+And the skill check worked only because
+loading a skill shows up in the trace as a
+
+200
+00:13:02,258 --> 00:13:03,625
+tool call like any other.
+
+201
+00:13:04,125 --> 00:13:08,902
+So before trusting a grader on converted
+runs, it's worth asking whether the field
+
+202
+00:13:08,902 --> 00:13:10,125
+it reads came across.
+
+203
+00:13:10,625 --> 00:13:14,982
+One stimulus has no counterpart here at
+all: the one where the tracker is down,
+
+204
+00:13:14,982 --> 00:13:18,125
+because that failure exists only when
+Vally simulates it.
+
+205
+00:13:19,333 --> 00:13:24,044
+That leaves a question these graders can't
+answer: is the app as good as Vally's own
+
+206
+00:13:24,044 --> 00:13:25,333
+runs, worse, or better?
+
+207
+00:13:25,833 --> 00:13:30,755
+Answering it takes trials, and a real run
+happens once, on whatever model the app
+
+208
+00:13:30,755 --> 00:13:31,058
+used.
+
+209
+00:13:31,558 --> 00:13:34,258
+That's the limit of grading afterwards.
+
+210
+00:13:35,467 --> 00:13:40,301
+Before you go on: for a run Vally didn't
+start, what does vally grade need, besides
+
+211
+00:13:40,301 --> 00:13:41,117
+the eval file?
+
+212
+00:13:44,117 --> 00:13:48,317
+It needs the trajectory, as an ATIF file
+on standard input.
+
+213
+00:13:48,817 --> 00:13:51,592
+It needs the change, as a diff file.
+
+214
+00:13:52,092 --> 00:13:55,692
+Last, it needs the changed files, in the
+workspace folder.
+
+215
+00:13:56,900 --> 00:14:01,111
+You can now run the release app's script,
+convert its trace file to a trajectory,
+
+216
+00:14:01,111 --> 00:14:04,075
+and grade the result with the eval file
+you already have.
+
+217
+00:14:04,575 --> 00:14:09,575
+But grading afterwards gives one sample
+per run, on whatever model the app used.
+
+218
+00:14:10,075 --> 00:14:14,900
+To get trials, experiments and other
+models, Vally has to start the app itself.
+
+219
+00:14:15,400 --> 00:14:17,250
+That's the next lesson.
+
+220
+00:14:17,750 --> 00:14:21,900
+For practice, the exercises on the lesson
+page are worth doing first.

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>One command, three flags.</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style></style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">What one Vally run does</div>
+  <h2 class="scene-title">One command, three flags.</h2>
+  <div class="stage">
+<div class="annotated">
+    <pre class="code dark" data-lang="bash"><code><span data-concept="cmd" data-rep="code"><span style="color:#4EA5E6">vally</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">eval</span></span><span style="color:#B3C0BF"> </span><span data-concept="e" data-rep="code"><span style="color:#F0733F">-e</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">evals/one-request.eval.yaml</span></span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="model" data-rep="code"><span style="color:#F0733F">--model</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">claude-haiku-4.5,gpt-5.6-terra</span></span><span style="color:#B3C0BF"> </span><span style="color:#F0733F">\</span>
+<span style="color:#B3C0BF">  </span><span data-concept="out" data-rep="code"><span style="color:#F0733F">--output-dir</span><span style="color:#B3C0BF"> </span><span style="color:#3CC0B3">results/lesson-1</span></span></code></pre>
+    <aside class="callouts"><p class="callout" data-anchor="e">which eval file to run</p><p class="callout" data-anchor="model">which models to run it on</p><p class="callout" data-anchor="out">where to save the results</p></aside>
+  </div>
+  <div class="quote" data-concept="request" data-rep="quote"><span class="who">The request in one-request.eval.yaml</span><p>“I fixed the typo in the help text for <span class="inline-code">notes add</span> (it said "tittle"). Put that in the changelog.”</p></div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "cmd",
+  "at": "0~vally eval",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "e",
+  "at": "1"
+ },
+ {
+  "type": "focus",
+  "target": "request",
+  "at": "3",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "model",
+  "at": "5"
+ },
+ {
+  "type": "focus",
+  "target": "out",
+  "at": "7"
+ }
+]
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+name: with-and-without
+
+evals:
+  - changelog.eval.yaml
+
+vary: [/environment/skills, /defaults/model]
+
+baseline: haiku-no-skill
+
+variants:
+  haiku-no-skill:
+    overrides:
+      model: claude-haiku-4.5
+    environment:
+      skills: []
+  haiku-with-skill:
+    overrides:
+      model: claude-haiku-4.5
+    environment:
+      skills: [../skills/changelog-entry]
+  terra-no-skill:
+    overrides:
+      model: gpt-5.6-terra
+    environment:
+      skills: []
+  terra-with-skill:
+    overrides:
+      model: gpt-5.6-terra
+    environment:
+      skills: [../skills/changelog-entry]

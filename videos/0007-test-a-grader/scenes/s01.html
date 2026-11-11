@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Who grades the grader?</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.scene-title.chapter{font-size:116px}.pair{align-items:stretch}.cases{display:flex;flex-direction:column;gap:22px;justify-content:center}.cases .semantic-block{min-height:150px;justify-content:center}.cases .title{font-size:40px}.cases .label{font-size:30px}.card > .code.dark{font-size:30px;line-height:1.45}.card .who{font-size:30px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Vally &amp; Agent Evals</div>
+  <h1 class="scene-title chapter">Who grades the grader?</h1>
+  <div class="stage">
+<div class="cols pair">
+    <div class="card" data-concept="g" data-rep="card">
+        <div class="who"><span class="mono">changelog.eval.yaml</span> · the graders on <span class="mono">typo-fix</span></div>
+        <pre class="code dark" data-lang="yaml"><code><span style="color:#4EA5E6">graders</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">  - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">diff-contains</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">adds-an-entry</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">value</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">"notes add"</span>
+<span style="color:#B3C0BF">  - </span><span style="color:#4EA5E6">type</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">diff-not-contains</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">name</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">no-made-up-number</span>
+<span style="color:#B3C0BF">    </span><span style="color:#4EA5E6">config</span><span style="color:#B3C0BF">:</span>
+<span style="color:#B3C0BF">      </span><span style="color:#4EA5E6">pattern</span><span style="color:#B3C0BF">: </span><span style="color:#3CC0B3">'(?m)^\+.*\(#\d+\)'</span></code></pre>
+      </div>
+    <div class="cases">
+      <div class="semantic-block" data-concept="right" data-rep="block" data-role="success">
+      <div class="title words">a correct answer</div><div class="label">a healthy grader passes it</div>
+    </div>
+      <div class="semantic-block" data-concept="nothing" data-rep="block" data-role="attention">
+      <div class="title words">an untouched file</div><div class="label">a healthy grader fails it</div>
+    </div>
+    </div>
+  </div>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "g",
+  "at": "0~graders",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "none",
+  "at": "2"
+ },
+ {
+  "type": "focus",
+  "target": "right",
+  "at": "4~correct answer",
+  "color": "green"
+ },
+ {
+  "type": "focus",
+  "target": "nothing",
+  "at": "4~untouched",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

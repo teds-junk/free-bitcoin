@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The judge’s twelve verdicts</title>
+  <link rel="stylesheet" href="../_theme/theme.css">
+  <script src="../_theme/vl-runtime.js" defer></script>
+  <style>.verdicts{font-size:36px}.verdicts th{font-size:30px}.verdicts td{padding-top:15px;padding-bottom:15px}.verdicts td.mono{font-family:var(--font-code);font-size:32px}.stage{gap:20px}</style>
+</head>
+<body>
+<main class="scene ">
+  <div class="eyebrow">Add the judge and run it</div>
+  <h2 class="scene-title">The judge’s twelve verdicts</h2>
+  <div class="stage">
+<table class="data-table full verdicts">
+    <thead><tr><th>stimulus · model</th><th><span data-concept="ours" data-rep="head">Ours · trials 0, 1</span></th>
+      <th><span data-concept="judge" data-rep="head">Judge · trials 0, 1</span></th></tr></thead>
+    <tbody>
+<tr><td class="mono">parser · claude-haiku-4.5</td>
+        <td><span data-concept="o-parser-haiku" data-rep="cell">no · yes</span></td>
+        <td><span data-concept="j-parser-haiku" data-rep="cell">no · yes</span></td></tr>
+<tr><td class="mono">parser · gpt-5.6-terra</td>
+        <td><span data-concept="o-parser-terra" data-rep="cell">yes · yes</span></td>
+        <td><span data-concept="j-parser-terra" data-rep="cell">yes · yes</span></td></tr>
+<tr><td class="mono">cache · claude-haiku-4.5</td>
+        <td><span data-concept="o-cache-haiku" data-rep="cell">no · no</span></td>
+        <td><span data-concept="j-cache-haiku" data-rep="cell">no · no</span></td></tr>
+<tr><td class="mono">cache · gpt-5.6-terra</td>
+        <td><span data-concept="o-cache-terra" data-rep="cell">no · no</span></td>
+        <td><span data-concept="j-cache-terra" data-rep="cell">no · yes</span></td></tr>
+<tr><td class="mono">dates · claude-haiku-4.5</td>
+        <td><span data-concept="o-dates-haiku" data-rep="cell">yes · yes</span></td>
+        <td><span data-concept="j-dates-haiku" data-rep="cell">yes · yes</span></td></tr>
+<tr><td class="mono">dates · gpt-5.6-terra</td>
+        <td><span data-concept="o-dates-terra" data-rep="cell">yes · yes</span></td>
+        <td><span data-concept="j-dates-terra" data-rep="cell">yes · yes</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note">from <span class="mono">notes/wording-labels.md</span> · our run · 2026-11-11T06-48-30-514Z</p>
+  </div>
+</main>
+<script type="application/json" id="cues">
+[
+ {
+  "type": "focus",
+  "target": "ours",
+  "at": "0~our own",
+  "color": "blue"
+ },
+ {
+  "type": "focus",
+  "target": "judge",
+  "at": "1",
+  "color": "yellow"
+ },
+ {
+  "type": "focus",
+  "target": "j-cache-terra",
+  "at": "2~one",
+  "color": "yellow"
+ }
+]
+</script>
+</body>
+</html>

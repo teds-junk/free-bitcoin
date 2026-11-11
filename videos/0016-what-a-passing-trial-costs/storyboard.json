@@ -1,0 +1,699 @@
+{
+  "schema": 2,
+  "title": "What a passing trial costs",
+  "slug": "0016-what-a-passing-trial-costs",
+  "kind": "lesson",
+  "lesson_number": 16,
+  "source": "/Users/ted/src/learn/vally/lessons/0016-what-a-passing-trial-costs.html",
+  "created": "2026-11-11",
+  "poster": "s01",
+  "people": [],
+  "pacing": {
+    "lead_in": 0.4,
+    "gap": 0.5,
+    "tail": 0.8
+  },
+  "narrative": {
+    "question": "Which model, at which reasoning effort, gives the most passing trials for what it costs?",
+    "viewer_starts": "A professional programmer who knows the shell and has followed the changelog-entry skill through fifteen lessons of Vally runs on claude-haiku-4.5 and gpt-5.6-terra. Knows skill, eval file, stimulus, grader, trial and run; vally eval with -e, --model, --runs, --workers and --output-dir; PASS, FAIL, FLAKY and ERROR, and that ERROR is not a verdict; the results folder and results.jsonl, with one record per trial holding status, gradeResult and trajectory; token usage (input, output and cache read tokens), that a trial's cost is recorded in nano-AIU, and that one AIU is one cent; the report's Tokens column, which is a median; code graders, script graders and LLM judges; an experiment file with variants, vary, a baseline and overrides; vally experiment run, --dry-run, and the table it prints with stimuli passed, total tokens and trial time; pass rate, and the range around a count from a few trials. Has not compared what variants cost, and does not know cost per passing trial, reasoning effort, the --reasoning-effort flag, the byModel block, or the course's cost calculator.",
+    "arc": [
+      {
+        "stage": "cost-per-pass",
+        "viewer_can": "work out cost per passing trial from a total and a count of passes, and say when one variant is beaten on both counts"
+      },
+      {
+        "stage": "where-cost-is",
+        "viewer_can": "find a trial's variant, verdict and cost in a variant's results file, and say what that cost leaves out"
+      },
+      {
+        "stage": "effort-as-variant",
+        "viewer_can": "read an experiment file that varies the model and the reasoning effort, and say how many trials it runs"
+      },
+      {
+        "stage": "price-the-variants",
+        "viewer_can": "find the efforts each model accepts without spending anything, run four variants, and get each one's cost per passing trial"
+      },
+      {
+        "stage": "what-the-table-says",
+        "viewer_can": "choose a model and a reasoning effort, and state the choice with its evidence: passes, cost per passing trial, and what the ranges allow"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "role": "hook",
+      "mode": "think",
+      "stage": "cost-per-pass",
+      "chapter": "Cost per passing trial",
+      "renderer": "html",
+      "visual": "scenes/s01.html",
+      "on_screen": "Headline 'What a passing trial costs' in the display serif. Two blocks side by side from our run: 'gpt-5.6-terra' with its median tokens per trial in large figures, and 'claude-haiku-5.5' with its median tokens per trial. Under them one line: 'Which one costs more?' The terra block lights, then the haiku block, then the question.",
+      "introduces": [],
+      "narration": [
+        "Every comparison table so far has ended with a row of tokens, and it's tempting to read the variant with fewer tokens as the cheaper one.",
+        {
+          "text": "When we ran it, a typical trial on terra used far fewer tokens than one on a newer haiku model.",
+          "outcome": true
+        },
+        "But each model has its own price per token, and a cheap trial that fails has bought you nothing.",
+        "Here, you'll run two models at two settings, work out what each passing trial costs, and pick one."
+      ]
+    },
+    {
+      "id": "s02",
+      "role": "body",
+      "mode": "think",
+      "stage": "cost-per-pass",
+      "renderer": "html",
+      "visual": "scenes/s02.html",
+      "on_screen": "Headline 'Divide by the passes'. One wide definition block: 'cost per passing trial'. Under it a line built of three blocks: 'total cost · every trial of the variant', a division sign, 'trials that passed'. The total lights, then the passes, then the whole definition.",
+      "introduces": [
+        "cost per passing trial"
+      ],
+      "narration": [
+        "Let's start with the figure itself.",
+        "Cost per passing trial is a variant's total cost, over all of its trials, divided by the number of trials that passed.",
+        "It's what one useful result costs you."
+      ]
+    },
+    {
+      "id": "s03",
+      "role": "body",
+      "mode": "think",
+      "stage": "cost-per-pass",
+      "renderer": "html",
+      "visual": "scenes/s03.html",
+      "on_screen": "Headline 'The cheaper trial costs more'. A table with two rows, variant A and variant B, and four columns: cost of a trial (2 AIU, 3 AIU), trials passed (5 of 10, 10 of 10), total (20 AIU, 30 AIU), per passing trial (4 AIU, 3 AIU). A note under it: 'a made-up example · 1 AIU = 1 cent'. Each cell lights as it is said; at the end A's 2 AIU and A's 4 AIU.",
+      "introduces": [],
+      "narration": [
+        "Here's a made-up pair of variants, priced in AIU, which are cents: variant A costs two AIU a trial, and passes five of ten.",
+        "Variant B costs three AIU a trial, and passes all ten.",
+        "For A, that's twenty AIU for five passes: four AIU each.",
+        "For B, thirty AIU buys ten passes: three AIU each.",
+        "So the variant with the cheaper trial gives the more expensive result.",
+        "Every failure is paid for, and then thrown away."
+      ]
+    },
+    {
+      "id": "s04",
+      "role": "body",
+      "mode": "think",
+      "stage": "cost-per-pass",
+      "renderer": "html",
+      "visual": "scenes/s04.html",
+      "on_screen": "Headline 'Beaten on both counts'. Two blocks side by side. Left: 'Beaten on both counts · costs more, passes no more often · drop it'. Right: 'A real choice · costs more, passes more often · depends on what a failure costs you'. The left lights for sentences two and three, the right for the last two.",
+      "introduces": [],
+      "narration": [
+        "With several variants, we put each one's pass rate beside its cost.",
+        "Then we look for a variant that's beaten on both counts: some other variant costs less, and passes at least as often.",
+        "Any variant beaten that way can be dropped.",
+        "Those left are real choices, a trade between paying more and passing more.",
+        "Which to pick depends on what a failure costs you."
+      ]
+    },
+    {
+      "id": "s05",
+      "role": "body",
+      "mode": "think",
+      "stage": "cost-per-pass",
+      "renderer": "html",
+      "visual": "scenes/s05.html",
+      "on_screen": "Headline 'Report cost beside accuracy'. Two blocks side by side: 'Agent rankings · built on accuracy alone' and 'Simple agents that tried again · the same accuracy, a fraction of the cost'. Under them a quote card, 'The researchers’ argument': 'Every evaluation should report cost beside accuracy.' A source note: Kapoor et al., AI Agents That Matter (2024), a preprint. Each lights as it is said.",
+      "introduces": [],
+      "narration": [
+        "This way of comparing comes from research on agent benchmarks, which argued that every evaluation should report cost beside accuracy.",
+        "Its authors had found simple agents matching the leaders of accuracy-only rankings, at a fraction of the cost."
+      ]
+    },
+    {
+      "id": "s06",
+      "role": "body",
+      "mode": "works",
+      "stage": "where-cost-is",
+      "chapter": "Where cost is recorded",
+      "renderer": "html",
+      "visual": "scenes/s06.html",
+      "on_screen": "Headline 'One results file per variant'. Dark box, left: the folder an experiment saves, as a tree: results/lesson-16/, a folder named with a time, then haiku-low/results.jsonl, haiku-high/results.jsonl, terra-low/results.jsonl, terra-high/results.jsonl. Callouts on the right: 'a folder for each variant' level with haiku-low, 'one record per trial' level with its results.jsonl.",
+      "introduces": [
+        "results.jsonl",
+        "results.jsonl · one record, spread out",
+        "haiku-low/results.jsonl · one record, spread out"
+      ],
+      "narration": [
+        "That's the figure; now let's see where its two numbers are recorded.",
+        "Every experiment saves a folder for each variant, and each folder holds its own results dot jsonl.",
+        "Inside is one record per trial: the record we've met before, with the variant's name added."
+      ]
+    },
+    {
+      "id": "s07",
+      "role": "body",
+      "mode": "works",
+      "stage": "where-cost-is",
+      "renderer": "html",
+      "visual": "scenes/s07.html",
+      "on_screen": "Headline 'Did the trial pass?'. File panel labelled 'haiku-low/results.jsonl · one record, spread out', with a minimap and 'lines hidden' rows: the record's top, from \"variant\": \"haiku-low\" to \"passed\": true. Callouts on the right, level with their lines: 'the variant, as the experiment file names it', 'did the trial finish?', 'the verdict'. Each line lights as it is named.",
+      "introduces": [
+        "variant",
+        "status",
+        "passed"
+      ],
+      "shows": [
+        "results.jsonl"
+      ],
+      "narration": [
+        "Here's one of them, spread over several lines.",
+        "Variant names the variant this trial belongs to.",
+        "Status is success for a trial that finished, as before.",
+        "And passed, under grade result, is the verdict: passing trials say true here."
+      ]
+    },
+    {
+      "id": "s08",
+      "role": "body",
+      "mode": "works",
+      "stage": "where-cost-is",
+      "renderer": "html",
+      "visual": "scenes/s08.html",
+      "on_screen": "Headline 'What the trial cost'. The same file panel, scrolled far down the record to the end of \"tokenUsage\": the \"byModel\" block (claude-haiku-5.5 with its input tokens, output tokens and call count) and the \"cost\" block (provider github-copilot, unit nano-aiu, amount). Callouts: 'tokens, split by model', 'billionths of an AIU', 'this trial'. Under the panel one line turns the amount into AIU and cents for the trial's total tokens.",
+      "introduces": [
+        "byModel"
+      ],
+      "shows": [
+        "results.jsonl"
+      ],
+      "narration": [
+        "Further down, the token usage ends with two blocks.",
+        "Next, by model splits the tokens between models, and an agent that called two models would list both.",
+        "Then the cost, in nano-AIU as before.",
+        {
+          "text": "This trial's amount is about point two three AIU, under a quarter of a cent, for a hundred and five thousand tokens.",
+          "outcome": true
+        },
+        "That cost appears only when every model call in the trial reported Copilot as its provider."
+      ]
+    },
+    {
+      "id": "s09",
+      "role": "body",
+      "mode": "works",
+      "stage": "where-cost-is",
+      "renderer": "html",
+      "visual": "scenes/s09.html",
+      "on_screen": "Headline 'What the figure leaves out'. Two blocks side by side: 'Judge calls · not counted: an eval with a judge costs more than this' and 'A trial that ended in ERROR · may have no usage recorded'. Each lights as it is said.",
+      "introduces": [],
+      "narration": [
+        "Two things are missing from that figure.",
+        "Calls that an LLM judge makes to grade the trial aren't counted, so for an eval with a judge, the true cost is higher.",
+        "Also, a trial that ended in ERROR before the agent finished may have no usage recorded at all."
+      ]
+    },
+    {
+      "id": "s10",
+      "role": "body",
+      "mode": "works",
+      "stage": "where-cost-is",
+      "renderer": "html",
+      "visual": "scenes/s10.html",
+      "on_screen": "Headline 'Vally prints no total cost'. Top row, two blocks: 'The experiment’s table · total tokens' and 'report.md · median tokens'. Below, one wide block, 'the course’s cost calculator · a page that reads the results.jsonl files you pick, in your browser', holding three numbered parts: 1 Add · every trial’s cost; 2 Count · the trials that passed; 3 Divide. The top blocks light for sentence two, the calculator for sentence three, the parts in turn for the last sentence.",
+      "introduces": [
+        "cost calculator"
+      ],
+      "narration": [
+        "Vally itself prints no total cost for a variant.",
+        "Each experiment's table gives total tokens, its report gives median tokens, and neither turns tokens into cost.",
+        "So the course has a small calculator: a page that reads the results files you pick, in your browser.",
+        "For each variant, it adds up the cost of every trial, counts the trials that passed, and divides."
+      ]
+    },
+    {
+      "id": "s11",
+      "role": "body",
+      "mode": "works",
+      "stage": "effort-as-variant",
+      "chapter": "Reasoning effort as a variant",
+      "renderer": "html",
+      "visual": "scenes/s11.html",
+      "on_screen": "Headline 'Reasoning effort'. One wide definition block: 'reasoning_effort · how much hidden reasoning the agent’s model does before it replies or calls a tool'. Under it two blocks: 'More effort usually means · more tokens, more time on each call' and 'Sometimes · better results'. The definition lights, then each block.",
+      "introduces": [
+        "reasoning_effort"
+      ],
+      "narration": [
+        "Besides the model, we'll vary one more setting: reasoning effort.",
+        "Some models can work through a problem in hidden reasoning, before they reply or call a tool.",
+        "Reasoning effort sets how much of that the agent's model does.",
+        "More effort usually means more tokens and more time on each call, and sometimes better results."
+      ]
+    },
+    {
+      "id": "s12",
+      "role": "body",
+      "mode": "works",
+      "stage": "effort-as-variant",
+      "renderer": "html",
+      "visual": "scenes/s12.html",
+      "on_screen": "Headline 'Set beside the model'. Dark box, left, labelled 'in an eval file': defaults: with model: claude-haiku-5.5 and reasoning_effort: low under it. Callouts on the right: 'the model' and 'how much it reasons', level with their lines. Below, one block: 'Accepted values depend on the model · Vally checks before any session starts'. The reasoning_effort line lights, then the block.",
+      "introduces": [],
+      "narration": [
+        "In an eval file, reasoning effort goes under defaults, beside the model, so an experiment can vary it exactly as it varies the model.",
+        "Which values are accepted depends on the model.",
+        "Vally refuses a value the model doesn't accept before any session starts, and its message lists the values that model does accept.",
+        "So asking for a value that no model has is a free way to see each model's list, and that's how we'll begin."
+      ]
+    },
+    {
+      "id": "s13",
+      "role": "body",
+      "mode": "works",
+      "stage": "effort-as-variant",
+      "renderer": "html",
+      "visual": "scenes/s13.html",
+      "on_screen": "Headline 'Four variants, sixty trials'. File panel labelled 'evals/cost.experiment.yaml' with a minimap, callouts on the right. It opens at the top: the evals line ('five stimuli, graded by code'), the vary line ('model and effort, nothing else'), runs: 3 ('15 trials a variant, 60 in all'). Then it scrolls to the variants: haiku-low with model claude-haiku-5.5 and reasoning_effort low, and on to terra-high. Lit in turn: the eval file's name, the vary line, runs: 3, the four variant names, then the claude-haiku-5.5 model line ('a newer haiku: 4.5 takes no effort').",
+      "introduces": [
+        "cost.experiment.yaml",
+        "haiku-low",
+        "haiku-high",
+        "terra-low",
+        "terra-high",
+        "claude-haiku-5.5"
+      ],
+      "shows": [
+        "cost.experiment.yaml"
+      ],
+      "narration": [
+        "Here's the experiment file we'll run.",
+        "It runs the changelog eval file: five stimuli from earlier, each graded by code, with no judge, so the recorded cost is the whole cost.",
+        "Its variants may differ in the model and in reasoning effort, and in nothing else.",
+        "There are three trials of each stimulus, which makes fifteen trials per variant, and sixty in all.",
+        "Then come the four variants: two models, each at low effort and at high effort.",
+        "For haiku, the file names haiku five point five, a newer model in the same family, because the haiku model we've used so far takes no effort setting, as the first step will show."
+      ]
+    },
+    {
+      "id": "s14",
+      "role": "practice",
+      "mode": "use",
+      "stage": "price-the-variants",
+      "chapter": "Price the variants",
+      "renderer": "slide",
+      "visual": "scenes/s14.html",
+      "on_screen": "Headline 'Which costs least per pass?'. Four cards in a row, one per variant, each with its name, its model and its effort: haiku-low (claude-haiku-5.5 · low), haiku-high (claude-haiku-5.5 · high), terra-low (gpt-5.6-terra · low), terra-high (gpt-5.6-terra · high). Nothing is lit while the question is asked and during the beat after it.",
+      "introduces": [],
+      "narration": [
+        "That's the file; now let's run it and price each variant.",
+        "We'll end with one sentence that names the variant we'd choose, and the numbers behind it.",
+        {
+          "text": "Which of the four would you expect to cost least for each passing trial?",
+          "read": 2
+        },
+        "If you tried it yourself, here's what you'd see."
+      ]
+    },
+    {
+      "id": "s15",
+      "role": "practice",
+      "mode": "use",
+      "stage": "price-the-variants",
+      "renderer": "terminal",
+      "visual": "tapes/s15.tape",
+      "on_screen": "Terminal in the practice folder; the prompt shows only the current folder name. The vally eval command over five lines: the one-request eval file, three models (claude-haiku-4.5, claude-haiku-5.5, gpt-5.6-terra), --reasoning-effort list, --output-dir results/lesson-16-efforts. It finishes in a few seconds; the output is longer than the screen and ends on the failures list, where each ERROR line names the efforts that model supports, and the model summary.",
+      "introduces": [
+        "vally eval",
+        "--reasoning-effort",
+        "-e",
+        "--model",
+        "--output-dir",
+        "one-request.eval.yaml",
+        "lesson-16-efforts"
+      ],
+      "shows": [
+        "vally eval"
+      ],
+      "narration": [
+        {
+          "text": "First, the free check: we run the eval file with the one typo-fix request, from the start of the course, on three models.",
+          "before": "typed:1"
+        },
+        {
+          "text": "Dash dash reasoning effort sets the effort for every trial of a run, as dash dash model sets the model.",
+          "before": "typed:1"
+        },
+        {
+          "text": "We give it a value that no model accepts: here, the word list.",
+          "before": "typed:1"
+        },
+        {
+          "text": "Every trial should be rejected before it starts, so nothing is spent.",
+          "before": "enter:1"
+        },
+        {
+          "text": "Each trial ends in ERROR, as planned, and each error names the efforts that its model accepts.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 8
+        }
+      ]
+    },
+    {
+      "id": "s16",
+      "role": "practice",
+      "mode": "use",
+      "stage": "price-the-variants",
+      "renderer": "html",
+      "visual": "scenes/s16.html",
+      "on_screen": "Headline 'Two models take an effort'. A table read from that output, one row per model: claude-haiku-4.5 · 'does not support reasoning effort configuration'; claude-haiku-5.5 · low, medium, high, xhigh, max; gpt-5.6-terra · none, low, medium, high, xhigh, max. A note: 'from our account; yours will differ'. Each row lights as it is said, then 'low' and 'high' in the two lower rows.",
+      "introduces": [],
+      "narration": [
+        "That output runs past one screen, so here's what it said, model by model.",
+        {
+          "text": "Haiku four point five, the model we've used so far, doesn't support reasoning effort at all.",
+          "outcome": true
+        },
+        {
+          "text": "Haiku five point five accepts five values, from low to max.",
+          "outcome": true
+        },
+        {
+          "text": "Terra accepts the same five, and also a value named none.",
+          "outcome": true
+        },
+        {
+          "text": "Low and high are accepted by both, so those are our two efforts.",
+          "outcome": true
+        }
+      ]
+    },
+    {
+      "id": "s17",
+      "role": "practice",
+      "mode": "use",
+      "stage": "price-the-variants",
+      "renderer": "terminal",
+      "visual": "tapes/s17.tape",
+      "on_screen": "Terminal in the practice folder. vally experiment run on evals/cost.experiment.yaml with --dry-run, over two lines. The plan prints at once: a block for each of the four variants naming its eval and its model; the last blocks are on screen.",
+      "introduces": [
+        "vally experiment",
+        "--dry-run"
+      ],
+      "shows": [
+        "vally experiment",
+        "cost.experiment.yaml"
+      ],
+      "narration": [
+        {
+          "text": "Our experiment file is now in the evals folder.",
+          "before": "typed:1"
+        },
+        {
+          "text": "Before spending anything, we check the plan with a dry run, which starts no agent.",
+          "before": "typed:1"
+        },
+        {
+          "text": "It prints a block for each of the four variants, naming its model, and the last of them are on screen.",
+          "wait_for": "output:1",
+          "read": 8
+        }
+      ]
+    },
+    {
+      "id": "s18",
+      "role": "practice",
+      "mode": "use",
+      "stage": "price-the-variants",
+      "renderer": "terminal",
+      "visual": "tapes/s18.tape",
+      "on_screen": "Terminal in the practice folder. vally experiment run on evals/cost.experiment.yaml with --workers 2 and --output-dir results/lesson-16, over three lines; a jump cut; then the end of the output: the line about the baseline and the table, with rows for stimuli passed, total tokens and trial time under the four variants, held until it has been read. The screen is cleared out of sight; ls results/lesson-16 shows one folder named with a time.",
+      "introduces": [
+        "--workers",
+        "ls",
+        "lesson-16",
+        "2026"
+      ],
+      "shows": [
+        "vally experiment",
+        "ls"
+      ],
+      "spend": "60 agent runs",
+      "narration": [
+        {
+          "text": "Now the real run: the same command without the dry run, with two workers, saved under results, lesson sixteen.",
+          "before": "typed:1"
+        },
+        {
+          "text": "It spends sixty short agent runs.",
+          "before": "enter:1"
+        },
+        {
+          "text": "At the end, we're after the table, with its row of stimuli passed and its row of tokens.",
+          "before": "enter:1"
+        },
+        {
+          "text": "Several minutes later, every variant shows five of five stimuli passed, so Vally says that no variant beat the baseline.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 4
+        },
+        {
+          "text": "Under that is the row of total tokens, where the two terra variants are lowest, and nothing here mentions cost.",
+          "wait_for": "output:1",
+          "outcome": true,
+          "read": 3
+        },
+        {
+          "text": "So let's look in the results folder.",
+          "before": "typed:2"
+        },
+        {
+          "text": "There's one folder, named with the time of the run, and inside it, as we saw, is a folder for each variant.",
+          "wait_for": "output:2",
+          "read": 1
+        }
+      ]
+    },
+    {
+      "id": "s19",
+      "role": "practice",
+      "mode": "use",
+      "stage": "price-the-variants",
+      "renderer": "html",
+      "visual": "scenes/s19.html",
+      "on_screen": "Headline 'Four files, four cards'. The cost calculator's result as the lesson page shows it: four cards in a two-by-two grid, one per variant (name and model), each with Trials, Passing, ERROR, Total cost, In dollars, Per passing trial and Median tokens, filled from our run's four results.jsonl files. Under them the calculator's total line: the trials, the files, the AIU and the dollars, and 'Judge calls are not included.' The cards light together, then 'Passing', 'ERROR', 'Total cost' and 'Per passing trial' on the first card as they are named, then the total line.",
+      "introduces": [],
+      "narration": [
+        "We give those four results files to the cost calculator, which reads them in the browser and sends nothing anywhere.",
+        "The page shows a card for each variant, with the trials, how many passed, how many ended in ERROR, the total cost, and the cost per passing trial.",
+        {
+          "text": "Underneath is the bill for the whole experiment: about ninety-one AIU, which is ninety-one cents.",
+          "outcome": true
+        }
+      ]
+    },
+    {
+      "id": "s20",
+      "role": "practice",
+      "mode": "use",
+      "stage": "price-the-variants",
+      "renderer": "html",
+      "visual": "scenes/s20.html",
+      "on_screen": "Headline 'One variant beats the rest'. A table from our run: Variant, Passing, Total, Per passing trial, Median tokens, one row per variant. The Passing column lights; then haiku-low's cost per passing trial; then haiku-high's; then both terra rows'; then the haiku-low row alone. Under the table, our sentence as a quote card.",
+      "introduces": [],
+      "narration": [
+        "Here are the columns we need, side by side.",
+        {
+          "text": "All four variants passed fifteen of fifteen trials.",
+          "outcome": true
+        },
+        {
+          "text": "At low effort, haiku cost about point two one AIU for each passing trial.",
+          "outcome": true
+        },
+        {
+          "text": "At high effort, haiku passed no more often, and cost a little more.",
+          "outcome": true
+        },
+        {
+          "text": "Both terra variants passed no more often, and cost thirteen to fourteen times as much.",
+          "outcome": true
+        },
+        {
+          "text": "So haiku low beats the other three on both counts.",
+          "outcome": true
+        },
+        {
+          "text": "That gives us our sentence: on these five stimuli, haiku at low effort passed all fifteen trials at point two one AIU each, against two point seven six and two point eight three on terra, so we'd run them on haiku low.",
+          "outcome": true,
+          "read": 2
+        }
+      ]
+    },
+    {
+      "id": "s21",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-table-says",
+      "chapter": "What the table says",
+      "renderer": "html",
+      "visual": "scenes/s21.html",
+      "on_screen": "Headline 'Tokens measure work, not price'. Two blocks side by side, one per model, from our run. Each has the median tokens of a trial in large figures and, under it, what a trial cost, lowest to highest, in AIU: claude-haiku-5.5 with about 105k tokens and a fraction of an AIU; gpt-5.6-terra with about half the tokens and several AIU. The terra block's cost lights, then its tokens.",
+      "introduces": [],
+      "narration": [
+        "So what should we make of that table?",
+        {
+          "text": "Every trial passed, so here, cost per passing trial is simply cost per trial.",
+          "outcome": true
+        },
+        {
+          "text": "But the variants that cost the most by far are the ones that used the fewest tokens: tokens measure work, not price.",
+          "outcome": true
+        }
+      ]
+    },
+    {
+      "id": "s22",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-table-says",
+      "renderer": "html",
+      "visual": "scenes/s22.html",
+      "on_screen": "Headline 'Each model has its own price'. A table with two rows: claude-haiku-4.5 (the first trial these videos ran) and claude-haiku-5.5 (the record from this run), with columns Tokens, Cost, and AIU per 100,000 tokens. A note under it gives how many times cheaper per token the newer model was on our account. The first row's price lights, then the second's, then the note.",
+      "introduces": [],
+      "narration": [
+        "The cost of a token depends on the model, even between two versions of one family.",
+        {
+          "text": "Our very first haiku trial, on version four point five, cost about two point four AIU for every hundred thousand tokens.",
+          "outcome": true
+        },
+        {
+          "text": "This run's haiku five point five record cost about point two two AIU for the same number of tokens.",
+          "outcome": true
+        },
+        {
+          "text": "On our account, that makes the newer model about eleven times cheaper per token.",
+          "outcome": true
+        },
+        "So the cost we measure on one model can't be carried over to another: change the model, and you measure again."
+      ]
+    },
+    {
+      "id": "s23",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-table-says",
+      "renderer": "html",
+      "visual": "scenes/s23.html",
+      "on_screen": "Headline 'Same ranges, separate costs'. Left block: 'Pass rate · 15 of 15 · a range of 80% to 100% · the same for all four variants'. Right block: 'Cost of a trial', with two lines from our run: every claude-haiku-5.5 trial, lowest to highest AIU, and every gpt-5.6-terra trial, lowest to highest AIU, and under them 'every haiku trial cost less than the cheapest terra trial'. Below both, a quote card, 'Our sentence, with the ranges': 'As good, as far as these trials can tell, and far cheaper.' The left block lights, then the right, then the quote.",
+      "introduces": [],
+      "narration": [
+        "Now the habit from before: how far can these counts be trusted?",
+        {
+          "text": "Fifteen passes in fifteen trials gives a range of eighty to a hundred percent, and every variant has that same range.",
+          "outcome": true
+        },
+        {
+          "text": "So these trials can't tell the variants apart on pass rate, and here they don't need to: the case for haiku low rests on cost.",
+          "outcome": true
+        },
+        {
+          "text": "Each model's most expensive trial cost between two and three times its cheapest, but the two bands are well apart: every haiku trial cost less than the cheapest terra trial.",
+          "outcome": true
+        },
+        {
+          "text": "So the ranges make our sentence more careful: haiku low is as good, as far as these trials can tell, and far cheaper.",
+          "outcome": true
+        }
+      ]
+    },
+    {
+      "id": "s24",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-table-says",
+      "renderer": "html",
+      "visual": "scenes/s24.html",
+      "on_screen": "Headline 'True of these five requests'. Two blocks side by side: 'These five stimuli · the ones the skill now passes easily' and 'The wording requests, graded by a judge · where the models differed: price them the same way'. Under them a line: 'Prices change, and your account’s may differ: a method to repeat, not facts about the models.' The left block lights, then the right, then the line.",
+      "introduces": [],
+      "narration": [
+        "That statement is about these five requests only, the ones the skill now passes easily.",
+        {
+          "text": "But the wording requests, the ones graded by a judge, are where the models differed, and they'd need pricing the same way before changing the model for everything.",
+          "outcome": true
+        },
+        "Prices change, too, and your account's may differ from ours, so treat these numbers as a method you can repeat, not as facts about the models."
+      ]
+    },
+    {
+      "id": "s25",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-table-says",
+      "renderer": "html",
+      "visual": "scenes/s25.html",
+      "on_screen": "Headline 'What it comes to in dollars'. A table with four rows: 'This experiment' (60 trials, its AIU, its dollars); 'A check after every edit' on the two earlier models (10 trials, about 24 AIU, 24 cents an edit, $4.80 for twenty edits); 'The same check on haiku-low' (5 trials, about 1 AIU, a cent an edit); 'Every stimulus, every night' (30 trials, about 71 AIU, about $21 over thirty nights, plus judge calls). A note says which rows use the average of our own earlier runs on those two models, about 2.4 AIU a trial. Each row lights as it is said.",
+      "introduces": [],
+      "narration": [
+        "Let's put that in dollars, at one cent per AIU.",
+        {
+          "text": "This experiment's sixty trials came to ninety-one cents.",
+          "outcome": true
+        },
+        "One check after every edit, with these five stimuli on two models, is ten trials.",
+        "On the two models from earlier in the course, where our trials have averaged about two point four AIU, that's twenty-four cents an edit, or four dollars eighty for twenty edits a month.",
+        {
+          "text": "On haiku low alone, the same five stimuli would cost about one AIU: a cent an edit.",
+          "outcome": true
+        },
+        "Running every stimulus in the course each night, about thirty trials, comes to roughly twenty-one dollars over thirty nights at that earlier average, plus the judge calls that Vally doesn't count."
+      ]
+    },
+    {
+      "id": "s26",
+      "role": "body",
+      "mode": "think",
+      "stage": "what-the-table-says",
+      "renderer": "html",
+      "visual": "scenes/s26.html",
+      "on_screen": "Headline 'Small, and it grows'. One wide block: 'Verifying this course · about $11 of agent runs, plus judge calls'. Under it the words 'It grows with' and four small blocks in a row: 'stimuli', 'trials', 'models', 'how often you run'. A note: 'your plan’s monthly allowance is spent first'. The wide block lights, then the four in turn, then the note.",
+      "introduces": [],
+      "narration": [
+        "For scale, verifying this whole course took about eleven dollars of agent runs, plus judge calls, which isn't large for one person.",
+        "But it grows with the stimuli, the trials, the models, and how often you run, which is why the cheapest check that answers the question comes first.",
+        "Your plan's monthly allowance is spent first, so much of this may cost you nothing extra."
+      ]
+    },
+    {
+      "id": "s27",
+      "role": "recap",
+      "stage": "what-the-table-says",
+      "renderer": "html",
+      "visual": "scenes/s27.html",
+      "on_screen": "Headline 'Why divide by the passes?'. One block, 'cost per passing trial', which opens after the question and a pause into three parts: 'Total cost · every trial, failures included'; 'Trials that passed · the useful results'; 'Per model · measured, not carried over'. Each part lights as it is said.",
+      "introduces": [],
+      "narration": [
+        "Before you go on: what is cost per passing trial, and why does it divide by the passes?",
+        {
+          "text": "It's a variant's total cost, divided by the number of its trials that passed.",
+          "pause": 2.5
+        },
+        "Dividing by the passes charges each useful result with the failures it took to get it.",
+        "So a cheap variant that often fails can be the more expensive one, and each model has to be measured for itself."
+      ]
+    },
+    {
+      "id": "s28",
+      "role": "next",
+      "stage": "what-the-table-says",
+      "renderer": "slide",
+      "visual": "scenes/s28.html",
+      "on_screen": "'Next: A model from your own provider' in the display serif. Below, the hand-off question: 'Can Vally run a model from a service of your own?' A note: 'Exercises are on the lesson page · Source: Kapoor et al., AI Agents That Matter (2024)'.",
+      "introduces": [],
+      "narration": [
+        "You can now price the models your Copilot account offers, and state a choice with its evidence.",
+        "But an app may call a model through a service of its own.",
+        "Can Vally run that model too, and what does a passing trial cost there?",
+        "That's the next lesson.",
+        "For practice, the exercises on the lesson page are worth doing first."
+      ]
+    }
+  ]
+}

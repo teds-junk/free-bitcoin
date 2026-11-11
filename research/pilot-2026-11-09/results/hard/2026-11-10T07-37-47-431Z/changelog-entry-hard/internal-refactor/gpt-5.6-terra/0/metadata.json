@@ -1,0 +1,17 @@
+{
+  "evalName": "changelog-entry-hard",
+  "evalFilePath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml",
+  "variant": "main",
+  "stimulusName": "internal-refactor",
+  "trialId": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/evals/changelog-entry/hard.eval.yaml::main::gpt-5.6-terra::internal-refactor::trial-0",
+  "executorName": "copilot-sdk",
+  "model": "gpt-5.6-terra",
+  "attemptIndex": 0,
+  "startedAt": "2026-11-10T07:38:15.053Z",
+  "status": "success",
+  "trajectoryId": "e5fb5097-9bc5-4639-a305-6b856df6a505",
+  "executorSessionId": "75bbcc94-4290-42b9-b70a-15f42a814ba3",
+  "completedAt": "2026-11-10T07:38:26.571Z",
+  "logSource": "native",
+  "eventsPath": "/private/tmp/claude-501/-Users-ted-src-learn-vally/d8bc06e6-d466-4dfc-9fa5-a53299f0c3f8/scratchpad/pilot/results/hard/2026-11-10T07-37-47-431Z/changelog-entry-hard/internal-refactor/gpt-5.6-terra/0/events.jsonl"
+}

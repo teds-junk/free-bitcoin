@@ -1,0 +1,17 @@
+[1m[36mEval: evals/release.eval.yaml[0m
+[33m⚠ [33mwarning[0m [90m[scoring-defaults-applied][0m Multiple graders with no scoring config
+  [2mat scoring[0m
+  [2mUsing defaults: equal weights, no threshold — the verdict is binary, so any single failing grader fails the stimulus. Add a `scoring` block to weight graders or set a threshold.[0m
+
+  [33m1 warning(s)[0m
+warning: Multiple graders with no scoring config
+✅ since-last-release [baseline (no golden inputs)] (3 failed as expected, 2 n/a)
+  ✓ [every-change-handled] failed as expected — Command 'node .vally-grading/check-release.mjs' failed: Expected exit code 0, got 1
+  ✓ [reads-the-list] failed as expected — The following required tools were not called: /^(view|bash)$/ {input~/release\/merged\.txt/}
+                                          No disallowed tools were called
+  ⊘ [never-commits] N/A — pass allowed on the empty baseline
+  ⊘ [no-loop] N/A — pass allowed on the empty baseline
+  ✓ [loads-the-skill] failed as expected — The following required skills were not called: changelog-entry
+                                           No disallowed skills were called
+Score: 40.0% | baseline OK (graders correctly FAILED or had allowed baseline passes (N/A))
+
