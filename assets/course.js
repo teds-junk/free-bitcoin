@@ -4,7 +4,7 @@
 window.COURSE = {
   title: 'Vally & Agent Evals',
   // The whole-course video is too big for the repo, so it lives on a GitHub release.
-  video: 'https://github.com/tg-msft/free-bitcoin/releases/download/course-video-v1/vally-agent-evals.mp4',
+  video: 'https://github.com/teds-junk/free-bitcoin/releases/download/course-video-v1/vally-agent-evals.mp4',
   videoPoster: 'videos/course/poster.png',
   lessons: [
     { n: 1, file: '0001-it-works-for-me.html', title: 'It works for me', win: 'Run one request on two models and find, in the saved files, that they changed the file differently', part: 'Measure the skill' },
